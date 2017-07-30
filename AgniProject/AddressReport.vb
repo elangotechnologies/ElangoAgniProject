@@ -24,7 +24,7 @@ Public Class AddressReport
             ds8.Tables.Add(dt8)
             dc8 = New DataColumn("Address", Type.GetType("System.String"))
             dt8.Columns.Add(dc8)
-            addr = AgnimainForm.ComboBox1.Text + vbNewLine + AgnimainForm.TextBox2.Text + vbNewLine + "Mobile : " + AgnimainForm.TextBox3.Text
+            addr = AgnimainForm.cmbCustCompanyList.Text + vbNewLine + AgnimainForm.txtAddress.Text + vbNewLine + "Mobile : " + AgnimainForm.txtMobile.Text
             For j = 1 To AgnimainForm.addrcount
                 dr8 = dt8.NewRow
                 dr8.Item(0) = addr

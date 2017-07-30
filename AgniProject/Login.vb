@@ -15,7 +15,8 @@ Public Class Login
 
     Private Sub Login_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
-            Con = New SqlConnection("server=agni\SQLEXPRESS;Database=agnidatabase;Integrated Security=true")
+            'Con = New SqlConnection("Data Source=ELAPC;Initial Catalog=agnidatabase;Integrated Security=True")
+            Con = New SqlConnection("Data Source=ELAPC;Initial Catalog=agnidatabase;Integrated Security=True")
             Con.Open()
             Cmd5 = New SqlCommand("select * from login", Con)
             Sda5 = New SqlDataAdapter()
@@ -82,8 +83,8 @@ Public Class Login
                     type = Dr5.Item(2)
                     Me.Hide()
                     AgnimainForm.Show()
-                    AgnimainForm.TabControl1.SelectedIndex = 0
-                    AgnimainForm.Button32.PerformClick()
+                    AgnimainForm.tabAllTabsHolder.SelectedIndex = 0
+                    AgnimainForm.btnCustClear.PerformClick()
                     flag = True
                     Exit While
                 End If
@@ -97,40 +98,38 @@ Public Class Login
                 TextBox2.Text = ""
                 ComboBox1.Focus()
             End If
-        
+
             AgnimainForm.Button38.Text = "Log Off " + uname
             If type.Equals("Others") Then
-                AgnimainForm.Button1.Enabled = False
-                AgnimainForm.Button2.Enabled = False
-                AgnimainForm.Button3.Enabled = False
-                AgnimainForm.Button32.Enabled = False
-                AgnimainForm.Button28.Enabled = False
-                AgnimainForm.Button8.Enabled = False
-                AgnimainForm.Button9.Enabled = False
-                AgnimainForm.Button10.Enabled = False
-                AgnimainForm.Button34.Enabled = False
-                AgnimainForm.Button35.Enabled = False
-                AgnimainForm.Button21.Enabled = False
-                AgnimainForm.Button36.Enabled = False
+                AgnimainForm.btnCustAdd.Enabled = False
+                AgnimainForm.btnCustDelete.Enabled = False
+                AgnimainForm.btnCustUpdate.Enabled = False
+                AgnimainForm.btnCustClear.Enabled = False
+                AgnimainForm.btnDesAdd.Enabled = False
+                AgnimainForm.btnDesDelete.Enabled = False
+                AgnimainForm.btnDesUpdate.Enabled = False
+                AgnimainForm.btnDesEditPrice.Enabled = False
+                AgnimainForm.btnDesClear.Enabled = False
+                AgnimainForm.btnBillingCreateBill.Enabled = False
+                AgnimainForm.btnBillingClear.Enabled = False
                 AgnimainForm.Button42.Enabled = False
                 AgnimainForm.Button43.Enabled = False
-                AgnimainForm.Button41.Enabled = False
+                AgnimainForm.btnBillingCancelBill.Enabled = False
             Else
-                AgnimainForm.Button1.Enabled = True
-                AgnimainForm.Button2.Enabled = True
-                AgnimainForm.Button3.Enabled = True
-                AgnimainForm.Button32.Enabled = True
-                AgnimainForm.Button28.Enabled = True
-                AgnimainForm.Button8.Enabled = True
-                AgnimainForm.Button9.Enabled = True
-                AgnimainForm.Button10.Enabled = True
-                AgnimainForm.Button34.Enabled = True
-                AgnimainForm.Button35.Enabled = True
-                AgnimainForm.Button21.Enabled = True
-                AgnimainForm.Button36.Enabled = True
+                AgnimainForm.btnCustAdd.Enabled = True
+                AgnimainForm.btnCustDelete.Enabled = True
+                AgnimainForm.btnCustUpdate.Enabled = True
+                AgnimainForm.btnCustClear.Enabled = True
+                AgnimainForm.btnDesAdd.Enabled = True
+                AgnimainForm.btnDesDelete.Enabled = True
+                AgnimainForm.btnDesUpdate.Enabled = True
+                AgnimainForm.btnDesEditPrice.Enabled = True
+                AgnimainForm.btnDesClear.Enabled = True
+                AgnimainForm.btnBillingCreateBill.Enabled = True
+                AgnimainForm.btnBillingClear.Enabled = True
                 AgnimainForm.Button42.Enabled = True
                 AgnimainForm.Button43.Enabled = True
-                AgnimainForm.Button41.Enabled = True
+                AgnimainForm.btnBillingCancelBill.Enabled = True
             End If
         Catch ex As Exception
             MessageBox.Show("Message to Agni User:   " & ex.Message)

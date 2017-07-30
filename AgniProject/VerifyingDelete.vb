@@ -26,13 +26,13 @@ Public Class VerifyingDelete
             While (a)
                 Dr5 = Dt5.Rows(inc)
                 If Dr5.Item(0).ToString.ToUpper.Equals(uname1.ToUpper) And Dr5.Item(1).Equals(pwd1) Then
-                    If Not uname1.Equals(Login.uname) Then
-                        MsgBox("Sorry.. You are Logged in as '" + Login.uname + "'. So Please enter User Name as '" + Login.uname + "'")
-                        TextBox1.Text = ""
-                        TextBox2.Text = ""
-                        TextBox1.Focus()
-                        Exit Sub
-                    End If
+                    'If Not uname1.Equals(Login.uname) Then
+                    '    MsgBox("Sorry.. You are Logged in as '" + Login.uname + "'. So Please enter User Name as '" + Login.uname + "'")
+                    '    TextBox1.Text = ""
+                    '    TextBox2.Text = ""
+                    '    TextBox1.Focus()
+                    '    Exit Sub
+                    'End If
                     'type1 = Dr5.Item(2)
                     AgnimainForm.DeleteCompanyEntire()
                     Me.Close()
@@ -66,7 +66,7 @@ Public Class VerifyingDelete
 
     Private Sub VerifyingDelete_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
-            Con = New SqlConnection("server=agni\SQLEXPRESS;Database=agnidatabase;Integrated Security=true")
+            Con = New SqlConnection("Data Source=ELAPC;Initial Catalog=agnidatabase;Integrated Security=True")
             Con.Open()
             Cmd5 = New SqlCommand("select * from login", Con)
             Sda5 = New SqlDataAdapter()
