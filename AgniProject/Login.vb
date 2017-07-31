@@ -112,8 +112,8 @@ Public Class Login
                 AgnimainForm.btnDesClear.Enabled = False
                 AgnimainForm.btnBillingCreateBill.Enabled = False
                 AgnimainForm.btnBillingClear.Enabled = False
-                AgnimainForm.Button42.Enabled = False
-                AgnimainForm.Button43.Enabled = False
+                AgnimainForm.btnPaymentDelete.Enabled = False
+                AgnimainForm.btnPaymentAdd.Enabled = False
                 AgnimainForm.btnBillingCancelBill.Enabled = False
             Else
                 AgnimainForm.btnCustAdd.Enabled = True
@@ -127,8 +127,8 @@ Public Class Login
                 AgnimainForm.btnDesClear.Enabled = True
                 AgnimainForm.btnBillingCreateBill.Enabled = True
                 AgnimainForm.btnBillingClear.Enabled = True
-                AgnimainForm.Button42.Enabled = True
-                AgnimainForm.Button43.Enabled = True
+                AgnimainForm.btnPaymentDelete.Enabled = True
+                AgnimainForm.btnPaymentAdd.Enabled = True
                 AgnimainForm.btnBillingCancelBill.Enabled = True
             End If
         Catch ex As Exception
