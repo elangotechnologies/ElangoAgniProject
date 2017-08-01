@@ -195,6 +195,29 @@ Public Class AgnimainForm
 
     End Function
 
+    Sub loadOrReloadPaymentList(Optional cmbPaymentList As ComboBox = Nothing, Optional custNo As Integer = Nothing)
+        Dim paymentQuery As SqlCommand
+        If (custNo <> Nothing) Then
+            paymentQuery = New SqlCommand("select PaymentNo from payment where custNo=" + custNo.ToString, dbConnection)
+        Else
+            paymentQuery = New SqlCommand("select PaymentNo from payment", dbConnection)
+        End If
+
+        Dim paymentAdapter = New SqlDataAdapter()
+        paymentAdapter.SelectCommand = paymentQuery
+        Dim paymentDataSet = New DataSet
+        paymentAdapter.Fill(paymentDataSet, "payment")
+        Dim paymentTable As DataTable = paymentDataSet.Tables(0)
+
+        If cmbPaymentList IsNot Nothing Then
+            cmbPaymentList.BindingContext = New BindingContext()
+            cmbPaymentList.DataSource = paymentTable
+        Else
+            cmbPaymentPaymentNoList.BindingContext = New BindingContext()
+            cmbPaymentPaymentNoList.DataSource = paymentTable
+        End If
+    End Sub
+
     Sub loadOrReloadBillList(Optional cmbBillList As ComboBox = Nothing, Optional custNo As Integer = Nothing)
         Dim billQuery As SqlCommand
         If (custNo <> Nothing) Then
@@ -462,10 +485,10 @@ Public Class AgnimainForm
     End Sub
 
     Sub resetPaymentScreen()
-        txtPaymentBillNumber.Text = ""
-        txtPaymentBalance.Text = ""
+        cmbPaymentPaymentNoList.SelectedIndex = -1
+        txtPaymentUnPaidBilledAmount.Text = ""
         dpPaymentDate.Text = ""
-        radioPaymentByCash.Text = ""
+        radioPaymentByCash.Checked = True
         txtPaymentPaymentAmount.Text = ""
         txtPaymentAdjustment.Text = ""
         txtPaymentTaxDeduction.Text = ""
@@ -3240,7 +3263,7 @@ Public Class AgnimainForm
     Private Sub ComboBox7_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles cmbPaymentCompanyList.KeyDown
         'Try
         If (e.KeyCode = Keys.Enter) Then
-            btnPaymentAdd.PerformClick()
+            btnPaymentCreatePayment.PerformClick()
         ElseIf e.Alt Then
             If e.KeyCode = Keys.C Then
                 tabAllTabsHolder.SelectTab(0)
@@ -3259,100 +3282,19 @@ Public Class AgnimainForm
         'End 'Try
     End Sub
 
-    Private Sub ComboBox7_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbPaymentCompanyList.SelectedIndexChanged
-        If (cmbBillingCompanyList.SelectedIndex <> -1) Then
+    Private Sub cmbPaymentCompanyList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbPaymentCompanyList.SelectedIndexChanged
+        If (cmbPaymentCompanyList.SelectedIndex <> -1) Then
             resetPaymentScreen()
-            Dim lastBillRow As DataRow = getLastBillRow()
-            txtPaymentBillNumber.Text = lastBillRow.Item("BillNo")
-            txtPaymentBalance.Text = lastBillRow.Item("DesignCost") + lastBillRow.Item("UnPaidAmountTillNow") - lastBillRow.Item("PaidAmount")
-            loadBillingGrid(cmbBillingCompanyList.SelectedValue)
+            loadOrReloadPaymentList(cmbPaymentPaymentNoList, cmbPaymentCompanyList.SelectedValue)
+
+            loadPaymentGrid(cmbPaymentCompanyList.SelectedValue)
         End If
-    End Sub
-
-    Private Sub Button43_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPaymentAdd.Click
-        'Try
-        If cmbPaymentCompanyList.Text.Trim.Equals("") Then
-            MessageBox.Show("Choose a company from company list")
-            cmbPaymentCompanyList.Focus()
-        ElseIf dpPaymentDate.Text.Trim.Equals("") Then
-            MessageBox.Show("Choose valid payment date")
-            dpPaymentDate.Focus()
-        ElseIf Val(txtPaymentBalance.Text) = 0 Then
-            MessageBox.Show("There is no balance anmount to pay")
-            txtPaymentBalance.Focus()
-        ElseIf txtPaymentPaymentAmount.Text.Trim.Equals("") And txtPaymentAdjustment.Text.Trim.Equals("") And txtPaymentTaxDeduction.Text.Trim.Equals("") Then
-            MessageBox.Show("Enter Payment Amount or Deduction or Tax Deduction")
-            txtPaymentPaymentAmount.Focus()
-        ElseIf txtPaymentFinalPaidAmount.Text.Trim.Equals("") Then
-            MessageBox.Show("Enter amount to be credited")
-            txtPaymentFinalPaidAmount.Focus()
-        ElseIf radioPaymentByCheque.Checked And txtPaymentChequeNo.Text.Trim.Equals("") Then
-            MessageBox.Show("Enter cheque Number")
-            txtPaymentChequeNo.Focus()
-        ElseIf radioPaymentByCheque.Checked And txtPaymentBankName.Text.Trim.Equals("") Then
-            MessageBox.Show("Enter bank Name")
-            txtPaymentBankName.Focus()
-        ElseIf radioPaymentByCheque.Checked And dpPaymentChequeDate.Text.Trim.Equals("") Then
-            MessageBox.Show("Choose valid cheque date")
-            dpPaymentChequeDate.Focus()
-        ElseIf Not cmbPaymentPaymentNoList.Text.Trim.Equals("") Then
-            MessageBox.Show("You cannot make a payment from existing payment. You can only make payment for unpaid amount. Please reselect the customer from customer list to see the unpaid amount")
-            cmbPaymentPaymentNoList.Focus()
-        Else
-
-            Dim newPaymentNo As Integer = -1
-
-            Dim paymentType As String = "Cash"
-            If radioPaymentByCheque.Checked Then
-                paymentType = "Cheque"
-            End If
-
-
-            Dim query As String = String.Empty
-            query &= "INSERT INTO payment (CustNo, BillNo, UnPaidBilledAmount, PaymentDate, PaymentMode, PaidAmount, "
-            query &= "Deduction, TaxDeduction, ChequeNo, BankName, ChequeDate, Remarks, TotalPaid) "
-            query &= "VALUES (@CustNo, @BillNo, @UnPaidBilledAmount, @PaymentDate, @PaymentMode, @PaidAmount, "
-            query &= "@Deduction, @TaxDeduction, @ChequeNo, @BankName, @ChequeDate, @Remarks, @TotalPaid); SELECT SCOPE_IDENTITY()"
-
-            Using comm As New SqlCommand()
-                With comm
-                    .Connection = dbConnection
-                    .CommandType = CommandType.Text
-                    .CommandText = query
-                    .Parameters.AddWithValue("@CustNo", cmbPaymentCompanyList.SelectedValue)
-                    .Parameters.AddWithValue("@BillNo", txtPaymentBillNumber.Text)
-                    .Parameters.AddWithValue("@UnPaidBilledAmount", txtPaymentBalance.Text)
-                    .Parameters.AddWithValue("@PaymentDate", dpPaymentDate.Text)
-                    .Parameters.AddWithValue("@PaymentMode", paymentType)
-                    .Parameters.AddWithValue("@PaidAmount", txtPaymentPaymentAmount.Text)
-                    .Parameters.AddWithValue("@Deduction", txtPaymentAdjustment.Text)
-                    .Parameters.AddWithValue("@TaxDeduction", txtPaymentTaxDeduction.Text)
-                    .Parameters.AddWithValue("@ChequeNo", txtPaymentChequeNo.Text)
-                    .Parameters.AddWithValue("@BankName", txtPaymentBankName.Text)
-                    .Parameters.AddWithValue("@ChequeDate", dpPaymentChequeDate.Text)
-                    .Parameters.AddWithValue("@Remarks", txtPaymentRemarks.Text)
-                    .Parameters.AddWithValue("@TotalPaid", txtPaymentFinalPaidAmount.Text)
-                End With
-                'comm.ExecuteNonQuery()
-                newPaymentNo = CInt(comm.ExecuteScalar())
-            End Using
-
-            cmbPaymentPaymentNoList.Text = newPaymentNo
-
-            updatePaidAmountInBill(txtPaymentBillNumber.Text, txtPaymentFinalPaidAmount.Text)
-
-        End If
-
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        refreshgrid3()
-        'End 'Try
     End Sub
 
     Private Sub TextBox25_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtPaymentPaymentAmount.KeyDown
         'Try
         If (e.KeyCode = Keys.Enter) Then
-            btnPaymentAdd.PerformClick()
+            btnPaymentCreatePayment.PerformClick()
         ElseIf e.Alt Then
             If e.KeyCode = Keys.C Then
                 tabAllTabsHolder.SelectTab(0)
@@ -3388,10 +3330,10 @@ Public Class AgnimainForm
         Else
             t27 = Decimal.Parse(txtPaymentTaxDeduction.Text)
         End If
-        If Val(txtPaymentBalance.Text) = 0 Then
+        If Val(txtPaymentUnPaidBilledAmount.Text) = 0 Then
             t24 = 0
         Else
-            t24 = Decimal.Parse(txtPaymentBalance.Text)
+            t24 = Decimal.Parse(txtPaymentUnPaidBilledAmount.Text)
         End If
         If (t25 + t26 + t27) > t24 Then
             'MsgBox("Amount to be credited cannot be greater than balance amount. Please 'Try again")
@@ -3410,7 +3352,7 @@ Public Class AgnimainForm
     Private Sub TextBox26_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtPaymentAdjustment.KeyDown
         'Try
         If (e.KeyCode = Keys.Enter) Then
-            btnPaymentAdd.PerformClick()
+            btnPaymentCreatePayment.PerformClick()
         ElseIf e.Alt Then
             If e.KeyCode = Keys.C Then
                 tabAllTabsHolder.SelectTab(0)
@@ -3446,10 +3388,10 @@ Public Class AgnimainForm
         Else
             t27 = Decimal.Parse(txtPaymentTaxDeduction.Text)
         End If
-        If Val(txtPaymentBalance.Text) = 0 Then
+        If Val(txtPaymentUnPaidBilledAmount.Text) = 0 Then
             t24 = 0
         Else
-            t24 = Decimal.Parse(txtPaymentBalance.Text)
+            t24 = Decimal.Parse(txtPaymentUnPaidBilledAmount.Text)
         End If
         If (t25 + t26 + t27) > t24 Then
             'MsgBox("Amount to be credited cannot be greater than balance amount. Please 'Try again")
@@ -3468,7 +3410,7 @@ Public Class AgnimainForm
     Private Sub TextBox27_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtPaymentTaxDeduction.KeyDown
         'Try
         If (e.KeyCode = Keys.Enter) Then
-            btnPaymentAdd.PerformClick()
+            btnPaymentCreatePayment.PerformClick()
         ElseIf e.Alt Then
             If e.KeyCode = Keys.C Then
                 tabAllTabsHolder.SelectTab(0)
@@ -3504,10 +3446,10 @@ Public Class AgnimainForm
         Else
             t27 = Decimal.Parse(txtPaymentTaxDeduction.Text)
         End If
-        If Val(txtPaymentBalance.Text) = 0 Then
+        If Val(txtPaymentUnPaidBilledAmount.Text) = 0 Then
             t24 = 0
         Else
-            t24 = Decimal.Parse(txtPaymentBalance.Text)
+            t24 = Decimal.Parse(txtPaymentUnPaidBilledAmount.Text)
         End If
         If (t25 + t26 + t27) > t24 Then
             txtPaymentPaymentAmount.Text = ""
@@ -3524,14 +3466,14 @@ Public Class AgnimainForm
 
     Private Sub txtPaymentAmtTobeCreadit_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtPaymentFinalPaidAmount.TextChanged
         'Try
-        If txtPaymentFinalPaidAmount.Text = "" And txtPaymentBalance.Text <> "" Then
+        If txtPaymentFinalPaidAmount.Text = "" And txtPaymentUnPaidBilledAmount.Text <> "" Then
             MsgBox("Amount to be credited cannot be greater than balance amount. Please 'Try again")
             txtPaymentPaymentAmount.Focus()
         End If
-        If Val(txtPaymentBalance.Text) = 0 Then
+        If Val(txtPaymentUnPaidBilledAmount.Text) = 0 Then
             t24 = 0
         Else
-            t24 = Decimal.Parse(txtPaymentBalance.Text)
+            t24 = Decimal.Parse(txtPaymentUnPaidBilledAmount.Text)
         End If
         If Val(txtPaymentFinalPaidAmount.Text) = 0 Then
             t31 = 0
@@ -3544,12 +3486,12 @@ Public Class AgnimainForm
         'End 'Try
     End Sub
 
-    Private Sub TextBox24_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtPaymentBalance.TextChanged
+    Private Sub TextBox24_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtPaymentUnPaidBilledAmount.TextChanged
         'Try
-        If Val(txtPaymentBalance.Text) = 0 Then
+        If Val(txtPaymentUnPaidBilledAmount.Text) = 0 Then
             t24 = 0
         Else
-            t24 = Decimal.Parse(txtPaymentBalance.Text)
+            t24 = Decimal.Parse(txtPaymentUnPaidBilledAmount.Text)
         End If
         If Val(txtPaymentFinalPaidAmount.Text) = 0 Then
             t31 = 0
@@ -3569,7 +3511,7 @@ Public Class AgnimainForm
     Private Sub TextBox28_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtPaymentChequeNo.KeyDown
         'Try
         If (e.KeyCode = Keys.Enter) Then
-            btnPaymentAdd.PerformClick()
+            btnPaymentCreatePayment.PerformClick()
         ElseIf e.Alt Then
             If e.KeyCode = Keys.C Then
                 tabAllTabsHolder.SelectTab(0)
@@ -3595,7 +3537,7 @@ Public Class AgnimainForm
     Private Sub TextBox29_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtPaymentBankName.KeyDown
         'Try
         If (e.KeyCode = Keys.Enter) Then
-            btnPaymentAdd.PerformClick()
+            btnPaymentCreatePayment.PerformClick()
         ElseIf e.Alt Then
             If e.KeyCode = Keys.C Then
                 tabAllTabsHolder.SelectTab(0)
@@ -3621,7 +3563,7 @@ Public Class AgnimainForm
     Private Sub TextBox30_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtPaymentRemarks.KeyDown
         'Try
         If (e.KeyCode = Keys.Enter) Then
-            btnPaymentAdd.PerformClick()
+            btnPaymentCreatePayment.PerformClick()
         ElseIf e.Alt Then
             If e.KeyCode = Keys.C Then
                 tabAllTabsHolder.SelectTab(0)
@@ -3647,7 +3589,7 @@ Public Class AgnimainForm
     Private Sub RadioButton5_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles radioPaymentByCash.KeyDown
         'Try
         If (e.KeyCode = Keys.Enter) Then
-            btnPaymentAdd.PerformClick()
+            btnPaymentCreatePayment.PerformClick()
         ElseIf e.Alt Then
             If e.KeyCode = Keys.C Then
                 tabAllTabsHolder.SelectTab(0)
@@ -3669,7 +3611,7 @@ Public Class AgnimainForm
     Private Sub RadioButton6_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles radioPaymentByCheque.KeyDown
         'Try
         If (e.KeyCode = Keys.Enter) Then
-            btnPaymentAdd.PerformClick()
+            btnPaymentCreatePayment.PerformClick()
         ElseIf e.Alt Then
             If e.KeyCode = Keys.C Then
                 tabAllTabsHolder.SelectTab(0)
@@ -3736,7 +3678,7 @@ Public Class AgnimainForm
 
         log.Debug("btnBillingCreateBill_Click: entry")
 
-        cmbBillingBillNoList.Text = ""
+        cmbBillingBillNoList.SelectedIndex = -1
         Dim custNo = cmbBillingCompanyList.SelectedValue
 
         dpBillingBillDate.Text = ""
@@ -3782,6 +3724,28 @@ Public Class AgnimainForm
 
         If (billTable.Rows.Count > 0) Then
             Return billTable.Rows(0)
+        End If
+
+        Return Nothing
+    End Function
+
+    Function getLastPaymentRow(Optional custNo As Integer = Nothing) As DataRow
+
+        Dim paymentSelectQuery As SqlCommand
+        If (custNo <> Nothing) Then
+            paymentSelectQuery = New SqlCommand("select * from payment where PaymentNo=(select max(PaymentNo) from payment where custno=" + custNo.ToString + ")", dbConnection)
+        Else
+            paymentSelectQuery = New SqlCommand("select * from payment where PaymentNo=(select max(PaymentNo) from payment)", dbConnection)
+        End If
+
+        Dim paymentAdapter = New SqlDataAdapter()
+        paymentAdapter.SelectCommand = paymentSelectQuery
+        Dim paymentDataSet = New DataSet
+        paymentAdapter.Fill(paymentDataSet, "payment")
+        Dim paymentTable = paymentDataSet.Tables(0)
+
+        If (paymentTable.Rows.Count > 0) Then
+            Return paymentTable.Rows(0)
         End If
 
         Return Nothing
@@ -3892,6 +3856,11 @@ Public Class AgnimainForm
         resetBillingScreen()
 
         Dim lastBillRow = getLastBillRow(cmbBillingCompanyList.SelectedValue)
+
+        If (lastBillRow Is Nothing) Then
+            Return
+        End If
+
         Dim lastBillNumber = lastBillRow.Item("BillNo")
         cmbBillingBillNoList.SelectedIndex = cmbBillingBillNoList.FindString(lastBillNumber.ToString)
     End Sub
@@ -3942,10 +3911,202 @@ Public Class AgnimainForm
         cmbBillingBillNoList.SelectedIndex = dgBIllingBillDetails.CurrentRowIndex
     End Sub
 
+    Private Sub btnPaymentCreatePayment_Click(sender As Object, e As EventArgs) Handles btnPaymentCreatePayment.Click
+        log.Debug("btnBillingCreateBill_Click: entry")
+
+        Dim custNo = cmbPaymentCompanyList.SelectedValue
+
+        Dim billedDesignAmount As Decimal = getDesignAmount(BILL_TYPE_BILLED, custNo)
+        Dim totalBillsPaidAmount As Decimal = getAllBillsPaidAmount(custNo)
+        Dim unPaidBalance As Decimal = billedDesignAmount - totalBillsPaidAmount
+
+        Dim lastBillRow As DataRow = getLastBillRow(custNo)
+
+        If (lastBillRow Is Nothing Or unPaidBalance = 0) Then
+            MessageBox.Show("This customer has no due amount to make the payment. All bills are paid by this customer")
+            Return
+        End If
+
+        cmbPaymentPaymentNoList.SelectedIndex = -1
+        txtPaymentBillNumber.Text = lastBillRow.Item("BillNo")
+        txtPaymentUnPaidBilledAmount.Text = unPaidBalance
+
+        cmbPaymentPaymentNoList.Enabled = False
+        btnPaymentCreatePayment.Visible = False
+        btnPaymentConfirmCreatePayment.Visible = True
+        btnPaymentCancelCreatePayment.Visible = True
+    End Sub
+
+    Private Sub btnPaymentConfirmCreatePayment_Click(sender As Object, e As EventArgs) Handles btnPaymentConfirmCreatePayment.Click
+
+        If cmbPaymentCompanyList.Text.Trim.Equals("") Then
+            MessageBox.Show("Choose a company from company list")
+            cmbPaymentCompanyList.Focus()
+        ElseIf dpPaymentDate.Text.Trim.Equals("") Then
+            MessageBox.Show("Choose valid payment date")
+            dpPaymentDate.Focus()
+        ElseIf Val(txtPaymentUnPaidBilledAmount.Text) = 0 Then
+            MessageBox.Show("There is no balance anmount to pay")
+            txtPaymentUnPaidBilledAmount.Focus()
+        ElseIf txtPaymentPaymentAmount.Text.Trim.Equals("") And txtPaymentAdjustment.Text.Trim.Equals("") And txtPaymentTaxDeduction.Text.Trim.Equals("") Then
+            MessageBox.Show("Enter Payment Amount or Deduction or Tax Deduction")
+            txtPaymentPaymentAmount.Focus()
+        ElseIf txtPaymentFinalPaidAmount.Text.Trim.Equals("") Then
+            MessageBox.Show("Enter amount to be credited")
+            txtPaymentFinalPaidAmount.Focus()
+        ElseIf radioPaymentByCheque.Checked And txtPaymentChequeNo.Text.Trim.Equals("") Then
+            MessageBox.Show("Enter cheque Number")
+            txtPaymentChequeNo.Focus()
+        ElseIf radioPaymentByCheque.Checked And txtPaymentBankName.Text.Trim.Equals("") Then
+            MessageBox.Show("Enter bank Name")
+            txtPaymentBankName.Focus()
+        ElseIf radioPaymentByCheque.Checked And dpPaymentChequeDate.Text.Trim.Equals("") Then
+            MessageBox.Show("Choose valid cheque date")
+            dpPaymentChequeDate.Focus()
+        ElseIf Not cmbPaymentPaymentNoList.Text.Trim.Equals("") Then
+            MessageBox.Show("You cannot make a payment from existing payment. You can only make payment for unpaid amount. Please reselect the customer from customer list to see the unpaid amount")
+            cmbPaymentPaymentNoList.Focus()
+        Else
+
+            Dim newPaymentNo As Integer = -1
+
+            Dim paymentType As String = "Cash"
+            If radioPaymentByCheque.Checked Then
+                paymentType = "Cheque"
+            End If
+
+            Dim paymentChequeNo = txtPaymentChequeNo.Text
+            Dim paymentBankName = txtPaymentBankName.Text
+            Dim paymentChequeDate = dpPaymentChequeDate.Text
+
+            Dim query As String = String.Empty
+            query &= "INSERT INTO payment (CustNo, BillNo, UnPaidBilledAmount, PaymentDate, PaymentMode, PaidAmount, "
+            query &= "Deduction, TaxDeduction, ChequeNo, BankName, ChequeDate, Remarks, FinalPaidAmount) "
+            query &= "VALUES (@CustNo, @BillNo, @UnPaidBilledAmount, @PaymentDate, @PaymentMode, @PaidAmount, "
+            query &= "@Deduction, @TaxDeduction, @ChequeNo, @BankName, @ChequeDate, @Remarks, @FinalPaidAmount); SELECT SCOPE_IDENTITY()"
+
+            Using comm As New SqlCommand()
+                With comm
+                    .Connection = dbConnection
+                    .CommandType = CommandType.Text
+                    .CommandText = query
+                    .Parameters.AddWithValue("@CustNo", cmbPaymentCompanyList.SelectedValue)
+                    .Parameters.AddWithValue("@BillNo", txtPaymentBillNumber.Text)
+                    .Parameters.AddWithValue("@UnPaidBilledAmount", txtPaymentUnPaidBilledAmount.Text)
+                    .Parameters.AddWithValue("@PaymentDate", dpPaymentDate.Text)
+                    .Parameters.AddWithValue("@PaymentMode", paymentType)
+                    .Parameters.AddWithValue("@PaidAmount", txtPaymentPaymentAmount.Text)
+                    .Parameters.AddWithValue("@Deduction", txtPaymentAdjustment.Text)
+                    .Parameters.AddWithValue("@TaxDeduction", txtPaymentTaxDeduction.Text)
+                    .Parameters.AddWithValue("@Remarks", txtPaymentRemarks.Text)
+                    .Parameters.AddWithValue("@FinalPaidAmount", txtPaymentFinalPaidAmount.Text)
+                End With
+
+                If radioPaymentByCheque.Checked Then
+                    comm.Parameters.AddWithValue("@ChequeNo", txtPaymentChequeNo.Text)
+                    comm.Parameters.AddWithValue("@BankName", txtPaymentBankName.Text)
+                    comm.Parameters.AddWithValue("@ChequeDate", dpPaymentChequeDate.Text)
+                Else
+                    comm.Parameters.AddWithValue("@ChequeNo", DBNull.Value)
+                    comm.Parameters.AddWithValue("@BankName", DBNull.Value)
+                    comm.Parameters.AddWithValue("@ChequeDate", DBNull.Value)
+                End If
+
+                newPaymentNo = CInt(comm.ExecuteScalar())
+            End Using
+
+            cmbPaymentPaymentNoList.Text = newPaymentNo
+
+            updatePaidAmountInBill(txtPaymentBillNumber.Text, txtPaymentFinalPaidAmount.Text)
+
+            MessageBox.Show("Payment successfully added")
+            resetPaymentScreen()
+            loadOrReloadPaymentList(cmbPaymentPaymentNoList, cmbBillingCompanyList.SelectedValue)
+            loadPaymentGrid(cmbDesCompanyList.SelectedValue)
+
+            btnPaymentCreatePayment.Visible = True
+            btnPaymentConfirmCreatePayment.Visible = False
+            btnPaymentCancelCreatePayment.Visible = False
+            cmbPaymentPaymentNoList.Enabled = True
+
+            log.debug("btnPaymentConfirmCreatePayment_Click: Setting cmbPaymentPaymentNoList index to:  " + cmbBillingBillNoList.FindString(newPaymentNo.ToString).ToString)
+
+            cmbPaymentPaymentNoList.SelectedIndex = cmbPaymentPaymentNoList.FindString(newPaymentNo.ToString)
+
+            log.debug("btnPaymentConfirmCreatePayment_Click: cmbPaymentPaymentNoList.SelectedIndex is set to index: " + cmbBillingBillNoList.SelectedIndex.ToString)
+
+
+        End If
+    End Sub
+
+    Private Sub btnPaymentCancelCreatePayment_Click(sender As Object, e As EventArgs) Handles btnPaymentCancelCreatePayment.Click
+        btnPaymentCreatePayment.Visible = True
+        btnPaymentConfirmCreatePayment.Visible = False
+        btnPaymentCancelCreatePayment.Visible = False
+        cmbPaymentPaymentNoList.Enabled = True
+
+        resetPaymentScreen()
+
+        Dim lastPaymentRow = getLastPaymentRow(cmbBillingCompanyList.SelectedValue)
+        If (lastPaymentRow Is Nothing) Then
+            Return
+        End If
+
+        Dim lastPaymentNumber = lastPaymentRow.Item("PaymentNo")
+        cmbPaymentPaymentNoList.SelectedIndex = cmbPaymentPaymentNoList.FindString(lastPaymentNumber.ToString)
+
+    End Sub
 
     Private Sub radioDesPrint_CheckedChanged(sender As Object, e As EventArgs) Handles radioDesPrint.CheckedChanged
         If radioDesPrint.Checked Then
             lblDesCostPerUnit.Text = "Cost Per Inch"
+        End If
+    End Sub
+
+    Private Sub dgPaymentDetails_CurrentCellChanged(sender As Object, e As EventArgs) Handles dgPaymentDetails.CurrentCellChanged
+        cmbPaymentPaymentNoList.SelectedIndex = dgPaymentDetails.CurrentRowIndex
+    End Sub
+
+    Private Sub cmbPaymentPaymentNoList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbPaymentPaymentNoList.SelectedIndexChanged
+
+        If (cmbPaymentPaymentNoList.SelectedIndex = -1) Then
+            Return
+        End If
+
+        log.debug("cmbPaymentPaymentNoList_SelectedIndexChanged: entry")
+        Dim paymentNo As Integer = cmbPaymentPaymentNoList.SelectedValue
+        log.debug("cmbPaymentPaymentNoList_SelectedIndexChanged: cmbPaymentPaymentNoList.SelectedValue  : " + paymentNo.ToString)
+        Dim paymentSelectQuery = New SqlCommand("select * from payment where PaymentNo=" + paymentNo.ToString, dbConnection)
+        Dim paymentAdapter = New SqlDataAdapter()
+        paymentAdapter.SelectCommand = paymentSelectQuery
+        Dim paymentDataSet = New DataSet
+        paymentAdapter.Fill(paymentDataSet, "payment")
+        Dim paymentTable = paymentDataSet.Tables(0)
+
+        If (paymentTable.Rows.Count > 0) Then
+            Dim dataRow = paymentTable.Rows(0)
+
+            txtPaymentUnPaidBilledAmount.Text = dataRow.Item("UnPaidBilledAmount")
+            dpPaymentDate.Text = dataRow.Item("PaymentDate")
+
+            If dataRow.Item("PaymentMode").ToString.Equals("Cash") Then
+                radioPaymentByCash.Checked = True
+            Else
+                radioPaymentByCheque.Checked = True
+            End If
+
+            txtPaymentPaymentAmount.Text = dataRow.Item("PaidAmount")
+            txtPaymentAdjustment.Text = dataRow.Item("Deduction")
+            txtPaymentTaxDeduction.Text = dataRow.Item("TaxDeduction")
+            txtPaymentFinalPaidAmount.Text = dataRow.Item("FinalPaidAmount")
+            txtPaymentChequeNo.Text = If(dataRow.Item("ChequeNo") Is DBNull.Value, String.Empty, dataRow.Item("ChequeNo"))
+            txtPaymentBankName.Text = If(dataRow.Item("BankName") Is DBNull.Value, String.Empty, dataRow.Item("BankName"))
+            dpPaymentChequeDate.Text = If(dataRow.Item("ChequeDate") Is DBNull.Value, String.Empty, dataRow.Item("ChequeDate"))
+            txtPaymentNetBalance.Text = dataRow.Item("UnPaidBilledAmount") - (dataRow.Item("FinalPaidAmount") + dataRow.Item("Deduction") + dataRow.Item("TaxDeduction"))
+            txtPaymentRemarks.Text = dataRow.Item("Remarks")
+        Else
+            MessageBox.Show("No data found for payment: " + paymentNo.ToString)
+            log.debug("cmbPaymentPaymentNoList_SelectedIndexChanged: No data found for Bill: " + paymentNo.ToString)
         End If
     End Sub
 
@@ -3982,7 +4143,7 @@ Public Class AgnimainForm
                         Exit Sub
                     End If
                     txtPaymentBillNumber.Text = dr3.Item(8).ToString + "/" + dr3.Item(1).ToString
-                    txtPaymentBalance.Text = dr3.Item(7)
+                    txtPaymentUnPaidBilledAmount.Text = dr3.Item(7)
                     Exit While
                 End If
                 rowCount -= 1
@@ -4028,7 +4189,7 @@ Public Class AgnimainForm
     Private Sub DateTimePicker6_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles dpPaymentDate.KeyDown
         'Try
         If (e.KeyCode = Keys.Enter) Then
-            btnPaymentAdd.PerformClick()
+            btnPaymentCreatePayment.PerformClick()
         ElseIf e.Alt Then
             If e.KeyCode = Keys.C Then
                 tabAllTabsHolder.SelectTab(0)
@@ -4054,7 +4215,7 @@ Public Class AgnimainForm
     Private Sub DateTimePicker7_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles dpPaymentChequeDate.KeyDown
         'Try
         If (e.KeyCode = Keys.Enter) Then
-            btnPaymentAdd.PerformClick()
+            btnPaymentCreatePayment.PerformClick()
         ElseIf e.Alt Then
             If e.KeyCode = Keys.C Then
                 tabAllTabsHolder.SelectTab(0)
@@ -4111,199 +4272,53 @@ Public Class AgnimainForm
         'End 'Try
     End Sub
 
+    Sub reduceBillPaidAmount(billNo As Decimal, amountToBeDeducted As Decimal)
 
+        Dim updateQuery As String = String.Empty
+        updateQuery &= "update bill set PaidAmount = PaidAmount - @amountToBeDeducted where BillNo=@BillNo"
 
-    Private Sub Button42_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPaymentDelete.Click
+        Using comm As New SqlCommand()
+            With comm
+                .Connection = dbConnection
+                .CommandType = CommandType.Text
+                .CommandText = updateQuery
+                .Parameters.AddWithValue("@amountToBeDeducted", amountToBeDeducted)
+                .Parameters.AddWithValue("@BillNo", billNo)
+            End With
+            comm.ExecuteNonQuery()
+        End Using
+
+    End Sub
+
+    Private Sub btnPaymentDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPaymentDelete.Click
         'Try
-        If cmbPaymentPaymentNoList.Text.Trim.Equals("") Then
-            MessageBox.Show("Select paid bill transaction to delete from payment details")
+        If cmbPaymentPaymentNoList.SelectedIndex = -1 Then
+            MessageBox.Show("select the payment which you want to delete")
             cmbPaymentPaymentNoList.Focus()
         Else
-            If MessageBox.Show("Do you want to delete this payment transaction ", "Confirmation", System.Windows.Forms.MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
-                Dim flag1, flag2, flag3 As Boolean
-                Dim a1 As Int32
-                key = Integer.Parse(cmbPaymentPaymentNoList.Text)
+            If MessageBox.Show("Do you want tqo delete this payment transaction ", "Confirmation", System.Windows.Forms.MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
+                Dim custNo As Integer = cmbPaymentCompanyList.SelectedValue
+                Dim selectedPaymentNo As Integer = cmbPaymentPaymentNoList.SelectedValue
 
-                cmd10 = New SqlCommand("select * from payment", dbConnection)
-                sda10 = New SqlDataAdapter()
-                sda10.SelectCommand = cmd10
-                ds10 = New DataSet
-                sda10.Fill(ds10, "payment")
-                dt10 = ds10.Tables(0)
+                Dim lastPaymentRow As DataRow = getLastPaymentRow(custNo)
 
-                cmd3 = New SqlCommand("select * from bill", dbConnection)
-                sda3 = New SqlDataAdapter()
-                sda3.SelectCommand = cmd3
-                ds3 = New DataSet
-                sda3.Fill(ds3, "bill")
-                dt3 = ds3.Tables(0)
+                log.debug("btnPaymentDelete_Click: selectedPaymentNo: " + selectedPaymentNo.ToString + " lastPaymentRow.Item(PaymentNo): " + lastPaymentRow.Item("PaymentNo").ToString)
 
-                rowCount = dt10.Rows.Count - 1
-                Dim custname As String = ""
-                Dim lastpayno As Integer
-                flag2 = False
-                While (rowCount >= 0)
-                    dr10 = dt10.Rows(rowCount)
-                    If key.ToString.Equals(dr10.Item(0).ToString) Then
-                        custname = dr10.Item(1)
-                        flag2 = True
-                        Exit While
-                    End If
-                    rowCount -= 1
-                End While
-                If flag2 = False Then
-                    MsgBox("Sorry. There is no payment as you selected")
-                    Exit Sub
-                End If
-                Dim lastbillno1 As String = ""
-                rowCount = dt10.Rows.Count - 1
-                flag3 = False
-                While (rowCount >= 0)
-                    dr10 = dt10.Rows(rowCount)
-                    If custname.ToString.Equals(dr10.Item(1).ToString) Then
-                        lastpayno = dr10.Item(0)
-                        lastbillno1 = dr10.Item(2)
-                        flag3 = True
-                        Exit While
-                    End If
-                    rowCount -= 1
-                End While
-                If flag3 = False Then
-                    MsgBox("Sorry. The Customer has no bills")
-                    Exit Sub
+                If (lastPaymentRow IsNot Nothing AndAlso selectedPaymentNo = lastPaymentRow.Item("PaymentNo")) Then
+                    MessageBox.Show("This is not the last payment. You can only delete the last payment")
+                    Return
                 End If
 
-                rowCount = dt10.Rows.Count - 1
-                Dim count As Integer = 0
-                While (rowCount >= 0)
-                    dr10 = dt10.Rows(rowCount)
-                    If custname.ToString.Equals(dr10.Item(1).ToString) And lastbillno1.ToString.Equals(dr10.Item(2).ToString) Then
-                        count += 1
-                    End If
-                    rowCount -= 1
-                End While
+                Dim billNoForPayment As Integer = txtPaymentBillNumber.Text
+                Dim amountPaidForPayment As Decimal = txtPaymentFinalPaidAmount.Text
 
-                lastbillno1 = lastbillno1.Substring(lastbillno1.IndexOf("/") + 1, lastbillno1.Length - lastbillno1.IndexOf("/") - 1)
-                Dim key1 As String
-                If Not lastpayno.ToString.Equals(key.ToString) Then
-                    MsgBox("Sorry.. This is not last Payment Transaction. And some of the payment transactions are depending this payment. You are allowed to delete last payment transaction only")
-                Else
-                    rowCount = dt10.Rows.Count - 1
-                    flag = 0
-                    While (rowCount >= 0)
-                        dr10 = dt10.Rows(rowCount)
-                        If key.ToString.Equals(dr10.Item(0).ToString) Then
-                            flag1 = 0
-                            key1 = dr10.Item(2).ToString
-                            key1 = key1.Substring(key1.IndexOf("/") + 1, key1.Length - key1.IndexOf("/") - 1)
-                            a1 = dt3.Rows.Count - 1
-                            Dim custname1 As String = ""
-                            flag2 = False
-                            While (a1 >= 0)
-                                dr3 = dt3.Rows(a1)
-                                If key1.ToString.Equals(dr3.Item(1).ToString) Then
-                                    custname1 = dr3.Item(0)
-                                    flag2 = True
-                                    Exit While
-                                End If
-                                a1 -= 1
-                            End While
-                            If flag2 = False Then
-                                MsgBox("Sorry. There is no bill corresponding to the particular payment transaction")
-                                Exit Sub
-                            End If
-
-                            a1 = dt3.Rows.Count - 1
-                            flag3 = False
-                            While (a1 >= 0)
-                                dr3 = dt3.Rows(a1)
-                                If custname1.ToString.Equals(dr3.Item(0).ToString) Then
-                                    lastbillno = dr3.Item(1)
-                                    flag3 = True
-                                    Exit While
-                                End If
-                                a1 -= 1
-                            End While
-                            If flag3 = False Then
-                                MsgBox("Sorry. There is no customer corresponding to the particular bill")
-                                Exit Sub
-                            End If
-
-                            a1 = dt3.Rows.Count - 1
-                            While (a1 >= 0)
-                                dr3 = dt3.Rows(a1)
-                                If lastbillno1.ToString.Equals(dr3.Item(1).ToString) Then
-                                    If count <= 1 Then
-                                        dr3.BeginEdit()
-                                        dr3.Item(6) = "notpaid"
-                                        dr3.EndEdit()
-                                        sda3.SelectCommand = cmd3
-                                        scb3 = New SqlCommandBuilder(sda3)
-                                        sda3.UpdateCommand = scb3.GetUpdateCommand
-                                        If ds3.HasChanges Then
-                                            sda3.Update(ds3, "bill")
-                                            flag1 = 1
-                                        End If
-                                    End If
-                                End If
-                                If lastbillno.ToString.Equals(dr3.Item(1).ToString) Then
-                                    dr3.BeginEdit()
-                                    dr3.Item(7) += Decimal.Parse(txtPaymentFinalPaidAmount.Text)
-                                    dr3.EndEdit()
-                                    sda3.SelectCommand = cmd3
-                                    scb3 = New SqlCommandBuilder(sda3)
-                                    sda3.UpdateCommand = scb3.GetUpdateCommand
-                                    If ds3.HasChanges Then
-                                        sda3.Update(ds3, "bill")
-                                        flag1 = 1
-                                    End If
-                                End If
-                                a1 -= 1
-                            End While
-                            If flag1 = 0 Then
-                                MsgBox("No Bills Updated")
-                                Exit Sub
-                            End If
-                            dr10.Delete()
-                            sda10.SelectCommand = cmd10
-                            scb10 = New SqlCommandBuilder(sda10)
-                            sda10.DeleteCommand = scb10.GetDeleteCommand()
-                            If ds10.HasChanges Then
-                                sda10.Update(ds10, "payment")
-                                MessageBox.Show("Payment transaction successfully deleted and Bill details are updated")
-                                cmbPaymentPaymentNoList.Text = ""
-                                refreshgrid3()
-                                refreshgrid2()
-                                txtPaymentBillNumber.Text = ""
-                                txtPaymentBalance.Text = ""
-                                txtPaymentPaymentAmount.Text = ""
-                                txtPaymentAdjustment.Text = ""
-                                txtPaymentTaxDeduction.Text = ""
-                                txtPaymentChequeNo.Text = ""
-                                txtPaymentBankName.Text = ""
-                                txtPaymentRemarks.Text = ""
-                                txtPaymentFinalPaidAmount.Text = ""
-                                txtPaymentNetBalance.Text = ""
-                                cmbPaymentCompanyList.Text = ""
-                                cmbBillingBillNoList.Text = ""
-                                radioPaymentByCash.Checked = True
-                                flag = 1
-                                cmbPaymentCompanyList.Focus()
-                            End If
-                            Exit While
-                        End If
-                        rowCount = rowCount - 1
-                    End While
-                    If flag = 0 Then
-                        MessageBox.Show(" Cannot Delete.. There is no such Paid Bill transaction")
-                    End If
-                End If
+                reduceBillPaidAmount(billNoForPayment, amountPaidForPayment)
+                loadPaymentGrid(custNo)
             End If
         End If
+
         'Catch ex As Exception
         'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        refreshgrid3()
-        refreshgrid2()
         'End 'Try
     End Sub
 
@@ -4495,7 +4510,7 @@ Public Class AgnimainForm
     End Sub
 
     Private Sub Button47_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPaymentClear.Click
-        cmbPaymentCompanyList.Text = ""
+        cmbPaymentPaymentNoList.SelectedIndex = -1
         txtPaymentPaymentAmount.Text = ""
         txtPaymentAdjustment.Text = ""
         txtPaymentTaxDeduction.Text = ""
@@ -4503,7 +4518,7 @@ Public Class AgnimainForm
         txtPaymentBankName.Text = ""
         txtPaymentRemarks.Text = ""
         txtPaymentBillNumber.Text = ""
-        txtPaymentBalance.Text = ""
+        txtPaymentUnPaidBilledAmount.Text = ""
         txtPaymentFinalPaidAmount.Text = ""
         txtPaymentNetBalance.Text = ""
         cmbPaymentPaymentNoList.Text = ""

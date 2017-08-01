@@ -113,7 +113,7 @@ Public Class Login
                 AgnimainForm.btnBillingCreateBill.Enabled = False
                 AgnimainForm.btnBillingClear.Enabled = False
                 AgnimainForm.btnPaymentDelete.Enabled = False
-                AgnimainForm.btnPaymentAdd.Enabled = False
+                AgnimainForm.btnPaymentCreatePayment.Enabled = False
                 AgnimainForm.btnBillingCancelBill.Enabled = False
             Else
                 AgnimainForm.btnCustAdd.Enabled = True
@@ -128,7 +128,7 @@ Public Class Login
                 AgnimainForm.btnBillingCreateBill.Enabled = True
                 AgnimainForm.btnBillingClear.Enabled = True
                 AgnimainForm.btnPaymentDelete.Enabled = True
-                AgnimainForm.btnPaymentAdd.Enabled = True
+                AgnimainForm.btnPaymentCreatePayment.Enabled = True
                 AgnimainForm.btnBillingCancelBill.Enabled = True
             End If
         Catch ex As Exception
