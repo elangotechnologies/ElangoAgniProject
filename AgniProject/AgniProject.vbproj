@@ -70,6 +70,9 @@
     <OptionCompare>Binary</OptionCompare>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="crdb_adoplus">
+      <HintPath>C:\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win64_x64\crdb_adoplus.dll</HintPath>
+    </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -126,10 +129,10 @@
     <Compile Include="AddressReport.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AgniReport.Designer.vb">
-      <DependentUpon>AgniReport.vb</DependentUpon>
+    <Compile Include="BillReportHolder.Designer.vb">
+      <DependentUpon>BillReportHolder.vb</DependentUpon>
     </Compile>
-    <Compile Include="AgniReport.vb">
+    <Compile Include="BillReportHolder.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AgnimainForm.vb">
@@ -253,9 +256,9 @@
       <SubType>Designer</SubType>
       <DependentUpon>AddressReport.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AgniReport.resx">
+    <EmbeddedResource Include="BillReportHolder.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>AgniReport.vb</DependentUpon>
+      <DependentUpon>BillReportHolder.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AgnimainForm.resx">
       <SubType>Designer</SubType>
@@ -338,6 +341,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DataSet1.xsc">

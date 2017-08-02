@@ -7,14 +7,14 @@
     <framework targetVersion="4.6.1" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="AgniProject.exe.manifest" size="21287">
+    <dependentAssembly dependencyType="install" codebase="AgniProject.exe.manifest" size="22605">
       <assemblyIdentity name="AgniProject.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Vg1Q4fvccZAWpAvy+BcDswg9CoRAVzPX2jKYM76saQ8=</dsig:DigestValue>
+        <dsig:DigestValue>iewQrKyi0yTBeQHqTJ8SeF1e5qzskGmRZ3pu2YQg/Ts=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

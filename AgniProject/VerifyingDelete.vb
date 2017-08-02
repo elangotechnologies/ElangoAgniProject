@@ -34,7 +34,7 @@ Public Class VerifyingDelete
                     '    Exit Sub
                     'End If
                     'type1 = Dr5.Item(2)
-                    AgnimainForm.DeleteCompanyEntire()
+                    AgnimainForm.deleteSeletectedCustomer()
                     Me.Close()
                     'If Dr5.Item(2).Equals("Others") Then
                     '    MsgBox("You are not an administrator. You cannot Delete an Customer")
@@ -66,7 +66,8 @@ Public Class VerifyingDelete
 
     Private Sub VerifyingDelete_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
-            Con = New SqlConnection("Data Source=ELAPC;Initial Catalog=agnidatabase;Integrated Security=True")
+            Con = New SqlConnection("Data Source=agni;Initial Catalog=agnidatabase;Integrated Security=True")
+            'Con = New SqlConnection("Data Source=ELAPC;Initial Catalog=agnidatabase;Integrated Security=True")
             Con.Open()
             Cmd5 = New SqlCommand("select * from login", Con)
             Sda5 = New SqlDataAdapter()

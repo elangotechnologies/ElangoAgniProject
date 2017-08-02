@@ -48,14 +48,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AgniProject.exe" size="1195008">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AgniProject.exe" size="1199616">
       <assemblyIdentity name="AgniProject" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ain4vhveOYFXUjutMzoAQ8ngcVVNlUy9lSva5x/1Tbw=</dsig:DigestValue>
+        <dsig:DigestValue>/Mhdo4MWgpMrnqPEyYvY7yCaxnFDyciuMDFyva2ELlg=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="crdb_adoplus.dll" size="771584">
+      <assemblyIdentity name="crdb_adoplus" version="14.0.2000.0" publicKeyToken="692FBEA5521E1304" language="neutral" processorArchitecture="amd64" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>kAwlXb8KgVTSOf1amFeXixKjnjhaLmzQvaPTvbFhyTk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -288,6 +300,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EnvDTE.dll" size="245760">
+      <assemblyIdentity name="EnvDTE" version="8.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>K4GhDEQZtOdWhnb/BpHVACzUI/yCLpdoIA8+h6N/hrY=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FlashControlV71.dll" size="28672">
       <assemblyIdentity name="FlashControlV71" version="1.0.3187.32366" publicKeyToken="692FBEA5521E1304" language="neutral" />
       <hash>
@@ -324,14 +348,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="stdole.dll" size="32408">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="stdole.dll" size="22344">
       <assemblyIdentity name="stdole" version="7.0.3300.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Pk2hziGFz3Q5Gbw1GiYw8iH29DaRwqhk99DGHlGtFpw=</dsig:DigestValue>
+        <dsig:DigestValue>jMi19KrJNkB1ILLnkqK/8gftgN9goxalLVafnSSLWHI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -344,13 +368,13 @@
       <dsig:DigestValue>LhM1FO2qmxfCjSjYiY+EIhs2hM1HGX/YS3Xo800Wyqg=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="AgniProject.exe.config" size="1365">
+  <file name="AgniProject.exe.config" size="1514">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>rZtofHSI52NkOm0Nov6Q+vx/Pkm7rxv5gnmMas8jFZ4=</dsig:DigestValue>
+      <dsig:DigestValue>yYWdvvHgpQc0AD3lFqbOMxwObBciTZzmGmKm9wP8hDw=</dsig:DigestValue>
     </hash>
   </file>
   <file name="NLog.config" size="812">
