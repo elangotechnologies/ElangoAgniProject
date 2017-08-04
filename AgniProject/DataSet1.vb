@@ -1,6 +1,6 @@
 ﻿Partial Class DataSet1
-    Partial Public Class DataTable1DataTable
-        Private Sub DataTable1DataTable_DataTable1RowChanging(sender As Object, e As DataTable1RowChangeEvent) Handles Me.DataTable1RowChanging
+    Partial Public Class DesignDetailsDataTable
+        Private Sub DesignDetailsDataTable_DesignDetailsRowChanging(sender As Object, e As DesignDetailsRowChangeEvent) Handles Me.DesignDetailsRowChanging
 
         End Sub
 

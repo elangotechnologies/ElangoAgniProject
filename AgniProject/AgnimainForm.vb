@@ -171,13 +171,20 @@ Public Class AgnimainForm
 
     Function getDesignAmount(billedType As Int16, Optional custNo As Integer = Nothing) As Decimal
 
-        Dim designQueryString = "select sum(Price) from design"
+        Dim designQueryString = "select sum(designAmountWithTax) from 
+                            (select d.designNo, d.CustNo, b.BillNo, b.CGST,b.SGST,b.IGST,d.Price,d.Price+((b.CGST+b.SGST+b.IGST)*d.Price/100) 
+                            as designAmountWithTax from design d, Bill b where d.CustNo = 1 and d.BillNo = b.BillNo) as billDesignTable"
 
         If (billedType = BILL_TYPE_BILLED Or billedType = BILL_TYPE_UNBILLED) Then
             If (custNo <> Nothing) Then
-                designQueryString = "select sum(Price) from design where custNo=" + custNo.ToString + " and Billed=" + billedType.ToString
+                designQueryString = "select sum(designAmountWithTax) from 
+                            (select d.designNo, d.CustNo, b.BillNo, b.CGST,b.SGST,b.IGST,d.Price,d.Price+((b.CGST+b.SGST+b.IGST)*d.Price/100) 
+                            as designAmountWithTax from design d, Bill b where d.CustNo=" + custNo.ToString + "and d.BillNo = b.BillNo 
+                            and d.Billed=" + billedType.ToString + ") as billDesignTable"
             Else
-                designQueryString = "select sum(Price) from design where Billed=" + billedType.ToString
+                designQueryString = "select sum(designAmountWithTax) from 
+                            (select d.designNo, d.CustNo, b.BillNo, b.CGST,b.SGST,b.IGST,d.Price,d.Price+((b.CGST+b.SGST+b.IGST)*d.Price/100) 
+                            as designAmountWithTax from design d, Bill b where d.BillNo = b.BillNo and d.Billed=" + billedType.ToString + ") as billDesignTable"
             End If
         ElseIf billedType = BILL_TYPE_ALL And custNo <> Nothing Then
             designQueryString = "select sum(Price) from design where custNo=" + custNo.ToString
@@ -328,11 +335,15 @@ Public Class AgnimainForm
         'Try
         Dim billQuery As SqlCommand
         If (custNo <> Nothing) Then
-            billQuery = New SqlCommand("select BillNo, BillDate, DesignCost, UnPaidAmountTillNow, PaidAmount, 
-                            DesignCost+UnPaidAmountTillNow as TotalAmount, DesignCost+UnPaidAmountTillNow-PaidAmount as RemainingBalance, Cancelled  from bill where custNo=" + custNo.ToString, dbConnection)
+            billQuery = New SqlCommand("select BillNo, BillDate, DesignCost, UnPaidAmountTillNow, CGST, CGST*DesignCost/100 as CGSTAmount, 
+                            SGST, SGST*DesignCost/100 as SGSTAmount, IGST, IGST*DesignCost/100 as IGSTAmount, (CGST+ SGST+ IGST)*DesignCost/100 as GSTAmount, ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost as DesignAmountGST, PaidAmount, 
+                            ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost+UnPaidAmountTillNow as TotalAmount, 
+                            (((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost+UnPaidAmountTillNow)-PaidAmount as RemainingBalance, Cancelled  from bill where custNo=" + custNo.ToString, dbConnection)
         Else
-            billQuery = New SqlCommand("select BillNo, BillDate, DesignCost, UnPaidAmountTillNow, PaidAmount, 
-                            DesignCost+UnPaidAmountTillNow as TotalAmount, DesignCost+UnPaidAmountTillNow-PaidAmount as RemainingBalance, Cancelled from bill", dbConnection)
+            billQuery = New SqlCommand("select BillNo, BillDate, DesignCost, UnPaidAmountTillNow, CGST, CGST*DesignCost/100 as CGSTAmount, 
+                            SGST, SGST*DesignCost/100 as SGSTAmount, IGST, IGST*DesignCost/100 as IGSTAmount, (CGST+ SGST+ IGST)*DesignCost/100 as GSTAmount, ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost as DesignAmountGST, PaidAmount, 
+                            ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost+UnPaidAmountTillNow as TotalAmount, 
+                            (((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost+UnPaidAmountTillNow)-PaidAmount as RemainingBalance, Cancelled  from bill", dbConnection)
         End If
 
         Dim billAdapter = New SqlDataAdapter()
@@ -341,6 +352,33 @@ Public Class AgnimainForm
         billAdapter.Fill(billDataSet, "bill")
         Dim billTable = billDataSet.Tables(0)
         dgBIllingBillDetails.DataSource = billTable
+        'Catch ex As Exception
+        'MessageBox.Show("Message to Agni User:   " & ex.Message)
+        'End 'Try
+    End Sub
+
+    Sub loadGSTForCustomerInBilling(custNo As Integer)
+        'Try
+
+        Dim customerQuery = New SqlCommand("select ISNULL(CGST, 0) AS CGST, ISNULL(SGST, 0) AS SGST, ISNULL(IGST, 0) AS IGST from customer where CustNo=" + custNo.ToString, dbConnection)
+        Dim customerAdapter = New SqlDataAdapter()
+        customerAdapter.SelectCommand = customerQuery
+        Dim customerDataSet = New DataSet
+        customerAdapter.Fill(customerDataSet, "customer")
+        Dim customerTable As DataTable = customerDataSet.Tables(0)
+
+        If (customerTable.Rows.Count = 0) Then
+            Return
+        End If
+
+        Dim CGST As Decimal = customerTable.Rows(0).Item("CGST")
+        Dim SGST As Decimal = customerTable.Rows(0).Item("SGST")
+        Dim IGST As Decimal = customerTable.Rows(0).Item("IGST")
+
+        txtBillingCGSTPercent.Text = CGST.ToString
+        txtBillingSGSTPercent.Text = SGST.ToString
+        txtBillingIGSTPercent.Text = IGST.ToString
+
         'Catch ex As Exception
         'MessageBox.Show("Message to Agni User:   " & ex.Message)
         'End 'Try
@@ -489,7 +527,7 @@ Public Class AgnimainForm
         cmbBillingBillNoList.SelectedIndex = -1
         dpBillingBillDate.Text = ""
         txtBillingPrevBalance.Text = "0.00"
-        txtBillingUnBilledDesignAmount.Text = "0.00"
+        txtBillingDesignAmoutBeforeGST.Text = "0.00"
         txtBillingTotalAmount.Text = "0.00"
         txtBillingPaidAmount.Text = "0.00"
         txtBillingRemainingBalance.Text = "0.00"
@@ -563,11 +601,11 @@ Public Class AgnimainForm
                     .Parameters.AddWithValue("@Email", txtEmail.Text)
                     .Parameters.AddWithValue("@Website", txtWebsite.Text)
                     .Parameters.AddWithValue("@CGST", If(String.IsNullOrEmpty(txtCGST.Text), DBNull.Value, txtCGST.Text))
-                    .Parameters.AddWithValue("@SGST", If(String.IsNullOrEmpty(txtSGST.Text), DBNull.Value, txtCGST.Text))
-                    .Parameters.AddWithValue("@IGST", If(String.IsNullOrEmpty(txtIGST.Text), DBNull.Value, txtCGST.Text))
-                    .Parameters.AddWithValue("@WPsqrinch", If(String.IsNullOrEmpty(txtWPCharge.Text), DBNull.Value, txtCGST.Text))
-                    .Parameters.AddWithValue("@Wcolor", If(String.IsNullOrEmpty(txtWorkingCharge.Text), DBNull.Value, txtCGST.Text))
-                    .Parameters.AddWithValue("@Pcolor", If(String.IsNullOrEmpty(txtPrintCharge.Text), DBNull.Value, txtCGST.Text))
+                    .Parameters.AddWithValue("@SGST", If(String.IsNullOrEmpty(txtSGST.Text), DBNull.Value, txtSGST.Text))
+                    .Parameters.AddWithValue("@IGST", If(String.IsNullOrEmpty(txtIGST.Text), DBNull.Value, txtIGST.Text))
+                    .Parameters.AddWithValue("@WPsqrinch", If(String.IsNullOrEmpty(txtWPCharge.Text), DBNull.Value, txtWPCharge.Text))
+                    .Parameters.AddWithValue("@Wcolor", If(String.IsNullOrEmpty(txtWorkingCharge.Text), DBNull.Value, txtWorkingCharge.Text))
+                    .Parameters.AddWithValue("@Pcolor", If(String.IsNullOrEmpty(txtPrintCharge.Text), DBNull.Value, txtPrintCharge.Text))
                 End With
                 comm.ExecuteNonQuery()
             End Using
@@ -688,7 +726,7 @@ Public Class AgnimainForm
             Dim custNo As Integer = cmbCustCompanyList.SelectedValue
             Dim query As String = String.Empty
             query &= "UPDATE customer SET CompName=@CompName, GSTIN=@GSTIN, OwnerName=@OwnerName, Address=@Address,"
-            query &= "Mobile=@Mobile, Landline=@Landline, Email=@Email, Website=@Website, CGST=@CGST, SGST=@SGST "
+            query &= "Mobile=@Mobile, Landline=@Landline, Email=@Email, Website=@Website, CGST=@CGST, SGST=@SGST, "
             query &= "IGST=@IGST, WPsqrinch=@WPsqrinch, Wcolor=@Wcolor, Pcolor=@Pcolor where CustNo=@CustNo"
 
             Using comm As New SqlCommand()
@@ -705,12 +743,12 @@ Public Class AgnimainForm
                     .Parameters.AddWithValue("@Landline", txtLandline.Text)
                     .Parameters.AddWithValue("@Email", txtEmail.Text)
                     .Parameters.AddWithValue("@Website", txtWebsite.Text)
-                    .Parameters.AddWithValue("@CGST", txtCGST.Text)
-                    .Parameters.AddWithValue("@SGST", txtSGST.Text)
-                    .Parameters.AddWithValue("@IGST", txtIGST.Text)
-                    .Parameters.AddWithValue("@WPsqrinch", txtWPCharge.Text)
-                    .Parameters.AddWithValue("@Wcolor", txtWorkingCharge.Text)
-                    .Parameters.AddWithValue("@Pcolor", txtPrintCharge.Text)
+                    .Parameters.AddWithValue("@CGST", If(String.IsNullOrEmpty(txtCGST.Text), DBNull.Value, txtCGST.Text))
+                    .Parameters.AddWithValue("@SGST", If(String.IsNullOrEmpty(txtSGST.Text), DBNull.Value, txtSGST.Text))
+                    .Parameters.AddWithValue("@IGST", If(String.IsNullOrEmpty(txtIGST.Text), DBNull.Value, txtIGST.Text))
+                    .Parameters.AddWithValue("@WPsqrinch", If(String.IsNullOrEmpty(txtWPCharge.Text), DBNull.Value, txtWPCharge.Text))
+                    .Parameters.AddWithValue("@Wcolor", If(String.IsNullOrEmpty(txtWorkingCharge.Text), DBNull.Value, txtWorkingCharge.Text))
+                    .Parameters.AddWithValue("@Pcolor", If(String.IsNullOrEmpty(txtPrintCharge.Text), DBNull.Value, txtPrintCharge.Text))
                 End With
                 comm.ExecuteNonQuery()
             End Using
@@ -1034,7 +1072,7 @@ Public Class AgnimainForm
         End If
 
         Dim query As String = String.Empty
-        query &= "update design set Billed=@Billed, BillNo=@BillNo where CustNo=@CustNo"
+        query &= "update design set Billed=@Billed, BillNo=@BillNo where CustNo=@CustNo and BillNo IS NULL"
 
         Using comm As New SqlCommand()
             With comm
@@ -1334,8 +1372,11 @@ Public Class AgnimainForm
             Dim dataRow = billTable.Rows(0)
             dpBillingBillDate.Text = dataRow.Item("BillDate")
             txtBillingPrevBalance.Text = dataRow.Item("UnPaidAmountTillNow")
-            txtBillingUnBilledDesignAmount.Text = dataRow.Item("DesignCost")
-            Dim billingTotalAmount = dataRow.Item("UnPaidAmountTillNow") + dataRow.Item("DesignCost")
+            txtBillingDesignAmoutBeforeGST.Text = dataRow.Item("DesignCost")
+            txtBillingCGSTPercent.Text = dataRow.Item("CGST")
+            txtBillingSGSTPercent.Text = dataRow.Item("SGST")
+            txtBillingIGSTPercent.Text = dataRow.Item("IGST")
+            Dim billingTotalAmount = dataRow.Item("UnPaidAmountTillNow") + Decimal.Parse(txtBillingDesignAmoutAfterGST.Text)
             txtBillingTotalAmount.Text = billingTotalAmount
             txtBillingPaidAmount.Text = dataRow.Item("PaidAmount")
             txtBillingRemainingBalance.Text = billingTotalAmount - dataRow.Item("PaidAmount")
@@ -1559,7 +1600,7 @@ Public Class AgnimainForm
             End While
         End If
         txtBillingPrevBalance.Text = balamount
-        txtBillingUnBilledDesignAmount.Text = desamount
+        txtBillingDesignAmoutBeforeGST.Text = desamount
         txtBillingTotalAmount.Text = desamount + balamount
         txtBillingRemainingBalance.Text = txtBillingTotalAmount.Text
         'Catch ex As Exception
@@ -2225,7 +2266,7 @@ Public Class AgnimainForm
 
     End Sub
 
-    Private Sub TextBox21_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtBillingUnBilledDesignAmount.KeyDown
+    Private Sub TextBox21_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtBillingDesignAmoutBeforeGST.KeyDown
         'Try
         If (e.KeyCode = Keys.Enter) Then
             btnBillingCreateBill.PerformClick()
@@ -2247,7 +2288,7 @@ Public Class AgnimainForm
         'End 'Try
     End Sub
 
-    Private Sub TextBox21_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBillingUnBilledDesignAmount.TextChanged
+    Private Sub TextBox21_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBillingDesignAmoutBeforeGST.TextChanged
 
     End Sub
 
@@ -3368,8 +3409,8 @@ Public Class AgnimainForm
             Return
         End If
 
-        txtPaymentFinalPaidAmount.Text = finalPaidAmount
-        txtPaymentNetBalance.Text = unPaidBillAmount - finalPaidAmount
+        txtPaymentFinalPaidAmount.Text = Format(finalPaidAmount, "0.00")
+        txtPaymentNetBalance.Text = Format((unPaidBillAmount - finalPaidAmount), "0.00")
 
     End Sub
 
@@ -3586,20 +3627,25 @@ Public Class AgnimainForm
         cmbBillingBillNoList.SelectedIndex = -1
         Dim custNo = cmbBillingCompanyList.SelectedValue
 
+        loadGSTForCustomerInBilling(custNo)
+
         dpBillingBillDate.Text = ""
         Dim unBilledDesignAmount As Decimal = getDesignAmount(BILL_TYPE_UNBILLED, custNo)
         Dim billedDesignAmount As Decimal = getDesignAmount(BILL_TYPE_BILLED, custNo)
         Dim totalBillsPaidAmount As Decimal = getAllBillsPaidAmount(custNo)
         Dim unPaidBalance As Decimal = billedDesignAmount - totalBillsPaidAmount
-        Dim totalAmountToPay As Decimal = unPaidBalance + unBilledDesignAmount
 
         If (unBilledDesignAmount = 0) Then
             MessageBox.Show("There are no designs to bill or all the designs are billed already for this customer")
             Return
         End If
 
-        txtBillingUnBilledDesignAmount.Text = unBilledDesignAmount
+        txtBillingDesignAmoutBeforeGST.Text = unBilledDesignAmount
         txtBillingPrevBalance.Text = unPaidBalance
+
+        calculateGSTAmountInBilling()
+        Dim totalAmountToPay As Decimal = unPaidBalance + Decimal.Parse(txtBillingDesignAmoutAfterGST.Text)
+
         txtBillingTotalAmount.Text = totalAmountToPay
         txtBillingPaidAmount.Text = "0.00"
         txtBillingRemainingBalance.Text = totalAmountToPay
@@ -3696,9 +3742,9 @@ Public Class AgnimainForm
         ElseIf txtBillingPrevBalance.Text.Trim.Equals("") Then
             MessageBox.Show("Enter Previous Balance amount")
             txtBillingPrevBalance.Focus()
-        ElseIf txtBillingUnBilledDesignAmount.Text.Trim.Equals("") Then
+        ElseIf txtBillingDesignAmoutBeforeGST.Text.Trim.Equals("") Then
             MessageBox.Show("Enter Design Amount")
-            txtBillingUnBilledDesignAmount.Focus()
+            txtBillingDesignAmoutBeforeGST.Focus()
         ElseIf txtBillingTotalAmount.Text.Trim.Equals("") Then
             MessageBox.Show("Enter Total Amount")
             txtBillingTotalAmount.Focus()
@@ -3710,8 +3756,8 @@ Public Class AgnimainForm
             Dim newBillNo As Integer = -1
 
             Dim query As String = String.Empty
-            query &= "INSERT INTO bill (CustNo, BillDate, DesignCost, UnPaidAmountTillNow, PaidAmount, Cancelled) "
-            query &= "VALUES (@CustNo, @BillDate, @DesignCost, @UnPaidAmountTillNow, @PaidAmount, @Cancelled); SELECT SCOPE_IDENTITY()"
+            query &= "INSERT INTO bill (CustNo, BillDate, DesignCost, CGST, SGST, IGST, UnPaidAmountTillNow, PaidAmount, Cancelled) "
+            query &= "VALUES (@CustNo, @BillDate, @DesignCost, @CGST, @SGST, @IGST, @UnPaidAmountTillNow, @PaidAmount, @Cancelled); SELECT SCOPE_IDENTITY()"
 
             Using comm As New SqlCommand()
                 With comm
@@ -3720,7 +3766,10 @@ Public Class AgnimainForm
                     .CommandText = query
                     .Parameters.AddWithValue("@CustNo", cmbBillingCompanyList.SelectedValue)
                     .Parameters.AddWithValue("@BillDate", dpBillingBillDate.Text)
-                    .Parameters.AddWithValue("@DesignCost", Decimal.Parse(txtBillingUnBilledDesignAmount.Text))
+                    .Parameters.AddWithValue("@DesignCost", Decimal.Parse(txtBillingDesignAmoutBeforeGST.Text))
+                    .Parameters.AddWithValue("@CGST", Decimal.Parse(txtBillingCGSTPercent.Text))
+                    .Parameters.AddWithValue("@SGST", Decimal.Parse(txtBillingSGSTPercent.Text))
+                    .Parameters.AddWithValue("@IGST", Decimal.Parse(txtBillingIGSTPercent.Text))
                     .Parameters.AddWithValue("@UnPaidAmountTillNow", Decimal.Parse(txtBillingPrevBalance.Text))
                     .Parameters.AddWithValue("@PaidAmount", Decimal.Parse(txtBillingPaidAmount.Text))
                     .Parameters.AddWithValue("@Cancelled", 0)
@@ -3835,7 +3884,7 @@ Public Class AgnimainForm
         resetPaymentScreen()
 
         txtPaymentBillNumber.Text = lastBillRow.Item("BillNo")
-        txtPaymentUnPaidBilledAmount.Text = unPaidBalance
+        txtPaymentUnPaidBilledAmount.Text = Format(unPaidBalance, "0.00")
         cmbPaymentPaymentNoList.Enabled = False
         btnPaymentCreatePayment.Visible = False
         btnPaymentConfirmCreatePayment.Visible = True
@@ -3966,6 +4015,40 @@ Public Class AgnimainForm
 
         Dim lastPaymentNumber = lastPaymentRow.Item("PaymentNo")
         cmbPaymentPaymentNoList.SelectedIndex = cmbPaymentPaymentNoList.FindString(lastPaymentNumber.ToString)
+
+    End Sub
+
+    Sub calculateGSTAmountInBilling() Handles txtBillingCGSTPercent.TextChanged, txtBillingSGSTPercent.TextChanged, txtBillingIGSTPercent.TextChanged
+
+        Dim CGSTPercent As Decimal = 0
+        Dim SGSTPercent As Decimal = 0
+        Dim IGSTPercent As Decimal = 0
+        Dim unBilledDesignAmount As Decimal = 0
+
+        Decimal.TryParse(txtBillingCGSTPercent.Text, CGSTPercent)
+        Decimal.TryParse(txtBillingSGSTPercent.Text, SGSTPercent)
+        Decimal.TryParse(txtBillingIGSTPercent.Text, IGSTPercent)
+        Decimal.TryParse(txtBillingDesignAmoutBeforeGST.Text, unBilledDesignAmount)
+
+        Dim CGSTAmount As Decimal = CGSTPercent * unBilledDesignAmount / 100
+        Dim SGSTAmount As Decimal = SGSTPercent * unBilledDesignAmount / 100
+        Dim IGSTAmount As Decimal = IGSTPercent * unBilledDesignAmount / 100
+        Dim totalGSTAmount As Decimal = CGSTAmount + SGSTAmount + IGSTAmount
+
+        txtBillingCGSTAmount.Text = Format(CGSTAmount, "0.00")
+        txtBillingSGSTAmount.Text = Format(SGSTAmount, "0.00")
+        txtBillingIGSTAmount.Text = Format(IGSTAmount, "0.00")
+        txtBillingTotalGSTAmount.Text = Format(totalGSTAmount, "0.00")
+
+        txtBillingDesignAmoutAfterGST.Text = Format((unBilledDesignAmount + totalGSTAmount), "0.00")
+
+    End Sub
+
+    Private Sub txtBillingCGSTPercent_TextChanged(sender As Object, e As EventArgs) Handles txtBillingCGSTPercent.TextChanged
+
+    End Sub
+
+    Private Sub txtBillingTotalGSTAmount_TextChanged(sender As Object, e As EventArgs) Handles txtBillingTotalGSTAmount.TextChanged
 
     End Sub
 

@@ -25,7 +25,7 @@ Option Explicit On
 Partial Public Class DataSet1
     Inherits Global.System.Data.DataSet
     
-    Private tableDataTable1 As DataTable1DataTable
+    Private tableDesignDetails As DesignDetailsDataTable
     
     Private tableDataTable2 As DataTable2DataTable
     
@@ -74,8 +74,8 @@ Partial Public Class DataSet1
         If (Me.DetermineSchemaSerializationMode(info, context) = Global.System.Data.SchemaSerializationMode.IncludeSchema) Then
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXmlSchema(New Global.System.Xml.XmlTextReader(New Global.System.IO.StringReader(strSchema)))
-            If (Not (ds.Tables("DataTable1")) Is Nothing) Then
-                MyBase.Tables.Add(New DataTable1DataTable(ds.Tables("DataTable1")))
+            If (Not (ds.Tables("DesignDetails")) Is Nothing) Then
+                MyBase.Tables.Add(New DesignDetailsDataTable(ds.Tables("DesignDetails")))
             End If
             If (Not (ds.Tables("DataTable2")) Is Nothing) Then
                 MyBase.Tables.Add(New DataTable2DataTable(ds.Tables("DataTable2")))
@@ -125,9 +125,9 @@ Partial Public Class DataSet1
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property DataTable1() As DataTable1DataTable
+    Public ReadOnly Property DesignDetails() As DesignDetailsDataTable
         Get
-            Return Me.tableDataTable1
+            Return Me.tableDesignDetails
         End Get
     End Property
     
@@ -288,8 +288,8 @@ Partial Public Class DataSet1
             Me.Reset
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXml(reader)
-            If (Not (ds.Tables("DataTable1")) Is Nothing) Then
-                MyBase.Tables.Add(New DataTable1DataTable(ds.Tables("DataTable1")))
+            If (Not (ds.Tables("DesignDetails")) Is Nothing) Then
+                MyBase.Tables.Add(New DesignDetailsDataTable(ds.Tables("DesignDetails")))
             End If
             If (Not (ds.Tables("DataTable2")) Is Nothing) Then
                 MyBase.Tables.Add(New DataTable2DataTable(ds.Tables("DataTable2")))
@@ -350,10 +350,10 @@ Partial Public Class DataSet1
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Friend Overloads Sub InitVars(ByVal initTable As Boolean)
-        Me.tableDataTable1 = CType(MyBase.Tables("DataTable1"),DataTable1DataTable)
+        Me.tableDesignDetails = CType(MyBase.Tables("DesignDetails"),DesignDetailsDataTable)
         If (initTable = true) Then
-            If (Not (Me.tableDataTable1) Is Nothing) Then
-                Me.tableDataTable1.InitVars
+            If (Not (Me.tableDesignDetails) Is Nothing) Then
+                Me.tableDesignDetails.InitVars
             End If
         End If
         Me.tableDataTable2 = CType(MyBase.Tables("DataTable2"),DataTable2DataTable)
@@ -420,8 +420,8 @@ Partial Public Class DataSet1
         Me.Namespace = "http://tempuri.org/DataSet1.xsd"
         Me.EnforceConstraints = true
         Me.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
-        Me.tableDataTable1 = New DataTable1DataTable()
-        MyBase.Tables.Add(Me.tableDataTable1)
+        Me.tableDesignDetails = New DesignDetailsDataTable()
+        MyBase.Tables.Add(Me.tableDesignDetails)
         Me.tableDataTable2 = New DataTable2DataTable()
         MyBase.Tables.Add(Me.tableDataTable2)
         Me.tableDataTable3 = New DataTable3DataTable()
@@ -444,7 +444,7 @@ Partial Public Class DataSet1
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Private Function ShouldSerializeDataTable1() As Boolean
+    Private Function ShouldSerializeDesignDetails() As Boolean
         Return false
     End Function
     
@@ -561,7 +561,7 @@ Partial Public Class DataSet1
     End Function
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Public Delegate Sub DataTable1RowChangeEventHandler(ByVal sender As Object, ByVal e As DataTable1RowChangeEvent)
+    Public Delegate Sub DesignDetailsRowChangeEventHandler(ByVal sender As Object, ByVal e As DesignDetailsRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Public Delegate Sub DataTable2RowChangeEventHandler(ByVal sender As Object, ByVal e As DataTable2RowChangeEvent)
@@ -595,8 +595,8 @@ Partial Public Class DataSet1
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class DataTable1DataTable
-        Inherits Global.System.Data.TypedTableBase(Of DataTable1Row)
+    Partial Public Class DesignDetailsDataTable
+        Inherits Global.System.Data.TypedTableBase(Of DesignDetailsRow)
         
         Private columnDesignNo As Global.System.Data.DataColumn
         
@@ -622,7 +622,7 @@ Partial Public Class DataSet1
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "DataTable1"
+            Me.TableName = "DesignDetails"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -744,44 +744,44 @@ Partial Public Class DataSet1
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As DataTable1Row
+        Public Default ReadOnly Property Item(ByVal index As Integer) As DesignDetailsRow
             Get
-                Return CType(Me.Rows(index),DataTable1Row)
+                Return CType(Me.Rows(index),DesignDetailsRow)
             End Get
         End Property
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event DataTable1RowChanging As DataTable1RowChangeEventHandler
+        Public Event DesignDetailsRowChanging As DesignDetailsRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event DataTable1RowChanged As DataTable1RowChangeEventHandler
+        Public Event DesignDetailsRowChanged As DesignDetailsRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event DataTable1RowDeleting As DataTable1RowChangeEventHandler
+        Public Event DesignDetailsRowDeleting As DesignDetailsRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event DataTable1RowDeleted As DataTable1RowChangeEventHandler
+        Public Event DesignDetailsRowDeleted As DesignDetailsRowChangeEventHandler
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Sub AddDataTable1Row(ByVal row As DataTable1Row)
+        Public Overloads Sub AddDesignDetailsRow(ByVal row As DesignDetailsRow)
             Me.Rows.Add(row)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddDataTable1Row(ByVal DesignNo As Integer, ByVal DesignName As String, ByVal DesignDate As String, ByVal Height As Decimal, ByVal Width As Decimal, ByVal Colors As Integer, ByVal UnitCost As Decimal, ByVal Type As String, ByVal Price As Integer, ByVal Image() As Byte) As DataTable1Row
-            Dim rowDataTable1Row As DataTable1Row = CType(Me.NewRow,DataTable1Row)
+        Public Overloads Function AddDesignDetailsRow(ByVal DesignNo As Integer, ByVal DesignName As String, ByVal DesignDate As Date, ByVal Height As Decimal, ByVal Width As Decimal, ByVal Colors As Integer, ByVal UnitCost As Decimal, ByVal Type As String, ByVal Price As Integer, ByVal Image() As Byte) As DesignDetailsRow
+            Dim rowDesignDetailsRow As DesignDetailsRow = CType(Me.NewRow,DesignDetailsRow)
             Dim columnValuesArray() As Object = New Object() {DesignNo, DesignName, DesignDate, Height, Width, Colors, UnitCost, Type, Price, Image}
-            rowDataTable1Row.ItemArray = columnValuesArray
-            Me.Rows.Add(rowDataTable1Row)
-            Return rowDataTable1Row
+            rowDesignDetailsRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowDesignDetailsRow)
+            Return rowDesignDetailsRow
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As DataTable1DataTable = CType(MyBase.Clone,DataTable1DataTable)
+            Dim cln As DesignDetailsDataTable = CType(MyBase.Clone,DesignDetailsDataTable)
             cln.InitVars
             Return cln
         End Function
@@ -789,7 +789,7 @@ Partial Public Class DataSet1
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New DataTable1DataTable()
+            Return New DesignDetailsDataTable()
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -814,7 +814,7 @@ Partial Public Class DataSet1
             MyBase.Columns.Add(Me.columnDesignNo)
             Me.columnDesignName = New Global.System.Data.DataColumn("DesignName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDesignName)
-            Me.columnDesignDate = New Global.System.Data.DataColumn("DesignDate", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnDesignDate = New Global.System.Data.DataColumn("DesignDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDesignDate)
             Me.columnHeight = New Global.System.Data.DataColumn("Height", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnHeight)
@@ -834,28 +834,28 @@ Partial Public Class DataSet1
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function NewDataTable1Row() As DataTable1Row
-            Return CType(Me.NewRow,DataTable1Row)
+        Public Function NewDesignDetailsRow() As DesignDetailsRow
+            Return CType(Me.NewRow,DesignDetailsRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New DataTable1Row(builder)
+            Return New DesignDetailsRow(builder)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(DataTable1Row)
+            Return GetType(DesignDetailsRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If (Not (Me.DataTable1RowChangedEvent) Is Nothing) Then
-                RaiseEvent DataTable1RowChanged(Me, New DataTable1RowChangeEvent(CType(e.Row,DataTable1Row), e.Action))
+            If (Not (Me.DesignDetailsRowChangedEvent) Is Nothing) Then
+                RaiseEvent DesignDetailsRowChanged(Me, New DesignDetailsRowChangeEvent(CType(e.Row,DesignDetailsRow), e.Action))
             End If
         End Sub
         
@@ -863,8 +863,8 @@ Partial Public Class DataSet1
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If (Not (Me.DataTable1RowChangingEvent) Is Nothing) Then
-                RaiseEvent DataTable1RowChanging(Me, New DataTable1RowChangeEvent(CType(e.Row,DataTable1Row), e.Action))
+            If (Not (Me.DesignDetailsRowChangingEvent) Is Nothing) Then
+                RaiseEvent DesignDetailsRowChanging(Me, New DesignDetailsRowChangeEvent(CType(e.Row,DesignDetailsRow), e.Action))
             End If
         End Sub
         
@@ -872,8 +872,8 @@ Partial Public Class DataSet1
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If (Not (Me.DataTable1RowDeletedEvent) Is Nothing) Then
-                RaiseEvent DataTable1RowDeleted(Me, New DataTable1RowChangeEvent(CType(e.Row,DataTable1Row), e.Action))
+            If (Not (Me.DesignDetailsRowDeletedEvent) Is Nothing) Then
+                RaiseEvent DesignDetailsRowDeleted(Me, New DesignDetailsRowChangeEvent(CType(e.Row,DesignDetailsRow), e.Action))
             End If
         End Sub
         
@@ -881,14 +881,14 @@ Partial Public Class DataSet1
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If (Not (Me.DataTable1RowDeletingEvent) Is Nothing) Then
-                RaiseEvent DataTable1RowDeleting(Me, New DataTable1RowChangeEvent(CType(e.Row,DataTable1Row), e.Action))
+            If (Not (Me.DesignDetailsRowDeletingEvent) Is Nothing) Then
+                RaiseEvent DesignDetailsRowDeleting(Me, New DesignDetailsRowChangeEvent(CType(e.Row,DesignDetailsRow), e.Action))
             End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub RemoveDataTable1Row(ByVal row As DataTable1Row)
+        Public Sub RemoveDesignDetailsRow(ByVal row As DesignDetailsRow)
             Me.Rows.Remove(row)
         End Sub
         
@@ -915,7 +915,7 @@ Partial Public Class DataSet1
             type.Attributes.Add(attribute1)
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "DataTable1DataTable"
+            attribute2.FixedValue = "DesignDetailsDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -3542,16 +3542,16 @@ Partial Public Class DataSet1
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class DataTable1Row
+    Partial Public Class DesignDetailsRow
         Inherits Global.System.Data.DataRow
         
-        Private tableDataTable1 As DataTable1DataTable
+        Private tableDesignDetails As DesignDetailsDataTable
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
-            Me.tableDataTable1 = CType(Me.Table,DataTable1DataTable)
+            Me.tableDesignDetails = CType(Me.Table,DesignDetailsDataTable)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3559,13 +3559,13 @@ Partial Public Class DataSet1
         Public Property DesignNo() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tableDataTable1.DesignNoColumn),Integer)
+                    Return CType(Me(Me.tableDesignDetails.DesignNoColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'DesignNo' in table 'DataTable1' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'DesignNo' in table 'DesignDetails' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDataTable1.DesignNoColumn) = value
+                Me(Me.tableDesignDetails.DesignNoColumn) = value
             End Set
         End Property
         
@@ -3574,28 +3574,28 @@ Partial Public Class DataSet1
         Public Property DesignName() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableDataTable1.DesignNameColumn),String)
+                    Return CType(Me(Me.tableDesignDetails.DesignNameColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'DesignName' in table 'DataTable1' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'DesignName' in table 'DesignDetails' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDataTable1.DesignNameColumn) = value
+                Me(Me.tableDesignDetails.DesignNameColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property DesignDate() As String
+        Public Property DesignDate() As Date
             Get
                 Try 
-                    Return CType(Me(Me.tableDataTable1.DesignDateColumn),String)
+                    Return CType(Me(Me.tableDesignDetails.DesignDateColumn),Date)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'DesignDate' in table 'DataTable1' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'DesignDate' in table 'DesignDetails' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDataTable1.DesignDateColumn) = value
+                Me(Me.tableDesignDetails.DesignDateColumn) = value
             End Set
         End Property
         
@@ -3604,13 +3604,13 @@ Partial Public Class DataSet1
         Public Property Height() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDataTable1.HeightColumn),Decimal)
+                    Return CType(Me(Me.tableDesignDetails.HeightColumn),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Height' in table 'DataTable1' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Height' in table 'DesignDetails' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDataTable1.HeightColumn) = value
+                Me(Me.tableDesignDetails.HeightColumn) = value
             End Set
         End Property
         
@@ -3619,13 +3619,13 @@ Partial Public Class DataSet1
         Public Property Width() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDataTable1.WidthColumn),Decimal)
+                    Return CType(Me(Me.tableDesignDetails.WidthColumn),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Width' in table 'DataTable1' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Width' in table 'DesignDetails' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDataTable1.WidthColumn) = value
+                Me(Me.tableDesignDetails.WidthColumn) = value
             End Set
         End Property
         
@@ -3634,13 +3634,13 @@ Partial Public Class DataSet1
         Public Property Colors() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tableDataTable1.ColorsColumn),Integer)
+                    Return CType(Me(Me.tableDesignDetails.ColorsColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Colors' in table 'DataTable1' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Colors' in table 'DesignDetails' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDataTable1.ColorsColumn) = value
+                Me(Me.tableDesignDetails.ColorsColumn) = value
             End Set
         End Property
         
@@ -3649,13 +3649,13 @@ Partial Public Class DataSet1
         Public Property UnitCost() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDataTable1.UnitCostColumn),Decimal)
+                    Return CType(Me(Me.tableDesignDetails.UnitCostColumn),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'UnitCost' in table 'DataTable1' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'UnitCost' in table 'DesignDetails' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDataTable1.UnitCostColumn) = value
+                Me(Me.tableDesignDetails.UnitCostColumn) = value
             End Set
         End Property
         
@@ -3664,13 +3664,13 @@ Partial Public Class DataSet1
         Public Property Type() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableDataTable1.TypeColumn),String)
+                    Return CType(Me(Me.tableDesignDetails.TypeColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Type' in table 'DataTable1' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Type' in table 'DesignDetails' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDataTable1.TypeColumn) = value
+                Me(Me.tableDesignDetails.TypeColumn) = value
             End Set
         End Property
         
@@ -3679,13 +3679,13 @@ Partial Public Class DataSet1
         Public Property Price() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tableDataTable1.PriceColumn),Integer)
+                    Return CType(Me(Me.tableDesignDetails.PriceColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Price' in table 'DataTable1' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Price' in table 'DesignDetails' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDataTable1.PriceColumn) = value
+                Me(Me.tableDesignDetails.PriceColumn) = value
             End Set
         End Property
         
@@ -3694,134 +3694,134 @@ Partial Public Class DataSet1
         Public Property Image() As Byte()
             Get
                 Try 
-                    Return CType(Me(Me.tableDataTable1.ImageColumn),Byte())
+                    Return CType(Me(Me.tableDesignDetails.ImageColumn),Byte())
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Image' in table 'DataTable1' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Image' in table 'DesignDetails' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDataTable1.ImageColumn) = value
+                Me(Me.tableDesignDetails.ImageColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsDesignNoNull() As Boolean
-            Return Me.IsNull(Me.tableDataTable1.DesignNoColumn)
+            Return Me.IsNull(Me.tableDesignDetails.DesignNoColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetDesignNoNull()
-            Me(Me.tableDataTable1.DesignNoColumn) = Global.System.Convert.DBNull
+            Me(Me.tableDesignDetails.DesignNoColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsDesignNameNull() As Boolean
-            Return Me.IsNull(Me.tableDataTable1.DesignNameColumn)
+            Return Me.IsNull(Me.tableDesignDetails.DesignNameColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetDesignNameNull()
-            Me(Me.tableDataTable1.DesignNameColumn) = Global.System.Convert.DBNull
+            Me(Me.tableDesignDetails.DesignNameColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsDesignDateNull() As Boolean
-            Return Me.IsNull(Me.tableDataTable1.DesignDateColumn)
+            Return Me.IsNull(Me.tableDesignDetails.DesignDateColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetDesignDateNull()
-            Me(Me.tableDataTable1.DesignDateColumn) = Global.System.Convert.DBNull
+            Me(Me.tableDesignDetails.DesignDateColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsHeightNull() As Boolean
-            Return Me.IsNull(Me.tableDataTable1.HeightColumn)
+            Return Me.IsNull(Me.tableDesignDetails.HeightColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetHeightNull()
-            Me(Me.tableDataTable1.HeightColumn) = Global.System.Convert.DBNull
+            Me(Me.tableDesignDetails.HeightColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsWidthNull() As Boolean
-            Return Me.IsNull(Me.tableDataTable1.WidthColumn)
+            Return Me.IsNull(Me.tableDesignDetails.WidthColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetWidthNull()
-            Me(Me.tableDataTable1.WidthColumn) = Global.System.Convert.DBNull
+            Me(Me.tableDesignDetails.WidthColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsColorsNull() As Boolean
-            Return Me.IsNull(Me.tableDataTable1.ColorsColumn)
+            Return Me.IsNull(Me.tableDesignDetails.ColorsColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetColorsNull()
-            Me(Me.tableDataTable1.ColorsColumn) = Global.System.Convert.DBNull
+            Me(Me.tableDesignDetails.ColorsColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsUnitCostNull() As Boolean
-            Return Me.IsNull(Me.tableDataTable1.UnitCostColumn)
+            Return Me.IsNull(Me.tableDesignDetails.UnitCostColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetUnitCostNull()
-            Me(Me.tableDataTable1.UnitCostColumn) = Global.System.Convert.DBNull
+            Me(Me.tableDesignDetails.UnitCostColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsTypeNull() As Boolean
-            Return Me.IsNull(Me.tableDataTable1.TypeColumn)
+            Return Me.IsNull(Me.tableDesignDetails.TypeColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetTypeNull()
-            Me(Me.tableDataTable1.TypeColumn) = Global.System.Convert.DBNull
+            Me(Me.tableDesignDetails.TypeColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsPriceNull() As Boolean
-            Return Me.IsNull(Me.tableDataTable1.PriceColumn)
+            Return Me.IsNull(Me.tableDesignDetails.PriceColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetPriceNull()
-            Me(Me.tableDataTable1.PriceColumn) = Global.System.Convert.DBNull
+            Me(Me.tableDesignDetails.PriceColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsImageNull() As Boolean
-            Return Me.IsNull(Me.tableDataTable1.ImageColumn)
+            Return Me.IsNull(Me.tableDesignDetails.ImageColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetImageNull()
-            Me(Me.tableDataTable1.ImageColumn) = Global.System.Convert.DBNull
+            Me(Me.tableDesignDetails.ImageColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -4864,16 +4864,16 @@ Partial Public Class DataSet1
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Public Class DataTable1RowChangeEvent
+    Public Class DesignDetailsRowChangeEvent
         Inherits Global.System.EventArgs
         
-        Private eventRow As DataTable1Row
+        Private eventRow As DesignDetailsRow
         
         Private eventAction As Global.System.Data.DataRowAction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub New(ByVal row As DataTable1Row, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(ByVal row As DesignDetailsRow, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New
             Me.eventRow = row
             Me.eventAction = action
@@ -4881,7 +4881,7 @@ Partial Public Class DataSet1
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property Row() As DataTable1Row
+        Public ReadOnly Property Row() As DesignDetailsRow
             Get
                 Return Me.eventRow
             End Get

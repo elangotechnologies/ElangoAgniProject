@@ -32,12 +32,6 @@ Partial Class AgnimainForm
         Me.Label65 = New System.Windows.Forms.Label()
         Me.Label64 = New System.Windows.Forms.Label()
         Me.Label62 = New System.Windows.Forms.Label()
-        Me.Label63 = New System.Windows.Forms.Label()
-        Me.Label59 = New System.Windows.Forms.Label()
-        Me.Label56 = New System.Windows.Forms.Label()
-        Me.Label50 = New System.Windows.Forms.Label()
-        Me.Label49 = New System.Windows.Forms.Label()
-        Me.Label46 = New System.Windows.Forms.Label()
         Me.Label43 = New System.Windows.Forms.Label()
         Me.Label42 = New System.Windows.Forms.Label()
         Me.Label41 = New System.Windows.Forms.Label()
@@ -102,6 +96,23 @@ Partial Class AgnimainForm
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
         Me.GroupBox15 = New System.Windows.Forms.GroupBox()
         Me.tabBilling = New System.Windows.Forms.TabPage()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.txtBillingIGSTPercent = New System.Windows.Forms.TextBox()
+        Me.txtBillingSGSTPercent = New System.Windows.Forms.TextBox()
+        Me.txtBillingCGSTPercent = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.txtBillingDesignAmoutAfterGST = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.txtBillingTotalGSTAmount = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.txtBillingIGSTAmount = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.txtBillingSGSTAmount = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtBillingCGSTAmount = New System.Windows.Forms.TextBox()
         Me.lblCancelledBillIndicator = New System.Windows.Forms.Label()
         Me.btnBillingCancelCreateBill = New System.Windows.Forms.Button()
         Me.btnBillingConfirmCreateBill = New System.Windows.Forms.Button()
@@ -114,7 +125,7 @@ Partial Class AgnimainForm
         Me.btnBillingPrintBill = New System.Windows.Forms.Button()
         Me.Label32 = New System.Windows.Forms.Label()
         Me.Label30 = New System.Windows.Forms.Label()
-        Me.txtBillingUnBilledDesignAmount = New System.Windows.Forms.TextBox()
+        Me.txtBillingDesignAmoutBeforeGST = New System.Windows.Forms.TextBox()
         Me.txtBillingPrevBalance = New System.Windows.Forms.TextBox()
         Me.dgBIllingBillDetails = New System.Windows.Forms.DataGrid()
         Me.DataGridTableStyle2 = New System.Windows.Forms.DataGridTableStyle()
@@ -122,6 +133,14 @@ Partial Class AgnimainForm
         Me.DataGridTextBoxColumn13 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn14 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn15 = New System.Windows.Forms.DataGridTextBoxColumn()
+        Me.DataGridTextBoxColumn34 = New System.Windows.Forms.DataGridTextBoxColumn()
+        Me.DataGridTextBoxColumn35 = New System.Windows.Forms.DataGridTextBoxColumn()
+        Me.DataGridTextBoxColumn36 = New System.Windows.Forms.DataGridTextBoxColumn()
+        Me.DataGridTextBoxColumn37 = New System.Windows.Forms.DataGridTextBoxColumn()
+        Me.DataGridTextBoxColumn38 = New System.Windows.Forms.DataGridTextBoxColumn()
+        Me.DataGridTextBoxColumn39 = New System.Windows.Forms.DataGridTextBoxColumn()
+        Me.DataGridTextBoxColumn41 = New System.Windows.Forms.DataGridTextBoxColumn()
+        Me.DataGridTextBoxColumn40 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn16 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn17 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn18 = New System.Windows.Forms.DataGridTextBoxColumn()
@@ -139,12 +158,6 @@ Partial Class AgnimainForm
         Me.Label29 = New System.Windows.Forms.Label()
         Me.tabDesign = New System.Windows.Forms.TabPage()
         Me.cmbDesDesignList = New System.Windows.Forms.ComboBox()
-        Me.Label93 = New System.Windows.Forms.Label()
-        Me.Label94 = New System.Windows.Forms.Label()
-        Me.Label95 = New System.Windows.Forms.Label()
-        Me.Label96 = New System.Windows.Forms.Label()
-        Me.Label97 = New System.Windows.Forms.Label()
-        Me.Label98 = New System.Windows.Forms.Label()
         Me.btnDesClear = New System.Windows.Forms.Button()
         Me.btnDesEditPrice = New System.Windows.Forms.Button()
         Me.dgDesDesignDetails = New System.Windows.Forms.DataGrid()
@@ -297,6 +310,7 @@ Partial Class AgnimainForm
         Me.Label70 = New System.Windows.Forms.Label()
         Me.cmbPaymentCompanyList = New System.Windows.Forms.ComboBox()
         Me.Label71 = New System.Windows.Forms.Label()
+        Me.Settings = New System.Windows.Forms.TabPage()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.Label114 = New System.Windows.Forms.Label()
@@ -375,7 +389,6 @@ Partial Class AgnimainForm
         Me.Label148 = New System.Windows.Forms.Label()
         Me.Label149 = New System.Windows.Forms.Label()
         Me.Label150 = New System.Windows.Forms.Label()
-        Me.Settings = New System.Windows.Forms.TabPage()
         Me.tabHelp.SuspendLayout()
         Me.tabReports.SuspendLayout()
         CType(Me.DataGrid4, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -476,12 +489,6 @@ Partial Class AgnimainForm
         Me.tabHelp.Controls.Add(Me.Label65)
         Me.tabHelp.Controls.Add(Me.Label64)
         Me.tabHelp.Controls.Add(Me.Label62)
-        Me.tabHelp.Controls.Add(Me.Label63)
-        Me.tabHelp.Controls.Add(Me.Label59)
-        Me.tabHelp.Controls.Add(Me.Label56)
-        Me.tabHelp.Controls.Add(Me.Label50)
-        Me.tabHelp.Controls.Add(Me.Label49)
-        Me.tabHelp.Controls.Add(Me.Label46)
         Me.tabHelp.Controls.Add(Me.Label43)
         Me.tabHelp.Controls.Add(Me.Label42)
         Me.tabHelp.Controls.Add(Me.Label41)
@@ -575,74 +582,6 @@ Partial Class AgnimainForm
         Me.Label62.Size = New System.Drawing.Size(318, 32)
         Me.Label62.TabIndex = 17
         Me.Label62.Text = "Alt + c        -     Customer"
-        '
-        'Label63
-        '
-        Me.Label63.AutoSize = True
-        Me.Label63.Font = New System.Drawing.Font("Comic Sans MS", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label63.ForeColor = System.Drawing.Color.DeepPink
-        Me.Label63.Location = New System.Drawing.Point(664, 724)
-        Me.Label63.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label63.Name = "Label63"
-        Me.Label63.Size = New System.Drawing.Size(166, 38)
-        Me.Label63.TabIndex = 16
-        Me.Label63.Text = "Vasithwam,"
-        '
-        'Label59
-        '
-        Me.Label59.AutoSize = True
-        Me.Label59.ForeColor = System.Drawing.Color.Red
-        Me.Label59.Location = New System.Drawing.Point(61, 775)
-        Me.Label59.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label59.Name = "Label59"
-        Me.Label59.Size = New System.Drawing.Size(125, 32)
-        Me.Label59.TabIndex = 14
-        Me.Label59.Text = "Visit us :"
-        '
-        'Label56
-        '
-        Me.Label56.AutoSize = True
-        Me.Label56.ForeColor = System.Drawing.Color.Red
-        Me.Label56.Location = New System.Drawing.Point(752, 775)
-        Me.Label56.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label56.Name = "Label56"
-        Me.Label56.Size = New System.Drawing.Size(330, 32)
-        Me.Label56.TabIndex = 13
-        Me.Label56.Text = "Feel free to contact us at :"
-        '
-        'Label50
-        '
-        Me.Label50.AutoSize = True
-        Me.Label50.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Label50.Location = New System.Drawing.Point(1091, 775)
-        Me.Label50.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label50.Name = "Label50"
-        Me.Label50.Size = New System.Drawing.Size(288, 32)
-        Me.Label50.TabIndex = 12
-        Me.Label50.Text = " info@vasithwam.com"
-        '
-        'Label49
-        '
-        Me.Label49.AutoSize = True
-        Me.Label49.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Label49.Location = New System.Drawing.Point(180, 775)
-        Me.Label49.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label49.Name = "Label49"
-        Me.Label49.Size = New System.Drawing.Size(289, 32)
-        Me.Label49.TabIndex = 11
-        Me.Label49.Text = " www.vasithwam.com"
-        '
-        'Label46
-        '
-        Me.Label46.AutoSize = True
-        Me.Label46.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.Label46.Location = New System.Drawing.Point(64, 726)
-        Me.Label46.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label46.Name = "Label46"
-        Me.Label46.Size = New System.Drawing.Size(1385, 32)
-        Me.Label46.TabIndex = 10
-        Me.Label46.Text = "This project is developed and maintaining by                           TBI, Kongu" &
-    " Enginnering College, Erode - 638052"
         '
         'Label43
         '
@@ -1517,6 +1456,23 @@ Partial Class AgnimainForm
         '
         Me.tabBilling.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.tabBilling.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.tabBilling.Controls.Add(Me.Label11)
+        Me.tabBilling.Controls.Add(Me.Label10)
+        Me.tabBilling.Controls.Add(Me.txtBillingIGSTPercent)
+        Me.tabBilling.Controls.Add(Me.txtBillingSGSTPercent)
+        Me.tabBilling.Controls.Add(Me.txtBillingCGSTPercent)
+        Me.tabBilling.Controls.Add(Me.Label8)
+        Me.tabBilling.Controls.Add(Me.Label9)
+        Me.tabBilling.Controls.Add(Me.txtBillingDesignAmoutAfterGST)
+        Me.tabBilling.Controls.Add(Me.Label6)
+        Me.tabBilling.Controls.Add(Me.Label5)
+        Me.tabBilling.Controls.Add(Me.txtBillingTotalGSTAmount)
+        Me.tabBilling.Controls.Add(Me.Label4)
+        Me.tabBilling.Controls.Add(Me.txtBillingIGSTAmount)
+        Me.tabBilling.Controls.Add(Me.Label3)
+        Me.tabBilling.Controls.Add(Me.txtBillingSGSTAmount)
+        Me.tabBilling.Controls.Add(Me.Label2)
+        Me.tabBilling.Controls.Add(Me.txtBillingCGSTAmount)
         Me.tabBilling.Controls.Add(Me.lblCancelledBillIndicator)
         Me.tabBilling.Controls.Add(Me.btnBillingCancelCreateBill)
         Me.tabBilling.Controls.Add(Me.btnBillingConfirmCreateBill)
@@ -1529,7 +1485,7 @@ Partial Class AgnimainForm
         Me.tabBilling.Controls.Add(Me.btnBillingPrintBill)
         Me.tabBilling.Controls.Add(Me.Label32)
         Me.tabBilling.Controls.Add(Me.Label30)
-        Me.tabBilling.Controls.Add(Me.txtBillingUnBilledDesignAmount)
+        Me.tabBilling.Controls.Add(Me.txtBillingDesignAmoutBeforeGST)
         Me.tabBilling.Controls.Add(Me.txtBillingPrevBalance)
         Me.tabBilling.Controls.Add(Me.dgBIllingBillDetails)
         Me.tabBilling.Controls.Add(Me.dpBillingBillDate)
@@ -1555,6 +1511,194 @@ Partial Class AgnimainForm
         Me.tabBilling.Text = "Billing"
         Me.tabBilling.ToolTipText = "Bill Operations"
         '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.ForeColor = System.Drawing.Color.Black
+        Me.Label11.Location = New System.Drawing.Point(1082, 215)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(86, 25)
+        Me.Label11.TabIndex = 154
+        Me.Label11.Text = "Amount"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.ForeColor = System.Drawing.Color.Black
+        Me.Label10.Location = New System.Drawing.Point(968, 219)
+        Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(31, 25)
+        Me.Label10.TabIndex = 153
+        Me.Label10.Text = "%"
+        '
+        'txtBillingIGSTPercent
+        '
+        Me.txtBillingIGSTPercent.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBillingIGSTPercent.Location = New System.Drawing.Point(945, 344)
+        Me.txtBillingIGSTPercent.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtBillingIGSTPercent.Name = "txtBillingIGSTPercent"
+        Me.txtBillingIGSTPercent.ReadOnly = True
+        Me.txtBillingIGSTPercent.Size = New System.Drawing.Size(76, 27)
+        Me.txtBillingIGSTPercent.TabIndex = 152
+        '
+        'txtBillingSGSTPercent
+        '
+        Me.txtBillingSGSTPercent.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBillingSGSTPercent.Location = New System.Drawing.Point(945, 296)
+        Me.txtBillingSGSTPercent.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtBillingSGSTPercent.Name = "txtBillingSGSTPercent"
+        Me.txtBillingSGSTPercent.ReadOnly = True
+        Me.txtBillingSGSTPercent.Size = New System.Drawing.Size(76, 27)
+        Me.txtBillingSGSTPercent.TabIndex = 151
+        '
+        'txtBillingCGSTPercent
+        '
+        Me.txtBillingCGSTPercent.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBillingCGSTPercent.Location = New System.Drawing.Point(945, 246)
+        Me.txtBillingCGSTPercent.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtBillingCGSTPercent.Name = "txtBillingCGSTPercent"
+        Me.txtBillingCGSTPercent.ReadOnly = True
+        Me.txtBillingCGSTPercent.Size = New System.Drawing.Size(76, 27)
+        Me.txtBillingCGSTPercent.TabIndex = 150
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.ForeColor = System.Drawing.Color.Black
+        Me.Label8.Location = New System.Drawing.Point(209, 342)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(140, 19)
+        Me.Label8.TabIndex = 149
+        Me.Label8.Text = "After applying GST"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.ForeColor = System.Drawing.Color.Black
+        Me.Label9.Location = New System.Drawing.Point(29, 314)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(212, 31)
+        Me.Label9.TabIndex = 148
+        Me.Label9.Text = "Design Amount"
+        '
+        'txtBillingDesignAmoutAfterGST
+        '
+        Me.txtBillingDesignAmoutAfterGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBillingDesignAmoutAfterGST.Location = New System.Drawing.Point(410, 321)
+        Me.txtBillingDesignAmoutAfterGST.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtBillingDesignAmoutAfterGST.Name = "txtBillingDesignAmoutAfterGST"
+        Me.txtBillingDesignAmoutAfterGST.ReadOnly = True
+        Me.txtBillingDesignAmoutAfterGST.Size = New System.Drawing.Size(420, 34)
+        Me.txtBillingDesignAmoutAfterGST.TabIndex = 147
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.ForeColor = System.Drawing.Color.Black
+        Me.Label6.Location = New System.Drawing.Point(197, 249)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(152, 19)
+        Me.Label6.TabIndex = 146
+        Me.Label6.Text = "Before applying GST"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.Black
+        Me.Label5.Location = New System.Drawing.Point(29, 270)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(147, 31)
+        Me.Label5.TabIndex = 145
+        Me.Label5.Text = "Total GST"
+        '
+        'txtBillingTotalGSTAmount
+        '
+        Me.txtBillingTotalGSTAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBillingTotalGSTAmount.Location = New System.Drawing.Point(410, 269)
+        Me.txtBillingTotalGSTAmount.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtBillingTotalGSTAmount.Name = "txtBillingTotalGSTAmount"
+        Me.txtBillingTotalGSTAmount.ReadOnly = True
+        Me.txtBillingTotalGSTAmount.Size = New System.Drawing.Size(420, 34)
+        Me.txtBillingTotalGSTAmount.TabIndex = 144
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.Black
+        Me.Label4.Location = New System.Drawing.Point(870, 348)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(63, 25)
+        Me.Label4.TabIndex = 143
+        Me.Label4.Text = "IGST"
+        '
+        'txtBillingIGSTAmount
+        '
+        Me.txtBillingIGSTAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBillingIGSTAmount.Location = New System.Drawing.Point(1046, 342)
+        Me.txtBillingIGSTAmount.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtBillingIGSTAmount.Name = "txtBillingIGSTAmount"
+        Me.txtBillingIGSTAmount.ReadOnly = True
+        Me.txtBillingIGSTAmount.Size = New System.Drawing.Size(157, 27)
+        Me.txtBillingIGSTAmount.TabIndex = 142
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.Black
+        Me.Label3.Location = New System.Drawing.Point(860, 300)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(72, 25)
+        Me.Label3.TabIndex = 141
+        Me.Label3.Text = "SGST"
+        '
+        'txtBillingSGSTAmount
+        '
+        Me.txtBillingSGSTAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBillingSGSTAmount.Location = New System.Drawing.Point(1046, 294)
+        Me.txtBillingSGSTAmount.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtBillingSGSTAmount.Name = "txtBillingSGSTAmount"
+        Me.txtBillingSGSTAmount.ReadOnly = True
+        Me.txtBillingSGSTAmount.Size = New System.Drawing.Size(157, 27)
+        Me.txtBillingSGSTAmount.TabIndex = 140
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.Black
+        Me.Label2.Location = New System.Drawing.Point(860, 249)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(73, 25)
+        Me.Label2.TabIndex = 139
+        Me.Label2.Text = "CGST"
+        '
+        'txtBillingCGSTAmount
+        '
+        Me.txtBillingCGSTAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBillingCGSTAmount.Location = New System.Drawing.Point(1046, 244)
+        Me.txtBillingCGSTAmount.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtBillingCGSTAmount.Name = "txtBillingCGSTAmount"
+        Me.txtBillingCGSTAmount.ReadOnly = True
+        Me.txtBillingCGSTAmount.Size = New System.Drawing.Size(157, 27)
+        Me.txtBillingCGSTAmount.TabIndex = 138
+        '
         'lblCancelledBillIndicator
         '
         Me.lblCancelledBillIndicator.AutoSize = True
@@ -1574,7 +1718,7 @@ Partial Class AgnimainForm
         Me.btnBillingCancelCreateBill.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnBillingCancelCreateBill.ImageKey = "(none)"
         Me.btnBillingCancelCreateBill.ImageList = Me.ImageList2
-        Me.btnBillingCancelCreateBill.Location = New System.Drawing.Point(998, 198)
+        Me.btnBillingCancelCreateBill.Location = New System.Drawing.Point(1094, 121)
         Me.btnBillingCancelCreateBill.Margin = New System.Windows.Forms.Padding(4)
         Me.btnBillingCancelCreateBill.Name = "btnBillingCancelCreateBill"
         Me.btnBillingCancelCreateBill.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
@@ -1590,7 +1734,7 @@ Partial Class AgnimainForm
         Me.btnBillingConfirmCreateBill.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnBillingConfirmCreateBill.ImageKey = "(none)"
         Me.btnBillingConfirmCreateBill.ImageList = Me.ImageList2
-        Me.btnBillingConfirmCreateBill.Location = New System.Drawing.Point(866, 199)
+        Me.btnBillingConfirmCreateBill.Location = New System.Drawing.Point(962, 122)
         Me.btnBillingConfirmCreateBill.Margin = New System.Windows.Forms.Padding(4)
         Me.btnBillingConfirmCreateBill.Name = "btnBillingConfirmCreateBill"
         Me.btnBillingConfirmCreateBill.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
@@ -1606,7 +1750,7 @@ Partial Class AgnimainForm
         Me.btnBillingCreateBill.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnBillingCreateBill.ImageKey = "(none)"
         Me.btnBillingCreateBill.ImageList = Me.ImageList2
-        Me.btnBillingCreateBill.Location = New System.Drawing.Point(921, 198)
+        Me.btnBillingCreateBill.Location = New System.Drawing.Point(1017, 121)
         Me.btnBillingCreateBill.Margin = New System.Windows.Forms.Padding(4)
         Me.btnBillingCreateBill.Name = "btnBillingCreateBill"
         Me.btnBillingCreateBill.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
@@ -1620,7 +1764,7 @@ Partial Class AgnimainForm
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(72, 334)
+        Me.Label1.Location = New System.Drawing.Point(29, 432)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(179, 31)
@@ -1630,7 +1774,7 @@ Partial Class AgnimainForm
         'txtBillingPaidAmount
         '
         Me.txtBillingPaidAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBillingPaidAmount.Location = New System.Drawing.Point(410, 331)
+        Me.txtBillingPaidAmount.Location = New System.Drawing.Point(410, 429)
         Me.txtBillingPaidAmount.Margin = New System.Windows.Forms.Padding(4)
         Me.txtBillingPaidAmount.Name = "txtBillingPaidAmount"
         Me.txtBillingPaidAmount.ReadOnly = True
@@ -1643,7 +1787,7 @@ Partial Class AgnimainForm
         Me.btnBillingCancelBill.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnBillingCancelBill.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnBillingCancelBill.ImageList = Me.ImageList2
-        Me.btnBillingCancelBill.Location = New System.Drawing.Point(1122, 198)
+        Me.btnBillingCancelBill.Location = New System.Drawing.Point(1218, 121)
         Me.btnBillingCancelBill.Margin = New System.Windows.Forms.Padding(4)
         Me.btnBillingCancelBill.Name = "btnBillingCancelBill"
         Me.btnBillingCancelBill.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
@@ -1656,10 +1800,10 @@ Partial Class AgnimainForm
         '
         Me.btnBilingOutstandingBalance.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnBilingOutstandingBalance.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
-        Me.btnBilingOutstandingBalance.Location = New System.Drawing.Point(1315, 315)
+        Me.btnBilingOutstandingBalance.Location = New System.Drawing.Point(1387, 406)
         Me.btnBilingOutstandingBalance.Margin = New System.Windows.Forms.Padding(4)
         Me.btnBilingOutstandingBalance.Name = "btnBilingOutstandingBalance"
-        Me.btnBilingOutstandingBalance.Size = New System.Drawing.Size(357, 50)
+        Me.btnBilingOutstandingBalance.Size = New System.Drawing.Size(294, 45)
         Me.btnBilingOutstandingBalance.TabIndex = 121
         Me.btnBilingOutstandingBalance.Text = "Outstanding Balance"
         Me.btnBilingOutstandingBalance.UseVisualStyleBackColor = True
@@ -1670,7 +1814,7 @@ Partial Class AgnimainForm
         Me.btnBillingClear.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
         Me.btnBillingClear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnBillingClear.ImageKey = "erase.JPG"
-        Me.btnBillingClear.Location = New System.Drawing.Point(1349, 198)
+        Me.btnBillingClear.Location = New System.Drawing.Point(1445, 121)
         Me.btnBillingClear.Margin = New System.Windows.Forms.Padding(4)
         Me.btnBillingClear.Name = "btnBillingClear"
         Me.btnBillingClear.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
@@ -1686,7 +1830,7 @@ Partial Class AgnimainForm
         Me.btnBillingPrintBill.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnBillingPrintBill.ImageKey = "printer5.jpg"
         Me.btnBillingPrintBill.ImageList = Me.ImageList3
-        Me.btnBillingPrintBill.Location = New System.Drawing.Point(1088, 92)
+        Me.btnBillingPrintBill.Location = New System.Drawing.Point(1122, 17)
         Me.btnBillingPrintBill.Margin = New System.Windows.Forms.Padding(4)
         Me.btnBillingPrintBill.Name = "btnBillingPrintBill"
         Me.btnBillingPrintBill.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
@@ -1700,34 +1844,34 @@ Partial Class AgnimainForm
         Me.Label32.AutoSize = True
         Me.Label32.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label32.ForeColor = System.Drawing.Color.Black
-        Me.Label32.Location = New System.Drawing.Point(72, 221)
+        Me.Label32.Location = New System.Drawing.Point(29, 219)
         Me.Label32.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(329, 31)
+        Me.Label32.Size = New System.Drawing.Size(212, 31)
         Me.Label32.TabIndex = 117
-        Me.Label32.Text = "UnBilled Design Amount"
+        Me.Label32.Text = "Design Amount"
         '
         'Label30
         '
         Me.Label30.AutoSize = True
         Me.Label30.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label30.ForeColor = System.Drawing.Color.Black
-        Me.Label30.Location = New System.Drawing.Point(72, 170)
+        Me.Label30.Location = New System.Drawing.Point(29, 171)
         Me.Label30.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(222, 31)
         Me.Label30.TabIndex = 116
         Me.Label30.Text = "UnPaid Balance"
         '
-        'txtBillingUnBilledDesignAmount
+        'txtBillingDesignAmoutBeforeGST
         '
-        Me.txtBillingUnBilledDesignAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBillingUnBilledDesignAmount.Location = New System.Drawing.Point(410, 221)
-        Me.txtBillingUnBilledDesignAmount.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtBillingUnBilledDesignAmount.Name = "txtBillingUnBilledDesignAmount"
-        Me.txtBillingUnBilledDesignAmount.ReadOnly = True
-        Me.txtBillingUnBilledDesignAmount.Size = New System.Drawing.Size(420, 34)
-        Me.txtBillingUnBilledDesignAmount.TabIndex = 13
+        Me.txtBillingDesignAmoutBeforeGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBillingDesignAmoutBeforeGST.Location = New System.Drawing.Point(410, 221)
+        Me.txtBillingDesignAmoutBeforeGST.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtBillingDesignAmoutBeforeGST.Name = "txtBillingDesignAmoutBeforeGST"
+        Me.txtBillingDesignAmoutBeforeGST.ReadOnly = True
+        Me.txtBillingDesignAmoutBeforeGST.Size = New System.Drawing.Size(420, 34)
+        Me.txtBillingDesignAmoutBeforeGST.TabIndex = 13
         '
         'txtBillingPrevBalance
         '
@@ -1758,7 +1902,7 @@ Partial Class AgnimainForm
         Me.dgBIllingBillDetails.HeaderFont = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
         Me.dgBIllingBillDetails.HeaderForeColor = System.Drawing.Color.LavenderBlush
         Me.dgBIllingBillDetails.LinkColor = System.Drawing.Color.Teal
-        Me.dgBIllingBillDetails.Location = New System.Drawing.Point(4, 459)
+        Me.dgBIllingBillDetails.Location = New System.Drawing.Point(4, 530)
         Me.dgBIllingBillDetails.Margin = New System.Windows.Forms.Padding(4)
         Me.dgBIllingBillDetails.Name = "dgBIllingBillDetails"
         Me.dgBIllingBillDetails.ParentRowsBackColor = System.Drawing.Color.Lavender
@@ -1774,7 +1918,7 @@ Partial Class AgnimainForm
         'DataGridTableStyle2
         '
         Me.DataGridTableStyle2.DataGrid = Me.dgBIllingBillDetails
-        Me.DataGridTableStyle2.GridColumnStyles.AddRange(New System.Windows.Forms.DataGridColumnStyle() {Me.DataGridTextBoxColumn12, Me.DataGridTextBoxColumn13, Me.DataGridTextBoxColumn14, Me.DataGridTextBoxColumn15, Me.DataGridTextBoxColumn16, Me.DataGridTextBoxColumn17, Me.DataGridTextBoxColumn18, Me.DataGridTextBoxColumn19})
+        Me.DataGridTableStyle2.GridColumnStyles.AddRange(New System.Windows.Forms.DataGridColumnStyle() {Me.DataGridTextBoxColumn12, Me.DataGridTextBoxColumn13, Me.DataGridTextBoxColumn14, Me.DataGridTextBoxColumn15, Me.DataGridTextBoxColumn34, Me.DataGridTextBoxColumn35, Me.DataGridTextBoxColumn36, Me.DataGridTextBoxColumn37, Me.DataGridTextBoxColumn38, Me.DataGridTextBoxColumn39, Me.DataGridTextBoxColumn41, Me.DataGridTextBoxColumn40, Me.DataGridTextBoxColumn16, Me.DataGridTextBoxColumn17, Me.DataGridTextBoxColumn18, Me.DataGridTextBoxColumn19})
         Me.DataGridTableStyle2.GridLineColor = System.Drawing.Color.Indigo
         Me.DataGridTableStyle2.HeaderBackColor = System.Drawing.Color.Navy
         Me.DataGridTableStyle2.HeaderFont = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -1814,9 +1958,73 @@ Partial Class AgnimainForm
         Me.DataGridTextBoxColumn15.MappingName = "DesignCost"
         Me.DataGridTextBoxColumn15.Width = 75
         '
+        'DataGridTextBoxColumn34
+        '
+        Me.DataGridTextBoxColumn34.Format = "0.00"
+        Me.DataGridTextBoxColumn34.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn34.HeaderText = "CGST%"
+        Me.DataGridTextBoxColumn34.MappingName = "CGST"
+        Me.DataGridTextBoxColumn34.Width = 75
+        '
+        'DataGridTextBoxColumn35
+        '
+        Me.DataGridTextBoxColumn35.Format = "0.00"
+        Me.DataGridTextBoxColumn35.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn35.HeaderText = "SGST%"
+        Me.DataGridTextBoxColumn35.MappingName = "SGST"
+        Me.DataGridTextBoxColumn35.Width = 75
+        '
+        'DataGridTextBoxColumn36
+        '
+        Me.DataGridTextBoxColumn36.Format = "0.00"
+        Me.DataGridTextBoxColumn36.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn36.HeaderText = "IGST%"
+        Me.DataGridTextBoxColumn36.MappingName = "IGST"
+        Me.DataGridTextBoxColumn36.Width = 75
+        '
+        'DataGridTextBoxColumn37
+        '
+        Me.DataGridTextBoxColumn37.Format = "0.00"
+        Me.DataGridTextBoxColumn37.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn37.HeaderText = "CGSTAmount"
+        Me.DataGridTextBoxColumn37.MappingName = "CGSTAmount"
+        Me.DataGridTextBoxColumn37.Width = 75
+        '
+        'DataGridTextBoxColumn38
+        '
+        Me.DataGridTextBoxColumn38.Format = "0.00"
+        Me.DataGridTextBoxColumn38.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn38.HeaderText = "SGSTAmount"
+        Me.DataGridTextBoxColumn38.MappingName = "SGSTAmount"
+        Me.DataGridTextBoxColumn38.Width = 75
+        '
+        'DataGridTextBoxColumn39
+        '
+        Me.DataGridTextBoxColumn39.Format = "0.00"
+        Me.DataGridTextBoxColumn39.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn39.HeaderText = "IGSTAmount"
+        Me.DataGridTextBoxColumn39.MappingName = "IGSTAmount"
+        Me.DataGridTextBoxColumn39.Width = 75
+        '
+        'DataGridTextBoxColumn41
+        '
+        Me.DataGridTextBoxColumn41.Format = "0.00"
+        Me.DataGridTextBoxColumn41.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn41.HeaderText = "GSTAmount"
+        Me.DataGridTextBoxColumn41.MappingName = "GSTAmount"
+        Me.DataGridTextBoxColumn41.Width = 75
+        '
+        'DataGridTextBoxColumn40
+        '
+        Me.DataGridTextBoxColumn40.Format = "0.00"
+        Me.DataGridTextBoxColumn40.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn40.HeaderText = "DesignAmountGST"
+        Me.DataGridTextBoxColumn40.MappingName = "DesignAmountGST"
+        Me.DataGridTextBoxColumn40.Width = 120
+        '
         'DataGridTextBoxColumn16
         '
-        Me.DataGridTextBoxColumn16.Format = ""
+        Me.DataGridTextBoxColumn16.Format = "0.00"
         Me.DataGridTextBoxColumn16.FormatInfo = Nothing
         Me.DataGridTextBoxColumn16.HeaderText = "Total Amount"
         Me.DataGridTextBoxColumn16.MappingName = "TotalAmount"
@@ -1824,7 +2032,7 @@ Partial Class AgnimainForm
         '
         'DataGridTextBoxColumn17
         '
-        Me.DataGridTextBoxColumn17.Format = ""
+        Me.DataGridTextBoxColumn17.Format = "0.00"
         Me.DataGridTextBoxColumn17.FormatInfo = Nothing
         Me.DataGridTextBoxColumn17.HeaderText = "Paid Amount"
         Me.DataGridTextBoxColumn17.MappingName = "PaidAmount"
@@ -1832,7 +2040,7 @@ Partial Class AgnimainForm
         '
         'DataGridTextBoxColumn18
         '
-        Me.DataGridTextBoxColumn18.Format = ""
+        Me.DataGridTextBoxColumn18.Format = "0.00"
         Me.DataGridTextBoxColumn18.FormatInfo = Nothing
         Me.DataGridTextBoxColumn18.HeaderText = "Remaining Balance"
         Me.DataGridTextBoxColumn18.MappingName = "RemainingBalance"
@@ -1871,7 +2079,7 @@ Partial Class AgnimainForm
         Me.Label31.AutoSize = True
         Me.Label31.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label31.ForeColor = System.Drawing.Color.Black
-        Me.Label31.Location = New System.Drawing.Point(72, 119)
+        Me.Label31.Location = New System.Drawing.Point(29, 120)
         Me.Label31.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label31.Name = "Label31"
         Me.Label31.Size = New System.Drawing.Size(124, 31)
@@ -1883,7 +2091,7 @@ Partial Class AgnimainForm
         Me.Label27.AutoSize = True
         Me.Label27.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label27.ForeColor = System.Drawing.Color.Black
-        Me.Label27.Location = New System.Drawing.Point(72, 379)
+        Me.Label27.Location = New System.Drawing.Point(29, 477)
         Me.Label27.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label27.Name = "Label27"
         Me.Label27.Size = New System.Drawing.Size(265, 31)
@@ -1893,7 +2101,7 @@ Partial Class AgnimainForm
         'txtBillingRemainingBalance
         '
         Me.txtBillingRemainingBalance.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBillingRemainingBalance.Location = New System.Drawing.Point(410, 379)
+        Me.txtBillingRemainingBalance.Location = New System.Drawing.Point(410, 477)
         Me.txtBillingRemainingBalance.Margin = New System.Windows.Forms.Padding(4)
         Me.txtBillingRemainingBalance.Name = "txtBillingRemainingBalance"
         Me.txtBillingRemainingBalance.ReadOnly = True
@@ -1903,7 +2111,7 @@ Partial Class AgnimainForm
         'txtBillingTotalAmount
         '
         Me.txtBillingTotalAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBillingTotalAmount.Location = New System.Drawing.Point(410, 272)
+        Me.txtBillingTotalAmount.Location = New System.Drawing.Point(410, 375)
         Me.txtBillingTotalAmount.Margin = New System.Windows.Forms.Padding(4)
         Me.txtBillingTotalAmount.Name = "txtBillingTotalAmount"
         Me.txtBillingTotalAmount.ReadOnly = True
@@ -1915,7 +2123,7 @@ Partial Class AgnimainForm
         Me.Label26.AutoSize = True
         Me.Label26.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label26.ForeColor = System.Drawing.Color.Black
-        Me.Label26.Location = New System.Drawing.Point(72, 269)
+        Me.Label26.Location = New System.Drawing.Point(29, 370)
         Me.Label26.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label26.Name = "Label26"
         Me.Label26.Size = New System.Drawing.Size(187, 31)
@@ -1927,7 +2135,7 @@ Partial Class AgnimainForm
         Me.Label24.AutoSize = True
         Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label24.ForeColor = System.Drawing.Color.Black
-        Me.Label24.Location = New System.Drawing.Point(72, 68)
+        Me.Label24.Location = New System.Drawing.Point(29, 69)
         Me.Label24.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(164, 31)
@@ -1967,7 +2175,7 @@ Partial Class AgnimainForm
         Me.Label23.AutoSize = True
         Me.Label23.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label23.ForeColor = System.Drawing.Color.Black
-        Me.Label23.Location = New System.Drawing.Point(72, 17)
+        Me.Label23.Location = New System.Drawing.Point(29, 18)
         Me.Label23.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(221, 31)
@@ -1979,7 +2187,7 @@ Partial Class AgnimainForm
         Me.Label29.AutoSize = True
         Me.Label29.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label29.ForeColor = System.Drawing.Color.Black
-        Me.Label29.Location = New System.Drawing.Point(85, 300)
+        Me.Label29.Location = New System.Drawing.Point(151, 399)
         Me.Label29.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(198, 19)
@@ -1991,12 +2199,6 @@ Partial Class AgnimainForm
         Me.tabDesign.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.tabDesign.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.tabDesign.Controls.Add(Me.cmbDesDesignList)
-        Me.tabDesign.Controls.Add(Me.Label93)
-        Me.tabDesign.Controls.Add(Me.Label94)
-        Me.tabDesign.Controls.Add(Me.Label95)
-        Me.tabDesign.Controls.Add(Me.Label96)
-        Me.tabDesign.Controls.Add(Me.Label97)
-        Me.tabDesign.Controls.Add(Me.Label98)
         Me.tabDesign.Controls.Add(Me.btnDesClear)
         Me.tabDesign.Controls.Add(Me.btnDesEditPrice)
         Me.tabDesign.Controls.Add(Me.dgDesDesignDetails)
@@ -2052,85 +2254,6 @@ Partial Class AgnimainForm
         Me.cmbDesDesignList.Size = New System.Drawing.Size(427, 38)
         Me.cmbDesDesignList.TabIndex = 127
         Me.cmbDesDesignList.ValueMember = "DesignNo"
-        '
-        'Label93
-        '
-        Me.Label93.AutoSize = True
-        Me.Label93.BackColor = System.Drawing.Color.Transparent
-        Me.Label93.Font = New System.Drawing.Font("Book Antiqua", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.Label93.ForeColor = System.Drawing.Color.Red
-        Me.Label93.Location = New System.Drawing.Point(61, 775)
-        Me.Label93.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label93.Name = "Label93"
-        Me.Label93.Size = New System.Drawing.Size(125, 32)
-        Me.Label93.TabIndex = 126
-        Me.Label93.Text = "Visit us :"
-        '
-        'Label94
-        '
-        Me.Label94.AutoSize = True
-        Me.Label94.BackColor = System.Drawing.Color.Transparent
-        Me.Label94.Font = New System.Drawing.Font("Comic Sans MS", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label94.ForeColor = System.Drawing.Color.DeepPink
-        Me.Label94.Location = New System.Drawing.Point(664, 724)
-        Me.Label94.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label94.Name = "Label94"
-        Me.Label94.Size = New System.Drawing.Size(166, 38)
-        Me.Label94.TabIndex = 125
-        Me.Label94.Text = "Vasithwam,"
-        '
-        'Label95
-        '
-        Me.Label95.AutoSize = True
-        Me.Label95.BackColor = System.Drawing.Color.Transparent
-        Me.Label95.Font = New System.Drawing.Font("Book Antiqua", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.Label95.ForeColor = System.Drawing.Color.Red
-        Me.Label95.Location = New System.Drawing.Point(752, 775)
-        Me.Label95.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label95.Name = "Label95"
-        Me.Label95.Size = New System.Drawing.Size(330, 32)
-        Me.Label95.TabIndex = 124
-        Me.Label95.Text = "Feel free to contact us at :"
-        '
-        'Label96
-        '
-        Me.Label96.AutoSize = True
-        Me.Label96.BackColor = System.Drawing.Color.Transparent
-        Me.Label96.Font = New System.Drawing.Font("Book Antiqua", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.Label96.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Label96.Location = New System.Drawing.Point(180, 775)
-        Me.Label96.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label96.Name = "Label96"
-        Me.Label96.Size = New System.Drawing.Size(289, 32)
-        Me.Label96.TabIndex = 122
-        Me.Label96.Text = " www.vasithwam.com"
-        '
-        'Label97
-        '
-        Me.Label97.AutoSize = True
-        Me.Label97.BackColor = System.Drawing.Color.Transparent
-        Me.Label97.Font = New System.Drawing.Font("Book Antiqua", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.Label97.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Label97.Location = New System.Drawing.Point(1091, 775)
-        Me.Label97.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label97.Name = "Label97"
-        Me.Label97.Size = New System.Drawing.Size(288, 32)
-        Me.Label97.TabIndex = 123
-        Me.Label97.Text = " info@vasithwam.com"
-        '
-        'Label98
-        '
-        Me.Label98.AutoSize = True
-        Me.Label98.BackColor = System.Drawing.Color.Transparent
-        Me.Label98.Font = New System.Drawing.Font("Book Antiqua", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.Label98.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.Label98.Location = New System.Drawing.Point(64, 726)
-        Me.Label98.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label98.Name = "Label98"
-        Me.Label98.Size = New System.Drawing.Size(1385, 32)
-        Me.Label98.TabIndex = 121
-        Me.Label98.Text = "This project is developed and maintaining by                           TBI, Kongu" &
-    " Enginnering College, Erode - 638052"
         '
         'btnDesClear
         '
@@ -3951,12 +4074,12 @@ Partial Class AgnimainForm
         Me.Label72.AutoSize = True
         Me.Label72.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label72.ForeColor = System.Drawing.Color.Black
-        Me.Label72.Location = New System.Drawing.Point(33, 161)
+        Me.Label72.Location = New System.Drawing.Point(26, 157)
         Me.Label72.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label72.Name = "Label72"
-        Me.Label72.Size = New System.Drawing.Size(119, 31)
+        Me.Label72.Size = New System.Drawing.Size(264, 31)
         Me.Label72.TabIndex = 115
-        Me.Label72.Text = "Balance"
+        Me.Label72.Text = "UnPaid Bill Amount"
         '
         'txtPaymentBillNumber
         '
@@ -4005,6 +4128,16 @@ Partial Class AgnimainForm
         Me.Label71.Size = New System.Drawing.Size(221, 31)
         Me.Label71.TabIndex = 109
         Me.Label71.Text = "Company Name"
+        '
+        'Settings
+        '
+        Me.Settings.Location = New System.Drawing.Point(4, 52)
+        Me.Settings.Name = "Settings"
+        Me.Settings.Padding = New System.Windows.Forms.Padding(3)
+        Me.Settings.Size = New System.Drawing.Size(1703, 911)
+        Me.Settings.TabIndex = 7
+        Me.Settings.Text = "Settings"
+        Me.Settings.UseVisualStyleBackColor = True
         '
         'ImageList1
         '
@@ -4965,16 +5098,6 @@ Partial Class AgnimainForm
         Me.Label150.TabIndex = 33
         Me.Label150.Text = "Remaining Balance"
         '
-        'Settings
-        '
-        Me.Settings.Location = New System.Drawing.Point(4, 52)
-        Me.Settings.Name = "Settings"
-        Me.Settings.Padding = New System.Windows.Forms.Padding(3)
-        Me.Settings.Size = New System.Drawing.Size(1703, 911)
-        Me.Settings.TabIndex = 7
-        Me.Settings.Text = "Settings"
-        Me.Settings.UseVisualStyleBackColor = True
-        '
         'AgnimainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -5081,7 +5204,7 @@ Partial Class AgnimainForm
     Friend WithEvents btnBillingPrintBill As System.Windows.Forms.Button
     Friend WithEvents Label32 As System.Windows.Forms.Label
     Friend WithEvents Label30 As System.Windows.Forms.Label
-    Friend WithEvents txtBillingUnBilledDesignAmount As System.Windows.Forms.TextBox
+    Friend WithEvents txtBillingDesignAmoutBeforeGST As System.Windows.Forms.TextBox
     Friend WithEvents txtBillingPrevBalance As System.Windows.Forms.TextBox
     Friend WithEvents dgBIllingBillDetails As System.Windows.Forms.DataGrid
     Friend WithEvents dpBillingBillDate As System.Windows.Forms.DateTimePicker
@@ -5143,13 +5266,7 @@ Partial Class AgnimainForm
     Friend WithEvents cmbCustCompanyList As System.Windows.Forms.ComboBox
     Friend WithEvents txtAddress As System.Windows.Forms.TextBox
     Friend WithEvents txtOwnerName As System.Windows.Forms.TextBox
-    Friend WithEvents Label46 As System.Windows.Forms.Label
-    Friend WithEvents Label50 As System.Windows.Forms.Label
-    Friend WithEvents Label49 As System.Windows.Forms.Label
-    Friend WithEvents Label59 As System.Windows.Forms.Label
-    Friend WithEvents Label56 As System.Windows.Forms.Label
     Friend WithEvents Button39 As System.Windows.Forms.Button
-    Friend WithEvents Label63 As System.Windows.Forms.Label
     Friend WithEvents PictureBox3 As System.Windows.Forms.PictureBox
     Friend WithEvents Label64 As System.Windows.Forms.Label
     Friend WithEvents Label62 As System.Windows.Forms.Label
@@ -5198,12 +5315,6 @@ Partial Class AgnimainForm
     Friend WithEvents txtPaymentNetBalance As System.Windows.Forms.TextBox
     Friend WithEvents Label85 As System.Windows.Forms.Label
     Friend WithEvents Label25 As System.Windows.Forms.Label
-    Friend WithEvents Label93 As System.Windows.Forms.Label
-    Friend WithEvents Label94 As System.Windows.Forms.Label
-    Friend WithEvents Label95 As System.Windows.Forms.Label
-    Friend WithEvents Label96 As System.Windows.Forms.Label
-    Friend WithEvents Label97 As System.Windows.Forms.Label
-    Friend WithEvents Label98 As System.Windows.Forms.Label
     Friend WithEvents Label99 As System.Windows.Forms.Label
     Friend WithEvents Label100 As System.Windows.Forms.Label
     Friend WithEvents Label105 As System.Windows.Forms.Label
@@ -5407,4 +5518,29 @@ Partial Class AgnimainForm
     Friend WithEvents cmbPaymentPaymentNoList As ComboBox
     Friend WithEvents DataGridTextBoxColumn33 As DataGridTextBoxColumn
     Friend WithEvents Settings As TabPage
+    Friend WithEvents Label11 As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents txtBillingIGSTPercent As TextBox
+    Friend WithEvents txtBillingSGSTPercent As TextBox
+    Friend WithEvents txtBillingCGSTPercent As TextBox
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Label9 As Label
+    Friend WithEvents txtBillingDesignAmoutAfterGST As TextBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents txtBillingTotalGSTAmount As TextBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents txtBillingIGSTAmount As TextBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents txtBillingSGSTAmount As TextBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents txtBillingCGSTAmount As TextBox
+    Friend WithEvents DataGridTextBoxColumn34 As DataGridTextBoxColumn
+    Friend WithEvents DataGridTextBoxColumn35 As DataGridTextBoxColumn
+    Friend WithEvents DataGridTextBoxColumn36 As DataGridTextBoxColumn
+    Friend WithEvents DataGridTextBoxColumn37 As DataGridTextBoxColumn
+    Friend WithEvents DataGridTextBoxColumn38 As DataGridTextBoxColumn
+    Friend WithEvents DataGridTextBoxColumn39 As DataGridTextBoxColumn
+    Friend WithEvents DataGridTextBoxColumn40 As DataGridTextBoxColumn
+    Friend WithEvents DataGridTextBoxColumn41 As DataGridTextBoxColumn
 End Class

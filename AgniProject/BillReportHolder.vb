@@ -17,12 +17,12 @@ Public Class BillReportForm
     Dim Scb2, scb3 As SqlCommandBuilder
     Dim desdate As Date
     Dim desdatestr As String
-    Public valnum, valsent As String
+    Public valueToConvert As String
     Private n, intpart, realpart, numchar, intword, realword, spltval, spltword As String
     Private flag As Boolean
     Dim billReport As New BillReport
 
-    Public Sub WordConvert()
+    Public Function getAmountInWords(valueToConvert As String) As String
         n = ""
         intpart = ""
         realpart = ""
@@ -31,12 +31,17 @@ Public Class BillReportForm
         realword = ""
         spltval = ""
         spltword = ""
-        valsent = ""
-        If valnum = "." Then valnum = "0.00"
-        If valnum = "" Then Exit Sub
+        Dim amountInWords = ""
+        If valueToConvert = "" Then
+            Return "None"
+        End If
 
-        intpart = Format(Int(valnum), "000000000")
-        realpart = VB.Right(valnum, 2)
+        If valueToConvert = "." Then
+            valueToConvert = "0.00"
+        End If
+
+        intpart = Format(Int(valueToConvert), "000000000")
+        realpart = VB.Right(valueToConvert, 2)
 
         spltval = realpart
         Call ValFind()
@@ -57,10 +62,12 @@ Public Class BillReportForm
         If intword <> "" And Val(spltval) > 0 And realword = "" Then intword = intword + "and "
         Call ValFind()
         If spltword <> "" Then intword = intword + spltword
-        If intword <> "" And realword <> "" Then valsent = intword + "and " + realword + " Paise Only"
-        If intword <> "" And realword = "" Then valsent = intword + "Only"
-        If intword = "" And realword <> "" Then valsent = "Paise: " + realword + "Only"
-    End Sub
+        If intword <> "" And realword <> "" Then amountInWords = intword + "and " + realword + " Paise Only"
+        If intword <> "" And realword = "" Then amountInWords = intword + "Only"
+        If intword = "" And realword <> "" Then amountInWords = "Paise: " + realword + "Only"
+
+        Return amountInWords
+    End Function
 
     Public Sub ValFind()
         n = ""
@@ -141,10 +148,11 @@ Public Class BillReportForm
             Return
         End If
 
+        billReport.SetDataSource(designTable)
+
+        reportViewerBillReport.ReportSource = billReport
+
         Dim selectedCustNo As Integer = designTable.Rows(0).Item("CustNo")
-
-        log.debug("BillReportForm_Load: " + selectedCustNo.ToString)
-
         Dim customerQuery As SqlCommand
         customerQuery = New SqlCommand("select CompName, GSTIN, Address from customer where custNo=" + selectedCustNo.ToString, dbConnection)
         Dim customerAdapter = New SqlDataAdapter()
@@ -153,123 +161,76 @@ Public Class BillReportForm
         customerAdapter.Fill(customerDataSet, "customer")
         Dim customerTable As DataTable = customerDataSet.Tables(0)
 
-        log.debug("customerTable.Rows.count: " + customerTable.Rows.Count().ToString)
+        If customerTable.Rows.Count = 0 Then
+            Return
+        End If
 
-        'cmd2 = New SqlCommand("select * from design", dbConnection)
-        'Sda2 = New SqlDataAdapter()
-        'Sda2.SelectCommand = cmd2
-        'Ds2 = New DataSet
-        'Sda2.Fill(Ds2, "design")
-        'Dt2 = Ds2.Tables(0)
+        Dim companyName = customerTable.Rows(0).Item("CompName")
+        Dim CompGSTIN = customerTable.Rows(0).Item("GSTIN")
+        Dim CompAddress = customerTable.Rows(0).Item("Address")
 
-        'Dim i, a, inc As Int32
-        'Dim key As String
-        'ds4 = New DataSet
-        'Dim dt4 As New DataTable
-        'ds4.Tables.Add(dt4)
-        'dc4(0) = New DataColumn("Desnum", Type.GetType("System.Int32"))
-        'dc4(1) = New DataColumn("Desname", Type.GetType("System.String"))
-        'dc4(2) = New DataColumn("Desdate", Type.GetType("System.String"))
-        'dc4(3) = New DataColumn("Height", Type.GetType("System.Decimal"))
-        'dc4(4) = New DataColumn("Width", Type.GetType("System.Decimal"))
-        'dc4(5) = New DataColumn("Colors", Type.GetType("System.Decimal"))
-        'dc4(6) = New DataColumn("UnitCost", Type.GetType("System.Decimal"))
-        'dc4(7) = New DataColumn("Type", Type.GetType("System.String"))
-        'dc4(8) = New DataColumn("Price", Type.GetType("System.Decimal"))
-        'dc4(9) = New DataColumn("Image", Type.GetType("System.Byte[]"))
-        'For i = 0 To 9
-        '    dt4.Columns.Add(dc4(i))
-        'Next
-        'key = AgnimainForm.billkey
-        'key = key.Substring(key.IndexOf("/") + 1, key.Length - key.IndexOf("/") - 1)
-        'a = Dt2.Rows.Count - 1
-        'inc = 0
-        'While (a >= 0)
-        '    Dr2 = Dt2.Rows(inc)
-        '    If key.ToString.Equals(Dr2.Item(12).ToString) Then
-        '        dr4 = dt4.NewRow
-        '        dr4.Item(0) = Dr2.Item(1)
-        '        dr4.Item(1) = Dr2.Item(2)
-        '        desdate = DateTime.Parse(Dr2.Item(10))
-        '        desdatestr = desdate.ToString("dd/MM/yyyy")
-        '        dr4.Item(2) = desdatestr
-        '        dr4.Item(3) = Dr2.Item(3)
-        '        dr4.Item(4) = Dr2.Item(4)
-        '        dr4.Item(5) = Dr2.Item(5)
-        '        dr4.Item(6) = Dr2.Item(6)
-        '        dr4.Item(7) = Dr2.Item(7)
-        '        dr4.Item(8) = Dr2.Item(9)
-        '        dr4.Item(9) = Dr2.Item(8)
-        '        dt4.Rows.Add(dr4)
-        '    End If
-        '    a -= 1
-        '    inc += 1
-        'End While
+        'billReport.Subreports.Item("BillHeader").SetDataSource(customerTable)
+        billReport.SetParameterValue("CompName", customerTable.Rows(0).Item("CompName").ToString)
+        billReport.SetParameterValue("CompGSTIN", customerTable.Rows(0).Item("GSTIN").ToString)
+        billReport.SetParameterValue("CompAddress", customerTable.Rows(0).Item("Address").ToString)
 
-        'ds5 = New DataSet
-        'Dim dt5 As New DataTable
-        'ds5.Tables.Add(dt5)
-        'dc5(0) = New DataColumn("CompName", Type.GetType("System.String"))
-        'dc5(1) = New DataColumn("BillNo", Type.GetType("System.String"))
-        'dc5(2) = New DataColumn("BillDate", Type.GetType("System.String"))
-        'dc5(3) = New DataColumn("PrevBillNo", Type.GetType("System.String"))
-        'For i = 0 To 3
-        '    dt5.Columns.Add(dc5(i))
-        'Next
-        'dr5 = dt5.NewRow
-        'cmd1 = New SqlCommand("select * from customer where compname='" + AgnimainForm.billcust + "'", dbConnection)
-        'Sda1 = New SqlDataAdapter()
-        'Sda1.SelectCommand = cmd1
-        'Ds1 = New DataSet
-        'Sda1.Fill(Ds1, "customer")
-        'Dt1 = Ds1.Tables(0)
-        'If Dt1.Rows.Count <> 0 Then
-        '    dr5.Item(0) = Dt1.Rows(0).Item(1) + vbNewLine + Dt1.Rows(0).Item(3) + vbNewLine + "Ph: " + Dt1.Rows(0).Item(4) + vbNewLine + Dt1.Rows(0).Item(7)
-        '    dr5.Item(1) = AgnimainForm.billkey
-        '    dr5.Item(2) = AgnimainForm.billdatestring
-        '    dr5.Item(3) = AgnimainForm.PrevBillNo
-        '    dt5.Rows.Add(dr5)
-        'End If
+        Dim invoiceQuery As SqlCommand
+        invoiceQuery = New SqlCommand("SELECT TOP 2 * FROM bill where CustNo=" + selectedCustNo.ToString + " ORDER BY BillNo DESC", dbConnection)
+        Dim invoiceAdapter = New SqlDataAdapter()
+        invoiceAdapter.SelectCommand = invoiceQuery
+        Dim invoiceDataSet = New DataSet
+        invoiceAdapter.Fill(invoiceDataSet, "bill")
+        Dim invoiceTable As DataTable = invoiceDataSet.Tables(0)
 
-        'ds6 = New DataSet
-        'Dim dt6 As New DataTable
-        'ds6.Tables.Add(dt6)
-        'dc6(0) = New DataColumn("PreBalance", Type.GetType("System.Decimal"))
-        'dc6(1) = New DataColumn("DesCost", Type.GetType("System.Decimal"))
-        'dc6(2) = New DataColumn("TotAmount", Type.GetType("System.Decimal"))
-        'dc6(3) = New DataColumn("wPreBalance", Type.GetType("System.String"))
-        'dc6(4) = New DataColumn("wDesCost", Type.GetType("System.String"))
-        'dc6(5) = New DataColumn("wTotAmount", Type.GetType("System.String"))
-        'For i = 0 To 5
-        '    dt6.Columns.Add(dc6(i))
-        'Next
-        'dr6 = dt6.NewRow
-        'dr6.Item(0) = AgnimainForm.T20
-        'dr6.Item(1) = AgnimainForm.T21
-        'dr6.Item(2) = AgnimainForm.T17
-        'Dim c As Double
-        'c = Double.Parse(dr6.Item(0))
-        'valnum = Format(c, ".00")
-        'Call WordConvert()
-        'dr6.Item(3) = valsent
-        'c = Double.Parse(dr6.Item(1))
-        'valnum = Format(c, ".00")
-        'Call WordConvert()
-        'dr6.Item(4) = valsent
-        'c = Double.Parse(dr6.Item(2))
-        'valnum = Format(c, ".00")
-        'Call WordConvert()
-        'dr6.Item(5) = valsent
-        'dt6.Rows.Add(dr6)
+        If invoiceTable.Rows.Count = 0 Then
+            Return
+        End If
 
+        billReport.SetParameterValue("BillNo", invoiceTable.Rows(0).Item("BillNo").ToString)
+        billReport.SetParameterValue("BillDate", invoiceTable.Rows(0).Item("BillDate"))
+        If (invoiceTable.Rows.Count > 1) Then
+            billReport.SetParameterValue("PrevBillNo", invoiceTable.Rows(1).Item("BillNo").ToString)
+        Else
+            billReport.SetParameterValue("PrevBillNo", "NIL")
+        End If
 
-        billReport.SetDataSource(designTable)
-        billReport.Subreports.Item("BillHeader").SetDataSource(customerTable)
+        Dim designAmount As Decimal = AgnimainForm.txtBillingDesignAmoutBeforeGST.Text
+        Dim designAmountAfterGST As Decimal = AgnimainForm.txtBillingDesignAmoutAfterGST.Text
+        Dim CGST As Decimal = AgnimainForm.txtBillingCGSTPercent.Text
+        Dim SGST As Decimal = AgnimainForm.txtBillingSGSTPercent.Text
+        Dim IGST As Decimal = AgnimainForm.txtBillingIGSTPercent.Text
+        Dim CGSTAmount As Decimal = AgnimainForm.txtBillingCGSTAmount.Text
+        Dim SGSTAmount As Decimal = AgnimainForm.txtBillingSGSTAmount.Text
+        Dim IGSTAmount As Decimal = AgnimainForm.txtBillingIGSTAmount.Text
+        Dim totalGSTAmount As Decimal = AgnimainForm.txtBillingTotalGSTAmount.Text
+        Dim prevBalance As Decimal = AgnimainForm.txtBillingPrevBalance.Text
+        Dim paidAmountForThisBill As Decimal = AgnimainForm.txtBillingPaidAmount.Text
+        Dim netBalance As Decimal = AgnimainForm.txtBillingRemainingBalance.Text
+
+        billReport.SetParameterValue("DesignsAmountBeforeTax", designAmount.ToString)
+        billReport.SetParameterValue("CGST", CGST.ToString)
+        billReport.SetParameterValue("SGST", SGST.ToString)
+        billReport.SetParameterValue("IGST", IGST.ToString)
+        billReport.SetParameterValue("CGSTAmount", CGSTAmount.ToString)
+        billReport.SetParameterValue("SGSTAmount", SGSTAmount.ToString)
+        billReport.SetParameterValue("IGSTAmount", IGSTAmount.ToString)
+        billReport.SetParameterValue("TotalGSTTax", totalGSTAmount.ToString)
+        billReport.SetParameterValue("DesignsAmountAfterTax", designAmountAfterGST.ToString)
+
+        billReport.SetParameterValue("DesignsAmountBeforeTax", designAmount.ToString)
+        billReport.SetParameterValue("DesignsCostInWords", getAmountInWords(designAmountAfterGST.ToString))
+        billReport.SetParameterValue("PaidAmountForThisBill", paidAmountForThisBill.ToString)
+        billReport.SetParameterValue("PrevBalance", prevBalance.ToString)
+        billReport.SetParameterValue("NetBalance", netBalance.ToString)
+
+        '
+        'billReport.Subreports.Item("BillHeader").SetDataSource(InvoiceIdentityTable)
         'objRpt.Subreports.Item("BillFooter").SetDataSource(ds6.Tables(0))
         'objRpt.Subreports.Item("Amt2words").SetDataSource(ds6.Tables(0))
-        reportViewerBillReport.ReportSource = billReport
+
+
         'Catch ex As Exception
-        '    MessageBox.Show("message to agni user:   " & ex.Message)
+        '    MessageBox.Show("message to agni user:    " & ex.Message)
         'End Try
     End Sub
 
