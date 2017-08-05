@@ -1,11 +1,11 @@
 Imports System.Data.SqlClient
 Imports System.IO
-Imports NLog
+'Imports NLog
 Imports VB = Microsoft.VisualBasic
 Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
 Public Class BillReportForm
-    Dim log = LogManager.GetCurrentClassLogger()
+    'Dim log = LogManager.GetCurrentClassLogger()
 
     Dim dbConnection As SqlConnection
     Dim cmd1, cmd2 As SqlCommand
@@ -127,7 +127,7 @@ Public Class BillReportForm
     Private Sub BillReportForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Try
 
-        dbConnection = New SqlConnection("Data Source=agni;Initial Catalog=agnidatabase;Integrated Security=True")
+        dbConnection = New SqlConnection("server=agni\SQLEXPRESS;Database=agnidatabase;Integrated Security=true")
         dbConnection.Open()
 
         Dim selectedBillNo As Integer = AgnimainForm.gSelectedBillNo
@@ -249,9 +249,10 @@ Public Class BillReportForm
             Dim CrFormatTypeOptions As New PdfRtfWordFormatOptions
             Dim fname As String = ""
             Dim billnumber = AgnimainForm.billkey
-            Dim billnumber1 As String = billnumber.Substring(billnumber.IndexOf("/") + 1, billnumber.Length - billnumber.IndexOf("/") - 1)
-            billnumber = billnumber.Substring(0, billnumber.IndexOf("/"))
-            fname = AgnimainForm.pdfdesfolder + "\Bill @" + billnumber + "#" + billnumber1 + " " + AgnimainForm.billcust + ".pdf"
+            'Dim billnumber1 As String = billnumber.Substring(billnumber.IndexOf("/") + 1, billnumber.Length - billnumber.IndexOf("/") - 1)
+            'billnumber = billnumber.Substring(0, billnumber.IndexOf("/"))
+            'fname = AgnimainForm.pdfdesfolder + "\Bill @" + billnumber + "#" + billnumber1 + " " + AgnimainForm.billcust + ".pdf"
+            fname = AgnimainForm.pdfdesfolder + "\Bill_" + billnumber + "_" + AgnimainForm.billcust + ".pdf"
             CrDiskFileDestinationOptions.DiskFileName = fname
             CrExportOptions = billReport.ExportOptions
             With CrExportOptions

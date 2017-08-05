@@ -226,7 +226,6 @@ Partial Class AgnimainForm
         Me.txtSGST = New System.Windows.Forms.TextBox()
         Me.txtCGST = New System.Windows.Forms.TextBox()
         Me.lblEmail = New System.Windows.Forms.Label()
-        Me.Label47 = New System.Windows.Forms.Label()
         Me.lblWebsite = New System.Windows.Forms.Label()
         Me.btnCancelUpdateName = New System.Windows.Forms.Button()
         Me.txtWebsite = New System.Windows.Forms.TextBox()
@@ -2833,7 +2832,6 @@ Partial Class AgnimainForm
         Me.tabCustomer.Controls.Add(Me.lblLandline)
         Me.tabCustomer.Controls.Add(Me.GroupBox16)
         Me.tabCustomer.Controls.Add(Me.lblEmail)
-        Me.tabCustomer.Controls.Add(Me.Label47)
         Me.tabCustomer.Controls.Add(Me.lblWebsite)
         Me.tabCustomer.Controls.Add(Me.btnCancelUpdateName)
         Me.tabCustomer.Controls.Add(Me.txtWebsite)
@@ -3092,19 +3090,6 @@ Partial Class AgnimainForm
         Me.lblEmail.Size = New System.Drawing.Size(124, 31)
         Me.lblEmail.TabIndex = 16
         Me.lblEmail.Text = "Email ID"
-        '
-        'Label47
-        '
-        Me.Label47.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label47.AutoSize = True
-        Me.Label47.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.Label47.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.Label47.Location = New System.Drawing.Point(567, 793)
-        Me.Label47.Name = "Label47"
-        Me.Label47.Size = New System.Drawing.Size(1127, 20)
-        Me.Label47.TabIndex = 126
-        Me.Label47.Text = "Developed by elangotechnologies. Please contact us on, email: elangovan4ever@gmai" &
-    "l.com, jeyachand@gmail.com. phone: 9035001599,  9994666363"
         '
         'lblWebsite
         '
@@ -5102,9 +5087,6 @@ Partial Class AgnimainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.AutoScroll = True
-        Me.AutoSize = True
-        Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(156, Byte), Integer), CType(CType(213, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1584, 1037)
@@ -5443,7 +5425,6 @@ Partial Class AgnimainForm
     Friend WithEvents ImageList2 As System.Windows.Forms.ImageList
     Friend WithEvents ImageList3 As System.Windows.Forms.ImageList
     Friend WithEvents cmbDesDesignList As System.Windows.Forms.ComboBox
-    Friend WithEvents Label47 As Label
     Friend WithEvents GroupBox16 As GroupBox
     Friend WithEvents Label87 As Label
     Friend WithEvents Label60 As Label

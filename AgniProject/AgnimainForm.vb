@@ -1,12 +1,12 @@
 Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Math
-Imports NLog
+'Imports NLog
 
 Public Class AgnimainForm
     Dim dbConnection As SqlConnection
 
-    Dim log = LogManager.GetCurrentClassLogger()
+    'Dim log = LogManager.GetCurrentClassLogger()
 
     Dim BILL_TYPE_UNBILLED As Int16 = 0
     Dim BILL_TYPE_BILLED As Int16 = 1
@@ -102,14 +102,15 @@ Public Class AgnimainForm
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        log.Debug("Form is loading")
+        'log.Debug("Form is loading")
+
 
         tabAllTabsHolder.Width = Me.Width
         tabAllTabsHolder.Height = Me.Height
         dpBillingBillDate.Value = DateTime.Today
         cmbCustCompanyList.Focus()
 
-        dbConnection = New SqlConnection("Data Source=agni;Initial Catalog=agnidatabase;Integrated Security=True")
+        dbConnection = New SqlConnection("server=agni\SQLEXPRESS;Database=agnidatabase;Integrated Security=true")
         dbConnection.Open()
 
         loadOrReloadCustomerList()
@@ -169,25 +170,59 @@ Public Class AgnimainForm
         End If
     End Sub
 
-    Function getDesignAmount(billedType As Int16, Optional custNo As Integer = Nothing) As Decimal
+    Function getDesignAmountWithGSTTax(billedType As Int16, Optional custNo As Integer = Nothing) As Decimal
 
-        Dim designQueryString = "select sum(designAmountWithTax) from 
-                            (select d.designNo, d.CustNo, b.BillNo, b.CGST,b.SGST,b.IGST,d.Price,d.Price+((b.CGST+b.SGST+b.IGST)*d.Price/100) 
-                            as designAmountWithTax from design d, Bill b where d.CustNo = 1 and d.BillNo = b.BillNo) as billDesignTable"
+        Dim designQueryString = "select sum(designAmountWithTax) from (
+                        select d.designNo, d.CustNo, c.CGST,c.SGST,c.IGST,d.Price,d.Price+((isnull(c.CGST,0)+isnull(c.SGST,0)+isnull(c.IGST,0))*d.Price/100) 
+                        as designAmountWithTax from design d, Customer c where d.CustNo=1 and d.Billed=0 and d.custno = c.custno) as custDesignTable"
 
         If (billedType = BILL_TYPE_BILLED Or billedType = BILL_TYPE_UNBILLED) Then
             If (custNo <> Nothing) Then
-                designQueryString = "select sum(designAmountWithTax) from 
-                            (select d.designNo, d.CustNo, b.BillNo, b.CGST,b.SGST,b.IGST,d.Price,d.Price+((b.CGST+b.SGST+b.IGST)*d.Price/100) 
-                            as designAmountWithTax from design d, Bill b where d.CustNo=" + custNo.ToString + "and d.BillNo = b.BillNo 
-                            and d.Billed=" + billedType.ToString + ") as billDesignTable"
+                designQueryString = "select sum(designAmountWithTax) from (
+                        select d.designNo, d.CustNo, c.CGST,c.SGST,c.IGST,d.Price,d.Price+((isnull(c.CGST,0)+isnull(c.SGST,0)+isnull(c.IGST,0))*d.Price/100) 
+                        as designAmountWithTax from design d, Customer c where d.CustNo=" + custNo.ToString + " and d.Billed=" + billedType.ToString +
+                        " and d.custno = c.custno) as custDesignTable"
             Else
-                designQueryString = "select sum(designAmountWithTax) from 
-                            (select d.designNo, d.CustNo, b.BillNo, b.CGST,b.SGST,b.IGST,d.Price,d.Price+((b.CGST+b.SGST+b.IGST)*d.Price/100) 
-                            as designAmountWithTax from design d, Bill b where d.BillNo = b.BillNo and d.Billed=" + billedType.ToString + ") as billDesignTable"
+                designQueryString = "select sum(designAmountWithTax) from (
+                        select d.designNo, d.CustNo, c.CGST,c.SGST,c.IGST,d.Price,d.Price+((isnull(c.CGST,0)+isnull(c.SGST,0)+isnull(c.IGST,0))*d.Price/100) 
+                        as designAmountWithTax from design d, Customer c where d.Billed=" + billedType.ToString +
+                        " and d.custno = c.custno) as custDesignTable"
             End If
         ElseIf billedType = BILL_TYPE_ALL And custNo <> Nothing Then
-            designQueryString = "select sum(Price) from design where custNo=" + custNo.ToString
+            designQueryString = "select sum(designAmountWithTax) from (
+                        select d.designNo, d.CustNo, c.CGST,c.SGST,c.IGST,d.Price,d.Price+((isnull(c.CGST,0)+isnull(c.SGST,0)+isnull(c.IGST,0))*d.Price/100) 
+                        as designAmountWithTax from design d, Customer c where d.CustNo=" + custNo.ToString + " and d.custno = c.custno) as custDesignTable"
+        End If
+
+        Dim designQuery As SqlCommand = New SqlCommand(designQueryString, dbConnection)
+
+        Dim designAdapter = New SqlDataAdapter()
+        designAdapter.SelectCommand = designQuery
+        Dim designDataSet = New DataSet
+        designAdapter.Fill(designDataSet, "design")
+        Dim designTable As DataTable = designDataSet.Tables(0)
+
+        If designTable.Rows.Count = 0 Or designTable.Rows(0).Item(0) Is DBNull.Value Then
+            Return 0
+        End If
+
+        Return designTable.Rows(0).Item(0)
+
+
+    End Function
+
+    Function getDesignAmountWithoutGSTTax(billedType As Int16, Optional custNo As Integer = Nothing) As Decimal
+
+        Dim designQueryString = "select sum(price) from design"
+
+        If (billedType = BILL_TYPE_BILLED Or billedType = BILL_TYPE_UNBILLED) Then
+            If (custNo <> Nothing) Then
+                designQueryString = "select sum(price) from design where CustNo=" + custNo.ToString + " and Billed=" + billedType.ToString
+            Else
+                designQueryString = "select sum(price) from design where Billed=" + billedType.ToString
+            End If
+        ElseIf billedType = BILL_TYPE_ALL And custNo <> Nothing Then
+            designQueryString = "select sum(price) from design where CustNo=" + custNo.ToString
         End If
 
         Dim designQuery As SqlCommand = New SqlCommand(designQueryString, dbConnection)
@@ -472,9 +507,9 @@ Public Class AgnimainForm
             txtCGST.Text = dataRow.Item("CGST").ToString
             txtSGST.Text = dataRow.Item("SGST").ToString
             txtIGST.Text = dataRow.Item("IGST").ToString
-            txtWPCharge.Text = dataRow.Item("WPsqrinch").ToString
-            txtWorkingCharge.Text = dataRow.Item("Wcolor").ToString
-            txtPrintCharge.Text = dataRow.Item("Pcolor").ToString
+            txtWPCharge.Text = dataRow.Item("WorkingPrintSqrInch").ToString
+            txtWorkingCharge.Text = dataRow.Item("WorkingColor").ToString
+            txtPrintCharge.Text = dataRow.Item("PrintColor").ToString
         Else
             MessageBox.Show("No data found for customer: " + custNo + "-" + cmbCustCompanyList.Text)
         End If
@@ -564,58 +599,58 @@ Public Class AgnimainForm
     End Sub
 
     Public Sub btnCustAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCustAdd.Click
-        'Try
-        If cmbCustCompanyList.Text.Trim.Equals("") Then
-            MessageBox.Show("Enter Valid company Name")
-            cmbCustCompanyList.Focus()
-        ElseIf txtGstIn.Text.Trim.Equals("") Then
-            MessageBox.Show("Enter GSTIN number")
-            txtGstIn.Focus()
-        ElseIf txtOwnerName.Text.Trim.Equals("") Then
-            MessageBox.Show("Enter Proprietor Name")
-            txtOwnerName.Focus()
-        ElseIf txtAddress.Text.Trim.Equals("") Then
-            MessageBox.Show("Enter Valid Address")
-            txtAddress.Focus()
-        ElseIf txtMobile.Text.Trim.Equals("") Then
-            MessageBox.Show("Enter Mobile Number")
-            txtMobile.Focus()
-        Else
-            Dim query As String = String.Empty
-            query &= "INSERT INTO customer (CompName, GSTIN, OwnerName, Address, Mobile, Landline, Email, Website, "
-            query &= "CGST, SGST, IGST, WPsqrinch, Wcolor, Pcolor) "
-            query &= "VALUES ( @CompName, @GSTIN, @OwnerName, @Address, @Mobile, @Landline, @Email, "
-            query &= "@Website, @CGST, @SGST, @IGST, @WPsqrinch, @Wcolor, @Pcolor)"
+        Try
+            If cmbCustCompanyList.Text.Trim.Equals("") Then
+                MessageBox.Show("Enter Valid company Name")
+                cmbCustCompanyList.Focus()
+            ElseIf txtGstIn.Text.Trim.Equals("") Then
+                MessageBox.Show("Enter GSTIN number")
+                txtGstIn.Focus()
+            ElseIf txtOwnerName.Text.Trim.Equals("") Then
+                MessageBox.Show("Enter Proprietor Name")
+                txtOwnerName.Focus()
+            ElseIf txtAddress.Text.Trim.Equals("") Then
+                MessageBox.Show("Enter Valid Address")
+                txtAddress.Focus()
+            ElseIf txtMobile.Text.Trim.Equals("") Then
+                MessageBox.Show("Enter Mobile Number")
+                txtMobile.Focus()
+            Else
+                Dim query As String = String.Empty
+                query &= "INSERT INTO customer (CompName, GSTIN, OwnerName, Address, Mobile, Landline, Email, Website, "
+                query &= "CGST, SGST, IGST, WorkingPrintSqrInch, WorkingColor, PrintColor) "
+                query &= "VALUES ( @CompName, @GSTIN, @OwnerName, @Address, @Mobile, @Landline, @Email, "
+                query &= "@Website, @CGST, @SGST, @IGST, @WorkingPrintSqrInch, @WorkingColor, @PrintColor)"
 
-            Using comm As New SqlCommand()
-                With comm
-                    .Connection = dbConnection
-                    .CommandType = CommandType.Text
-                    .CommandText = query
-                    .Parameters.AddWithValue("@CompName", cmbCustCompanyList.Text)
-                    .Parameters.AddWithValue("@GSTIN", txtGstIn.Text)
-                    .Parameters.AddWithValue("@OwnerName", txtOwnerName.Text)
-                    .Parameters.AddWithValue("@Address", txtAddress.Text)
-                    .Parameters.AddWithValue("@Mobile", txtMobile.Text)
-                    .Parameters.AddWithValue("@Landline", txtLandline.Text)
-                    .Parameters.AddWithValue("@Email", txtEmail.Text)
-                    .Parameters.AddWithValue("@Website", txtWebsite.Text)
-                    .Parameters.AddWithValue("@CGST", If(String.IsNullOrEmpty(txtCGST.Text), DBNull.Value, txtCGST.Text))
-                    .Parameters.AddWithValue("@SGST", If(String.IsNullOrEmpty(txtSGST.Text), DBNull.Value, txtSGST.Text))
-                    .Parameters.AddWithValue("@IGST", If(String.IsNullOrEmpty(txtIGST.Text), DBNull.Value, txtIGST.Text))
-                    .Parameters.AddWithValue("@WPsqrinch", If(String.IsNullOrEmpty(txtWPCharge.Text), DBNull.Value, txtWPCharge.Text))
-                    .Parameters.AddWithValue("@Wcolor", If(String.IsNullOrEmpty(txtWorkingCharge.Text), DBNull.Value, txtWorkingCharge.Text))
-                    .Parameters.AddWithValue("@Pcolor", If(String.IsNullOrEmpty(txtPrintCharge.Text), DBNull.Value, txtPrintCharge.Text))
-                End With
-                comm.ExecuteNonQuery()
-            End Using
-            MessageBox.Show("Company successfully added")
-            resetCustomerScreen()
-            loadOrReloadCustomerList()
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message & " (Or) This Customer Record may already exist")
-        'End 'Try
+                Using comm As New SqlCommand()
+                    With comm
+                        .Connection = dbConnection
+                        .CommandType = CommandType.Text
+                        .CommandText = query
+                        .Parameters.AddWithValue("@CompName", cmbCustCompanyList.Text)
+                        .Parameters.AddWithValue("@GSTIN", txtGstIn.Text)
+                        .Parameters.AddWithValue("@OwnerName", txtOwnerName.Text)
+                        .Parameters.AddWithValue("@Address", txtAddress.Text)
+                        .Parameters.AddWithValue("@Mobile", txtMobile.Text)
+                        .Parameters.AddWithValue("@Landline", txtLandline.Text)
+                        .Parameters.AddWithValue("@Email", txtEmail.Text)
+                        .Parameters.AddWithValue("@Website", txtWebsite.Text)
+                        .Parameters.AddWithValue("@CGST", If(String.IsNullOrEmpty(txtCGST.Text), DBNull.Value, txtCGST.Text))
+                        .Parameters.AddWithValue("@SGST", If(String.IsNullOrEmpty(txtSGST.Text), DBNull.Value, txtSGST.Text))
+                        .Parameters.AddWithValue("@IGST", If(String.IsNullOrEmpty(txtIGST.Text), DBNull.Value, txtIGST.Text))
+                        .Parameters.AddWithValue("@WorkingPrintSqrInch", If(String.IsNullOrEmpty(txtWPCharge.Text), DBNull.Value, txtWPCharge.Text))
+                        .Parameters.AddWithValue("@WorkingColor", If(String.IsNullOrEmpty(txtWorkingCharge.Text), DBNull.Value, txtWorkingCharge.Text))
+                        .Parameters.AddWithValue("@PrintColor", If(String.IsNullOrEmpty(txtPrintCharge.Text), DBNull.Value, txtPrintCharge.Text))
+                    End With
+                    comm.ExecuteNonQuery()
+                End Using
+                MessageBox.Show("Company successfully added")
+                resetCustomerScreen()
+                loadOrReloadCustomerList()
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Message to Agni User:   " & ex.Message & " (Or) This Customer Record may already exist")
+        End Try
     End Sub
 
     Private Sub btnCustDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCustDelete.Click
@@ -727,7 +762,7 @@ Public Class AgnimainForm
             Dim query As String = String.Empty
             query &= "UPDATE customer SET CompName=@CompName, GSTIN=@GSTIN, OwnerName=@OwnerName, Address=@Address,"
             query &= "Mobile=@Mobile, Landline=@Landline, Email=@Email, Website=@Website, CGST=@CGST, SGST=@SGST, "
-            query &= "IGST=@IGST, WPsqrinch=@WPsqrinch, Wcolor=@Wcolor, Pcolor=@Pcolor where CustNo=@CustNo"
+            query &= "IGST=@IGST, WorkingPrintSqrInch=@WorkingPrintSqrInch, WorkingColor=@WorkingColor, PrintColor=@PrintColor where CustNo=@CustNo"
 
             Using comm As New SqlCommand()
                 With comm
@@ -746,9 +781,9 @@ Public Class AgnimainForm
                     .Parameters.AddWithValue("@CGST", If(String.IsNullOrEmpty(txtCGST.Text), DBNull.Value, txtCGST.Text))
                     .Parameters.AddWithValue("@SGST", If(String.IsNullOrEmpty(txtSGST.Text), DBNull.Value, txtSGST.Text))
                     .Parameters.AddWithValue("@IGST", If(String.IsNullOrEmpty(txtIGST.Text), DBNull.Value, txtIGST.Text))
-                    .Parameters.AddWithValue("@WPsqrinch", If(String.IsNullOrEmpty(txtWPCharge.Text), DBNull.Value, txtWPCharge.Text))
-                    .Parameters.AddWithValue("@Wcolor", If(String.IsNullOrEmpty(txtWorkingCharge.Text), DBNull.Value, txtWorkingCharge.Text))
-                    .Parameters.AddWithValue("@Pcolor", If(String.IsNullOrEmpty(txtPrintCharge.Text), DBNull.Value, txtPrintCharge.Text))
+                    .Parameters.AddWithValue("@WorkingPrintSqrInch", If(String.IsNullOrEmpty(txtWPCharge.Text), DBNull.Value, txtWPCharge.Text))
+                    .Parameters.AddWithValue("@WorkingColor", If(String.IsNullOrEmpty(txtWorkingCharge.Text), DBNull.Value, txtWorkingCharge.Text))
+                    .Parameters.AddWithValue("@PrintColor", If(String.IsNullOrEmpty(txtPrintCharge.Text), DBNull.Value, txtPrintCharge.Text))
                 End With
                 comm.ExecuteNonQuery()
             End Using
@@ -1360,7 +1395,9 @@ Public Class AgnimainForm
         End If
 
         Dim billNo As Integer = cmbBillingBillNoList.SelectedValue
-        log.debug("cmbBillingBillNoList_SelectedIndexChanged: cmbBillingBillNoList.SelectedValue  : " + billNo.ToString)
+
+        billkey = billNo
+        'log.Debug("cmbBillingBillNoList_SelectedIndexChanged: cmbBillingBillNoList.SelectedValue  : " + billNo.ToString)
         Dim billSelectQuery = New SqlCommand("select * from bill where BillNo=" + billNo.ToString, dbConnection)
         Dim billAdapter = New SqlDataAdapter()
         billAdapter.SelectCommand = billSelectQuery
@@ -1376,6 +1413,7 @@ Public Class AgnimainForm
             txtBillingCGSTPercent.Text = dataRow.Item("CGST")
             txtBillingSGSTPercent.Text = dataRow.Item("SGST")
             txtBillingIGSTPercent.Text = dataRow.Item("IGST")
+            calculateGSTAmountInBilling()
             Dim billingTotalAmount = dataRow.Item("UnPaidAmountTillNow") + Decimal.Parse(txtBillingDesignAmoutAfterGST.Text)
             txtBillingTotalAmount.Text = billingTotalAmount
             txtBillingPaidAmount.Text = dataRow.Item("PaidAmount")
@@ -1390,7 +1428,7 @@ Public Class AgnimainForm
 
         Else
             MessageBox.Show("No data found for Bill: " + billNo.ToString)
-            log.debug("cmbBillingBillNoList_SelectedIndexChanged: No data found for Bill: " + billNo.ToString)
+            'log.Debug("cmbBillingBillNoList_SelectedIndexChanged: No data found for Bill: " + billNo.ToString)
         End If
 
         'Catch ex As Exception
@@ -1528,6 +1566,7 @@ Public Class AgnimainForm
 
         If (cmbBillingCompanyList.SelectedIndex <> -1) Then
             gSelectedCustNoIndex = cmbBillingCompanyList.SelectedIndex
+            billcust = cmbBillingCompanyList.Text
             resetBillingScreen()
             loadOrReloadBillList(cmbBillingBillNoList, cmbBillingCompanyList.SelectedValue)
             loadBillingGrid(cmbBillingCompanyList.SelectedValue)
@@ -1649,14 +1688,18 @@ Public Class AgnimainForm
 
 
 
-    Private Sub ComboBox2_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbDesCompanyList.SelectedIndexChanged
+    Private Sub cmbDesCompanyList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbDesCompanyList.SelectedIndexChanged
         'Try
-        resetDesignScreen()
-        If (cmbDesCompanyList.SelectedIndex <> -1) Then
-            gSelectedCustNoIndex = cmbDesCompanyList.SelectedIndex
-            loadOrReloadDesignList(cmbDesDesignList, cmbDesCompanyList.SelectedValue)
-            loadDesignGrid(cmbDesCompanyList.SelectedValue)
+        If (cmbDesCompanyList.SelectedIndex = -1) Then
+            Return
         End If
+
+        resetDesignScreen()
+
+        gSelectedCustNoIndex = cmbDesCompanyList.SelectedIndex
+        WorkingChargeTypeChanged()
+        loadOrReloadDesignList(cmbDesDesignList, cmbDesCompanyList.SelectedValue)
+        loadDesignGrid(cmbDesCompanyList.SelectedValue)
         'Catch ex As Exception
         'MessageBox.Show("Message to Agni User:   " & ex.Message)
         'End 'Try
@@ -2091,26 +2134,34 @@ Public Class AgnimainForm
 
     End Sub
 
-    Private Sub RadioButton1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles radioDesWP.CheckedChanged
-        'Try
+    Private Sub WorkingChargeTypeChanged() Handles radioDesWP.CheckedChanged, radioDesWorking.CheckedChanged, radioDesPrint.CheckedChanged
+
+        If (cmbDesCompanyList.SelectedIndex = -1) Then
+            Return
+        End If
+
+        Dim custNo = cmbDesCompanyList.SelectedValue
+        Dim customerQuery = New SqlCommand("select WorkingPrintSqrInch, WorkingColor, PrintColor from customer where CustNo=" + custNo.ToString, dbConnection)
+        Dim customerAdapter = New SqlDataAdapter()
+        customerAdapter.SelectCommand = customerQuery
+        Dim customerDataSet = New DataSet
+        customerAdapter.Fill(customerDataSet, "customer")
+        Dim customerTable As DataTable = customerDataSet.Tables(0)
+
+        If (customerTable.Rows.Count = 0) Then
+            Return
+        End If
+
         If radioDesWP.Checked Then
             lblDesCostPerUnit.Text = "Cost Per Inch"
-        End If
-
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub RadioButton2_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles radioDesWorking.CheckedChanged
-        'Try
-        If radioDesWorking.Checked Then
+            txtDesCostPerUnit.Text = customerTable.Rows(0).Item("WorkingPrintSqrInch").ToString
+        ElseIf radioDesWorking.Checked Then
             lblDesCostPerUnit.Text = "Cost Per Color"
+            txtDesCostPerUnit.Text = customerTable.Rows(0).Item("WorkingColor").ToString
+        ElseIf radioDesPrint.Checked Then
+            lblDesCostPerUnit.Text = "Cost Per Inch"
+            txtDesCostPerUnit.Text = customerTable.Rows(0).Item("PrintColor").ToString
         End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-
     End Sub
 
     Private Sub TextBox16_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtDesCalculatedPrice.KeyDown
@@ -3576,7 +3627,7 @@ Public Class AgnimainForm
         'End 'Try
     End Sub
 
-    Private Sub Label47_Click(sender As Object, e As EventArgs) Handles Label47.Click
+    Private Sub Label47_Click(sender As Object, e As EventArgs)
 
     End Sub
 
@@ -3622,7 +3673,7 @@ Public Class AgnimainForm
 
     Private Sub btnBillingCreateBill_Click(sender As Object, e As EventArgs) Handles btnBillingCreateBill.Click
 
-        log.Debug("btnBillingCreateBill_Click: entry")
+        'log.Debug("btnBillingCreateBill_Click: entry")
 
         cmbBillingBillNoList.SelectedIndex = -1
         Dim custNo = cmbBillingCompanyList.SelectedValue
@@ -3630,8 +3681,8 @@ Public Class AgnimainForm
         loadGSTForCustomerInBilling(custNo)
 
         dpBillingBillDate.Text = ""
-        Dim unBilledDesignAmount As Decimal = getDesignAmount(BILL_TYPE_UNBILLED, custNo)
-        Dim billedDesignAmount As Decimal = getDesignAmount(BILL_TYPE_BILLED, custNo)
+        Dim unBilledDesignAmount As Decimal = getDesignAmountWithoutGSTTax(BILL_TYPE_UNBILLED, custNo)
+        Dim billedDesignAmount As Decimal = getDesignAmountWithGSTTax(BILL_TYPE_BILLED, custNo)
         Dim totalBillsPaidAmount As Decimal = getAllBillsPaidAmount(custNo)
         Dim unPaidBalance As Decimal = billedDesignAmount - totalBillsPaidAmount
 
@@ -3640,15 +3691,15 @@ Public Class AgnimainForm
             Return
         End If
 
-        txtBillingDesignAmoutBeforeGST.Text = unBilledDesignAmount
-        txtBillingPrevBalance.Text = unPaidBalance
+        txtBillingDesignAmoutBeforeGST.Text = Format(unBilledDesignAmount, "0.00")
+        txtBillingPrevBalance.Text = Format(unPaidBalance, "0.00")
 
         calculateGSTAmountInBilling()
-        Dim totalAmountToPay As Decimal = unPaidBalance + Decimal.Parse(txtBillingDesignAmoutAfterGST.Text)
+        Dim totalAmountToPay As Decimal = Format(unPaidBalance + Decimal.Parse(txtBillingDesignAmoutAfterGST.Text), "0.00")
 
-        txtBillingTotalAmount.Text = totalAmountToPay
+        txtBillingTotalAmount.Text = Format(totalAmountToPay, "0.00")
         txtBillingPaidAmount.Text = "0.00"
-        txtBillingRemainingBalance.Text = totalAmountToPay
+        txtBillingRemainingBalance.Text = Format(totalAmountToPay, "0.00")
 
         cmbBillingBillNoList.Enabled = False
         btnBillingCreateBill.Visible = False
@@ -3790,11 +3841,11 @@ Public Class AgnimainForm
             btnBillingCancelCreateBill.Visible = False
             cmbBillingBillNoList.Enabled = True
 
-            log.debug("btnBillingConfirmCreateBill_Click: Setting cmbBillingBillNoList index to:  " + cmbBillingBillNoList.FindString(newBillNo.ToString).ToString)
+            'log.Debug("btnBillingConfirmCreateBill_Click: Setting cmbBillingBillNoList index to:  " + cmbBillingBillNoList.FindString(newBillNo.ToString).ToString)
 
             cmbBillingBillNoList.SelectedIndex = cmbBillingBillNoList.FindString(newBillNo.ToString)
 
-            log.debug("btnBillingConfirmCreateBill_Click: cmbBillingBillNoList.SelectedIndex is set to index: " + cmbBillingBillNoList.SelectedIndex.ToString)
+            'log.Debug("btnBillingConfirmCreateBill_Click: cmbBillingBillNoList.SelectedIndex is set to index: " + cmbBillingBillNoList.SelectedIndex.ToString)
 
             'Catch ex As Exception
             'MessageBox.Show("Message To Agni User:   " & ex.Message & " Or this design Record may already exist")
@@ -3848,7 +3899,7 @@ Public Class AgnimainForm
 
         resetBillingScreen()
         loadOrReloadBillList()
-        log.debug("btnBillingCancelBill_Click: setting cmbBillingBillNoList.SelectedIndex to " + cmbBillingBillNoList.FindString(billNo.ToString).ToString)
+        'log.Debug("btnBillingCancelBill_Click: setting cmbBillingBillNoList.SelectedIndex to " + cmbBillingBillNoList.FindString(billNo.ToString).ToString)
         cmbBillingBillNoList.SelectedIndex = cmbBillingBillNoList.FindString(billNo.ToString)
         loadBillingGrid(cmbDesCompanyList.SelectedValue)
     End Sub
@@ -3866,11 +3917,11 @@ Public Class AgnimainForm
     End Sub
 
     Private Sub btnPaymentCreatePayment_Click(sender As Object, e As EventArgs) Handles btnPaymentCreatePayment.Click
-        log.Debug("btnBillingCreateBill_Click: entry")
+        'log.Debug("btnBillingCreateBill_Click: entry")
 
         Dim custNo = cmbPaymentCompanyList.SelectedValue
 
-        Dim billedDesignAmount As Decimal = getDesignAmount(BILL_TYPE_BILLED, custNo)
+        Dim billedDesignAmount As Decimal = getDesignAmountWithGSTTax(BILL_TYPE_BILLED, custNo)
         Dim totalBillsPaidAmount As Decimal = getAllBillsPaidAmount(custNo)
         Dim unPaidBalance As Decimal = billedDesignAmount - totalBillsPaidAmount
 
@@ -4052,12 +4103,6 @@ Public Class AgnimainForm
 
     End Sub
 
-    Private Sub radioDesPrint_CheckedChanged(sender As Object, e As EventArgs) Handles radioDesPrint.CheckedChanged
-        If radioDesPrint.Checked Then
-            lblDesCostPerUnit.Text = "Cost Per Inch"
-        End If
-    End Sub
-
     Private Sub dgPaymentDetails_CurrentCellChanged(sender As Object, e As EventArgs) Handles dgPaymentDetails.CurrentCellChanged
 
         If btnPaymentConfirmCreatePayment.Visible = True Then
@@ -4074,7 +4119,7 @@ Public Class AgnimainForm
         End If
 
         Dim paymentNo As Integer = cmbPaymentPaymentNoList.SelectedValue
-        log.debug("cmbPaymentPaymentNoList_SelectedIndexChanged: cmbPaymentPaymentNoList.SelectedValue  : " + paymentNo.ToString)
+        'log.Debug("cmbPaymentPaymentNoList_SelectedIndexChanged: cmbPaymentPaymentNoList.SelectedValue  : " + paymentNo.ToString)
         Dim paymentSelectQuery = New SqlCommand("select * from payment where PaymentNo=" + paymentNo.ToString, dbConnection)
         Dim paymentAdapter = New SqlDataAdapter()
         paymentAdapter.SelectCommand = paymentSelectQuery
@@ -4106,7 +4151,7 @@ Public Class AgnimainForm
             txtPaymentRemarks.Text = dataRow.Item("Remarks")
         Else
             MessageBox.Show("No data found for payment: " + paymentNo.ToString)
-            log.debug("cmbPaymentPaymentNoList_SelectedIndexChanged: No data found for Bill: " + paymentNo.ToString)
+            'log.Debug("cmbPaymentPaymentNoList_SelectedIndexChanged: No data found for Bill: " + paymentNo.ToString)
         End If
     End Sub
 
@@ -4293,7 +4338,7 @@ Public Class AgnimainForm
 
             Dim lastPaymentRow As DataRow = getLastPaymentRow(custNo)
 
-            log.debug("btnPaymentDelete_Click: selectedPaymentNo: " + selectedPaymentNo.ToString + " lastPaymentRow.Item(PaymentNo): " + lastPaymentRow.Item("PaymentNo").ToString)
+            'log.Debug("btnPaymentDelete_Click: selectedPaymentNo: " + selectedPaymentNo.ToString + " lastPaymentRow.Item(PaymentNo): " + lastPaymentRow.Item("PaymentNo").ToString)
 
             If (lastPaymentRow IsNot Nothing AndAlso selectedPaymentNo <> lastPaymentRow.Item("PaymentNo")) Then
                 MessageBox.Show("This is not the last payment. You can only delete the last payment")
@@ -4489,12 +4534,12 @@ Public Class AgnimainForm
         'Try
         Dim selectedTabIndex As Integer = tabAllTabsHolder.SelectedIndex
 
-        log.debug("tabAllTabsHolder_SelectedIndexChanged: selectedTabIndex: " + selectedTabIndex.ToString + " gSelectedCustNoIndex: " + gSelectedCustNoIndex.ToString)
+        'log.Debug("tabAllTabsHolder_SelectedIndexChanged: selectedTabIndex: " + selectedTabIndex.ToString + " gSelectedCustNoIndex: " + gSelectedCustNoIndex.ToString)
 
         Select Case selectedTabIndex
             Case 0
-                log.debug("tabAllTabsHolder_SelectedIndexChanged: cmbCustCompanyList.SelectedIndex: " + cmbCustCompanyList.SelectedIndex.ToString)
-                log.debug("cmbCustCompanyList.SelectedIndex: " + gSelectedCustNoIndex.ToString)
+                'log.Debug("tabAllTabsHolder_SelectedIndexChanged: cmbCustCompanyList.SelectedIndex: " + cmbCustCompanyList.SelectedIndex.ToString)
+                'log.Debug("cmbCustCompanyList.SelectedIndex: " + gSelectedCustNoIndex.ToString)
                 cmbCustCompanyList.SelectedIndex = -1
                 cmbCustCompanyList.SelectedIndex = gSelectedCustNoIndex
             Case 1
@@ -4507,7 +4552,7 @@ Public Class AgnimainForm
                 cmbPaymentCompanyList.SelectedIndex = -1
                 cmbPaymentCompanyList.SelectedIndex = gSelectedCustNoIndex
             Case Else
-                log.debug("not a valid tab selection")
+                'log.Debug("not a valid tab selection")
         End Select
 
         'Catch ex As Exception
