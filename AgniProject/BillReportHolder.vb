@@ -127,7 +127,7 @@ Public Class BillReportForm
     Private Sub BillReportForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Try
 
-        dbConnection = New SqlConnection("server=agni\SQLEXPRESS;Database=agnidatabase;Integrated Security=true")
+        dbConnection = New SqlConnection("server=agni\SQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
         dbConnection.Open()
 
         Dim selectedBillNo As Integer = AgnimainForm.gSelectedBillNo
@@ -186,7 +186,7 @@ Public Class BillReportForm
             Return
         End If
 
-        billReport.SetParameterValue("BillNo", invoiceTable.Rows(0).Item("BillNo").ToString)
+        billReport.SetParameterValue("BillNo", invoiceTable.Rows(0).Item("DisplayBillNo").ToString)
         billReport.SetParameterValue("BillDate", invoiceTable.Rows(0).Item("BillDate"))
         If (invoiceTable.Rows.Count > 1) Then
             billReport.SetParameterValue("PrevBillNo", invoiceTable.Rows(1).Item("BillNo").ToString)
@@ -206,6 +206,7 @@ Public Class BillReportForm
         Dim prevBalance As Decimal = AgnimainForm.txtBillingPrevBalance.Text
         Dim paidAmountForThisBill As Decimal = AgnimainForm.txtBillingPaidAmount.Text
         Dim netBalance As Decimal = AgnimainForm.txtBillingRemainingBalance.Text
+        Dim cancelledBill As String = If(invoiceTable.Rows(0).Item("Cancelled") = 1, "This is a cancelled bill", "")
 
         billReport.SetParameterValue("DesignsAmountBeforeTax", designAmount.ToString)
         billReport.SetParameterValue("CGST", CGST.ToString)
@@ -222,6 +223,7 @@ Public Class BillReportForm
         billReport.SetParameterValue("PaidAmountForThisBill", paidAmountForThisBill.ToString)
         billReport.SetParameterValue("PrevBalance", prevBalance.ToString)
         billReport.SetParameterValue("NetBalance", netBalance.ToString)
+        billReport.SetParameterValue("CancelledBill", cancelledBill)
 
         '
         'billReport.Subreports.Item("BillHeader").SetDataSource(InvoiceIdentityTable)
@@ -232,14 +234,6 @@ Public Class BillReportForm
         'Catch ex As Exception
         '    MessageBox.Show("message to agni user:    " & ex.Message)
         'End Try
-    End Sub
-
-    Private Sub CrystalReportViewer1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    End Sub
-
-    Private Sub CrystalReportViewer1_Load_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles reportViewerBillReport.Load
-
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click

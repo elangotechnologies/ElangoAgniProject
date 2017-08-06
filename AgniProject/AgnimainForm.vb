@@ -1,12 +1,12 @@
 Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Math
-'Imports NLog
+Imports NLog
 
 Public Class AgnimainForm
     Dim dbConnection As SqlConnection
 
-    'Dim log = LogManager.GetCurrentClassLogger()
+    Dim log As Logger = LogManager.GetCurrentClassLogger()
 
     Dim BILL_TYPE_UNBILLED As Int16 = 0
     Dim BILL_TYPE_BILLED As Int16 = 1
@@ -14,6 +14,7 @@ Public Class AgnimainForm
 
     Public gSelectedCustNoIndex As Integer = -1
     Public gSelectedBillNo As Integer = -1
+    Public gDisplayBillNo As Integer = 0
 
     Dim Cmd1, cmd2, cmd3, cmd10 As SqlCommand
     Dim Sda1, Sda2, sda3, sda10 As SqlDataAdapter
@@ -29,8 +30,6 @@ Public Class AgnimainForm
     Dim flag As Integer = 0
     Dim filepath As String
     Dim t12, t13, t14, t15 As Decimal
-    Dim newitem As MyComboitem
-    Dim mycurrentitem As MyComboitem
     Dim indx, key1 As Integer
     Public ds4 As New DataSet
     Public dt4 As New DataTable
@@ -102,29 +101,45 @@ Public Class AgnimainForm
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        'log.Debug("Form is loading")
-
+        log.Debug("Form is loading")
 
         tabAllTabsHolder.Width = Me.Width
         tabAllTabsHolder.Height = Me.Height
         dpBillingBillDate.Value = DateTime.Today
         cmbCustCompanyList.Focus()
 
-        dbConnection = New SqlConnection("server=agni\SQLEXPRESS;Database=agnidatabase;Integrated Security=true")
+        dbConnection = New SqlConnection("server=agni\SQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
         dbConnection.Open()
 
-        loadOrReloadCustomerList()
+        Dim lastBillRow As DataRow = getLastBillRow()
+        If (lastBillRow IsNot Nothing) Then
+            gDisplayBillNo = lastBillRow.Item("DisplayBillNo")
+        End If
+
+        bwtCustListLoadThread.RunWorkerAsync()
+
+        resetAllScreens()
 
     End Sub
 
-    Sub loadOrReloadCustomerList(Optional cmbCompanyList As ComboBox = Nothing)
-
+    Function getCustomerListTable() As DataTable
+        log.Debug("getCustomerListTable: entry")
         Dim customerQuery = New SqlCommand("select CustNo,CompName from customer", dbConnection)
         Dim customerAdapter = New SqlDataAdapter()
         customerAdapter.SelectCommand = customerQuery
         Dim customerDataSet = New DataSet
         customerAdapter.Fill(customerDataSet, "customer")
-        Dim customerTable As DataTable = customerDataSet.Tables(0)
+        Return customerDataSet.Tables(0)
+    End Function
+
+
+    Sub setCustomerList(customerTable As DataTable, Optional cmbCompanyList As ComboBox = Nothing)
+        log.Debug("setCustomerList: entry")
+
+        Dim dummyFirstRow As DataRow = customerTable.NewRow()
+        dummyFirstRow("CustNo") = -1
+        dummyFirstRow("CompName") = "Please select a customer..."
+        customerTable.Rows.InsertAt(dummyFirstRow, 0)
 
         If cmbCompanyList IsNot Nothing Then
             cmbCompanyList.BindingContext = New BindingContext()
@@ -142,10 +157,9 @@ Public Class AgnimainForm
             cmbReportCompanyList.DataSource = customerTable
         End If
 
-
     End Sub
 
-    Sub loadOrReloadDesignList(Optional cmbDesignList As ComboBox = Nothing, Optional custNo As Integer = Nothing)
+    Function getDesignListTable(Optional custNo As Integer = Nothing) As DataTable
         Dim designQuery As SqlCommand
         If (custNo <> Nothing) Then
             designQuery = New SqlCommand("select DesignNo, DesignName from design where custNo=" + custNo.ToString, dbConnection)
@@ -157,18 +171,169 @@ Public Class AgnimainForm
         designAdapter.SelectCommand = designQuery
         Dim designDataSet = New DataSet
         designAdapter.Fill(designDataSet, "design")
-        Dim designTable As DataTable = designDataSet.Tables(0)
+        Return designDataSet.Tables(0)
+    End Function
 
-        If cmbDesignList IsNot Nothing Then
-            cmbDesignList.BindingContext = New BindingContext()
-            cmbDesignList.DataSource = designTable
-            cmbDesignList.SelectedIndex = cmbDesignList.Items.Count - 1
+    Sub setDesignList(designTable As DataTable)
+        cmbDesDesignList.BindingContext = New BindingContext()
+        cmbDesDesignList.DataSource = designTable
+    End Sub
+
+    Function getDesignGridTable(Optional custNo As Integer = Nothing) As DataTable
+        Dim designQuery As SqlCommand
+        If (custNo <> Nothing) Then
+            designQuery = New SqlCommand("select * from design where custNo=" + custNo.ToString, dbConnection)
         Else
-            cmbDesDesignList.BindingContext = New BindingContext()
-            cmbDesDesignList.DataSource = designTable
-            cmbDesDesignList.SelectedIndex = cmbDesDesignList.Items.Count - 1
+            designQuery = New SqlCommand("select * from design", dbConnection)
+        End If
+
+        Dim designAdapter = New SqlDataAdapter()
+        designAdapter.SelectCommand = designQuery
+        Dim designDataSet = New DataSet
+        designAdapter.Fill(designDataSet, "design")
+        Return designDataSet.Tables(0)
+    End Function
+    Sub setDesignGrid(designTable As DataTable)
+        dgDesDesignDetails.DataSource = designTable
+    End Sub
+
+    Function getBillListTable(Optional custNo As Integer = Nothing) As DataTable
+        Dim billQuery As SqlCommand
+        If (custNo <> Nothing) Then
+            billQuery = New SqlCommand("select BillNo, DisplayBillNo from bill where custNo=" + custNo.ToString, dbConnection)
+        Else
+            billQuery = New SqlCommand("select BillNo, DisplayBillNo from bill", dbConnection)
+        End If
+
+        Dim billAdapter = New SqlDataAdapter()
+        billAdapter.SelectCommand = billQuery
+        Dim billDataSet = New DataSet
+        billAdapter.Fill(billDataSet, "bill")
+        Return billDataSet.Tables(0)
+
+    End Function
+
+    Sub setBillingList(billTable As DataTable, Optional cmbBillList As ComboBox = Nothing)
+
+        If billTable.Rows.Count = 0 Then
+            If cmbBillList IsNot Nothing Then
+                cmbBillList.SelectedIndex = -1
+            Else
+                cmbBillingBillNoList.SelectedIndex = -1
+            End If
+        End If
+
+        If cmbBillList IsNot Nothing Then
+            cmbBillingBillNoList.BindingContext = New BindingContext()
+            cmbBillList.DataSource = billTable
+        Else
+            cmbBillingBillNoList.BindingContext = New BindingContext()
+            cmbBillingBillNoList.DataSource = billTable
         End If
     End Sub
+
+    Function getBillGridTable(Optional custNo As Integer = Nothing) As DataTable
+        Dim billQuery As SqlCommand
+        If (custNo <> Nothing) Then
+            billQuery = New SqlCommand("select BillNo, DisplayBillNo, BillDate, DesignCost, UnPaidAmountTillNow, CGST, CGST*DesignCost/100 as CGSTAmount, 
+                            SGST, SGST*DesignCost/100 as SGSTAmount, IGST, IGST*DesignCost/100 as IGSTAmount, (CGST+ SGST+ IGST)*DesignCost/100 as GSTAmount, ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost as DesignAmountGST, PaidAmount, 
+                            ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost+UnPaidAmountTillNow as TotalAmount, 
+                            (((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost+UnPaidAmountTillNow)-PaidAmount as RemainingBalance, Cancelled  from bill where custNo=" + custNo.ToString, dbConnection)
+        Else
+            billQuery = New SqlCommand("select BillNo, DisplayBillNo, BillDate, DesignCost, UnPaidAmountTillNow, CGST, CGST*DesignCost/100 as CGSTAmount, 
+                            SGST, SGST*DesignCost/100 as SGSTAmount, IGST, IGST*DesignCost/100 as IGSTAmount, (CGST+ SGST+ IGST)*DesignCost/100 as GSTAmount, ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost as DesignAmountGST, PaidAmount, 
+                            ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost+UnPaidAmountTillNow as TotalAmount, 
+                            (((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost+UnPaidAmountTillNow)-PaidAmount as RemainingBalance, Cancelled  from bill", dbConnection)
+        End If
+
+        Dim billAdapter = New SqlDataAdapter()
+        billAdapter.SelectCommand = billQuery
+        Dim billDataSet = New DataSet
+        billAdapter.Fill(billDataSet, "bill")
+        Return billDataSet.Tables(0)
+
+    End Function
+
+    Sub setBillingGrid(billTable As DataTable)
+        dgBIllingBillDetails.DataSource = billTable
+    End Sub
+
+    Function getPaymentListTable(Optional custNo As Integer = Nothing) As DataTable
+        log.Debug("getPaymentListTable: entry")
+        Dim paymentQuery As SqlCommand
+        If (custNo <> Nothing) Then
+            paymentQuery = New SqlCommand("select PaymentNo from payment where custNo=" + custNo.ToString, dbConnection)
+        Else
+            paymentQuery = New SqlCommand("select PaymentNo from payment", dbConnection)
+        End If
+
+        Dim paymentAdapter = New SqlDataAdapter()
+        paymentAdapter.SelectCommand = paymentQuery
+        Dim paymentDataSet = New DataSet
+        paymentAdapter.Fill(paymentDataSet, "payment")
+        Return paymentDataSet.Tables(0)
+
+    End Function
+    Sub setPaymentList(paymentTable As DataTable, Optional cmbPaymentList As ComboBox = Nothing)
+        If paymentTable.Rows.Count = 0 Then
+            If cmbPaymentList IsNot Nothing Then
+                cmbPaymentList.SelectedIndex = -1
+            Else
+                cmbPaymentPaymentNoList.SelectedIndex = -1
+            End If
+        End If
+
+        If cmbPaymentList IsNot Nothing Then
+            cmbPaymentList.BindingContext = New BindingContext()
+            cmbPaymentList.DataSource = paymentTable
+        Else
+            cmbPaymentPaymentNoList.BindingContext = New BindingContext()
+            cmbPaymentPaymentNoList.DataSource = paymentTable
+        End If
+
+    End Sub
+
+    Sub loadPaymentGrid(Optional custNo As Integer = Nothing)
+        'Try
+        Dim paymentQuery As SqlCommand
+        If (custNo <> Nothing) Then
+            paymentQuery = New SqlCommand("select p.*, p.UnPaidBilledAmount - p.FinalPaidAmount as NetBalance, b.DisplayBillNo  from payment p, bill b where p.BillNo = b.BillNo and p.custNo=" + custNo.ToString, dbConnection)
+        Else
+            paymentQuery = New SqlCommand("select p.*, p.UnPaidBilledAmount - p.FinalPaidAmount as NetBalance, b.DisplayBillNo  from payment p, bill b where p.BillNo = b.BillNo", dbConnection)
+        End If
+
+        Dim paymentAdapter = New SqlDataAdapter()
+        paymentAdapter.SelectCommand = paymentQuery
+        Dim paymentDataSet = New DataSet
+        paymentAdapter.Fill(paymentDataSet, "payment")
+        Dim paymentTable = paymentDataSet.Tables(0)
+        dgPaymentDetails.DataSource = paymentTable
+        dgPaymentDetails.Invalidate()
+        'Catch ex As Exception
+        'MessageBox.Show("Message to Agni User:   " & ex.Message)
+        'End 'Try
+    End Sub
+
+    Function getPaymentGridTable(Optional custNo As Integer = Nothing) As DataTable
+        log.Debug("getPaymentGridTable: entry")
+        Dim paymentQuery As SqlCommand
+        If (custNo <> Nothing) Then
+            paymentQuery = New SqlCommand("select p.*, p.UnPaidBilledAmount - p.FinalPaidAmount as NetBalance, b.DisplayBillNo  from payment p, bill b where p.BillNo = b.BillNo and p.custNo=" + custNo.ToString, dbConnection)
+        Else
+            paymentQuery = New SqlCommand("select p.*, p.UnPaidBilledAmount - p.FinalPaidAmount as NetBalance, b.DisplayBillNo  from payment p, bill b where p.BillNo = b.BillNo", dbConnection)
+        End If
+
+        Dim paymentAdapter = New SqlDataAdapter()
+        paymentAdapter.SelectCommand = paymentQuery
+        Dim paymentDataSet = New DataSet
+        paymentAdapter.Fill(paymentDataSet, "payment")
+        Return paymentDataSet.Tables(0)
+    End Function
+
+    Sub setPaymentGrid(paymentTable As DataTable)
+        dgPaymentDetails.DataSource = paymentTable
+    End Sub
+
 
     Function getDesignAmountWithGSTTax(billedType As Int16, Optional custNo As Integer = Nothing) As Decimal
 
@@ -242,156 +407,6 @@ Public Class AgnimainForm
 
     End Function
 
-    Sub loadOrReloadPaymentList(Optional cmbPaymentList As ComboBox = Nothing, Optional custNo As Integer = Nothing)
-        Dim paymentQuery As SqlCommand
-        If (custNo <> Nothing) Then
-            paymentQuery = New SqlCommand("select PaymentNo from payment where custNo=" + custNo.ToString, dbConnection)
-        Else
-            paymentQuery = New SqlCommand("select PaymentNo from payment", dbConnection)
-        End If
-
-        Dim paymentAdapter = New SqlDataAdapter()
-        paymentAdapter.SelectCommand = paymentQuery
-        Dim paymentDataSet = New DataSet
-        paymentAdapter.Fill(paymentDataSet, "payment")
-        Dim paymentTable As DataTable = paymentDataSet.Tables(0)
-
-        If cmbPaymentList IsNot Nothing Then
-            cmbPaymentList.BindingContext = New BindingContext()
-            cmbPaymentList.DataSource = paymentTable
-            cmbPaymentList.SelectedIndex = cmbPaymentList.Items.Count - 1
-        Else
-            cmbPaymentPaymentNoList.BindingContext = New BindingContext()
-            cmbPaymentPaymentNoList.DataSource = paymentTable
-            cmbPaymentPaymentNoList.SelectedIndex = cmbPaymentList.Items.Count - 1
-        End If
-    End Sub
-
-    Sub loadOrReloadBillList(Optional cmbBillList As ComboBox = Nothing, Optional custNo As Integer = Nothing)
-        Dim billQuery As SqlCommand
-        If (custNo <> Nothing) Then
-            billQuery = New SqlCommand("select BillNo from bill where custNo=" + custNo.ToString, dbConnection)
-        Else
-            billQuery = New SqlCommand("select BillNo from bill", dbConnection)
-        End If
-
-        Dim billAdapter = New SqlDataAdapter()
-        billAdapter.SelectCommand = billQuery
-        Dim billDataSet = New DataSet
-        billAdapter.Fill(billDataSet, "bill")
-        Dim billTable As DataTable = billDataSet.Tables(0)
-
-        If cmbBillList IsNot Nothing Then
-            cmbBillingBillNoList.BindingContext = New BindingContext()
-            cmbBillList.DataSource = billTable
-            cmbBillList.SelectedIndex = cmbBillList.Items.Count - 1
-        Else
-            cmbBillingBillNoList.BindingContext = New BindingContext()
-            cmbBillingBillNoList.DataSource = billTable
-            cmbBillingBillNoList.SelectedIndex = cmbBillingBillNoList.Items.Count - 1
-        End If
-    End Sub
-
-    Sub RefreshBillNoList(Optional custNo As Integer = -1)
-        Dim billQuery As SqlCommand
-        If (custNo <> -1) Then
-            billQuery = New SqlCommand("select billno from bill where custNo=" + custNo.ToString, dbConnection)
-        Else
-            billQuery = New SqlCommand("select billno from bill", dbConnection)
-        End If
-
-        Dim billAdapter = New SqlDataAdapter()
-        billAdapter.SelectCommand = billQuery
-        Dim billDataSet = New DataSet
-        billAdapter.Fill(billDataSet, "bill")
-        Dim billTable As DataTable = billDataSet.Tables(0)
-        cmbBillingBillNoList.DisplayMember = "billno"
-        cmbBillingBillNoList.DataSource = billTable
-    End Sub
-
-    Sub RefreshList1()
-    End Sub
-
-    Sub RefreshList2()
-        'Try
-        Ds2.Dispose()
-        Ds2 = New DataSet
-        Sda2.SelectCommand = cmd2
-        Sda2.Fill(Ds2, "design")
-        Dt2 = Ds2.Tables(0)
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-    Sub RefreshList4()
-        'Try
-        cmd10 = New SqlCommand("select * from payment", dbConnection)
-        sda10 = New SqlDataAdapter()
-        sda10.SelectCommand = cmd10
-        ds10 = New DataSet
-        sda10.Fill(ds10, "payment")
-        dt10 = ds10.Tables(0)
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-    Sub RefreshList3()
-        'Try
-        ds3.Dispose()
-        ds3 = New DataSet
-        sda3.SelectCommand = cmd3
-        sda3.Fill(ds3, "bill")
-        dt3 = ds3.Tables(0)
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-    Sub loadDesignGrid(Optional custNo As Integer = Nothing)
-        'Try
-        Dim designQuery As SqlCommand
-        If (custNo <> Nothing) Then
-            designQuery = New SqlCommand("select * from design where custNo=" + custNo.ToString, dbConnection)
-        Else
-            designQuery = New SqlCommand("select * from design", dbConnection)
-        End If
-
-        Dim designAdapter = New SqlDataAdapter()
-        designAdapter.SelectCommand = designQuery
-        Dim designDataSet = New DataSet
-        designAdapter.Fill(designDataSet, "design")
-        Dim designTable = designDataSet.Tables(0)
-        dgDesDesignDetails.DataSource = designTable
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Sub loadBillingGrid(Optional custNo As Integer = Nothing)
-        'Try
-        Dim billQuery As SqlCommand
-        If (custNo <> Nothing) Then
-            billQuery = New SqlCommand("select BillNo, BillDate, DesignCost, UnPaidAmountTillNow, CGST, CGST*DesignCost/100 as CGSTAmount, 
-                            SGST, SGST*DesignCost/100 as SGSTAmount, IGST, IGST*DesignCost/100 as IGSTAmount, (CGST+ SGST+ IGST)*DesignCost/100 as GSTAmount, ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost as DesignAmountGST, PaidAmount, 
-                            ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost+UnPaidAmountTillNow as TotalAmount, 
-                            (((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost+UnPaidAmountTillNow)-PaidAmount as RemainingBalance, Cancelled  from bill where custNo=" + custNo.ToString, dbConnection)
-        Else
-            billQuery = New SqlCommand("select BillNo, BillDate, DesignCost, UnPaidAmountTillNow, CGST, CGST*DesignCost/100 as CGSTAmount, 
-                            SGST, SGST*DesignCost/100 as SGSTAmount, IGST, IGST*DesignCost/100 as IGSTAmount, (CGST+ SGST+ IGST)*DesignCost/100 as GSTAmount, ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost as DesignAmountGST, PaidAmount, 
-                            ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost+UnPaidAmountTillNow as TotalAmount, 
-                            (((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost+UnPaidAmountTillNow)-PaidAmount as RemainingBalance, Cancelled  from bill", dbConnection)
-        End If
-
-        Dim billAdapter = New SqlDataAdapter()
-        billAdapter.SelectCommand = billQuery
-        Dim billDataSet = New DataSet
-        billAdapter.Fill(billDataSet, "bill")
-        Dim billTable = billDataSet.Tables(0)
-        dgBIllingBillDetails.DataSource = billTable
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
     Sub loadGSTForCustomerInBilling(custNo As Integer)
         'Try
 
@@ -419,74 +434,17 @@ Public Class AgnimainForm
         'End 'Try
     End Sub
 
-    Sub loadPaymentGrid(Optional custNo As Integer = Nothing)
-        'Try
-        Dim paymentQuery As SqlCommand
-        If (custNo <> Nothing) Then
-            paymentQuery = New SqlCommand("select *, UnPaidBilledAmount - FinalPaidAmount as NetBalance  from payment where custNo=" + custNo.ToString, dbConnection)
-        Else
-            paymentQuery = New SqlCommand("select *, UnPaidBilledAmount - FinalPaidAmount as NetBalance from payment", dbConnection)
-        End If
 
-        Dim paymentAdapter = New SqlDataAdapter()
-        paymentAdapter.SelectCommand = paymentQuery
-        Dim paymentDataSet = New DataSet
-        paymentAdapter.Fill(paymentDataSet, "payment")
-        Dim paymentTable = paymentDataSet.Tables(0)
-        dgPaymentDetails.DataSource = paymentTable
-        dgPaymentDetails.Invalidate()
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Sub refreshgrid2()
-        'Try
-        RefreshList3()
-        dgBIllingBillDetails.DataSource = ds3.Tables(0)
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-    Sub refreshgrid3()
-        'Try
-        RefreshList4()
-        dgPaymentDetails.DataSource = ds10.Tables(0)
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub ComboBox1_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles cmbCustCompanyList.KeyDown
-        'Try
-        'If (e.KeyCode = Keys.Enter) Then
-        '    Button1.PerformClick()
-        'Else
-        'If e.Alt Then
-        '    If e.KeyCode = Keys.D Then
-        '        tabAllTabsHolder.SelectTab(1)
-        '    ElseIf e.KeyCode = Keys.B Then
-        '        tabAllTabsHolder.SelectTab(2)
-        '    ElseIf e.KeyCode = Keys.P Then
-        '        tabAllTabsHolder.SelectTab(3)
-        '    ElseIf e.KeyCode = Keys.R Then
-        '        tabAllTabsHolder.SelectTab(4)
-        '    ElseIf e.KeyCode = Keys.H Then
-        '        tabAllTabsHolder.SelectTab(5)
-        '    End If
-        'End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
     Private Sub cmbCustCompanyList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbCustCompanyList.SelectedIndexChanged
         'Try
-        If (cmbCustCompanyList.SelectedIndex = -1) Then
+        gSelectedCustNoIndex = cmbCustCompanyList.SelectedIndex
+
+        If (cmbCustCompanyList.SelectedIndex = -1 Or cmbCustCompanyList.SelectedValue = -1) Then
+            resetCustomerScreen()
             Return
         End If
 
         Dim custNo As Integer = cmbCustCompanyList.SelectedValue
-        gSelectedCustNoIndex = cmbCustCompanyList.SelectedIndex
 
         Dim custSelectQuery = New SqlCommand("select * from customer where custno=" + custNo.ToString, dbConnection)
         Dim customerDataAdapter = New SqlDataAdapter()
@@ -521,8 +479,15 @@ Public Class AgnimainForm
 
     End Sub
 
-    Sub resetCustomerScreen()
+    Sub resetAllScreens()
         cmbCustCompanyList.SelectedIndex = -1
+        cmbDesCompanyList.SelectedIndex = -1
+        cmbBillingCompanyList.SelectedIndex = -1
+        cmbPaymentCompanyList.SelectedIndex = -1
+        cmbReportCompanyList.SelectedIndex = -1
+    End Sub
+
+    Sub resetCustomerScreen()
         txtGstIn.Text = ""
         txtOwnerName.Text = ""
         txtAddress.Text = ""
@@ -552,26 +517,33 @@ Public Class AgnimainForm
         cmbDesDesignList.Focus()
     End Sub
 
-    Sub resetBillingScreen()
+    Sub resetBillingScreen(Optional resetBillListIndex As Boolean = True)
         cmbBillingBillNoList.Enabled = True
         btnBillingCreateBill.Visible = True
         btnBillingConfirmCreateBill.Visible = False
         btnBillingCancelCreateBill.Visible = False
         btnBillingCancelBill.Text = "Mark Cancelled"
         lblCancelledBillIndicator.Visible = False
-        cmbBillingBillNoList.SelectedIndex = -1
+
+        If resetBillListIndex Then
+            cmbBillingBillNoList.SelectedIndex = -1
+        End If
+
         dpBillingBillDate.Text = ""
-        txtBillingPrevBalance.Text = "0.00"
-        txtBillingDesignAmoutBeforeGST.Text = "0.00"
-        txtBillingTotalAmount.Text = "0.00"
-        txtBillingPaidAmount.Text = "0.00"
-        txtBillingRemainingBalance.Text = "0.00"
+        txtBillingPrevBalance.Text = ""
+        txtBillingDesignAmoutBeforeGST.Text = ""
+        txtBillingTotalGSTAmount.Text = ""
+        txtBillingDesignAmoutAfterGST.Text = ""
+        txtBillingTotalAmount.Text = ""
+        txtBillingPaidAmount.Text = ""
+        txtBillingRemainingBalance.Text = ""
         cmbBillingBillNoList.Focus()
     End Sub
 
-    Sub resetPaymentScreen()
-        cmbPaymentPaymentNoList.SelectedIndex = -1
-
+    Sub resetPaymentScreen(Optional resetPaymentListIndex As Boolean = True)
+        log.Debug("resetPaymentScreen: resetting payment screen")
+        txtPaymentBillNo.Text = ""
+        txtPaymentDisplayBillNo.Text = ""
         dpPaymentDate.Text = ""
         radioPaymentByCash.Checked = True
         txtPaymentActualPaidAmount.Text = ""
@@ -582,9 +554,12 @@ Public Class AgnimainForm
         txtPaymentBankName.Text = ""
         dpPaymentChequeDate.Text = ""
         txtPaymentNetBalance.Text = ""
-        cmbPaymentPaymentNoList.Text = ""
         txtPaymentRemarks.Text = ""
         txtPaymentUnPaidBilledAmount.Text = ""
+
+        If resetPaymentListIndex Then
+            cmbPaymentPaymentNoList.SelectedIndex = -1
+        End If
 
         btnPaymentCreatePayment.Visible = True
         btnPaymentConfirmCreatePayment.Visible = False
@@ -645,8 +620,7 @@ Public Class AgnimainForm
                     comm.ExecuteNonQuery()
                 End Using
                 MessageBox.Show("Company successfully added")
-                resetCustomerScreen()
-                loadOrReloadCustomerList()
+                bwtCustListLoadThread.RunWorkerAsync()
             End If
         Catch ex As Exception
             MessageBox.Show("Message to Agni User:   " & ex.Message & " (Or) This Customer Record may already exist")
@@ -697,15 +671,8 @@ Public Class AgnimainForm
             comm.ExecuteNonQuery()
         End Using
         MessageBox.Show("Company successfully deleted")
-        resetCustomerScreen()
-        resetDesignScreen()
-        resetBillingScreen()
-        resetPaymentScreen()
-
-        loadOrReloadCustomerList()
-        loadDesignGrid()
-        loadBillingGrid()
-        loadPaymentGrid()
+        bwtCustListLoadThread.RunWorkerAsync()
+        resetAllScreens()
     End Sub
 
     Public Function deleteSelectedPayment() As Boolean
@@ -789,8 +756,7 @@ Public Class AgnimainForm
             End Using
             MessageBox.Show("Company successfully updated")
             resetCustomerScreen()
-            loadOrReloadCustomerList()
-            cmbCustCompanyList.SelectedIndex = cmbCustCompanyList.FindString(custNo.ToString)
+            bwtCustListLoadThread.RunWorkerAsync()
         End If
         'Catch ex As Exception
         'MessageBox.Show("Message to Agni User:   " & ex.Message & " Or this Customer Record may not exist")
@@ -853,6 +819,8 @@ Public Class AgnimainForm
                 designHeight = Decimal.Parse(txtDesHeight.Text.Trim)
             End If
 
+            Dim custNo As Integer = cmbDesCompanyList.SelectedValue
+
             Dim query As String = String.Empty
             query &= "INSERT INTO design (CustNo, DesignName, Height, Width, Colors, UnitCost,"
             query &= "Type, Image, Price, DesignDate, Billed) "
@@ -864,7 +832,7 @@ Public Class AgnimainForm
                     .Connection = dbConnection
                     .CommandType = CommandType.Text
                     .CommandText = query
-                    .Parameters.AddWithValue("@CustNo", cmbDesCompanyList.SelectedValue)
+                    .Parameters.AddWithValue("@CustNo", custNo)
                     .Parameters.AddWithValue("@DesignName", cmbDesDesignList.Text)
                     .Parameters.AddWithValue("@Height", designHeight)
                     .Parameters.AddWithValue("@Width", designWidth)
@@ -881,74 +849,14 @@ Public Class AgnimainForm
                 comm.ExecuteNonQuery()
             End Using
             MessageBox.Show("Design successfully added")
-            resetDesignScreen()
-            loadOrReloadDesignList(cmbDesDesignList, cmbDesCompanyList.SelectedValue)
-            loadDesignGrid(cmbDesCompanyList.SelectedValue)
+            bwtDesListLoadThread.RunWorkerAsync(custNo)
+            bwtDesGridLoadThread.RunWorkerAsync(custNo)
 
             'Catch ex As Exception
             'MessageBox.Show("Message to Agni User:   " & ex.Message & " Or this design Record may already exist")
         End If
         'End 'Try
 
-    End Sub
-
-    Private Sub TextBox15_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtDesCostPerUnit.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnDesAdd.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-
-    Private Sub txtDesCostPerUnit_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDesCostPerUnit.TextChanged
-        'Try
-        Dim designWidth As Decimal
-        If Val(txtDesWidth.Text) = 0 Then
-            designWidth = 1
-        Else
-            designWidth = Decimal.Parse(txtDesWidth.Text)
-        End If
-
-        Dim designHeight As Decimal
-        If Val(txtDesHeight.Text) = 0 Then
-            designHeight = 1
-        Else
-            designHeight = Decimal.Parse(txtDesHeight.Text)
-        End If
-
-        Dim noOfColors As Decimal
-        If Val(txtDesNoOfColors.Text) = 0 Then
-            noOfColors = 1
-        Else
-            noOfColors = Decimal.Parse(txtDesNoOfColors.Text)
-        End If
-
-        Dim costPerUnit As Decimal
-        If Val(txtDesCostPerUnit.Text) = 0 Then
-            costPerUnit = 1
-        Else
-            costPerUnit = Decimal.Parse(txtDesCostPerUnit.Text)
-        End If
-
-        txtDesCalculatedPrice.Text = Round(designWidth * designHeight * noOfColors * costPerUnit)
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
     End Sub
 
     Private Sub PictureBox2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbDesDesignImage.Click
@@ -1064,6 +972,8 @@ Public Class AgnimainForm
                 designHeight = Decimal.Parse(txtDesHeight.Text.Trim)
             End If
 
+            Dim custNo As Integer = cmbDesCompanyList.SelectedValue
+
             Dim query As String = String.Empty
             query &= "update design set DesignName=@DesignName, Height=@Height, Width=@Width, Colors=@Colors, UnitCost=@UnitCost,"
             query &= "Type=@Type, Image=@Image, Price=@Price, DesignDate=@DesignDate "
@@ -1090,8 +1000,8 @@ Public Class AgnimainForm
                 comm.ExecuteNonQuery()
             End Using
             MessageBox.Show("Design successfully updated")
-            resetDesignScreen()
-            loadDesignGrid(cmbDesCompanyList.SelectedValue)
+            bwtDesListLoadThread.RunWorkerAsync(custNo)
+            bwtDesGridLoadThread.RunWorkerAsync(custNo)
         End If
         ''Catch ex As Exception
         '    'MessageBox.Show("Message to Agni User:   " & ex.Message)
@@ -1120,8 +1030,8 @@ Public Class AgnimainForm
             End With
             comm.ExecuteNonQuery()
         End Using
-        resetDesignScreen()
-        loadDesignGrid(cmbDesCompanyList.SelectedValue)
+        bwtDesListLoadThread.RunWorkerAsync(custNo)
+        bwtDesGridLoadThread.RunWorkerAsync(custNo)
     End Sub
 
     Sub updateDesignsAsUnBilled(BillNo As Integer)
@@ -1129,6 +1039,8 @@ Public Class AgnimainForm
         If (BillNo = -1) Then
             Return
         End If
+
+        Dim custNo As Integer = cmbDesCompanyList.SelectedValue
 
         Dim query As String = String.Empty
         query &= "update design set Billed=0, BillNo=null where BillNo=@BillNo"
@@ -1142,8 +1054,8 @@ Public Class AgnimainForm
             End With
             comm.ExecuteNonQuery()
         End Using
-        resetDesignScreen()
-        loadDesignGrid(cmbDesCompanyList.SelectedValue)
+        bwtDesListLoadThread.RunWorkerAsync(custNo)
+        bwtDesGridLoadThread.RunWorkerAsync(custNo)
     End Sub
 
     Sub addPaidAmountInBill(BillNo As Integer, paidAmount As Decimal)
@@ -1151,6 +1063,8 @@ Public Class AgnimainForm
         If (BillNo = -1) Then
             Return
         End If
+
+        Dim custNo As Integer = cmbDesCompanyList.SelectedValue
 
         Dim query As String = String.Empty
         query &= "update bill set PaidAmount=PaidAmount+@paidAmount where BillNo=@BillNo"
@@ -1165,8 +1079,8 @@ Public Class AgnimainForm
             End With
             comm.ExecuteNonQuery()
         End Using
-        resetDesignScreen()
-        loadDesignGrid(cmbDesCompanyList.SelectedValue)
+        bwtCustListLoadThread.RunWorkerAsync(custNo)
+        bwtDesGridLoadThread.RunWorkerAsync(custNo)
     End Sub
 
     Private Sub btnDesDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDesDelete.Click
@@ -1178,6 +1092,8 @@ Public Class AgnimainForm
         End If
 
         If MessageBox.Show("Do you want to delete the design " & cmbDesDesignList.Text, "Confirmation", System.Windows.Forms.MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
+            Dim custNo As Integer = cmbDesCompanyList.SelectedValue
+
             flag = 0
             Dim query As String = String.Empty
             query &= "DELETE FROM design where DesignNo=@designNo"
@@ -1193,195 +1109,11 @@ Public Class AgnimainForm
             End Using
             MessageBox.Show("Design successfully deleted")
             resetDesignScreen()
-            loadOrReloadDesignList(Nothing, cmbDesCompanyList.SelectedValue)
-            loadDesignGrid(cmbDesCompanyList.SelectedValue)
-            'If flag = 0 Then
-            'MessageBox.Show("Cannot Delete.. There is no such design Record or it might be billed")
-            'End If
+            bwtDesListLoadThread.RunWorkerAsync(custNo)
+            bwtDesGridLoadThread.RunWorkerAsync(custNo)
+
         End If
 
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox12_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtDesWidth.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnDesAdd.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox12_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDesWidth.TextChanged
-        'Try
-        If Val(txtDesWidth.Text) = 0 Then
-            t12 = 1
-        Else
-            t12 = Decimal.Parse(txtDesWidth.Text)
-        End If
-        If Val(txtDesHeight.Text) = 0 Then
-            t13 = 1
-        Else
-            t13 = Decimal.Parse(txtDesHeight.Text)
-        End If
-        If Val(txtDesNoOfColors.Text) = 0 Then
-            t14 = 1
-        Else
-            t14 = Decimal.Parse(txtDesNoOfColors.Text)
-        End If
-        If Val(txtDesCostPerUnit.Text) = 0 Then
-            t15 = 1
-        Else
-            t15 = Decimal.Parse(txtDesCostPerUnit.Text)
-        End If
-        txtDesCalculatedPrice.Text = Round(t12 * t13 * t14 * t15, 0)
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox13_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtDesHeight.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnDesAdd.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox13_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDesHeight.TextChanged
-        'Try
-        If Val(txtDesWidth.Text) = 0 Then
-            t12 = 1
-        Else
-            t12 = Decimal.Parse(txtDesWidth.Text)
-        End If
-        If Val(txtDesHeight.Text) = 0 Then
-            t13 = 1
-        Else
-            t13 = Decimal.Parse(txtDesHeight.Text)
-        End If
-        If Val(txtDesNoOfColors.Text) = 0 Then
-            t14 = 1
-        Else
-            t14 = Decimal.Parse(txtDesNoOfColors.Text)
-        End If
-        If Val(txtDesCostPerUnit.Text) = 0 Then
-            t15 = 1
-        Else
-            t15 = Decimal.Parse(txtDesCostPerUnit.Text)
-        End If
-        txtDesCalculatedPrice.Text = Round(t12 * t13 * t14 * t15, 0)
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox14_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtDesNoOfColors.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnDesAdd.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox14_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDesNoOfColors.TextChanged
-        'Try
-        If Val(txtDesWidth.Text) = 0 Then
-            t12 = 1
-        Else
-            t12 = Decimal.Parse(txtDesWidth.Text)
-        End If
-        If Val(txtDesHeight.Text) = 0 Then
-            t13 = 1
-        Else
-            t13 = Decimal.Parse(txtDesHeight.Text)
-        End If
-        If Val(txtDesNoOfColors.Text) = 0 Then
-            t14 = 1
-        Else
-            t14 = Decimal.Parse(txtDesNoOfColors.Text)
-        End If
-        If Val(txtDesCostPerUnit.Text) = 0 Then
-            t15 = 1
-        Else
-            t15 = Decimal.Parse(txtDesCostPerUnit.Text)
-        End If
-        txtDesCalculatedPrice.Text = Round(t12 * t13 * t14 * t15, 0)
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-    Private Sub ComboBox5_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmbBillingBillNoList.Click
-        'Try
-        If cmbBillingCompanyList.Text.Trim.Equals("") Then
-            MsgBox("Please select Company name")
-            cmbBillingCompanyList.Focus()
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub ComboBox5_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles cmbBillingBillNoList.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnBillingCreateBill.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
         'Catch ex As Exception
         'MessageBox.Show("Message to Agni User:   " & ex.Message)
         'End 'Try
@@ -1389,24 +1121,28 @@ Public Class AgnimainForm
 
     Private Sub cmbBillingBillNoList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbBillingBillNoList.SelectedIndexChanged
         'Try
+        log.Debug("cmbBillingBillNoList_SelectedIndexChanged: entry")
+
+        log.Debug("cmbBillingBillNoList_SelectedIndexChanged: cmbBillingBillNoList.SelectedIndex: " + cmbBillingBillNoList.SelectedIndex.ToString)
 
         If (cmbBillingBillNoList.SelectedIndex = -1) Then
+            log.Debug("cmbBillingBillNoList_SelectedIndexChanged: resetBillingScreen is calling with false")
+            resetBillingScreen(False)
             Return
         End If
 
         Dim billNo As Integer = cmbBillingBillNoList.SelectedValue
 
-        billkey = billNo
-        'log.Debug("cmbBillingBillNoList_SelectedIndexChanged: cmbBillingBillNoList.SelectedValue  : " + billNo.ToString)
         Dim billSelectQuery = New SqlCommand("select * from bill where BillNo=" + billNo.ToString, dbConnection)
         Dim billAdapter = New SqlDataAdapter()
         billAdapter.SelectCommand = billSelectQuery
         Dim billDataSet = New DataSet
         billAdapter.Fill(billDataSet, "bill")
-        Dim billTable = billDataSet.Tables(0)
+        Dim billTable As DataTable = billDataSet.Tables(0)
 
         If (billTable.Rows.Count > 0) Then
-            Dim dataRow = billTable.Rows(0)
+            Dim dataRow As DataRow = billTable.Rows(0)
+            txtBillingActualBillNo.Text = dataRow.Item("BillNo")
             dpBillingBillDate.Text = dataRow.Item("BillDate")
             txtBillingPrevBalance.Text = dataRow.Item("UnPaidAmountTillNow")
             txtBillingDesignAmoutBeforeGST.Text = dataRow.Item("DesignCost")
@@ -1436,141 +1172,17 @@ Public Class AgnimainForm
         'End 'Try
     End Sub
 
-    Private Sub TextBox17_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtBillingTotalAmount.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnBillingCreateBill.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox18_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnBillingCreateBill.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox18_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        'Try
-        Dim T17, T18 As Decimal
-        If Val(txtBillingTotalAmount.Text) = 0 Then
-            T17 = 0
-        Else
-            T17 = Decimal.Parse(txtBillingTotalAmount.Text)
-        End If
-        'If Val(TextBox18.Text) = 0 Then
-        '    T18 = 0
-        'Else
-        '    T18 = Decimal.Parse(TextBox18.Text)
-        'End If
-        txtBillingRemainingBalance.Text = T17 - T18
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message & " (Check the input as a valid number) ")
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox19_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtBillingRemainingBalance.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnBillingCreateBill.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Class MyComboitem
-        Public ReadOnly ID As Integer
-        Public ReadOnly Text As String
-        Public Sub New(ByVal ID As Integer, ByVal Text As String)
-            'Try
-            Me.ID = ID
-            Me.Text = Text
-            'Catch ex As Exception
-            'MessageBox.Show("Message to Agni User:   " & ex.Message)
-            'End 'Try
-        End Sub
-        Public Overrides Function ToString() As String
-            Return Text
-        End Function
-    End Class
-
-    Private Sub ComboBox4_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles cmbBillingCompanyList.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnBillingCreateBill.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-
-
     Private Sub cmbBillingCompanyList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbBillingCompanyList.SelectedIndexChanged
         'Try
+        gSelectedCustNoIndex = cmbBillingCompanyList.SelectedIndex
 
-        If (cmbBillingCompanyList.SelectedIndex <> -1) Then
-            gSelectedCustNoIndex = cmbBillingCompanyList.SelectedIndex
-            billcust = cmbBillingCompanyList.Text
+        If (cmbBillingCompanyList.SelectedIndex = -1 Or cmbBillingCompanyList.SelectedValue = -1) Then
             resetBillingScreen()
-            loadOrReloadBillList(cmbBillingBillNoList, cmbBillingCompanyList.SelectedValue)
-            loadBillingGrid(cmbBillingCompanyList.SelectedValue)
+            Return
         End If
+
+        bwtBillListLoadThread.RunWorkerAsync(cmbBillingCompanyList.SelectedValue)
+        bwtBillGridLoadThread.RunWorkerAsync(cmbBillingCompanyList.SelectedValue)
 
         'Catch ex As Exception
         'MessageBox.Show("Message to Agni User:   " & ex.Message)
@@ -1663,433 +1275,30 @@ Public Class AgnimainForm
         'End 'Try
     End Sub
 
-    Private Sub ComboBox2_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles cmbDesCompanyList.KeyDown
-        'Try
-        'If (e.KeyCode = Keys.Enter) Then
-        '    Button8.PerformClick()
-        'Else
-        If e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-
-
     Private Sub cmbDesCompanyList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbDesCompanyList.SelectedIndexChanged
         'Try
-        If (cmbDesCompanyList.SelectedIndex = -1) Then
+        gSelectedCustNoIndex = cmbDesCompanyList.SelectedIndex
+
+        If (cmbDesCompanyList.SelectedIndex = -1 Or cmbDesCompanyList.SelectedValue = -1) Then
+            resetDesignScreen()
             Return
         End If
 
-        resetDesignScreen()
-
-        gSelectedCustNoIndex = cmbDesCompanyList.SelectedIndex
         WorkingChargeTypeChanged()
-        loadOrReloadDesignList(cmbDesDesignList, cmbDesCompanyList.SelectedValue)
-        loadDesignGrid(cmbDesCompanyList.SelectedValue)
+        bwtDesListLoadThread.RunWorkerAsync(cmbDesCompanyList.SelectedValue)
+        bwtDesGridLoadThread.RunWorkerAsync(cmbDesCompanyList.SelectedValue)
+        'loadDesignGrid(cmbDesCompanyList.SelectedValue)
         'Catch ex As Exception
         'MessageBox.Show("Message to Agni User:   " & ex.Message)
         'End 'Try
     End Sub
 
     Private Sub dgDesDesignDetails_CurrentCellChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles dgDesDesignDetails.CurrentCellChanged
-        'Try
-
         cmbDesDesignList.SelectedIndex = dgDesDesignDetails.CurrentRowIndex
-
-
-        'Dim designNo As Integer = dgDesDesignDetails.DataSource.Rows(dgDesDesignDetails.CurrentRowIndex).Item(0)
-        'Dim designSelectQuery = New SqlCommand("select * from design where DesignNo=" + designNo.ToString, dbConnection)
-        'Dim designDataAdapter = New SqlDataAdapter()
-        'designDataAdapter.SelectCommand = designSelectQuery
-        'Dim designDataSet = New DataSet
-        'designDataAdapter.Fill(designDataSet, "design")
-        'Dim designTable = designDataSet.Tables(0)
-
-        'If (designTable.Rows.Count > 0) Then
-        '    Dim dataRow = designTable.Rows(0)
-        '    cmbDesDesignName.SelectedValue = designNo
-        '    txtDesHeight.Text = dataRow.Item(3)
-        '    txtDesWidth.Text = dataRow.Item(4)
-        '    txtDesNoOfColors.Text = dataRow.Item(5)
-        '    txtDesCostPerUnit.Text = dataRow.Item(6)
-        '    If dataRow.Item(7).ToString.Equals("WP/Inch") Then
-        '        radioDesWP.Checked = True
-        '    ElseIf dataRow.Item(7).ToString.Equals("Working/Color") Then
-        '        radioDesWorking.Checked = True
-        '    Else
-        '        radioDesPrint.Checked = True
-        '    End If
-        '    If dataRow.Item(8) Is DBNull.Value Then
-        '        pbDesDesignImage.Image = Nothing
-        '    Else
-        '        Dim designImage() As Byte = CType(dataRow.Item(8), Byte())
-        '        Dim designImageBuffer As New MemoryStream(designImage)
-        '        pbDesDesignImage.Image = Image.FromStream(designImageBuffer)
-        '    End If
-        '    txtDesCalculatedPrice.Text = dataRow.Item(9)
-        '    dpDesDesignDate.Text = dataRow.Item(10)
-        'Else
-        '    MessageBox.Show("No data found for design: " + dgDesDesignDetails.DataSource.Rows(dgDesDesignDetails.CurrentRowIndex).Item(1))
-        'End If
-
     End Sub
 
-    Private Sub ComboBox3_Click(ByVal sender As Object, ByVal e As System.EventArgs)
-        'Try
-        If cmbDesCompanyList.Text.Trim.Equals("") Then
-            MsgBox("Please select Company name")
-            cmbDesCompanyList.Focus()
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub ComboBox3_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnDesAdd.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-
-    Private Sub Button25_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    End Sub
-
-
-
-
-
-
-    Private Sub Button27_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        'Try
-        If cmbCustCompanyList.Text.Trim.Equals("") Then
-            MsgBox("Please Select Company Name")
-            cmbCustCompanyList.Focus()
-        ElseIf txtAddress.Text.Trim.Equals("") Then
-            MsgBox("Please fill Address field")
-            txtAddress.Focus()
-        Else
-            AddressReport.Show()
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-
-    Private Sub TextBox11_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtGstIn.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnCustAdd.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox1_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtOwnerName.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnCustAdd.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox2_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtAddress.KeyDown
-        'Try
-        '    If (e.KeyCode = Keys.Enter) Then
-        '        Button1.PerformClick()
-        If e.Alt Then
-            If e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox3_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtMobile.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnCustAdd.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox3_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtMobile.TextChanged
-
-    End Sub
-
-    Private Sub TextBox4_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnCustAdd.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox4_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    End Sub
-
-    Private Sub TextBox5_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtLandline.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnCustAdd.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox5_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtLandline.TextChanged
-
-    End Sub
-
-    Private Sub TextBox6_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnCustAdd.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox6_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    End Sub
-
-    Private Sub TextBox7_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtEmail.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnCustAdd.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox7_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtEmail.TextChanged
-
-    End Sub
-
-    Private Sub TextBox8_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnCustAdd.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox8_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    End Sub
-
-    Private Sub TextBox9_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnCustAdd.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox9_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    End Sub
-
-    Private Sub TextBox10_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtWebsite.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnCustAdd.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox10_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtWebsite.TextChanged
-
-    End Sub
-
-    Private Sub Button32_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCustClear.Click
-        resetCustomerScreen()
-    End Sub
-
-    Private Sub DataGrid1_Navigate(ByVal sender As System.Object, ByVal ne As System.Windows.Forms.NavigateEventArgs)
-
-    End Sub
-
-    Private Sub DataGrid3_ControlRemoved(ByVal sender As Object, ByVal e As System.Windows.Forms.ControlEventArgs) Handles DataGrid3.ControlRemoved
-
+    Private Sub btnCustClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCustClear.Click
+        cmbCustCompanyList.SelectedIndex = -1
     End Sub
 
     Private Sub DataGrid3_CurrentCellChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGrid3.CurrentCellChanged
@@ -2130,9 +1339,6 @@ Public Class AgnimainForm
         'End 'Try
     End Sub
 
-    Private Sub DataGrid3_Navigate(ByVal sender As System.Object, ByVal ne As System.Windows.Forms.NavigateEventArgs) Handles DataGrid3.Navigate
-
-    End Sub
 
     Private Sub WorkingChargeTypeChanged() Handles radioDesWP.CheckedChanged, radioDesWorking.CheckedChanged, radioDesPrint.CheckedChanged
 
@@ -2164,299 +1370,100 @@ Public Class AgnimainForm
         End If
     End Sub
 
-    Private Sub TextBox16_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtDesCalculatedPrice.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnDesAdd.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-
-    End Sub
-
-    Private Sub TextBox16_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtDesCalculatedPrice.LostFocus
-        txtDesCalculatedPrice.ReadOnly = True
-    End Sub
-
-    Private Sub TextBox16_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDesCalculatedPrice.TextChanged
-
-    End Sub
-
-    Private Sub RadioButton1_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles radioDesWP.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnDesAdd.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub RadioButton2_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles radioDesWorking.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnDesAdd.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub DateTimePicker2_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles dpDesDesignDate.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnDesAdd.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub DateTimePicker2_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dpDesDesignDate.ValueChanged
-
-    End Sub
-
-    Private Sub DateTimePicker1_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles dpBillingBillDate.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnBillingCreateBill.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub DateTimePicker1_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dpBillingBillDate.ValueChanged
-
-    End Sub
-
-    Private Sub TextBox20_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtBillingPrevBalance.KeyDown
-        'Try
-        'If (e.KeyCode = Keys.Enter) Then
-        '    btnBillingCreateBill.PerformClick()
-        'ElseIf e.Alt Then
-        '    If e.KeyCode = Keys.C Then
-        '        tabAllTabsHolder.SelectTab(0)
-        '    ElseIf e.KeyCode = Keys.D Then
-        '        tabAllTabsHolder.SelectTab(1)
-        '    ElseIf e.KeyCode = Keys.P Then
-        '        tabAllTabsHolder.SelectTab(3)
-        '    ElseIf e.KeyCode = Keys.R Then
-        '        tabAllTabsHolder.SelectTab(4)
-        '    ElseIf e.KeyCode = Keys.H Then
-        '        tabAllTabsHolder.SelectTab(5)
-        '    End If
-        'End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox20_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBillingPrevBalance.TextChanged
-
-    End Sub
-
-    Private Sub TextBox21_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtBillingDesignAmoutBeforeGST.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnBillingCreateBill.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox21_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBillingDesignAmoutBeforeGST.TextChanged
-
-    End Sub
-
-    Private Sub ComboBox6_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles cmbReportCompanyList.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            Button26.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
     Private Sub ComboBox6_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbReportCompanyList.SelectedIndexChanged
         'Try
-        If (cmbReportCompanyList.SelectedIndex <> -1) Then
-            gSelectedCustNoIndex = cmbReportCompanyList.SelectedIndex
-            loadOrReloadDesignList(cmbReportDesignList, cmbDesCompanyList.SelectedValue)
-        End If
+        'gSelectedCustNoIndex = cmbReportCompanyList.SelectedIndex
+        'If (cmbReportCompanyList.SelectedIndex = -1) Then
+        '    Return
+        'End If
+
+        'loadOrReloadDesignList(cmbReportDesignList, cmbDesCompanyList.SelectedValue)
 
         'Catch ex As Exception
         'MessageBox.Show("Message to Agni User:   " & ex.Message)
         'End 'Try
     End Sub
 
-    Private Sub DateTimePicker3_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles DateTimePicker3.KeyDown
-
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            Button26.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-
-    End Sub
-
-    Private Sub DateTimePicker3_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DateTimePicker3.ValueChanged
-        PictureBox1.Image = Nothing
-    End Sub
-
-    Private Sub DateTimePicker4_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles DateTimePicker4.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            Button26.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-
-    Private Sub Label22_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label22.Click
-
-    End Sub
-
-    Private Sub Button33_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button33.Click
-
-    End Sub
-
-    Private Sub Button33_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Button33.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Space) Then
-            pictureload()
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button34_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDesEditPrice.Click
+    Private Sub btnDesEditPrice_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDesEditPrice.Click
         txtDesCalculatedPrice.ReadOnly = Not txtDesCalculatedPrice.ReadOnly
         txtDesCalculatedPrice.Focus()
     End Sub
 
-    Private Sub TabPage2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tabDesign.Click
-
-    End Sub
-
     Private Sub btnDesClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDesClear.Click
         resetDesignScreen()
+    End Sub
+
+    Private Sub bwtCustListThread_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bwtCustListLoadThread.DoWork
+        e.Result = getCustomerListTable()
+    End Sub
+
+    Private Sub bwtCustListThread_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles bwtCustListLoadThread.RunWorkerCompleted
+        Dim customerTable As DataTable = e.Result
+        setCustomerList(customerTable)
+    End Sub
+
+    Private Sub bwtDesListThread_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bwtDesListLoadThread.DoWork
+        Dim custNo As Integer = e.Argument
+        e.Result = getDesignListTable(custNo)
+    End Sub
+
+    Private Sub bwtDesListThread_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles bwtDesListLoadThread.RunWorkerCompleted
+        Dim designTable As DataTable = e.Result
+        setDesignList(designTable)
+    End Sub
+
+    Private Sub bwtDesGridLoadThread_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bwtDesGridLoadThread.DoWork
+        Dim custNo As Integer = e.Argument
+        e.Result = getDesignGridTable(custNo)
+    End Sub
+
+    Private Sub bwtDesGridLoadThread_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles bwtDesGridLoadThread.RunWorkerCompleted
+        Dim designTable As DataTable = e.Result
+        setDesignGrid(designTable)
+    End Sub
+
+    Private Sub bwtBillListLoadThread_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bwtBillListLoadThread.DoWork
+        Dim custNo As Integer = e.Argument
+        e.Result = getBillListTable(custNo)
+    End Sub
+
+    Private Sub bwtBillListLoadThread_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles bwtBillListLoadThread.RunWorkerCompleted
+        Dim billTable As DataTable = e.Result
+        setBillingList(billTable)
+    End Sub
+
+    Private Sub bwtBillGridLoadThread_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bwtBillGridLoadThread.DoWork
+        Dim custNo As Integer = e.Argument
+        e.Result = getBillGridTable(custNo)
+    End Sub
+
+    Private Sub bwtBillGridLoadThread_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles bwtBillGridLoadThread.RunWorkerCompleted
+        Dim billingTable As DataTable = e.Result
+        setBillingGrid(billingTable)
+    End Sub
+
+    Private Sub bwtPaymentListLoadThread_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bwtPaymentListLoadThread.DoWork
+        Dim custNo As Integer = e.Argument
+        e.Result = getPaymentListTable(custNo)
+    End Sub
+
+    Private Sub bwtPaymentListLoadThread_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles bwtPaymentListLoadThread.RunWorkerCompleted
+        Dim paymentTable As DataTable = e.Result
+        setPaymentList(paymentTable)
+    End Sub
+
+    Private Sub bwtPaymentGridLoadThread_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bwtPaymentGridLoadThread.DoWork
+        Dim custNo As Integer = e.Argument
+        e.Result = getPaymentGridTable(custNo)
+    End Sub
+
+    Private Sub bwtPaymentGridLoadThread_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles bwtPaymentGridLoadThread.RunWorkerCompleted
+        Dim paymentTable As DataTable = e.Result
+        setPaymentGrid(paymentTable)
+    End Sub
+
+    Private Sub tabPayment_Click(sender As Object, e As EventArgs) Handles tabPayment.Click
+
     End Sub
 
     Private Sub btnBillingClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBillingClear.Click
@@ -2530,676 +1537,8 @@ Public Class AgnimainForm
         'End 'Try
     End Sub
 
-    Private Sub TextBox11_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtGstIn.TextChanged
-
-    End Sub
-
-    Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtOwnerName.TextChanged
-
-    End Sub
-
-    Private Sub TextBox2_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtAddress.TextChanged
-
-    End Sub
-
-    Private Sub Button1_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles btnCustAdd.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnCustAdd.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button2_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles btnCustDelete.KeyDown
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button3_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles btnCustUpdate.KeyDown
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button32_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles btnCustClear.KeyDown
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button4_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button5_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button6_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button7_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
     Private Sub TabPage1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tabCustomer.Click
         cmbCustCompanyList.Focus()
-    End Sub
-
-    Private Sub Button27_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button31_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button29_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button30_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button28_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox22_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox22_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    End Sub
-
-    Private Sub TabPage1_Enter(ByVal sender As Object, ByVal e As System.EventArgs) Handles tabCustomer.Enter
-        cmbCustCompanyList.Focus()
-    End Sub
-
-    Private Sub TabPage1_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles tabCustomer.GotFocus
-        cmbCustCompanyList.Focus()
-    End Sub
-
-    Private Sub TabPage1_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles tabCustomer.MouseDown
-        cmbCustCompanyList.Focus()
-    End Sub
-
-    Private Sub Button34_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles btnDesEditPrice.KeyDown
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button8_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles btnDesAdd.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnDesAdd.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button9_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles btnDesDelete.KeyDown
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button10_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles btnDesUpdate.KeyDown
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button35_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles btnDesClear.KeyDown
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-
-    Private Sub Button13_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button14_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button15_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button12_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button22_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles btnBillingPrintBill.KeyDown
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button24_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button23_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button36_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles btnBillingClear.KeyDown
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button17_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button16_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button11_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button18_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        If e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button25_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        'If (e.KeyCode = Keys.Enter) Then
-        'Button20.PerformClick()
-        'Else
-        If e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub DateTimePicker4_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DateTimePicker4.ValueChanged
-        PictureBox1.Image = Nothing
-    End Sub
-
-    Private Sub Button20_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        'If (e.KeyCode = Keys.Enter) Then
-        'Button20.PerformClick()
-        'Else
-        If e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button26_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Button26.KeyDown
-        'Try
-        'If (e.KeyCode = Keys.Enter) Then
-        'Button20.PerformClick()
-        'Else
-        If e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
     End Sub
 
     Private Sub DataGrid4_MouseDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles DataGrid4.MouseDoubleClick
@@ -3238,57 +1577,7 @@ Public Class AgnimainForm
         'End 'Try
     End Sub
 
-
-
-    Private Sub DataGrid4_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles DataGrid4.MouseUp
-        ''Try
-        '    Dim bilr As DataTable
-        '    Dim billdate As Date
-        '    bilr = DataGrid4.DataSource
-        '    billkey = bilr.Rows(DataGrid4.CurrentRowIndex).Item(8).ToString + "/" + bilr.Rows(DataGrid4.CurrentRowIndex).Item(1).ToString
-        '    billcust = bilr.Rows(DataGrid4.CurrentRowIndex).Item(0)
-
-        '    Dim billkey1 As String = billkey
-        '    billkey1 = billkey1.Substring(billkey1.IndexOf("/") + 1, billkey1.Length - billkey1.IndexOf("/") - 1)
-        '    a = dt3.Rows.Count - 1
-        '    Dim countcust As Int32 = 0
-        '    While (a >= 0)
-        '        dr3 = dt3.Rows(a)
-        '        If billcust.Equals(dr3.Item(0).ToString) And billkey1 >= dr3.Item(1) Then
-        '            countcust += 1
-        '            PrevBillNo = "NIL"
-        '            If countcust = 2 Then
-        '                PrevBillNo = dr3.Item(8).ToString + "/" + dr3.Item(1).ToString
-        '                Exit While
-        '            End If
-        '        End If
-        '        a = a - 1
-        '    End While
-
-        '    billdate = bilr.Rows(DataGrid4.CurrentRowIndex).Item(2)
-        '    billdatestring = billdate.ToString("dd/MM/yyyy")
-        '    T17 = bilr.Rows(DataGrid4.CurrentRowIndex).Item(5)
-        '    T20 = bilr.Rows(DataGrid4.CurrentRowIndex).Item(3)
-        '    T21 = bilr.Rows(DataGrid4.CurrentRowIndex).Item(4)
-        '    Agnireport.Show()
-        ''Catch ex As Exception
-        '    'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        ''End 'Try
-    End Sub
-
-    Private Sub Label64_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label64.Click
-
-    End Sub
-
-    Private Sub DataGrid2_Navigate(ByVal sender As System.Object, ByVal ne As System.Windows.Forms.NavigateEventArgs) Handles dgBIllingBillDetails.Navigate
-
-    End Sub
-
-    Private Sub tabBilling_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tabBilling.Click
-        'resetBillingScreen()
-    End Sub
-
-    Private Sub Button40_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBilingOutstandingBalance.Click
+    Private Sub btnBilingOutstandingBalance_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBilingOutstandingBalance.Click
         'Try
         'Dim ds10 As DataSet
 
@@ -3380,65 +1669,26 @@ Public Class AgnimainForm
         'End 'Try
     End Sub
 
-    Private Sub RadioButton5_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles radioPaymentByCash.CheckedChanged
-        GroupBox5.Visible = False
+    Private Sub radioPaymentByCash_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles radioPaymentByCash.CheckedChanged
+        gbBankDetails.Visible = False
     End Sub
 
-    Private Sub RadioButton6_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles radioPaymentByCheque.CheckedChanged
-        GroupBox5.Visible = True
-    End Sub
-
-    Private Sub ComboBox7_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles cmbPaymentCompanyList.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnPaymentCreatePayment.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
+    Private Sub radioPaymentByCheque_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles radioPaymentByCheque.CheckedChanged
+        gbBankDetails.Visible = True
     End Sub
 
     Private Sub cmbPaymentCompanyList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbPaymentCompanyList.SelectedIndexChanged
-        If (cmbPaymentCompanyList.SelectedIndex <> -1) Then
-            gSelectedCustNoIndex = cmbPaymentCompanyList.SelectedIndex
-            resetPaymentScreen()
-            loadOrReloadPaymentList(cmbPaymentPaymentNoList, cmbPaymentCompanyList.SelectedValue)
-            loadPaymentGrid(cmbPaymentCompanyList.SelectedValue)
-        End If
-    End Sub
+        log.debug("cmbPaymentCompanyList_SelectedIndexChanged: entry")
+        gSelectedCustNoIndex = cmbPaymentCompanyList.SelectedIndex
 
-    Private Sub TextBox25_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtPaymentActualPaidAmount.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnPaymentCreatePayment.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
+        If (cmbPaymentCompanyList.SelectedIndex = -1 Or cmbPaymentCompanyList.SelectedValue = -1) Then
+            resetPaymentScreen()
+            Return
         End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
+
+        bwtPaymentListLoadThread.RunWorkerAsync(cmbPaymentCompanyList.SelectedValue)
+        bwtPaymentGridLoadThread.RunWorkerAsync(cmbPaymentCompanyList.SelectedValue)
+
     End Sub
 
     Sub calculatePaymentFinalPaidAmount() Handles txtPaymentActualPaidAmount.TextChanged, txtPaymentDiscountAmount.TextChanged, txtPaymentTaxDeductionAmount.TextChanged
@@ -3464,213 +1714,6 @@ Public Class AgnimainForm
         txtPaymentNetBalance.Text = Format((unPaidBillAmount - finalPaidAmount), "0.00")
 
     End Sub
-
-    Private Sub TextBox26_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtPaymentDiscountAmount.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnPaymentCreatePayment.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox27_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtPaymentTaxDeductionAmount.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnPaymentCreatePayment.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox28_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtPaymentChequeNo.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnPaymentCreatePayment.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox29_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtPaymentBankName.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnPaymentCreatePayment.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox29_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtPaymentBankName.TextChanged
-
-    End Sub
-
-    Private Sub TextBox30_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtPaymentRemarks.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnPaymentCreatePayment.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox30_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtPaymentRemarks.TextChanged
-
-    End Sub
-
-    Private Sub RadioButton5_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles radioPaymentByCash.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnPaymentCreatePayment.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub RadioButton6_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles radioPaymentByCheque.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnPaymentCreatePayment.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Label47_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Label87_Click(sender As Object, e As EventArgs) Handles Label87.Click
-
-    End Sub
-
-    Private Sub Label60_Click(sender As Object, e As EventArgs) Handles Label60.Click
-
-    End Sub
-
-    Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click
-
-    End Sub
-
-    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles lblIGST.Click
-
-    End Sub
-
-    Private Sub Label5_Click(sender As Object, e As EventArgs) Handles lblSGST.Click
-
-    End Sub
-
-    Private Sub Label9_Click(sender As Object, e As EventArgs) Handles lblCGST.Click
-
-    End Sub
-
-    Private Sub TextBox6_TextChanged_1(sender As Object, e As EventArgs) Handles txtIGST.TextChanged
-
-    End Sub
-
-    Private Sub TextBox4_TextChanged_1(sender As Object, e As EventArgs) Handles txtPrintCharge.TextChanged
-
-    End Sub
-
-    Private Sub Label91_Click(sender As Object, e As EventArgs) Handles lblWorkingCharge.Click
-
-    End Sub
-
-    Private Sub Label90_Click(sender As Object, e As EventArgs) Handles lblPrintCharge.Click
-
-    End Sub
-
     Private Sub btnBillingCreateBill_Click(sender As Object, e As EventArgs) Handles btnBillingCreateBill.Click
 
         'log.Debug("btnBillingCreateBill_Click: entry")
@@ -3776,10 +1819,6 @@ Public Class AgnimainForm
 
     End Function
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
     Private Sub btnBillingConfirmCreateBill_Click(sender As Object, e As EventArgs) Handles btnBillingConfirmCreateBill.Click
         If cmbBillingCompanyList.Text.Trim.Equals("") Then
             MessageBox.Show("Enter Valid Company Name")
@@ -3807,14 +1846,17 @@ Public Class AgnimainForm
             Dim newBillNo As Integer = -1
 
             Dim query As String = String.Empty
-            query &= "INSERT INTO bill (CustNo, BillDate, DesignCost, CGST, SGST, IGST, UnPaidAmountTillNow, PaidAmount, Cancelled) "
-            query &= "VALUES (@CustNo, @BillDate, @DesignCost, @CGST, @SGST, @IGST, @UnPaidAmountTillNow, @PaidAmount, @Cancelled); SELECT SCOPE_IDENTITY()"
+            query &= "INSERT INTO bill (DisplayBillNo, CustNo, BillDate, DesignCost, CGST, SGST, IGST, UnPaidAmountTillNow, PaidAmount, Cancelled) "
+            query &= "VALUES (@DisplayBillNo, @CustNo, @BillDate, @DesignCost, @CGST, @SGST, @IGST, @UnPaidAmountTillNow, @PaidAmount, @Cancelled); SELECT SCOPE_IDENTITY()"
+
+            gDisplayBillNo += 1
 
             Using comm As New SqlCommand()
                 With comm
                     .Connection = dbConnection
                     .CommandType = CommandType.Text
                     .CommandText = query
+                    .Parameters.AddWithValue("@DisplayBillNo", gDisplayBillNo)
                     .Parameters.AddWithValue("@CustNo", cmbBillingCompanyList.SelectedValue)
                     .Parameters.AddWithValue("@BillDate", dpBillingBillDate.Text)
                     .Parameters.AddWithValue("@DesignCost", Decimal.Parse(txtBillingDesignAmoutBeforeGST.Text))
@@ -3833,19 +1875,13 @@ Public Class AgnimainForm
 
             MessageBox.Show("Bill successfully added")
             resetBillingScreen()
-            loadOrReloadBillList(cmbBillingBillNoList, cmbBillingCompanyList.SelectedValue)
-            loadBillingGrid(cmbDesCompanyList.SelectedValue)
+            bwtBillListLoadThread.RunWorkerAsync(cmbBillingCompanyList.SelectedValue)
+            bwtBillGridLoadThread.RunWorkerAsync(cmbBillingCompanyList.SelectedValue)
 
             btnBillingCreateBill.Visible = True
             btnBillingConfirmCreateBill.Visible = False
             btnBillingCancelCreateBill.Visible = False
             cmbBillingBillNoList.Enabled = True
-
-            'log.Debug("btnBillingConfirmCreateBill_Click: Setting cmbBillingBillNoList index to:  " + cmbBillingBillNoList.FindString(newBillNo.ToString).ToString)
-
-            cmbBillingBillNoList.SelectedIndex = cmbBillingBillNoList.FindString(newBillNo.ToString)
-
-            'log.Debug("btnBillingConfirmCreateBill_Click: cmbBillingBillNoList.SelectedIndex is set to index: " + cmbBillingBillNoList.SelectedIndex.ToString)
 
             'Catch ex As Exception
             'MessageBox.Show("Message To Agni User:   " & ex.Message & " Or this design Record may already exist")
@@ -3867,7 +1903,7 @@ Public Class AgnimainForm
         End If
 
         Dim lastBillNumber = lastBillRow.Item("BillNo")
-        cmbBillingBillNoList.SelectedIndex = cmbBillingBillNoList.FindString(lastBillNumber.ToString)
+        cmbBillingBillNoList.SelectedValue = lastBillNumber
     End Sub
 
     Private Sub btnBillingCancelBill_Click(sender As Object, e As EventArgs) Handles btnBillingCancelBill.Click
@@ -3879,6 +1915,7 @@ Public Class AgnimainForm
         End If
 
         Dim billNo As Integer = cmbBillingBillNoList.SelectedValue
+        Dim custNo As Integer = cmbBillingCompanyList.SelectedValue
 
         Dim updateQuery As String = String.Empty
         updateQuery &= "update bill set Cancelled=@Cancelled where BillNo=@BillNo"
@@ -3898,17 +1935,9 @@ Public Class AgnimainForm
         MessageBox.Show("Bill " + billNo.ToString + " is marked as cancelled bill. You need to create a new bill for the designs which were billed in this bill")
 
         resetBillingScreen()
-        loadOrReloadBillList()
-        'log.Debug("btnBillingCancelBill_Click: setting cmbBillingBillNoList.SelectedIndex to " + cmbBillingBillNoList.FindString(billNo.ToString).ToString)
-        cmbBillingBillNoList.SelectedIndex = cmbBillingBillNoList.FindString(billNo.ToString)
-        loadBillingGrid(cmbDesCompanyList.SelectedValue)
-    End Sub
 
-    Private Sub dgDesDesignDetails_Navigate(sender As Object, ne As NavigateEventArgs)
-
-    End Sub
-
-    Private Sub dgDesDesignDetails_MouseUp(sender As Object, e As MouseEventArgs)
+        bwtBillListLoadThread.RunWorkerAsync(custNo)
+        bwtBillGridLoadThread.RunWorkerAsync(custNo)
 
     End Sub
 
@@ -3918,6 +1947,12 @@ Public Class AgnimainForm
 
     Private Sub btnPaymentCreatePayment_Click(sender As Object, e As EventArgs) Handles btnPaymentCreatePayment.Click
         'log.Debug("btnBillingCreateBill_Click: entry")
+
+        If (cmbPaymentCompanyList.SelectedIndex = -1) Then
+            MessageBox.Show("Please select the company name to create a payment")
+            cmbPaymentCompanyList.Focus()
+            Return
+        End If
 
         Dim custNo = cmbPaymentCompanyList.SelectedValue
 
@@ -3934,7 +1969,8 @@ Public Class AgnimainForm
 
         resetPaymentScreen()
 
-        txtPaymentBillNumber.Text = lastBillRow.Item("BillNo")
+        txtPaymentDisplayBillNo.Text = lastBillRow.Item("DisplayBillNo")
+        txtPaymentBillNo.Text = lastBillRow.Item("BillNo")
         txtPaymentUnPaidBilledAmount.Text = Format(unPaidBalance, "0.00")
         cmbPaymentPaymentNoList.Enabled = False
         btnPaymentCreatePayment.Visible = False
@@ -4019,7 +2055,7 @@ Public Class AgnimainForm
                     .CommandType = CommandType.Text
                     .CommandText = query
                     .Parameters.AddWithValue("@CustNo", cmbPaymentCompanyList.SelectedValue)
-                    .Parameters.AddWithValue("@BillNo", txtPaymentBillNumber.Text)
+                    .Parameters.AddWithValue("@BillNo", txtPaymentDisplayBillNo.Text)
                     .Parameters.AddWithValue("@UnPaidBilledAmount", txtPaymentUnPaidBilledAmount.Text)
                     .Parameters.AddWithValue("@PaymentDate", dpPaymentDate.Text)
                     .Parameters.AddWithValue("@PaymentMode", paymentType)
@@ -4045,14 +2081,12 @@ Public Class AgnimainForm
 
             cmbPaymentPaymentNoList.Text = newPaymentNo
 
-            addPaidAmountInBill(txtPaymentBillNumber.Text, txtPaymentFinalPaidAmount.Text)
+            addPaidAmountInBill(txtPaymentDisplayBillNo.Text, txtPaymentFinalPaidAmount.Text)
 
             MessageBox.Show("Payment successfully added")
 
-            resetPaymentScreen()
-            loadOrReloadPaymentList(cmbPaymentPaymentNoList, cmbBillingCompanyList.SelectedValue)
-            loadPaymentGrid(cmbDesCompanyList.SelectedValue)
-            cmbPaymentPaymentNoList.SelectedIndex = cmbPaymentPaymentNoList.FindString(newPaymentNo.ToString)
+            bwtPaymentListLoadThread.RunWorkerAsync(cmbBillingCompanyList.SelectedValue)
+            bwtPaymentGridLoadThread.RunWorkerAsync(cmbBillingCompanyList.SelectedValue)
         End If
     End Sub
 
@@ -4065,7 +2099,7 @@ Public Class AgnimainForm
         End If
 
         Dim lastPaymentNumber = lastPaymentRow.Item("PaymentNo")
-        cmbPaymentPaymentNoList.SelectedIndex = cmbPaymentPaymentNoList.FindString(lastPaymentNumber.ToString)
+        cmbPaymentPaymentNoList.SelectedValue = lastPaymentNumber
 
     End Sub
 
@@ -4095,13 +2129,25 @@ Public Class AgnimainForm
 
     End Sub
 
-    Private Sub txtBillingCGSTPercent_TextChanged(sender As Object, e As EventArgs) Handles txtBillingCGSTPercent.TextChanged
+    Sub calculateDesignCostOnChange(sender As Object, e As EventArgs) Handles txtDesWidth.TextChanged, txtDesHeight.TextChanged,
+        txtDesNoOfColors.TextChanged, txtDesCostPerUnit.TextChanged
 
+        Dim designWidth As Decimal = 0
+        Dim designHeight As Decimal = 0
+        Dim designNoOfColors As Decimal = 0
+        Dim designCostPerUnit As Decimal = 0
+
+        Decimal.TryParse(txtDesWidth.Text, designWidth)
+        Decimal.TryParse(txtDesHeight.Text, designHeight)
+        Decimal.TryParse(txtDesNoOfColors.Text, designNoOfColors)
+        Decimal.TryParse(txtDesCostPerUnit.Text, designCostPerUnit)
+
+        Dim designCost = If(designWidth = 0, 1, designWidth) * If(designHeight = 0, 1, designHeight) *
+                          If(designNoOfColors = 0, 1, designNoOfColors) * If(designCostPerUnit = 0, 1, designCostPerUnit)
+
+        txtDesCalculatedPrice.Text = Math.Floor(designCost)
     End Sub
 
-    Private Sub txtBillingTotalGSTAmount_TextChanged(sender As Object, e As EventArgs) Handles txtBillingTotalGSTAmount.TextChanged
-
-    End Sub
 
     Private Sub dgPaymentDetails_CurrentCellChanged(sender As Object, e As EventArgs) Handles dgPaymentDetails.CurrentCellChanged
 
@@ -4114,13 +2160,16 @@ Public Class AgnimainForm
 
     Private Sub cmbPaymentPaymentNoList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbPaymentPaymentNoList.SelectedIndexChanged
 
+        log.debug("cmbPaymentPaymentNoList_SelectedIndexChanged: cmbPaymentPaymentNoList.SelectedIndex: " + cmbPaymentPaymentNoList.SelectedIndex.ToString)
+
         If (cmbPaymentPaymentNoList.SelectedIndex = -1) Then
+            resetPaymentScreen(False)
             Return
         End If
 
         Dim paymentNo As Integer = cmbPaymentPaymentNoList.SelectedValue
         'log.Debug("cmbPaymentPaymentNoList_SelectedIndexChanged: cmbPaymentPaymentNoList.SelectedValue  : " + paymentNo.ToString)
-        Dim paymentSelectQuery = New SqlCommand("select * from payment where PaymentNo=" + paymentNo.ToString, dbConnection)
+        Dim paymentSelectQuery = New SqlCommand("select p.*,b.DisplayBillNo from payment p, bill b where p.BillNo = b.BillNo and p.PaymentNo=" + paymentNo.ToString, dbConnection)
         Dim paymentAdapter = New SqlDataAdapter()
         paymentAdapter.SelectCommand = paymentSelectQuery
         Dim paymentDataSet = New DataSet
@@ -4130,7 +2179,8 @@ Public Class AgnimainForm
         If (paymentTable.Rows.Count > 0) Then
             Dim dataRow = paymentTable.Rows(0)
 
-            txtPaymentBillNumber.Text = dataRow.Item("BillNo")
+            txtPaymentDisplayBillNo.Text = dataRow.Item("DisplayBillNo")
+            txtPaymentBillNo.Text = dataRow.Item("BillNo")
             txtPaymentUnPaidBilledAmount.Text = dataRow.Item("UnPaidBilledAmount")
             dpPaymentDate.Text = dataRow.Item("PaymentDate")
 
@@ -4179,7 +2229,7 @@ Public Class AgnimainForm
                         MsgBox("Sorry.. You cannot Pay a Bill on '" + seldate.ToString("MMMM dd, yyyy") + "'. Because you have a Bill on '" + lastbildate.ToString("MMMM dd, yyyy") + "' for '" + key + "'." + vbNewLine + "So you cannot pay Bill in prior date. Please select Amount Paying Date as on or after '" + lastbildate.ToString("MMMM dd, yyyy") + "'")
                         Exit Sub
                     End If
-                    txtPaymentBillNumber.Text = dr3.Item(8).ToString + "/" + dr3.Item(1).ToString
+                    txtPaymentDisplayBillNo.Text = dr3.Item(8).ToString + "/" + dr3.Item(1).ToString
                     txtPaymentUnPaidBilledAmount.Text = dr3.Item(7)
                     Exit While
                 End If
@@ -4218,96 +2268,9 @@ Public Class AgnimainForm
         Label82.Text = actpaid
         'Catch ex As Exception
         'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        refreshgrid3()
-        refreshgrid2()
         'End 'Try
     End Sub
 
-    Private Sub DateTimePicker6_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles dpPaymentDate.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnPaymentCreatePayment.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub DateTimePicker6_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dpPaymentDate.ValueChanged
-
-    End Sub
-
-    Private Sub DateTimePicker7_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles dpPaymentChequeDate.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnPaymentCreatePayment.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.R Then
-                tabAllTabsHolder.SelectTab(4)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub DateTimePicker7_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dpPaymentChequeDate.ValueChanged
-
-    End Sub
-
-    Private Sub TabPage6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tabPayment.Click
-
-    End Sub
-
-    Private Sub Button23_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        'Try
-        addrselected = True
-        'listbox1.GetSelected(
-        AllAddrReport.Show()
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub ListBox1_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        'Try
-        '    If (e.KeyCode = Keys.Enter) Then
-        '        Button1.PerformClick()
-        If e.Alt Then
-            If e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(4)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
 
     Sub reduceBillPaidAmount(billNo As Decimal, amountToBeDeducted As Decimal)
 
@@ -4347,267 +2310,36 @@ Public Class AgnimainForm
 
             If MessageBox.Show("Do you want to delete this payment transaction ", "Confirmation", System.Windows.Forms.MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
 
-                Dim billNoForPayment As Integer = txtPaymentBillNumber.Text
+                Dim billNoForPayment As Integer = txtPaymentDisplayBillNo.Text
                 Dim amountPaidForPayment As Decimal = txtPaymentFinalPaidAmount.Text
 
                 If deleteSelectedPayment() = True Then
                     reduceBillPaidAmount(billNoForPayment, amountPaidForPayment)
                     MessageBox.Show("payment " + selectedPaymentNo.ToString + " is deleted successfully")
                     resetPaymentScreen()
-                    loadOrReloadPaymentList(cmbPaymentPaymentNoList, cmbPaymentCompanyList.SelectedValue)
-                    loadPaymentGrid()
-                    loadBillingGrid()
+
+                    bwtPaymentListLoadThread.RunWorkerAsync(cmbPaymentCompanyList.SelectedValue)
+                    bwtPaymentGridLoadThread.RunWorkerAsync(cmbPaymentCompanyList.SelectedValue)
+                    bwtBillGridLoadThread.RunWorkerAsync(cmbPaymentCompanyList.SelectedValue)
                 End If
 
             End If
         End If
 
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-
-    Private Sub Button44_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnChangeCustomerName.Click
-        'Try
-        Label101.Visible = True
-        Label102.Visible = True
-        txtCustNewName.Visible = True
-        btnUpdateName.Visible = True
-        btnCancelUpdateName.Visible = True
-        btnChangeCustomerName.Visible = False
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-
-    End Sub
-
-    Private Sub Button45_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnUpdateName.Click
-        'Try
-        If cmbCustCompanyList.Text.Trim.ToString.Equals("") Then
-            MsgBox("Please Select Old Name of the Customer")
-            cmbCustCompanyList.Focus()
-        ElseIf txtCustNewName.Text.Trim.ToString.Equals("") Then
-            MsgBox("Please Enter New Name of the Customer")
-            txtCustNewName.Focus()
-        ElseIf MessageBox.Show("All Designs, Bills and Payments will be updated to new name belongs to this customer." + vbNewLine + vbNewLine + vbTab + "  Do you want to Change this Customer - " & cmbCustCompanyList.Text & " To - " & txtCustNewName.Text & " ?", "WARNING", System.Windows.Forms.MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
-            Dim key As String
-            Dim a1, a2 As Int32
-            key = cmbCustCompanyList.Text
-            a1 = Dt2.Rows.Count
-            inc = 0
-            flag = 0
-            While (a1)
-                Dr2 = Dt2.Rows(inc)
-                If (key.Equals(Dr2.Item(0).ToString())) Then
-                    Dr2.BeginEdit()
-                    Dr2.Item(0) = txtCustNewName.Text
-                    Dr2.EndEdit()
-                    Sda2.SelectCommand = cmd2
-                    Scb2 = New SqlCommandBuilder(Sda2)
-                    Sda2.UpdateCommand = Scb2.GetUpdateCommand
-                End If
-                inc = inc + 1
-                a1 = a1 - 1
-            End While
-
-            If Ds2.HasChanges Then
-                Sda2.Update(Ds2, "design")
-                loadDesignGrid()
-            End If
-
-            a2 = dt3.Rows.Count
-            inc = 0
-            While (a2)
-                dr3 = dt3.Rows(inc)
-                If (key.Equals(dr3.Item(0).ToString())) Then
-                    dr3.BeginEdit()
-                    dr3.Item(0) = txtCustNewName.Text
-                    dr3.EndEdit()
-                    sda3.SelectCommand = cmd3
-                    scb3 = New SqlCommandBuilder(sda3)
-                    sda3.UpdateCommand = scb3.GetUpdateCommand()
-                End If
-                inc = inc + 1
-                a2 = a2 - 1
-            End While
-
-            If ds3.HasChanges Then
-                sda3.Update(ds3, "bill")
-                refreshgrid2()
-            End If
-
-            Dim a3 As Integer
-            a3 = dt10.Rows.Count
-            inc = 0
-            While (a3)
-                dr10 = dt10.Rows(inc)
-                If (key.Equals(dr10.Item(1).ToString())) Then
-                    dr10.BeginEdit()
-                    dr10.Item(1) = txtCustNewName.Text
-                    dr10.EndEdit()
-                    sda10.SelectCommand = cmd10
-                    scb10 = New SqlCommandBuilder(sda10)
-                    sda10.UpdateCommand = scb10.GetUpdateCommand()
-                End If
-
-                inc = inc + 1
-                a3 = a3 - 1
-            End While
-
-            If ds10.HasChanges Then
-                sda10.Update(ds10, "payment")
-                refreshgrid3()
-            End If
-
-            rowCount = customerTable.Rows.Count
-            inc = 0
-            While (rowCount)
-                DataRow = customerTable.Rows(inc)
-                If (key.Equals(DataRow.Item(1).ToString())) Then
-                    DataRow.BeginEdit()
-                    DataRow.Item(1) = txtCustNewName.Text
-                    DataRow.EndEdit()
-                    Sda1.SelectCommand = Cmd1
-                    Scb1 = New SqlCommandBuilder(Sda1)
-                    Sda1.UpdateCommand = Scb1.GetUpdateCommand()
-                End If
-
-                If Ds1.HasChanges Then
-                    Sda1.Update(Ds1, "customer")
-                    MessageBox.Show("The Customer Name is successfully changed")
-                    RefreshList1()
-                    btnCancelUpdateName.PerformClick()
-                    txtOwnerName.Text = ""
-                    txtAddress.Text = ""
-                    txtMobile.Text = ""
-                    txtPrintCharge.Text = ""
-                    txtLandline.Text = ""
-                    txtIGST.Text = ""
-                    txtEmail.Text = ""
-                    txtSGST.Text = ""
-                    txtCGST.Text = ""
-                    txtWebsite.Text = ""
-                    txtCustNewName.Text = ""
-                    txtGstIn.Text = ""
-                    cmbCustCompanyList.Text = ""
-                    flag = 1
-                    cmbCustCompanyList.Focus()
-                    Exit While
-                End If
-                inc = inc + 1
-                rowCount = rowCount - 1
-            End While
-            If flag = 0 Then
-                MessageBox.Show(" Cannot Change.. There is no such company Name")
-                cmbCustCompanyList.Focus()
-                RefreshList1()
-                loadDesignGrid()
-                refreshgrid2()
-                refreshgrid3()
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        RefreshList1()
-        loadDesignGrid()
-        refreshgrid2()
-        refreshgrid3()
-        'End 'Try
-    End Sub
-
-    Private Sub Button46_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancelUpdateName.Click
-        'Try
-        Label101.Visible = False
-        Label102.Visible = False
-        txtCustNewName.Text = ""
-        txtCustNewName.Visible = False
-        btnUpdateName.Visible = False
-        btnCancelUpdateName.Visible = False
-        btnChangeCustomerName.Visible = True
         'Catch ex As Exception
         'MessageBox.Show("Message to Agni User:   " & ex.Message)
         'End 'Try
     End Sub
 
     Private Sub tabAllTabsHolder_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tabAllTabsHolder.SelectedIndexChanged
-        'Try
-        Dim selectedTabIndex As Integer = tabAllTabsHolder.SelectedIndex
-
-        'log.Debug("tabAllTabsHolder_SelectedIndexChanged: selectedTabIndex: " + selectedTabIndex.ToString + " gSelectedCustNoIndex: " + gSelectedCustNoIndex.ToString)
-
-        Select Case selectedTabIndex
-            Case 0
-                'log.Debug("tabAllTabsHolder_SelectedIndexChanged: cmbCustCompanyList.SelectedIndex: " + cmbCustCompanyList.SelectedIndex.ToString)
-                'log.Debug("cmbCustCompanyList.SelectedIndex: " + gSelectedCustNoIndex.ToString)
-                cmbCustCompanyList.SelectedIndex = -1
-                cmbCustCompanyList.SelectedIndex = gSelectedCustNoIndex
-            Case 1
-                cmbDesCompanyList.SelectedIndex = -1
-                cmbDesCompanyList.SelectedIndex = gSelectedCustNoIndex
-            Case 2
-                cmbBillingCompanyList.SelectedIndex = -1
-                cmbBillingCompanyList.SelectedIndex = gSelectedCustNoIndex
-            Case 3
-                cmbPaymentCompanyList.SelectedIndex = -1
-                cmbPaymentCompanyList.SelectedIndex = gSelectedCustNoIndex
-            Case Else
-                'log.Debug("not a valid tab selection")
-        End Select
-
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub Button47_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPaymentClear.Click
-        cmbPaymentPaymentNoList.SelectedIndex = -1
-        txtPaymentActualPaidAmount.Text = ""
-        txtPaymentDiscountAmount.Text = ""
-        txtPaymentTaxDeductionAmount.Text = ""
-        txtPaymentChequeNo.Text = ""
-        txtPaymentBankName.Text = ""
-        txtPaymentRemarks.Text = ""
-        txtPaymentBillNumber.Text = ""
-        txtPaymentUnPaidBilledAmount.Text = ""
-        txtPaymentFinalPaidAmount.Text = ""
-        txtPaymentNetBalance.Text = ""
-        cmbPaymentPaymentNoList.Text = ""
-        cmbPaymentCompanyList.Focus()
-        radioPaymentByCash.Checked = True
-    End Sub
-
-    Private Sub TextBox19_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBillingRemainingBalance.TextChanged
 
     End Sub
 
-    Private Sub TextBox17_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBillingTotalAmount.TextChanged
-
+    Private Sub btnPaymentClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPaymentClear.Click
+        resetPaymentScreen()
     End Sub
 
-    Private Sub TextBox33_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtCustNewName.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            btnUpdateName.PerformClick()
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub TextBox33_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCustNewName.TextChanged
-
-    End Sub
-
-    Private Sub ComboBox8_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    End Sub
-
-    Private Sub Button48_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    End Sub
-
-    Private Sub RadioButton8_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles radioReportsBillNo.CheckedChanged
+    Private Sub radioReportsBillNo_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles radioReportsBillNo.CheckedChanged
         'Try
         If radioReportsBillNo.Checked Then
             PictureBox1.Image = Nothing
@@ -4639,7 +2371,7 @@ Public Class AgnimainForm
         'End 'Try
     End Sub
 
-    Private Sub RadioButton7_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles radioReportsCompName.CheckedChanged
+    Private Sub radioReportsCompName_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles radioReportsCompName.CheckedChanged
         'Try
         If radioReportsCompName.Checked Then
             PictureBox1.Image = Nothing
@@ -4674,7 +2406,6 @@ Public Class AgnimainForm
     End Sub
 
 
-
     Private Sub CheckBox1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckBox1.CheckedChanged
         'Try
         If CheckBox1.Checked Then
@@ -4693,15 +2424,7 @@ Public Class AgnimainForm
             rowCount = Dt2.Rows.Count
             inc = 0
             cmbReportDesignList.Items.Clear()
-            While (rowCount)
-                Dr2 = Dt2.Rows(inc)
-                If (key.Equals(Dr2.Item(0).ToString())) Then
-                    newitem = New MyComboitem(Dr2.Item(1), Dr2.Item(2).ToString)
-                    cmbReportDesignList.Items.Add(newitem)
-                End If
-                inc = inc + 1
-                rowCount = rowCount - 1
-            End While
+
         Else
             cmbReportDesignList.Visible = False
             If CheckBox4.Checked Then
@@ -4714,29 +2437,6 @@ Public Class AgnimainForm
         'MessageBox.Show("Message to Agni User:   " & ex.Message)
         'End 'Try
     End Sub
-
-    Private Sub ComboBox9_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles cmbReportDesignList.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            Button26.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
     Private Sub ComboBox9_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbReportDesignList.SelectedIndexChanged
         PictureBox1.Image = Nothing
     End Sub
@@ -4746,12 +2446,6 @@ Public Class AgnimainForm
             cmbReportDesignList.Items.Clear()
         End If
     End Sub
-
-    Private Sub Button49_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    End Sub
-
-
 
     Private Sub CheckBox4_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckBox4.CheckedChanged
         If CheckBox4.Checked = True And CheckBox1.Checked = False And radioReportsCompName.Checked = False And radioReportsBillNo.Checked = False Then
@@ -5025,7 +2719,7 @@ Public Class AgnimainForm
         Else
             Dim key As Integer
             Dim custname As String = ""
-            Dim item As MyComboitem
+            'Dim item As MyComboitem
             Dim totdesamount As Decimal = 0
             Dim tottransamount As Decimal = 0
             Dim tottransamount1 As Decimal = 0
@@ -5035,8 +2729,8 @@ Public Class AgnimainForm
             Dim countbilled As Integer = 0
             Dim sumbilled As Decimal = 0
             Dim countbill As Integer = 0
-            item = DirectCast(cmbReportDesignList.SelectedItem, MyComboitem)
-            key = item.ID
+            'item = DirectCast(cmbReportDesignList.SelectedItem, MyComboitem)
+            'key = item.ID
             b = Dt2.Rows.Count - 1
             inc = 0
             flag = 0
@@ -5138,15 +2832,6 @@ Public Class AgnimainForm
         'Catch ex As Exception
         'MessageBox.Show("Message to Agni User:   " & ex.Message)
         'End 'Try
-    End Sub
-    Private Sub searchbycompdate()
-
-    End Sub
-    Private Sub searchbyBilldate()
-
-    End Sub
-    Private Sub searchbydesdate()
-
     End Sub
     Private Sub searchbydate()
         'Try
@@ -5339,9 +3024,9 @@ Public Class AgnimainForm
                 MsgBox("Please Select To Date ")
                 DateTimePicker4.Focus()
             Else
-                Dim item As MyComboitem
-                item = DirectCast(cmbReportDesignList.SelectedItem, MyComboitem)
-                key = item.ID
+                'Dim item As MyComboitem
+                'item = DirectCast(cmbReportDesignList.SelectedItem, MyComboitem)
+                'key = item.ID
                 searchmoredes(key.ToString, 1, 1)
             End If
         End If
@@ -5614,32 +3299,6 @@ Public Class AgnimainForm
         End If
     End Sub
 
-    Private Sub ComboBox10_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles ComboBox10.KeyDown
-        'Try
-        If (e.KeyCode = Keys.Enter) Then
-            Button26.PerformClick()
-        ElseIf e.Alt Then
-            If e.KeyCode = Keys.C Then
-                tabAllTabsHolder.SelectTab(0)
-            ElseIf e.KeyCode = Keys.D Then
-                tabAllTabsHolder.SelectTab(1)
-            ElseIf e.KeyCode = Keys.B Then
-                tabAllTabsHolder.SelectTab(2)
-            ElseIf e.KeyCode = Keys.P Then
-                tabAllTabsHolder.SelectTab(3)
-            ElseIf e.KeyCode = Keys.H Then
-                tabAllTabsHolder.SelectTab(5)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub ComboBox10_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox10.SelectedIndexChanged
-
-    End Sub
-
     Private Sub CheckBox5_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckBox5.CheckedChanged
         'Try
         If CheckBox5.Checked = True Then
@@ -5675,6 +3334,7 @@ Public Class AgnimainForm
     Private Sub cmbDesDesignList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbDesDesignList.SelectedIndexChanged
 
         If (cmbDesDesignList.SelectedIndex = -1) Then
+            resetDesignScreen()
             Return
         End If
 
