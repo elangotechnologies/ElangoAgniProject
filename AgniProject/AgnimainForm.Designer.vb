@@ -93,6 +93,8 @@ Partial Class AgnimainForm
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
         Me.GroupBox15 = New System.Windows.Forms.GroupBox()
         Me.tabBilling = New System.Windows.Forms.TabPage()
+        Me.Label44 = New System.Windows.Forms.Label()
+        Me.txtBillingActualBillNo = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.txtBillingIGSTPercent = New System.Windows.Forms.TextBox()
@@ -209,9 +211,9 @@ Partial Class AgnimainForm
         Me.lblPrintCharge = New System.Windows.Forms.Label()
         Me.lblWorkingCharge = New System.Windows.Forms.Label()
         Me.lblWPChargeDetails = New System.Windows.Forms.Label()
-        Me.txtPrintCharge = New System.Windows.Forms.TextBox()
-        Me.txtWorkingCharge = New System.Windows.Forms.TextBox()
-        Me.txtWPCharge = New System.Windows.Forms.TextBox()
+        Me.txtCustPrintCharge = New System.Windows.Forms.TextBox()
+        Me.txtCustWorkingCharge = New System.Windows.Forms.TextBox()
+        Me.txtCustWPCharge = New System.Windows.Forms.TextBox()
         Me.lblLandline = New System.Windows.Forms.Label()
         Me.GroupBox16 = New System.Windows.Forms.GroupBox()
         Me.Label87 = New System.Windows.Forms.Label()
@@ -220,14 +222,12 @@ Partial Class AgnimainForm
         Me.lblIGST = New System.Windows.Forms.Label()
         Me.lblSGST = New System.Windows.Forms.Label()
         Me.lblCGST = New System.Windows.Forms.Label()
-        Me.txtIGST = New System.Windows.Forms.TextBox()
-        Me.txtSGST = New System.Windows.Forms.TextBox()
-        Me.txtCGST = New System.Windows.Forms.TextBox()
+        Me.txtCustIGST = New System.Windows.Forms.TextBox()
+        Me.txtCustSGST = New System.Windows.Forms.TextBox()
+        Me.txtCustCGST = New System.Windows.Forms.TextBox()
         Me.lblEmail = New System.Windows.Forms.Label()
         Me.lblWebsite = New System.Windows.Forms.Label()
-        Me.btnCancelUpdateName = New System.Windows.Forms.Button()
         Me.txtWebsite = New System.Windows.Forms.TextBox()
-        Me.btnUpdateName = New System.Windows.Forms.Button()
         Me.lblMobile = New System.Windows.Forms.Label()
         Me.txtLandline = New System.Windows.Forms.TextBox()
         Me.txtEmail = New System.Windows.Forms.TextBox()
@@ -391,8 +391,6 @@ Partial Class AgnimainForm
         Me.bwtBillGridLoadThread = New System.ComponentModel.BackgroundWorker()
         Me.bwtPaymentListLoadThread = New System.ComponentModel.BackgroundWorker()
         Me.bwtPaymentGridLoadThread = New System.ComponentModel.BackgroundWorker()
-        Me.Label44 = New System.Windows.Forms.Label()
-        Me.txtBillingActualBillNo = New System.Windows.Forms.TextBox()
         Me.tabHelp.SuspendLayout()
         Me.tabReports.SuspendLayout()
         CType(Me.DataGrid4, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1484,6 +1482,28 @@ Partial Class AgnimainForm
         Me.tabBilling.Text = "Billing"
         Me.tabBilling.ToolTipText = "Bill Operations"
         '
+        'Label44
+        '
+        Me.Label44.AutoSize = True
+        Me.Label44.Font = New System.Drawing.Font("Garamond", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label44.ForeColor = System.Drawing.Color.Black
+        Me.Label44.Location = New System.Drawing.Point(636, 79)
+        Me.Label44.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label44.Name = "Label44"
+        Me.Label44.Size = New System.Drawing.Size(95, 16)
+        Me.Label44.TabIndex = 166
+        Me.Label44.Text = "Actual Bill No"
+        '
+        'txtBillingActualBillNo
+        '
+        Me.txtBillingActualBillNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBillingActualBillNo.Location = New System.Drawing.Point(734, 69)
+        Me.txtBillingActualBillNo.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtBillingActualBillNo.Name = "txtBillingActualBillNo"
+        Me.txtBillingActualBillNo.ReadOnly = True
+        Me.txtBillingActualBillNo.Size = New System.Drawing.Size(96, 34)
+        Me.txtBillingActualBillNo.TabIndex = 165
+        '
         'Label11
         '
         Me.Label11.AutoSize = True
@@ -2128,7 +2148,7 @@ Partial Class AgnimainForm
         Me.cmbBillingBillNoList.Location = New System.Drawing.Point(410, 67)
         Me.cmbBillingBillNoList.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbBillingBillNoList.Name = "cmbBillingBillNoList"
-        Me.cmbBillingBillNoList.Size = New System.Drawing.Size(202, 37)
+        Me.cmbBillingBillNoList.Size = New System.Drawing.Size(222, 37)
         Me.cmbBillingBillNoList.TabIndex = 1
         Me.cmbBillingBillNoList.ValueMember = "BillNo"
         '
@@ -2810,9 +2830,7 @@ Partial Class AgnimainForm
         Me.tabCustomer.Controls.Add(Me.GroupBox16)
         Me.tabCustomer.Controls.Add(Me.lblEmail)
         Me.tabCustomer.Controls.Add(Me.lblWebsite)
-        Me.tabCustomer.Controls.Add(Me.btnCancelUpdateName)
         Me.tabCustomer.Controls.Add(Me.txtWebsite)
-        Me.tabCustomer.Controls.Add(Me.btnUpdateName)
         Me.tabCustomer.Controls.Add(Me.lblMobile)
         Me.tabCustomer.Controls.Add(Me.txtLandline)
         Me.tabCustomer.Controls.Add(Me.txtEmail)
@@ -2846,9 +2864,9 @@ Partial Class AgnimainForm
         Me.GroupBox1.Controls.Add(Me.lblPrintCharge)
         Me.GroupBox1.Controls.Add(Me.lblWorkingCharge)
         Me.GroupBox1.Controls.Add(Me.lblWPChargeDetails)
-        Me.GroupBox1.Controls.Add(Me.txtPrintCharge)
-        Me.GroupBox1.Controls.Add(Me.txtWorkingCharge)
-        Me.GroupBox1.Controls.Add(Me.txtWPCharge)
+        Me.GroupBox1.Controls.Add(Me.txtCustPrintCharge)
+        Me.GroupBox1.Controls.Add(Me.txtCustWorkingCharge)
+        Me.GroupBox1.Controls.Add(Me.txtCustWPCharge)
         Me.GroupBox1.Location = New System.Drawing.Point(803, 315)
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
@@ -2894,32 +2912,32 @@ Partial Class AgnimainForm
         Me.lblWPChargeDetails.TabIndex = 12
         Me.lblWPChargeDetails.Text = "W+P/sqrinch"
         '
-        'txtPrintCharge
+        'txtCustPrintCharge
         '
-        Me.txtPrintCharge.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPrintCharge.Location = New System.Drawing.Point(249, 148)
-        Me.txtPrintCharge.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtPrintCharge.Name = "txtPrintCharge"
-        Me.txtPrintCharge.Size = New System.Drawing.Size(120, 37)
-        Me.txtPrintCharge.TabIndex = 22
+        Me.txtCustPrintCharge.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCustPrintCharge.Location = New System.Drawing.Point(249, 148)
+        Me.txtCustPrintCharge.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtCustPrintCharge.Name = "txtCustPrintCharge"
+        Me.txtCustPrintCharge.Size = New System.Drawing.Size(120, 37)
+        Me.txtCustPrintCharge.TabIndex = 22
         '
-        'txtWorkingCharge
+        'txtCustWorkingCharge
         '
-        Me.txtWorkingCharge.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtWorkingCharge.Location = New System.Drawing.Point(249, 99)
-        Me.txtWorkingCharge.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtWorkingCharge.Name = "txtWorkingCharge"
-        Me.txtWorkingCharge.Size = New System.Drawing.Size(120, 37)
-        Me.txtWorkingCharge.TabIndex = 21
+        Me.txtCustWorkingCharge.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCustWorkingCharge.Location = New System.Drawing.Point(249, 99)
+        Me.txtCustWorkingCharge.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtCustWorkingCharge.Name = "txtCustWorkingCharge"
+        Me.txtCustWorkingCharge.Size = New System.Drawing.Size(120, 37)
+        Me.txtCustWorkingCharge.TabIndex = 21
         '
-        'txtWPCharge
+        'txtCustWPCharge
         '
-        Me.txtWPCharge.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtWPCharge.Location = New System.Drawing.Point(249, 51)
-        Me.txtWPCharge.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtWPCharge.Name = "txtWPCharge"
-        Me.txtWPCharge.Size = New System.Drawing.Size(120, 37)
-        Me.txtWPCharge.TabIndex = 20
+        Me.txtCustWPCharge.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCustWPCharge.Location = New System.Drawing.Point(249, 51)
+        Me.txtCustWPCharge.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtCustWPCharge.Name = "txtCustWPCharge"
+        Me.txtCustWPCharge.Size = New System.Drawing.Size(120, 37)
+        Me.txtCustWPCharge.TabIndex = 20
         '
         'lblLandline
         '
@@ -2941,9 +2959,9 @@ Partial Class AgnimainForm
         Me.GroupBox16.Controls.Add(Me.lblIGST)
         Me.GroupBox16.Controls.Add(Me.lblSGST)
         Me.GroupBox16.Controls.Add(Me.lblCGST)
-        Me.GroupBox16.Controls.Add(Me.txtIGST)
-        Me.GroupBox16.Controls.Add(Me.txtSGST)
-        Me.GroupBox16.Controls.Add(Me.txtCGST)
+        Me.GroupBox16.Controls.Add(Me.txtCustIGST)
+        Me.GroupBox16.Controls.Add(Me.txtCustSGST)
+        Me.GroupBox16.Controls.Add(Me.txtCustCGST)
         Me.GroupBox16.Location = New System.Drawing.Point(803, 93)
         Me.GroupBox16.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox16.Name = "GroupBox16"
@@ -3025,32 +3043,32 @@ Partial Class AgnimainForm
         Me.lblCGST.TabIndex = 12
         Me.lblCGST.Text = "CGST"
         '
-        'txtIGST
+        'txtCustIGST
         '
-        Me.txtIGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtIGST.Location = New System.Drawing.Point(249, 130)
-        Me.txtIGST.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtIGST.Name = "txtIGST"
-        Me.txtIGST.Size = New System.Drawing.Size(120, 37)
-        Me.txtIGST.TabIndex = 19
+        Me.txtCustIGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCustIGST.Location = New System.Drawing.Point(249, 130)
+        Me.txtCustIGST.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtCustIGST.Name = "txtCustIGST"
+        Me.txtCustIGST.Size = New System.Drawing.Size(120, 37)
+        Me.txtCustIGST.TabIndex = 19
         '
-        'txtSGST
+        'txtCustSGST
         '
-        Me.txtSGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSGST.Location = New System.Drawing.Point(249, 81)
-        Me.txtSGST.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtSGST.Name = "txtSGST"
-        Me.txtSGST.Size = New System.Drawing.Size(120, 37)
-        Me.txtSGST.TabIndex = 18
+        Me.txtCustSGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCustSGST.Location = New System.Drawing.Point(249, 81)
+        Me.txtCustSGST.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtCustSGST.Name = "txtCustSGST"
+        Me.txtCustSGST.Size = New System.Drawing.Size(120, 37)
+        Me.txtCustSGST.TabIndex = 18
         '
-        'txtCGST
+        'txtCustCGST
         '
-        Me.txtCGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCGST.Location = New System.Drawing.Point(249, 32)
-        Me.txtCGST.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtCGST.Name = "txtCGST"
-        Me.txtCGST.Size = New System.Drawing.Size(120, 37)
-        Me.txtCGST.TabIndex = 17
+        Me.txtCustCGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCustCGST.Location = New System.Drawing.Point(249, 32)
+        Me.txtCustCGST.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtCustCGST.Name = "txtCustCGST"
+        Me.txtCustCGST.Size = New System.Drawing.Size(120, 37)
+        Me.txtCustCGST.TabIndex = 17
         '
         'lblEmail
         '
@@ -3076,20 +3094,6 @@ Partial Class AgnimainForm
         Me.lblWebsite.TabIndex = 13
         Me.lblWebsite.Text = "Website"
         '
-        'btnCancelUpdateName
-        '
-        Me.btnCancelUpdateName.BackColor = System.Drawing.Color.Transparent
-        Me.btnCancelUpdateName.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnCancelUpdateName.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
-        Me.btnCancelUpdateName.Location = New System.Drawing.Point(1454, 25)
-        Me.btnCancelUpdateName.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnCancelUpdateName.Name = "btnCancelUpdateName"
-        Me.btnCancelUpdateName.Size = New System.Drawing.Size(197, 38)
-        Me.btnCancelUpdateName.TabIndex = 125
-        Me.btnCancelUpdateName.Text = "Cancel"
-        Me.btnCancelUpdateName.UseVisualStyleBackColor = False
-        Me.btnCancelUpdateName.Visible = False
-        '
         'txtWebsite
         '
         Me.txtWebsite.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -3098,20 +3102,6 @@ Partial Class AgnimainForm
         Me.txtWebsite.Name = "txtWebsite"
         Me.txtWebsite.Size = New System.Drawing.Size(449, 37)
         Me.txtWebsite.TabIndex = 16
-        '
-        'btnUpdateName
-        '
-        Me.btnUpdateName.BackColor = System.Drawing.Color.Transparent
-        Me.btnUpdateName.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnUpdateName.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
-        Me.btnUpdateName.Location = New System.Drawing.Point(1249, 24)
-        Me.btnUpdateName.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnUpdateName.Name = "btnUpdateName"
-        Me.btnUpdateName.Size = New System.Drawing.Size(197, 39)
-        Me.btnUpdateName.TabIndex = 124
-        Me.btnUpdateName.Text = "Update"
-        Me.btnUpdateName.UseVisualStyleBackColor = False
-        Me.btnUpdateName.Visible = False
         '
         'lblMobile
         '
@@ -3386,7 +3376,7 @@ Partial Class AgnimainForm
         '
         Me.cmbPaymentPaymentNoList.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
         Me.cmbPaymentPaymentNoList.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.cmbPaymentPaymentNoList.DisplayMember = "PaymentNo"
+        Me.cmbPaymentPaymentNoList.DisplayMember = "DisplayPaymentNo"
         Me.cmbPaymentPaymentNoList.Enabled = False
         Me.cmbPaymentPaymentNoList.Font = New System.Drawing.Font("Garamond", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbPaymentPaymentNoList.FormattingEnabled = True
@@ -5039,28 +5029,6 @@ Partial Class AgnimainForm
         'bwtPaymentGridLoadThread
         '
         '
-        'Label44
-        '
-        Me.Label44.AutoSize = True
-        Me.Label44.Font = New System.Drawing.Font("Garamond", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label44.ForeColor = System.Drawing.Color.Black
-        Me.Label44.Location = New System.Drawing.Point(633, 78)
-        Me.Label44.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label44.Name = "Label44"
-        Me.Label44.Size = New System.Drawing.Size(95, 16)
-        Me.Label44.TabIndex = 166
-        Me.Label44.Text = "Actual Bill No"
-        '
-        'txtBillingActualBillNo
-        '
-        Me.txtBillingActualBillNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBillingActualBillNo.Location = New System.Drawing.Point(730, 69)
-        Me.txtBillingActualBillNo.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtBillingActualBillNo.Name = "txtBillingActualBillNo"
-        Me.txtBillingActualBillNo.ReadOnly = True
-        Me.txtBillingActualBillNo.Size = New System.Drawing.Size(100, 34)
-        Me.txtBillingActualBillNo.TabIndex = 165
-        '
         'AgnimainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -5283,8 +5251,6 @@ Partial Class AgnimainForm
     Friend WithEvents Label107 As System.Windows.Forms.Label
     Friend WithEvents Label108 As System.Windows.Forms.Label
     Friend WithEvents Label117 As System.Windows.Forms.Label
-    Friend WithEvents btnUpdateName As System.Windows.Forms.Button
-    Friend WithEvents btnCancelUpdateName As System.Windows.Forms.Button
     Friend WithEvents btnPaymentClear As System.Windows.Forms.Button
     Friend WithEvents Label109 As System.Windows.Forms.Label
     Friend WithEvents Label110 As System.Windows.Forms.Label
@@ -5404,9 +5370,9 @@ Partial Class AgnimainForm
     Friend WithEvents lblIGST As Label
     Friend WithEvents lblSGST As Label
     Friend WithEvents lblCGST As Label
-    Friend WithEvents txtIGST As TextBox
-    Friend WithEvents txtSGST As TextBox
-    Friend WithEvents txtCGST As TextBox
+    Friend WithEvents txtCustIGST As TextBox
+    Friend WithEvents txtCustSGST As TextBox
+    Friend WithEvents txtCustCGST As TextBox
     Friend WithEvents lblLandline As Label
     Friend WithEvents lblEmail As Label
     Friend WithEvents lblWebsite As Label
@@ -5420,9 +5386,9 @@ Partial Class AgnimainForm
     Friend WithEvents lblPrintCharge As Label
     Friend WithEvents lblWorkingCharge As Label
     Friend WithEvents lblWPChargeDetails As Label
-    Friend WithEvents txtPrintCharge As TextBox
-    Friend WithEvents txtWorkingCharge As TextBox
-    Friend WithEvents txtWPCharge As TextBox
+    Friend WithEvents txtCustPrintCharge As TextBox
+    Friend WithEvents txtCustWorkingCharge As TextBox
+    Friend WithEvents txtCustWPCharge As TextBox
     Friend WithEvents DataGridTableStyle1 As DataGridTableStyle
     Friend WithEvents DataGridTextBoxColumn1 As DataGridTextBoxColumn
     Friend WithEvents DataGridTextBoxColumn2 As DataGridTextBoxColumn
