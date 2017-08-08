@@ -293,27 +293,6 @@ Public Class AgnimainForm
 
     End Sub
 
-    Sub loadPaymentGrid(Optional custNo As Integer = Nothing)
-        'Try
-        Dim paymentQuery As SqlCommand
-        If (custNo <> Nothing) Then
-            paymentQuery = New SqlCommand("select p.*, p.UnPaidBilledAmount - p.FinalPaidAmount as NetBalance, b.DisplayBillNo  from payment p, bill b where p.BillNo = b.BillNo and p.custNo=" + custNo.ToString, dbConnection)
-        Else
-            paymentQuery = New SqlCommand("select p.*, p.UnPaidBilledAmount - p.FinalPaidAmount as NetBalance, b.DisplayBillNo  from payment p, bill b where p.BillNo = b.BillNo", dbConnection)
-        End If
-
-        Dim paymentAdapter = New SqlDataAdapter()
-        paymentAdapter.SelectCommand = paymentQuery
-        Dim paymentDataSet = New DataSet
-        paymentAdapter.Fill(paymentDataSet, "payment")
-        Dim paymentTable = paymentDataSet.Tables(0)
-        dgPaymentDetails.DataSource = paymentTable
-        dgPaymentDetails.Invalidate()
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
     Function getPaymentGridTable(Optional custNo As Integer = Nothing) As DataTable
         'log.Debug("getPaymentGridTable: entry")
         Dim paymentQuery As SqlCommand
@@ -1771,9 +1750,6 @@ Public Class AgnimainForm
         cmbBillingBillNoList.SelectedIndex = -1
         Dim custNo = cmbBillingCompanyList.SelectedValue
 
-        loadGSTForCustomerInBilling(custNo)
-
-        dpBillingBillDate.Text = ""
         Dim unBilledDesignAmount As Decimal = getDesignAmountWithoutGSTTax(BILL_TYPE_UNBILLED, custNo)
         Dim billedDesignAmount As Decimal = getDesignAmountWithGSTTax(BILL_TYPE_BILLED, custNo)
         Dim totalBillsPaidAmount As Decimal = getAllBillsPaidAmount(custNo)
@@ -1783,6 +1759,10 @@ Public Class AgnimainForm
             MessageBox.Show("There are no designs to bill or all the designs are billed already for this customer")
             Return
         End If
+
+        loadGSTForCustomerInBilling(custNo)
+
+        dpBillingBillDate.Text = ""
 
         txtBillingDesignAmoutBeforeGST.Text = Format(unBilledDesignAmount, "0.00")
         txtBillingPrevBalance.Text = Format(unPaidBalance, "0.00")
@@ -2035,9 +2015,6 @@ Public Class AgnimainForm
         ElseIf radioPaymentByCheque.Checked And dpPaymentChequeDate.Text.Trim.Equals("") Then
             MessageBox.Show("Choose valid cheque date")
             dpPaymentChequeDate.Focus()
-        ElseIf Not cmbPaymentPaymentNoList.Text.Trim.Equals("") Then
-            MessageBox.Show("You cannot make a payment from existing payment. You can only make payment for unpaid amount. Please reselect the customer from customer list to see the unpaid amount")
-            cmbPaymentPaymentNoList.Focus()
         Else
 
             Dim actualPaidAmount As Decimal = 0
