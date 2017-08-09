@@ -39,7 +39,6 @@ D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.changepwd.r
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.manageuser.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.Login.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.Resources.resources
-D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.OutBalance.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.SplashScreen1.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.VerifyingDelete.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.vbproj.GenerateResource.Cache
@@ -50,3 +49,4 @@ D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.xml
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.pdb
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\AgniProject.pdb
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\AgniProject.xml
+D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.CustomerBillSummary.resources

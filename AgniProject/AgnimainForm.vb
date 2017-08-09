@@ -92,6 +92,7 @@ Public Class AgnimainForm
             e.Cancel = True
         Else
             Login.Close()
+            dbConnection.Close()
         End If
         'Catch ex As Exception
         'MessageBox.Show("Message to Agni User:   " & ex.Message)
@@ -1504,7 +1505,7 @@ Public Class AgnimainForm
             AllAddrReport.Close()
             AllBillReport.Close()
             Balance.Close()
-            OutBalance.Close()
+            CustomerBillSummary.Close()
             Login.ComboBox1.Focus()
         End If
         'Catch ex As Exception
@@ -1602,89 +1603,9 @@ Public Class AgnimainForm
         'Try
         'Dim ds10 As DataSet
 
-        Dim dt17, dt12 As DataTable
-        Dim dr17, dr12 As DataRow
-        Dim notpaidbal As Decimal = 0
 
-        dt17 = dgBIllingBillDetails.DataSource
-        dt12 = dgDesDesignDetails.DataSource
-        outbal = 0
-        unbilled = 0
-        Dim b As Int16
-        Dim a, a1 As Integer
-        b = customerTable.Rows.Count
-        inc = 0
-        dt9.Clear()
-        While (b)
-            DataRow = customerTable.Rows(inc)
-            a1 = dt12.Rows.Count - 1
-            notpaidbal = 0
-            While (a1 >= 0)
-                dr12 = dt12.Rows(a1)
-                If dr12.Item(0).Equals(DataRow.Item(1)) And dr12.Item(11).ToString.Equals("notpaid") Then
-                    notpaidbal += Decimal.Parse(dr12.Item(9))
-                ElseIf dr12.Item(0).Equals(DataRow.Item(1)) And dr12.Item(11).ToString.Equals("paid") Then
-                    Exit While
-                End If
-                a1 -= 1
-            End While
 
-            a1 = dt10.Rows.Count - 1
-            Deduction = 0
-            taxDeduction = 0
-            While (a1 >= 0)
-                dr10 = dt10.Rows(a1)
-                If dr10.Item(1).Equals(DataRow.Item(1)) Then
-                    Deduction += Decimal.Parse(dr10.Item(7))
-                    taxDeduction += Decimal.Parse(dr10.Item(8))
-                End If
-                a1 -= 1
-            End While
-
-            a = dt17.Rows.Count - 1
-            flag = 0
-            While (a >= 0)
-                dr17 = dt17.Rows(a)
-                If dr17.Item(0).Equals(DataRow.Item(1)) Then
-                    flag = 1
-                    dr9 = dt9.NewRow
-                    dr9.Item(0) = dr17.Item(0)
-                    'dr9.Item(1) = dr17.Item(1)
-                    'dr9.Item(2) = dr17.Item(2)
-                    'dr9.Item(3) = dr17.Item(3)
-                    dr9.Item(4) = Deduction
-                    dr9.Item(5) = taxDeduction
-                    dr9.Item(7) = notpaidbal
-                    dr9.Item(6) = dr17.Item(7)
-
-                    totDeduction += dr9.Item(4)
-                    tottaxDeduction += dr9.Item(5)
-
-                    outbal += dr9.Item(6)
-                    unbilled += notpaidbal
-                    dt9.Rows.Add(dr9)
-
-                    Exit While
-                End If
-                a -= 1
-            End While
-            If flag = 0 Then
-                dr9 = dt9.NewRow
-                dr9.Item(0) = DataRow.Item(1).ToString
-                dr9.Item(1) = 0
-                dr9.Item(2) = DateTime.Today
-                dr9.Item(3) = 0
-                dr9.Item(4) = 0
-                dr9.Item(5) = 0
-                dr9.Item(7) = notpaidbal
-                dr9.Item(6) = 0
-                unbilled += notpaidbal
-                dt9.Rows.Add(dr9)
-            End If
-            b -= 1
-            inc += 1
-        End While
-        OutBalance.Show()
+        CustomerBillSummary.Show()
         'Catch ex As Exception
         'MessageBox.Show("Message to Agni User:   " & ex.Message)
         'End 'Try
@@ -1777,6 +1698,7 @@ Public Class AgnimainForm
         setBillingControlsVisibilitiesForCreateBill()
 
     End Sub
+
 
     Function getLastBillRow(Optional custNo As Integer = Nothing) As DataRow
 
