@@ -174,10 +174,6 @@ Partial Class AgnimainForm
         Me.DataGridTextBoxColumn10 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn11 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.cmbDesCompanyList = New System.Windows.Forms.ComboBox()
-        Me.Label33 = New System.Windows.Forms.Label()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.RadioButton3 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton4 = New System.Windows.Forms.RadioButton()
         Me.Label28 = New System.Windows.Forms.Label()
         Me.dpDesDesignDate = New System.Windows.Forms.DateTimePicker()
         Me.Label22 = New System.Windows.Forms.Label()
@@ -260,11 +256,7 @@ Partial Class AgnimainForm
         Me.txtPaymentFinalPaidAmount = New System.Windows.Forms.TextBox()
         Me.txtPaymentUnPaidBilledAmount = New System.Windows.Forms.TextBox()
         Me.btnPaymentDelete = New System.Windows.Forms.Button()
-        Me.Label81 = New System.Windows.Forms.Label()
-        Me.Label82 = New System.Windows.Forms.Label()
         Me.txtPaymentRemarks = New System.Windows.Forms.TextBox()
-        Me.Label83 = New System.Windows.Forms.Label()
-        Me.Label84 = New System.Windows.Forms.Label()
         Me.dgPaymentDetails = New System.Windows.Forms.DataGrid()
         Me.DataGridTableStyle3 = New System.Windows.Forms.DataGridTableStyle()
         Me.DataGridTextBoxColumn20 = New System.Windows.Forms.DataGridTextBoxColumn()
@@ -391,6 +383,7 @@ Partial Class AgnimainForm
         Me.bwtBillGridLoadThread = New System.ComponentModel.BackgroundWorker()
         Me.bwtPaymentListLoadThread = New System.ComponentModel.BackgroundWorker()
         Me.bwtPaymentGridLoadThread = New System.ComponentModel.BackgroundWorker()
+        Me.bwtDesChargeTypeLoadThread = New System.ComponentModel.BackgroundWorker()
         Me.tabHelp.SuspendLayout()
         Me.tabReports.SuspendLayout()
         CType(Me.DataGrid4, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -401,7 +394,6 @@ Partial Class AgnimainForm
         CType(Me.dgBIllingBillDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabDesign.SuspendLayout()
         CType(Me.dgDesDesignDetails, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.pbDesDesignImage, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabAllTabsHolder.SuspendLayout()
@@ -1882,6 +1874,7 @@ Partial Class AgnimainForm
         Me.dgBIllingBillDetails.CaptionForeColor = System.Drawing.Color.White
         Me.dgBIllingBillDetails.CaptionText = "Bill Details"
         Me.dgBIllingBillDetails.DataMember = ""
+        Me.dgBIllingBillDetails.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.dgBIllingBillDetails.FlatMode = True
         Me.dgBIllingBillDetails.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dgBIllingBillDetails.ForeColor = System.Drawing.Color.MidnightBlue
@@ -1890,7 +1883,7 @@ Partial Class AgnimainForm
         Me.dgBIllingBillDetails.HeaderFont = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
         Me.dgBIllingBillDetails.HeaderForeColor = System.Drawing.Color.LavenderBlush
         Me.dgBIllingBillDetails.LinkColor = System.Drawing.Color.Teal
-        Me.dgBIllingBillDetails.Location = New System.Drawing.Point(4, 530)
+        Me.dgBIllingBillDetails.Location = New System.Drawing.Point(4, 538)
         Me.dgBIllingBillDetails.Margin = New System.Windows.Forms.Padding(4)
         Me.dgBIllingBillDetails.Name = "dgBIllingBillDetails"
         Me.dgBIllingBillDetails.ParentRowsBackColor = System.Drawing.Color.Lavender
@@ -1899,7 +1892,7 @@ Partial Class AgnimainForm
         Me.dgBIllingBillDetails.ReadOnly = True
         Me.dgBIllingBillDetails.SelectionBackColor = System.Drawing.Color.Teal
         Me.dgBIllingBillDetails.SelectionForeColor = System.Drawing.Color.PaleGreen
-        Me.dgBIllingBillDetails.Size = New System.Drawing.Size(1677, 303)
+        Me.dgBIllingBillDetails.Size = New System.Drawing.Size(1695, 369)
         Me.dgBIllingBillDetails.TabIndex = 26
         Me.dgBIllingBillDetails.TableStyles.AddRange(New System.Windows.Forms.DataGridTableStyle() {Me.DataGridTableStyle2})
         '
@@ -2199,8 +2192,6 @@ Partial Class AgnimainForm
         Me.tabDesign.Controls.Add(Me.btnDesEditPrice)
         Me.tabDesign.Controls.Add(Me.dgDesDesignDetails)
         Me.tabDesign.Controls.Add(Me.cmbDesCompanyList)
-        Me.tabDesign.Controls.Add(Me.Label33)
-        Me.tabDesign.Controls.Add(Me.GroupBox3)
         Me.tabDesign.Controls.Add(Me.Label28)
         Me.tabDesign.Controls.Add(Me.dpDesDesignDate)
         Me.tabDesign.Controls.Add(Me.Label22)
@@ -2289,6 +2280,7 @@ Partial Class AgnimainForm
         Me.dgDesDesignDetails.CaptionForeColor = System.Drawing.Color.White
         Me.dgDesDesignDetails.CaptionText = "Design Details"
         Me.dgDesDesignDetails.DataMember = ""
+        Me.dgDesDesignDetails.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.dgDesDesignDetails.FlatMode = True
         Me.dgDesDesignDetails.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dgDesDesignDetails.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
@@ -2297,7 +2289,7 @@ Partial Class AgnimainForm
         Me.dgDesDesignDetails.HeaderFont = New System.Drawing.Font("Tahoma", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dgDesDesignDetails.HeaderForeColor = System.Drawing.Color.Lavender
         Me.dgDesDesignDetails.LinkColor = System.Drawing.Color.Teal
-        Me.dgDesDesignDetails.Location = New System.Drawing.Point(8, 414)
+        Me.dgDesDesignDetails.Location = New System.Drawing.Point(4, 433)
         Me.dgDesDesignDetails.Margin = New System.Windows.Forms.Padding(4)
         Me.dgDesDesignDetails.Name = "dgDesDesignDetails"
         Me.dgDesDesignDetails.ParentRowsBackColor = System.Drawing.Color.Lavender
@@ -2305,7 +2297,7 @@ Partial Class AgnimainForm
         Me.dgDesDesignDetails.ReadOnly = True
         Me.dgDesDesignDetails.SelectionBackColor = System.Drawing.Color.Teal
         Me.dgDesDesignDetails.SelectionForeColor = System.Drawing.Color.PaleGreen
-        Me.dgDesDesignDetails.Size = New System.Drawing.Size(1677, 323)
+        Me.dgDesDesignDetails.Size = New System.Drawing.Size(1695, 474)
         Me.dgDesDesignDetails.TabIndex = 27
         Me.dgDesDesignDetails.TableStyles.AddRange(New System.Windows.Forms.DataGridTableStyle() {Me.DataGridTableStyle1})
         '
@@ -2423,58 +2415,6 @@ Partial Class AgnimainForm
         Me.cmbDesCompanyList.Size = New System.Drawing.Size(427, 38)
         Me.cmbDesCompanyList.TabIndex = 1
         Me.cmbDesCompanyList.ValueMember = "CustNo"
-        '
-        'Label33
-        '
-        Me.Label33.AutoSize = True
-        Me.Label33.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label33.Location = New System.Drawing.Point(31, 430)
-        Me.Label33.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(128, 24)
-        Me.Label33.TabIndex = 107
-        Me.Label33.Text = "Design Type"
-        Me.Label33.Visible = False
-        '
-        'GroupBox3
-        '
-        Me.GroupBox3.Controls.Add(Me.RadioButton3)
-        Me.GroupBox3.Controls.Add(Me.RadioButton4)
-        Me.GroupBox3.Enabled = False
-        Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.GroupBox3.Location = New System.Drawing.Point(241, 414)
-        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(0)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(0)
-        Me.GroupBox3.Size = New System.Drawing.Size(267, 41)
-        Me.GroupBox3.TabIndex = 108
-        Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Visible = False
-        '
-        'RadioButton3
-        '
-        Me.RadioButton3.AutoSize = True
-        Me.RadioButton3.Location = New System.Drawing.Point(9, 14)
-        Me.RadioButton3.Margin = New System.Windows.Forms.Padding(4)
-        Me.RadioButton3.Name = "RadioButton3"
-        Me.RadioButton3.Size = New System.Drawing.Size(71, 28)
-        Me.RadioButton3.TabIndex = 9
-        Me.RadioButton3.Text = "paid"
-        Me.RadioButton3.UseVisualStyleBackColor = True
-        '
-        'RadioButton4
-        '
-        Me.RadioButton4.AutoSize = True
-        Me.RadioButton4.Checked = True
-        Me.RadioButton4.Location = New System.Drawing.Point(147, 14)
-        Me.RadioButton4.Margin = New System.Windows.Forms.Padding(4)
-        Me.RadioButton4.Name = "RadioButton4"
-        Me.RadioButton4.Size = New System.Drawing.Size(100, 28)
-        Me.RadioButton4.TabIndex = 8
-        Me.RadioButton4.TabStop = True
-        Me.RadioButton4.Text = "notpaid"
-        Me.RadioButton4.UseVisualStyleBackColor = True
         '
         'Label28
         '
@@ -2722,13 +2662,11 @@ Partial Class AgnimainForm
         'radioDesWP
         '
         Me.radioDesWP.AutoSize = True
-        Me.radioDesWP.Checked = True
         Me.radioDesWP.Location = New System.Drawing.Point(29, 19)
         Me.radioDesWP.Margin = New System.Windows.Forms.Padding(4)
         Me.radioDesWP.Name = "radioDesWP"
         Me.radioDesWP.Size = New System.Drawing.Size(97, 35)
         Me.radioDesWP.TabIndex = 18
-        Me.radioDesWP.TabStop = True
         Me.radioDesWP.Text = "W+P"
         Me.radioDesWP.UseVisualStyleBackColor = True
         '
@@ -2740,7 +2678,6 @@ Partial Class AgnimainForm
         Me.txtDesCostPerUnit.Name = "txtDesCostPerUnit"
         Me.txtDesCostPerUnit.Size = New System.Drawing.Size(425, 37)
         Me.txtDesCostPerUnit.TabIndex = 16
-        Me.txtDesCostPerUnit.Text = "0.30"
         '
         'txtDesNoOfColors
         '
@@ -3317,11 +3254,7 @@ Partial Class AgnimainForm
         Me.tabPayment.Controls.Add(Me.txtPaymentFinalPaidAmount)
         Me.tabPayment.Controls.Add(Me.txtPaymentUnPaidBilledAmount)
         Me.tabPayment.Controls.Add(Me.btnPaymentDelete)
-        Me.tabPayment.Controls.Add(Me.Label81)
-        Me.tabPayment.Controls.Add(Me.Label82)
         Me.tabPayment.Controls.Add(Me.txtPaymentRemarks)
-        Me.tabPayment.Controls.Add(Me.Label83)
-        Me.tabPayment.Controls.Add(Me.Label84)
         Me.tabPayment.Controls.Add(Me.dgPaymentDetails)
         Me.tabPayment.Controls.Add(Me.gbBankDetails)
         Me.tabPayment.Controls.Add(Me.dpPaymentDate)
@@ -3386,6 +3319,7 @@ Partial Class AgnimainForm
         Me.cmbPaymentPaymentNoList.Size = New System.Drawing.Size(118, 25)
         Me.cmbPaymentPaymentNoList.TabIndex = 162
         Me.cmbPaymentPaymentNoList.ValueMember = "PaymentNo"
+        Me.cmbPaymentPaymentNoList.Visible = False
         '
         'btnPaymentCancelCreatePayment
         '
@@ -3457,6 +3391,7 @@ Partial Class AgnimainForm
         Me.Label117.Size = New System.Drawing.Size(137, 17)
         Me.Label117.TabIndex = 157
         Me.Label117.Text = "Payment No - Hidden"
+        Me.Label117.Visible = False
         '
         'Label86
         '
@@ -3540,31 +3475,6 @@ Partial Class AgnimainForm
         Me.btnPaymentDelete.Text = "  Delete"
         Me.btnPaymentDelete.UseVisualStyleBackColor = True
         '
-        'Label81
-        '
-        Me.Label81.AutoSize = True
-        Me.Label81.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label81.ForeColor = System.Drawing.Color.Black
-        Me.Label81.Location = New System.Drawing.Point(963, 764)
-        Me.Label81.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label81.Name = "Label81"
-        Me.Label81.Size = New System.Drawing.Size(291, 25)
-        Me.Label81.TabIndex = 142
-        Me.Label81.Text = "Actual Paid for this Company"
-        '
-        'Label82
-        '
-        Me.Label82.AutoSize = True
-        Me.Label82.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label82.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label82.ForeColor = System.Drawing.Color.White
-        Me.Label82.Location = New System.Drawing.Point(1316, 764)
-        Me.Label82.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label82.Name = "Label82"
-        Me.Label82.Size = New System.Drawing.Size(54, 25)
-        Me.Label82.TabIndex = 141
-        Me.Label82.Text = "0.00"
-        '
         'txtPaymentRemarks
         '
         Me.txtPaymentRemarks.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
@@ -3575,31 +3485,6 @@ Partial Class AgnimainForm
         Me.txtPaymentRemarks.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtPaymentRemarks.Size = New System.Drawing.Size(398, 84)
         Me.txtPaymentRemarks.TabIndex = 10
-        '
-        'Label83
-        '
-        Me.Label83.AutoSize = True
-        Me.Label83.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label83.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label83.ForeColor = System.Drawing.Color.White
-        Me.Label83.Location = New System.Drawing.Point(737, 764)
-        Me.Label83.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label83.Name = "Label83"
-        Me.Label83.Size = New System.Drawing.Size(24, 25)
-        Me.Label83.TabIndex = 140
-        Me.Label83.Text = "0"
-        '
-        'Label84
-        '
-        Me.Label84.AutoSize = True
-        Me.Label84.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label84.ForeColor = System.Drawing.Color.Black
-        Me.Label84.Location = New System.Drawing.Point(589, 764)
-        Me.Label84.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label84.Name = "Label84"
-        Me.Label84.Size = New System.Drawing.Size(107, 25)
-        Me.Label84.TabIndex = 139
-        Me.Label84.Text = "Total Bills"
         '
         'dgPaymentDetails
         '
@@ -5029,6 +4914,9 @@ Partial Class AgnimainForm
         'bwtPaymentGridLoadThread
         '
         '
+        'bwtDesChargeTypeLoadThread
+        '
+        '
         'AgnimainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -5060,8 +4948,6 @@ Partial Class AgnimainForm
         Me.tabDesign.ResumeLayout(False)
         Me.tabDesign.PerformLayout()
         CType(Me.dgDesDesignDetails, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         CType(Me.pbDesDesignImage, System.ComponentModel.ISupportInitialize).EndInit()
@@ -5154,10 +5040,6 @@ Partial Class AgnimainForm
     Friend WithEvents Button33 As System.Windows.Forms.Button
     Friend WithEvents dgDesDesignDetails As System.Windows.Forms.DataGrid
     Friend WithEvents cmbDesCompanyList As System.Windows.Forms.ComboBox
-    Friend WithEvents Label33 As System.Windows.Forms.Label
-    Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
-    Friend WithEvents RadioButton3 As System.Windows.Forms.RadioButton
-    Friend WithEvents RadioButton4 As System.Windows.Forms.RadioButton
     Friend WithEvents Label28 As System.Windows.Forms.Label
     Friend WithEvents dpDesDesignDate As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label22 As System.Windows.Forms.Label
@@ -5232,10 +5114,6 @@ Partial Class AgnimainForm
     Friend WithEvents dpPaymentChequeDate As System.Windows.Forms.DateTimePicker
     Friend WithEvents txtPaymentRemarks As System.Windows.Forms.TextBox
     Friend WithEvents dgPaymentDetails As System.Windows.Forms.DataGrid
-    Friend WithEvents Label81 As System.Windows.Forms.Label
-    Friend WithEvents Label82 As System.Windows.Forms.Label
-    Friend WithEvents Label83 As System.Windows.Forms.Label
-    Friend WithEvents Label84 As System.Windows.Forms.Label
     Friend WithEvents btnPaymentDelete As System.Windows.Forms.Button
     Friend WithEvents txtPaymentUnPaidBilledAmount As System.Windows.Forms.TextBox
     Friend WithEvents Label69 As System.Windows.Forms.Label
@@ -5475,4 +5353,5 @@ Partial Class AgnimainForm
     Friend WithEvents bwtPaymentGridLoadThread As System.ComponentModel.BackgroundWorker
     Friend WithEvents Label44 As Label
     Friend WithEvents txtBillingActualBillNo As TextBox
+    Friend WithEvents bwtDesChargeTypeLoadThread As System.ComponentModel.BackgroundWorker
 End Class

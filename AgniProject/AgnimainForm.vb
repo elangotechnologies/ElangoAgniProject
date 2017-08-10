@@ -14,6 +14,7 @@ Public Class AgnimainForm
 
     Public gSelectedCustNoIndex As Integer = -1
     Public gSelectedBillNo As Integer = -1
+    Public gSelectedCustName As String = String.Empty
     Public gDisplayBillNo As Integer = 0
 
     Dim Cmd1, cmd2, cmd3, cmd10 As SqlCommand
@@ -104,13 +105,12 @@ Public Class AgnimainForm
 
         'log.Debug("Form is loading")
 
+        dbConnection = New SqlConnection("server=agni\SQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
+        dbConnection.Open()
+
         tabAllTabsHolder.Width = Me.Width
         tabAllTabsHolder.Height = Me.Height
         dpBillingBillDate.Value = DateTime.Today
-        cmbCustCompanyList.Focus()
-
-        dbConnection = New SqlConnection("server=agni\SQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
-        dbConnection.Open()
 
         Dim lastBillRow As DataRow = getLastBillRow()
         If (lastBillRow IsNot Nothing) Then
@@ -489,7 +489,9 @@ Public Class AgnimainForm
         txtDesWidth.Text = ""
         txtDesHeight.Text = ""
         txtDesNoOfColors.Text = ""
-        txtDesCostPerUnit.Text = ""
+        If cmbDesCompanyList.SelectedIndex = -1 Or cmbDesCompanyList.SelectedValue = -1 Then
+            txtDesCostPerUnit.Text = ""
+        End If
         txtDesCalculatedPrice.Text = ""
         pbDesDesignImage.Image = Nothing
         cmbDesDesignList.Focus()
@@ -1270,13 +1272,14 @@ Public Class AgnimainForm
 
     Private Sub btnBillingPrintBill_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBillingPrintBill.Click
         'Try
-        If cmbBillingBillNoList.SelectedIndex = -1 Then
+        If cmbBillingBillNoList.SelectedIndex = -1 Or cmbBillingBillNoList.SelectedValue = -1 Then
             MsgBox("Please select a bill to print")
             cmbBillingBillNoList.Focus()
             Return
         End If
 
         gSelectedBillNo = cmbBillingBillNoList.SelectedValue
+        gSelectedCustName = cmbBillingCompanyList.Text
 
         BillReportForm.Show()
         'Catch ex As Exception
@@ -1289,6 +1292,16 @@ Public Class AgnimainForm
         gSelectedCustNoIndex = cmbDesCompanyList.SelectedIndex
 
         If (cmbDesCompanyList.SelectedIndex = -1 Or cmbDesCompanyList.SelectedValue = -1) Then
+
+            'Dim dummyDesignListTable As DataTable = New DataTable
+            'dummyDesignListTable.TableName = "designName"
+            'Dim designNoColumn As DataColumn = New DataColumn("designNo", Type.GetType("System.Int32"))
+            'Dim designNameColumn As DataColumn = New DataColumn("designName", Type.GetType("System.String"))
+            'dummyDesignListTable.Columns.Add(designNoColumn)
+            'dummyDesignListTable.Columns.Add(designNameColumn)
+            'cmbDesDesignList.BindingContext = New BindingContext
+            'cmbDesDesignList.DataSource = dummyDesignListTable
+
             If (cmbDesDesignList.Items.Count > 0) Then
                 cmbDesDesignList.SelectedValue = -1
             Else
@@ -1298,9 +1311,11 @@ Public Class AgnimainForm
             Return
         End If
 
-        WorkingChargeTypeChanged()
-        bwtDesListLoadThread.RunWorkerAsync(cmbDesCompanyList.SelectedValue)
-        bwtDesGridLoadThread.RunWorkerAsync(cmbDesCompanyList.SelectedValue)
+        Dim custNo As Integer = cmbDesCompanyList.SelectedValue
+
+        bwtDesChargeTypeLoadThread.RunWorkerAsync(custNo)
+        bwtDesListLoadThread.RunWorkerAsync(custNo)
+        bwtDesGridLoadThread.RunWorkerAsync(custNo)
 
         'Catch ex As Exception
         'MessageBox.Show("Message to Agni User:   " & ex.Message)
@@ -1358,34 +1373,32 @@ Public Class AgnimainForm
     End Sub
 
 
-    Private Sub WorkingChargeTypeChanged() Handles radioDesWP.CheckedChanged, radioDesWorking.CheckedChanged, radioDesPrint.CheckedChanged
-
-        If (cmbDesCompanyList.SelectedIndex = -1) Then
-            Return
-        End If
-
-        Dim custNo = cmbDesCompanyList.SelectedValue
+    Function getChargTypeCharges(custNo As Integer) As DataTable
         Dim customerQuery = New SqlCommand("select WorkingPrintSqrInch, WorkingColor, PrintColor from customer where CustNo=" + custNo.ToString, dbConnection)
         Dim customerAdapter = New SqlDataAdapter()
         customerAdapter.SelectCommand = customerQuery
         Dim customerDataSet = New DataSet
         customerAdapter.Fill(customerDataSet, "customer")
-        Dim customerTable As DataTable = customerDataSet.Tables(0)
+        Return customerDataSet.Tables(0)
+    End Function
 
-        If (customerTable.Rows.Count = 0) Then
+    Sub setChargeTypeChargesInDesignScreen(chargingDetailsTable As DataTable)
+
+        If (chargingDetailsTable.Rows.Count = 0) Then
             Return
         End If
 
         If radioDesWP.Checked Then
             lblDesCostPerUnit.Text = "Cost Per Inch"
-            txtDesCostPerUnit.Text = customerTable.Rows(0).Item("WorkingPrintSqrInch").ToString
+            txtDesCostPerUnit.Text = chargingDetailsTable.Rows(0).Item("WorkingPrintSqrInch").ToString
         ElseIf radioDesWorking.Checked Then
             lblDesCostPerUnit.Text = "Cost Per Color"
-            txtDesCostPerUnit.Text = customerTable.Rows(0).Item("WorkingColor").ToString
+            txtDesCostPerUnit.Text = chargingDetailsTable.Rows(0).Item("WorkingColor").ToString
         ElseIf radioDesPrint.Checked Then
             lblDesCostPerUnit.Text = "Cost Per Inch"
-            txtDesCostPerUnit.Text = customerTable.Rows(0).Item("PrintColor").ToString
+            txtDesCostPerUnit.Text = chargingDetailsTable.Rows(0).Item("PrintColor").ToString
         End If
+
     End Sub
 
     Private Sub ComboBox6_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbReportCompanyList.SelectedIndexChanged
@@ -1408,6 +1421,11 @@ Public Class AgnimainForm
     End Sub
 
     Private Sub btnDesClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDesClear.Click
+        If (cmbDesDesignList.SelectedIndex = -1 Or cmbDesDesignList.SelectedValue = -1) Then
+            resetDesignScreen()
+            cmbDesDesignList.Text = ""
+        End If
+
         If (cmbDesDesignList.Items.Count > 0) Then
             cmbDesDesignList.SelectedValue = -1
         Else
@@ -1482,6 +1500,26 @@ Public Class AgnimainForm
     Private Sub bwtPaymentGridLoadThread_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles bwtPaymentGridLoadThread.RunWorkerCompleted
         Dim paymentTable As DataTable = e.Result
         setPaymentGrid(paymentTable)
+    End Sub
+
+    Private Sub allowOnlyDecimal(sender As Object, e As KeyPressEventArgs) Handles txtDesNoOfColors.KeyPress, txtCustWPCharge.KeyPress, txtCustWorkingCharge.KeyPress, txtCustSGST.KeyPress, txtCustPrintCharge.KeyPress, txtCustIGST.KeyPress, txtCustCGST.KeyPress, txtPaymentUnPaidBilledAmount.KeyPress, txtPaymentTaxDeductionAmount.KeyPress, txtPaymentNetBalance.KeyPress, txtPaymentFinalPaidAmount.KeyPress, txtPaymentDiscountAmount.KeyPress, txtPaymentActualPaidAmount.KeyPress, txtDesWidth.KeyPress, txtDesHeight.KeyPress, txtDesCostPerUnit.KeyPress, txtDesCalculatedPrice.KeyPress, txtBillingTotalGSTAmount.KeyPress, txtBillingTotalAmount.KeyPress, txtBillingSGSTPercent.KeyPress, txtBillingSGSTAmount.KeyPress, txtBillingRemainingBalance.KeyPress, txtBillingPrevBalance.KeyPress, txtBillingPaidAmount.KeyPress, txtBillingIGSTPercent.KeyPress, txtBillingIGSTAmount.KeyPress, txtBillingDesignAmoutBeforeGST.KeyPress, txtBillingDesignAmoutAfterGST.KeyPress, txtBillingCGSTPercent.KeyPress, txtBillingCGSTAmount.KeyPress
+        If Not Char.IsControl(e.KeyChar) And IsNumeric(sender.Text + e.KeyChar) = False Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub bwtDesChargeTypeLoadThread_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bwtDesChargeTypeLoadThread.DoWork
+        Dim custNo As Integer = e.Argument
+        e.Result = getChargTypeCharges(custNo)
+    End Sub
+
+    Private Sub bwtDesChargeTypeLoadThread_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles bwtDesChargeTypeLoadThread.RunWorkerCompleted
+        Dim chargeDetailsTable As DataTable = e.Result
+        setChargeTypeChargesInDesignScreen(chargeDetailsTable)
+    End Sub
+
+    Private Sub chargeTypeCheckedChanged(sender As Object, e As EventArgs) Handles radioDesWP.CheckedChanged, radioDesWorking.CheckedChanged, radioDesPrint.CheckedChanged
+        bwtDesChargeTypeLoadThread.RunWorkerAsync(cmbDesCompanyList.SelectedValue)
     End Sub
 
     Private Sub btnBillingClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBillingClear.Click
@@ -1691,9 +1729,9 @@ Public Class AgnimainForm
         calculateGSTAmountInBilling()
         Dim totalAmountToPay As Decimal = Format(unPaidBalance + Decimal.Parse(txtBillingDesignAmoutAfterGST.Text), "0.00")
 
-        txtBillingTotalAmount.Text = Format(totalAmountToPay, "0.00")
+        txtBillingTotalAmount.Text = Format(Math.Round(totalAmountToPay), "0.00")
         txtBillingPaidAmount.Text = "0.00"
-        txtBillingRemainingBalance.Text = Format(totalAmountToPay, "0.00")
+        txtBillingRemainingBalance.Text = Format(Math.Round(totalAmountToPay), "0.00")
 
         setBillingControlsVisibilitiesForCreateBill()
 
@@ -2045,7 +2083,7 @@ Public Class AgnimainForm
         txtBillingIGSTAmount.Text = Format(IGSTAmount, "0.00")
         txtBillingTotalGSTAmount.Text = Format(totalGSTAmount, "0.00")
 
-        txtBillingDesignAmoutAfterGST.Text = Format((unBilledDesignAmount + totalGSTAmount), "0.00")
+        txtBillingDesignAmoutAfterGST.Text = Format(Math.Round(unBilledDesignAmount + totalGSTAmount), "0.00")
 
     End Sub
 
@@ -2065,7 +2103,7 @@ Public Class AgnimainForm
         Dim designCost = If(designWidth = 0, 1, designWidth) * If(designHeight = 0, 1, designHeight) *
                           If(designNoOfColors = 0, 1, designNoOfColors) * If(designCostPerUnit = 0, 1, designCostPerUnit)
 
-        txtDesCalculatedPrice.Text = Math.Floor(designCost)
+        txtDesCalculatedPrice.Text = Math.Round(designCost)
     End Sub
 
 
@@ -2184,8 +2222,6 @@ Public Class AgnimainForm
         End While
 
         dgPaymentDetails.DataSource = ds11.Tables(0)
-        Label83.Text = ds11.Tables(0).Rows.Count.ToString
-        Label82.Text = actpaid
         'Catch ex As Exception
         'MessageBox.Show("Message to Agni User:   " & ex.Message)
         'End 'Try

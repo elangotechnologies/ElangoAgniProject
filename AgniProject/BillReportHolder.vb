@@ -208,21 +208,21 @@ Public Class BillReportForm
         Dim netBalance As Decimal = AgnimainForm.txtBillingRemainingBalance.Text
         Dim cancelledBill As String = If(invoiceTable.Rows(0).Item("Cancelled") = 1, "This is a cancelled bill", "")
 
-        billReport.SetParameterValue("DesignsAmountBeforeTax", designAmount.ToString)
+        billReport.SetParameterValue("DesignsAmountBeforeTax", Format(Math.Round(designAmount), "0.00"))
         billReport.SetParameterValue("CGST", CGST.ToString)
         billReport.SetParameterValue("SGST", SGST.ToString)
         billReport.SetParameterValue("IGST", IGST.ToString)
         billReport.SetParameterValue("CGSTAmount", CGSTAmount.ToString)
         billReport.SetParameterValue("SGSTAmount", SGSTAmount.ToString)
         billReport.SetParameterValue("IGSTAmount", IGSTAmount.ToString)
-        billReport.SetParameterValue("TotalGSTTax", totalGSTAmount.ToString)
-        billReport.SetParameterValue("DesignsAmountAfterTax", designAmountAfterGST.ToString)
+        billReport.SetParameterValue("TotalGSTTax", Format(Math.Round(totalGSTAmount), "0.00"))
+        billReport.SetParameterValue("DesignsAmountAfterTax", Format(Math.Round(designAmountAfterGST), "0.00"))
 
-        billReport.SetParameterValue("DesignsAmountBeforeTax", designAmount.ToString)
+        billReport.SetParameterValue("DesignsAmountBeforeTax", Format(Math.Round(designAmount), "0.00"))
         billReport.SetParameterValue("DesignsCostInWords", getAmountInWords(designAmountAfterGST.ToString))
-        billReport.SetParameterValue("PaidAmountForThisBill", paidAmountForThisBill.ToString)
-        billReport.SetParameterValue("PrevBalance", prevBalance.ToString)
-        billReport.SetParameterValue("NetBalance", netBalance.ToString)
+        billReport.SetParameterValue("PaidAmountForThisBill", Format(Math.Round(paidAmountForThisBill), "0.00"))
+        billReport.SetParameterValue("PrevBalance", Format(Math.Round(prevBalance), "0.00"))
+        billReport.SetParameterValue("NetBalance", Format(Math.Round(netBalance), "0.00"))
         billReport.SetParameterValue("CancelledBill", cancelledBill)
 
         '
@@ -237,17 +237,18 @@ Public Class BillReportForm
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        Try
-            Dim CrExportOptions As ExportOptions
+        'Try
+        Dim CrExportOptions As ExportOptions
             Dim CrDiskFileDestinationOptions As New DiskFileDestinationOptions
             Dim CrFormatTypeOptions As New PdfRtfWordFormatOptions
             Dim fname As String = ""
-            Dim billnumber = AgnimainForm.billkey
-            'Dim billnumber1 As String = billnumber.Substring(billnumber.IndexOf("/") + 1, billnumber.Length - billnumber.IndexOf("/") - 1)
-            'billnumber = billnumber.Substring(0, billnumber.IndexOf("/"))
-            'fname = AgnimainForm.pdfdesfolder + "\Bill @" + billnumber + "#" + billnumber1 + " " + AgnimainForm.billcust + ".pdf"
-            fname = AgnimainForm.pdfdesfolder + "\Bill_" + billnumber + "_" + AgnimainForm.billcust + ".pdf"
-            CrDiskFileDestinationOptions.DiskFileName = fname
+            Dim billnumber = AgnimainForm.gSelectedBillNo
+            Dim custName = AgnimainForm.gSelectedCustName
+        'Dim billnumber1 As String = billnumber.Substring(billnumber.IndexOf("/") + 1, billnumber.Length - billnumber.IndexOf("/") - 1)
+        'billnumber = billnumber.Substring(0, billnumber.IndexOf("/"))
+        'fname = AgnimainForm.pdfdesfolder + "\Bill @" + billnumber + "#" + billnumber1 + " " + AgnimainForm.billcust + ".pdf"
+        fname = AgnimainForm.pdfdesfolder + "\Bill_" + billnumber.ToString + "_" + custName + ".pdf"
+        CrDiskFileDestinationOptions.DiskFileName = fname
             CrExportOptions = billReport.ExportOptions
             With CrExportOptions
                 .ExportDestinationType = ExportDestinationType.DiskFile
@@ -257,9 +258,9 @@ Public Class BillReportForm
             End With
             billReport.Export()
             MsgBox("'" + fname + "' is successfully created")
-        Catch ex As Exception
-            MessageBox.Show("message to agni user:   " & ex.Message)
-        End Try
+        'Catch ex As Exception
+        '    MessageBox.Show("message to agni user:   " & ex.Message)
+        'End Try
     End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
