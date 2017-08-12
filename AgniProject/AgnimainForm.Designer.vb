@@ -376,14 +376,6 @@ Partial Class AgnimainForm
         Me.Label148 = New System.Windows.Forms.Label()
         Me.Label149 = New System.Windows.Forms.Label()
         Me.Label150 = New System.Windows.Forms.Label()
-        Me.bwtCustListLoadThread = New System.ComponentModel.BackgroundWorker()
-        Me.bwtDesListLoadThread = New System.ComponentModel.BackgroundWorker()
-        Me.bwtDesGridLoadThread = New System.ComponentModel.BackgroundWorker()
-        Me.bwtBillListLoadThread = New System.ComponentModel.BackgroundWorker()
-        Me.bwtBillGridLoadThread = New System.ComponentModel.BackgroundWorker()
-        Me.bwtPaymentListLoadThread = New System.ComponentModel.BackgroundWorker()
-        Me.bwtPaymentGridLoadThread = New System.ComponentModel.BackgroundWorker()
-        Me.bwtDesChargeTypeLoadThread = New System.ComponentModel.BackgroundWorker()
         Me.tabHelp.SuspendLayout()
         Me.tabReports.SuspendLayout()
         CType(Me.DataGrid4, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1874,7 +1866,6 @@ Partial Class AgnimainForm
         Me.dgBIllingBillDetails.CaptionForeColor = System.Drawing.Color.White
         Me.dgBIllingBillDetails.CaptionText = "Bill Details"
         Me.dgBIllingBillDetails.DataMember = ""
-        Me.dgBIllingBillDetails.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.dgBIllingBillDetails.FlatMode = True
         Me.dgBIllingBillDetails.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dgBIllingBillDetails.ForeColor = System.Drawing.Color.MidnightBlue
@@ -1883,7 +1874,7 @@ Partial Class AgnimainForm
         Me.dgBIllingBillDetails.HeaderFont = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
         Me.dgBIllingBillDetails.HeaderForeColor = System.Drawing.Color.LavenderBlush
         Me.dgBIllingBillDetails.LinkColor = System.Drawing.Color.Teal
-        Me.dgBIllingBillDetails.Location = New System.Drawing.Point(4, 538)
+        Me.dgBIllingBillDetails.Location = New System.Drawing.Point(35, 571)
         Me.dgBIllingBillDetails.Margin = New System.Windows.Forms.Padding(4)
         Me.dgBIllingBillDetails.Name = "dgBIllingBillDetails"
         Me.dgBIllingBillDetails.ParentRowsBackColor = System.Drawing.Color.Lavender
@@ -1892,7 +1883,7 @@ Partial Class AgnimainForm
         Me.dgBIllingBillDetails.ReadOnly = True
         Me.dgBIllingBillDetails.SelectionBackColor = System.Drawing.Color.Teal
         Me.dgBIllingBillDetails.SelectionForeColor = System.Drawing.Color.PaleGreen
-        Me.dgBIllingBillDetails.Size = New System.Drawing.Size(1695, 369)
+        Me.dgBIllingBillDetails.Size = New System.Drawing.Size(1548, 283)
         Me.dgBIllingBillDetails.TabIndex = 26
         Me.dgBIllingBillDetails.TableStyles.AddRange(New System.Windows.Forms.DataGridTableStyle() {Me.DataGridTableStyle2})
         '
@@ -2280,7 +2271,6 @@ Partial Class AgnimainForm
         Me.dgDesDesignDetails.CaptionForeColor = System.Drawing.Color.White
         Me.dgDesDesignDetails.CaptionText = "Design Details"
         Me.dgDesDesignDetails.DataMember = ""
-        Me.dgDesDesignDetails.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.dgDesDesignDetails.FlatMode = True
         Me.dgDesDesignDetails.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dgDesDesignDetails.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
@@ -2289,7 +2279,7 @@ Partial Class AgnimainForm
         Me.dgDesDesignDetails.HeaderFont = New System.Drawing.Font("Tahoma", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dgDesDesignDetails.HeaderForeColor = System.Drawing.Color.Lavender
         Me.dgDesDesignDetails.LinkColor = System.Drawing.Color.Teal
-        Me.dgDesDesignDetails.Location = New System.Drawing.Point(4, 433)
+        Me.dgDesDesignDetails.Location = New System.Drawing.Point(0, 429)
         Me.dgDesDesignDetails.Margin = New System.Windows.Forms.Padding(4)
         Me.dgDesDesignDetails.Name = "dgDesDesignDetails"
         Me.dgDesDesignDetails.ParentRowsBackColor = System.Drawing.Color.Lavender
@@ -2297,7 +2287,7 @@ Partial Class AgnimainForm
         Me.dgDesDesignDetails.ReadOnly = True
         Me.dgDesDesignDetails.SelectionBackColor = System.Drawing.Color.Teal
         Me.dgDesDesignDetails.SelectionForeColor = System.Drawing.Color.PaleGreen
-        Me.dgDesDesignDetails.Size = New System.Drawing.Size(1695, 474)
+        Me.dgDesDesignDetails.Size = New System.Drawing.Size(1524, 361)
         Me.dgDesDesignDetails.TabIndex = 27
         Me.dgDesDesignDetails.TableStyles.AddRange(New System.Windows.Forms.DataGridTableStyle() {Me.DataGridTableStyle1})
         '
@@ -2811,7 +2801,7 @@ Partial Class AgnimainForm
         Me.GroupBox1.Size = New System.Drawing.Size(436, 215)
         Me.GroupBox1.TabIndex = 128
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Working Charge Details"
+        Me.GroupBox1.Text = "Design Cost Per Unit"
         '
         'lblPrintCharge
         '
@@ -4893,38 +4883,13 @@ Partial Class AgnimainForm
         Me.Label150.TabIndex = 33
         Me.Label150.Text = "Remaining Balance"
         '
-        'bwtCustListLoadThread
-        '
-        '
-        'bwtDesListLoadThread
-        '
-        '
-        'bwtDesGridLoadThread
-        '
-        '
-        'bwtBillListLoadThread
-        '
-        '
-        'bwtBillGridLoadThread
-        '
-        '
-        'bwtPaymentListLoadThread
-        '
-        '
-        'bwtPaymentGridLoadThread
-        '
-        '
-        'bwtDesChargeTypeLoadThread
-        '
-        '
         'AgnimainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(156, Byte), Integer), CType(CType(213, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1605, 1045)
+        Me.ClientSize = New System.Drawing.Size(1626, 1045)
         Me.Controls.Add(Me.Button38)
         Me.Controls.Add(Me.Button37)
         Me.Controls.Add(Me.tabAllTabsHolder)
@@ -5344,14 +5309,6 @@ Partial Class AgnimainForm
     Friend WithEvents txtPaymentBillNo As TextBox
     Friend WithEvents DataGridTextBoxColumn43 As DataGridTextBoxColumn
     Friend WithEvents Label13 As Label
-    Friend WithEvents bwtCustListLoadThread As System.ComponentModel.BackgroundWorker
-    Friend WithEvents bwtDesListLoadThread As System.ComponentModel.BackgroundWorker
-    Friend WithEvents bwtDesGridLoadThread As System.ComponentModel.BackgroundWorker
-    Friend WithEvents bwtBillListLoadThread As System.ComponentModel.BackgroundWorker
-    Friend WithEvents bwtBillGridLoadThread As System.ComponentModel.BackgroundWorker
-    Friend WithEvents bwtPaymentListLoadThread As System.ComponentModel.BackgroundWorker
-    Friend WithEvents bwtPaymentGridLoadThread As System.ComponentModel.BackgroundWorker
     Friend WithEvents Label44 As Label
     Friend WithEvents txtBillingActualBillNo As TextBox
-    Friend WithEvents bwtDesChargeTypeLoadThread As System.ComponentModel.BackgroundWorker
 End Class

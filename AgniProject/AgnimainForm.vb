@@ -1,6 +1,7 @@
 Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Math
+Imports System.Threading
 'Imports NLog
 
 Public Class AgnimainForm
@@ -117,22 +118,34 @@ Public Class AgnimainForm
             gDisplayBillNo = lastBillRow.Item("DisplayBillNo")
         End If
 
-        bwtCustListLoadThread.RunWorkerAsync()
+        'loadCustomerList()
+        loadCustomerList()
 
         resetAllScreens()
 
     End Sub
 
-    Function getCustomerListTable() As DataTable
+    Sub loadCustomerList()
+        Dim thread As Thread = New Thread(AddressOf getCustomerListTable)
+        thread.IsBackground = True
+        thread.Start()
+    End Sub
+
+    Sub getCustomerListTable()
         'log.Debug("getCustomerListTable: entry")
         Dim customerQuery = New SqlCommand("select CustNo,CompName from customer", dbConnection)
         Dim customerAdapter = New SqlDataAdapter()
         customerAdapter.SelectCommand = customerQuery
         Dim customerDataSet = New DataSet
         customerAdapter.Fill(customerDataSet, "customer")
-        Return customerDataSet.Tables(0)
-    End Function
+        Dim customerTable As DataTable = customerDataSet.Tables(0)
 
+        Dim setCustomerListInvoker As New setCustomerListDelegate(AddressOf Me.setCustomerList)
+        Me.BeginInvoke(setCustomerListInvoker, customerTable, Nothing)
+
+    End Sub
+
+    Delegate Sub setCustomerListDelegate(customerTable As DataTable, cmbCompanyList As ComboBox)
 
     Sub setCustomerList(customerTable As DataTable, Optional cmbCompanyList As ComboBox = Nothing)
         'log.Debug("setCustomerList: entry")
@@ -160,7 +173,16 @@ Public Class AgnimainForm
 
     End Sub
 
-    Function getDesignListTable(Optional custNo As Integer = Nothing) As DataTable
+    Sub loadDesignList(custNo As Integer)
+        Dim thread As Thread = New Thread(AddressOf getDesignListTable)
+        thread.IsBackground = True
+        thread.Start(custNo)
+    End Sub
+
+    Sub getDesignListTable(ByVal custNoObj As Object)
+
+        Dim custNo = CType(custNoObj, Integer)
+
         Dim designQuery As SqlCommand
         If (custNo <> Nothing) Then
             designQuery = New SqlCommand("select DesignNo, DesignName from design where custNo=" + custNo.ToString, dbConnection)
@@ -172,8 +194,13 @@ Public Class AgnimainForm
         designAdapter.SelectCommand = designQuery
         Dim designDataSet = New DataSet
         designAdapter.Fill(designDataSet, "design")
-        Return designDataSet.Tables(0)
-    End Function
+        Dim designTable As DataTable = designDataSet.Tables(0)
+
+        Dim setDesignListInvoker As New setDesignListDelegate(AddressOf Me.setDesignList)
+        Me.BeginInvoke(setDesignListInvoker, designTable)
+    End Sub
+
+    Delegate Sub setDesignListDelegate(designTable As DataTable)
 
     Sub setDesignList(designTable As DataTable)
         Dim dummyFirstRow As DataRow = designTable.NewRow()
@@ -185,7 +212,57 @@ Public Class AgnimainForm
         cmbDesDesignList.DataSource = designTable
     End Sub
 
-    Function getDesignGridTable(Optional custNo As Integer = Nothing) As DataTable
+    Sub loadDesignChargePerUnit(custNo As Integer)
+        Dim thread As Thread = New Thread(AddressOf getDesignChargePerUnit)
+        thread.IsBackground = True
+        thread.Start(custNo)
+    End Sub
+
+    Sub getDesignChargePerUnit(ByVal custNoObj As Object)
+        Dim custNo = CType(custNoObj, Integer)
+
+        Dim customerQuery = New SqlCommand("select WorkingPrintSqrInch, WorkingColor, PrintColor from customer where CustNo=" + custNo.ToString, dbConnection)
+        Dim customerAdapter = New SqlDataAdapter()
+        customerAdapter.SelectCommand = customerQuery
+        Dim customerDataSet = New DataSet
+        customerAdapter.Fill(customerDataSet, "customer")
+        Dim designChargeCostPerUnitTable As DataTable = customerDataSet.Tables(0)
+
+        Dim setDesignChargePerUnitInvoker As New setDesignChargePerUnitDelegate(AddressOf Me.setDesignChargePerUnit)
+        Me.BeginInvoke(setDesignChargePerUnitInvoker, designChargeCostPerUnitTable)
+    End Sub
+
+    Delegate Sub setDesignChargePerUnitDelegate(chargingDetailsTable As DataTable)
+
+    Sub setDesignChargePerUnit(chargingDetailsTable As DataTable)
+
+        If (chargingDetailsTable.Rows.Count = 0) Then
+            Return
+        End If
+
+        If radioDesWP.Checked Then
+            lblDesCostPerUnit.Text = "Cost Per Inch"
+            txtDesCostPerUnit.Text = chargingDetailsTable.Rows(0).Item("WorkingPrintSqrInch").ToString
+        ElseIf radioDesWorking.Checked Then
+            lblDesCostPerUnit.Text = "Cost Per Color"
+            txtDesCostPerUnit.Text = chargingDetailsTable.Rows(0).Item("WorkingColor").ToString
+        ElseIf radioDesPrint.Checked Then
+            lblDesCostPerUnit.Text = "Cost Per Inch"
+            txtDesCostPerUnit.Text = chargingDetailsTable.Rows(0).Item("PrintColor").ToString
+        End If
+
+    End Sub
+
+    Sub loadDesignGrid(custNo As Integer)
+        Dim thread As Thread = New Thread(AddressOf getDesignGridTable)
+        thread.IsBackground = True
+        thread.Start(custNo)
+    End Sub
+
+    Sub getDesignGridTable(ByVal custNoObj As Object)
+
+        Dim custNo = CType(custNoObj, Integer)
+
         Dim designQuery As SqlCommand
         If (custNo <> Nothing) Then
             designQuery = New SqlCommand("select * from design where custNo=" + custNo.ToString, dbConnection)
@@ -197,13 +274,28 @@ Public Class AgnimainForm
         designAdapter.SelectCommand = designQuery
         Dim designDataSet = New DataSet
         designAdapter.Fill(designDataSet, "design")
-        Return designDataSet.Tables(0)
-    End Function
+        Dim designTable As DataTable = designDataSet.Tables(0)
+
+        Dim setDesignGridInvoker As New setDesignGridDelegate(AddressOf Me.setDesignGrid)
+        Me.BeginInvoke(setDesignGridInvoker, designTable)
+    End Sub
+
+    Delegate Sub setDesignGridDelegate(designTable As DataTable)
+
     Sub setDesignGrid(designTable As DataTable)
         dgDesDesignDetails.DataSource = designTable
     End Sub
 
-    Function getBillListTable(Optional custNo As Integer = Nothing) As DataTable
+    Sub loadBillList(custNo As Integer)
+        Dim thread As Thread = New Thread(AddressOf getBillListTable)
+        thread.IsBackground = True
+        thread.Start(custNo)
+    End Sub
+
+    Sub getBillListTable(ByVal custNoObj As Object)
+
+        Dim custNo = CType(custNoObj, Integer)
+
         Dim billQuery As SqlCommand
         If (custNo <> Nothing) Then
             billQuery = New SqlCommand("select BillNo, DisplayBillNo from bill where custNo=" + custNo.ToString, dbConnection)
@@ -215,10 +307,14 @@ Public Class AgnimainForm
         billAdapter.SelectCommand = billQuery
         Dim billDataSet = New DataSet
         billAdapter.Fill(billDataSet, "bill")
-        Return billDataSet.Tables(0)
+        Dim billTable As DataTable = billDataSet.Tables(0)
 
-    End Function
+        Dim setBillingListInvoker As New setBillingListDelegate(AddressOf Me.setBillingList)
+        Me.BeginInvoke(setBillingListInvoker, billTable, Nothing)
 
+    End Sub
+
+    Delegate Sub setBillingListDelegate(billTable As DataTable, cmbBillList As ComboBox)
     Sub setBillingList(billTable As DataTable, Optional cmbBillList As ComboBox = Nothing)
 
         Dim dummyFirstRow As DataRow = billTable.NewRow()
@@ -235,7 +331,16 @@ Public Class AgnimainForm
         End If
     End Sub
 
-    Function getBillGridTable(Optional custNo As Integer = Nothing) As DataTable
+    Sub loadBillGrid(custNo As Integer)
+        Dim thread As Thread = New Thread(AddressOf getBillGridTable)
+        thread.IsBackground = True
+        thread.Start(custNo)
+    End Sub
+
+    Sub getBillGridTable(ByVal custNoObj As Object)
+
+        Dim custNo = CType(custNoObj, Integer)
+
         Dim billQuery As SqlCommand
         If (custNo <> Nothing) Then
             billQuery = New SqlCommand("select BillNo, DisplayBillNo, BillDate, DesignCost, UnPaidAmountTillNow, CGST, CGST*DesignCost/100 as CGSTAmount, 
@@ -253,16 +358,29 @@ Public Class AgnimainForm
         billAdapter.SelectCommand = billQuery
         Dim billDataSet = New DataSet
         billAdapter.Fill(billDataSet, "bill")
-        Return billDataSet.Tables(0)
+        Dim billTable As DataTable = billDataSet.Tables(0)
 
-    End Function
+        Dim setBillingGridInvoker As New setBillingGridDelegate(AddressOf Me.setBillingGrid)
+        Me.BeginInvoke(setBillingGridInvoker, billTable)
+
+    End Sub
+
+    Delegate Sub setBillingGridDelegate(billTable As DataTable)
 
     Sub setBillingGrid(billTable As DataTable)
         dgBIllingBillDetails.DataSource = billTable
     End Sub
 
-    Function getPaymentListTable(Optional custNo As Integer = Nothing) As DataTable
+    Sub loadPaymentList(custNo As Integer)
+        Dim thread As Thread = New Thread(AddressOf getPaymentListTable)
+        thread.IsBackground = True
+        thread.Start(custNo)
+    End Sub
+
+    Sub getPaymentListTable(ByVal custNoObj As Object)
         'log.Debug("getPaymentListTable: entry")
+        Dim custNo = CType(custNoObj, Integer)
+
         Dim paymentQuery As SqlCommand
         If (custNo <> Nothing) Then
             paymentQuery = New SqlCommand("select PaymentNo, CONVERT(varchar(11), PaymentNo) as DisplayPaymentNo  from payment where custNo=" + custNo.ToString, dbConnection)
@@ -274,9 +392,15 @@ Public Class AgnimainForm
         paymentAdapter.SelectCommand = paymentQuery
         Dim paymentDataSet = New DataSet
         paymentAdapter.Fill(paymentDataSet, "payment")
-        Return paymentDataSet.Tables(0)
+        Dim paymentTable As DataTable = paymentDataSet.Tables(0)
 
-    End Function
+        Dim setPaymentListInvoker As New setPaymentListDelegate(AddressOf Me.setPaymentList)
+        Me.BeginInvoke(setPaymentListInvoker, paymentTable, Nothing)
+
+    End Sub
+
+    Delegate Sub setPaymentListDelegate(paymentTable As DataTable, cmbPaymentList As ComboBox)
+
     Sub setPaymentList(paymentTable As DataTable, Optional cmbPaymentList As ComboBox = Nothing)
 
         Dim dummyFirstRow As DataRow = paymentTable.NewRow()
@@ -294,7 +418,16 @@ Public Class AgnimainForm
 
     End Sub
 
-    Function getPaymentGridTable(Optional custNo As Integer = Nothing) As DataTable
+    Sub loadPaymentGrid(custNo As Integer)
+        Dim thread As Thread = New Thread(AddressOf getPaymentGridTable)
+        thread.IsBackground = True
+        thread.Start(custNo)
+    End Sub
+
+    Sub getPaymentGridTable(ByVal custNoObj As Object)
+
+        Dim custNo = CType(custNoObj, Integer)
+
         'log.Debug("getPaymentGridTable: entry")
         Dim paymentQuery As SqlCommand
         If (custNo <> Nothing) Then
@@ -307,8 +440,13 @@ Public Class AgnimainForm
         paymentAdapter.SelectCommand = paymentQuery
         Dim paymentDataSet = New DataSet
         paymentAdapter.Fill(paymentDataSet, "payment")
-        Return paymentDataSet.Tables(0)
-    End Function
+        Dim paymentTable As DataTable = paymentDataSet.Tables(0)
+
+        Dim setPaymentGridInvoker As New setPaymentGridDelegate(AddressOf Me.setPaymentGrid)
+        Me.BeginInvoke(setPaymentGridInvoker, paymentTable)
+    End Sub
+
+    Delegate Sub setPaymentGridDelegate(paymentTable As DataTable)
 
     Sub setPaymentGrid(paymentTable As DataTable)
         dgPaymentDetails.DataSource = paymentTable
@@ -524,8 +662,8 @@ Public Class AgnimainForm
         txtBillingSGSTPercent.Text = ""
         txtBillingIGSTPercent.Text = ""
         txtBillingCGSTAmount.Text = ""
-        txtBillingCGSTAmount.Text = ""
-        txtBillingCGSTAmount.Text = ""
+        txtBillingSGSTAmount.Text = ""
+        txtBillingIGSTAmount.Text = ""
         txtBillingTotalGSTAmount.Text = ""
         txtBillingDesignAmoutAfterGST.Text = ""
         txtBillingTotalAmount.Text = ""
@@ -628,7 +766,7 @@ Public Class AgnimainForm
                     comm.ExecuteNonQuery()
                 End Using
                 MessageBox.Show("Company successfully added")
-                bwtCustListLoadThread.RunWorkerAsync()
+                loadCustomerList()
             End If
         Catch ex As Exception
             MessageBox.Show("Message to Agni User:   " & ex.Message & " (Or) This Customer Record may already exist")
@@ -679,7 +817,7 @@ Public Class AgnimainForm
             comm.ExecuteNonQuery()
         End Using
         MessageBox.Show("Company successfully deleted")
-        bwtCustListLoadThread.RunWorkerAsync()
+        loadCustomerList()
         resetAllScreens()
     End Sub
 
@@ -764,7 +902,7 @@ Public Class AgnimainForm
             End Using
             MessageBox.Show("Company successfully updated")
             resetCustomerScreen()
-            bwtCustListLoadThread.RunWorkerAsync()
+            loadCustomerList()
         End If
         'Catch ex As Exception
         'MessageBox.Show("Message to Agni User:   " & ex.Message & " Or this Customer Record may not exist")
@@ -860,8 +998,8 @@ Public Class AgnimainForm
                 comm.ExecuteNonQuery()
             End Using
             MessageBox.Show("Design successfully added")
-            bwtDesListLoadThread.RunWorkerAsync(custNo)
-            bwtDesGridLoadThread.RunWorkerAsync(custNo)
+            loadDesignList(custNo)
+            loadDesignGrid(custNo)
 
             'Catch ex As Exception
             'MessageBox.Show("Message to Agni User:   " & ex.Message & " Or this design Record may already exist")
@@ -1011,8 +1149,8 @@ Public Class AgnimainForm
                 comm.ExecuteNonQuery()
             End Using
             MessageBox.Show("Design successfully updated")
-            bwtDesListLoadThread.RunWorkerAsync(custNo)
-            bwtDesGridLoadThread.RunWorkerAsync(custNo)
+            loadDesignList(custNo)
+            loadDesignGrid(custNo)
         End If
         ''Catch ex As Exception
         '    'MessageBox.Show("Message to Agni User:   " & ex.Message)
@@ -1041,8 +1179,8 @@ Public Class AgnimainForm
             End With
             comm.ExecuteNonQuery()
         End Using
-        bwtDesListLoadThread.RunWorkerAsync(custNo)
-        bwtDesGridLoadThread.RunWorkerAsync(custNo)
+        loadDesignList(custNo)
+        loadDesignGrid(custNo)
     End Sub
 
     Sub updateDesignsAsUnBilled(BillNo As Integer)
@@ -1065,8 +1203,8 @@ Public Class AgnimainForm
             End With
             comm.ExecuteNonQuery()
         End Using
-        bwtDesListLoadThread.RunWorkerAsync(custNo)
-        bwtDesGridLoadThread.RunWorkerAsync(custNo)
+        loadDesignList(custNo)
+        loadDesignGrid(custNo)
     End Sub
 
     Sub addPaidAmountInBill(BillNo As Integer, paidAmount As Decimal)
@@ -1090,8 +1228,8 @@ Public Class AgnimainForm
             End With
             comm.ExecuteNonQuery()
         End Using
-        bwtCustListLoadThread.RunWorkerAsync(custNo)
-        bwtDesGridLoadThread.RunWorkerAsync(custNo)
+        loadDesignList(custNo)
+        loadDesignGrid(custNo)
     End Sub
 
     Private Sub btnDesDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDesDelete.Click
@@ -1120,8 +1258,8 @@ Public Class AgnimainForm
             End Using
             MessageBox.Show("Design successfully deleted")
 
-            bwtDesListLoadThread.RunWorkerAsync(custNo)
-            bwtDesGridLoadThread.RunWorkerAsync(custNo)
+            loadDesignList(custNo)
+            loadDesignGrid(custNo)
         End If
 
         'Catch ex As Exception
@@ -1192,79 +1330,9 @@ Public Class AgnimainForm
             Return
         End If
 
-        bwtBillListLoadThread.RunWorkerAsync(cmbBillingCompanyList.SelectedValue)
-        bwtBillGridLoadThread.RunWorkerAsync(cmbBillingCompanyList.SelectedValue)
-
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub DateTimePicker1_CloseUp(ByVal sender As Object, ByVal e As System.EventArgs) Handles dpBillingBillDate.CloseUp
-        'Try
-        Dim desdate, seldate As Date
-        Dim desdatestr, seldatestr As String
-        Dim desamount As Decimal = 0
-        Dim balamount As Decimal = 0
-        Dim lastbildate As DateTime
-        Dim lastbildatestr As String = ""
-        seldatestr = dpBillingBillDate.Value.ToString("MM dd yyyy")
-        seldate = DateTime.Parse(seldatestr)
-        Dim custname = cmbBillingCompanyList.Text
-        flag = 0
-        If dt3.Rows.Count = 0 Then
-            lastbildate = DateTime.Parse("01 01 1900")
-            balamount = 0
-        Else
-            rowCount = dt3.Rows.Count - 1
-            While (rowCount >= 0)
-                dr3 = dt3.Rows(rowCount)
-                If custname.Equals(dr3.Item(0)) Then
-                    lastbildate = DateTime.Parse(dr3.Item(2))
-                    lastbildatestr = lastbildate.ToString("MM dd yyyy")
-                    lastbildate = DateTime.Parse(lastbildatestr)
-                    balamount = dr3.Item(7)
-                    flag = 1
-                    Exit While
-                End If
-                rowCount -= 1
-            End While
-        End If
-        If flag = 0 Then
-            lastbildate = DateTime.Parse("01 01 1900")
-            balamount = 0
-        End If
-        If lastbildate > seldate Then
-            MsgBox("Sorry.. You cannot create a Bill on '" + seldate.ToString("MMMM dd, yyyy") + "'. Because you have a Bill on '" + lastbildate.ToString("MMMM dd, yyyy") + "' for '" + custname + "'." + vbNewLine + "So you cannot create Bill in prior date. Please select Bill Date as on or after '" + lastbildate.ToString("MMMM dd, yyyy") + "'")
-            Exit Sub
-        End If
-
-        If Dt2.Rows.Count > 0 Then
-            rowCount = Dt2.Rows.Count - 1
-            While (rowCount >= 0)
-                Dr2 = Dt2.Rows(rowCount)
-                If custname.Equals(Dr2.Item(0)) Then
-                    desdate = DateTime.Parse(Dr2.Item(10))
-                    desdatestr = desdate.ToString("MM dd yyyy")
-                    desdate = DateTime.Parse(desdatestr)
-                    'If lastbildate > seldate Then
-                    '    ' Exit While
-                    'ElseIf desdate <= seldate And lastbildate <= seldate And desdate <= seldate Then
-                    '    If lastbildate <= desdate And Dr2.Item(11).ToString.Equals("notpaid") Then
-                    '        desamount += Dr2.Item(9)
-                    '    End If
-                    'End If
-                    If desdate <= seldate And Dr2.Item(11).ToString.Equals("notpaid") Then
-                        desamount += Dr2.Item(9)
-                    End If
-                End If
-                rowCount -= 1
-            End While
-        End If
-        txtBillingPrevBalance.Text = balamount
-        txtBillingDesignAmoutBeforeGST.Text = desamount
-        txtBillingTotalAmount.Text = desamount + balamount
-        txtBillingRemainingBalance.Text = txtBillingTotalAmount.Text
+        Dim custNo As Integer = cmbBillingCompanyList.SelectedValue
+        loadBillList(custNo)
+        loadBillGrid(custNo)
         'Catch ex As Exception
         'MessageBox.Show("Message to Agni User:   " & ex.Message)
         'End 'Try
@@ -1313,10 +1381,9 @@ Public Class AgnimainForm
 
         Dim custNo As Integer = cmbDesCompanyList.SelectedValue
 
-        bwtDesChargeTypeLoadThread.RunWorkerAsync(custNo)
-        bwtDesListLoadThread.RunWorkerAsync(custNo)
-        bwtDesGridLoadThread.RunWorkerAsync(custNo)
-
+        loadDesignChargePerUnit(custNo)
+        loadDesignList(custNo)
+        loadDesignGrid(custNo)
         'Catch ex As Exception
         'MessageBox.Show("Message to Agni User:   " & ex.Message)
         'End 'Try
@@ -1373,33 +1440,6 @@ Public Class AgnimainForm
     End Sub
 
 
-    Function getChargTypeCharges(custNo As Integer) As DataTable
-        Dim customerQuery = New SqlCommand("select WorkingPrintSqrInch, WorkingColor, PrintColor from customer where CustNo=" + custNo.ToString, dbConnection)
-        Dim customerAdapter = New SqlDataAdapter()
-        customerAdapter.SelectCommand = customerQuery
-        Dim customerDataSet = New DataSet
-        customerAdapter.Fill(customerDataSet, "customer")
-        Return customerDataSet.Tables(0)
-    End Function
-
-    Sub setChargeTypeChargesInDesignScreen(chargingDetailsTable As DataTable)
-
-        If (chargingDetailsTable.Rows.Count = 0) Then
-            Return
-        End If
-
-        If radioDesWP.Checked Then
-            lblDesCostPerUnit.Text = "Cost Per Inch"
-            txtDesCostPerUnit.Text = chargingDetailsTable.Rows(0).Item("WorkingPrintSqrInch").ToString
-        ElseIf radioDesWorking.Checked Then
-            lblDesCostPerUnit.Text = "Cost Per Color"
-            txtDesCostPerUnit.Text = chargingDetailsTable.Rows(0).Item("WorkingColor").ToString
-        ElseIf radioDesPrint.Checked Then
-            lblDesCostPerUnit.Text = "Cost Per Inch"
-            txtDesCostPerUnit.Text = chargingDetailsTable.Rows(0).Item("PrintColor").ToString
-        End If
-
-    End Sub
 
     Private Sub ComboBox6_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbReportCompanyList.SelectedIndexChanged
         'Try
@@ -1433,93 +1473,9 @@ Public Class AgnimainForm
         End If
     End Sub
 
-    Private Sub bwtCustListThread_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bwtCustListLoadThread.DoWork
-        e.Result = getCustomerListTable()
-    End Sub
-
-    Private Sub bwtCustListThread_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles bwtCustListLoadThread.RunWorkerCompleted
-        Dim customerTable As DataTable = e.Result
-        setCustomerList(customerTable)
-    End Sub
-
-    Private Sub bwtDesListThread_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bwtDesListLoadThread.DoWork
-        Dim custNo As Integer = e.Argument
-        e.Result = getDesignListTable(custNo)
-    End Sub
-
-    Private Sub bwtDesListThread_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles bwtDesListLoadThread.RunWorkerCompleted
-        Dim designTable As DataTable = e.Result
-        setDesignList(designTable)
-    End Sub
-
-    Private Sub bwtDesGridLoadThread_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bwtDesGridLoadThread.DoWork
-        Dim custNo As Integer = e.Argument
-        e.Result = getDesignGridTable(custNo)
-    End Sub
-
-    Private Sub bwtDesGridLoadThread_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles bwtDesGridLoadThread.RunWorkerCompleted
-        Dim designTable As DataTable = e.Result
-        setDesignGrid(designTable)
-    End Sub
-
-    Private Sub bwtBillListLoadThread_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bwtBillListLoadThread.DoWork
-        Dim custNo As Integer = e.Argument
-        e.Result = getBillListTable(custNo)
-    End Sub
-
-    Private Sub bwtBillListLoadThread_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles bwtBillListLoadThread.RunWorkerCompleted
-        Dim billTable As DataTable = e.Result
-        setBillingList(billTable)
-    End Sub
-
-    Private Sub bwtBillGridLoadThread_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bwtBillGridLoadThread.DoWork
-        Dim custNo As Integer = e.Argument
-        e.Result = getBillGridTable(custNo)
-    End Sub
-
-    Private Sub bwtBillGridLoadThread_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles bwtBillGridLoadThread.RunWorkerCompleted
-        Dim billingTable As DataTable = e.Result
-        setBillingGrid(billingTable)
-    End Sub
-
-    Private Sub bwtPaymentListLoadThread_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bwtPaymentListLoadThread.DoWork
-        Dim custNo As Integer = e.Argument
-        e.Result = getPaymentListTable(custNo)
-    End Sub
-
-    Private Sub bwtPaymentListLoadThread_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles bwtPaymentListLoadThread.RunWorkerCompleted
-        Dim paymentTable As DataTable = e.Result
-        setPaymentList(paymentTable)
-    End Sub
-
-    Private Sub bwtPaymentGridLoadThread_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bwtPaymentGridLoadThread.DoWork
-        Dim custNo As Integer = e.Argument
-        e.Result = getPaymentGridTable(custNo)
-    End Sub
-
-    Private Sub bwtPaymentGridLoadThread_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles bwtPaymentGridLoadThread.RunWorkerCompleted
-        Dim paymentTable As DataTable = e.Result
-        setPaymentGrid(paymentTable)
-    End Sub
-
-    Private Sub allowOnlyDecimal(sender As Object, e As KeyPressEventArgs) Handles txtDesNoOfColors.KeyPress, txtCustWPCharge.KeyPress, txtCustWorkingCharge.KeyPress, txtCustSGST.KeyPress, txtCustPrintCharge.KeyPress, txtCustIGST.KeyPress, txtCustCGST.KeyPress, txtPaymentUnPaidBilledAmount.KeyPress, txtPaymentTaxDeductionAmount.KeyPress, txtPaymentNetBalance.KeyPress, txtPaymentFinalPaidAmount.KeyPress, txtPaymentDiscountAmount.KeyPress, txtPaymentActualPaidAmount.KeyPress, txtDesWidth.KeyPress, txtDesHeight.KeyPress, txtDesCostPerUnit.KeyPress, txtDesCalculatedPrice.KeyPress, txtBillingTotalGSTAmount.KeyPress, txtBillingTotalAmount.KeyPress, txtBillingSGSTPercent.KeyPress, txtBillingSGSTAmount.KeyPress, txtBillingRemainingBalance.KeyPress, txtBillingPrevBalance.KeyPress, txtBillingPaidAmount.KeyPress, txtBillingIGSTPercent.KeyPress, txtBillingIGSTAmount.KeyPress, txtBillingDesignAmoutBeforeGST.KeyPress, txtBillingDesignAmoutAfterGST.KeyPress, txtBillingCGSTPercent.KeyPress, txtBillingCGSTAmount.KeyPress
-        If Not Char.IsControl(e.KeyChar) And IsNumeric(sender.Text + e.KeyChar) = False Then
-            e.Handled = True
-        End If
-    End Sub
-
-    Private Sub bwtDesChargeTypeLoadThread_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bwtDesChargeTypeLoadThread.DoWork
-        Dim custNo As Integer = e.Argument
-        e.Result = getChargTypeCharges(custNo)
-    End Sub
-
-    Private Sub bwtDesChargeTypeLoadThread_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles bwtDesChargeTypeLoadThread.RunWorkerCompleted
-        Dim chargeDetailsTable As DataTable = e.Result
-        setChargeTypeChargesInDesignScreen(chargeDetailsTable)
-    End Sub
-
     Private Sub chargeTypeCheckedChanged(sender As Object, e As EventArgs) Handles radioDesWP.CheckedChanged, radioDesWorking.CheckedChanged, radioDesPrint.CheckedChanged
-        bwtDesChargeTypeLoadThread.RunWorkerAsync(cmbDesCompanyList.SelectedValue)
+        'bwtDesChargeTypeLoadThread.RunWorkerAsync(cmbDesCompanyList.SelectedValue)
+        loadDesignChargePerUnit(cmbDesCompanyList.SelectedValue)
     End Sub
 
     Private Sub btnBillingClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBillingClear.Click
@@ -1667,9 +1623,10 @@ Public Class AgnimainForm
             End If
             Return
         End If
+        Dim custNo As Integer = cmbPaymentCompanyList.SelectedValue
 
-        bwtPaymentListLoadThread.RunWorkerAsync(cmbPaymentCompanyList.SelectedValue)
-        bwtPaymentGridLoadThread.RunWorkerAsync(cmbPaymentCompanyList.SelectedValue)
+        loadPaymentList(custNo)
+        loadPaymentGrid(custNo)
 
     End Sub
 
@@ -1860,8 +1817,11 @@ Public Class AgnimainForm
             updateRecentDesignsAsBilled(cmbBillingCompanyList.SelectedValue, newBillNo)
 
             MessageBox.Show("Bill successfully added")
-            bwtBillListLoadThread.RunWorkerAsync(cmbBillingCompanyList.SelectedValue)
-            bwtBillGridLoadThread.RunWorkerAsync(cmbBillingCompanyList.SelectedValue)
+
+            Dim custNo As Integer = cmbBillingCompanyList.SelectedValue
+
+            loadBillList(custNo)
+            loadBillGrid(custNo)
 
             'Catch ex As Exception
             'MessageBox.Show("Message To Agni User:   " & ex.Message & " Or this design Record may already exist")
@@ -1905,8 +1865,8 @@ Public Class AgnimainForm
 
         MessageBox.Show("Bill " + billNo.ToString + " is marked as cancelled bill. You need to create a new bill for the designs which were billed in this bill")
 
-        bwtBillListLoadThread.RunWorkerAsync(custNo)
-        bwtBillGridLoadThread.RunWorkerAsync(custNo)
+        loadBillList(custNo)
+        loadBillGrid(custNo)
 
     End Sub
 
@@ -2017,7 +1977,7 @@ Public Class AgnimainForm
                     .CommandType = CommandType.Text
                     .CommandText = query
                     .Parameters.AddWithValue("@CustNo", cmbPaymentCompanyList.SelectedValue)
-                    .Parameters.AddWithValue("@BillNo", txtPaymentDisplayBillNo.Text)
+                    .Parameters.AddWithValue("@BillNo", txtPaymentBillNo.Text)
                     .Parameters.AddWithValue("@UnPaidBilledAmount", txtPaymentUnPaidBilledAmount.Text)
                     .Parameters.AddWithValue("@PaymentDate", dpPaymentDate.Text)
                     .Parameters.AddWithValue("@PaymentMode", paymentType)
@@ -2043,12 +2003,12 @@ Public Class AgnimainForm
 
             cmbPaymentPaymentNoList.Text = newPaymentNo
 
-            addPaidAmountInBill(txtPaymentDisplayBillNo.Text, txtPaymentFinalPaidAmount.Text)
+            addPaidAmountInBill(txtPaymentBillNo.Text, txtPaymentFinalPaidAmount.Text)
 
             MessageBox.Show("Payment successfully added")
-
-            bwtPaymentListLoadThread.RunWorkerAsync(cmbBillingCompanyList.SelectedValue)
-            bwtPaymentGridLoadThread.RunWorkerAsync(cmbBillingCompanyList.SelectedValue)
+            Dim custNo As Integer = cmbBillingCompanyList.SelectedValue
+            loadPaymentList(custNo)
+            loadPaymentGrid(custNo)
         End If
     End Sub
 
@@ -2164,67 +2124,7 @@ Public Class AgnimainForm
     End Sub
 
     Private Sub DateTimePicker6_CloseUp(ByVal sender As Object, ByVal e As System.EventArgs) Handles dpPaymentDate.CloseUp
-        'Try
-        'refreshgrid3()
-        'refreshgrid2()
-        Dim lastbildate, seldate As DateTime
-        Dim lastbildatestr, seldatestr As String
-        actpaid = 0
-        dt11.Clear()
-        key = cmbPaymentCompanyList.Text.Trim
-        seldatestr = dpPaymentDate.Value.ToString("MM dd yyyy")
-        seldate = DateTime.Parse(seldatestr)
-        If dt3.Rows.Count <> 0 Then
-            rowCount = dt3.Rows.Count - 1
-            inc = 0
-            While (rowCount >= 0)
-                dr3 = dt3.Rows(rowCount)
-                If key.ToString.Equals(dr3.Item(0).ToString) Then
-                    lastbildate = DateTime.Parse(dr3.Item(2))
-                    lastbildatestr = lastbildate.ToString("MM dd yyyy")
-                    lastbildate = DateTime.Parse(lastbildatestr)
-                    If lastbildate > seldate Then
-                        MsgBox("Sorry.. You cannot Pay a Bill on '" + seldate.ToString("MMMM dd, yyyy") + "'. Because you have a Bill on '" + lastbildate.ToString("MMMM dd, yyyy") + "' for '" + key + "'." + vbNewLine + "So you cannot pay Bill in prior date. Please select Amount Paying Date as on or after '" + lastbildate.ToString("MMMM dd, yyyy") + "'")
-                        Exit Sub
-                    End If
-                    txtPaymentDisplayBillNo.Text = dr3.Item(8).ToString + "/" + dr3.Item(1).ToString
-                    txtPaymentUnPaidBilledAmount.Text = dr3.Item(7)
-                    Exit While
-                End If
-                rowCount -= 1
-            End While
-        End If
-        rowCount = dt10.Rows.Count - 1
-        inc = 0
-        While (rowCount >= 0)
-            dr10 = dt10.Rows(inc)
-            If key.ToString.Equals(dr10.Item(1).ToString) Then
-                dr11 = dt11.NewRow
-                dr11.Item(0) = dr10.Item(0)
-                dr11.Item(1) = dr10.Item(1)
-                dr11.Item(2) = dr10.Item(2)
-                dr11.Item(3) = dr10.Item(3)
-                dr11.Item(4) = dr10.Item(4)
-                dr11.Item(5) = dr10.Item(5)
-                dr11.Item(6) = dr10.Item(6)
-                actpaid += dr10.Item(6)
-                dr11.Item(7) = dr10.Item(7)
-                dr11.Item(8) = dr10.Item(8)
-                dr11.Item(9) = dr10.Item(9)
-                dr11.Item(10) = dr10.Item(10)
-                dr11.Item(11) = dr10.Item(11)
-                dr11.Item(12) = dr10.Item(12)
-                dr11.Item(13) = dr10.Item(13)
-                dt11.Rows.Add(dr11)
-            End If
-            rowCount -= 1
-            inc += 1
-        End While
 
-        dgPaymentDetails.DataSource = ds11.Tables(0)
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
     End Sub
 
 
@@ -2266,16 +2166,17 @@ Public Class AgnimainForm
 
             If MessageBox.Show("Do you want to delete this payment transaction ", "Confirmation", System.Windows.Forms.MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
 
-                Dim billNoForPayment As Integer = txtPaymentDisplayBillNo.Text
+                Dim billNoForPayment As Integer = txtPaymentBillNo.Text
                 Dim amountPaidForPayment As Decimal = txtPaymentFinalPaidAmount.Text
 
                 If deleteSelectedPayment() = True Then
                     reduceBillPaidAmount(billNoForPayment, amountPaidForPayment)
                     MessageBox.Show("payment " + selectedPaymentNo.ToString + " is deleted successfully")
 
-                    bwtPaymentListLoadThread.RunWorkerAsync(cmbPaymentCompanyList.SelectedValue)
-                    bwtPaymentGridLoadThread.RunWorkerAsync(cmbPaymentCompanyList.SelectedValue)
-                    bwtBillGridLoadThread.RunWorkerAsync(cmbPaymentCompanyList.SelectedValue)
+                    loadPaymentList(custNo)
+                    loadPaymentGrid(custNo)
+                    loadBillGrid(custNo)
+                    loadBillList(custNo)
                 End If
 
             End If
