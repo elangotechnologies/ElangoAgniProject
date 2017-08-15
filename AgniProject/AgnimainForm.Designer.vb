@@ -46,6 +46,7 @@ Partial Class AgnimainForm
         Me.lblReportDesignNo = New System.Windows.Forms.Label()
         Me.dgReportBillGrid = New System.Windows.Forms.DataGrid()
         Me.DataGridTableStyle2 = New System.Windows.Forms.DataGridTableStyle()
+        Me.dgBIllingBillDetails = New System.Windows.Forms.DataGrid()
         Me.DataGridTextBoxColumn45 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn12 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn13 = New System.Windows.Forms.DataGridTextBoxColumn()
@@ -66,6 +67,7 @@ Partial Class AgnimainForm
         Me.DataGridBoolColumn2 = New System.Windows.Forms.DataGridBoolColumn()
         Me.dgReportDesignGrid = New System.Windows.Forms.DataGrid()
         Me.DataGridTableStyle1 = New System.Windows.Forms.DataGridTableStyle()
+        Me.dgDesDesignDetails = New System.Windows.Forms.DataGrid()
         Me.DataGridTextBoxColumn44 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn1 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn2 = New System.Windows.Forms.DataGridTextBoxColumn()
@@ -128,8 +130,6 @@ Partial Class AgnimainForm
         Me.GroupBox7 = New System.Windows.Forms.GroupBox()
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
         Me.GroupBox15 = New System.Windows.Forms.GroupBox()
-        Me.dgBIllingBillDetails = New System.Windows.Forms.DataGrid()
-        Me.dgDesDesignDetails = New System.Windows.Forms.DataGrid()
         Me.tabBilling = New System.Windows.Forms.TabPage()
         Me.Label44 = New System.Windows.Forms.Label()
         Me.txtBillingActualBillNo = New System.Windows.Forms.TextBox()
@@ -385,11 +385,11 @@ Partial Class AgnimainForm
         Me.tabHelp.SuspendLayout()
         Me.tabReports.SuspendLayout()
         CType(Me.dgReportBillGrid, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgBIllingBillDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgReportDesignGrid, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgDesDesignDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbReportDesignImage, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox6.SuspendLayout()
-        CType(Me.dgBIllingBillDetails, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dgDesDesignDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabBilling.SuspendLayout()
         Me.tabDesign.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -791,7 +791,7 @@ Partial Class AgnimainForm
         '
         'DataGridTableStyle2
         '
-        Me.DataGridTableStyle2.DataGrid = Me.dgBIllingBillDetails
+        Me.DataGridTableStyle2.DataGrid = Me.dgReportBillGrid
         Me.DataGridTableStyle2.GridColumnStyles.AddRange(New System.Windows.Forms.DataGridColumnStyle() {Me.DataGridTextBoxColumn45, Me.DataGridTextBoxColumn12, Me.DataGridTextBoxColumn13, Me.DataGridTextBoxColumn14, Me.DataGridTextBoxColumn15, Me.DataGridTextBoxColumn34, Me.DataGridTextBoxColumn35, Me.DataGridTextBoxColumn36, Me.DataGridTextBoxColumn37, Me.DataGridTextBoxColumn38, Me.DataGridTextBoxColumn39, Me.DataGridTextBoxColumn41, Me.DataGridTextBoxColumn40, Me.DataGridTextBoxColumn16, Me.DataGridTextBoxColumn17, Me.DataGridTextBoxColumn18, Me.DataGridTextBoxColumn42, Me.DataGridBoolColumn2})
         Me.DataGridTableStyle2.GridLineColor = System.Drawing.Color.Indigo
         Me.DataGridTableStyle2.HeaderBackColor = System.Drawing.Color.Navy
@@ -799,6 +799,38 @@ Partial Class AgnimainForm
         Me.DataGridTableStyle2.HeaderForeColor = System.Drawing.Color.White
         Me.DataGridTableStyle2.LinkColor = System.Drawing.SystemColors.InactiveBorder
         Me.DataGridTableStyle2.MappingName = "bill"
+        '
+        'dgBIllingBillDetails
+        '
+        Me.dgBIllingBillDetails.AllowSorting = False
+        Me.dgBIllingBillDetails.AlternatingBackColor = System.Drawing.Color.GhostWhite
+        Me.dgBIllingBillDetails.BackColor = System.Drawing.Color.GhostWhite
+        Me.dgBIllingBillDetails.BackgroundColor = System.Drawing.Color.Lavender
+        Me.dgBIllingBillDetails.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgBIllingBillDetails.CaptionBackColor = System.Drawing.Color.RoyalBlue
+        Me.dgBIllingBillDetails.CaptionForeColor = System.Drawing.Color.White
+        Me.dgBIllingBillDetails.CaptionText = "Bill Details"
+        Me.dgBIllingBillDetails.DataMember = ""
+        Me.dgBIllingBillDetails.FlatMode = True
+        Me.dgBIllingBillDetails.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgBIllingBillDetails.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.dgBIllingBillDetails.GridLineColor = System.Drawing.Color.RoyalBlue
+        Me.dgBIllingBillDetails.HeaderBackColor = System.Drawing.Color.MidnightBlue
+        Me.dgBIllingBillDetails.HeaderFont = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.dgBIllingBillDetails.HeaderForeColor = System.Drawing.Color.LavenderBlush
+        Me.dgBIllingBillDetails.LinkColor = System.Drawing.Color.Teal
+        Me.dgBIllingBillDetails.Location = New System.Drawing.Point(35, 571)
+        Me.dgBIllingBillDetails.Margin = New System.Windows.Forms.Padding(4)
+        Me.dgBIllingBillDetails.Name = "dgBIllingBillDetails"
+        Me.dgBIllingBillDetails.ParentRowsBackColor = System.Drawing.Color.Lavender
+        Me.dgBIllingBillDetails.ParentRowsForeColor = System.Drawing.Color.MidnightBlue
+        Me.dgBIllingBillDetails.PreferredColumnWidth = 130
+        Me.dgBIllingBillDetails.ReadOnly = True
+        Me.dgBIllingBillDetails.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgBIllingBillDetails.SelectionForeColor = System.Drawing.Color.PaleGreen
+        Me.dgBIllingBillDetails.Size = New System.Drawing.Size(1548, 283)
+        Me.dgBIllingBillDetails.TabIndex = 26
+        Me.dgBIllingBillDetails.TableStyles.AddRange(New System.Windows.Forms.DataGridTableStyle() {Me.DataGridTableStyle2})
         '
         'DataGridTextBoxColumn45
         '
@@ -818,7 +850,7 @@ Partial Class AgnimainForm
         '
         'DataGridTextBoxColumn13
         '
-        Me.DataGridTextBoxColumn13.Format = ""
+        Me.DataGridTextBoxColumn13.Format = "dd/MM/yyyy"
         Me.DataGridTextBoxColumn13.FormatInfo = Nothing
         Me.DataGridTextBoxColumn13.HeaderText = "Bill Date"
         Me.DataGridTextBoxColumn13.MappingName = "BillDate"
@@ -975,7 +1007,7 @@ Partial Class AgnimainForm
         '
         'DataGridTableStyle1
         '
-        Me.DataGridTableStyle1.DataGrid = Me.dgDesDesignDetails
+        Me.DataGridTableStyle1.DataGrid = Me.dgReportDesignGrid
         Me.DataGridTableStyle1.GridColumnStyles.AddRange(New System.Windows.Forms.DataGridColumnStyle() {Me.DataGridTextBoxColumn44, Me.DataGridTextBoxColumn1, Me.DataGridTextBoxColumn2, Me.DataGridTextBoxColumn7, Me.DataGridTextBoxColumn6, Me.DataGridTextBoxColumn4, Me.DataGridTextBoxColumn3, Me.DataGridTextBoxColumn5, Me.DataGridTextBoxColumn8, Me.DataGridTextBoxColumn9, Me.DataGridTextBoxColumn10, Me.DataGridBoolColumn1, Me.DataGridTextBoxColumn11})
         Me.DataGridTableStyle1.GridLineColor = System.Drawing.Color.Indigo
         Me.DataGridTableStyle1.HeaderBackColor = System.Drawing.Color.Navy
@@ -983,6 +1015,36 @@ Partial Class AgnimainForm
         Me.DataGridTableStyle1.HeaderForeColor = System.Drawing.Color.White
         Me.DataGridTableStyle1.LinkColor = System.Drawing.SystemColors.InactiveBorder
         Me.DataGridTableStyle1.MappingName = "design"
+        '
+        'dgDesDesignDetails
+        '
+        Me.dgDesDesignDetails.AllowSorting = False
+        Me.dgDesDesignDetails.AlternatingBackColor = System.Drawing.Color.GhostWhite
+        Me.dgDesDesignDetails.BackColor = System.Drawing.Color.GhostWhite
+        Me.dgDesDesignDetails.BackgroundColor = System.Drawing.Color.Lavender
+        Me.dgDesDesignDetails.CaptionBackColor = System.Drawing.Color.RoyalBlue
+        Me.dgDesDesignDetails.CaptionForeColor = System.Drawing.Color.White
+        Me.dgDesDesignDetails.CaptionText = "Design Details"
+        Me.dgDesDesignDetails.DataMember = ""
+        Me.dgDesDesignDetails.FlatMode = True
+        Me.dgDesDesignDetails.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgDesDesignDetails.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.dgDesDesignDetails.GridLineColor = System.Drawing.Color.RoyalBlue
+        Me.dgDesDesignDetails.HeaderBackColor = System.Drawing.Color.MidnightBlue
+        Me.dgDesDesignDetails.HeaderFont = New System.Drawing.Font("Tahoma", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgDesDesignDetails.HeaderForeColor = System.Drawing.Color.Lavender
+        Me.dgDesDesignDetails.LinkColor = System.Drawing.Color.Teal
+        Me.dgDesDesignDetails.Location = New System.Drawing.Point(67, 429)
+        Me.dgDesDesignDetails.Margin = New System.Windows.Forms.Padding(4)
+        Me.dgDesDesignDetails.Name = "dgDesDesignDetails"
+        Me.dgDesDesignDetails.ParentRowsBackColor = System.Drawing.Color.Lavender
+        Me.dgDesDesignDetails.ParentRowsForeColor = System.Drawing.Color.MidnightBlue
+        Me.dgDesDesignDetails.ReadOnly = True
+        Me.dgDesDesignDetails.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgDesDesignDetails.SelectionForeColor = System.Drawing.Color.PaleGreen
+        Me.dgDesDesignDetails.Size = New System.Drawing.Size(1632, 361)
+        Me.dgDesDesignDetails.TabIndex = 128
+        Me.dgDesDesignDetails.TableStyles.AddRange(New System.Windows.Forms.DataGridTableStyle() {Me.DataGridTableStyle1})
         '
         'DataGridTextBoxColumn44
         '
@@ -1060,7 +1122,7 @@ Partial Class AgnimainForm
         '
         'DataGridTextBoxColumn9
         '
-        Me.DataGridTextBoxColumn9.Format = "MMM dd, yyyy"
+        Me.DataGridTextBoxColumn9.Format = "dd/MM/yyyy"
         Me.DataGridTextBoxColumn9.FormatInfo = Nothing
         Me.DataGridTextBoxColumn9.HeaderText = "Date"
         Me.DataGridTextBoxColumn9.MappingName = "DesignDate"
@@ -1127,7 +1189,7 @@ Partial Class AgnimainForm
         '
         'dpReportToDate
         '
-        Me.dpReportToDate.CustomFormat = "MMMM dd, yyyy "
+        Me.dpReportToDate.CustomFormat = "dd/MM/yyyy"
         Me.dpReportToDate.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dpReportToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dpReportToDate.Location = New System.Drawing.Point(257, 146)
@@ -1139,7 +1201,7 @@ Partial Class AgnimainForm
         '
         'dpReportFromDate
         '
-        Me.dpReportFromDate.CustomFormat = "MMMM dd, yyyy "
+        Me.dpReportFromDate.CustomFormat = "dd/MM/yyyy"
         Me.dpReportFromDate.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dpReportFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dpReportFromDate.Location = New System.Drawing.Point(257, 106)
@@ -1713,68 +1775,6 @@ Partial Class AgnimainForm
         Me.GroupBox15.TabIndex = 67
         Me.GroupBox15.TabStop = False
         '
-        'dgBIllingBillDetails
-        '
-        Me.dgBIllingBillDetails.AllowSorting = False
-        Me.dgBIllingBillDetails.AlternatingBackColor = System.Drawing.Color.GhostWhite
-        Me.dgBIllingBillDetails.BackColor = System.Drawing.Color.GhostWhite
-        Me.dgBIllingBillDetails.BackgroundColor = System.Drawing.Color.Lavender
-        Me.dgBIllingBillDetails.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dgBIllingBillDetails.CaptionBackColor = System.Drawing.Color.RoyalBlue
-        Me.dgBIllingBillDetails.CaptionForeColor = System.Drawing.Color.White
-        Me.dgBIllingBillDetails.CaptionText = "Bill Details"
-        Me.dgBIllingBillDetails.DataMember = ""
-        Me.dgBIllingBillDetails.FlatMode = True
-        Me.dgBIllingBillDetails.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dgBIllingBillDetails.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.dgBIllingBillDetails.GridLineColor = System.Drawing.Color.RoyalBlue
-        Me.dgBIllingBillDetails.HeaderBackColor = System.Drawing.Color.MidnightBlue
-        Me.dgBIllingBillDetails.HeaderFont = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.dgBIllingBillDetails.HeaderForeColor = System.Drawing.Color.LavenderBlush
-        Me.dgBIllingBillDetails.LinkColor = System.Drawing.Color.Teal
-        Me.dgBIllingBillDetails.Location = New System.Drawing.Point(35, 571)
-        Me.dgBIllingBillDetails.Margin = New System.Windows.Forms.Padding(4)
-        Me.dgBIllingBillDetails.Name = "dgBIllingBillDetails"
-        Me.dgBIllingBillDetails.ParentRowsBackColor = System.Drawing.Color.Lavender
-        Me.dgBIllingBillDetails.ParentRowsForeColor = System.Drawing.Color.MidnightBlue
-        Me.dgBIllingBillDetails.PreferredColumnWidth = 130
-        Me.dgBIllingBillDetails.ReadOnly = True
-        Me.dgBIllingBillDetails.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgBIllingBillDetails.SelectionForeColor = System.Drawing.Color.PaleGreen
-        Me.dgBIllingBillDetails.Size = New System.Drawing.Size(1548, 283)
-        Me.dgBIllingBillDetails.TabIndex = 26
-        Me.dgBIllingBillDetails.TableStyles.AddRange(New System.Windows.Forms.DataGridTableStyle() {Me.DataGridTableStyle2})
-        '
-        'dgDesDesignDetails
-        '
-        Me.dgDesDesignDetails.AllowSorting = False
-        Me.dgDesDesignDetails.AlternatingBackColor = System.Drawing.Color.GhostWhite
-        Me.dgDesDesignDetails.BackColor = System.Drawing.Color.GhostWhite
-        Me.dgDesDesignDetails.BackgroundColor = System.Drawing.Color.Lavender
-        Me.dgDesDesignDetails.CaptionBackColor = System.Drawing.Color.RoyalBlue
-        Me.dgDesDesignDetails.CaptionForeColor = System.Drawing.Color.White
-        Me.dgDesDesignDetails.CaptionText = "Design Details"
-        Me.dgDesDesignDetails.DataMember = ""
-        Me.dgDesDesignDetails.FlatMode = True
-        Me.dgDesDesignDetails.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dgDesDesignDetails.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.dgDesDesignDetails.GridLineColor = System.Drawing.Color.RoyalBlue
-        Me.dgDesDesignDetails.HeaderBackColor = System.Drawing.Color.MidnightBlue
-        Me.dgDesDesignDetails.HeaderFont = New System.Drawing.Font("Tahoma", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dgDesDesignDetails.HeaderForeColor = System.Drawing.Color.Lavender
-        Me.dgDesDesignDetails.LinkColor = System.Drawing.Color.Teal
-        Me.dgDesDesignDetails.Location = New System.Drawing.Point(67, 429)
-        Me.dgDesDesignDetails.Margin = New System.Windows.Forms.Padding(4)
-        Me.dgDesDesignDetails.Name = "dgDesDesignDetails"
-        Me.dgDesDesignDetails.ParentRowsBackColor = System.Drawing.Color.Lavender
-        Me.dgDesDesignDetails.ParentRowsForeColor = System.Drawing.Color.MidnightBlue
-        Me.dgDesDesignDetails.ReadOnly = True
-        Me.dgDesDesignDetails.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgDesDesignDetails.SelectionForeColor = System.Drawing.Color.PaleGreen
-        Me.dgDesDesignDetails.Size = New System.Drawing.Size(1632, 361)
-        Me.dgDesDesignDetails.TabIndex = 128
-        Me.dgDesDesignDetails.TableStyles.AddRange(New System.Windows.Forms.DataGridTableStyle() {Me.DataGridTableStyle1})
-        '
         'tabBilling
         '
         Me.tabBilling.BackColor = System.Drawing.SystemColors.ButtonFace
@@ -2235,7 +2235,7 @@ Partial Class AgnimainForm
         Me.dpBillingBillDate.CalendarTitleForeColor = System.Drawing.Color.WhiteSmoke
         Me.dpBillingBillDate.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.dpBillingBillDate.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.dpBillingBillDate.CustomFormat = "MMMM dd, yyyy "
+        Me.dpBillingBillDate.CustomFormat = "dd/MM/yyyy"
         Me.dpBillingBillDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dpBillingBillDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dpBillingBillDate.Location = New System.Drawing.Point(410, 119)
@@ -2479,7 +2479,7 @@ Partial Class AgnimainForm
         '
         'dpDesDesignDate
         '
-        Me.dpDesDesignDate.CustomFormat = "MMMM dd, yyyy"
+        Me.dpDesDesignDate.CustomFormat = "dd/MM/yyyy"
         Me.dpDesDesignDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dpDesDesignDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dpDesDesignDate.Location = New System.Drawing.Point(309, 103)
@@ -3597,7 +3597,7 @@ Partial Class AgnimainForm
         '
         'DataGridTextBoxColumn23
         '
-        Me.DataGridTextBoxColumn23.Format = ""
+        Me.DataGridTextBoxColumn23.Format = "dd/MM/yyyy"
         Me.DataGridTextBoxColumn23.FormatInfo = Nothing
         Me.DataGridTextBoxColumn23.HeaderText = "Date"
         Me.DataGridTextBoxColumn23.MappingName = "PaymentDate"
@@ -3669,7 +3669,7 @@ Partial Class AgnimainForm
         '
         'DataGridTextBoxColumn30
         '
-        Me.DataGridTextBoxColumn30.Format = ""
+        Me.DataGridTextBoxColumn30.Format = "dd/MM/yyyy"
         Me.DataGridTextBoxColumn30.FormatInfo = Nothing
         Me.DataGridTextBoxColumn30.HeaderText = "Cheque Date"
         Me.DataGridTextBoxColumn30.MappingName = "ChequeDate"
@@ -3720,7 +3720,7 @@ Partial Class AgnimainForm
         Me.dpPaymentChequeDate.CalendarTitleForeColor = System.Drawing.Color.WhiteSmoke
         Me.dpPaymentChequeDate.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.dpPaymentChequeDate.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.dpPaymentChequeDate.CustomFormat = "MMMM dd, yyyy "
+        Me.dpPaymentChequeDate.CustomFormat = "dd/MM/yyyy"
         Me.dpPaymentChequeDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dpPaymentChequeDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dpPaymentChequeDate.Location = New System.Drawing.Point(256, 145)
@@ -3793,7 +3793,7 @@ Partial Class AgnimainForm
         Me.dpPaymentDate.CalendarTitleForeColor = System.Drawing.Color.WhiteSmoke
         Me.dpPaymentDate.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.dpPaymentDate.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.dpPaymentDate.CustomFormat = "MMMM dd, yyyy "
+        Me.dpPaymentDate.CustomFormat = "dd/MM/yyyy"
         Me.dpPaymentDate.Enabled = False
         Me.dpPaymentDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dpPaymentDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
@@ -4963,12 +4963,12 @@ Partial Class AgnimainForm
         Me.tabReports.ResumeLayout(False)
         Me.tabReports.PerformLayout()
         CType(Me.dgReportBillGrid, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgBIllingBillDetails, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgReportDesignGrid, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgDesDesignDetails, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pbReportDesignImage, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
-        CType(Me.dgBIllingBillDetails, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dgDesDesignDetails, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabBilling.ResumeLayout(False)
         Me.tabBilling.PerformLayout()
         Me.tabDesign.ResumeLayout(False)
