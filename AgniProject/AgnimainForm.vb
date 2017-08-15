@@ -18,6 +18,12 @@ Public Class AgnimainForm
     Public gSelectedCustName As String = String.Empty
     Public gDisplayBillNo As Integer = 0
 
+    Private SEARCH_BY_COMPANY As Integer = 1
+    Private SEARCH_BY_DESIGN As Integer = 2
+    Private SEARCH_BY_BILL As Integer = 4
+    Private SEARCH_BY_DATE As Integer = 8
+
+
     Dim Cmd1, cmd2, cmd3, cmd10 As SqlCommand
     Dim Sda1, Sda2, sda3, sda10 As SqlDataAdapter
     Dim Ds1, Ds2, ds3, ds11 As DataSet
@@ -120,6 +126,7 @@ Public Class AgnimainForm
 
         'loadCustomerList()
         loadCustomerList()
+        loadBillListInReport()
 
         resetAllScreens()
 
@@ -159,16 +166,16 @@ Public Class AgnimainForm
             cmbCompanyList.BindingContext = New BindingContext()
             cmbCompanyList.DataSource = customerTable
         Else
-            cmbCustCompanyList.BindingContext = New BindingContext()
-            cmbCustCompanyList.DataSource = customerTable
-            cmbDesCompanyList.BindingContext = New BindingContext()
-            cmbDesCompanyList.DataSource = customerTable
-            cmbBillingCompanyList.BindingContext = New BindingContext()
-            cmbBillingCompanyList.DataSource = customerTable
-            cmbPaymentCompanyList.BindingContext = New BindingContext()
-            cmbPaymentCompanyList.DataSource = customerTable
-            cmbReportCompanyList.BindingContext = New BindingContext()
-            cmbReportCompanyList.DataSource = customerTable
+            cmbCustCustomerList.BindingContext = New BindingContext()
+            cmbCustCustomerList.DataSource = customerTable
+            cmbDesCustomerList.BindingContext = New BindingContext()
+            cmbDesCustomerList.DataSource = customerTable
+            cmbBillingCustomerList.BindingContext = New BindingContext()
+            cmbBillingCustomerList.DataSource = customerTable
+            cmbPaymentCustomerList.BindingContext = New BindingContext()
+            cmbPaymentCustomerList.DataSource = customerTable
+            cmbReportCustomerList.BindingContext = New BindingContext()
+            cmbReportCustomerList.DataSource = customerTable
         End If
 
     End Sub
@@ -262,7 +269,13 @@ Public Class AgnimainForm
     Sub getDesignGridTable(ByVal custNoObj As Object)
 
         Dim custNo = CType(custNoObj, Integer)
+        Dim designTable As DataTable = fetchDesignTable(custNo)
 
+        Dim setDesignGridInvoker As New setDesignGridDelegate(AddressOf Me.setDesignGrid)
+        Me.BeginInvoke(setDesignGridInvoker, designTable)
+    End Sub
+
+    Function fetchDesignTable(Optional custNo As Integer = Nothing) As DataTable
         Dim designQuery As SqlCommand
         If (custNo <> Nothing) Then
             designQuery = New SqlCommand("select * from design where custNo=" + custNo.ToString, dbConnection)
@@ -274,11 +287,8 @@ Public Class AgnimainForm
         designAdapter.SelectCommand = designQuery
         Dim designDataSet = New DataSet
         designAdapter.Fill(designDataSet, "design")
-        Dim designTable As DataTable = designDataSet.Tables(0)
-
-        Dim setDesignGridInvoker As New setDesignGridDelegate(AddressOf Me.setDesignGrid)
-        Me.BeginInvoke(setDesignGridInvoker, designTable)
-    End Sub
+        Return designDataSet.Tables(0)
+    End Function
 
     Delegate Sub setDesignGridDelegate(designTable As DataTable)
 
@@ -290,6 +300,12 @@ Public Class AgnimainForm
         Dim thread As Thread = New Thread(AddressOf getBillListTable)
         thread.IsBackground = True
         thread.Start(custNo)
+    End Sub
+
+    Sub loadBillListInReport()
+        Dim thread As Thread = New Thread(AddressOf getBillListTable)
+        thread.IsBackground = True
+        thread.Start(Nothing)
     End Sub
 
     Sub getBillListTable(ByVal custNoObj As Object)
@@ -315,6 +331,7 @@ Public Class AgnimainForm
     End Sub
 
     Delegate Sub setBillingListDelegate(billTable As DataTable, cmbBillList As ComboBox)
+
     Sub setBillingList(billTable As DataTable, Optional cmbBillList As ComboBox = Nothing)
 
         Dim dummyFirstRow As DataRow = billTable.NewRow()
@@ -328,6 +345,8 @@ Public Class AgnimainForm
         Else
             cmbBillingBillNoList.BindingContext = New BindingContext()
             cmbBillingBillNoList.DataSource = billTable
+            cmbReportBillNoList.BindingContext = New BindingContext()
+            cmbReportBillNoList.DataSource = billTable
         End If
     End Sub
 
@@ -340,6 +359,13 @@ Public Class AgnimainForm
     Sub getBillGridTable(ByVal custNoObj As Object)
 
         Dim custNo = CType(custNoObj, Integer)
+        Dim billTable As DataTable = fetchBillTable(custNo)
+        Dim setBillingGridInvoker As New setBillingGridDelegate(AddressOf Me.setBillingGrid)
+        Me.BeginInvoke(setBillingGridInvoker, billTable)
+
+    End Sub
+
+    Function fetchBillTable(custNo As Integer) As DataTable
 
         Dim billQuery As SqlCommand
         If (custNo <> Nothing) Then
@@ -358,12 +384,8 @@ Public Class AgnimainForm
         billAdapter.SelectCommand = billQuery
         Dim billDataSet = New DataSet
         billAdapter.Fill(billDataSet, "bill")
-        Dim billTable As DataTable = billDataSet.Tables(0)
-
-        Dim setBillingGridInvoker As New setBillingGridDelegate(AddressOf Me.setBillingGrid)
-        Me.BeginInvoke(setBillingGridInvoker, billTable)
-
-    End Sub
+        Return billDataSet.Tables(0)
+    End Function
 
     Delegate Sub setBillingGridDelegate(billTable As DataTable)
 
@@ -553,16 +575,16 @@ Public Class AgnimainForm
     End Sub
 
 
-    Private Sub cmbCustCompanyList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbCustCompanyList.SelectedIndexChanged
+    Private Sub cmbCustCompanyList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbCustCustomerList.SelectedIndexChanged
         'Try
-        gSelectedCustNoIndex = cmbCustCompanyList.SelectedIndex
+        gSelectedCustNoIndex = cmbCustCustomerList.SelectedIndex
 
-        If (cmbCustCompanyList.SelectedIndex = -1 Or cmbCustCompanyList.SelectedValue = -1) Then
+        If (cmbCustCustomerList.SelectedIndex = -1 Or cmbCustCustomerList.SelectedValue = -1) Then
             resetCustomerScreen()
             Return
         End If
 
-        Dim custNo As Integer = cmbCustCompanyList.SelectedValue
+        Dim custNo As Integer = cmbCustCustomerList.SelectedValue
 
         Dim custSelectQuery = New SqlCommand("select * from customer where custno=" + custNo.ToString, dbConnection)
         Dim customerDataAdapter = New SqlDataAdapter()
@@ -587,7 +609,7 @@ Public Class AgnimainForm
             txtCustWorkingCharge.Text = dataRow.Item("WorkingColor").ToString
             txtCustPrintCharge.Text = dataRow.Item("PrintColor").ToString
         Else
-            MessageBox.Show("No data found for customer: " + custNo + "-" + cmbCustCompanyList.Text)
+            MessageBox.Show("No data found for customer: " + custNo + "-" + cmbCustCustomerList.Text)
         End If
 
 
@@ -598,11 +620,11 @@ Public Class AgnimainForm
     End Sub
 
     Sub resetAllScreens()
-        cmbCustCompanyList.SelectedIndex = -1
-        cmbDesCompanyList.SelectedIndex = -1
-        cmbBillingCompanyList.SelectedIndex = -1
-        cmbPaymentCompanyList.SelectedIndex = -1
-        cmbReportCompanyList.SelectedIndex = -1
+        cmbCustCustomerList.SelectedIndex = -1
+        cmbDesCustomerList.SelectedIndex = -1
+        cmbBillingCustomerList.SelectedIndex = -1
+        cmbPaymentCustomerList.SelectedIndex = -1
+        cmbReportCustomerList.SelectedIndex = -1
     End Sub
 
     Sub resetCustomerScreen()
@@ -619,7 +641,7 @@ Public Class AgnimainForm
         txtCustWPCharge.Text = ""
         txtCustWorkingCharge.Text = ""
         txtCustPrintCharge.Text = ""
-        cmbCustCompanyList.Focus()
+        cmbCustCustomerList.Focus()
     End Sub
 
     Sub resetDesignScreen()
@@ -627,8 +649,10 @@ Public Class AgnimainForm
         txtDesWidth.Text = ""
         txtDesHeight.Text = ""
         txtDesNoOfColors.Text = ""
-        If cmbDesCompanyList.SelectedIndex = -1 Or cmbDesCompanyList.SelectedValue = -1 Then
+        If cmbDesCustomerList.SelectedIndex = -1 Or cmbDesCustomerList.SelectedValue = -1 Then
             txtDesCostPerUnit.Text = ""
+        Else
+            loadDesignChargePerUnit(cmbDesCustomerList.SelectedValue)
         End If
         txtDesCalculatedPrice.Text = ""
         pbDesDesignImage.Image = Nothing
@@ -721,9 +745,9 @@ Public Class AgnimainForm
 
     Public Sub btnCustAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCustAdd.Click
         Try
-            If cmbCustCompanyList.Text.Trim.Equals("") Or cmbCustCompanyList.Text.Trim.Equals("Please select a customer...") Then
+            If cmbCustCustomerList.Text.Trim.Equals("") Or cmbCustCustomerList.Text.Trim.Equals("Please select a customer...") Then
                 MessageBox.Show("Enter Valid company Name")
-                cmbCustCompanyList.Focus()
+                cmbCustCustomerList.Focus()
             ElseIf txtGstIn.Text.Trim.Equals("") Then
                 MessageBox.Show("Enter GSTIN number")
                 txtGstIn.Focus()
@@ -748,7 +772,7 @@ Public Class AgnimainForm
                         .Connection = dbConnection
                         .CommandType = CommandType.Text
                         .CommandText = query
-                        .Parameters.AddWithValue("@CompName", cmbCustCompanyList.Text)
+                        .Parameters.AddWithValue("@CompName", cmbCustCustomerList.Text)
                         .Parameters.AddWithValue("@GSTIN", txtGstIn.Text)
                         .Parameters.AddWithValue("@OwnerName", txtOwnerName.Text)
                         .Parameters.AddWithValue("@Address", txtAddress.Text)
@@ -776,15 +800,15 @@ Public Class AgnimainForm
     Private Sub btnCustDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCustDelete.Click
         'Try
 
-        If (cmbCustCompanyList.SelectedIndex = -1 Or cmbCustCompanyList.SelectedValue = -1) Then
+        If (cmbCustCustomerList.SelectedIndex = -1 Or cmbCustCustomerList.SelectedValue = -1) Then
             MessageBox.Show("Please select a customer")
-            cmbCustCompanyList.Focus()
+            cmbCustCustomerList.Focus()
             Return
         End If
 
-        If MessageBox.Show("All Designs, Bills and Payments will be deleted belongs to this customer." + vbNewLine + vbNewLine + "  Do you want to delete this Customer - " & cmbCustCompanyList.Text & " ?", "WARNING", System.Windows.Forms.MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
+        If MessageBox.Show("All Designs, Bills and Payments will be deleted belongs to this customer." + vbNewLine + vbNewLine + "  Do you want to delete this Customer - " & cmbCustCustomerList.Text & " ?", "WARNING", System.Windows.Forms.MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
             VerifyingDelete.Button1.Text = "Delete "
-            VerifyingDelete.Button1.Text += cmbCustCompanyList.Text
+            VerifyingDelete.Button1.Text += cmbCustCustomerList.Text
             VerifyingDelete.Show()
             'deleteCompanyEntire()
         End If
@@ -798,9 +822,9 @@ Public Class AgnimainForm
     End Sub
     Public Sub deleteSeletectedCustomer()
 
-        If cmbCustCompanyList.SelectedIndex = -1 Or cmbCustCompanyList.SelectedValue = -1 Then
+        If cmbCustCustomerList.SelectedIndex = -1 Or cmbCustCustomerList.SelectedValue = -1 Then
             MessageBox.Show("Please select a customer")
-            cmbCustCompanyList.Focus()
+            cmbCustCustomerList.Focus()
             Return
         End If
 
@@ -812,7 +836,7 @@ Public Class AgnimainForm
                 .Connection = dbConnection
                 .CommandType = CommandType.Text
                 .CommandText = query
-                .Parameters.AddWithValue("@CustNo", cmbCustCompanyList.SelectedValue)
+                .Parameters.AddWithValue("@CustNo", cmbCustCustomerList.SelectedValue)
             End With
             comm.ExecuteNonQuery()
         End Using
@@ -849,15 +873,15 @@ Public Class AgnimainForm
 
     Private Sub btnCustUpdate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCustUpdate.Click
         'Try
-        If (cmbCustCompanyList.SelectedIndex = -1 Or cmbCustCompanyList.SelectedValue = -1) Then
+        If (cmbCustCustomerList.SelectedIndex = -1 Or cmbCustCustomerList.SelectedValue = -1) Then
             MessageBox.Show("Please select a customer")
-            cmbCustCompanyList.Focus()
+            cmbCustCustomerList.Focus()
             Return
         End If
 
-        If cmbCustCompanyList.Text.Trim.Equals("") Then
+        If cmbCustCustomerList.Text.Trim.Equals("") Then
             MessageBox.Show("Enter Valid company Name")
-            cmbCustCompanyList.Focus()
+            cmbCustCustomerList.Focus()
         ElseIf txtGstIn.Text.Trim.Equals("") Then
             MessageBox.Show("Enter GSTIN number")
             txtGstIn.Focus()
@@ -871,7 +895,7 @@ Public Class AgnimainForm
             MessageBox.Show("Enter Mobile Number")
             txtMobile.Focus()
         Else
-            Dim custNo As Integer = cmbCustCompanyList.SelectedValue
+            Dim custNo As Integer = cmbCustCustomerList.SelectedValue
             Dim query As String = String.Empty
             query &= "UPDATE customer SET CompName=@CompName, GSTIN=@GSTIN, OwnerName=@OwnerName, Address=@Address,"
             query &= "Mobile=@Mobile, Landline=@Landline, Email=@Email, Website=@Website, CGST=@CGST, SGST=@SGST, "
@@ -883,7 +907,7 @@ Public Class AgnimainForm
                     .CommandType = CommandType.Text
                     .CommandText = query
                     .Parameters.AddWithValue("@CustNo", custNo)
-                    .Parameters.AddWithValue("@CompName", cmbCustCompanyList.Text)
+                    .Parameters.AddWithValue("@CompName", cmbCustCustomerList.Text)
                     .Parameters.AddWithValue("@GSTIN", txtGstIn.Text)
                     .Parameters.AddWithValue("@OwnerName", txtOwnerName.Text)
                     .Parameters.AddWithValue("@Address", txtAddress.Text)
@@ -912,18 +936,18 @@ Public Class AgnimainForm
 
     Private Sub btnDesAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDesAdd.Click
         'Try
-        If (cmbDesCompanyList.SelectedIndex = -1 Or cmbDesCompanyList.SelectedValue = -1) Then
+        If (cmbDesCustomerList.SelectedIndex = -1 Or cmbDesCustomerList.SelectedValue = -1) Then
             MessageBox.Show("Please select a customer")
-            cmbDesCompanyList.Focus()
+            cmbDesCustomerList.Focus()
         ElseIf cmbDesDesignList.Text.Trim.Equals("") Or cmbDesDesignList.Text.Trim.Equals("Please select a design...") Then
             MessageBox.Show("Enter Valid Design Name")
             cmbDesDesignList.Focus()
         ElseIf dpDesDesignDate.Text.Trim.Equals("") Then
             MessageBox.Show("Choose Valid date")
             dpDesDesignDate.Focus()
-        ElseIf cmbDesCompanyList.Text.Trim.Equals("") Then
+        ElseIf cmbDesCustomerList.Text.Trim.Equals("") Then
             MessageBox.Show("Enter Valid Company Name")
-            cmbDesCompanyList.Focus()
+            cmbDesCustomerList.Focus()
         ElseIf txtDesNoOfColors.Text.Trim.Equals("") Then
             MessageBox.Show("Enter Valid No.of colors")
             txtDesNoOfColors.Focus()
@@ -968,7 +992,7 @@ Public Class AgnimainForm
                 designHeight = Decimal.Parse(txtDesHeight.Text.Trim)
             End If
 
-            Dim custNo As Integer = cmbDesCompanyList.SelectedValue
+            Dim custNo As Integer = cmbDesCustomerList.SelectedValue
 
             Dim query As String = String.Empty
             query &= "INSERT INTO design (CustNo, DesignName, Height, Width, Colors, UnitCost,"
@@ -1024,6 +1048,13 @@ Public Class AgnimainForm
         '        .Image = Image.FromFile(file.FileName)
         '    End With
         'End If
+
+        If (cmbDesDesignList.Items.Count > 0) Then
+            cmbDesDesignList.SelectedValue = -1
+        Else
+            cmbDesDesignList.SelectedIndex = -1
+        End If
+
         Dim file As New OpenFileDialog
         With file
             .Filter = "All Files|*.*|Bitmaps|*.bmp|GIFs|*.gif|JPEGs|*.jpg"
@@ -1051,8 +1082,10 @@ Public Class AgnimainForm
         Dim strFilename As String = filepath.Substring(filepath.LastIndexOf("\") + 1)
         If strFilename.Equals("") Then
         Else
+            RemoveHandler cmbDesDesignList.SelectedIndexChanged, AddressOf cmbDesDesignList_SelectedIndexChanged
             desname = strFilename.Substring(0, strFilename.LastIndexOf("."))
             cmbDesDesignList.Text = desname
+            AddHandler cmbDesDesignList.SelectedIndexChanged, AddressOf cmbDesDesignList_SelectedIndexChanged
             'cmbDesDesignName.SelectedText = desname
         End If
         'Catch ex As Exception
@@ -1075,9 +1108,9 @@ Public Class AgnimainForm
         ElseIf dpDesDesignDate.Text.Trim.Equals("") Then
             MessageBox.Show("Choose Valid date")
             dpDesDesignDate.Focus()
-        ElseIf cmbDesCompanyList.Text.Trim.Equals("") Then
+        ElseIf cmbDesCustomerList.Text.Trim.Equals("") Then
             MessageBox.Show("Enter Valid Company Name")
-            cmbDesCompanyList.Focus()
+            cmbDesCustomerList.Focus()
         ElseIf txtDesNoOfColors.Text.Trim.Equals("") Then
             MessageBox.Show("Enter Valid No.of colors")
             txtDesNoOfColors.Focus()
@@ -1121,7 +1154,7 @@ Public Class AgnimainForm
                 designHeight = Decimal.Parse(txtDesHeight.Text.Trim)
             End If
 
-            Dim custNo As Integer = cmbDesCompanyList.SelectedValue
+            Dim custNo As Integer = cmbDesCustomerList.SelectedValue
 
             Dim query As String = String.Empty
             query &= "update design set DesignName=@DesignName, Height=@Height, Width=@Width, Colors=@Colors, UnitCost=@UnitCost,"
@@ -1189,7 +1222,7 @@ Public Class AgnimainForm
             Return
         End If
 
-        Dim custNo As Integer = cmbDesCompanyList.SelectedValue
+        Dim custNo As Integer = cmbDesCustomerList.SelectedValue
 
         Dim query As String = String.Empty
         query &= "update design set Billed=0, BillNo=null where BillNo=@BillNo"
@@ -1213,7 +1246,7 @@ Public Class AgnimainForm
             Return
         End If
 
-        Dim custNo As Integer = cmbDesCompanyList.SelectedValue
+        Dim custNo As Integer = cmbDesCustomerList.SelectedValue
 
         Dim query As String = String.Empty
         query &= "update bill set PaidAmount=PaidAmount+@paidAmount where BillNo=@BillNo"
@@ -1241,7 +1274,7 @@ Public Class AgnimainForm
         End If
 
         If MessageBox.Show("Do you want to delete the design " & cmbDesDesignList.Text, "Confirmation", System.Windows.Forms.MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
-            Dim custNo As Integer = cmbDesCompanyList.SelectedValue
+            Dim custNo As Integer = cmbDesCustomerList.SelectedValue
 
             flag = 0
             Dim query As String = String.Empty
@@ -1319,9 +1352,9 @@ Public Class AgnimainForm
         'End 'Try
     End Sub
 
-    Private Sub cmbBillingCompanyList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbBillingCompanyList.SelectedIndexChanged
+    Private Sub cmbBillingCompanyList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbBillingCustomerList.SelectedIndexChanged
         'Try
-        If (cmbBillingCompanyList.SelectedIndex = -1 Or cmbBillingCompanyList.SelectedValue = -1) Then
+        If (cmbBillingCustomerList.SelectedIndex = -1 Or cmbBillingCustomerList.SelectedValue = -1) Then
             If (cmbBillingBillNoList.Items.Count > 0) Then
                 cmbBillingBillNoList.SelectedValue = -1
             Else
@@ -1330,7 +1363,7 @@ Public Class AgnimainForm
             Return
         End If
 
-        Dim custNo As Integer = cmbBillingCompanyList.SelectedValue
+        Dim custNo As Integer = cmbBillingCustomerList.SelectedValue
         loadBillList(custNo)
         loadBillGrid(custNo)
         'Catch ex As Exception
@@ -1347,7 +1380,7 @@ Public Class AgnimainForm
         End If
 
         gSelectedBillNo = cmbBillingBillNoList.SelectedValue
-        gSelectedCustName = cmbBillingCompanyList.Text
+        gSelectedCustName = cmbBillingCustomerList.Text
 
         BillReportForm.Show()
         'Catch ex As Exception
@@ -1355,11 +1388,9 @@ Public Class AgnimainForm
         'End 'Try
     End Sub
 
-    Private Sub cmbDesCompanyList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbDesCompanyList.SelectedIndexChanged
+    Private Sub cmbDesCompanyList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbDesCustomerList.SelectedIndexChanged
         'Try
-        gSelectedCustNoIndex = cmbDesCompanyList.SelectedIndex
-
-        If (cmbDesCompanyList.SelectedIndex = -1 Or cmbDesCompanyList.SelectedValue = -1) Then
+        If (cmbDesCustomerList.SelectedIndex = -1 Or cmbDesCustomerList.SelectedValue = -1) Then
 
             'Dim dummyDesignListTable As DataTable = New DataTable
             'dummyDesignListTable.TableName = "designName"
@@ -1379,7 +1410,7 @@ Public Class AgnimainForm
             Return
         End If
 
-        Dim custNo As Integer = cmbDesCompanyList.SelectedValue
+        Dim custNo As Integer = cmbDesCustomerList.SelectedValue
 
         loadDesignChargePerUnit(custNo)
         loadDesignList(custNo)
@@ -1394,65 +1425,11 @@ Public Class AgnimainForm
     End Sub
 
     Private Sub btnCustClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCustClear.Click
-        If (cmbCustCompanyList.Items.Count > 0) Then
-            cmbCustCompanyList.SelectedValue = -1
+        If (cmbCustCustomerList.Items.Count > 0) Then
+            cmbCustCustomerList.SelectedValue = -1
         Else
-            cmbCustCompanyList.SelectedIndex = -1
+            cmbCustCustomerList.SelectedIndex = -1
         End If
-    End Sub
-
-    Private Sub DataGrid3_CurrentCellChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGrid3.CurrentCellChanged
-        'Try
-        Dim pos As Int32
-        pos = DataGrid3.CurrentRowIndex
-        Dim destable As DataTable = DataGrid3.DataSource
-        DesId = destable.Rows(pos).Item(1).ToString
-        Dr2 = destable.Rows(pos)
-        If Dr2(8) Is DBNull.Value Then
-            PictureBox1.Image = Nothing
-        Else
-            Dim arrayImage() As Byte = CType(Dr2(8), Byte())
-            Dim ms As New MemoryStream(arrayImage)
-            PictureBox1.Image = Image.FromStream(ms)
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub DataGrid3_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles DataGrid3.MouseUp
-        'Try
-        Dim pos As Int32
-        pos = DataGrid3.CurrentRowIndex
-        Dim destable As DataTable = DataGrid3.DataSource
-        DesId = destable.Rows(pos).Item(1).ToString
-        Dr2 = destable.Rows(pos)
-        If Dr2(8) Is DBNull.Value Then
-            PictureBox1.Image = Nothing
-        Else
-            Dim arrayImage() As Byte = CType(Dr2(8), Byte())
-            Dim ms As New MemoryStream(arrayImage)
-            PictureBox1.Image = Image.FromStream(ms)
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-
-
-    Private Sub ComboBox6_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbReportCompanyList.SelectedIndexChanged
-        'Try
-        'gSelectedCustNoIndex = cmbReportCompanyList.SelectedIndex
-        'If (cmbReportCompanyList.SelectedIndex = -1) Then
-        '    Return
-        'End If
-
-        'loadOrReloadDesignList(cmbReportDesignList, cmbDesCompanyList.SelectedValue)
-
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
     End Sub
 
     Private Sub btnDesEditPrice_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDesEditPrice.Click
@@ -1475,7 +1452,7 @@ Public Class AgnimainForm
 
     Private Sub chargeTypeCheckedChanged(sender As Object, e As EventArgs) Handles radioDesWP.CheckedChanged, radioDesWorking.CheckedChanged, radioDesPrint.CheckedChanged
         'bwtDesChargeTypeLoadThread.RunWorkerAsync(cmbDesCompanyList.SelectedValue)
-        loadDesignChargePerUnit(cmbDesCompanyList.SelectedValue)
+        loadDesignChargePerUnit(cmbDesCustomerList.SelectedValue)
     End Sub
 
     Private Sub btnBillingClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBillingClear.Click
@@ -1540,7 +1517,7 @@ Public Class AgnimainForm
             compname = cmprcomp
         End If
 
-        billtable = DataGrid4.DataSource
+        billtable = dgReportBillGrid.DataSource
 
         If billtable.Rows.Count = 0 Then
             MsgBox("No Bills to print")
@@ -1554,16 +1531,16 @@ Public Class AgnimainForm
     End Sub
 
     Private Sub TabPage1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tabCustomer.Click
-        cmbCustCompanyList.Focus()
+        cmbCustCustomerList.Focus()
     End Sub
 
-    Private Sub DataGrid4_MouseDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles DataGrid4.MouseDoubleClick
+    Private Sub DataGrid4_MouseDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs)
         'Try
         Dim bilr As DataTable
         Dim billdate As Date
-        bilr = DataGrid4.DataSource
-        billkey = bilr.Rows(DataGrid4.CurrentRowIndex).Item(8).ToString + "/" + bilr.Rows(DataGrid4.CurrentRowIndex).Item(1).ToString
-        billcust = bilr.Rows(DataGrid4.CurrentRowIndex).Item(0)
+        bilr = dgReportBillGrid.DataSource
+        billkey = bilr.Rows(dgReportBillGrid.CurrentRowIndex).Item(8).ToString + "/" + bilr.Rows(dgReportBillGrid.CurrentRowIndex).Item(1).ToString
+        billcust = bilr.Rows(dgReportBillGrid.CurrentRowIndex).Item(0)
 
         Dim billkey1 As String = billkey
         billkey1 = billkey1.Substring(billkey1.IndexOf("/") + 1, billkey1.Length - billkey1.IndexOf("/") - 1)
@@ -1582,11 +1559,11 @@ Public Class AgnimainForm
             rowCount = rowCount - 1
         End While
 
-        billdate = bilr.Rows(DataGrid4.CurrentRowIndex).Item(2)
+        billdate = bilr.Rows(dgReportBillGrid.CurrentRowIndex).Item(2)
         billdatestring = billdate.ToString("dd/MM/yyyy")
-        T17 = bilr.Rows(DataGrid4.CurrentRowIndex).Item(5)
-        T20 = bilr.Rows(DataGrid4.CurrentRowIndex).Item(3)
-        T21 = bilr.Rows(DataGrid4.CurrentRowIndex).Item(4)
+        T17 = bilr.Rows(dgReportBillGrid.CurrentRowIndex).Item(5)
+        T20 = bilr.Rows(dgReportBillGrid.CurrentRowIndex).Item(3)
+        T21 = bilr.Rows(dgReportBillGrid.CurrentRowIndex).Item(4)
         BillReportForm.Show()
         'Catch ex As Exception
         'MessageBox.Show("Message to Agni User:   " & ex.Message)
@@ -1613,9 +1590,9 @@ Public Class AgnimainForm
         gbBankDetails.Visible = True
     End Sub
 
-    Private Sub cmbPaymentCompanyList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbPaymentCompanyList.SelectedIndexChanged
+    Private Sub cmbPaymentCompanyList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbPaymentCustomerList.SelectedIndexChanged
 
-        If (cmbPaymentCompanyList.SelectedIndex = -1 Or cmbPaymentCompanyList.SelectedValue = -1) Then
+        If (cmbPaymentCustomerList.SelectedIndex = -1 Or cmbPaymentCustomerList.SelectedValue = -1) Then
             If (cmbPaymentPaymentNoList.Items.Count > 0) Then
                 cmbPaymentPaymentNoList.SelectedValue = -1
             Else
@@ -1623,7 +1600,7 @@ Public Class AgnimainForm
             End If
             Return
         End If
-        Dim custNo As Integer = cmbPaymentCompanyList.SelectedValue
+        Dim custNo As Integer = cmbPaymentCustomerList.SelectedValue
 
         loadPaymentList(custNo)
         loadPaymentGrid(custNo)
@@ -1657,14 +1634,14 @@ Public Class AgnimainForm
 
         ''log.Debug("btnBillingCreateBill_Click: entry")
 
-        If (cmbBillingCompanyList.SelectedIndex = -1 Or cmbBillingCompanyList.SelectedValue = -1) Then
+        If (cmbBillingCustomerList.SelectedIndex = -1 Or cmbBillingCustomerList.SelectedValue = -1) Then
             MessageBox.Show("Please select a customer")
-            cmbBillingCompanyList.Focus()
+            cmbBillingCustomerList.Focus()
             Return
         End If
 
         cmbBillingBillNoList.SelectedIndex = -1
-        Dim custNo = cmbBillingCompanyList.SelectedValue
+        Dim custNo = cmbBillingCustomerList.SelectedValue
 
         Dim unBilledDesignAmount As Decimal = getDesignAmountWithoutGSTTax(BILL_TYPE_UNBILLED, custNo)
         Dim billedDesignAmount As Decimal = getDesignAmountWithGSTTax(BILL_TYPE_BILLED, custNo)
@@ -1694,6 +1671,9 @@ Public Class AgnimainForm
 
     End Sub
 
+    Private Sub cmbDesDesignList_TextChanged(sender As Object, e As EventArgs) Handles cmbDesDesignList.TextChanged
+
+    End Sub
 
     Function getLastBillRow(Optional custNo As Integer = Nothing) As DataRow
 
@@ -1763,9 +1743,9 @@ Public Class AgnimainForm
     End Function
 
     Private Sub btnBillingConfirmCreateBill_Click(sender As Object, e As EventArgs) Handles btnBillingConfirmCreateBill.Click
-        If cmbBillingCompanyList.Text.Trim.Equals("") Then
+        If cmbBillingCustomerList.Text.Trim.Equals("") Then
             MessageBox.Show("Enter Valid Company Name")
-            cmbDesCompanyList.Focus()
+            cmbDesCustomerList.Focus()
         ElseIf Not cmbBillingBillNoList.Text.Trim.Equals("") Then
             MessageBox.Show("Bill Number will be auto generated. Please clear the Bill Number box.")
             cmbBillingBillNoList.Focus()
@@ -1800,7 +1780,7 @@ Public Class AgnimainForm
                     .CommandType = CommandType.Text
                     .CommandText = query
                     .Parameters.AddWithValue("@DisplayBillNo", gDisplayBillNo)
-                    .Parameters.AddWithValue("@CustNo", cmbBillingCompanyList.SelectedValue)
+                    .Parameters.AddWithValue("@CustNo", cmbBillingCustomerList.SelectedValue)
                     .Parameters.AddWithValue("@BillDate", dpBillingBillDate.Text)
                     .Parameters.AddWithValue("@DesignCost", Decimal.Parse(txtBillingDesignAmoutBeforeGST.Text))
                     .Parameters.AddWithValue("@CGST", Decimal.Parse(txtBillingCGSTPercent.Text))
@@ -1814,11 +1794,11 @@ Public Class AgnimainForm
                 newBillNo = CInt(comm.ExecuteScalar())
             End Using
 
-            updateRecentDesignsAsBilled(cmbBillingCompanyList.SelectedValue, newBillNo)
+            updateRecentDesignsAsBilled(cmbBillingCustomerList.SelectedValue, newBillNo)
 
             MessageBox.Show("Bill successfully added")
 
-            Dim custNo As Integer = cmbBillingCompanyList.SelectedValue
+            Dim custNo As Integer = cmbBillingCustomerList.SelectedValue
 
             loadBillList(custNo)
             loadBillGrid(custNo)
@@ -1846,7 +1826,7 @@ Public Class AgnimainForm
         End If
 
         Dim billNo As Integer = cmbBillingBillNoList.SelectedValue
-        Dim custNo As Integer = cmbBillingCompanyList.SelectedValue
+        Dim custNo As Integer = cmbBillingCustomerList.SelectedValue
 
         Dim updateQuery As String = String.Empty
         updateQuery &= "update bill set Cancelled=@Cancelled where BillNo=@BillNo"
@@ -1881,13 +1861,13 @@ Public Class AgnimainForm
     Private Sub btnPaymentCreatePayment_Click(sender As Object, e As EventArgs) Handles btnPaymentCreatePayment.Click
         ''log.Debug("btnBillingCreateBill_Click: entry")
 
-        If (cmbPaymentCompanyList.SelectedIndex = -1 Or cmbPaymentCompanyList.SelectedValue = -1) Then
+        If (cmbPaymentCustomerList.SelectedIndex = -1 Or cmbPaymentCustomerList.SelectedValue = -1) Then
             MessageBox.Show("Please select a customer")
-            cmbPaymentCompanyList.Focus()
+            cmbPaymentCustomerList.Focus()
             Return
         End If
 
-        Dim custNo = cmbPaymentCompanyList.SelectedValue
+        Dim custNo = cmbPaymentCustomerList.SelectedValue
 
         Dim billedDesignAmount As Decimal = getDesignAmountWithGSTTax(BILL_TYPE_BILLED, custNo)
         Dim totalBillsPaidAmount As Decimal = getAllBillsPaidAmount(custNo)
@@ -1911,9 +1891,9 @@ Public Class AgnimainForm
 
     Private Sub btnPaymentConfirmCreatePayment_Click(sender As Object, e As EventArgs) Handles btnPaymentConfirmCreatePayment.Click
 
-        If cmbPaymentCompanyList.Text.Trim.Equals("") Then
+        If cmbPaymentCustomerList.Text.Trim.Equals("") Then
             MessageBox.Show("Choose a company from company list")
-            cmbPaymentCompanyList.Focus()
+            cmbPaymentCustomerList.Focus()
         ElseIf dpPaymentDate.Text.Trim.Equals("") Then
             MessageBox.Show("Choose valid payment date")
             dpPaymentDate.Focus()
@@ -1976,7 +1956,7 @@ Public Class AgnimainForm
                     .Connection = dbConnection
                     .CommandType = CommandType.Text
                     .CommandText = query
-                    .Parameters.AddWithValue("@CustNo", cmbPaymentCompanyList.SelectedValue)
+                    .Parameters.AddWithValue("@CustNo", cmbPaymentCustomerList.SelectedValue)
                     .Parameters.AddWithValue("@BillNo", txtPaymentBillNo.Text)
                     .Parameters.AddWithValue("@UnPaidBilledAmount", txtPaymentUnPaidBilledAmount.Text)
                     .Parameters.AddWithValue("@PaymentDate", dpPaymentDate.Text)
@@ -2006,7 +1986,7 @@ Public Class AgnimainForm
             addPaidAmountInBill(txtPaymentBillNo.Text, txtPaymentFinalPaidAmount.Text)
 
             MessageBox.Show("Payment successfully added")
-            Dim custNo As Integer = cmbBillingCompanyList.SelectedValue
+            Dim custNo As Integer = cmbBillingCustomerList.SelectedValue
             loadPaymentList(custNo)
             loadPaymentGrid(custNo)
         End If
@@ -2152,7 +2132,7 @@ Public Class AgnimainForm
             MessageBox.Show("select the payment which you want to delete")
             cmbPaymentPaymentNoList.Focus()
         Else
-            Dim custNo As Integer = cmbPaymentCompanyList.SelectedValue
+            Dim custNo As Integer = cmbPaymentCustomerList.SelectedValue
             Dim selectedPaymentNo As Integer = cmbPaymentPaymentNoList.SelectedValue
 
             Dim lastPaymentRow As DataRow = getLastPaymentRow(custNo)
@@ -2199,992 +2179,521 @@ Public Class AgnimainForm
         End If
     End Sub
 
-    Private Sub radioReportsBillNo_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles radioReportsBillNo.CheckedChanged
+
+    Private Sub reportFilterOptions_changed(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles radioReportCustName.CheckedChanged,
+                                    radioReportBillNo.CheckedChanged,
+                                    radioReportDate.CheckedChanged,
+                                    cbReportExtraDateFilter.CheckedChanged,
+                                    radioReportDesignName.CheckedChanged
         'Try
-        If radioReportsBillNo.Checked Then
-            PictureBox1.Image = Nothing
-            Label53.Text = radioReportsBillNo.Text
-            cmbReportCompanyList.Visible = False
-            ComboBox10.Visible = True
-            ComboBox10.Text = ""
-            ComboBox10.Focus()
-            If CheckBox4.Checked Then
-                Button26.Text = "Search by Bill Number and Date"
+
+        lblReportCompName.Visible = False
+        lblReportBillNo.Visible = False
+        lblReportDesignNo.Visible = False
+        lblReportFromDate.Visible = False
+        lblReportToDate.Visible = False
+        lblReportDesignNameHint.Visible = False
+        cbReportExtraDateFilter.Visible = False
+        cmbReportCustomerList.Visible = False
+        cmbReportBillNoList.Visible = False
+        txtReportDesignName.Visible = False
+        dpReportFromDate.Visible = False
+        dpReportToDate.Visible = False
+
+        If radioReportCustName.Checked Then
+            lblReportCompName.Visible = True
+            cmbReportCustomerList.Visible = True
+            cbReportExtraDateFilter.Visible = True
+        ElseIf radioReportBillNo.Checked Then
+            lblReportBillNo.Visible = True
+            cmbReportBillNoList.Visible = True
+            cbReportExtraDateFilter.Visible = True
+        ElseIf radioReportDesignName.Checked Then
+            lblReportDesignNo.Visible = True
+            txtReportDesignName.Visible = True
+            lblReportDesignNameHint.Visible = True
+            cbReportExtraDateFilter.Visible = True
+        ElseIf radioReportDate.Checked Then
+            lblReportFromDate.Visible = False
+            lblReportToDate.Visible = True
+            dpReportFromDate.Visible = True
+            dpReportToDate.Visible = True
+        End If
+
+        If cbReportExtraDateFilter.Checked = True Then
+            lblReportFromDate.Visible = False
+            lblReportToDate.Visible = True
+            dpReportFromDate.Visible = True
+            dpReportToDate.Visible = True
+        End If
+        'Catch ex As Exception
+        'MessageBox.Show("Message to Agni User:   " & ex.Message)
+        'End 'Try
+    End Sub
+
+    Private Sub cmbReportDesignList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        pbReportDesignImage.Image = Nothing
+    End Sub
+
+    Function getSearchFilter() As Integer
+
+        Dim searchFilter As Integer = 0
+
+        If radioReportCustName.Checked = True Then
+            searchFilter = searchFilter Or SEARCH_BY_COMPANY
+        ElseIf radioReportBillNo.Checked = True Then
+            searchFilter = searchFilter Or SEARCH_BY_BILL
+        ElseIf radioReportDesignName.Checked = True Then
+            searchFilter = searchFilter Or SEARCH_BY_DESIGN
+        ElseIf radioReportDate.Checked = True Then
+            searchFilter = searchFilter Or SEARCH_BY_DATE
+        End If
+
+        If cbReportExtraDateFilter.Checked = True Then
+            searchFilter = searchFilter Or SEARCH_BY_DATE
+        End If
+
+        Return searchFilter
+    End Function
+
+    Private Sub btnReportSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnReportSearch.Click
+        'Try
+        pbReportDesignImage.Image = Nothing
+        dgReportDesignGrid.DataSource = Nothing
+        dgReportBillGrid.DataSource = Nothing
+
+        Dim searchFilter As Integer = getSearchFilter()
+
+        If (searchFilter And SEARCH_BY_COMPANY) <> 0 Then
+            If (cmbReportCustomerList.SelectedIndex = -1 Or cmbReportCustomerList.SelectedValue = -1) Then
+                MsgBox("Please select a customer to search")
+                Return
+            End If
+            Dim custNo As Integer = cmbReportCustomerList.SelectedValue
+            If (searchFilter And SEARCH_BY_DATE) <> 0 Then
+                searchDesignByCustNo(custNo, dpReportFromDate.Value, dpReportToDate.Value)
+                searchBillByCustNo(custNo, dpReportFromDate.Value, dpReportToDate.Value)
             Else
-                Button26.Text = "Search by Bill Number"
+                searchDesignByCustNo(custNo)
+                searchBillByCustNo(custNo)
             End If
 
-            rowCount = dt3.Rows.Count
-            inc = 0
-            ComboBox10.Items.Clear()
-            While (rowCount)
-                dr3 = dt3.Rows(inc)
-                ComboBox10.Items.Add(dr3.Item(8).ToString + "/" + dr3.Item(1).ToString)
-                inc = inc + 1
-                rowCount = rowCount - 1
-            End While
-        Else
-            ComboBox10.Visible = False
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
-    Private Sub radioReportsCompName_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles radioReportsCompName.CheckedChanged
-        'Try
-        If radioReportsCompName.Checked Then
-            PictureBox1.Image = Nothing
-            Label53.Text = radioReportsCompName.Text
-            ComboBox10.Visible = False
-            cmbReportCompanyList.Visible = True
-            cmbReportCompanyList.Text = ""
-            cmbReportCompanyList.Focus()
-            CheckBox1.Enabled = True
-            If CheckBox4.Checked Then
-                Button26.Text = "Search by Company Name and Date"
+        ElseIf (searchFilter And SEARCH_BY_BILL) <> 0 Then
+            If (cmbReportBillNoList.SelectedIndex = -1 Or cmbReportBillNoList.SelectedValue = -1) Then
+                MsgBox("Please select a bill number to search")
+                Return
+            End If
+            Dim billNo As Integer = cmbReportBillNoList.SelectedValue
+            If (searchFilter And SEARCH_BY_DATE) <> 0 Then
+                searchDesignByBillNo(billNo, dpReportFromDate.Value, dpReportToDate.Value)
+                searchBillByBillNo(billNo, dpReportFromDate.Value, dpReportToDate.Value)
             Else
-                Button26.Text = "Search by Company Name"
+                searchDesignByBillNo(billNo)
+                searchBillByBillNo(billNo)
             End If
-            inc = 0
-            Dim customerQuery = New SqlCommand("select custno,compname from customer", dbConnection)
-            Dim customerAdapter = New SqlDataAdapter()
-            customerAdapter.SelectCommand = customerQuery
-            Dim customerDataSet = New DataSet
-            customerAdapter.Fill(customerDataSet, "customer")
-            cmbCustCompanyList.ValueMember = "custno"
-            cmbCustCompanyList.DisplayMember = "compname"
-            cmbCustCompanyList.DataSource = customerDataSet.Tables(0)
-        Else
-            CheckBox1.Enabled = False
-            CheckBox1.Checked = False
-            cmbReportCompanyList.Visible = False
+
+        ElseIf (searchFilter And SEARCH_BY_DESIGN) <> 0 Then
+            If (txtReportDesignName.Text.Trim().Equals(String.Empty)) Then
+                MsgBox("Please enter design name or any part of design name to search")
+                Return
+            End If
+            Dim designName As String = txtReportDesignName.Text
+            searchDesignByDesignName(designName)
+            searchBillByDesignName(designName)
+        ElseIf (searchFilter And SEARCH_BY_DATE) <> 0 Then
+            searchDesignByDateRange(dpReportFromDate.Value, dpReportToDate.Value)
+            searchBillByDateRange(dpReportFromDate.Value, dpReportToDate.Value)
         End If
+
         'Catch ex As Exception
         'MessageBox.Show("Message to Agni User:   " & ex.Message)
         'End 'Try
     End Sub
 
+    Class SearchData
 
-    Private Sub CheckBox1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckBox1.CheckedChanged
-        'Try
-        If CheckBox1.Checked Then
-            PictureBox1.Image = Nothing
-            cmbReportDesignList.Visible = True
-            cmbReportDesignList.Focus()
-            If CheckBox4.Checked Then
-                Button26.Text = "Search by Company Name, Design Name and Date"
-            Else
-                Button26.Text = "Search by Company Name and Design Name"
-            End If
+        Public custNo, billNo As Integer
+        Public designName As String
+        Public fromDate, toDate As Date
 
-            cmbReportDesignList.Text = ""
-            Dim key As String
-            key = cmbReportCompanyList.Text.Trim
-            rowCount = Dt2.Rows.Count
-            inc = 0
-            cmbReportDesignList.Items.Clear()
+        Sub New()
+            custNo = -1
+            billNo = -1
+            designName = String.Empty
+            fromDate = Date.Today
+            toDate = Date.Today
+        End Sub
+
+    End Class
+
+    Sub searchDesignByCustNo(custNo As Integer, Optional fromDate As Date = Nothing, Optional toDate As Date = Nothing)
+        Dim thread As Thread = New Thread(AddressOf fetchDesignByCustNo)
+        thread.IsBackground = True
+
+        Dim searchData As SearchData = New SearchData
+        searchData.custNo = custNo
+        searchData.fromDate = fromDate
+        searchData.toDate = toDate
+
+        thread.Start(searchData)
+    End Sub
+
+    Sub fetchDesignByCustNo(ByVal searchDataParam As Object)
+        Dim searchData As SearchData = CType(searchDataParam, SearchData)
+
+        Dim designTable As DataTable = fetchDesignTableByCustNo(searchData)
+        Dim showDesignSearchResultInvoker As New showDesignSearchResultDelegate(AddressOf Me.showDesignSearchResult)
+        Me.BeginInvoke(showDesignSearchResultInvoker, designTable)
+    End Sub
+
+    Function fetchDesignTableByCustNo(searchData As SearchData) As DataTable
+
+        Dim custNo As Integer = searchData.custNo
+        Dim fromDate As Date = searchData.fromDate
+        Dim toDate As Date = searchData.toDate
+
+        Dim designQuery As SqlCommand
+
+        If (fromDate <> Nothing) Then
+            Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
+            Dim toDateStr As String = toDate.ToString("yyyyMMdd")
+            designQuery = New SqlCommand("select * from design where custNo=" + custNo.ToString + " and designDate>='" + fromDateStr + "' and  designDate<='" + toDateStr + "'", dbConnection)
+        Else
+            designQuery = New SqlCommand("select * from design where custNo=" + custNo.ToString, dbConnection)
+        End If
+
+        Dim designAdapter = New SqlDataAdapter()
+        designAdapter.SelectCommand = designQuery
+        Dim designDataSet = New DataSet
+        designAdapter.Fill(designDataSet, "design")
+        Return designDataSet.Tables(0)
+
+    End Function
+
+    Delegate Sub showDesignSearchResultDelegate(designTable As DataTable)
+
+    Sub showDesignSearchResult(designTable As DataTable)
+        dgReportDesignGrid.DataSource = designTable
+    End Sub
+
+    Sub searchBillByCustNo(custNo As Integer, Optional fromDate As Date = Nothing, Optional toDate As Date = Nothing)
+        Dim thread As Thread = New Thread(AddressOf fetchBillByCustNo)
+        thread.IsBackground = True
+
+        Dim searchData As SearchData = New SearchData
+        searchData.custNo = custNo
+        searchData.fromDate = fromDate
+        searchData.toDate = toDate
+
+        thread.Start(searchData)
+    End Sub
+
+    Sub fetchBillByCustNo(ByVal searchDataParam As Object)
+        Dim searchData As SearchData = CType(searchDataParam, SearchData)
+        Dim billTable As DataTable = fetchBillTableByCustNo(searchData)
+        Dim showBillSearchResultInvoker As New showBillSearchResultDelegate(AddressOf Me.showBillSearchResult)
+        Me.BeginInvoke(showBillSearchResultInvoker, billTable)
+
+    End Sub
+
+    Function fetchBillTableByCustNo(searchData As SearchData) As DataTable
+        Dim custNo As Integer = searchData.custNo
+        Dim fromDate As Date = searchData.fromDate
+        Dim toDate As Date = searchData.toDate
+        Dim billQuery As SqlCommand
+        If (fromDate <> Nothing) Then
+            Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
+            Dim toDateStr As String = toDate.ToString("yyyyMMdd")
+            billQuery = New SqlCommand("select BillNo, DisplayBillNo, BillDate, DesignCost, UnPaidAmountTillNow, CGST, CGST*DesignCost/100 as CGSTAmount, 
+                            SGST, SGST*DesignCost/100 as SGSTAmount, IGST, IGST*DesignCost/100 as IGSTAmount, (CGST+ SGST+ IGST)*DesignCost/100 as GSTAmount, ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost as DesignAmountGST, PaidAmount, 
+                            ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost+UnPaidAmountTillNow as TotalAmount, 
+                            (((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost+UnPaidAmountTillNow)-PaidAmount as RemainingBalance, Cancelled  from bill where custNo=" + custNo.ToString + " and BillDate>='" + fromDateStr + "' and  BillDate<='" + toDateStr + "'", dbConnection)
+        Else
+            billQuery = New SqlCommand("select BillNo, DisplayBillNo, BillDate, DesignCost, UnPaidAmountTillNow, CGST, CGST*DesignCost/100 as CGSTAmount, 
+                            SGST, SGST*DesignCost/100 as SGSTAmount, IGST, IGST*DesignCost/100 as IGSTAmount, (CGST+ SGST+ IGST)*DesignCost/100 as GSTAmount, ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost as DesignAmountGST, PaidAmount, 
+                            ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost+UnPaidAmountTillNow as TotalAmount, 
+                            (((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost+UnPaidAmountTillNow)-PaidAmount as RemainingBalance, Cancelled  from bill where custNo=" + custNo.ToString, dbConnection)
+        End If
+
+        Dim billAdapter = New SqlDataAdapter()
+        billAdapter.SelectCommand = billQuery
+        Dim billDataSet = New DataSet
+        billAdapter.Fill(billDataSet, "bill")
+        Return billDataSet.Tables(0)
+    End Function
+
+    Delegate Sub showBillSearchResultDelegate(billTable As DataTable)
+
+    Sub showBillSearchResult(billTable As DataTable)
+        dgReportBillGrid.DataSource = billTable
+    End Sub
+
+    Sub searchDesignByBillNo(billNo As Integer, Optional fromDate As Date = Nothing, Optional toDate As Date = Nothing)
+        Dim thread As Thread = New Thread(AddressOf fetchDesignByBillNo)
+        thread.IsBackground = True
+
+        Dim searchData As SearchData = New SearchData
+        searchData.billNo = billNo
+        searchData.fromDate = fromDate
+        searchData.toDate = toDate
+
+        thread.Start(searchData)
+    End Sub
+
+    Sub fetchDesignByBillNo(ByVal searchDataParam As Object)
+        Dim searchData As SearchData = CType(searchDataParam, SearchData)
+        Dim designTable As DataTable = fetchDesignTableByBillNo(searchData)
+        Dim showDesignSearchResultInvoker As New showDesignSearchResultDelegate(AddressOf Me.showDesignSearchResult)
+        Me.BeginInvoke(showDesignSearchResultInvoker, designTable)
+    End Sub
+
+    Function fetchDesignTableByBillNo(searchData As SearchData) As DataTable
+        Dim billNo As Integer = searchData.billNo
+        Dim fromDate As Date = searchData.fromDate
+        Dim toDate As Date = searchData.toDate
+
+        Dim designQuery As SqlCommand
+
+        If (fromDate <> Nothing) Then
+            Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
+            Dim toDateStr As String = toDate.ToString("yyyyMMdd")
+            designQuery = New SqlCommand("select c.CompName,d.* from design d,customer c where d.billNo=" + billNo.ToString + " and d.CustNo=c.CustNo and d.designDate>='" + fromDateStr + "' and  d.designDate<='" + toDateStr + "'", dbConnection)
+        Else
+            designQuery = New SqlCommand("select c.CompName,d.* from design d,customer c where d.billNo=" + billNo.ToString + " and d.CustNo=c.CustNo", dbConnection)
+        End If
+
+        Dim designAdapter = New SqlDataAdapter()
+        designAdapter.SelectCommand = designQuery
+        Dim designDataSet = New DataSet
+        designAdapter.Fill(designDataSet, "design")
+        Return designDataSet.Tables(0)
+    End Function
+
+    Sub searchBillByBillNo(billNo As Integer, Optional fromDate As Date = Nothing, Optional toDate As Date = Nothing)
+        Dim thread As Thread = New Thread(AddressOf fetchBillByBillNo)
+        thread.IsBackground = True
+
+        Dim searchData As SearchData = New SearchData
+        searchData.billNo = billNo
+        searchData.fromDate = fromDate
+        searchData.toDate = toDate
+
+        thread.Start(searchData)
+    End Sub
+
+    Sub fetchBillByBillNo(ByVal searchDataParam As Object)
+        Dim searchData As SearchData = CType(searchDataParam, SearchData)
+        Dim billTable As DataTable = fetchBillTableByBillNo(searchData)
+        Dim showBillSearchResultInvoker As New showBillSearchResultDelegate(AddressOf Me.showBillSearchResult)
+        Me.BeginInvoke(showBillSearchResultInvoker, billTable)
+    End Sub
+
+    Function fetchBillTableByBillNo(searchData As SearchData) As DataTable
+        Dim billNo As Integer = searchData.billNo
+        Dim fromDate As Date = searchData.fromDate
+        Dim toDate As Date = searchData.toDate
+
+        Dim billQuery As SqlCommand
+
+        If (fromDate <> Nothing) Then
+            Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
+            Dim toDateStr As String = toDate.ToString("yyyyMMdd")
+            billQuery = New SqlCommand("select c.CompName, b.BillNo, b.DisplayBillNo, b.BillDate, b.DesignCost, b.UnPaidAmountTillNow, b.CGST, b.CGST*b.DesignCost/100 as CGSTAmount, 
+                            b.SGST, b.SGST*b.DesignCost/100 as SGSTAmount, b.IGST, b.IGST*b.DesignCost/100 as IGSTAmount, (b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100 as GSTAmount, ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost as DesignAmountGST, b.PaidAmount, 
+                            ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost+b.UnPaidAmountTillNow as TotalAmount, 
+                            (((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost+b.UnPaidAmountTillNow)-b.PaidAmount as RemainingBalance, b.Cancelled from bill b, customer c where b.billNo=" + billNo.ToString + " and b.CustNo=c.CustNo and b.BillDate>='" + fromDateStr + "' and  b.BillDate<='" + toDateStr + "'", dbConnection)
 
         Else
-            cmbReportDesignList.Visible = False
-            If CheckBox4.Checked Then
-                Button26.Text = "Search by Company Name and Date"
-            Else
-                Button26.Text = "Search by Company Name"
-            End If
+            billQuery = New SqlCommand("select c.CompName, b.BillNo, b.DisplayBillNo, b.BillDate, b.DesignCost, b.UnPaidAmountTillNow, b.CGST, b.CGST*b.DesignCost/100 as CGSTAmount, 
+                            b.SGST, b.SGST*b.DesignCost/100 as SGSTAmount, b.IGST, b.IGST*b.DesignCost/100 as IGSTAmount, (b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100 as GSTAmount, ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost as DesignAmountGST, b.PaidAmount, 
+                            ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost+b.UnPaidAmountTillNow as TotalAmount, 
+                            (((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost+b.UnPaidAmountTillNow)-b.PaidAmount as RemainingBalance, b.Cancelled from bill b, customer c where b.billNo=" + billNo.ToString + " and b.CustNo=c.CustNo", dbConnection)
+
         End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-    Private Sub ComboBox9_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbReportDesignList.SelectedIndexChanged
-        PictureBox1.Image = Nothing
+
+        Dim billAdapter = New SqlDataAdapter()
+        billAdapter.SelectCommand = billQuery
+        Dim billDataSet = New DataSet
+        billAdapter.Fill(billDataSet, "bill")
+        Return billDataSet.Tables(0)
+    End Function
+
+    Sub searchDesignByDesignName(designName As String, Optional fromDate As Date = Nothing, Optional toDate As Date = Nothing)
+        Dim thread As Thread = New Thread(AddressOf fetchDesignByDesignName)
+        thread.IsBackground = True
+
+        Dim searchData As SearchData = New SearchData
+        searchData.designName = designName
+        searchData.fromDate = fromDate
+        searchData.toDate = toDate
+
+        thread.Start(searchData)
     End Sub
 
-    Private Sub ComboBox9_VisibleChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmbReportDesignList.VisibleChanged
-        If cmbReportDesignList.Visible = False Then
-            cmbReportDesignList.Items.Clear()
-        End If
+    Sub fetchDesignByDesignName(ByVal searchDataParam As Object)
+        Dim searchData As SearchData = CType(searchDataParam, SearchData)
+        Dim designTable As DataTable = fetchDesignTableByDesignName(searchData)
+        Dim showDesignSearchResultInvoker As New showDesignSearchResultDelegate(AddressOf Me.showDesignSearchResult)
+        Me.BeginInvoke(showDesignSearchResultInvoker, designTable)
     End Sub
 
-    Private Sub CheckBox4_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckBox4.CheckedChanged
-        If CheckBox4.Checked = True And CheckBox1.Checked = False And radioReportsCompName.Checked = False And radioReportsBillNo.Checked = False Then
-            Button26.Text = "Search by Date"
-        ElseIf CheckBox4.Checked = True And CheckBox1.Checked = False And radioReportsCompName.Checked = True And radioReportsBillNo.Checked = False Then
-            Button26.Text = "Search by Company Name and Date"
-        ElseIf CheckBox4.Checked = True And CheckBox1.Checked = True And radioReportsCompName.Checked = True And radioReportsBillNo.Checked = False Then
-            Button26.Text = "Search by Company Name, Design Name and Date"
-        ElseIf CheckBox4.Checked = True And CheckBox1.Checked = False And radioReportsCompName.Checked = False And radioReportsBillNo.Checked = True Then
-            Button26.Text = "Search by Bill Number and Date"
-        ElseIf CheckBox4.Checked = False And CheckBox1.Checked = False And radioReportsCompName.Checked = True And radioReportsBillNo.Checked = False Then
-            Button26.Text = "Search by Company Name"
-        ElseIf CheckBox4.Checked = False And CheckBox1.Checked = False And radioReportsCompName.Checked = False And radioReportsBillNo.Checked = True Then
-            Button26.Text = "Search by Bill Number"
-        ElseIf CheckBox4.Checked = False And CheckBox1.Checked = True And radioReportsCompName.Checked = True And radioReportsBillNo.Checked = False Then
-            Button26.Text = "Search by Company Name and Design Name"
-        End If
-        If CheckBox4.Checked = True Or CheckBox5.Checked = True Then
-            Label54.Visible = True
-            Label55.Visible = True
-            DateTimePicker3.Visible = True
-            DateTimePicker4.Visible = True
-        ElseIf CheckBox4.Checked = False And CheckBox5.Checked = False Then
-            Label54.Visible = False
-            Label55.Visible = False
-            DateTimePicker3.Visible = False
-            DateTimePicker4.Visible = False
-        End If
-    End Sub
-    Private Sub searchbycompany()
-        'Try
-        compbased = True
-        billbased = False
-        desbased = False
-        datebased = False
-        searchboth = False
-        If cmbReportCompanyList.Text.Trim.Equals("") Then
-            MsgBox("Please Select Company ")
-            cmbReportCompanyList.Focus()
+    Function fetchDesignTableByDesignName(searchData As SearchData) As DataTable
+        Dim designName As String = searchData.designName
+        Dim fromDate As Date = searchData.fromDate
+        Dim toDate As Date = searchData.toDate
+
+        Dim designQuery As SqlCommand
+
+        If (fromDate <> Nothing) Then
+            Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
+            Dim toDateStr As String = toDate.ToString("yyyyMMdd")
+            designQuery = New SqlCommand("select c.CompName,d.* from design d,customer c where d.DesignName like '%" + designName + "%' and d.CustNo=c.CustNo and d.designDate>='" + fromDateStr + "' and  d.designDate<='" + toDateStr + "'", dbConnection)
         Else
-            Dim totdesamount As Decimal = 0
-            Dim countunbilled As Integer = 0
-            Dim sumunbilled As Decimal = 0
-            Dim countbilled As Integer = 0
-            Dim sumbilled As Decimal = 0
-            Dim countbill As Integer = 0
-            dt6.Clear()
-            key = cmbReportCompanyList.Text.Trim
-            cmprcomp = key
-            rowCount = Dt2.Rows.Count - 1
-            inc = 0
-            While (rowCount >= 0)
-                Dr2 = Dt2.Rows(inc)
-                If key.ToString.Equals(Dr2.Item(0).ToString) Then
-                    dr6 = dt6.NewRow
-                    dr6.Item(0) = Dr2.Item(0)
-                    dr6.Item(1) = Dr2.Item(1)
-                    dr6.Item(2) = Dr2.Item(2)
-                    dr6.Item(3) = Dr2.Item(3)
-                    dr6.Item(4) = Dr2.Item(4)
-                    dr6.Item(5) = Dr2.Item(5)
-                    dr6.Item(6) = Dr2.Item(6)
-                    dr6.Item(7) = Dr2.Item(7)
-                    dr6.Item(8) = Dr2.Item(8)
-                    dr6.Item(9) = Dr2.Item(9)
-                    totdesamount += Decimal.Parse(dr6.Item(9))
-                    dr6.Item(10) = Dr2.Item(10)
-                    dr6.Item(11) = Dr2.Item(11)
-                    dr6.Item(12) = Dr2.Item(12)
-                    If Dr2.Item(12) Is DBNull.Value Then
-                        countunbilled += 1
-                        sumunbilled += Decimal.Parse(Dr2.Item(9))
-                    Else
-                        countbilled += 1
-                        sumbilled += Decimal.Parse(Dr2.Item(9))
-                    End If
-                    dt6.Rows.Add(dr6)
-                End If
-                rowCount -= 1
-                inc += 1
-            End While
-            DataGrid3.DataSource = ds6.Tables(0)
-            Label48.Text = ds6.Tables(0).Rows.Count.ToString
-            Label51.Text = totdesamount.ToString
-            Label157.Text = countunbilled.ToString
-            Label153.Text = sumunbilled.ToString
-            Label151.Text = countbilled.ToString
-            Label155.Text = sumbilled.ToString
-
-
-            Dim tottransamount As Decimal = 0
-            dt7.Clear()
-            key = cmbReportCompanyList.Text.Trim
-            rowCount = dt3.Rows.Count - 1
-            inc = 0
-            While (rowCount >= 0)
-                dr3 = dt3.Rows(inc)
-                If key.ToString.Equals(dr3.Item(0).ToString) Then
-                    dr7 = dt7.NewRow
-                    dr7.Item(0) = dr3.Item(0)
-                    dr7.Item(1) = dr3.Item(1)
-                    dr7.Item(2) = dr3.Item(2)
-                    dr7.Item(3) = dr3.Item(3)
-                    dr7.Item(4) = dr3.Item(4)
-                    dr7.Item(5) = dr3.Item(5)
-                    dr7.Item(6) = dr3.Item(6)
-                    If Not dr7.Item(4) Is DBNull.Value Then
-                        tottransamount += Decimal.Parse(dr7.Item(4))
-                    End If
-                    dr7.Item(7) = dr3.Item(7)
-                    dr7.Item(8) = dr3.Item(8)
-                    dt7.Rows.Add(dr7)
-                    countbill += 1
-                End If
-                rowCount -= 1
-                inc += 1
-            End While
-            Label113.Text = key
-            DataGrid4.DataSource = ds7.Tables(0)
-            Label57.Text = ds7.Tables(0).Rows.Count.ToString
-            Label61.Text = tottransamount
-            Label161.Text = tottransamount
-            If Not dt7.Rows.Count = 0 Then
-                Label104.Text = tottransamount - Decimal.Parse(dt7.Rows(dt7.Rows.Count - 1).Item(7))
-            End If
-            If Not dt7.Rows.Count = 0 Then
-                Label110.Text = dt7.Rows(dt7.Rows.Count - 1).Item(7)
-            End If
-            Label163.Text = countbill
+            designQuery = New SqlCommand("Select c.CompName, d.* From design d, customer c Where d.DesignName Like '%" + designName + "%' and d.CustNo=c.CustNo", dbConnection)
         End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
+
+        Dim designAdapter = New SqlDataAdapter()
+        designAdapter.SelectCommand = designQuery
+        Dim designDataSet = New DataSet
+        designAdapter.Fill(designDataSet, "design")
+        Return designDataSet.Tables(0)
+    End Function
+
+    Sub searchBillByDesignName(designName As String, Optional fromDate As Date = Nothing, Optional toDate As Date = Nothing)
+        Dim thread As Thread = New Thread(AddressOf fetchBillByDesignName)
+        thread.IsBackground = True
+
+        Dim searchData As SearchData = New SearchData
+        searchData.designName = designName
+        searchData.fromDate = fromDate
+        searchData.toDate = toDate
+
+        thread.Start(searchData)
     End Sub
-    Private Sub searchbyBillno()
-        'Try
-        compbased = False
-        billbased = True
-        desbased = False
-        datebased = False
-        searchboth = False
-        If ComboBox10.Text.Trim.Equals("") Then
-            MsgBox("Please Select Bill Number")
-            ComboBox10.Focus()
+
+    Sub fetchBillByDesignName(ByVal searchDataParam As Object)
+        Dim searchData As SearchData = CType(searchDataParam, SearchData)
+        Dim billTable As DataTable = fetchBillTableByDesignName(searchData)
+        Dim showBillSearchResultInvoker As New showBillSearchResultDelegate(AddressOf Me.showBillSearchResult)
+        Me.BeginInvoke(showBillSearchResultInvoker, billTable)
+    End Sub
+
+    Function fetchBillTableByDesignName(searchData As SearchData) As DataTable
+        Dim designName As String = searchData.designName
+        Dim fromDate As Date = searchData.fromDate
+        Dim toDate As Date = searchData.toDate
+
+        Dim billQuery As SqlCommand
+
+        If (fromDate <> Nothing) Then
+            Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
+            Dim toDateStr As String = toDate.ToString("yyyyMMdd")
+            billQuery = New SqlCommand("select c.CompName, b.BillNo, b.DisplayBillNo, b.BillDate, b.DesignCost, b.UnPaidAmountTillNow, b.CGST, b.CGST*b.DesignCost/100 as CGSTAmount, 
+                            b.SGST, b.SGST*b.DesignCost/100 as SGSTAmount, b.IGST, b.IGST*b.DesignCost/100 as IGSTAmount, (b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100 as GSTAmount, ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost as DesignAmountGST, b.PaidAmount, 
+                            ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost+b.UnPaidAmountTillNow as TotalAmount, 
+                            (((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost+b.UnPaidAmountTillNow)-b.PaidAmount as RemainingBalance, b.Cancelled from bill b, customer c where b.billNo in " +
+                            "(select BillNo from Design where DesignName like '%" + designName + "%') and b.CustNo=c.CustNo and b.BillDate>='" + fromDateStr + "' and b.BillDate<='" + toDateStr + "'", dbConnection)
+
         Else
-            Dim key As String
-            Dim tottransamount As Decimal = 0
-            Dim tottransamount1 As Decimal = 0
-            key = ComboBox10.Text.Trim
-            key = key.Substring(key.IndexOf("/") + 1, key.Length - key.IndexOf("/") - 1)
+            billQuery = New SqlCommand("select c.CompName, b.BillNo, b.DisplayBillNo, b.BillDate, b.DesignCost, b.UnPaidAmountTillNow, b.CGST, b.CGST*b.DesignCost/100 as CGSTAmount, 
+                            b.SGST, b.SGST*b.DesignCost/100 as SGSTAmount, b.IGST, b.IGST*b.DesignCost/100 as IGSTAmount, (b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100 as GSTAmount, ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost as DesignAmountGST, b.PaidAmount, 
+                            ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost+b.UnPaidAmountTillNow as TotalAmount, 
+                            (((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost+b.UnPaidAmountTillNow)-b.PaidAmount as RemainingBalance, b.Cancelled from bill b, customer c where b.billNo in " +
+                            "(select BillNo from Design where DesignName like '%" + designName + "%') and b.CustNo=c.CustNo", dbConnection)
 
-            Dim totdesamount As Decimal = 0
-            Dim custname As String = ""
-            Dim countunbilled As Integer = 0
-            Dim sumunbilled As Decimal = 0
-            Dim countbilled As Integer = 0
-            Dim sumbilled As Decimal = 0
-            Dim countbill As Integer = 0
-            dt6.Clear()
-            rowCount = Dt2.Rows.Count - 1
-            inc = 0
-            While (rowCount >= 0)
-                Dr2 = Dt2.Rows(rowCount)
-                If key.ToString.Equals(Dr2.Item(12).ToString) Then
-                    dr6 = dt6.NewRow
-                    dr6.Item(0) = Dr2.Item(0)
-                    dr6.Item(1) = Dr2.Item(1)
-                    dr6.Item(2) = Dr2.Item(2)
-                    dr6.Item(3) = Dr2.Item(3)
-                    dr6.Item(4) = Dr2.Item(4)
-                    dr6.Item(5) = Dr2.Item(5)
-                    dr6.Item(6) = Dr2.Item(6)
-                    dr6.Item(7) = Dr2.Item(7)
-                    dr6.Item(8) = Dr2.Item(8)
-                    dr6.Item(9) = Dr2.Item(9)
-                    totdesamount += Decimal.Parse(Dr2.Item(9))
-                    dr6.Item(10) = Dr2.Item(10)
-                    dr6.Item(11) = Dr2.Item(11)
-                    dr6.Item(12) = Dr2.Item(12)
-                    If Dr2.Item(12) Is DBNull.Value Then
-                        countunbilled += 1
-                        sumunbilled += Decimal.Parse(Dr2.Item(9))
-                    Else
-                        countbilled += 1
-                        sumbilled += Decimal.Parse(Dr2.Item(9))
-                    End If
-                    dt6.Rows.Add(dr6)
-                End If
-                rowCount -= 1
-            End While
-            DataGrid3.DataSource = ds6.Tables(0)
-            Label48.Text = ds6.Tables(0).Rows.Count.ToString
-            Label51.Text = totdesamount.ToString
-            Label157.Text = countunbilled.ToString
-            Label153.Text = sumunbilled.ToString
-            Label151.Text = countbilled.ToString
-            Label155.Text = sumbilled.ToString
-
-            rowCount = dt3.Rows.Count - 1
-            dt7.Clear()
-            While (rowCount >= 0)
-                dr3 = dt3.Rows(rowCount)
-                If key.Equals(dr3.Item(1).ToString()) Then
-                    custname = dr3.Item(0)
-                    dr7 = dt7.NewRow
-                    dr7.Item(0) = dr3.Item(0)
-                    dr7.Item(1) = dr3.Item(1)
-                    dr7.Item(2) = dr3.Item(2)
-                    dr7.Item(3) = dr3.Item(3)
-                    dr7.Item(4) = dr3.Item(4)
-                    dr7.Item(5) = dr3.Item(5)
-                    dr7.Item(6) = dr3.Item(6)
-                    If Not dr7.Item(4) Is DBNull.Value Then
-                        tottransamount1 += Decimal.Parse(dr7.Item(4))
-                    End If
-                    dr7.Item(7) = dr3.Item(7)
-                    dr7.Item(8) = dr3.Item(8)
-                    dt7.Rows.Add(dr7)
-                    Exit While
-                End If
-                rowCount = rowCount - 1
-            End While
-
-            Dim flag As Boolean = False
-            Dim bal As Decimal = 0
-            rowCount = dt3.Rows.Count - 1
-            While (rowCount >= 0)
-                dr3 = dt3.Rows(rowCount)
-                If custname.Trim.ToString.Equals(dr3.Item(0).ToString) Then
-                    countbill += 1
-                    tottransamount += Decimal.Parse(dr3.Item(4))
-                    If flag = False Then
-                        bal = dr3.Item(7)
-                        flag = True
-                    End If
-                End If
-                rowCount -= 1
-            End While
-            cmprcomp = custname
-            DataGrid4.DataSource = ds7.Tables(0)
-            Label113.Text = custname
-            Label57.Text = ds7.Tables(0).Rows.Count.ToString
-            Label61.Text = tottransamount
-            Label161.Text = tottransamount1
-            If Not dt7.Rows.Count = 0 Then
-                Label104.Text = tottransamount - bal
-            End If
-            If Not dt7.Rows.Count = 0 Then
-                Label110.Text = bal
-            End If
-            Label163.Text = countbill
         End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
+
+        Dim billAdapter = New SqlDataAdapter()
+        billAdapter.SelectCommand = billQuery
+        Dim billDataSet = New DataSet
+        billAdapter.Fill(billDataSet, "bill")
+        Return billDataSet.Tables(0)
+    End Function
+
+    Sub searchDesignByDateRange(fromDate As Date, toDate As Date)
+        Dim thread As Thread = New Thread(AddressOf fetchDesignByDateRange)
+        thread.IsBackground = True
+
+        Dim searchData As SearchData = New SearchData
+        searchData.fromDate = fromDate
+        searchData.toDate = toDate
+
+        thread.Start(searchData)
     End Sub
-    Private Sub searchbyDesno()
+
+    Sub fetchDesignByDateRange(ByVal searchDataParam As Object)
+
+        Dim searchData As SearchData = CType(searchDataParam, SearchData)
+
+        Dim fromDate As Date = searchData.fromDate
+        Dim toDate As Date = searchData.toDate
+        Dim designTable As DataTable = fetchDesignTableByDateRange(fromDate, toDate)
+
+        Dim showDesignSearchResultInvoker As New showDesignSearchResultDelegate(AddressOf Me.showDesignSearchResult)
+        Me.BeginInvoke(showDesignSearchResultInvoker, designTable)
+    End Sub
+
+    Function fetchDesignTableByDateRange(fromDate As Date, toDate As Date) As DataTable
+
+        Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
+        Dim toDateStr As String = toDate.ToString("yyyyMMdd")
+
+        Dim designQuery As SqlCommand
+        designQuery = New SqlCommand("select c.CompName,d.* from design d,customer c where d.designDate>='" + fromDateStr + "' and d.designDate<='" + toDateStr + "' and d.CustNo=c.CustNo", dbConnection)
+
+        Dim designAdapter = New SqlDataAdapter()
+        designAdapter.SelectCommand = designQuery
+        Dim designDataSet = New DataSet
+        designAdapter.Fill(designDataSet, "design")
+        Return designDataSet.Tables(0)
+    End Function
+
+    Sub searchBillByDateRange(fromDate As Date, toDate As Date)
+        Dim thread As Thread = New Thread(AddressOf fetchBillByDateRange)
+        thread.IsBackground = True
+
+        Dim searchData As SearchData = New SearchData
+        searchData.fromDate = fromDate
+        searchData.toDate = toDate
+
+        thread.Start(searchData)
+    End Sub
+
+    Sub fetchBillByDateRange(ByVal searchDataParam As Object)
+
+        Dim searchData As SearchData = CType(searchDataParam, SearchData)
+
+        Dim fromDate As Date = searchData.fromDate
+        Dim toDate As Date = searchData.toDate
+        Dim billTable As DataTable = fetchBillTableByDateRange(fromDate, toDate)
+
+        Dim showBillSearchResultInvoker As New showBillSearchResultDelegate(AddressOf Me.showBillSearchResult)
+        Me.BeginInvoke(showBillSearchResultInvoker, billTable)
+    End Sub
+
+    Function fetchBillTableByDateRange(fromDate As Date, toDate As Date) As DataTable
+
+        Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
+        Dim toDateStr As String = toDate.ToString("yyyyMMdd")
+
+        Dim billQuery As SqlCommand
+
+        billQuery = New SqlCommand("select c.CompName, b.BillNo, b.DisplayBillNo, b.BillDate, b.DesignCost, b.UnPaidAmountTillNow, b.CGST, b.CGST*b.DesignCost/100 as CGSTAmount, 
+                            b.SGST, b.SGST*b.DesignCost/100 as SGSTAmount, b.IGST, b.IGST*b.DesignCost/100 as IGSTAmount, (b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100 as GSTAmount, ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost as DesignAmountGST, b.PaidAmount, 
+                            ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost+b.UnPaidAmountTillNow as TotalAmount, 
+                            (((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost+b.UnPaidAmountTillNow)-b.PaidAmount as RemainingBalance, b.Cancelled from bill b, customer c where b.BillDate>='" + fromDateStr + "' and  b.BillDate<='" + toDateStr + "' and b.CustNo=c.CustNo", dbConnection)
+
+        Dim billAdapter = New SqlDataAdapter()
+        billAdapter.SelectCommand = billQuery
+        Dim billDataSet = New DataSet
+        billAdapter.Fill(billDataSet, "bill")
+        Return billDataSet.Tables(0)
+    End Function
+
+
+    Private Sub CheckBox5_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
         'Try
-        compbased = False
-        billbased = False
-        desbased = True
-        datebased = False
-        searchboth = False
-        PictureBox1.Image = Nothing
-        If cmbReportCompanyList.Text.Trim.Equals("") Then
-            MsgBox("Please Select Company Name")
-            cmbReportCompanyList.Focus()
-        ElseIf cmbReportDesignList.Text.Trim.Equals("") Then
-            MsgBox("Please Select Design Name")
-            cmbReportDesignList.Focus()
-        Else
-            Dim key As Integer
-            Dim custname As String = ""
-            'Dim item As MyComboitem
-            Dim totdesamount As Decimal = 0
-            Dim tottransamount As Decimal = 0
-            Dim tottransamount1 As Decimal = 0
-            Dim billnum As Integer = 0
-            Dim countunbilled As Integer = 0
-            Dim sumunbilled As Decimal = 0
-            Dim countbilled As Integer = 0
-            Dim sumbilled As Decimal = 0
-            Dim countbill As Integer = 0
-            'item = DirectCast(cmbReportDesignList.SelectedItem, MyComboitem)
-            'key = item.ID
-            b = Dt2.Rows.Count - 1
-            inc = 0
-            flag = 0
-            dt6.Clear()
-            While (b >= 0)
-                Dr2 = Dt2.Rows(b)
-                If key = Dr2.Item(1) Then
-                    dr6 = dt6.NewRow
-                    custname = Dr2.Item(0)
-                    dr6.Item(0) = Dr2.Item(0)
-                    dr6.Item(1) = Dr2.Item(1)
-                    dr6.Item(2) = Dr2.Item(2)
-                    dr6.Item(3) = Dr2.Item(3)
-                    dr6.Item(4) = Dr2.Item(4)
-                    dr6.Item(5) = Dr2.Item(5)
-                    dr6.Item(6) = Dr2.Item(6)
-                    dr6.Item(7) = Dr2.Item(7)
-                    dr6.Item(8) = Dr2.Item(8)
-                    dr6.Item(9) = Dr2.Item(9)
-                    totdesamount += Decimal.Parse(dr6.Item(9))
-                    dr6.Item(10) = Dr2.Item(10)
-                    dr6.Item(11) = Dr2.Item(11)
-                    dr6.Item(12) = Dr2.Item(12)
-                    billnum = Dr2.Item(12)
-                    If Dr2.Item(12) Is DBNull.Value Then
-                        countunbilled += 1
-                        sumunbilled += Decimal.Parse(Dr2.Item(9))
-                    Else
-                        countbilled += 1
-                        sumbilled += Decimal.Parse(Dr2.Item(9))
-                    End If
-                    dt6.Rows.Add(dr6)
-                    Exit While
-                End If
-                b = b - 1
-            End While
-            DataGrid3.DataSource = ds6.Tables(0)
-            Label48.Text = ds6.Tables(0).Rows.Count.ToString
-            Label51.Text = totdesamount.ToString
-            Label157.Text = countunbilled.ToString
-            Label153.Text = sumunbilled.ToString
-            Label151.Text = countbilled.ToString
-            Label155.Text = sumbilled.ToString
 
-            rowCount = dt3.Rows.Count - 1
-            dt7.Clear()
-            While (rowCount >= 0)
-                dr3 = dt3.Rows(rowCount)
-                If billnum.ToString.Equals(dr3.Item(1).ToString()) Then
-                    dr7 = dt7.NewRow
-                    custname = dr3.Item(0)
-                    dr7.Item(0) = dr3.Item(0)
-                    dr7.Item(1) = dr3.Item(1)
-                    dr7.Item(2) = dr3.Item(2)
-                    dr7.Item(3) = dr3.Item(3)
-                    dr7.Item(4) = dr3.Item(4)
-                    dr7.Item(5) = dr3.Item(5)
-                    dr7.Item(6) = dr3.Item(6)
-                    If Not dr7.Item(4) Is DBNull.Value Then
-                        tottransamount1 += Decimal.Parse(dr7.Item(4))
-                    End If
-                    dr7.Item(7) = dr3.Item(7)
-                    dr7.Item(8) = dr3.Item(8)
-                    dt7.Rows.Add(dr7)
-                    Exit While
-                End If
-                rowCount = rowCount - 1
-            End While
-
-            Dim flag1 As Boolean = False
-            Dim bal As Decimal = 0
-            rowCount = dt3.Rows.Count - 1
-            While (rowCount >= 0)
-                dr3 = dt3.Rows(rowCount)
-                If custname.Trim.ToString.Equals(dr3.Item(0).ToString) Then
-                    tottransamount += Decimal.Parse(dr3.Item(4))
-                    countbill += 1
-                    If flag1 = False Then
-                        bal = dr3.Item(7)
-                        flag1 = True
-                    End If
-                End If
-                rowCount -= 1
-            End While
-            cmprcomp = custname
-
-            DataGrid4.DataSource = ds7.Tables(0)
-            Label57.Text = ds7.Tables(0).Rows.Count.ToString
-            Label61.Text = tottransamount
-            Label161.Text = tottransamount1
-            If Not dt7.Rows.Count = 0 Then
-                Label104.Text = tottransamount - bal
-            End If
-            If Not dt7.Rows.Count = 0 Then
-                Label110.Text = bal
-            End If
-            Label163.Text = countbill
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-    Private Sub searchbydate()
-        'Try
-        compbased = False
-        billbased = False
-        desbased = False
-        datebased = True
-        searchboth = False
-        PictureBox1.Image = Nothing
-        If DateTimePicker3.Text.Trim.Equals("") Then
-            MsgBox("Please Select From Date ")
-            DateTimePicker3.Focus()
-        ElseIf DateTimePicker4.Text.Trim.Equals("") Then
-            MsgBox("Please Select To Date ")
-            DateTimePicker4.Focus()
-        Else
-            Dim countunbilled As Integer = 0
-            Dim sumunbilled As Decimal = 0
-            Dim countbilled As Integer = 0
-            Dim sumbilled As Decimal = 0
-            Dim countbill As Integer = 0
-            dt6.Clear()
-            Dim totdesamount As Decimal = 0
-            Dim fromdate, todate, billdate, desdate As Date
-            Dim fromdatestr, todatestr, billdatestr As String
-            fromdatestr = DateTimePicker3.Value.ToString("MM dd yyyy")
-            fromdate = DateTime.Parse(fromdatestr)
-            todatestr = DateTimePicker4.Value.ToString("MM dd yyyy")
-            todate = DateTime.Parse(todatestr)
-            rowCount = Dt2.Rows.Count - 1
-            inc = 0
-            While (rowCount >= 0)
-                Dr2 = Dt2.Rows(inc)
-                desdate = DateTime.Parse(Dr2.Item(10))
-                billdatestr = desdate.ToString("MM dd yyyy")
-                desdate = DateTime.Parse(billdatestr)
-                If desdate >= fromdate And desdate <= todate Then
-                    dr6 = dt6.NewRow
-                    dr6.Item(0) = Dr2.Item(0)
-                    dr6.Item(1) = Dr2.Item(1)
-                    dr6.Item(2) = Dr2.Item(2)
-                    dr6.Item(3) = Dr2.Item(3)
-                    dr6.Item(4) = Dr2.Item(4)
-                    dr6.Item(5) = Dr2.Item(5)
-                    dr6.Item(6) = Dr2.Item(6)
-                    dr6.Item(7) = Dr2.Item(7)
-                    dr6.Item(8) = Dr2.Item(8)
-                    dr6.Item(9) = Dr2.Item(9)
-                    totdesamount += Decimal.Parse(dr6.Item(9))
-                    dr6.Item(10) = Dr2.Item(10)
-                    dr6.Item(11) = Dr2.Item(11)
-                    dr6.Item(12) = Dr2.Item(12)
-                    If Dr2.Item(12) Is DBNull.Value Then
-                        countunbilled += 1
-                        sumunbilled += Decimal.Parse(Dr2.Item(9))
-                    Else
-                        countbilled += 1
-                        sumbilled += Decimal.Parse(Dr2.Item(9))
-                    End If
-                    dt6.Rows.Add(dr6)
-                End If
-                rowCount -= 1
-                inc += 1
-            End While
-
-            DataGrid3.DataSource = ds6.Tables(0)
-            Label48.Text = ds6.Tables(0).Rows.Count.ToString
-            Label51.Text = totdesamount.ToString
-            Label157.Text = countunbilled.ToString
-            Label153.Text = sumunbilled.ToString
-            Label151.Text = countbilled.ToString
-            Label155.Text = sumbilled.ToString
-
-            Dim custname As String = ""
-            dt7.Clear()
-            Dim tottransamount As Decimal = 0
-            Dim tottransamount1 As Decimal = 0
-            fromdatestr = DateTimePicker3.Value.ToString("MM dd yyyy")
-            fromdate = DateTime.Parse(fromdatestr)
-            cmprfromdate = fromdate
-            todatestr = DateTimePicker4.Value.ToString("MM dd yyyy")
-            todate = DateTime.Parse(todatestr)
-            cmprtodate = todate
-            rowCount = dt3.Rows.Count - 1
-            inc = 0
-            While (rowCount >= 0)
-                dr3 = dt3.Rows(inc)
-                billdate = DateTime.Parse(dr3.Item(2))
-                billdatestr = billdate.ToString("MM dd yyyy")
-                billdate = DateTime.Parse(billdatestr)
-                If billdate >= fromdate And billdate <= todate Then
-                    dr7 = dt7.NewRow
-                    custname = dr3.Item(0)
-                    dr7.Item(0) = dr3.Item(0)
-                    dr7.Item(1) = dr3.Item(1)
-                    dr7.Item(2) = dr3.Item(2)
-                    dr7.Item(3) = dr3.Item(3)
-                    dr7.Item(4) = dr3.Item(4)
-                    dr7.Item(5) = dr3.Item(5)
-                    dr7.Item(6) = dr3.Item(6)
-                    If Not dr7.Item(4) Is DBNull.Value Then
-                        tottransamount1 += Decimal.Parse(dr7.Item(4))
-                    End If
-                    dr7.Item(7) = dr3.Item(7)
-                    dr7.Item(8) = dr3.Item(8)
-                    dt7.Rows.Add(dr7)
-                End If
-                rowCount -= 1
-                inc += 1
-            End While
-
-            Label113.Text = "Mixed (Not Specific)"
-            DataGrid4.DataSource = ds7.Tables(0)
-            Label57.Text = ds7.Tables(0).Rows.Count.ToString
-            Label61.Text = "No"
-            Label161.Text = tottransamount1
-            Label163.Text = "No"
-            Label104.Text = "No"
-            Label110.Text = "No"
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-    Private Sub Button26_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button26.Click
-        'Try
-        PictureBox1.Image = Nothing
-        If Button26.Text.Trim.Equals("Search by Company Name") Then
-            searchbycompany()
-        ElseIf Button26.Text.Trim.Equals("Search by Company Name and Design Name") Then
-            searchbyDesno()
-        ElseIf Button26.Text.Trim.Equals("Search by Bill Number") Then
-            searchbyBillno()
-        ElseIf Button26.Text.Trim.Equals("Search by Date") Then
-            searchbydate()
-        ElseIf Button26.Text.Trim.Equals("Search by Company Name and Date") Then
-            compbased = False
-            billbased = False
-            desbased = False
-            datebased = False
-            searchboth = True
-            If cmbReportCompanyList.Text.Trim.Equals("") Then
-                MsgBox("Please Select Company ")
-                cmbReportCompanyList.Focus()
-            ElseIf DateTimePicker3.Text.Trim.Equals("") Then
-                MsgBox("Please Select From Date ")
-                DateTimePicker3.Focus()
-            ElseIf DateTimePicker4.Text.Trim.Equals("") Then
-                MsgBox("Please Select To Date ")
-                DateTimePicker4.Focus()
-            Else
-                searchmore(cmbReportCompanyList.Text.Trim, 0, 0)
-            End If
-        ElseIf Button26.Text.Trim.Equals("Search by Bill Number and Date") Then
-            compbased = False
-            billbased = False
-            desbased = False
-            datebased = False
-            searchboth = True
-            If ComboBox10.Text.Trim.Equals("") Then
-                MsgBox("Please Select Bill Number")
-                ComboBox10.Focus()
-            ElseIf DateTimePicker3.Text.Trim.Equals("") Then
-                MsgBox("Please Select From Date ")
-                DateTimePicker3.Focus()
-            ElseIf DateTimePicker4.Text.Trim.Equals("") Then
-                MsgBox("Please Select To Date ")
-                DateTimePicker4.Focus()
-            Else
-                key = ComboBox10.Text.Trim
-                key = key.Substring(key.IndexOf("/") + 1, key.Length - key.IndexOf("/") - 1)
-                searchmore(key, 12, 1)
-            End If
-        ElseIf Button26.Text.Trim.Equals("Search by Company Name, Design Name and Date") Then
-            compbased = False
-            billbased = False
-            desbased = False
-            datebased = False
-            searchboth = True
-            If cmbReportCompanyList.Text.Trim.Equals("") Then
-                MsgBox("Please Select Company Name")
-                cmbReportCompanyList.Focus()
-            ElseIf cmbReportDesignList.Text.Trim.Equals("") Then
-                MsgBox("Please Select Design Name")
-                cmbReportDesignList.Focus()
-            ElseIf DateTimePicker3.Text.Trim.Equals("") Then
-                MsgBox("Please Select From Date ")
-                DateTimePicker3.Focus()
-            ElseIf DateTimePicker4.Text.Trim.Equals("") Then
-                MsgBox("Please Select To Date ")
-                DateTimePicker4.Focus()
-            Else
-                'Dim item As MyComboitem
-                'item = DirectCast(cmbReportDesignList.SelectedItem, MyComboitem)
-                'key = item.ID
-                searchmoredes(key.ToString, 1, 1)
-            End If
-        End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-    Sub searchmore(ByVal key As String, ByVal descol As Int16, ByVal billcol As Int16)
-        dt6.Clear()
-        Dim totdesamount As Decimal = 0
-        Dim custname As String = ""
-        Dim countunbilled As Integer = 0
-        Dim sumunbilled As Decimal = 0
-        Dim countbilled As Integer = 0
-        Dim sumbilled As Decimal = 0
-        Dim countbill As Integer = 0
-        Dim fromdate, todate, billdate, desdate As Date
-        Dim fromdatestr, todatestr, billdatestr As String
-        fromdatestr = DateTimePicker3.Value.ToString("MM dd yyyy")
-        fromdate = DateTime.Parse(fromdatestr)
-        todatestr = DateTimePicker4.Value.ToString("MM dd yyyy")
-        todate = DateTime.Parse(todatestr)
-        rowCount = Dt2.Rows.Count - 1
-        inc = 0
-        cmprcomp = key
-        While (rowCount >= 0)
-            Dr2 = Dt2.Rows(inc)
-            desdate = DateTime.Parse(Dr2.Item(10))
-            billdatestr = desdate.ToString("MM dd yyyy")
-            desdate = DateTime.Parse(billdatestr)
-            If key.ToString.Equals(Dr2.Item(descol).ToString) Then
-                custname = Dr2.Item(0)
-                If desdate >= fromdate And desdate <= todate Then
-                    dr6 = dt6.NewRow
-                    dr6.Item(0) = Dr2.Item(0)
-                    dr6.Item(1) = Dr2.Item(1)
-                    dr6.Item(2) = Dr2.Item(2)
-                    dr6.Item(3) = Dr2.Item(3)
-                    dr6.Item(4) = Dr2.Item(4)
-                    dr6.Item(5) = Dr2.Item(5)
-                    dr6.Item(6) = Dr2.Item(6)
-                    dr6.Item(8) = Dr2.Item(8)
-                    dr6.Item(9) = Dr2.Item(9)
-                    totdesamount += Decimal.Parse(dr6.Item(9))
-                    dr6.Item(7) = Dr2.Item(7)
-                    dr6.Item(10) = Dr2.Item(10)
-                    dr6.Item(11) = Dr2.Item(11)
-                    dr6.Item(12) = Dr2.Item(12)
-                    If Dr2.Item(12) Is DBNull.Value Then
-                        countunbilled += 1
-                        sumunbilled += Decimal.Parse(Dr2.Item(9))
-                    Else
-                        countbilled += 1
-                        sumbilled += Decimal.Parse(Dr2.Item(9))
-                    End If
-                    dt6.Rows.Add(dr6)
-                End If
-            End If
-            rowCount -= 1
-            inc += 1
-        End While
-        DataGrid3.DataSource = ds6.Tables(0)
-        Label48.Text = ds6.Tables(0).Rows.Count.ToString
-        Label51.Text = totdesamount.ToString
-        Label157.Text = countunbilled.ToString
-        Label153.Text = sumunbilled.ToString
-        Label151.Text = countbilled.ToString
-        Label155.Text = sumbilled.ToString
-
-        dt7.Clear()
-        Dim tottransamount As Decimal = 0
-        Dim tottransamount1 As Decimal = 0
-
-        fromdatestr = DateTimePicker3.Value.ToString("MM dd yyyy")
-        fromdate = DateTime.Parse(fromdatestr)
-        cmprfromdate = fromdate
-        todatestr = DateTimePicker4.Value.ToString("MM dd yyyy")
-        todate = DateTime.Parse(todatestr)
-        cmprtodate = todate
-        rowCount = dt3.Rows.Count - 1
-        inc = 0
-        While (rowCount >= 0)
-            dr3 = dt3.Rows(inc)
-            billdate = DateTime.Parse(dr3.Item(2))
-            billdatestr = billdate.ToString("MM dd yyyy")
-            billdate = DateTime.Parse(billdatestr)
-            If key.ToString.Equals(dr3.Item(billcol).ToString) Then
-                custname = dr3.Item(0)
-                If billdate >= fromdate And billdate <= todate Then
-                    dr7 = dt7.NewRow
-                    dr7.Item(0) = dr3.Item(0)
-                    dr7.Item(1) = dr3.Item(1)
-                    dr7.Item(2) = dr3.Item(2)
-                    dr7.Item(3) = dr3.Item(3)
-                    dr7.Item(4) = dr3.Item(4)
-                    dr7.Item(5) = dr3.Item(5)
-                    dr7.Item(6) = dr3.Item(6)
-                    If Not dr7.Item(4) Is DBNull.Value Then
-                        tottransamount1 += Decimal.Parse(dr7.Item(4))
-                    End If
-                    dr7.Item(7) = dr3.Item(7)
-                    dr7.Item(8) = dr3.Item(8)
-                    dt7.Rows.Add(dr7)
-                    Exit While
-                End If
-            End If
-            rowCount -= 1
-            inc += 1
-        End While
-
-        Dim flag As Boolean = False
-        Dim bal As Decimal = 0
-        rowCount = dt3.Rows.Count - 1
-        While (rowCount >= 0)
-            dr3 = dt3.Rows(rowCount)
-            If custname.Trim.ToString.Equals(dr3.Item(0).ToString) Then
-                tottransamount += Decimal.Parse(dr3.Item(4))
-                countbill += 1
-                If flag = False Then
-                    bal = dr3.Item(7)
-                    flag = True
-                End If
-            End If
-            rowCount -= 1
-        End While
-        cmprcomp = custname
-        Label113.Text = custname
-        DataGrid4.DataSource = Nothing
-        DataGrid4.DataSource = ds7.Tables(0)
-        Label57.Text = ds7.Tables(0).Rows.Count.ToString
-        Label61.Text = tottransamount
-        Label161.Text = tottransamount1
-        Label163.Text = countbill
-        If Not dt7.Rows.Count = 0 Then
-            Label104.Text = tottransamount - bal
-        End If
-        If Not dt7.Rows.Count = 0 Then
-            Label110.Text = bal
-        End If
-    End Sub
-    Sub searchmoredes(ByVal key As String, ByVal descol As Int16, ByVal billcol As Int16)
-        dt6.Clear()
-        Dim totdesamount As Decimal = 0
-        Dim fromdate, todate, billdate, desdate As Date
-        Dim fromdatestr, todatestr, billdatestr As String
-        Dim countunbilled As Integer = 0
-        Dim sumunbilled As Decimal = 0
-        Dim countbilled As Integer = 0
-        Dim sumbilled As Decimal = 0
-        Dim countbill As Integer = 0
-        Dim billnum As Integer = 0
-        Dim custname As String = ""
-        fromdatestr = DateTimePicker3.Value.ToString("MM dd yyyy")
-        fromdate = DateTime.Parse(fromdatestr)
-        todatestr = DateTimePicker4.Value.ToString("MM dd yyyy")
-        todate = DateTime.Parse(todatestr)
-        rowCount = Dt2.Rows.Count - 1
-        inc = 0
-        cmprcomp = key
-        While (rowCount >= 0)
-            Dr2 = Dt2.Rows(inc)
-            desdate = DateTime.Parse(Dr2.Item(10))
-            billdatestr = desdate.ToString("MM dd yyyy")
-            desdate = DateTime.Parse(billdatestr)
-            If key.ToString.Equals(Dr2.Item(descol).ToString) Then
-                custname = Dr2.Item(0)
-                If desdate >= fromdate And desdate <= todate Then
-                    dr6 = dt6.NewRow
-                    dr6.Item(0) = Dr2.Item(0)
-                    dr6.Item(1) = Dr2.Item(1)
-                    dr6.Item(2) = Dr2.Item(2)
-                    dr6.Item(3) = Dr2.Item(3)
-                    dr6.Item(4) = Dr2.Item(4)
-                    dr6.Item(5) = Dr2.Item(5)
-                    dr6.Item(6) = Dr2.Item(6)
-                    dr6.Item(8) = Dr2.Item(8)
-                    dr6.Item(9) = Dr2.Item(9)
-                    totdesamount += Decimal.Parse(dr6.Item(9))
-                    dr6.Item(7) = Dr2.Item(7)
-                    dr6.Item(10) = Dr2.Item(10)
-                    dr6.Item(11) = Dr2.Item(11)
-                    dr6.Item(12) = Dr2.Item(12)
-                    If Dr2.Item(12) Is DBNull.Value Then
-                        countunbilled += 1
-                        sumunbilled += Decimal.Parse(Dr2.Item(9))
-                    Else
-                        countbilled += 1
-                        sumbilled += Decimal.Parse(Dr2.Item(9))
-                    End If
-                    billnum = Dr2.Item(12)
-                    dt6.Rows.Add(dr6)
-                End If
-            End If
-            rowCount -= 1
-            inc += 1
-        End While
-        DataGrid3.DataSource = ds6.Tables(0)
-        Label48.Text = ds6.Tables(0).Rows.Count.ToString
-        Label51.Text = totdesamount.ToString
-
-        dt7.Clear()
-        Dim tottransamount As Decimal = 0
-        Dim tottransamount1 As Decimal = 0
-
-        fromdatestr = DateTimePicker3.Value.ToString("MM dd yyyy")
-        fromdate = DateTime.Parse(fromdatestr)
-        cmprfromdate = fromdate
-        todatestr = DateTimePicker4.Value.ToString("MM dd yyyy")
-        todate = DateTime.Parse(todatestr)
-        cmprtodate = todate
-        rowCount = dt3.Rows.Count - 1
-        inc = 0
-        While (rowCount >= 0)
-            dr3 = dt3.Rows(inc)
-            billdate = DateTime.Parse(dr3.Item(2))
-            billdatestr = billdate.ToString("MM dd yyyy")
-            billdate = DateTime.Parse(billdatestr)
-            If billnum.ToString.Equals(dr3.Item(billcol).ToString) Then
-                custname = dr3.Item(0)
-                If billdate >= fromdate And billdate <= todate Then
-                    dr7 = dt7.NewRow
-                    dr7.Item(0) = dr3.Item(0)
-                    dr7.Item(1) = dr3.Item(1)
-                    dr7.Item(2) = dr3.Item(2)
-                    dr7.Item(3) = dr3.Item(3)
-                    dr7.Item(4) = dr3.Item(4)
-                    dr7.Item(5) = dr3.Item(5)
-                    dr7.Item(6) = dr3.Item(6)
-                    If Not dr7.Item(4) Is DBNull.Value Then
-                        tottransamount1 += Decimal.Parse(dr7.Item(4))
-                    End If
-                    dr7.Item(7) = dr3.Item(7)
-                    dr7.Item(8) = dr3.Item(8)
-                    dt7.Rows.Add(dr7)
-                    Exit While
-                End If
-            End If
-            rowCount -= 1
-            inc += 1
-        End While
-
-        Dim flag As Boolean = False
-        Dim bal As Decimal = 0
-        rowCount = dt3.Rows.Count - 1
-        While (rowCount >= 0)
-            dr3 = dt3.Rows(rowCount)
-            If custname.ToString.Equals(dr3.Item(0).ToString) Then
-                tottransamount += Decimal.Parse(dr3.Item(4))
-                countbill += 1
-                If flag = False Then
-                    bal = dr3.Item(7)
-                    flag = True
-                End If
-            End If
-            rowCount -= 1
-        End While
-        cmprcomp = custname
-        DataGrid4.DataSource = Nothing
-        DataGrid4.DataSource = ds7.Tables(0)
-        Label113.Text = custname
-        Label57.Text = ds7.Tables(0).Rows.Count.ToString
-        Label61.Text = tottransamount
-        Label161.Text = tottransamount1
-        Label163.Text = countbill
-        If Not dt7.Rows.Count = 0 Then
-            Label104.Text = tottransamount - bal
-        End If
-        If Not dt7.Rows.Count = 0 Then
-            Label110.Text = bal
-        End If
-    End Sub
-
-    Private Sub CheckBox5_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckBox5.CheckedChanged
-        'Try
-        If CheckBox5.Checked = True Then
-            radioReportsCompName.Checked = False
-            radioReportsBillNo.Checked = False
-            radioReportsCompName.Enabled = False
-            radioReportsBillNo.Enabled = False
-            Label53.Visible = False
-            CheckBox4.Checked = False
-            CheckBox4.Enabled = False
-            Label54.Visible = True
-            Label55.Visible = True
-            DateTimePicker3.Visible = True
-            DateTimePicker4.Visible = True
-            Button26.Text = "Search by Date"
-        Else
-            radioReportsCompName.Enabled = True
-            radioReportsBillNo.Enabled = True
-            radioReportsCompName.Checked = True
-            Label53.Visible = True
-            CheckBox4.Enabled = True
-            Label54.Visible = False
-            Label55.Visible = False
-            DateTimePicker3.Visible = False
-            DateTimePicker4.Visible = False
-        End If
         'Catch ex As Exception
         'MessageBox.Show("Message to Agni User:   " & ex.Message)
         'End 'Try
@@ -3193,51 +2702,51 @@ Public Class AgnimainForm
 
     Private Sub cmbDesDesignList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbDesDesignList.SelectedIndexChanged
 
-        If (cmbDesDesignList.SelectedIndex = -1 Or cmbDesDesignList.SelectedValue = -1) Then
-            resetDesignScreen()
-            Return
-        End If
-
-        Dim designNo As Integer = cmbDesDesignList.SelectedValue
-        Dim designSelectQuery = New SqlCommand("select * from design where DesignNo=" + designNo.ToString, dbConnection)
-        Dim designDataAdapter = New SqlDataAdapter()
-        designDataAdapter.SelectCommand = designSelectQuery
-        Dim designDataSet = New DataSet
-        designDataAdapter.Fill(designDataSet, "design")
-        Dim designTable = designDataSet.Tables(0)
-
-        If (designTable.Rows.Count > 0) Then
-            Dim dataRow = designTable.Rows(0)
-            txtDesHeight.Text = dataRow.Item("Height")
-            txtDesWidth.Text = dataRow.Item("Width")
-            txtDesNoOfColors.Text = dataRow.Item("Colors")
-            txtDesCostPerUnit.Text = dataRow.Item("UnitCost")
-            If dataRow.Item("Type").ToString.Equals("WP/Inch") Then
-                radioDesWP.Checked = True
-            ElseIf dataRow.Item("Type").ToString.Equals("Working/Color") Then
-                radioDesWorking.Checked = True
-            Else
-                radioDesPrint.Checked = True
+            If (cmbDesDesignList.SelectedIndex = -1 Or cmbDesDesignList.SelectedValue = -1) Then
+                resetDesignScreen()
+                Return
             End If
-            If dataRow.Item("Image") Is DBNull.Value Then
-                pbDesDesignImage.Image = Nothing
+
+            Dim designNo As Integer = cmbDesDesignList.SelectedValue
+            Dim designSelectQuery = New SqlCommand("select * from design where DesignNo=" + designNo.ToString, dbConnection)
+            Dim designDataAdapter = New SqlDataAdapter()
+            designDataAdapter.SelectCommand = designSelectQuery
+            Dim designDataSet = New DataSet
+            designDataAdapter.Fill(designDataSet, "design")
+            Dim designTable = designDataSet.Tables(0)
+
+            If (designTable.Rows.Count > 0) Then
+                Dim dataRow = designTable.Rows(0)
+                txtDesHeight.Text = dataRow.Item("Height")
+                txtDesWidth.Text = dataRow.Item("Width")
+                txtDesNoOfColors.Text = dataRow.Item("Colors")
+                txtDesCostPerUnit.Text = dataRow.Item("UnitCost")
+                If dataRow.Item("Type").ToString.Equals("WP/Inch") Then
+                    radioDesWP.Checked = True
+                ElseIf dataRow.Item("Type").ToString.Equals("Working/Color") Then
+                    radioDesWorking.Checked = True
+                Else
+                    radioDesPrint.Checked = True
+                End If
+                If dataRow.Item("Image") Is DBNull.Value Then
+                    pbDesDesignImage.Image = Nothing
+                Else
+                    Dim designImage() As Byte = CType(dataRow.Item("Image"), Byte())
+                    Dim designImageBuffer As New MemoryStream(designImage)
+                    pbDesDesignImage.Image = Image.FromStream(designImageBuffer)
+                End If
+                txtDesCalculatedPrice.Text = dataRow.Item("Price")
+                dpDesDesignDate.Text = dataRow.Item("DesignDate")
             Else
-                Dim designImage() As Byte = CType(dataRow.Item("Image"), Byte())
-                Dim designImageBuffer As New MemoryStream(designImage)
-                pbDesDesignImage.Image = Image.FromStream(designImageBuffer)
+                MessageBox.Show("No data found for design: " + cmbDesDesignList.Text)
             End If
-            txtDesCalculatedPrice.Text = dataRow.Item("Price")
-            dpDesDesignDate.Text = dataRow.Item("DesignDate")
-        Else
-            MessageBox.Show("No data found for design: " + cmbDesDesignList.Text)
-        End If
 
 
-        ''Catch ex As Exception
-        '    'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        ''End 'Try
-    End Sub
+            ''Catch ex As Exception
+            '    'MessageBox.Show("Message to Agni User:   " & ex.Message)
+            ''End 'Try
+        End Sub
 
-End Class
+    End Class
 
 
