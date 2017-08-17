@@ -41,6 +41,41 @@ Partial Class AgnimainForm
         Me.Label35 = New System.Windows.Forms.Label()
         Me.Label34 = New System.Windows.Forms.Label()
         Me.tabReports = New System.Windows.Forms.TabPage()
+        Me.lblReportPaidAmountWithDeduction = New System.Windows.Forms.Label()
+        Me.Label49 = New System.Windows.Forms.Label()
+        Me.lblReportPaidAmountActual = New System.Windows.Forms.Label()
+        Me.Label53 = New System.Windows.Forms.Label()
+        Me.lblReportNoOfPayment = New System.Windows.Forms.Label()
+        Me.Label55 = New System.Windows.Forms.Label()
+        Me.lblReportBilledAmount = New System.Windows.Forms.Label()
+        Me.Label47 = New System.Windows.Forms.Label()
+        Me.lblReportNoOfBills = New System.Windows.Forms.Label()
+        Me.Label51 = New System.Windows.Forms.Label()
+        Me.lblReportTotDesignAmount = New System.Windows.Forms.Label()
+        Me.Label50 = New System.Windows.Forms.Label()
+        Me.lblReportUnBilledDesignAmount = New System.Windows.Forms.Label()
+        Me.Label48 = New System.Windows.Forms.Label()
+        Me.lblReportBilledDesignAmount = New System.Windows.Forms.Label()
+        Me.Label46 = New System.Windows.Forms.Label()
+        Me.lblReportNoOfDesigns = New System.Windows.Forms.Label()
+        Me.Label33 = New System.Windows.Forms.Label()
+        Me.dgReportPaymentGrid = New System.Windows.Forms.DataGrid()
+        Me.DataGridTableStyle3 = New System.Windows.Forms.DataGridTableStyle()
+        Me.DataGridTextBoxColumn20 = New System.Windows.Forms.DataGridTextBoxColumn()
+        Me.DataGridTextBoxColumn21 = New System.Windows.Forms.DataGridTextBoxColumn()
+        Me.DataGridTextBoxColumn22 = New System.Windows.Forms.DataGridTextBoxColumn()
+        Me.DataGridTextBoxColumn23 = New System.Windows.Forms.DataGridTextBoxColumn()
+        Me.DataGridTextBoxColumn24 = New System.Windows.Forms.DataGridTextBoxColumn()
+        Me.DataGridTextBoxColumn25 = New System.Windows.Forms.DataGridTextBoxColumn()
+        Me.DataGridTextBoxColumn26 = New System.Windows.Forms.DataGridTextBoxColumn()
+        Me.DataGridTextBoxColumn27 = New System.Windows.Forms.DataGridTextBoxColumn()
+        Me.DataGridTextBoxColumn32 = New System.Windows.Forms.DataGridTextBoxColumn()
+        Me.DataGridTextBoxColumn33 = New System.Windows.Forms.DataGridTextBoxColumn()
+        Me.DataGridTextBoxColumn28 = New System.Windows.Forms.DataGridTextBoxColumn()
+        Me.DataGridTextBoxColumn29 = New System.Windows.Forms.DataGridTextBoxColumn()
+        Me.DataGridTextBoxColumn30 = New System.Windows.Forms.DataGridTextBoxColumn()
+        Me.DataGridTextBoxColumn31 = New System.Windows.Forms.DataGridTextBoxColumn()
+        Me.DataGridTextBoxColumn43 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.lblReportDesignNameHint = New System.Windows.Forms.Label()
         Me.txtReportDesignName = New System.Windows.Forms.TextBox()
         Me.lblReportDesignNo = New System.Windows.Forms.Label()
@@ -87,27 +122,7 @@ Partial Class AgnimainForm
         Me.dpReportToDate = New System.Windows.Forms.DateTimePicker()
         Me.dpReportFromDate = New System.Windows.Forms.DateTimePicker()
         Me.cbReportExtraDateFilter = New System.Windows.Forms.CheckBox()
-        Me.Label57 = New System.Windows.Forms.Label()
-        Me.Label48 = New System.Windows.Forms.Label()
-        Me.Label161 = New System.Windows.Forms.Label()
-        Me.Label165 = New System.Windows.Forms.Label()
-        Me.Label166 = New System.Windows.Forms.Label()
-        Me.Label163 = New System.Windows.Forms.Label()
-        Me.Label153 = New System.Windows.Forms.Label()
-        Me.Label157 = New System.Windows.Forms.Label()
-        Me.Label155 = New System.Windows.Forms.Label()
-        Me.Label154 = New System.Windows.Forms.Label()
-        Me.Label151 = New System.Windows.Forms.Label()
-        Me.Label152 = New System.Windows.Forms.Label()
-        Me.Label113 = New System.Windows.Forms.Label()
-        Me.Label112 = New System.Windows.Forms.Label()
         Me.Label111 = New System.Windows.Forms.Label()
-        Me.Label110 = New System.Windows.Forms.Label()
-        Me.Label104 = New System.Windows.Forms.Label()
-        Me.Button39 = New System.Windows.Forms.Button()
-        Me.Label61 = New System.Windows.Forms.Label()
-        Me.Label58 = New System.Windows.Forms.Label()
-        Me.Label51 = New System.Windows.Forms.Label()
         Me.btnReportSearch = New System.Windows.Forms.Button()
         Me.lblReportCompName = New System.Windows.Forms.Label()
         Me.cmbReportCustomerList = New System.Windows.Forms.ComboBox()
@@ -118,18 +133,7 @@ Partial Class AgnimainForm
         Me.radioReportCustName = New System.Windows.Forms.RadioButton()
         Me.radioReportBillNo = New System.Windows.Forms.RadioButton()
         Me.cmbReportBillNoList = New System.Windows.Forms.ComboBox()
-        Me.Label52 = New System.Windows.Forms.Label()
-        Me.Label156 = New System.Windows.Forms.Label()
-        Me.Label158 = New System.Windows.Forms.Label()
-        Me.Label160 = New System.Windows.Forms.Label()
-        Me.Label162 = New System.Windows.Forms.Label()
-        Me.Label164 = New System.Windows.Forms.Label()
-        Me.Label109 = New System.Windows.Forms.Label()
-        Me.Label103 = New System.Windows.Forms.Label()
-        Me.Label159 = New System.Windows.Forms.Label()
-        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox8 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox15 = New System.Windows.Forms.GroupBox()
+        Me.dgPaymentDetails = New System.Windows.Forms.DataGrid()
         Me.tabBilling = New System.Windows.Forms.TabPage()
         Me.Label44 = New System.Windows.Forms.Label()
         Me.txtBillingActualBillNo = New System.Windows.Forms.TextBox()
@@ -263,23 +267,6 @@ Partial Class AgnimainForm
         Me.txtPaymentUnPaidBilledAmount = New System.Windows.Forms.TextBox()
         Me.btnPaymentDelete = New System.Windows.Forms.Button()
         Me.txtPaymentRemarks = New System.Windows.Forms.TextBox()
-        Me.dgPaymentDetails = New System.Windows.Forms.DataGrid()
-        Me.DataGridTableStyle3 = New System.Windows.Forms.DataGridTableStyle()
-        Me.DataGridTextBoxColumn20 = New System.Windows.Forms.DataGridTextBoxColumn()
-        Me.DataGridTextBoxColumn21 = New System.Windows.Forms.DataGridTextBoxColumn()
-        Me.DataGridTextBoxColumn22 = New System.Windows.Forms.DataGridTextBoxColumn()
-        Me.DataGridTextBoxColumn23 = New System.Windows.Forms.DataGridTextBoxColumn()
-        Me.DataGridTextBoxColumn24 = New System.Windows.Forms.DataGridTextBoxColumn()
-        Me.DataGridTextBoxColumn25 = New System.Windows.Forms.DataGridTextBoxColumn()
-        Me.DataGridTextBoxColumn26 = New System.Windows.Forms.DataGridTextBoxColumn()
-        Me.DataGridTextBoxColumn27 = New System.Windows.Forms.DataGridTextBoxColumn()
-        Me.DataGridTextBoxColumn32 = New System.Windows.Forms.DataGridTextBoxColumn()
-        Me.DataGridTextBoxColumn33 = New System.Windows.Forms.DataGridTextBoxColumn()
-        Me.DataGridTextBoxColumn28 = New System.Windows.Forms.DataGridTextBoxColumn()
-        Me.DataGridTextBoxColumn29 = New System.Windows.Forms.DataGridTextBoxColumn()
-        Me.DataGridTextBoxColumn30 = New System.Windows.Forms.DataGridTextBoxColumn()
-        Me.DataGridTextBoxColumn31 = New System.Windows.Forms.DataGridTextBoxColumn()
-        Me.DataGridTextBoxColumn43 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.gbBankDetails = New System.Windows.Forms.GroupBox()
         Me.dpPaymentChequeDate = New System.Windows.Forms.DateTimePicker()
         Me.txtPaymentBankName = New System.Windows.Forms.TextBox()
@@ -384,12 +371,14 @@ Partial Class AgnimainForm
         Me.Label150 = New System.Windows.Forms.Label()
         Me.tabHelp.SuspendLayout()
         Me.tabReports.SuspendLayout()
+        CType(Me.dgReportPaymentGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgReportBillGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgBIllingBillDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgReportDesignGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgDesDesignDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbReportDesignImage, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox6.SuspendLayout()
+        CType(Me.dgPaymentDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabBilling.SuspendLayout()
         Me.tabDesign.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -399,7 +388,6 @@ Partial Class AgnimainForm
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox16.SuspendLayout()
         Me.tabPayment.SuspendLayout()
-        CType(Me.dgPaymentDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbBankDetails.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -662,6 +650,25 @@ Partial Class AgnimainForm
         '
         Me.tabReports.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.tabReports.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.tabReports.Controls.Add(Me.lblReportPaidAmountWithDeduction)
+        Me.tabReports.Controls.Add(Me.Label49)
+        Me.tabReports.Controls.Add(Me.lblReportPaidAmountActual)
+        Me.tabReports.Controls.Add(Me.Label53)
+        Me.tabReports.Controls.Add(Me.lblReportNoOfPayment)
+        Me.tabReports.Controls.Add(Me.Label55)
+        Me.tabReports.Controls.Add(Me.lblReportBilledAmount)
+        Me.tabReports.Controls.Add(Me.Label47)
+        Me.tabReports.Controls.Add(Me.lblReportNoOfBills)
+        Me.tabReports.Controls.Add(Me.Label51)
+        Me.tabReports.Controls.Add(Me.lblReportTotDesignAmount)
+        Me.tabReports.Controls.Add(Me.Label50)
+        Me.tabReports.Controls.Add(Me.lblReportUnBilledDesignAmount)
+        Me.tabReports.Controls.Add(Me.Label48)
+        Me.tabReports.Controls.Add(Me.lblReportBilledDesignAmount)
+        Me.tabReports.Controls.Add(Me.Label46)
+        Me.tabReports.Controls.Add(Me.lblReportNoOfDesigns)
+        Me.tabReports.Controls.Add(Me.Label33)
+        Me.tabReports.Controls.Add(Me.dgReportPaymentGrid)
         Me.tabReports.Controls.Add(Me.lblReportDesignNameHint)
         Me.tabReports.Controls.Add(Me.txtReportDesignName)
         Me.tabReports.Controls.Add(Me.lblReportDesignNo)
@@ -673,45 +680,13 @@ Partial Class AgnimainForm
         Me.tabReports.Controls.Add(Me.dpReportToDate)
         Me.tabReports.Controls.Add(Me.dpReportFromDate)
         Me.tabReports.Controls.Add(Me.cbReportExtraDateFilter)
-        Me.tabReports.Controls.Add(Me.Label57)
-        Me.tabReports.Controls.Add(Me.Label48)
-        Me.tabReports.Controls.Add(Me.Label161)
-        Me.tabReports.Controls.Add(Me.Label165)
-        Me.tabReports.Controls.Add(Me.Label166)
-        Me.tabReports.Controls.Add(Me.Label163)
-        Me.tabReports.Controls.Add(Me.Label153)
-        Me.tabReports.Controls.Add(Me.Label157)
-        Me.tabReports.Controls.Add(Me.Label155)
-        Me.tabReports.Controls.Add(Me.Label154)
-        Me.tabReports.Controls.Add(Me.Label151)
-        Me.tabReports.Controls.Add(Me.Label152)
-        Me.tabReports.Controls.Add(Me.Label113)
-        Me.tabReports.Controls.Add(Me.Label112)
         Me.tabReports.Controls.Add(Me.Label111)
-        Me.tabReports.Controls.Add(Me.Label110)
-        Me.tabReports.Controls.Add(Me.Label104)
-        Me.tabReports.Controls.Add(Me.Button39)
-        Me.tabReports.Controls.Add(Me.Label61)
-        Me.tabReports.Controls.Add(Me.Label58)
-        Me.tabReports.Controls.Add(Me.Label51)
         Me.tabReports.Controls.Add(Me.btnReportSearch)
         Me.tabReports.Controls.Add(Me.lblReportCompName)
         Me.tabReports.Controls.Add(Me.cmbReportCustomerList)
         Me.tabReports.Controls.Add(Me.pbReportDesignImage)
         Me.tabReports.Controls.Add(Me.GroupBox6)
         Me.tabReports.Controls.Add(Me.cmbReportBillNoList)
-        Me.tabReports.Controls.Add(Me.Label52)
-        Me.tabReports.Controls.Add(Me.Label156)
-        Me.tabReports.Controls.Add(Me.Label158)
-        Me.tabReports.Controls.Add(Me.Label160)
-        Me.tabReports.Controls.Add(Me.Label162)
-        Me.tabReports.Controls.Add(Me.Label164)
-        Me.tabReports.Controls.Add(Me.Label109)
-        Me.tabReports.Controls.Add(Me.Label103)
-        Me.tabReports.Controls.Add(Me.Label159)
-        Me.tabReports.Controls.Add(Me.GroupBox7)
-        Me.tabReports.Controls.Add(Me.GroupBox8)
-        Me.tabReports.Controls.Add(Me.GroupBox15)
         Me.tabReports.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.tabReports.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tabReports.ForeColor = System.Drawing.Color.White
@@ -725,6 +700,407 @@ Partial Class AgnimainForm
         Me.tabReports.Text = "Reports"
         Me.tabReports.ToolTipText = "Search Records"
         '
+        'lblReportPaidAmountWithDeduction
+        '
+        Me.lblReportPaidAmountWithDeduction.AutoSize = True
+        Me.lblReportPaidAmountWithDeduction.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.lblReportPaidAmountWithDeduction.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblReportPaidAmountWithDeduction.ForeColor = System.Drawing.Color.White
+        Me.lblReportPaidAmountWithDeduction.Location = New System.Drawing.Point(1488, 829)
+        Me.lblReportPaidAmountWithDeduction.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblReportPaidAmountWithDeduction.MinimumSize = New System.Drawing.Size(170, 0)
+        Me.lblReportPaidAmountWithDeduction.Name = "lblReportPaidAmountWithDeduction"
+        Me.lblReportPaidAmountWithDeduction.Size = New System.Drawing.Size(170, 18)
+        Me.lblReportPaidAmountWithDeduction.TabIndex = 156
+        Me.lblReportPaidAmountWithDeduction.Text = "0"
+        Me.lblReportPaidAmountWithDeduction.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label49
+        '
+        Me.Label49.AutoSize = True
+        Me.Label49.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label49.ForeColor = System.Drawing.Color.Black
+        Me.Label49.Location = New System.Drawing.Point(1183, 829)
+        Me.Label49.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label49.Name = "Label49"
+        Me.Label49.Size = New System.Drawing.Size(278, 18)
+        Me.Label49.TabIndex = 157
+        Me.Label49.Text = "Total Paid Amount (With Deduction)"
+        '
+        'lblReportPaidAmountActual
+        '
+        Me.lblReportPaidAmountActual.AutoSize = True
+        Me.lblReportPaidAmountActual.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.lblReportPaidAmountActual.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblReportPaidAmountActual.ForeColor = System.Drawing.Color.White
+        Me.lblReportPaidAmountActual.Location = New System.Drawing.Point(1488, 797)
+        Me.lblReportPaidAmountActual.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblReportPaidAmountActual.MinimumSize = New System.Drawing.Size(170, 0)
+        Me.lblReportPaidAmountActual.Name = "lblReportPaidAmountActual"
+        Me.lblReportPaidAmountActual.Size = New System.Drawing.Size(170, 18)
+        Me.lblReportPaidAmountActual.TabIndex = 154
+        Me.lblReportPaidAmountActual.Text = "0"
+        Me.lblReportPaidAmountActual.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label53
+        '
+        Me.Label53.AutoSize = True
+        Me.Label53.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label53.ForeColor = System.Drawing.Color.Black
+        Me.Label53.Location = New System.Drawing.Point(1252, 797)
+        Me.Label53.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label53.Name = "Label53"
+        Me.Label53.Size = New System.Drawing.Size(209, 18)
+        Me.Label53.TabIndex = 155
+        Me.Label53.Text = "Total Paid Amount (Actual)"
+        '
+        'lblReportNoOfPayment
+        '
+        Me.lblReportNoOfPayment.AutoSize = True
+        Me.lblReportNoOfPayment.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.lblReportNoOfPayment.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblReportNoOfPayment.ForeColor = System.Drawing.Color.White
+        Me.lblReportNoOfPayment.Location = New System.Drawing.Point(1033, 798)
+        Me.lblReportNoOfPayment.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblReportNoOfPayment.MinimumSize = New System.Drawing.Size(100, 0)
+        Me.lblReportNoOfPayment.Name = "lblReportNoOfPayment"
+        Me.lblReportNoOfPayment.Size = New System.Drawing.Size(100, 18)
+        Me.lblReportNoOfPayment.TabIndex = 152
+        Me.lblReportNoOfPayment.Text = "0"
+        Me.lblReportNoOfPayment.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label55
+        '
+        Me.Label55.AutoSize = True
+        Me.Label55.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label55.ForeColor = System.Drawing.Color.Black
+        Me.Label55.Location = New System.Drawing.Point(866, 797)
+        Me.Label55.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label55.Name = "Label55"
+        Me.Label55.Size = New System.Drawing.Size(132, 18)
+        Me.Label55.TabIndex = 153
+        Me.Label55.Text = "No.Of Payments"
+        '
+        'lblReportBilledAmount
+        '
+        Me.lblReportBilledAmount.AutoSize = True
+        Me.lblReportBilledAmount.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.lblReportBilledAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblReportBilledAmount.ForeColor = System.Drawing.Color.White
+        Me.lblReportBilledAmount.Location = New System.Drawing.Point(523, 798)
+        Me.lblReportBilledAmount.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblReportBilledAmount.MinimumSize = New System.Drawing.Size(170, 0)
+        Me.lblReportBilledAmount.Name = "lblReportBilledAmount"
+        Me.lblReportBilledAmount.Size = New System.Drawing.Size(170, 18)
+        Me.lblReportBilledAmount.TabIndex = 150
+        Me.lblReportBilledAmount.Text = "0"
+        Me.lblReportBilledAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label47
+        '
+        Me.Label47.AutoSize = True
+        Me.Label47.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label47.ForeColor = System.Drawing.Color.Black
+        Me.Label47.Location = New System.Drawing.Point(334, 798)
+        Me.Label47.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label47.Name = "Label47"
+        Me.Label47.Size = New System.Drawing.Size(154, 18)
+        Me.Label47.TabIndex = 151
+        Me.Label47.Text = "Total Billed Amount"
+        '
+        'lblReportNoOfBills
+        '
+        Me.lblReportNoOfBills.AutoSize = True
+        Me.lblReportNoOfBills.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.lblReportNoOfBills.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblReportNoOfBills.ForeColor = System.Drawing.Color.White
+        Me.lblReportNoOfBills.Location = New System.Drawing.Point(152, 797)
+        Me.lblReportNoOfBills.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblReportNoOfBills.MinimumSize = New System.Drawing.Size(100, 0)
+        Me.lblReportNoOfBills.Name = "lblReportNoOfBills"
+        Me.lblReportNoOfBills.Size = New System.Drawing.Size(100, 18)
+        Me.lblReportNoOfBills.TabIndex = 148
+        Me.lblReportNoOfBills.Text = "0"
+        Me.lblReportNoOfBills.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label51
+        '
+        Me.Label51.AutoSize = True
+        Me.Label51.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label51.ForeColor = System.Drawing.Color.Black
+        Me.Label51.Location = New System.Drawing.Point(13, 797)
+        Me.Label51.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label51.Name = "Label51"
+        Me.Label51.Size = New System.Drawing.Size(90, 18)
+        Me.Label51.TabIndex = 149
+        Me.Label51.Text = "No.Of Bills"
+        '
+        'lblReportTotDesignAmount
+        '
+        Me.lblReportTotDesignAmount.AutoSize = True
+        Me.lblReportTotDesignAmount.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.lblReportTotDesignAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblReportTotDesignAmount.ForeColor = System.Drawing.Color.White
+        Me.lblReportTotDesignAmount.Location = New System.Drawing.Point(1412, 478)
+        Me.lblReportTotDesignAmount.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblReportTotDesignAmount.MinimumSize = New System.Drawing.Size(170, 0)
+        Me.lblReportTotDesignAmount.Name = "lblReportTotDesignAmount"
+        Me.lblReportTotDesignAmount.Size = New System.Drawing.Size(170, 18)
+        Me.lblReportTotDesignAmount.TabIndex = 146
+        Me.lblReportTotDesignAmount.Text = "0"
+        Me.lblReportTotDesignAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label50
+        '
+        Me.Label50.AutoSize = True
+        Me.Label50.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label50.ForeColor = System.Drawing.Color.Black
+        Me.Label50.Location = New System.Drawing.Point(1208, 478)
+        Me.Label50.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label50.Name = "Label50"
+        Me.Label50.Size = New System.Drawing.Size(165, 18)
+        Me.Label50.TabIndex = 147
+        Me.Label50.Text = "Total Design Amount"
+        '
+        'lblReportUnBilledDesignAmount
+        '
+        Me.lblReportUnBilledDesignAmount.AutoSize = True
+        Me.lblReportUnBilledDesignAmount.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.lblReportUnBilledDesignAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblReportUnBilledDesignAmount.ForeColor = System.Drawing.Color.White
+        Me.lblReportUnBilledDesignAmount.Location = New System.Drawing.Point(985, 478)
+        Me.lblReportUnBilledDesignAmount.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblReportUnBilledDesignAmount.MinimumSize = New System.Drawing.Size(170, 0)
+        Me.lblReportUnBilledDesignAmount.Name = "lblReportUnBilledDesignAmount"
+        Me.lblReportUnBilledDesignAmount.Size = New System.Drawing.Size(170, 18)
+        Me.lblReportUnBilledDesignAmount.TabIndex = 144
+        Me.lblReportUnBilledDesignAmount.Text = "0"
+        Me.lblReportUnBilledDesignAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label48
+        '
+        Me.Label48.AutoSize = True
+        Me.Label48.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label48.ForeColor = System.Drawing.Color.Black
+        Me.Label48.Location = New System.Drawing.Point(750, 478)
+        Me.Label48.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label48.Name = "Label48"
+        Me.Label48.Size = New System.Drawing.Size(189, 18)
+        Me.Label48.TabIndex = 145
+        Me.Label48.Text = "UnBilled Design Amount"
+        '
+        'lblReportBilledDesignAmount
+        '
+        Me.lblReportBilledDesignAmount.AutoSize = True
+        Me.lblReportBilledDesignAmount.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.lblReportBilledDesignAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblReportBilledDesignAmount.ForeColor = System.Drawing.Color.White
+        Me.lblReportBilledDesignAmount.Location = New System.Drawing.Point(523, 478)
+        Me.lblReportBilledDesignAmount.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblReportBilledDesignAmount.MinimumSize = New System.Drawing.Size(170, 0)
+        Me.lblReportBilledDesignAmount.Name = "lblReportBilledDesignAmount"
+        Me.lblReportBilledDesignAmount.Size = New System.Drawing.Size(170, 18)
+        Me.lblReportBilledDesignAmount.TabIndex = 142
+        Me.lblReportBilledDesignAmount.Text = "0"
+        Me.lblReportBilledDesignAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label46
+        '
+        Me.Label46.AutoSize = True
+        Me.Label46.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label46.ForeColor = System.Drawing.Color.Black
+        Me.Label46.Location = New System.Drawing.Point(314, 478)
+        Me.Label46.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label46.Name = "Label46"
+        Me.Label46.Size = New System.Drawing.Size(168, 18)
+        Me.Label46.TabIndex = 143
+        Me.Label46.Text = "Billed Design Amount"
+        '
+        'lblReportNoOfDesigns
+        '
+        Me.lblReportNoOfDesigns.AutoSize = True
+        Me.lblReportNoOfDesigns.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.lblReportNoOfDesigns.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblReportNoOfDesigns.ForeColor = System.Drawing.Color.White
+        Me.lblReportNoOfDesigns.Location = New System.Drawing.Point(152, 478)
+        Me.lblReportNoOfDesigns.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblReportNoOfDesigns.MinimumSize = New System.Drawing.Size(100, 0)
+        Me.lblReportNoOfDesigns.Name = "lblReportNoOfDesigns"
+        Me.lblReportNoOfDesigns.Size = New System.Drawing.Size(100, 18)
+        Me.lblReportNoOfDesigns.TabIndex = 140
+        Me.lblReportNoOfDesigns.Text = "0"
+        Me.lblReportNoOfDesigns.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label33
+        '
+        Me.Label33.AutoSize = True
+        Me.Label33.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label33.ForeColor = System.Drawing.Color.Black
+        Me.Label33.Location = New System.Drawing.Point(13, 478)
+        Me.Label33.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label33.Name = "Label33"
+        Me.Label33.Size = New System.Drawing.Size(119, 18)
+        Me.Label33.TabIndex = 141
+        Me.Label33.Text = "No.Of Designs"
+        '
+        'dgReportPaymentGrid
+        '
+        Me.dgReportPaymentGrid.AllowSorting = False
+        Me.dgReportPaymentGrid.AlternatingBackColor = System.Drawing.Color.GhostWhite
+        Me.dgReportPaymentGrid.BackColor = System.Drawing.Color.GhostWhite
+        Me.dgReportPaymentGrid.BackgroundColor = System.Drawing.Color.Lavender
+        Me.dgReportPaymentGrid.CaptionBackColor = System.Drawing.Color.RoyalBlue
+        Me.dgReportPaymentGrid.CaptionForeColor = System.Drawing.Color.White
+        Me.dgReportPaymentGrid.CaptionText = "Payment Details"
+        Me.dgReportPaymentGrid.DataMember = ""
+        Me.dgReportPaymentGrid.FlatMode = True
+        Me.dgReportPaymentGrid.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgReportPaymentGrid.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.dgReportPaymentGrid.GridLineColor = System.Drawing.Color.RoyalBlue
+        Me.dgReportPaymentGrid.HeaderBackColor = System.Drawing.Color.MidnightBlue
+        Me.dgReportPaymentGrid.HeaderFont = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.dgReportPaymentGrid.HeaderForeColor = System.Drawing.Color.Lavender
+        Me.dgReportPaymentGrid.LinkColor = System.Drawing.Color.Teal
+        Me.dgReportPaymentGrid.Location = New System.Drawing.Point(853, 517)
+        Me.dgReportPaymentGrid.Margin = New System.Windows.Forms.Padding(4)
+        Me.dgReportPaymentGrid.Name = "dgReportPaymentGrid"
+        Me.dgReportPaymentGrid.ParentRowsBackColor = System.Drawing.Color.Lavender
+        Me.dgReportPaymentGrid.ParentRowsForeColor = System.Drawing.Color.MidnightBlue
+        Me.dgReportPaymentGrid.ReadOnly = True
+        Me.dgReportPaymentGrid.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgReportPaymentGrid.SelectionForeColor = System.Drawing.Color.PaleGreen
+        Me.dgReportPaymentGrid.Size = New System.Drawing.Size(809, 263)
+        Me.dgReportPaymentGrid.TabIndex = 139
+        Me.dgReportPaymentGrid.TableStyles.AddRange(New System.Windows.Forms.DataGridTableStyle() {Me.DataGridTableStyle3})
+        '
+        'DataGridTableStyle3
+        '
+        Me.DataGridTableStyle3.DataGrid = Me.dgReportPaymentGrid
+        Me.DataGridTableStyle3.GridColumnStyles.AddRange(New System.Windows.Forms.DataGridColumnStyle() {Me.DataGridTextBoxColumn20, Me.DataGridTextBoxColumn21, Me.DataGridTextBoxColumn22, Me.DataGridTextBoxColumn23, Me.DataGridTextBoxColumn24, Me.DataGridTextBoxColumn25, Me.DataGridTextBoxColumn26, Me.DataGridTextBoxColumn27, Me.DataGridTextBoxColumn32, Me.DataGridTextBoxColumn33, Me.DataGridTextBoxColumn28, Me.DataGridTextBoxColumn29, Me.DataGridTextBoxColumn30, Me.DataGridTextBoxColumn31, Me.DataGridTextBoxColumn43})
+        Me.DataGridTableStyle3.GridLineColor = System.Drawing.SystemColors.Control
+        Me.DataGridTableStyle3.HeaderForeColor = System.Drawing.SystemColors.ControlText
+        Me.DataGridTableStyle3.MappingName = "payment"
+        '
+        'DataGridTextBoxColumn20
+        '
+        Me.DataGridTextBoxColumn20.Format = ""
+        Me.DataGridTextBoxColumn20.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn20.HeaderText = "Company Name"
+        Me.DataGridTextBoxColumn20.MappingName = "CompName"
+        Me.DataGridTextBoxColumn20.Width = 130
+        '
+        'DataGridTextBoxColumn21
+        '
+        Me.DataGridTextBoxColumn21.Format = ""
+        Me.DataGridTextBoxColumn21.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn21.HeaderText = "Bill No"
+        Me.DataGridTextBoxColumn21.MappingName = "BillNo"
+        Me.DataGridTextBoxColumn21.Width = 75
+        '
+        'DataGridTextBoxColumn22
+        '
+        Me.DataGridTextBoxColumn22.Format = ""
+        Me.DataGridTextBoxColumn22.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn22.HeaderText = "Balance"
+        Me.DataGridTextBoxColumn22.MappingName = "UnPaidBilledAmount"
+        Me.DataGridTextBoxColumn22.Width = 75
+        '
+        'DataGridTextBoxColumn23
+        '
+        Me.DataGridTextBoxColumn23.Format = "dd\/MM\/yyyy"
+        Me.DataGridTextBoxColumn23.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn23.HeaderText = "Date"
+        Me.DataGridTextBoxColumn23.MappingName = "PaymentDate"
+        Me.DataGridTextBoxColumn23.Width = 75
+        '
+        'DataGridTextBoxColumn24
+        '
+        Me.DataGridTextBoxColumn24.Format = ""
+        Me.DataGridTextBoxColumn24.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn24.HeaderText = "Mode"
+        Me.DataGridTextBoxColumn24.MappingName = "PaymentMode"
+        Me.DataGridTextBoxColumn24.Width = 75
+        '
+        'DataGridTextBoxColumn25
+        '
+        Me.DataGridTextBoxColumn25.Format = ""
+        Me.DataGridTextBoxColumn25.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn25.HeaderText = "Actual Paid"
+        Me.DataGridTextBoxColumn25.MappingName = "ActualPaidAmount"
+        Me.DataGridTextBoxColumn25.Width = 75
+        '
+        'DataGridTextBoxColumn26
+        '
+        Me.DataGridTextBoxColumn26.Format = ""
+        Me.DataGridTextBoxColumn26.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn26.HeaderText = "Discount"
+        Me.DataGridTextBoxColumn26.MappingName = "Discount"
+        Me.DataGridTextBoxColumn26.Width = 75
+        '
+        'DataGridTextBoxColumn27
+        '
+        Me.DataGridTextBoxColumn27.Format = ""
+        Me.DataGridTextBoxColumn27.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn27.HeaderText = "TaxDeduction"
+        Me.DataGridTextBoxColumn27.MappingName = "TaxDeduction"
+        Me.DataGridTextBoxColumn27.Width = 75
+        '
+        'DataGridTextBoxColumn32
+        '
+        Me.DataGridTextBoxColumn32.Format = ""
+        Me.DataGridTextBoxColumn32.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn32.HeaderText = "Final Paid"
+        Me.DataGridTextBoxColumn32.MappingName = "FinalPaidAmount"
+        Me.DataGridTextBoxColumn32.Width = 75
+        '
+        'DataGridTextBoxColumn33
+        '
+        Me.DataGridTextBoxColumn33.Format = ""
+        Me.DataGridTextBoxColumn33.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn33.HeaderText = "Net Balance"
+        Me.DataGridTextBoxColumn33.MappingName = "NetBalance"
+        Me.DataGridTextBoxColumn33.Width = 75
+        '
+        'DataGridTextBoxColumn28
+        '
+        Me.DataGridTextBoxColumn28.Format = ""
+        Me.DataGridTextBoxColumn28.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn28.HeaderText = "Cheque No"
+        Me.DataGridTextBoxColumn28.MappingName = "ChequeNo"
+        Me.DataGridTextBoxColumn28.Width = 75
+        '
+        'DataGridTextBoxColumn29
+        '
+        Me.DataGridTextBoxColumn29.Format = ""
+        Me.DataGridTextBoxColumn29.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn29.HeaderText = "Bank Name"
+        Me.DataGridTextBoxColumn29.MappingName = "BankName"
+        Me.DataGridTextBoxColumn29.Width = 75
+        '
+        'DataGridTextBoxColumn30
+        '
+        Me.DataGridTextBoxColumn30.Format = "dd\/MM\/yyyy"
+        Me.DataGridTextBoxColumn30.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn30.HeaderText = "Cheque Date"
+        Me.DataGridTextBoxColumn30.MappingName = "ChequeDate"
+        Me.DataGridTextBoxColumn30.Width = 75
+        '
+        'DataGridTextBoxColumn31
+        '
+        Me.DataGridTextBoxColumn31.Format = ""
+        Me.DataGridTextBoxColumn31.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn31.HeaderText = "Remarks"
+        Me.DataGridTextBoxColumn31.MappingName = "Remarks"
+        Me.DataGridTextBoxColumn31.Width = 75
+        '
+        'DataGridTextBoxColumn43
+        '
+        Me.DataGridTextBoxColumn43.Format = ""
+        Me.DataGridTextBoxColumn43.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn43.HeaderText = "Display Bill No"
+        Me.DataGridTextBoxColumn43.MappingName = "DisplayBillNo"
+        Me.DataGridTextBoxColumn43.Width = 75
+        '
         'lblReportDesignNameHint
         '
         Me.lblReportDesignNameHint.AutoSize = True
@@ -733,9 +1109,9 @@ Partial Class AgnimainForm
         Me.lblReportDesignNameHint.Location = New System.Drawing.Point(714, 70)
         Me.lblReportDesignNameHint.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblReportDesignNameHint.Name = "lblReportDesignNameHint"
-        Me.lblReportDesignNameHint.Size = New System.Drawing.Size(301, 17)
+        Me.lblReportDesignNameHint.Size = New System.Drawing.Size(249, 17)
         Me.lblReportDesignNameHint.TabIndex = 78
-        Me.lblReportDesignNameHint.Text = "Any part of Design Name across all Customers"
+        Me.lblReportDesignNameHint.Text = "Please enter part of any Design Name"
         '
         'txtReportDesignName
         '
@@ -750,7 +1126,7 @@ Partial Class AgnimainForm
         '
         Me.lblReportDesignNo.AutoSize = True
         Me.lblReportDesignNo.ForeColor = System.Drawing.Color.Black
-        Me.lblReportDesignNo.Location = New System.Drawing.Point(52, 66)
+        Me.lblReportDesignNo.Location = New System.Drawing.Point(26, 66)
         Me.lblReportDesignNo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblReportDesignNo.Name = "lblReportDesignNo"
         Me.lblReportDesignNo.Size = New System.Drawing.Size(171, 29)
@@ -763,7 +1139,6 @@ Partial Class AgnimainForm
         Me.dgReportBillGrid.AlternatingBackColor = System.Drawing.Color.GhostWhite
         Me.dgReportBillGrid.BackColor = System.Drawing.Color.GhostWhite
         Me.dgReportBillGrid.BackgroundColor = System.Drawing.Color.Lavender
-        Me.dgReportBillGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgReportBillGrid.CaptionBackColor = System.Drawing.Color.RoyalBlue
         Me.dgReportBillGrid.CaptionForeColor = System.Drawing.Color.White
         Me.dgReportBillGrid.CaptionText = "Bill Details"
@@ -774,7 +1149,7 @@ Partial Class AgnimainForm
         Me.dgReportBillGrid.GridLineColor = System.Drawing.Color.RoyalBlue
         Me.dgReportBillGrid.HeaderBackColor = System.Drawing.Color.MidnightBlue
         Me.dgReportBillGrid.HeaderFont = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.dgReportBillGrid.HeaderForeColor = System.Drawing.Color.LavenderBlush
+        Me.dgReportBillGrid.HeaderForeColor = System.Drawing.Color.Lavender
         Me.dgReportBillGrid.LinkColor = System.Drawing.Color.Teal
         Me.dgReportBillGrid.Location = New System.Drawing.Point(8, 517)
         Me.dgReportBillGrid.Margin = New System.Windows.Forms.Padding(4)
@@ -785,7 +1160,7 @@ Partial Class AgnimainForm
         Me.dgReportBillGrid.ReadOnly = True
         Me.dgReportBillGrid.SelectionBackColor = System.Drawing.Color.Teal
         Me.dgReportBillGrid.SelectionForeColor = System.Drawing.Color.PaleGreen
-        Me.dgReportBillGrid.Size = New System.Drawing.Size(1656, 263)
+        Me.dgReportBillGrid.Size = New System.Drawing.Size(814, 263)
         Me.dgReportBillGrid.TabIndex = 75
         Me.dgReportBillGrid.TableStyles.AddRange(New System.Windows.Forms.DataGridTableStyle() {Me.DataGridTableStyle2})
         '
@@ -793,11 +1168,11 @@ Partial Class AgnimainForm
         '
         Me.DataGridTableStyle2.DataGrid = Me.dgReportBillGrid
         Me.DataGridTableStyle2.GridColumnStyles.AddRange(New System.Windows.Forms.DataGridColumnStyle() {Me.DataGridTextBoxColumn45, Me.DataGridTextBoxColumn12, Me.DataGridTextBoxColumn13, Me.DataGridTextBoxColumn14, Me.DataGridTextBoxColumn15, Me.DataGridTextBoxColumn34, Me.DataGridTextBoxColumn35, Me.DataGridTextBoxColumn36, Me.DataGridTextBoxColumn37, Me.DataGridTextBoxColumn38, Me.DataGridTextBoxColumn39, Me.DataGridTextBoxColumn41, Me.DataGridTextBoxColumn40, Me.DataGridTextBoxColumn16, Me.DataGridTextBoxColumn17, Me.DataGridTextBoxColumn18, Me.DataGridTextBoxColumn42, Me.DataGridBoolColumn2})
-        Me.DataGridTableStyle2.GridLineColor = System.Drawing.Color.Indigo
-        Me.DataGridTableStyle2.HeaderBackColor = System.Drawing.Color.Navy
-        Me.DataGridTableStyle2.HeaderFont = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DataGridTableStyle2.HeaderForeColor = System.Drawing.Color.White
-        Me.DataGridTableStyle2.LinkColor = System.Drawing.SystemColors.InactiveBorder
+        Me.DataGridTableStyle2.GridLineColor = System.Drawing.SystemColors.Control
+        Me.DataGridTableStyle2.HeaderBackColor = System.Drawing.SystemColors.Control
+        Me.DataGridTableStyle2.HeaderFont = New System.Drawing.Font("Tahoma", 9.75!)
+        Me.DataGridTableStyle2.HeaderForeColor = System.Drawing.SystemColors.ControlText
+        Me.DataGridTableStyle2.LinkColor = System.Drawing.SystemColors.HotTrack
         Me.DataGridTableStyle2.MappingName = "bill"
         '
         'dgBIllingBillDetails
@@ -850,7 +1225,7 @@ Partial Class AgnimainForm
         '
         'DataGridTextBoxColumn13
         '
-        Me.DataGridTextBoxColumn13.Format = "dd/MM/yyyy"
+        Me.DataGridTextBoxColumn13.Format = "dd\/MM\/yyyy"
         Me.DataGridTextBoxColumn13.FormatInfo = Nothing
         Me.DataGridTextBoxColumn13.HeaderText = "Bill Date"
         Me.DataGridTextBoxColumn13.MappingName = "BillDate"
@@ -1009,11 +1384,11 @@ Partial Class AgnimainForm
         '
         Me.DataGridTableStyle1.DataGrid = Me.dgReportDesignGrid
         Me.DataGridTableStyle1.GridColumnStyles.AddRange(New System.Windows.Forms.DataGridColumnStyle() {Me.DataGridTextBoxColumn44, Me.DataGridTextBoxColumn1, Me.DataGridTextBoxColumn2, Me.DataGridTextBoxColumn7, Me.DataGridTextBoxColumn6, Me.DataGridTextBoxColumn4, Me.DataGridTextBoxColumn3, Me.DataGridTextBoxColumn5, Me.DataGridTextBoxColumn8, Me.DataGridTextBoxColumn9, Me.DataGridTextBoxColumn10, Me.DataGridBoolColumn1, Me.DataGridTextBoxColumn11})
-        Me.DataGridTableStyle1.GridLineColor = System.Drawing.Color.Indigo
-        Me.DataGridTableStyle1.HeaderBackColor = System.Drawing.Color.Navy
-        Me.DataGridTableStyle1.HeaderFont = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DataGridTableStyle1.HeaderForeColor = System.Drawing.Color.White
-        Me.DataGridTableStyle1.LinkColor = System.Drawing.SystemColors.InactiveBorder
+        Me.DataGridTableStyle1.GridLineColor = System.Drawing.SystemColors.Control
+        Me.DataGridTableStyle1.HeaderBackColor = System.Drawing.SystemColors.Control
+        Me.DataGridTableStyle1.HeaderFont = New System.Drawing.Font("Tahoma", 9.0!)
+        Me.DataGridTableStyle1.HeaderForeColor = System.Drawing.SystemColors.ControlText
+        Me.DataGridTableStyle1.LinkColor = System.Drawing.SystemColors.HotTrack
         Me.DataGridTableStyle1.MappingName = "design"
         '
         'dgDesDesignDetails
@@ -1122,7 +1497,7 @@ Partial Class AgnimainForm
         '
         'DataGridTextBoxColumn9
         '
-        Me.DataGridTextBoxColumn9.Format = "dd/MM/yyyy"
+        Me.DataGridTextBoxColumn9.Format = "dd\/MM\/yyyy"
         Me.DataGridTextBoxColumn9.FormatInfo = Nothing
         Me.DataGridTextBoxColumn9.HeaderText = "Date"
         Me.DataGridTextBoxColumn9.MappingName = "DesignDate"
@@ -1156,7 +1531,7 @@ Partial Class AgnimainForm
         '
         Me.lblReportBillNo.AutoSize = True
         Me.lblReportBillNo.ForeColor = System.Drawing.Color.Black
-        Me.lblReportBillNo.Location = New System.Drawing.Point(52, 66)
+        Me.lblReportBillNo.Location = New System.Drawing.Point(26, 66)
         Me.lblReportBillNo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblReportBillNo.Name = "lblReportBillNo"
         Me.lblReportBillNo.Size = New System.Drawing.Size(151, 29)
@@ -1167,7 +1542,7 @@ Partial Class AgnimainForm
         '
         Me.lblReportToDate.AutoSize = True
         Me.lblReportToDate.ForeColor = System.Drawing.Color.Black
-        Me.lblReportToDate.Location = New System.Drawing.Point(52, 150)
+        Me.lblReportToDate.Location = New System.Drawing.Point(26, 150)
         Me.lblReportToDate.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblReportToDate.Name = "lblReportToDate"
         Me.lblReportToDate.Size = New System.Drawing.Size(106, 29)
@@ -1179,7 +1554,7 @@ Partial Class AgnimainForm
         '
         Me.lblReportFromDate.AutoSize = True
         Me.lblReportFromDate.ForeColor = System.Drawing.Color.Black
-        Me.lblReportFromDate.Location = New System.Drawing.Point(52, 108)
+        Me.lblReportFromDate.Location = New System.Drawing.Point(26, 108)
         Me.lblReportFromDate.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblReportFromDate.Name = "lblReportFromDate"
         Me.lblReportFromDate.Size = New System.Drawing.Size(135, 29)
@@ -1228,183 +1603,6 @@ Partial Class AgnimainForm
         Me.cbReportExtraDateFilter.Text = "Filter By Date"
         Me.cbReportExtraDateFilter.UseVisualStyleBackColor = True
         '
-        'Label57
-        '
-        Me.Label57.AutoSize = True
-        Me.Label57.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label57.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label57.ForeColor = System.Drawing.Color.White
-        Me.Label57.Location = New System.Drawing.Point(244, 804)
-        Me.Label57.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label57.Name = "Label57"
-        Me.Label57.Size = New System.Drawing.Size(24, 25)
-        Me.Label57.TabIndex = 24
-        Me.Label57.Text = "0"
-        '
-        'Label48
-        '
-        Me.Label48.AutoSize = True
-        Me.Label48.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label48.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label48.ForeColor = System.Drawing.Color.White
-        Me.Label48.Location = New System.Drawing.Point(313, 476)
-        Me.Label48.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label48.Name = "Label48"
-        Me.Label48.Size = New System.Drawing.Size(24, 25)
-        Me.Label48.TabIndex = 19
-        Me.Label48.Text = "0"
-        '
-        'Label161
-        '
-        Me.Label161.AutoSize = True
-        Me.Label161.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label161.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label161.ForeColor = System.Drawing.Color.White
-        Me.Label161.Location = New System.Drawing.Point(419, 804)
-        Me.Label161.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label161.Name = "Label161"
-        Me.Label161.Size = New System.Drawing.Size(24, 25)
-        Me.Label161.TabIndex = 63
-        Me.Label161.Text = "0"
-        '
-        'Label165
-        '
-        Me.Label165.AutoSize = True
-        Me.Label165.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label165.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label165.ForeColor = System.Drawing.Color.White
-        Me.Label165.Location = New System.Drawing.Point(267, 804)
-        Me.Label165.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label165.Name = "Label165"
-        Me.Label165.Size = New System.Drawing.Size(139, 25)
-        Me.Label165.TabIndex = 65
-        Me.Label165.Text = "                 Rs"
-        '
-        'Label166
-        '
-        Me.Label166.AutoSize = True
-        Me.Label166.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label166.ForeColor = System.Drawing.Color.Black
-        Me.Label166.Location = New System.Drawing.Point(25, 804)
-        Me.Label166.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label166.Name = "Label166"
-        Me.Label166.Size = New System.Drawing.Size(204, 24)
-        Me.Label166.TabIndex = 64
-        Me.Label166.Text = "Resulted Bill Amount"
-        '
-        'Label163
-        '
-        Me.Label163.AutoSize = True
-        Me.Label163.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label163.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label163.ForeColor = System.Drawing.Color.White
-        Me.Label163.Location = New System.Drawing.Point(513, 866)
-        Me.Label163.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label163.Name = "Label163"
-        Me.Label163.Size = New System.Drawing.Size(24, 25)
-        Me.Label163.TabIndex = 60
-        Me.Label163.Text = "0"
-        '
-        'Label153
-        '
-        Me.Label153.AutoSize = True
-        Me.Label153.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label153.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label153.ForeColor = System.Drawing.Color.White
-        Me.Label153.Location = New System.Drawing.Point(1477, 480)
-        Me.Label153.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label153.Name = "Label153"
-        Me.Label153.Size = New System.Drawing.Size(24, 25)
-        Me.Label153.TabIndex = 53
-        Me.Label153.Text = "0"
-        '
-        'Label157
-        '
-        Me.Label157.AutoSize = True
-        Me.Label157.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label157.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label157.ForeColor = System.Drawing.Color.White
-        Me.Label157.Location = New System.Drawing.Point(1308, 480)
-        Me.Label157.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label157.Name = "Label157"
-        Me.Label157.Size = New System.Drawing.Size(24, 25)
-        Me.Label157.TabIndex = 52
-        Me.Label157.Text = "0"
-        '
-        'Label155
-        '
-        Me.Label155.AutoSize = True
-        Me.Label155.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label155.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label155.ForeColor = System.Drawing.Color.White
-        Me.Label155.Location = New System.Drawing.Point(991, 480)
-        Me.Label155.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label155.Name = "Label155"
-        Me.Label155.Size = New System.Drawing.Size(24, 25)
-        Me.Label155.TabIndex = 50
-        Me.Label155.Text = "0"
-        '
-        'Label154
-        '
-        Me.Label154.AutoSize = True
-        Me.Label154.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label154.ForeColor = System.Drawing.Color.Black
-        Me.Label154.Location = New System.Drawing.Point(1211, 480)
-        Me.Label154.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label154.Name = "Label154"
-        Me.Label154.Size = New System.Drawing.Size(92, 25)
-        Me.Label154.TabIndex = 47
-        Me.Label154.Text = "UnBilled"
-        '
-        'Label151
-        '
-        Me.Label151.AutoSize = True
-        Me.Label151.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label151.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label151.ForeColor = System.Drawing.Color.White
-        Me.Label151.Location = New System.Drawing.Point(820, 480)
-        Me.Label151.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label151.Name = "Label151"
-        Me.Label151.Size = New System.Drawing.Size(24, 25)
-        Me.Label151.TabIndex = 46
-        Me.Label151.Text = "0"
-        '
-        'Label152
-        '
-        Me.Label152.AutoSize = True
-        Me.Label152.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label152.ForeColor = System.Drawing.Color.Black
-        Me.Label152.Location = New System.Drawing.Point(753, 480)
-        Me.Label152.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label152.Name = "Label152"
-        Me.Label152.Size = New System.Drawing.Size(65, 25)
-        Me.Label152.TabIndex = 45
-        Me.Label152.Text = "Billed"
-        '
-        'Label113
-        '
-        Me.Label113.AutoSize = True
-        Me.Label113.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label113.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Label113.Location = New System.Drawing.Point(807, 798)
-        Me.Label113.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label113.Name = "Label113"
-        Me.Label113.Size = New System.Drawing.Size(120, 24)
-        Me.Label113.TabIndex = 42
-        Me.Label113.Text = "                      "
-        '
-        'Label112
-        '
-        Me.Label112.AutoSize = True
-        Me.Label112.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label112.ForeColor = System.Drawing.Color.Black
-        Me.Label112.Location = New System.Drawing.Point(692, 796)
-        Me.Label112.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label112.Name = "Label112"
-        Me.Label112.Size = New System.Drawing.Size(99, 24)
-        Me.Label112.TabIndex = 41
-        Me.Label112.Text = "Company : "
-        '
         'Label111
         '
         Me.Label111.AutoSize = True
@@ -1415,86 +1613,6 @@ Partial Class AgnimainForm
         Me.Label111.Size = New System.Drawing.Size(212, 29)
         Me.Label111.TabIndex = 40
         Me.Label111.Text = "Search Based on"
-        '
-        'Label110
-        '
-        Me.Label110.AutoSize = True
-        Me.Label110.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label110.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label110.ForeColor = System.Drawing.Color.White
-        Me.Label110.Location = New System.Drawing.Point(1489, 864)
-        Me.Label110.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label110.Name = "Label110"
-        Me.Label110.Size = New System.Drawing.Size(24, 25)
-        Me.Label110.TabIndex = 32
-        Me.Label110.Text = "0"
-        '
-        'Label104
-        '
-        Me.Label104.AutoSize = True
-        Me.Label104.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label104.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label104.ForeColor = System.Drawing.Color.White
-        Me.Label104.Location = New System.Drawing.Point(1064, 865)
-        Me.Label104.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label104.Name = "Label104"
-        Me.Label104.Size = New System.Drawing.Size(24, 25)
-        Me.Label104.TabIndex = 30
-        Me.Label104.Text = "0"
-        '
-        'Button39
-        '
-        Me.Button39.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button39.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button39.ForeColor = System.Drawing.Color.Black
-        Me.Button39.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button39.ImageKey = "printer5.jpg"
-        Me.Button39.Location = New System.Drawing.Point(1347, 788)
-        Me.Button39.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button39.Name = "Button39"
-        Me.Button39.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
-        Me.Button39.Size = New System.Drawing.Size(345, 55)
-        Me.Button39.TabIndex = 9
-        Me.Button39.Text = "     Print Resulted Bills"
-        Me.Button39.UseVisualStyleBackColor = True
-        '
-        'Label61
-        '
-        Me.Label61.AutoSize = True
-        Me.Label61.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label61.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Label61.ForeColor = System.Drawing.Color.White
-        Me.Label61.Location = New System.Drawing.Point(652, 866)
-        Me.Label61.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label61.Name = "Label61"
-        Me.Label61.Size = New System.Drawing.Size(24, 25)
-        Me.Label61.TabIndex = 26
-        Me.Label61.Text = "0"
-        '
-        'Label58
-        '
-        Me.Label58.AutoSize = True
-        Me.Label58.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label58.ForeColor = System.Drawing.Color.Black
-        Me.Label58.Location = New System.Drawing.Point(21, 476)
-        Me.Label58.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label58.Name = "Label58"
-        Me.Label58.Size = New System.Drawing.Size(260, 25)
-        Me.Label58.TabIndex = 23
-        Me.Label58.Text = "Resulted Designs Amount"
-        '
-        'Label51
-        '
-        Me.Label51.AutoSize = True
-        Me.Label51.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label51.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label51.ForeColor = System.Drawing.Color.White
-        Me.Label51.Location = New System.Drawing.Point(465, 476)
-        Me.Label51.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label51.Name = "Label51"
-        Me.Label51.Size = New System.Drawing.Size(24, 25)
-        Me.Label51.TabIndex = 18
-        Me.Label51.Text = "0"
         '
         'btnReportSearch
         '
@@ -1518,7 +1636,7 @@ Partial Class AgnimainForm
         '
         Me.lblReportCompName.AutoSize = True
         Me.lblReportCompName.ForeColor = System.Drawing.Color.Black
-        Me.lblReportCompName.Location = New System.Drawing.Point(52, 66)
+        Me.lblReportCompName.Location = New System.Drawing.Point(26, 66)
         Me.lblReportCompName.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblReportCompName.Name = "lblReportCompName"
         Me.lblReportCompName.Size = New System.Drawing.Size(198, 29)
@@ -1631,149 +1749,35 @@ Partial Class AgnimainForm
         Me.cmbReportBillNoList.ValueMember = "BillNo"
         Me.cmbReportBillNoList.Visible = False
         '
-        'Label52
+        'dgPaymentDetails
         '
-        Me.Label52.AutoSize = True
-        Me.Label52.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label52.ForeColor = System.Drawing.Color.Black
-        Me.Label52.Location = New System.Drawing.Point(253, 866)
-        Me.Label52.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label52.Name = "Label52"
-        Me.Label52.Size = New System.Drawing.Size(239, 24)
-        Me.Label52.TabIndex = 27
-        Me.Label52.Text = "Total Billed Designs cost"
-        '
-        'Label156
-        '
-        Me.Label156.AutoSize = True
-        Me.Label156.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label156.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label156.ForeColor = System.Drawing.Color.White
-        Me.Label156.Location = New System.Drawing.Point(839, 480)
-        Me.Label156.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label156.Name = "Label156"
-        Me.Label156.Size = New System.Drawing.Size(145, 25)
-        Me.Label156.TabIndex = 54
-        Me.Label156.Text = "                 Rs "
-        '
-        'Label158
-        '
-        Me.Label158.AutoSize = True
-        Me.Label158.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label158.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label158.ForeColor = System.Drawing.Color.White
-        Me.Label158.Location = New System.Drawing.Point(1320, 480)
-        Me.Label158.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label158.Name = "Label158"
-        Me.Label158.Size = New System.Drawing.Size(145, 25)
-        Me.Label158.TabIndex = 55
-        Me.Label158.Text = "                  Rs"
-        '
-        'Label160
-        '
-        Me.Label160.AutoSize = True
-        Me.Label160.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label160.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label160.ForeColor = System.Drawing.Color.White
-        Me.Label160.Location = New System.Drawing.Point(1448, 864)
-        Me.Label160.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label160.Name = "Label160"
-        Me.Label160.Size = New System.Drawing.Size(43, 25)
-        Me.Label160.TabIndex = 57
-        Me.Label160.Text = "Rs "
-        '
-        'Label162
-        '
-        Me.Label162.AutoSize = True
-        Me.Label162.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label162.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label162.ForeColor = System.Drawing.Color.White
-        Me.Label162.Location = New System.Drawing.Point(1025, 865)
-        Me.Label162.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label162.Name = "Label162"
-        Me.Label162.Size = New System.Drawing.Size(37, 25)
-        Me.Label162.TabIndex = 59
-        Me.Label162.Text = "Rs"
-        '
-        'Label164
-        '
-        Me.Label164.AutoSize = True
-        Me.Label164.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label164.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label164.ForeColor = System.Drawing.Color.White
-        Me.Label164.Location = New System.Drawing.Point(537, 866)
-        Me.Label164.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label164.Name = "Label164"
-        Me.Label164.Size = New System.Drawing.Size(115, 25)
-        Me.Label164.TabIndex = 61
-        Me.Label164.Text = "            Rs "
-        '
-        'Label109
-        '
-        Me.Label109.AutoSize = True
-        Me.Label109.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label109.ForeColor = System.Drawing.Color.Black
-        Me.Label109.Location = New System.Drawing.Point(1249, 865)
-        Me.Label109.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label109.Name = "Label109"
-        Me.Label109.Size = New System.Drawing.Size(191, 24)
-        Me.Label109.TabIndex = 33
-        Me.Label109.Text = "Remaining Balance"
-        '
-        'Label103
-        '
-        Me.Label103.AutoSize = True
-        Me.Label103.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label103.ForeColor = System.Drawing.Color.Black
-        Me.Label103.Location = New System.Drawing.Point(832, 866)
-        Me.Label103.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label103.Name = "Label103"
-        Me.Label103.Size = New System.Drawing.Size(181, 24)
-        Me.Label103.TabIndex = 31
-        Me.Label103.Text = "Total Paid Amount"
-        '
-        'Label159
-        '
-        Me.Label159.AutoSize = True
-        Me.Label159.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label159.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label159.ForeColor = System.Drawing.Color.White
-        Me.Label159.Location = New System.Drawing.Point(329, 476)
-        Me.Label159.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label159.Name = "Label159"
-        Me.Label159.Size = New System.Drawing.Size(127, 25)
-        Me.Label159.TabIndex = 62
-        Me.Label159.Text = "               Rs"
-        '
-        'GroupBox7
-        '
-        Me.GroupBox7.Location = New System.Drawing.Point(15, 779)
-        Me.GroupBox7.Margin = New System.Windows.Forms.Padding(4)
-        Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox7.Size = New System.Drawing.Size(657, 57)
-        Me.GroupBox7.TabIndex = 66
-        Me.GroupBox7.TabStop = False
-        '
-        'GroupBox8
-        '
-        Me.GroupBox8.Location = New System.Drawing.Point(16, 457)
-        Me.GroupBox8.Margin = New System.Windows.Forms.Padding(4)
-        Me.GroupBox8.Name = "GroupBox8"
-        Me.GroupBox8.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox8.Size = New System.Drawing.Size(671, 50)
-        Me.GroupBox8.TabIndex = 67
-        Me.GroupBox8.TabStop = False
-        '
-        'GroupBox15
-        '
-        Me.GroupBox15.Location = New System.Drawing.Point(249, 842)
-        Me.GroupBox15.Margin = New System.Windows.Forms.Padding(4)
-        Me.GroupBox15.Name = "GroupBox15"
-        Me.GroupBox15.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox15.Size = New System.Drawing.Size(1443, 57)
-        Me.GroupBox15.TabIndex = 67
-        Me.GroupBox15.TabStop = False
+        Me.dgPaymentDetails.AllowSorting = False
+        Me.dgPaymentDetails.AlternatingBackColor = System.Drawing.Color.GhostWhite
+        Me.dgPaymentDetails.BackColor = System.Drawing.Color.GhostWhite
+        Me.dgPaymentDetails.BackgroundColor = System.Drawing.Color.Lavender
+        Me.dgPaymentDetails.CaptionBackColor = System.Drawing.Color.RoyalBlue
+        Me.dgPaymentDetails.CaptionForeColor = System.Drawing.Color.White
+        Me.dgPaymentDetails.CaptionText = "Payment Details"
+        Me.dgPaymentDetails.DataMember = ""
+        Me.dgPaymentDetails.FlatMode = True
+        Me.dgPaymentDetails.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgPaymentDetails.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.dgPaymentDetails.GridLineColor = System.Drawing.Color.RoyalBlue
+        Me.dgPaymentDetails.HeaderBackColor = System.Drawing.Color.MidnightBlue
+        Me.dgPaymentDetails.HeaderFont = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.dgPaymentDetails.HeaderForeColor = System.Drawing.Color.Lavender
+        Me.dgPaymentDetails.LinkColor = System.Drawing.Color.Teal
+        Me.dgPaymentDetails.Location = New System.Drawing.Point(-4, 554)
+        Me.dgPaymentDetails.Margin = New System.Windows.Forms.Padding(4)
+        Me.dgPaymentDetails.Name = "dgPaymentDetails"
+        Me.dgPaymentDetails.ParentRowsBackColor = System.Drawing.Color.Lavender
+        Me.dgPaymentDetails.ParentRowsForeColor = System.Drawing.Color.MidnightBlue
+        Me.dgPaymentDetails.ReadOnly = True
+        Me.dgPaymentDetails.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgPaymentDetails.SelectionForeColor = System.Drawing.Color.PaleGreen
+        Me.dgPaymentDetails.Size = New System.Drawing.Size(1681, 298)
+        Me.dgPaymentDetails.TabIndex = 138
+        Me.dgPaymentDetails.TableStyles.AddRange(New System.Windows.Forms.DataGridTableStyle() {Me.DataGridTableStyle3})
         '
         'tabBilling
         '
@@ -3359,7 +3363,6 @@ Partial Class AgnimainForm
         Me.cmbPaymentPaymentNoList.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
         Me.cmbPaymentPaymentNoList.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cmbPaymentPaymentNoList.DisplayMember = "DisplayPaymentNo"
-        Me.cmbPaymentPaymentNoList.Enabled = False
         Me.cmbPaymentPaymentNoList.Font = New System.Drawing.Font("Garamond", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbPaymentPaymentNoList.FormattingEnabled = True
         Me.cmbPaymentPaymentNoList.Location = New System.Drawing.Point(952, 236)
@@ -3534,162 +3537,6 @@ Partial Class AgnimainForm
         Me.txtPaymentRemarks.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtPaymentRemarks.Size = New System.Drawing.Size(398, 84)
         Me.txtPaymentRemarks.TabIndex = 10
-        '
-        'dgPaymentDetails
-        '
-        Me.dgPaymentDetails.AllowSorting = False
-        Me.dgPaymentDetails.AlternatingBackColor = System.Drawing.Color.GhostWhite
-        Me.dgPaymentDetails.BackColor = System.Drawing.Color.GhostWhite
-        Me.dgPaymentDetails.BackgroundColor = System.Drawing.Color.Lavender
-        Me.dgPaymentDetails.CaptionBackColor = System.Drawing.Color.RoyalBlue
-        Me.dgPaymentDetails.CaptionForeColor = System.Drawing.Color.White
-        Me.dgPaymentDetails.CaptionText = "Payment Details"
-        Me.dgPaymentDetails.DataMember = ""
-        Me.dgPaymentDetails.FlatMode = True
-        Me.dgPaymentDetails.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dgPaymentDetails.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.dgPaymentDetails.GridLineColor = System.Drawing.Color.RoyalBlue
-        Me.dgPaymentDetails.HeaderBackColor = System.Drawing.Color.MidnightBlue
-        Me.dgPaymentDetails.HeaderFont = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.dgPaymentDetails.HeaderForeColor = System.Drawing.Color.Lavender
-        Me.dgPaymentDetails.LinkColor = System.Drawing.Color.Teal
-        Me.dgPaymentDetails.Location = New System.Drawing.Point(-4, 554)
-        Me.dgPaymentDetails.Margin = New System.Windows.Forms.Padding(4)
-        Me.dgPaymentDetails.Name = "dgPaymentDetails"
-        Me.dgPaymentDetails.ParentRowsBackColor = System.Drawing.Color.Lavender
-        Me.dgPaymentDetails.ParentRowsForeColor = System.Drawing.Color.MidnightBlue
-        Me.dgPaymentDetails.ReadOnly = True
-        Me.dgPaymentDetails.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgPaymentDetails.SelectionForeColor = System.Drawing.Color.PaleGreen
-        Me.dgPaymentDetails.Size = New System.Drawing.Size(1681, 298)
-        Me.dgPaymentDetails.TabIndex = 138
-        Me.dgPaymentDetails.TableStyles.AddRange(New System.Windows.Forms.DataGridTableStyle() {Me.DataGridTableStyle3})
-        '
-        'DataGridTableStyle3
-        '
-        Me.DataGridTableStyle3.DataGrid = Me.dgPaymentDetails
-        Me.DataGridTableStyle3.GridColumnStyles.AddRange(New System.Windows.Forms.DataGridColumnStyle() {Me.DataGridTextBoxColumn20, Me.DataGridTextBoxColumn21, Me.DataGridTextBoxColumn22, Me.DataGridTextBoxColumn23, Me.DataGridTextBoxColumn24, Me.DataGridTextBoxColumn25, Me.DataGridTextBoxColumn26, Me.DataGridTextBoxColumn27, Me.DataGridTextBoxColumn32, Me.DataGridTextBoxColumn33, Me.DataGridTextBoxColumn28, Me.DataGridTextBoxColumn29, Me.DataGridTextBoxColumn30, Me.DataGridTextBoxColumn31, Me.DataGridTextBoxColumn43})
-        Me.DataGridTableStyle3.HeaderForeColor = System.Drawing.SystemColors.ControlText
-        '
-        'DataGridTextBoxColumn20
-        '
-        Me.DataGridTextBoxColumn20.Format = ""
-        Me.DataGridTextBoxColumn20.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn20.HeaderText = "Company Name"
-        Me.DataGridTextBoxColumn20.MappingName = "CustNo"
-        Me.DataGridTextBoxColumn20.Width = 75
-        '
-        'DataGridTextBoxColumn21
-        '
-        Me.DataGridTextBoxColumn21.Format = ""
-        Me.DataGridTextBoxColumn21.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn21.HeaderText = "Bill No"
-        Me.DataGridTextBoxColumn21.MappingName = "BillNo"
-        Me.DataGridTextBoxColumn21.Width = 75
-        '
-        'DataGridTextBoxColumn22
-        '
-        Me.DataGridTextBoxColumn22.Format = ""
-        Me.DataGridTextBoxColumn22.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn22.HeaderText = "Balance"
-        Me.DataGridTextBoxColumn22.MappingName = "UnPaidBilledAmount"
-        Me.DataGridTextBoxColumn22.Width = 75
-        '
-        'DataGridTextBoxColumn23
-        '
-        Me.DataGridTextBoxColumn23.Format = "dd/MM/yyyy"
-        Me.DataGridTextBoxColumn23.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn23.HeaderText = "Date"
-        Me.DataGridTextBoxColumn23.MappingName = "PaymentDate"
-        Me.DataGridTextBoxColumn23.Width = 75
-        '
-        'DataGridTextBoxColumn24
-        '
-        Me.DataGridTextBoxColumn24.Format = ""
-        Me.DataGridTextBoxColumn24.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn24.HeaderText = "Mode"
-        Me.DataGridTextBoxColumn24.MappingName = "PaymentMode"
-        Me.DataGridTextBoxColumn24.Width = 75
-        '
-        'DataGridTextBoxColumn25
-        '
-        Me.DataGridTextBoxColumn25.Format = ""
-        Me.DataGridTextBoxColumn25.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn25.HeaderText = "Actual Paid"
-        Me.DataGridTextBoxColumn25.MappingName = "ActualPaidAmount"
-        Me.DataGridTextBoxColumn25.Width = 75
-        '
-        'DataGridTextBoxColumn26
-        '
-        Me.DataGridTextBoxColumn26.Format = ""
-        Me.DataGridTextBoxColumn26.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn26.HeaderText = "Discount"
-        Me.DataGridTextBoxColumn26.MappingName = "Discount"
-        Me.DataGridTextBoxColumn26.Width = 75
-        '
-        'DataGridTextBoxColumn27
-        '
-        Me.DataGridTextBoxColumn27.Format = ""
-        Me.DataGridTextBoxColumn27.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn27.HeaderText = "TaxDeduction"
-        Me.DataGridTextBoxColumn27.MappingName = "TaxDeduction"
-        Me.DataGridTextBoxColumn27.Width = 75
-        '
-        'DataGridTextBoxColumn32
-        '
-        Me.DataGridTextBoxColumn32.Format = ""
-        Me.DataGridTextBoxColumn32.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn32.HeaderText = "Final Paid"
-        Me.DataGridTextBoxColumn32.MappingName = "FinalPaidAmount"
-        Me.DataGridTextBoxColumn32.Width = 75
-        '
-        'DataGridTextBoxColumn33
-        '
-        Me.DataGridTextBoxColumn33.Format = ""
-        Me.DataGridTextBoxColumn33.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn33.HeaderText = "Net Balance"
-        Me.DataGridTextBoxColumn33.MappingName = "NetBalance"
-        Me.DataGridTextBoxColumn33.Width = 75
-        '
-        'DataGridTextBoxColumn28
-        '
-        Me.DataGridTextBoxColumn28.Format = ""
-        Me.DataGridTextBoxColumn28.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn28.HeaderText = "Cheque No"
-        Me.DataGridTextBoxColumn28.MappingName = "ChequeNo"
-        Me.DataGridTextBoxColumn28.Width = 75
-        '
-        'DataGridTextBoxColumn29
-        '
-        Me.DataGridTextBoxColumn29.Format = ""
-        Me.DataGridTextBoxColumn29.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn29.HeaderText = "Bank Name"
-        Me.DataGridTextBoxColumn29.MappingName = "BankName"
-        Me.DataGridTextBoxColumn29.Width = 75
-        '
-        'DataGridTextBoxColumn30
-        '
-        Me.DataGridTextBoxColumn30.Format = "dd/MM/yyyy"
-        Me.DataGridTextBoxColumn30.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn30.HeaderText = "Cheque Date"
-        Me.DataGridTextBoxColumn30.MappingName = "ChequeDate"
-        Me.DataGridTextBoxColumn30.Width = 75
-        '
-        'DataGridTextBoxColumn31
-        '
-        Me.DataGridTextBoxColumn31.Format = ""
-        Me.DataGridTextBoxColumn31.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn31.HeaderText = "Remarks"
-        Me.DataGridTextBoxColumn31.MappingName = "Remarks"
-        Me.DataGridTextBoxColumn31.Width = 75
-        '
-        'DataGridTextBoxColumn43
-        '
-        Me.DataGridTextBoxColumn43.Format = ""
-        Me.DataGridTextBoxColumn43.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn43.HeaderText = "Display Bill No"
-        Me.DataGridTextBoxColumn43.MappingName = "DisplayBillNo"
-        Me.DataGridTextBoxColumn43.Width = 75
         '
         'gbBankDetails
         '
@@ -4946,7 +4793,6 @@ Partial Class AgnimainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(156, Byte), Integer), CType(CType(213, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1647, 1037)
@@ -4962,6 +4808,7 @@ Partial Class AgnimainForm
         Me.tabHelp.PerformLayout()
         Me.tabReports.ResumeLayout(False)
         Me.tabReports.PerformLayout()
+        CType(Me.dgReportPaymentGrid, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgReportBillGrid, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgBIllingBillDetails, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgReportDesignGrid, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4969,6 +4816,7 @@ Partial Class AgnimainForm
         CType(Me.pbReportDesignImage, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
+        CType(Me.dgPaymentDetails, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabBilling.ResumeLayout(False)
         Me.tabBilling.PerformLayout()
         Me.tabDesign.ResumeLayout(False)
@@ -4985,7 +4833,6 @@ Partial Class AgnimainForm
         Me.GroupBox16.PerformLayout()
         Me.tabPayment.ResumeLayout(False)
         Me.tabPayment.PerformLayout()
-        CType(Me.dgPaymentDetails, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbBankDetails.ResumeLayout(False)
         Me.gbBankDetails.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
@@ -5024,12 +4871,6 @@ Partial Class AgnimainForm
     Friend WithEvents Label34 As System.Windows.Forms.Label
     Friend WithEvents tabReports As System.Windows.Forms.TabPage
     Friend WithEvents pbReportDesignImage As System.Windows.Forms.PictureBox
-    Friend WithEvents Label52 As System.Windows.Forms.Label
-    Friend WithEvents Label61 As System.Windows.Forms.Label
-    Friend WithEvents Label57 As System.Windows.Forms.Label
-    Friend WithEvents Label58 As System.Windows.Forms.Label
-    Friend WithEvents Label48 As System.Windows.Forms.Label
-    Friend WithEvents Label51 As System.Windows.Forms.Label
     Friend WithEvents btnReportSearch As System.Windows.Forms.Button
     Friend WithEvents lblReportCompName As System.Windows.Forms.Label
     Friend WithEvents cmbReportCustomerList As System.Windows.Forms.ComboBox
@@ -5095,7 +4936,6 @@ Partial Class AgnimainForm
     Friend WithEvents cmbCustCustomerList As System.Windows.Forms.ComboBox
     Friend WithEvents txtAddress As System.Windows.Forms.TextBox
     Friend WithEvents txtOwnerName As System.Windows.Forms.TextBox
-    Friend WithEvents Button39 As System.Windows.Forms.Button
     Friend WithEvents PictureBox3 As System.Windows.Forms.PictureBox
     Friend WithEvents Label64 As System.Windows.Forms.Label
     Friend WithEvents Label62 As System.Windows.Forms.Label
@@ -5148,20 +4988,11 @@ Partial Class AgnimainForm
     Friend WithEvents Label108 As System.Windows.Forms.Label
     Friend WithEvents Label117 As System.Windows.Forms.Label
     Friend WithEvents btnPaymentClear As System.Windows.Forms.Button
-    Friend WithEvents Label109 As System.Windows.Forms.Label
-    Friend WithEvents Label110 As System.Windows.Forms.Label
-    Friend WithEvents Label103 As System.Windows.Forms.Label
-    Friend WithEvents Label104 As System.Windows.Forms.Label
     Friend WithEvents cmbReportBillNoList As System.Windows.Forms.ComboBox
     Friend WithEvents radioReportBillNo As System.Windows.Forms.RadioButton
     Friend WithEvents Label111 As System.Windows.Forms.Label
     Friend WithEvents GroupBox6 As System.Windows.Forms.GroupBox
     Friend WithEvents radioReportCustName As System.Windows.Forms.RadioButton
-    Friend WithEvents Label113 As System.Windows.Forms.Label
-    Friend WithEvents Label112 As System.Windows.Forms.Label
-    Friend WithEvents Label154 As System.Windows.Forms.Label
-    Friend WithEvents Label151 As System.Windows.Forms.Label
-    Friend WithEvents Label152 As System.Windows.Forms.Label
     Friend WithEvents Label114 As System.Windows.Forms.Label
     Friend WithEvents Label115 As System.Windows.Forms.Label
     Friend WithEvents Label116 As System.Windows.Forms.Label
@@ -5238,22 +5069,6 @@ Partial Class AgnimainForm
     Friend WithEvents Label148 As System.Windows.Forms.Label
     Friend WithEvents Label149 As System.Windows.Forms.Label
     Friend WithEvents Label150 As System.Windows.Forms.Label
-    Friend WithEvents Label157 As System.Windows.Forms.Label
-    Friend WithEvents Label153 As System.Windows.Forms.Label
-    Friend WithEvents Label155 As System.Windows.Forms.Label
-    Friend WithEvents Label156 As System.Windows.Forms.Label
-    Friend WithEvents Label158 As System.Windows.Forms.Label
-    Friend WithEvents Label160 As System.Windows.Forms.Label
-    Friend WithEvents Label162 As System.Windows.Forms.Label
-    Friend WithEvents Label163 As System.Windows.Forms.Label
-    Friend WithEvents Label164 As System.Windows.Forms.Label
-    Friend WithEvents Label159 As System.Windows.Forms.Label
-    Friend WithEvents Label161 As System.Windows.Forms.Label
-    Friend WithEvents Label165 As System.Windows.Forms.Label
-    Friend WithEvents Label166 As System.Windows.Forms.Label
-    Friend WithEvents GroupBox7 As System.Windows.Forms.GroupBox
-    Friend WithEvents GroupBox15 As System.Windows.Forms.GroupBox
-    Friend WithEvents GroupBox8 As System.Windows.Forms.GroupBox
     Friend WithEvents cbReportExtraDateFilter As System.Windows.Forms.CheckBox
     Friend WithEvents cmbDesDesignList As System.Windows.Forms.ComboBox
     Friend WithEvents GroupBox16 As GroupBox
@@ -5378,4 +5193,23 @@ Partial Class AgnimainForm
     Friend WithEvents DataGridTextBoxColumn44 As DataGridTextBoxColumn
     Friend WithEvents DataGridTextBoxColumn45 As DataGridTextBoxColumn
     Friend WithEvents lblReportDesignNameHint As Label
+    Friend WithEvents dgReportPaymentGrid As DataGrid
+    Friend WithEvents lblReportTotDesignAmount As Label
+    Friend WithEvents Label50 As Label
+    Friend WithEvents lblReportUnBilledDesignAmount As Label
+    Friend WithEvents Label48 As Label
+    Friend WithEvents lblReportBilledDesignAmount As Label
+    Friend WithEvents Label46 As Label
+    Friend WithEvents lblReportNoOfDesigns As Label
+    Friend WithEvents Label33 As Label
+    Friend WithEvents lblReportBilledAmount As Label
+    Friend WithEvents Label47 As Label
+    Friend WithEvents lblReportNoOfBills As Label
+    Friend WithEvents Label51 As Label
+    Friend WithEvents lblReportPaidAmountActual As Label
+    Friend WithEvents Label53 As Label
+    Friend WithEvents lblReportNoOfPayment As Label
+    Friend WithEvents Label55 As Label
+    Friend WithEvents lblReportPaidAmountWithDeduction As Label
+    Friend WithEvents Label49 As Label
 End Class

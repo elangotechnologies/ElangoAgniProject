@@ -1,6 +1,5 @@
 Imports System.Data.SqlClient
 Imports System.IO
-Imports System.Math
 Imports System.Threading
 'Imports NLog
 
@@ -217,6 +216,9 @@ Public Class AgnimainForm
 
         cmbDesDesignList.BindingContext = New BindingContext()
         cmbDesDesignList.DataSource = designTable
+
+        resetDesignScreen()
+
     End Sub
 
     Sub loadDesignChargePerUnit(custNo As Integer)
@@ -348,6 +350,7 @@ Public Class AgnimainForm
             cmbReportBillNoList.BindingContext = New BindingContext()
             cmbReportBillNoList.DataSource = billTable
         End If
+        resetBillingScreen()
     End Sub
 
     Sub loadBillGrid(custNo As Integer)
@@ -437,6 +440,8 @@ Public Class AgnimainForm
             cmbPaymentPaymentNoList.BindingContext = New BindingContext()
             cmbPaymentPaymentNoList.DataSource = paymentTable
         End If
+
+        resetPaymentScreen()
 
     End Sub
 
@@ -1493,43 +1498,6 @@ Public Class AgnimainForm
     End Sub
 
 
-    Private Sub Button39_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button39.Click
-        'Try
-        If compbased = True And billbased = False And desbased = False And datebased = False And searchboth = False Then
-            fromdatestr1 = "Not Specified"
-            todatestr1 = "Not Specified"
-            compname = cmprcomp
-        ElseIf compbased = False And billbased = True And desbased = False And datebased = False And searchboth = False Then
-            fromdatestr1 = "Not Specified"
-            todatestr1 = "Not Specified"
-            compname = cmprcomp
-        ElseIf compbased = False And billbased = False And desbased = True And datebased = False And searchboth = False Then
-            fromdatestr1 = "Not Specified"
-            todatestr1 = "Not Specified"
-            compname = cmprcomp
-        ElseIf compbased = False And billbased = False And desbased = False And datebased = True And searchboth = False Then
-            fromdatestr1 = cmprfromdate.ToString("MMMM dd, yyyy")
-            todatestr1 = cmprtodate.ToString("MMMM dd, yyyy")
-            compname = "Not Specified"
-        ElseIf compbased = False And billbased = False And desbased = False And datebased = False And searchboth = True Then
-            fromdatestr1 = cmprfromdate.ToString("MMMM dd, yyyy")
-            todatestr1 = cmprtodate.ToString("MMMM dd, yyyy")
-            compname = cmprcomp
-        End If
-
-        billtable = dgReportBillGrid.DataSource
-
-        If billtable.Rows.Count = 0 Then
-            MsgBox("No Bills to print")
-        Else
-            AllBillReport.Show()
-        End If
-
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
     Private Sub TabPage1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tabCustomer.Click
         cmbCustCustomerList.Focus()
     End Sub
@@ -1781,7 +1749,7 @@ Public Class AgnimainForm
                     .CommandText = query
                     .Parameters.AddWithValue("@DisplayBillNo", gDisplayBillNo)
                     .Parameters.AddWithValue("@CustNo", cmbBillingCustomerList.SelectedValue)
-                    .Parameters.AddWithValue("@BillDate", dpBillingBillDate.Text)
+                    .Parameters.AddWithValue("@BillDate", dpBillingBillDate.Value)
                     .Parameters.AddWithValue("@DesignCost", Decimal.Parse(txtBillingDesignAmoutBeforeGST.Text))
                     .Parameters.AddWithValue("@CGST", Decimal.Parse(txtBillingCGSTPercent.Text))
                     .Parameters.AddWithValue("@SGST", Decimal.Parse(txtBillingSGSTPercent.Text))
@@ -1959,7 +1927,7 @@ Public Class AgnimainForm
                     .Parameters.AddWithValue("@CustNo", cmbPaymentCustomerList.SelectedValue)
                     .Parameters.AddWithValue("@BillNo", txtPaymentBillNo.Text)
                     .Parameters.AddWithValue("@UnPaidBilledAmount", txtPaymentUnPaidBilledAmount.Text)
-                    .Parameters.AddWithValue("@PaymentDate", dpPaymentDate.Text)
+                    .Parameters.AddWithValue("@PaymentDate", dpPaymentDate.Value)
                     .Parameters.AddWithValue("@PaymentMode", paymentType)
                     .Parameters.AddWithValue("@ActualPaidAmount", actualPaidAmount)
                     .Parameters.AddWithValue("@Discount", discountAmount)
@@ -1971,7 +1939,7 @@ Public Class AgnimainForm
                 If radioPaymentByCheque.Checked Then
                     comm.Parameters.AddWithValue("@ChequeNo", txtPaymentChequeNo.Text)
                     comm.Parameters.AddWithValue("@BankName", txtPaymentBankName.Text)
-                    comm.Parameters.AddWithValue("@ChequeDate", dpPaymentChequeDate.Text)
+                    comm.Parameters.AddWithValue("@ChequeDate", dpPaymentChequeDate.Value)
                 Else
                     comm.Parameters.AddWithValue("@ChequeNo", DBNull.Value)
                     comm.Parameters.AddWithValue("@BankName", DBNull.Value)
@@ -1993,6 +1961,11 @@ Public Class AgnimainForm
     End Sub
 
     Private Sub btnPaymentCancelCreatePayment_Click(sender As Object, e As EventArgs) Handles btnPaymentCancelCreatePayment.Click
+        If (cmbPaymentPaymentNoList.SelectedIndex = -1 Or cmbPaymentPaymentNoList.SelectedValue = -1) Then
+            resetPaymentScreen()
+            cmbPaymentPaymentNoList.Text = ""
+        End If
+
         If (cmbPaymentPaymentNoList.Items.Count > 0) Then
             cmbPaymentPaymentNoList.SelectedValue = -1
         Else
@@ -2256,6 +2229,45 @@ Public Class AgnimainForm
         Return searchFilter
     End Function
 
+    Private Sub dgReportDesignGrid_CurrentCellChanged(sender As Object, e As EventArgs) Handles dgReportDesignGrid.CurrentCellChanged
+        Dim rowIndex As Integer = dgReportDesignGrid.CurrentRowIndex
+        Dim designtable As DataTable = dgReportDesignGrid.DataSource
+
+        If designtable.Rows.Count = 0 Then
+            Return
+        End If
+
+        Dim designNo = designtable.Rows(rowIndex).Item("DesignNo")
+        pbReportDesignImage.Image = getDesignImage(designNo)
+    End Sub
+
+    Private Function getDesignImage(designNo As Integer) As Image
+
+        Dim designSelectQuery = New SqlCommand("select Image from design where DesignNo=" + designNo.ToString, dbConnection)
+        Dim designDataAdapter = New SqlDataAdapter()
+        designDataAdapter.SelectCommand = designSelectQuery
+        Dim designDataSet = New DataSet
+        designDataAdapter.Fill(designDataSet, "design")
+        Dim designTable = designDataSet.Tables(0)
+
+        If (designTable.Rows.Count = 0) Then
+            Return Nothing
+        End If
+
+        Dim dataRow = designTable.Rows(0)
+        If Not dataRow.Item("Image") Is DBNull.Value Then
+            Dim designImage() As Byte = CType(dataRow.Item("Image"), Byte())
+            Dim designImageBuffer As New MemoryStream(designImage)
+            Return Image.FromStream(designImageBuffer)
+        End If
+
+        Return Nothing
+
+        ''Catch ex As Exception
+        '    'MessageBox.Show("Message to Agni User:   " & ex.Message)
+        ''End 'Try
+    End Function
+
     Private Sub btnReportSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnReportSearch.Click
         'Try
         pbReportDesignImage.Image = Nothing
@@ -2273,9 +2285,11 @@ Public Class AgnimainForm
             If (searchFilter And SEARCH_BY_DATE) <> 0 Then
                 searchDesignByCustNo(custNo, dpReportFromDate.Value, dpReportToDate.Value)
                 searchBillByCustNo(custNo, dpReportFromDate.Value, dpReportToDate.Value)
+                searchPaymentByCustNo(custNo, dpReportFromDate.Value, dpReportToDate.Value)
             Else
                 searchDesignByCustNo(custNo)
                 searchBillByCustNo(custNo)
+                searchPaymentByCustNo(custNo)
             End If
 
         ElseIf (searchFilter And SEARCH_BY_BILL) <> 0 Then
@@ -2287,9 +2301,11 @@ Public Class AgnimainForm
             If (searchFilter And SEARCH_BY_DATE) <> 0 Then
                 searchDesignByBillNo(billNo, dpReportFromDate.Value, dpReportToDate.Value)
                 searchBillByBillNo(billNo, dpReportFromDate.Value, dpReportToDate.Value)
+                searchPaymentByBillNo(billNo, dpReportFromDate.Value, dpReportToDate.Value)
             Else
                 searchDesignByBillNo(billNo)
                 searchBillByBillNo(billNo)
+                searchPaymentByBillNo(billNo)
             End If
 
         ElseIf (searchFilter And SEARCH_BY_DESIGN) <> 0 Then
@@ -2298,11 +2314,19 @@ Public Class AgnimainForm
                 Return
             End If
             Dim designName As String = txtReportDesignName.Text
-            searchDesignByDesignName(designName)
-            searchBillByDesignName(designName)
+            If (searchFilter And SEARCH_BY_DATE) <> 0 Then
+                searchDesignByDesignName(designName, dpReportFromDate.Value, dpReportToDate.Value)
+                searchBillByDesignName(designName, dpReportFromDate.Value, dpReportToDate.Value)
+                searchPaymentByDesignName(designName, dpReportFromDate.Value, dpReportToDate.Value)
+            Else
+                searchDesignByDesignName(designName)
+                searchBillByDesignName(designName)
+                searchPaymentByDesignName(designName)
+            End If
         ElseIf (searchFilter And SEARCH_BY_DATE) <> 0 Then
             searchDesignByDateRange(dpReportFromDate.Value, dpReportToDate.Value)
             searchBillByDateRange(dpReportFromDate.Value, dpReportToDate.Value)
+            searchPaymentByDateRange(dpReportFromDate.Value, dpReportToDate.Value)
         End If
 
         'Catch ex As Exception
@@ -2344,6 +2368,10 @@ Public Class AgnimainForm
         Dim designTable As DataTable = fetchDesignTableByCustNo(searchData)
         Dim showDesignSearchResultInvoker As New showDesignSearchResultDelegate(AddressOf Me.showDesignSearchResult)
         Me.BeginInvoke(showDesignSearchResultInvoker, designTable)
+
+        Dim designSummaryTable As DataTable = fetchDesignSummaryTableByCustNo(searchData)
+        Dim showDesignSummarySearchResultInvoker As New showDesignSummarySearchResultDelegate(AddressOf Me.showDesignSummarySearchResult)
+        Me.BeginInvoke(showDesignSummarySearchResultInvoker, designSummaryTable)
     End Sub
 
     Function fetchDesignTableByCustNo(searchData As SearchData) As DataTable
@@ -2357,7 +2385,7 @@ Public Class AgnimainForm
         If (fromDate <> Nothing) Then
             Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
             Dim toDateStr As String = toDate.ToString("yyyyMMdd")
-            designQuery = New SqlCommand("select * from design where custNo=" + custNo.ToString + " and designDate>='" + fromDateStr + "' and  designDate<='" + toDateStr + "'", dbConnection)
+            designQuery = New SqlCommand("select * from design where custNo=" + custNo.ToString + " and cast(designDate as date)>='" + fromDateStr + "' and cast(designDate as date)<='" + toDateStr + "'", dbConnection)
         Else
             designQuery = New SqlCommand("select * from design where custNo=" + custNo.ToString, dbConnection)
         End If
@@ -2370,10 +2398,50 @@ Public Class AgnimainForm
 
     End Function
 
+    Function fetchDesignSummaryTableByCustNo(searchData As SearchData) As DataTable
+
+        Dim custNo As Integer = searchData.custNo
+        Dim fromDate As Date = searchData.fromDate
+        Dim toDate As Date = searchData.toDate
+
+        Dim designQuery As SqlCommand
+
+        If (fromDate <> Nothing) Then
+            Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
+            Dim toDateStr As String = toDate.ToString("yyyyMMdd")
+            designQuery = New SqlCommand("select count(1) as designCount, isnull(sum(CASE WHEN Billed = 1 THEN Price ELSE 0 END),0) AS billedDesignAmount, isnull(sum(CASE WHEN Billed = 0 THEN Price ELSE 0 END),0) AS unbilledDesignAmount, isnull(sum(Price),0) as TotalDesignAmount from design where custNo=" + custNo.ToString + " and cast(designDate as date)>='" + fromDateStr + "' and cast(designDate as date)<='" + toDateStr + "'", dbConnection)
+        Else
+            designQuery = New SqlCommand("select count(1) as designCount, isnull(sum(CASE WHEN Billed = 1 THEN Price ELSE 0 END),0) AS billedDesignAmount, isnull(sum(CASE WHEN Billed = 0 THEN Price ELSE 0 END),0) AS unbilledDesignAmount, isnull(sum(Price),0) as TotalDesignAmount from design where custNo=" + custNo.ToString, dbConnection)
+        End If
+
+        Dim designAdapter = New SqlDataAdapter()
+        designAdapter.SelectCommand = designQuery
+        Dim designDataSet = New DataSet
+        designAdapter.Fill(designDataSet, "designSummary")
+        Return designDataSet.Tables(0)
+
+    End Function
+
+
     Delegate Sub showDesignSearchResultDelegate(designTable As DataTable)
 
     Sub showDesignSearchResult(designTable As DataTable)
         dgReportDesignGrid.DataSource = designTable
+    End Sub
+
+    Delegate Sub showDesignSummarySearchResultDelegate(designTable As DataTable)
+
+    Sub showDesignSummarySearchResult(designSummaryTable As DataTable)
+        If designSummaryTable.Rows.Count = 0 Then
+            Return
+        End If
+
+        Dim dataRow As DataRow = designSummaryTable.Rows(0)
+        lblReportNoOfDesigns.Text = dataRow.Item("designCount")
+        lblReportBilledDesignAmount.Text = dataRow.Item("billedDesignAmount")
+        lblReportUnBilledDesignAmount.Text = dataRow.Item("unbilledDesignAmount")
+        lblReportTotDesignAmount.Text = dataRow.Item("TotalDesignAmount")
+
     End Sub
 
     Sub searchBillByCustNo(custNo As Integer, Optional fromDate As Date = Nothing, Optional toDate As Date = Nothing)
@@ -2394,6 +2462,10 @@ Public Class AgnimainForm
         Dim showBillSearchResultInvoker As New showBillSearchResultDelegate(AddressOf Me.showBillSearchResult)
         Me.BeginInvoke(showBillSearchResultInvoker, billTable)
 
+        Dim billSummaryTable As DataTable = fetchBillSummaryTableByCustNo(searchData)
+        Dim showBillSummarySearchResultInvoker As New showBillSummarySearchResultDelegate(AddressOf Me.showBillSummarySearchResult)
+        Me.BeginInvoke(showBillSummarySearchResultInvoker, billSummaryTable)
+
     End Sub
 
     Function fetchBillTableByCustNo(searchData As SearchData) As DataTable
@@ -2407,7 +2479,7 @@ Public Class AgnimainForm
             billQuery = New SqlCommand("select BillNo, DisplayBillNo, BillDate, DesignCost, UnPaidAmountTillNow, CGST, CGST*DesignCost/100 as CGSTAmount, 
                             SGST, SGST*DesignCost/100 as SGSTAmount, IGST, IGST*DesignCost/100 as IGSTAmount, (CGST+ SGST+ IGST)*DesignCost/100 as GSTAmount, ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost as DesignAmountGST, PaidAmount, 
                             ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost+UnPaidAmountTillNow as TotalAmount, 
-                            (((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost+UnPaidAmountTillNow)-PaidAmount as RemainingBalance, Cancelled  from bill where custNo=" + custNo.ToString + " and BillDate>='" + fromDateStr + "' and  BillDate<='" + toDateStr + "'", dbConnection)
+                            (((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost+UnPaidAmountTillNow)-PaidAmount as RemainingBalance, Cancelled  from bill where custNo=" + custNo.ToString + " and cast(BillDate as date)>='" + fromDateStr + "' and cast(BillDate as date)<='" + toDateStr + "'", dbConnection)
         Else
             billQuery = New SqlCommand("select BillNo, DisplayBillNo, BillDate, DesignCost, UnPaidAmountTillNow, CGST, CGST*DesignCost/100 as CGSTAmount, 
                             SGST, SGST*DesignCost/100 as SGSTAmount, IGST, IGST*DesignCost/100 as IGSTAmount, (CGST+ SGST+ IGST)*DesignCost/100 as GSTAmount, ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost as DesignAmountGST, PaidAmount, 
@@ -2428,15 +2500,128 @@ Public Class AgnimainForm
         dgReportBillGrid.DataSource = billTable
     End Sub
 
+    Function fetchBillSummaryTableByCustNo(searchData As SearchData) As DataTable
+        Dim custNo As Integer = searchData.custNo
+        Dim fromDate As Date = searchData.fromDate
+        Dim toDate As Date = searchData.toDate
+        Dim billQuery As SqlCommand
+        If (fromDate <> Nothing) Then
+            Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
+            Dim toDateStr As String = toDate.ToString("yyyyMMdd")
+            billQuery = New SqlCommand("select count(1) as BillsCount, isnull(sum(DesignAmountGST),0) as TotBilledAmount from(
+                            select ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost as DesignAmountGST from bill where custNo=" + custNo.ToString + " and cast(BillDate as date)>='" + fromDateStr + "' and cast(BillDate as date)<='" + toDateStr + "') as billTable", dbConnection)
+        Else
+            billQuery = New SqlCommand("select count(1) as BillsCount, isnull(sum(DesignAmountGST),0) as TotBilledAmount from(
+                            select ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost as DesignAmountGST from bill where custNo=" + custNo.ToString + ")  as billTable", dbConnection)
+        End If
+
+        Dim billAdapter = New SqlDataAdapter()
+        billAdapter.SelectCommand = billQuery
+        Dim billDataSet = New DataSet
+        billAdapter.Fill(billDataSet, "billSummary")
+        Return billDataSet.Tables(0)
+    End Function
+
+    Delegate Sub showBillSummarySearchResultDelegate(billSummaryTable As DataTable)
+
+    Sub showBillSummarySearchResult(billSummaryTable As DataTable)
+        If billSummaryTable.Rows.Count = 0 Then
+            Return
+        End If
+
+        Dim dataRow As DataRow = billSummaryTable.Rows(0)
+        lblReportNoOfBills.Text = dataRow.Item("BillsCount")
+        lblReportBilledAmount.Text = Format(dataRow.Item("TotBilledAmount"), "0.00")
+    End Sub
+
+    Sub searchPaymentByCustNo(custNo As Integer, Optional fromDate As Date = Nothing, Optional toDate As Date = Nothing)
+        Dim thread As Thread = New Thread(AddressOf fetchPaymentByCustNo)
+        thread.IsBackground = True
+
+        Dim searchData As SearchData = New SearchData
+        searchData.custNo = custNo
+        searchData.fromDate = fromDate
+        searchData.toDate = toDate
+
+        thread.Start(searchData)
+    End Sub
+
+    Sub fetchPaymentByCustNo(ByVal searchDataParam As Object)
+        Dim searchData As SearchData = CType(searchDataParam, SearchData)
+        Dim paymentTable As DataTable = fetchPaymentTableByCustNo(searchData)
+        Dim showPaymentSearchResultInvoker As New showPaymentSearchResultDelegate(AddressOf Me.showPaymentSearchResult)
+        Me.BeginInvoke(showPaymentSearchResultInvoker, paymentTable)
+        Dim paymentSummaryTable As DataTable = fetchPaymentSummaryTableByCustNo(searchData)
+        Dim showPaymentSummarySearchResultInvoker As New showPaymentSummarySearchResultDelegate(AddressOf Me.showPaymentSummarySearchResult)
+        Me.BeginInvoke(showPaymentSummarySearchResultInvoker, paymentSummaryTable)
+    End Sub
+
+    Function fetchPaymentTableByCustNo(searchData As SearchData) As DataTable
+        Dim custNo As Integer = searchData.custNo
+        Dim fromDate As Date = searchData.fromDate
+        Dim toDate As Date = searchData.toDate
+        Dim paymentQuery As SqlCommand
+        If (fromDate <> Nothing) Then
+            Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
+            Dim toDateStr As String = toDate.ToString("yyyyMMdd")
+            paymentQuery = New SqlCommand("select c.CompName,p.*, p.UnPaidBilledAmount - p.FinalPaidAmount as NetBalance, b.DisplayBillNo  from payment p, bill b, customer c where p.BillNo = b.BillNo and p.CustNo = c.CustNo and p.custNo=" + custNo.ToString + "  and cast(PaymentDate as date)>='" + fromDateStr + "' and  cast(PaymentDate as date)<='" + toDateStr + "'", dbConnection)
+        Else
+            paymentQuery = New SqlCommand("select c.CompName,p.*, p.UnPaidBilledAmount - p.FinalPaidAmount as NetBalance, b.DisplayBillNo  from payment p, bill b, customer c where p.BillNo = b.BillNo and p.CustNo = c.CustNo and p.custNo=" + custNo.ToString, dbConnection)
+        End If
+
+        Dim paymentAdapter = New SqlDataAdapter()
+        paymentAdapter.SelectCommand = paymentQuery
+        Dim paymentDataSet = New DataSet
+        paymentAdapter.Fill(paymentDataSet, "payment")
+        Return paymentDataSet.Tables(0)
+    End Function
+
+    Delegate Sub showPaymentSearchResultDelegate(paymentTable As DataTable)
+
+    Sub showPaymentSearchResult(paymentTable As DataTable)
+        dgReportPaymentGrid.DataSource = paymentTable
+    End Sub
+
+    Function fetchPaymentSummaryTableByCustNo(searchData As SearchData) As DataTable
+        Dim custNo As Integer = searchData.custNo
+        Dim fromDate As Date = searchData.fromDate
+        Dim toDate As Date = searchData.toDate
+        Dim paymentQuery As SqlCommand
+        If (fromDate <> Nothing) Then
+            Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
+            Dim toDateStr As String = toDate.ToString("yyyyMMdd")
+            paymentQuery = New SqlCommand("select count(1) as PaymentCount, isnull(sum(p.ActualPaidAmount),0) as TotPaidAmountActual, isnull(sum(p.FinalPaidAmount),0) as TotPaidAmountAfterAdjustment from payment p, bill b, customer c where p.BillNo = b.BillNo and p.CustNo = c.CustNo and p.custNo=" + custNo.ToString + "  and cast(PaymentDate as date)>='" + fromDateStr + "' and  cast(PaymentDate as date)<='" + toDateStr + "'", dbConnection)
+        Else
+            paymentQuery = New SqlCommand("select count(1) as PaymentCount, isnull(sum(p.ActualPaidAmount),0) as TotPaidAmountActual, isnull(sum(p.FinalPaidAmount),0) as TotPaidAmountAfterAdjustment from payment p, bill b, customer c where p.BillNo = b.BillNo and p.CustNo = c.CustNo and p.custNo=" + custNo.ToString, dbConnection)
+        End If
+
+        Dim paymentAdapter = New SqlDataAdapter()
+        paymentAdapter.SelectCommand = paymentQuery
+        Dim paymentDataSet = New DataSet
+        paymentAdapter.Fill(paymentDataSet, "payment")
+        Return paymentDataSet.Tables(0)
+    End Function
+
+    Delegate Sub showPaymentSummarySearchResultDelegate(billSummaryTable As DataTable)
+
+    Sub showPaymentSummarySearchResult(paymentSummaryTable As DataTable)
+        If paymentSummaryTable.Rows.Count = 0 Then
+            Return
+        End If
+
+        Dim dataRow As DataRow = paymentSummaryTable.Rows(0)
+        lblReportNoOfPayment.Text = dataRow.Item("PaymentCount")
+        lblReportPaidAmountActual.Text = Format(dataRow.Item("TotPaidAmountActual"), "0.00")
+        lblReportPaidAmountWithDeduction.Text = Format(dataRow.Item("TotPaidAmountAfterAdjustment"), "0.00")
+    End Sub
+
     Sub searchDesignByBillNo(billNo As Integer, Optional fromDate As Date = Nothing, Optional toDate As Date = Nothing)
         Dim thread As Thread = New Thread(AddressOf fetchDesignByBillNo)
         thread.IsBackground = True
-
         Dim searchData As SearchData = New SearchData
         searchData.billNo = billNo
         searchData.fromDate = fromDate
         searchData.toDate = toDate
-
         thread.Start(searchData)
     End Sub
 
@@ -2445,6 +2630,9 @@ Public Class AgnimainForm
         Dim designTable As DataTable = fetchDesignTableByBillNo(searchData)
         Dim showDesignSearchResultInvoker As New showDesignSearchResultDelegate(AddressOf Me.showDesignSearchResult)
         Me.BeginInvoke(showDesignSearchResultInvoker, designTable)
+        Dim designSummaryTable As DataTable = fetchDesignSummaryTableByBillNo(searchData)
+        Dim showDesignSummarySearchResultInvoker As New showDesignSummarySearchResultDelegate(AddressOf Me.showDesignSummarySearchResult)
+        Me.BeginInvoke(showDesignSummarySearchResultInvoker, designSummaryTable)
     End Sub
 
     Function fetchDesignTableByBillNo(searchData As SearchData) As DataTable
@@ -2457,7 +2645,7 @@ Public Class AgnimainForm
         If (fromDate <> Nothing) Then
             Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
             Dim toDateStr As String = toDate.ToString("yyyyMMdd")
-            designQuery = New SqlCommand("select c.CompName,d.* from design d,customer c where d.billNo=" + billNo.ToString + " and d.CustNo=c.CustNo and d.designDate>='" + fromDateStr + "' and  d.designDate<='" + toDateStr + "'", dbConnection)
+            designQuery = New SqlCommand("select c.CompName,d.* from design d,customer c where d.billNo=" + billNo.ToString + " and d.CustNo=c.CustNo and cast(d.designDate as date)>='" + fromDateStr + "' and cast(d.designDate as date)<='" + toDateStr + "'", dbConnection)
         Else
             designQuery = New SqlCommand("select c.CompName,d.* from design d,customer c where d.billNo=" + billNo.ToString + " and d.CustNo=c.CustNo", dbConnection)
         End If
@@ -2466,6 +2654,28 @@ Public Class AgnimainForm
         designAdapter.SelectCommand = designQuery
         Dim designDataSet = New DataSet
         designAdapter.Fill(designDataSet, "design")
+        Return designDataSet.Tables(0)
+    End Function
+
+    Function fetchDesignSummaryTableByBillNo(searchData As SearchData) As DataTable
+        Dim billNo As Integer = searchData.billNo
+        Dim fromDate As Date = searchData.fromDate
+        Dim toDate As Date = searchData.toDate
+
+        Dim designQuery As SqlCommand
+
+        If (fromDate <> Nothing) Then
+            Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
+            Dim toDateStr As String = toDate.ToString("yyyyMMdd")
+            designQuery = New SqlCommand("select count(1) as designCount, isnull(sum(CASE WHEN d.Billed = 1 THEN d.Price ELSE 0 END),0) AS billedDesignAmount, isnull(sum(CASE WHEN d.Billed = 0 THEN d.Price ELSE 0 END),0) AS unbilledDesignAmount, isnull(sum(d.Price),0) as TotalDesignAmount from design d,customer c where d.billNo=" + billNo.ToString + " and d.CustNo=c.CustNo and cast(d.designDate as date)>='" + fromDateStr + "' and cast(d.designDate as date)<='" + toDateStr + "'", dbConnection)
+        Else
+            designQuery = New SqlCommand("select count(1) as designCount, isnull(sum(CASE WHEN d.Billed = 1 THEN d.Price ELSE 0 END),0) AS billedDesignAmount, isnull(sum(CASE WHEN d.Billed = 0 THEN d.Price ELSE 0 END),0) AS unbilledDesignAmount, isnull(sum(d.Price),0) as TotalDesignAmount from design d,customer c where d.billNo=" + billNo.ToString + " and d.CustNo=c.CustNo", dbConnection)
+        End If
+
+        Dim designAdapter = New SqlDataAdapter()
+        designAdapter.SelectCommand = designQuery
+        Dim designDataSet = New DataSet
+        designAdapter.Fill(designDataSet, "designSummary")
         Return designDataSet.Tables(0)
     End Function
 
@@ -2486,6 +2696,9 @@ Public Class AgnimainForm
         Dim billTable As DataTable = fetchBillTableByBillNo(searchData)
         Dim showBillSearchResultInvoker As New showBillSearchResultDelegate(AddressOf Me.showBillSearchResult)
         Me.BeginInvoke(showBillSearchResultInvoker, billTable)
+        Dim billSummaryTable As DataTable = fetchBillSummaryTableByBillNo(searchData)
+        Dim showBillSummarySearchResultInvoker As New showBillSummarySearchResultDelegate(AddressOf Me.showBillSummarySearchResult)
+        Me.BeginInvoke(showBillSummarySearchResultInvoker, billSummaryTable)
     End Sub
 
     Function fetchBillTableByBillNo(searchData As SearchData) As DataTable
@@ -2501,7 +2714,7 @@ Public Class AgnimainForm
             billQuery = New SqlCommand("select c.CompName, b.BillNo, b.DisplayBillNo, b.BillDate, b.DesignCost, b.UnPaidAmountTillNow, b.CGST, b.CGST*b.DesignCost/100 as CGSTAmount, 
                             b.SGST, b.SGST*b.DesignCost/100 as SGSTAmount, b.IGST, b.IGST*b.DesignCost/100 as IGSTAmount, (b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100 as GSTAmount, ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost as DesignAmountGST, b.PaidAmount, 
                             ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost+b.UnPaidAmountTillNow as TotalAmount, 
-                            (((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost+b.UnPaidAmountTillNow)-b.PaidAmount as RemainingBalance, b.Cancelled from bill b, customer c where b.billNo=" + billNo.ToString + " and b.CustNo=c.CustNo and b.BillDate>='" + fromDateStr + "' and  b.BillDate<='" + toDateStr + "'", dbConnection)
+                            (((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost+b.UnPaidAmountTillNow)-b.PaidAmount as RemainingBalance, b.Cancelled from bill b, customer c where b.billNo=" + billNo.ToString + " and b.CustNo=c.CustNo and cast(b.BillDate as date)>='" + fromDateStr + "' and  cast(b.BillDate as date)<='" + toDateStr + "'", dbConnection)
 
         Else
             billQuery = New SqlCommand("select c.CompName, b.BillNo, b.DisplayBillNo, b.BillDate, b.DesignCost, b.UnPaidAmountTillNow, b.CGST, b.CGST*b.DesignCost/100 as CGSTAmount, 
@@ -2516,6 +2729,100 @@ Public Class AgnimainForm
         Dim billDataSet = New DataSet
         billAdapter.Fill(billDataSet, "bill")
         Return billDataSet.Tables(0)
+    End Function
+
+    Function fetchBillSummaryTableByBillNo(searchData As SearchData) As DataTable
+        Dim billNo As Integer = searchData.billNo
+        Dim fromDate As Date = searchData.fromDate
+        Dim toDate As Date = searchData.toDate
+
+        Dim billQuery As SqlCommand
+
+        If (fromDate <> Nothing) Then
+            Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
+            Dim toDateStr As String = toDate.ToString("yyyyMMdd")
+            billQuery = New SqlCommand("select count(1) as BillsCount, isnull(sum(DesignAmountGST),0) as TotBilledAmount from(
+                            select ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost as DesignAmountGST from bill b, customer c where b.billNo=" + billNo.ToString + " and b.CustNo=c.CustNo and cast(b.BillDate as date)>='" + fromDateStr + "' and  cast(b.BillDate as date)<='" + toDateStr + "') as billTable", dbConnection)
+
+        Else
+            billQuery = New SqlCommand("select count(1) as BillsCount, isnull(sum(DesignAmountGST),0) as TotBilledAmount from(
+                            select ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost as DesignAmountGST from bill b, customer c where b.billNo=" + billNo.ToString + " and b.CustNo=c.CustNo) as billTable", dbConnection)
+
+        End If
+
+        Dim billAdapter = New SqlDataAdapter()
+        billAdapter.SelectCommand = billQuery
+        Dim billDataSet = New DataSet
+        billAdapter.Fill(billDataSet, "billSummary")
+        Return billDataSet.Tables(0)
+    End Function
+
+    Sub searchPaymentByBillNo(billNo As Integer, Optional fromDate As Date = Nothing, Optional toDate As Date = Nothing)
+        Dim thread As Thread = New Thread(AddressOf fetchPaymentByBillNo)
+        thread.IsBackground = True
+
+        Dim searchData As SearchData = New SearchData
+        searchData.billNo = billNo
+        searchData.fromDate = fromDate
+        searchData.toDate = toDate
+
+        thread.Start(searchData)
+    End Sub
+
+    Sub fetchPaymentByBillNo(ByVal searchDataParam As Object)
+        Dim searchData As SearchData = CType(searchDataParam, SearchData)
+        Dim paymentTable As DataTable = fetchPaymentTableByBillNo(searchData)
+        Dim showPaymentSearchResultInvoker As New showPaymentSearchResultDelegate(AddressOf Me.showPaymentSearchResult)
+        Me.BeginInvoke(showPaymentSearchResultInvoker, paymentTable)
+        Dim paymentSummaryTable As DataTable = fetchPaymentSummaryTableByBillNo(searchData)
+        Dim showPaymentSummarySearchResultInvoker As New showPaymentSummarySearchResultDelegate(AddressOf Me.showPaymentSummarySearchResult)
+        Me.BeginInvoke(showPaymentSummarySearchResultInvoker, paymentSummaryTable)
+    End Sub
+
+    Function fetchPaymentTableByBillNo(searchData As SearchData) As DataTable
+        Dim billNo As Integer = searchData.billNo
+        Dim fromDate As Date = searchData.fromDate
+        Dim toDate As Date = searchData.toDate
+
+        Dim paymentQuery As SqlCommand
+
+        If (fromDate <> Nothing) Then
+            Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
+            Dim toDateStr As String = toDate.ToString("yyyyMMdd")
+            paymentQuery = New SqlCommand("select c.CompName,p.*, p.UnPaidBilledAmount - p.FinalPaidAmount as NetBalance, b.DisplayBillNo  from payment p, bill b, customer c where p.BillNo = b.BillNo and p.CustNo = c.CustNo and p.BillNo=" + billNo.ToString + "  and cast(PaymentDate as date)>='" + fromDateStr + "' and  cast(PaymentDate as date)<='" + toDateStr + "'", dbConnection)
+        Else
+            paymentQuery = New SqlCommand("select c.CompName,p.*, p.UnPaidBilledAmount - p.FinalPaidAmount as NetBalance, b.DisplayBillNo  from payment p, bill b, customer c where p.BillNo = b.BillNo and p.CustNo = c.CustNo and p.BillNo=" + billNo.ToString, dbConnection)
+
+        End If
+
+        Dim paymentAdapter = New SqlDataAdapter()
+        paymentAdapter.SelectCommand = paymentQuery
+        Dim paymentDataSet = New DataSet
+        paymentAdapter.Fill(paymentDataSet, "payment")
+        Return paymentDataSet.Tables(0)
+    End Function
+
+    Function fetchPaymentSummaryTableByBillNo(searchData As SearchData) As DataTable
+        Dim billNo As Integer = searchData.billNo
+        Dim fromDate As Date = searchData.fromDate
+        Dim toDate As Date = searchData.toDate
+
+        Dim paymentQuery As SqlCommand
+
+        If (fromDate <> Nothing) Then
+            Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
+            Dim toDateStr As String = toDate.ToString("yyyyMMdd")
+            paymentQuery = New SqlCommand("select count(1) as PaymentCount, isnull(sum(p.ActualPaidAmount),0) as TotPaidAmountActual, isnull(sum(p.FinalPaidAmount),0) as TotPaidAmountAfterAdjustment from payment p, bill b, customer c where p.BillNo = b.BillNo and p.CustNo = c.CustNo and p.BillNo=" + billNo.ToString + "  and cast(PaymentDate as date)>='" + fromDateStr + "' and  cast(PaymentDate as date)<='" + toDateStr + "'", dbConnection)
+        Else
+            paymentQuery = New SqlCommand("select count(1) as PaymentCount, isnull(sum(p.ActualPaidAmount),0) as TotPaidAmountActual, isnull(sum(p.FinalPaidAmount),0) as TotPaidAmountAfterAdjustment from payment p, bill b, customer c where p.BillNo = b.BillNo and p.CustNo = c.CustNo and p.BillNo=" + billNo.ToString, dbConnection)
+
+        End If
+
+        Dim paymentAdapter = New SqlDataAdapter()
+        paymentAdapter.SelectCommand = paymentQuery
+        Dim paymentDataSet = New DataSet
+        paymentAdapter.Fill(paymentDataSet, "paymentSummary")
+        Return paymentDataSet.Tables(0)
     End Function
 
     Sub searchDesignByDesignName(designName As String, Optional fromDate As Date = Nothing, Optional toDate As Date = Nothing)
@@ -2535,6 +2842,9 @@ Public Class AgnimainForm
         Dim designTable As DataTable = fetchDesignTableByDesignName(searchData)
         Dim showDesignSearchResultInvoker As New showDesignSearchResultDelegate(AddressOf Me.showDesignSearchResult)
         Me.BeginInvoke(showDesignSearchResultInvoker, designTable)
+        Dim designSummaryTable As DataTable = fetchDesignSummaryTableByDesignName(searchData)
+        Dim showDesignSummarySearchResultInvoker As New showDesignSummarySearchResultDelegate(AddressOf Me.showDesignSummarySearchResult)
+        Me.BeginInvoke(showDesignSummarySearchResultInvoker, designSummaryTable)
     End Sub
 
     Function fetchDesignTableByDesignName(searchData As SearchData) As DataTable
@@ -2547,7 +2857,7 @@ Public Class AgnimainForm
         If (fromDate <> Nothing) Then
             Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
             Dim toDateStr As String = toDate.ToString("yyyyMMdd")
-            designQuery = New SqlCommand("select c.CompName,d.* from design d,customer c where d.DesignName like '%" + designName + "%' and d.CustNo=c.CustNo and d.designDate>='" + fromDateStr + "' and  d.designDate<='" + toDateStr + "'", dbConnection)
+            designQuery = New SqlCommand("select c.CompName,d.* from design d,customer c where d.DesignName like '%" + designName + "%' and d.CustNo=c.CustNo and cast(d.designDate as date)>='" + fromDateStr + "' and cast(d.designDate as date)<='" + toDateStr + "'", dbConnection)
         Else
             designQuery = New SqlCommand("Select c.CompName, d.* From design d, customer c Where d.DesignName Like '%" + designName + "%' and d.CustNo=c.CustNo", dbConnection)
         End If
@@ -2558,6 +2868,29 @@ Public Class AgnimainForm
         designAdapter.Fill(designDataSet, "design")
         Return designDataSet.Tables(0)
     End Function
+
+    Function fetchDesignSummaryTableByDesignName(searchData As SearchData) As DataTable
+        Dim designName As String = searchData.designName
+        Dim fromDate As Date = searchData.fromDate
+        Dim toDate As Date = searchData.toDate
+
+        Dim designQuery As SqlCommand
+
+        If (fromDate <> Nothing) Then
+            Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
+            Dim toDateStr As String = toDate.ToString("yyyyMMdd")
+            designQuery = New SqlCommand("select count(1) as designCount, isnull(sum(CASE WHEN Billed = 1 THEN Price ELSE 0 END),0) AS billedDesignAmount, isnull(sum(CASE WHEN Billed = 0 THEN Price ELSE 0 END),0) AS unbilledDesignAmount, isnull(sum(Price),0) as TotalDesignAmount from design d,customer c where d.DesignName like '%" + designName + "%' and d.CustNo=c.CustNo and cast(d.designDate as date)>='" + fromDateStr + "' and cast(d.designDate as date)<='" + toDateStr + "'", dbConnection)
+        Else
+            designQuery = New SqlCommand("select count(1) as designCount, isnull(sum(CASE WHEN Billed = 1 THEN Price ELSE 0 END),0) AS billedDesignAmount, isnull(sum(CASE WHEN Billed = 0 THEN Price ELSE 0 END),0) AS unbilledDesignAmount, isnull(sum(Price),0) as TotalDesignAmount from design d, customer c Where d.DesignName Like '%" + designName + "%' and d.CustNo=c.CustNo", dbConnection)
+        End If
+
+        Dim designAdapter = New SqlDataAdapter()
+        designAdapter.SelectCommand = designQuery
+        Dim designDataSet = New DataSet
+        designAdapter.Fill(designDataSet, "designSummary")
+        Return designDataSet.Tables(0)
+    End Function
+
 
     Sub searchBillByDesignName(designName As String, Optional fromDate As Date = Nothing, Optional toDate As Date = Nothing)
         Dim thread As Thread = New Thread(AddressOf fetchBillByDesignName)
@@ -2576,6 +2909,9 @@ Public Class AgnimainForm
         Dim billTable As DataTable = fetchBillTableByDesignName(searchData)
         Dim showBillSearchResultInvoker As New showBillSearchResultDelegate(AddressOf Me.showBillSearchResult)
         Me.BeginInvoke(showBillSearchResultInvoker, billTable)
+        Dim billSummaryTable As DataTable = fetchBillSummaryTableByDesignName(searchData)
+        Dim showBillSummarySearchResultInvoker As New showBillSummarySearchResultDelegate(AddressOf Me.showBillSummarySearchResult)
+        Me.BeginInvoke(showBillSummarySearchResultInvoker, billSummaryTable)
     End Sub
 
     Function fetchBillTableByDesignName(searchData As SearchData) As DataTable
@@ -2592,7 +2928,7 @@ Public Class AgnimainForm
                             b.SGST, b.SGST*b.DesignCost/100 as SGSTAmount, b.IGST, b.IGST*b.DesignCost/100 as IGSTAmount, (b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100 as GSTAmount, ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost as DesignAmountGST, b.PaidAmount, 
                             ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost+b.UnPaidAmountTillNow as TotalAmount, 
                             (((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost+b.UnPaidAmountTillNow)-b.PaidAmount as RemainingBalance, b.Cancelled from bill b, customer c where b.billNo in " +
-                            "(select BillNo from Design where DesignName like '%" + designName + "%') and b.CustNo=c.CustNo and b.BillDate>='" + fromDateStr + "' and b.BillDate<='" + toDateStr + "'", dbConnection)
+                            "(select BillNo from Design where DesignName like '%" + designName + "%') and b.CustNo=c.CustNo and cast(b.BillDate as date)>='" + fromDateStr + "' and cast(b.BillDate as date)<='" + toDateStr + "'", dbConnection)
 
         Else
             billQuery = New SqlCommand("select c.CompName, b.BillNo, b.DisplayBillNo, b.BillDate, b.DesignCost, b.UnPaidAmountTillNow, b.CGST, b.CGST*b.DesignCost/100 as CGSTAmount, 
@@ -2610,6 +2946,101 @@ Public Class AgnimainForm
         Return billDataSet.Tables(0)
     End Function
 
+    Function fetchBillSummaryTableByDesignName(searchData As SearchData) As DataTable
+        Dim designName As String = searchData.designName
+        Dim fromDate As Date = searchData.fromDate
+        Dim toDate As Date = searchData.toDate
+
+        Dim billQuery As SqlCommand
+
+        If (fromDate <> Nothing) Then
+            Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
+            Dim toDateStr As String = toDate.ToString("yyyyMMdd")
+            billQuery = New SqlCommand("select count(1) as BillsCount, isnull(sum(DesignAmountGST),0) as TotBilledAmount from(
+                            select ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost as DesignAmountGST from bill b, customer c where b.billNo in " +
+                            "(select BillNo from Design where DesignName like '%" + designName + "%') and b.CustNo=c.CustNo and cast(b.BillDate as date)>='" + fromDateStr + "' and cast(b.BillDate as date)<='" + toDateStr + "') as billTable", dbConnection)
+
+        Else
+            billQuery = New SqlCommand("select count(1) as BillsCount, isnull(sum(DesignAmountGST),0) as TotBilledAmount from(
+                            select ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost as DesignAmountGST   from bill b, customer c where b.billNo in " +
+                            "(select BillNo from Design where DesignName like '%" + designName + "%') and b.CustNo=c.CustNo) as billTable", dbConnection)
+
+        End If
+
+        Dim billAdapter = New SqlDataAdapter()
+        billAdapter.SelectCommand = billQuery
+        Dim billDataSet = New DataSet
+        billAdapter.Fill(billDataSet, "billSummary")
+        Return billDataSet.Tables(0)
+    End Function
+
+    Sub searchPaymentByDesignName(designName As String, Optional fromDate As Date = Nothing, Optional toDate As Date = Nothing)
+        Dim thread As Thread = New Thread(AddressOf fetchPaymentByDesignName)
+        thread.IsBackground = True
+
+        Dim searchData As SearchData = New SearchData
+        searchData.designName = designName
+        searchData.fromDate = fromDate
+        searchData.toDate = toDate
+
+        thread.Start(searchData)
+    End Sub
+
+    Sub fetchPaymentByDesignName(ByVal searchDataParam As Object)
+        Dim searchData As SearchData = CType(searchDataParam, SearchData)
+        Dim paymentTable As DataTable = fetchPaymentTableByDesignName(searchData)
+        Dim showPaymentSearchResultInvoker As New showPaymentSearchResultDelegate(AddressOf Me.showPaymentSearchResult)
+        Me.BeginInvoke(showPaymentSearchResultInvoker, paymentTable)
+        Dim paymentSummaryTable As DataTable = fetchPaymentSummaryTableByDesignName(searchData)
+        Dim showPaymentSummarySearchResultInvoker As New showPaymentSummarySearchResultDelegate(AddressOf Me.showPaymentSummarySearchResult)
+        Me.BeginInvoke(showPaymentSummarySearchResultInvoker, paymentSummaryTable)
+    End Sub
+
+    Function fetchPaymentTableByDesignName(searchData As SearchData) As DataTable
+        Dim designName As String = searchData.designName
+        Dim fromDate As Date = searchData.fromDate
+        Dim toDate As Date = searchData.toDate
+
+        Dim paymentQuery As SqlCommand
+
+        If (fromDate <> Nothing) Then
+            Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
+            Dim toDateStr As String = toDate.ToString("yyyyMMdd")
+            paymentQuery = New SqlCommand("select c.CompName, p.* from payment p, design d, customer c where d.DesignName like '%" + designName + "%' and d.CustNo=c.CustNo and p.custNo=c.custNo and d.BillNo = p.BillNo and cast(d.designDate as date)>='" + fromDateStr + "' and  cast(d.designDate as date)<='" + toDateStr + "'", dbConnection)
+        Else
+            paymentQuery = New SqlCommand("Select c.CompName, p.* from payment p, design d, customer c Where d.DesignName Like '%" + designName + "%' and d.CustNo=c.CustNo and p.custNo=c.custNo and d.BillNo = p.BillNo", dbConnection)
+        End If
+
+        Dim paymentAdapter = New SqlDataAdapter()
+        paymentAdapter.SelectCommand = paymentQuery
+        Dim paymentDataSet = New DataSet
+        paymentAdapter.Fill(paymentDataSet, "payment")
+        Return paymentDataSet.Tables(0)
+    End Function
+
+    Function fetchPaymentSummaryTableByDesignName(searchData As SearchData) As DataTable
+        Dim designName As String = searchData.designName
+        Dim fromDate As Date = searchData.fromDate
+        Dim toDate As Date = searchData.toDate
+
+        Dim paymentQuery As SqlCommand
+
+        If (fromDate <> Nothing) Then
+            Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
+            Dim toDateStr As String = toDate.ToString("yyyyMMdd")
+            paymentQuery = New SqlCommand("select count(1) as PaymentCount, isnull(sum(p.ActualPaidAmount),0) as TotPaidAmountActual, isnull(sum(p.FinalPaidAmount),0) as TotPaidAmountAfterAdjustment from payment p, design d, customer c where d.DesignName like '%" + designName + "%' and d.CustNo=c.CustNo and p.custNo=c.custNo and d.BillNo = p.BillNo and cast(d.designDate as date)>='" + fromDateStr + "' and  cast(d.designDate as date)<='" + toDateStr + "'", dbConnection)
+        Else
+            paymentQuery = New SqlCommand("select count(1) as PaymentCount, isnull(sum(p.ActualPaidAmount),0) as TotPaidAmountActual, isnull(sum(p.FinalPaidAmount),0) as TotPaidAmountAfterAdjustment from payment p, design d, customer c Where d.DesignName Like '%" + designName + "%' and d.CustNo=c.CustNo and p.custNo=c.custNo and d.BillNo = p.BillNo", dbConnection)
+        End If
+
+        Dim paymentAdapter = New SqlDataAdapter()
+        paymentAdapter.SelectCommand = paymentQuery
+        Dim paymentDataSet = New DataSet
+        paymentAdapter.Fill(paymentDataSet, "paymentSummary")
+        Return paymentDataSet.Tables(0)
+    End Function
+
+
     Sub searchDesignByDateRange(fromDate As Date, toDate As Date)
         Dim thread As Thread = New Thread(AddressOf fetchDesignByDateRange)
         thread.IsBackground = True
@@ -2622,15 +3053,15 @@ Public Class AgnimainForm
     End Sub
 
     Sub fetchDesignByDateRange(ByVal searchDataParam As Object)
-
         Dim searchData As SearchData = CType(searchDataParam, SearchData)
-
         Dim fromDate As Date = searchData.fromDate
         Dim toDate As Date = searchData.toDate
         Dim designTable As DataTable = fetchDesignTableByDateRange(fromDate, toDate)
-
         Dim showDesignSearchResultInvoker As New showDesignSearchResultDelegate(AddressOf Me.showDesignSearchResult)
         Me.BeginInvoke(showDesignSearchResultInvoker, designTable)
+        Dim designSummaryTable As DataTable = fetchDesignSummaryTableByDateRange(fromDate, toDate)
+        Dim showDesignSummarySearchResultInvoker As New showDesignSummarySearchResultDelegate(AddressOf Me.showDesignSummarySearchResult)
+        Me.BeginInvoke(showDesignSummarySearchResultInvoker, designSummaryTable)
     End Sub
 
     Function fetchDesignTableByDateRange(fromDate As Date, toDate As Date) As DataTable
@@ -2639,12 +3070,27 @@ Public Class AgnimainForm
         Dim toDateStr As String = toDate.ToString("yyyyMMdd")
 
         Dim designQuery As SqlCommand
-        designQuery = New SqlCommand("select c.CompName,d.* from design d,customer c where d.designDate>='" + fromDateStr + "' and d.designDate<='" + toDateStr + "' and d.CustNo=c.CustNo", dbConnection)
+        designQuery = New SqlCommand("select c.CompName,d.* from design d,customer c where cast(d.designDate as date)>='" + fromDateStr + "' and cast(d.designDate as date)<='" + toDateStr + "' and d.CustNo=c.CustNo", dbConnection)
 
         Dim designAdapter = New SqlDataAdapter()
         designAdapter.SelectCommand = designQuery
         Dim designDataSet = New DataSet
         designAdapter.Fill(designDataSet, "design")
+        Return designDataSet.Tables(0)
+    End Function
+
+    Function fetchDesignSummaryTableByDateRange(fromDate As Date, toDate As Date) As DataTable
+
+        Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
+        Dim toDateStr As String = toDate.ToString("yyyyMMdd")
+
+        Dim designQuery As SqlCommand
+        designQuery = New SqlCommand("select count(1) as designCount, isnull(sum(CASE WHEN d.Billed = 1 THEN d.Price ELSE 0 END),0) AS billedDesignAmount, isnull(sum(CASE WHEN d.Billed = 0 THEN d.Price ELSE 0 END),0) AS unbilledDesignAmount, isnull(sum(d.Price),0) as TotalDesignAmount from design d,customer c where cast(d.designDate as date)>='" + fromDateStr + "' and cast(d.designDate as date)<='" + toDateStr + "' and d.CustNo=c.CustNo", dbConnection)
+
+        Dim designAdapter = New SqlDataAdapter()
+        designAdapter.SelectCommand = designQuery
+        Dim designDataSet = New DataSet
+        designAdapter.Fill(designDataSet, "designSummary")
         Return designDataSet.Tables(0)
     End Function
 
@@ -2660,15 +3106,15 @@ Public Class AgnimainForm
     End Sub
 
     Sub fetchBillByDateRange(ByVal searchDataParam As Object)
-
         Dim searchData As SearchData = CType(searchDataParam, SearchData)
-
         Dim fromDate As Date = searchData.fromDate
         Dim toDate As Date = searchData.toDate
         Dim billTable As DataTable = fetchBillTableByDateRange(fromDate, toDate)
-
         Dim showBillSearchResultInvoker As New showBillSearchResultDelegate(AddressOf Me.showBillSearchResult)
         Me.BeginInvoke(showBillSearchResultInvoker, billTable)
+        Dim billSummaryTable As DataTable = fetchBillSummaryTableByDateRange(fromDate, toDate)
+        Dim showBillSummarySearchResultInvoker As New showBillSummarySearchResultDelegate(AddressOf Me.showBillSummarySearchResult)
+        Me.BeginInvoke(showBillSummarySearchResultInvoker, billSummaryTable)
     End Sub
 
     Function fetchBillTableByDateRange(fromDate As Date, toDate As Date) As DataTable
@@ -2681,7 +3127,7 @@ Public Class AgnimainForm
         billQuery = New SqlCommand("select c.CompName, b.BillNo, b.DisplayBillNo, b.BillDate, b.DesignCost, b.UnPaidAmountTillNow, b.CGST, b.CGST*b.DesignCost/100 as CGSTAmount, 
                             b.SGST, b.SGST*b.DesignCost/100 as SGSTAmount, b.IGST, b.IGST*b.DesignCost/100 as IGSTAmount, (b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100 as GSTAmount, ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost as DesignAmountGST, b.PaidAmount, 
                             ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost+b.UnPaidAmountTillNow as TotalAmount, 
-                            (((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost+b.UnPaidAmountTillNow)-b.PaidAmount as RemainingBalance, b.Cancelled from bill b, customer c where b.BillDate>='" + fromDateStr + "' and  b.BillDate<='" + toDateStr + "' and b.CustNo=c.CustNo", dbConnection)
+                            (((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost+b.UnPaidAmountTillNow)-b.PaidAmount as RemainingBalance, b.Cancelled from bill b, customer c where cast(b.BillDate as date)>='" + fromDateStr + "' and  cast(b.BillDate as date)<='" + toDateStr + "' and b.CustNo=c.CustNo", dbConnection)
 
         Dim billAdapter = New SqlDataAdapter()
         billAdapter.SelectCommand = billQuery
@@ -2690,63 +3136,123 @@ Public Class AgnimainForm
         Return billDataSet.Tables(0)
     End Function
 
+    Function fetchBillSummaryTableByDateRange(fromDate As Date, toDate As Date) As DataTable
 
-    Private Sub CheckBox5_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        'Try
+        Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
+        Dim toDateStr As String = toDate.ToString("yyyyMMdd")
 
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
+        Dim billQuery As SqlCommand
+
+        billQuery = New SqlCommand("select count(1) as BillsCount, isnull(sum(DesignAmountGST),0) as TotBilledAmount from(
+                            select ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost as DesignAmountGST from bill b, customer c where cast(b.BillDate as date)>='" + fromDateStr + "' and  cast(b.BillDate as date)<='" + toDateStr + "' and b.CustNo=c.CustNo) as billTable", dbConnection)
+
+        Dim billAdapter = New SqlDataAdapter()
+        billAdapter.SelectCommand = billQuery
+        Dim billDataSet = New DataSet
+        billAdapter.Fill(billDataSet, "bill")
+        Return billDataSet.Tables(0)
+    End Function
+
+    Sub searchPaymentByDateRange(fromDate As Date, toDate As Date)
+        Dim thread As Thread = New Thread(AddressOf fetchPaymentByDateRange)
+        thread.IsBackground = True
+
+        Dim searchData As SearchData = New SearchData
+        searchData.fromDate = fromDate
+        searchData.toDate = toDate
+
+        thread.Start(searchData)
     End Sub
 
+    Sub fetchPaymentByDateRange(ByVal searchDataParam As Object)
+        Dim searchData As SearchData = CType(searchDataParam, SearchData)
+        Dim fromDate As Date = searchData.fromDate
+        Dim toDate As Date = searchData.toDate
+        Dim paymentTable As DataTable = fetchPaymentTableByDateRange(fromDate, toDate)
+        Dim showPaymentSearchResultInvoker As New showPaymentSearchResultDelegate(AddressOf Me.showPaymentSearchResult)
+        Me.BeginInvoke(showPaymentSearchResultInvoker, paymentTable)
+        Dim paymentSummaryTable As DataTable = fetchPaymentSummaryTableByDateRange(fromDate, toDate)
+        Dim showPaymentSummarySearchResultInvoker As New showPaymentSummarySearchResultDelegate(AddressOf Me.showPaymentSummarySearchResult)
+        Me.BeginInvoke(showPaymentSummarySearchResultInvoker, paymentSummaryTable)
+    End Sub
+
+    Function fetchPaymentTableByDateRange(fromDate As Date, toDate As Date) As DataTable
+
+        Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
+        Dim toDateStr As String = toDate.ToString("yyyyMMdd")
+
+        Dim paymentQuery As SqlCommand
+        paymentQuery = New SqlCommand("select c.CompName, p.*, p.UnPaidBilledAmount - p.FinalPaidAmount as NetBalance, b.DisplayBillNo  from payment p, bill b, customer c where p.BillNo = b.BillNo and p.custno = c.custno and cast(p.PaymentDate as date)>='" + fromDateStr + "' and cast(p.PaymentDate as date)<='" + toDateStr + "'", dbConnection)
+
+        Dim paymentAdapter = New SqlDataAdapter()
+        paymentAdapter.SelectCommand = paymentQuery
+        Dim paymentDataSet = New DataSet
+        paymentAdapter.Fill(paymentDataSet, "payment")
+        Return paymentDataSet.Tables(0)
+    End Function
+
+    Function fetchPaymentSummaryTableByDateRange(fromDate As Date, toDate As Date) As DataTable
+
+        Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
+        Dim toDateStr As String = toDate.ToString("yyyyMMdd")
+
+        Dim paymentQuery As SqlCommand
+        paymentQuery = New SqlCommand("select count(1) as PaymentCount, isnull(sum(p.ActualPaidAmount),0) as TotPaidAmountActual, isnull(sum(p.FinalPaidAmount),0) as TotPaidAmountAfterAdjustment from payment p, bill b, customer c where p.BillNo = b.BillNo and p.custno = c.custno and cast(p.PaymentDate as date)>='" + fromDateStr + "' and cast(p.PaymentDate as date)<='" + toDateStr + "'", dbConnection)
+
+        Dim paymentAdapter = New SqlDataAdapter()
+        paymentAdapter.SelectCommand = paymentQuery
+        Dim paymentDataSet = New DataSet
+        paymentAdapter.Fill(paymentDataSet, "paymentSummary")
+        Return paymentDataSet.Tables(0)
+    End Function
 
     Private Sub cmbDesDesignList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbDesDesignList.SelectedIndexChanged
+         
+        If (cmbDesDesignList.SelectedIndex = -1 Or cmbDesDesignList.SelectedValue = -1) Then
+            resetDesignScreen()
+            Return
+        End If
 
-            If (cmbDesDesignList.SelectedIndex = -1 Or cmbDesDesignList.SelectedValue = -1) Then
-                resetDesignScreen()
-                Return
-            End If
+        Dim designNo As Integer = cmbDesDesignList.SelectedValue
+        Dim designSelectQuery = New SqlCommand("select * from design where DesignNo=" + designNo.ToString, dbConnection)
+        Dim designDataAdapter = New SqlDataAdapter()
+        designDataAdapter.SelectCommand = designSelectQuery
+        Dim designDataSet = New DataSet
+        designDataAdapter.Fill(designDataSet, "design")
+        Dim designTable = designDataSet.Tables(0)
 
-            Dim designNo As Integer = cmbDesDesignList.SelectedValue
-            Dim designSelectQuery = New SqlCommand("select * from design where DesignNo=" + designNo.ToString, dbConnection)
-            Dim designDataAdapter = New SqlDataAdapter()
-            designDataAdapter.SelectCommand = designSelectQuery
-            Dim designDataSet = New DataSet
-            designDataAdapter.Fill(designDataSet, "design")
-            Dim designTable = designDataSet.Tables(0)
-
-            If (designTable.Rows.Count > 0) Then
-                Dim dataRow = designTable.Rows(0)
-                txtDesHeight.Text = dataRow.Item("Height")
-                txtDesWidth.Text = dataRow.Item("Width")
-                txtDesNoOfColors.Text = dataRow.Item("Colors")
-                txtDesCostPerUnit.Text = dataRow.Item("UnitCost")
-                If dataRow.Item("Type").ToString.Equals("WP/Inch") Then
-                    radioDesWP.Checked = True
-                ElseIf dataRow.Item("Type").ToString.Equals("Working/Color") Then
-                    radioDesWorking.Checked = True
-                Else
-                    radioDesPrint.Checked = True
-                End If
-                If dataRow.Item("Image") Is DBNull.Value Then
-                    pbDesDesignImage.Image = Nothing
-                Else
-                    Dim designImage() As Byte = CType(dataRow.Item("Image"), Byte())
-                    Dim designImageBuffer As New MemoryStream(designImage)
-                    pbDesDesignImage.Image = Image.FromStream(designImageBuffer)
-                End If
-                txtDesCalculatedPrice.Text = dataRow.Item("Price")
-                dpDesDesignDate.Text = dataRow.Item("DesignDate")
+        If (designTable.Rows.Count > 0) Then
+            Dim dataRow = designTable.Rows(0)
+            txtDesHeight.Text = dataRow.Item("Height")
+            txtDesWidth.Text = dataRow.Item("Width")
+            txtDesNoOfColors.Text = dataRow.Item("Colors")
+            txtDesCostPerUnit.Text = dataRow.Item("UnitCost")
+            If dataRow.Item("Type").ToString.Equals("WP/Inch") Then
+                radioDesWP.Checked = True
+            ElseIf dataRow.Item("Type").ToString.Equals("Working/Color") Then
+                radioDesWorking.Checked = True
             Else
-                MessageBox.Show("No data found for design: " + cmbDesDesignList.Text)
+                radioDesPrint.Checked = True
             End If
+            If dataRow.Item("Image") Is DBNull.Value Then
+                pbDesDesignImage.Image = Nothing
+            Else
+                Dim designImage() As Byte = CType(dataRow.Item("Image"), Byte())
+                Dim designImageBuffer As New MemoryStream(designImage)
+                pbDesDesignImage.Image = Image.FromStream(designImageBuffer)
+            End If
+            txtDesCalculatedPrice.Text = dataRow.Item("Price")
+            dpDesDesignDate.Text = dataRow.Item("DesignDate")
+        Else
+            MessageBox.Show("No data found for design: " + cmbDesDesignList.Text)
+        End If
 
 
-            ''Catch ex As Exception
-            '    'MessageBox.Show("Message to Agni User:   " & ex.Message)
-            ''End 'Try
-        End Sub
+        ''Catch ex As Exception
+        '    'MessageBox.Show("Message to Agni User:   " & ex.Message)
+        ''End 'Try
+    End Sub
 
-    End Class
+End Class
 
 
