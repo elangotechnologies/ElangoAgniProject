@@ -1,5 +1,5 @@
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class AgnimainForm
+Partial Class AgniMainForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -19,7 +19,7 @@ Partial Class AgnimainForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AgnimainForm))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AgniMainForm))
         Me.Button38 = New System.Windows.Forms.Button()
         Me.Button37 = New System.Windows.Forms.Button()
         Me.tabHelp = New System.Windows.Forms.TabPage()
@@ -83,6 +83,7 @@ Partial Class AgnimainForm
         Me.DataGridTableStyle2 = New System.Windows.Forms.DataGridTableStyle()
         Me.dgBIllingBillDetails = New System.Windows.Forms.DataGrid()
         Me.DataGridTextBoxColumn45 = New System.Windows.Forms.DataGridTextBoxColumn()
+        Me.DataGridTextBoxColumn42 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn12 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn13 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn14 = New System.Windows.Forms.DataGridTextBoxColumn()
@@ -98,11 +99,9 @@ Partial Class AgnimainForm
         Me.DataGridTextBoxColumn16 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn17 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn18 = New System.Windows.Forms.DataGridTextBoxColumn()
-        Me.DataGridTextBoxColumn42 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridBoolColumn2 = New System.Windows.Forms.DataGridBoolColumn()
         Me.dgReportDesignGrid = New System.Windows.Forms.DataGrid()
         Me.DataGridTableStyle1 = New System.Windows.Forms.DataGridTableStyle()
-        Me.dgDesDesignDetails = New System.Windows.Forms.DataGrid()
         Me.DataGridTextBoxColumn44 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn1 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn2 = New System.Windows.Forms.DataGridTextBoxColumn()
@@ -134,6 +133,7 @@ Partial Class AgnimainForm
         Me.radioReportBillNo = New System.Windows.Forms.RadioButton()
         Me.cmbReportBillNoList = New System.Windows.Forms.ComboBox()
         Me.dgPaymentDetails = New System.Windows.Forms.DataGrid()
+        Me.dgDesDesignDetails = New System.Windows.Forms.DataGrid()
         Me.tabBilling = New System.Windows.Forms.TabPage()
         Me.Label44 = New System.Windows.Forms.Label()
         Me.txtBillingActualBillNo = New System.Windows.Forms.TextBox()
@@ -375,10 +375,10 @@ Partial Class AgnimainForm
         CType(Me.dgReportBillGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgBIllingBillDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgReportDesignGrid, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dgDesDesignDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbReportDesignImage, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox6.SuspendLayout()
         CType(Me.dgPaymentDetails, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgDesDesignDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabBilling.SuspendLayout()
         Me.tabDesign.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -416,7 +416,8 @@ Partial Class AgnimainForm
         Me.Button38.Name = "Button38"
         Me.Button38.Padding = New System.Windows.Forms.Padding(20, 0, 0, 0)
         Me.Button38.Size = New System.Drawing.Size(360, 42)
-        Me.Button38.TabIndex = 23
+        Me.Button38.TabIndex = 1000
+        Me.Button38.TabStop = False
         Me.Button38.Text = "Log Off"
         Me.Button38.UseVisualStyleBackColor = False
         '
@@ -432,7 +433,8 @@ Partial Class AgnimainForm
         Me.Button37.Name = "Button37"
         Me.Button37.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
         Me.Button37.Size = New System.Drawing.Size(160, 39)
-        Me.Button37.TabIndex = 22
+        Me.Button37.TabIndex = 1001
+        Me.Button37.TabStop = False
         Me.Button37.Text = "Exit"
         Me.Button37.UseVisualStyleBackColor = False
         '
@@ -466,6 +468,7 @@ Partial Class AgnimainForm
         Me.tabHelp.Padding = New System.Windows.Forms.Padding(4)
         Me.tabHelp.Size = New System.Drawing.Size(1703, 911)
         Me.tabHelp.TabIndex = 5
+        Me.tabHelp.Tag = "tagHelpTab"
         Me.tabHelp.Text = "Help"
         Me.tabHelp.ToolTipText = "Just Informations"
         '
@@ -697,6 +700,7 @@ Partial Class AgnimainForm
         Me.tabReports.Padding = New System.Windows.Forms.Padding(4)
         Me.tabReports.Size = New System.Drawing.Size(1703, 911)
         Me.tabReports.TabIndex = 4
+        Me.tabReports.Tag = "tagReportsTab"
         Me.tabReports.Text = "Reports"
         Me.tabReports.ToolTipText = "Search Records"
         '
@@ -975,9 +979,8 @@ Partial Class AgnimainForm
         '
         'DataGridTableStyle3
         '
-        Me.DataGridTableStyle3.DataGrid = Me.dgReportPaymentGrid
+        Me.DataGridTableStyle3.DataGrid = Me.dgPaymentDetails
         Me.DataGridTableStyle3.GridColumnStyles.AddRange(New System.Windows.Forms.DataGridColumnStyle() {Me.DataGridTextBoxColumn20, Me.DataGridTextBoxColumn21, Me.DataGridTextBoxColumn22, Me.DataGridTextBoxColumn23, Me.DataGridTextBoxColumn24, Me.DataGridTextBoxColumn25, Me.DataGridTextBoxColumn26, Me.DataGridTextBoxColumn27, Me.DataGridTextBoxColumn32, Me.DataGridTextBoxColumn33, Me.DataGridTextBoxColumn28, Me.DataGridTextBoxColumn29, Me.DataGridTextBoxColumn30, Me.DataGridTextBoxColumn31, Me.DataGridTextBoxColumn43})
-        Me.DataGridTableStyle3.GridLineColor = System.Drawing.SystemColors.Control
         Me.DataGridTableStyle3.HeaderForeColor = System.Drawing.SystemColors.ControlText
         Me.DataGridTableStyle3.MappingName = "payment"
         '
@@ -1116,11 +1119,11 @@ Partial Class AgnimainForm
         'txtReportDesignName
         '
         Me.txtReportDesignName.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtReportDesignName.Location = New System.Drawing.Point(257, 61)
+        Me.txtReportDesignName.Location = New System.Drawing.Point(649, 86)
         Me.txtReportDesignName.Margin = New System.Windows.Forms.Padding(4)
         Me.txtReportDesignName.Name = "txtReportDesignName"
         Me.txtReportDesignName.Size = New System.Drawing.Size(449, 37)
-        Me.txtReportDesignName.TabIndex = 77
+        Me.txtReportDesignName.TabIndex = 9
         '
         'lblReportDesignNo
         '
@@ -1167,12 +1170,9 @@ Partial Class AgnimainForm
         'DataGridTableStyle2
         '
         Me.DataGridTableStyle2.DataGrid = Me.dgReportBillGrid
-        Me.DataGridTableStyle2.GridColumnStyles.AddRange(New System.Windows.Forms.DataGridColumnStyle() {Me.DataGridTextBoxColumn45, Me.DataGridTextBoxColumn12, Me.DataGridTextBoxColumn13, Me.DataGridTextBoxColumn14, Me.DataGridTextBoxColumn15, Me.DataGridTextBoxColumn34, Me.DataGridTextBoxColumn35, Me.DataGridTextBoxColumn36, Me.DataGridTextBoxColumn37, Me.DataGridTextBoxColumn38, Me.DataGridTextBoxColumn39, Me.DataGridTextBoxColumn41, Me.DataGridTextBoxColumn40, Me.DataGridTextBoxColumn16, Me.DataGridTextBoxColumn17, Me.DataGridTextBoxColumn18, Me.DataGridTextBoxColumn42, Me.DataGridBoolColumn2})
-        Me.DataGridTableStyle2.GridLineColor = System.Drawing.SystemColors.Control
-        Me.DataGridTableStyle2.HeaderBackColor = System.Drawing.SystemColors.Control
+        Me.DataGridTableStyle2.GridColumnStyles.AddRange(New System.Windows.Forms.DataGridColumnStyle() {Me.DataGridTextBoxColumn45, Me.DataGridTextBoxColumn42, Me.DataGridTextBoxColumn12, Me.DataGridTextBoxColumn13, Me.DataGridTextBoxColumn14, Me.DataGridTextBoxColumn15, Me.DataGridTextBoxColumn34, Me.DataGridTextBoxColumn35, Me.DataGridTextBoxColumn36, Me.DataGridTextBoxColumn37, Me.DataGridTextBoxColumn38, Me.DataGridTextBoxColumn39, Me.DataGridTextBoxColumn41, Me.DataGridTextBoxColumn40, Me.DataGridTextBoxColumn16, Me.DataGridTextBoxColumn17, Me.DataGridTextBoxColumn18, Me.DataGridBoolColumn2})
         Me.DataGridTableStyle2.HeaderFont = New System.Drawing.Font("Tahoma", 9.75!)
         Me.DataGridTableStyle2.HeaderForeColor = System.Drawing.SystemColors.ControlText
-        Me.DataGridTableStyle2.LinkColor = System.Drawing.SystemColors.HotTrack
         Me.DataGridTableStyle2.MappingName = "bill"
         '
         'dgBIllingBillDetails
@@ -1206,6 +1206,7 @@ Partial Class AgnimainForm
         Me.dgBIllingBillDetails.Size = New System.Drawing.Size(1548, 283)
         Me.dgBIllingBillDetails.TabIndex = 26
         Me.dgBIllingBillDetails.TableStyles.AddRange(New System.Windows.Forms.DataGridTableStyle() {Me.DataGridTableStyle2})
+        Me.dgBIllingBillDetails.TabStop = False
         '
         'DataGridTextBoxColumn45
         '
@@ -1215,13 +1216,21 @@ Partial Class AgnimainForm
         Me.DataGridTextBoxColumn45.MappingName = "CompName"
         Me.DataGridTextBoxColumn45.Width = 150
         '
+        'DataGridTextBoxColumn42
+        '
+        Me.DataGridTextBoxColumn42.Format = ""
+        Me.DataGridTextBoxColumn42.FormatInfo = Nothing
+        Me.DataGridTextBoxColumn42.HeaderText = "Bill No"
+        Me.DataGridTextBoxColumn42.MappingName = "DisplayBillNO"
+        Me.DataGridTextBoxColumn42.Width = 75
+        '
         'DataGridTextBoxColumn12
         '
         Me.DataGridTextBoxColumn12.Format = ""
         Me.DataGridTextBoxColumn12.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn12.HeaderText = "Bill No"
+        Me.DataGridTextBoxColumn12.HeaderText = "Internal No"
         Me.DataGridTextBoxColumn12.MappingName = "BillNo"
-        Me.DataGridTextBoxColumn12.Width = 75
+        Me.DataGridTextBoxColumn12.Width = 90
         '
         'DataGridTextBoxColumn13
         '
@@ -1335,14 +1344,6 @@ Partial Class AgnimainForm
         Me.DataGridTextBoxColumn18.MappingName = "RemainingBalance"
         Me.DataGridTextBoxColumn18.Width = 75
         '
-        'DataGridTextBoxColumn42
-        '
-        Me.DataGridTextBoxColumn42.Format = ""
-        Me.DataGridTextBoxColumn42.FormatInfo = Nothing
-        Me.DataGridTextBoxColumn42.HeaderText = "Display Bill No"
-        Me.DataGridTextBoxColumn42.MappingName = "DisplayBillNO"
-        Me.DataGridTextBoxColumn42.Width = 75
-        '
         'DataGridBoolColumn2
         '
         Me.DataGridBoolColumn2.HeaderText = "Cancelled"
@@ -1382,44 +1383,11 @@ Partial Class AgnimainForm
         '
         'DataGridTableStyle1
         '
-        Me.DataGridTableStyle1.DataGrid = Me.dgReportDesignGrid
+        Me.DataGridTableStyle1.DataGrid = Me.dgDesDesignDetails
         Me.DataGridTableStyle1.GridColumnStyles.AddRange(New System.Windows.Forms.DataGridColumnStyle() {Me.DataGridTextBoxColumn44, Me.DataGridTextBoxColumn1, Me.DataGridTextBoxColumn2, Me.DataGridTextBoxColumn7, Me.DataGridTextBoxColumn6, Me.DataGridTextBoxColumn4, Me.DataGridTextBoxColumn3, Me.DataGridTextBoxColumn5, Me.DataGridTextBoxColumn8, Me.DataGridTextBoxColumn9, Me.DataGridTextBoxColumn10, Me.DataGridBoolColumn1, Me.DataGridTextBoxColumn11})
-        Me.DataGridTableStyle1.GridLineColor = System.Drawing.SystemColors.Control
-        Me.DataGridTableStyle1.HeaderBackColor = System.Drawing.SystemColors.Control
         Me.DataGridTableStyle1.HeaderFont = New System.Drawing.Font("Tahoma", 9.0!)
         Me.DataGridTableStyle1.HeaderForeColor = System.Drawing.SystemColors.ControlText
-        Me.DataGridTableStyle1.LinkColor = System.Drawing.SystemColors.HotTrack
         Me.DataGridTableStyle1.MappingName = "design"
-        '
-        'dgDesDesignDetails
-        '
-        Me.dgDesDesignDetails.AllowSorting = False
-        Me.dgDesDesignDetails.AlternatingBackColor = System.Drawing.Color.GhostWhite
-        Me.dgDesDesignDetails.BackColor = System.Drawing.Color.GhostWhite
-        Me.dgDesDesignDetails.BackgroundColor = System.Drawing.Color.Lavender
-        Me.dgDesDesignDetails.CaptionBackColor = System.Drawing.Color.RoyalBlue
-        Me.dgDesDesignDetails.CaptionForeColor = System.Drawing.Color.White
-        Me.dgDesDesignDetails.CaptionText = "Design Details"
-        Me.dgDesDesignDetails.DataMember = ""
-        Me.dgDesDesignDetails.FlatMode = True
-        Me.dgDesDesignDetails.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dgDesDesignDetails.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.dgDesDesignDetails.GridLineColor = System.Drawing.Color.RoyalBlue
-        Me.dgDesDesignDetails.HeaderBackColor = System.Drawing.Color.MidnightBlue
-        Me.dgDesDesignDetails.HeaderFont = New System.Drawing.Font("Tahoma", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dgDesDesignDetails.HeaderForeColor = System.Drawing.Color.Lavender
-        Me.dgDesDesignDetails.LinkColor = System.Drawing.Color.Teal
-        Me.dgDesDesignDetails.Location = New System.Drawing.Point(67, 429)
-        Me.dgDesDesignDetails.Margin = New System.Windows.Forms.Padding(4)
-        Me.dgDesDesignDetails.Name = "dgDesDesignDetails"
-        Me.dgDesDesignDetails.ParentRowsBackColor = System.Drawing.Color.Lavender
-        Me.dgDesDesignDetails.ParentRowsForeColor = System.Drawing.Color.MidnightBlue
-        Me.dgDesDesignDetails.ReadOnly = True
-        Me.dgDesDesignDetails.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgDesDesignDetails.SelectionForeColor = System.Drawing.Color.PaleGreen
-        Me.dgDesDesignDetails.Size = New System.Drawing.Size(1632, 361)
-        Me.dgDesDesignDetails.TabIndex = 128
-        Me.dgDesDesignDetails.TableStyles.AddRange(New System.Windows.Forms.DataGridTableStyle() {Me.DataGridTableStyle1})
         '
         'DataGridTextBoxColumn44
         '
@@ -1571,7 +1539,7 @@ Partial Class AgnimainForm
         Me.dpReportToDate.Margin = New System.Windows.Forms.Padding(4)
         Me.dpReportToDate.Name = "dpReportToDate"
         Me.dpReportToDate.Size = New System.Drawing.Size(449, 35)
-        Me.dpReportToDate.TabIndex = 72
+        Me.dpReportToDate.TabIndex = 11
         Me.dpReportToDate.Visible = False
         '
         'dpReportFromDate
@@ -1583,7 +1551,7 @@ Partial Class AgnimainForm
         Me.dpReportFromDate.Margin = New System.Windows.Forms.Padding(4)
         Me.dpReportFromDate.Name = "dpReportFromDate"
         Me.dpReportFromDate.Size = New System.Drawing.Size(449, 35)
-        Me.dpReportFromDate.TabIndex = 70
+        Me.dpReportFromDate.TabIndex = 10
         Me.dpReportFromDate.Visible = False
         '
         'cbReportExtraDateFilter
@@ -1595,11 +1563,11 @@ Partial Class AgnimainForm
         Me.cbReportExtraDateFilter.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.cbReportExtraDateFilter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green
         Me.cbReportExtraDateFilter.ForeColor = System.Drawing.Color.Black
-        Me.cbReportExtraDateFilter.Location = New System.Drawing.Point(1142, 11)
+        Me.cbReportExtraDateFilter.Location = New System.Drawing.Point(1142, 16)
         Me.cbReportExtraDateFilter.Margin = New System.Windows.Forms.Padding(4)
         Me.cbReportExtraDateFilter.Name = "cbReportExtraDateFilter"
         Me.cbReportExtraDateFilter.Size = New System.Drawing.Size(193, 33)
-        Me.cbReportExtraDateFilter.TabIndex = 68
+        Me.cbReportExtraDateFilter.TabIndex = 6
         Me.cbReportExtraDateFilter.Text = "Filter By Date"
         Me.cbReportExtraDateFilter.UseVisualStyleBackColor = True
         '
@@ -1607,7 +1575,7 @@ Partial Class AgnimainForm
         '
         Me.Label111.AutoSize = True
         Me.Label111.ForeColor = System.Drawing.Color.Black
-        Me.Label111.Location = New System.Drawing.Point(11, 10)
+        Me.Label111.Location = New System.Drawing.Point(11, 17)
         Me.Label111.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label111.Name = "Label111"
         Me.Label111.Size = New System.Drawing.Size(212, 29)
@@ -1627,7 +1595,7 @@ Partial Class AgnimainForm
         Me.btnReportSearch.Name = "btnReportSearch"
         Me.btnReportSearch.Padding = New System.Windows.Forms.Padding(4, 0, 0, 0)
         Me.btnReportSearch.Size = New System.Drawing.Size(109, 39)
-        Me.btnReportSearch.TabIndex = 8
+        Me.btnReportSearch.TabIndex = 12
         Me.btnReportSearch.Text = "Search"
         Me.btnReportSearch.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnReportSearch.UseVisualStyleBackColor = False
@@ -1650,11 +1618,11 @@ Partial Class AgnimainForm
         Me.cmbReportCustomerList.DisplayMember = "CompName"
         Me.cmbReportCustomerList.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbReportCustomerList.FormattingEnabled = True
-        Me.cmbReportCustomerList.Location = New System.Drawing.Point(257, 63)
+        Me.cmbReportCustomerList.Location = New System.Drawing.Point(155, 86)
         Me.cmbReportCustomerList.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbReportCustomerList.Name = "cmbReportCustomerList"
         Me.cmbReportCustomerList.Size = New System.Drawing.Size(449, 37)
-        Me.cmbReportCustomerList.TabIndex = 0
+        Me.cmbReportCustomerList.TabIndex = 7
         Me.cmbReportCustomerList.ValueMember = "CustNo"
         '
         'pbReportDesignImage
@@ -1676,35 +1644,37 @@ Partial Class AgnimainForm
         Me.GroupBox6.Controls.Add(Me.radioReportDate)
         Me.GroupBox6.Controls.Add(Me.radioReportCustName)
         Me.GroupBox6.Controls.Add(Me.radioReportBillNo)
-        Me.GroupBox6.Location = New System.Drawing.Point(239, -8)
-        Me.GroupBox6.Margin = New System.Windows.Forms.Padding(4)
+        Me.GroupBox6.Location = New System.Drawing.Point(239, -1)
+        Me.GroupBox6.Margin = New System.Windows.Forms.Padding(0)
         Me.GroupBox6.Name = "GroupBox6"
         Me.GroupBox6.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox6.Size = New System.Drawing.Size(876, 54)
-        Me.GroupBox6.TabIndex = 12
+        Me.GroupBox6.TabIndex = 1
         Me.GroupBox6.TabStop = False
         '
         'radioReportDesignName
         '
         Me.radioReportDesignName.AutoSize = True
+        Me.radioReportDesignName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.radioReportDesignName.ForeColor = System.Drawing.Color.Black
         Me.radioReportDesignName.Location = New System.Drawing.Point(657, 18)
         Me.radioReportDesignName.Margin = New System.Windows.Forms.Padding(4)
         Me.radioReportDesignName.Name = "radioReportDesignName"
-        Me.radioReportDesignName.Size = New System.Drawing.Size(192, 33)
-        Me.radioReportDesignName.TabIndex = 14
+        Me.radioReportDesignName.Size = New System.Drawing.Size(151, 29)
+        Me.radioReportDesignName.TabIndex = 5
         Me.radioReportDesignName.Text = "Design Name"
         Me.radioReportDesignName.UseVisualStyleBackColor = True
         '
         'radioReportDate
         '
         Me.radioReportDate.AutoSize = True
+        Me.radioReportDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.radioReportDate.ForeColor = System.Drawing.Color.Black
-        Me.radioReportDate.Location = New System.Drawing.Point(262, 18)
+        Me.radioReportDate.Location = New System.Drawing.Point(260, 17)
         Me.radioReportDate.Margin = New System.Windows.Forms.Padding(4)
         Me.radioReportDate.Name = "radioReportDate"
-        Me.radioReportDate.Size = New System.Drawing.Size(171, 33)
-        Me.radioReportDate.TabIndex = 13
+        Me.radioReportDate.Size = New System.Drawing.Size(136, 29)
+        Me.radioReportDate.TabIndex = 2
         Me.radioReportDate.Text = "Date Range"
         Me.radioReportDate.UseVisualStyleBackColor = True
         '
@@ -1712,12 +1682,13 @@ Partial Class AgnimainForm
         '
         Me.radioReportCustName.AutoSize = True
         Me.radioReportCustName.Checked = True
+        Me.radioReportCustName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.radioReportCustName.ForeColor = System.Drawing.Color.Black
         Me.radioReportCustName.Location = New System.Drawing.Point(21, 17)
         Me.radioReportCustName.Margin = New System.Windows.Forms.Padding(4)
         Me.radioReportCustName.Name = "radioReportCustName"
-        Me.radioReportCustName.Size = New System.Drawing.Size(222, 33)
-        Me.radioReportCustName.TabIndex = 12
+        Me.radioReportCustName.Size = New System.Drawing.Size(175, 29)
+        Me.radioReportCustName.TabIndex = 2
         Me.radioReportCustName.TabStop = True
         Me.radioReportCustName.Text = "Customer Name"
         Me.radioReportCustName.UseVisualStyleBackColor = True
@@ -1725,12 +1696,13 @@ Partial Class AgnimainForm
         'radioReportBillNo
         '
         Me.radioReportBillNo.AutoSize = True
+        Me.radioReportBillNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.radioReportBillNo.ForeColor = System.Drawing.Color.Black
         Me.radioReportBillNo.Location = New System.Drawing.Point(457, 18)
         Me.radioReportBillNo.Margin = New System.Windows.Forms.Padding(4)
         Me.radioReportBillNo.Name = "radioReportBillNo"
-        Me.radioReportBillNo.Size = New System.Drawing.Size(172, 33)
-        Me.radioReportBillNo.TabIndex = 12
+        Me.radioReportBillNo.Size = New System.Drawing.Size(132, 29)
+        Me.radioReportBillNo.TabIndex = 4
         Me.radioReportBillNo.Text = "Bill Number"
         Me.radioReportBillNo.UseVisualStyleBackColor = True
         '
@@ -1741,11 +1713,11 @@ Partial Class AgnimainForm
         Me.cmbReportBillNoList.DisplayMember = "DisplayBillNo"
         Me.cmbReportBillNoList.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbReportBillNoList.FormattingEnabled = True
-        Me.cmbReportBillNoList.Location = New System.Drawing.Point(257, 63)
+        Me.cmbReportBillNoList.Location = New System.Drawing.Point(257, 61)
         Me.cmbReportBillNoList.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbReportBillNoList.Name = "cmbReportBillNoList"
         Me.cmbReportBillNoList.Size = New System.Drawing.Size(449, 37)
-        Me.cmbReportBillNoList.TabIndex = 0
+        Me.cmbReportBillNoList.TabIndex = 8
         Me.cmbReportBillNoList.ValueMember = "BillNo"
         Me.cmbReportBillNoList.Visible = False
         '
@@ -1778,6 +1750,38 @@ Partial Class AgnimainForm
         Me.dgPaymentDetails.Size = New System.Drawing.Size(1681, 298)
         Me.dgPaymentDetails.TabIndex = 138
         Me.dgPaymentDetails.TableStyles.AddRange(New System.Windows.Forms.DataGridTableStyle() {Me.DataGridTableStyle3})
+        Me.dgPaymentDetails.TabStop = False
+        '
+        'dgDesDesignDetails
+        '
+        Me.dgDesDesignDetails.AllowSorting = False
+        Me.dgDesDesignDetails.AlternatingBackColor = System.Drawing.Color.GhostWhite
+        Me.dgDesDesignDetails.BackColor = System.Drawing.Color.GhostWhite
+        Me.dgDesDesignDetails.BackgroundColor = System.Drawing.Color.Lavender
+        Me.dgDesDesignDetails.CaptionBackColor = System.Drawing.Color.RoyalBlue
+        Me.dgDesDesignDetails.CaptionForeColor = System.Drawing.Color.White
+        Me.dgDesDesignDetails.CaptionText = "Design Details"
+        Me.dgDesDesignDetails.DataMember = ""
+        Me.dgDesDesignDetails.FlatMode = True
+        Me.dgDesDesignDetails.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgDesDesignDetails.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.dgDesDesignDetails.GridLineColor = System.Drawing.Color.RoyalBlue
+        Me.dgDesDesignDetails.HeaderBackColor = System.Drawing.Color.MidnightBlue
+        Me.dgDesDesignDetails.HeaderFont = New System.Drawing.Font("Tahoma", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgDesDesignDetails.HeaderForeColor = System.Drawing.Color.Lavender
+        Me.dgDesDesignDetails.LinkColor = System.Drawing.Color.Teal
+        Me.dgDesDesignDetails.Location = New System.Drawing.Point(67, 429)
+        Me.dgDesDesignDetails.Margin = New System.Windows.Forms.Padding(4)
+        Me.dgDesDesignDetails.Name = "dgDesDesignDetails"
+        Me.dgDesDesignDetails.ParentRowsBackColor = System.Drawing.Color.Lavender
+        Me.dgDesDesignDetails.ParentRowsForeColor = System.Drawing.Color.MidnightBlue
+        Me.dgDesDesignDetails.ReadOnly = True
+        Me.dgDesDesignDetails.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgDesDesignDetails.SelectionForeColor = System.Drawing.Color.PaleGreen
+        Me.dgDesDesignDetails.Size = New System.Drawing.Size(1632, 361)
+        Me.dgDesDesignDetails.TabIndex = 128
+        Me.dgDesDesignDetails.TableStyles.AddRange(New System.Windows.Forms.DataGridTableStyle() {Me.DataGridTableStyle1})
+        Me.dgDesDesignDetails.TabStop = False
         '
         'tabBilling
         '
@@ -1837,6 +1841,7 @@ Partial Class AgnimainForm
         Me.tabBilling.Padding = New System.Windows.Forms.Padding(4)
         Me.tabBilling.Size = New System.Drawing.Size(1703, 911)
         Me.tabBilling.TabIndex = 2
+        Me.tabBilling.Tag = "tagBillingTab"
         Me.tabBilling.Text = "Billing"
         Me.tabBilling.ToolTipText = "Bill Operations"
         '
@@ -1845,12 +1850,12 @@ Partial Class AgnimainForm
         Me.Label44.AutoSize = True
         Me.Label44.Font = New System.Drawing.Font("Garamond", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label44.ForeColor = System.Drawing.Color.Black
-        Me.Label44.Location = New System.Drawing.Point(636, 79)
+        Me.Label44.Location = New System.Drawing.Point(647, 79)
         Me.Label44.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label44.Name = "Label44"
-        Me.Label44.Size = New System.Drawing.Size(95, 16)
+        Me.Label44.Size = New System.Drawing.Size(79, 16)
         Me.Label44.TabIndex = 166
-        Me.Label44.Text = "Actual Bill No"
+        Me.Label44.Text = "Internal No"
         '
         'txtBillingActualBillNo
         '
@@ -1861,6 +1866,7 @@ Partial Class AgnimainForm
         Me.txtBillingActualBillNo.ReadOnly = True
         Me.txtBillingActualBillNo.Size = New System.Drawing.Size(96, 34)
         Me.txtBillingActualBillNo.TabIndex = 165
+        Me.txtBillingActualBillNo.TabStop = False
         '
         'Label11
         '
@@ -1895,6 +1901,7 @@ Partial Class AgnimainForm
         Me.txtBillingIGSTPercent.ReadOnly = True
         Me.txtBillingIGSTPercent.Size = New System.Drawing.Size(76, 27)
         Me.txtBillingIGSTPercent.TabIndex = 152
+        Me.txtBillingIGSTPercent.TabStop = False
         '
         'txtBillingSGSTPercent
         '
@@ -1905,6 +1912,7 @@ Partial Class AgnimainForm
         Me.txtBillingSGSTPercent.ReadOnly = True
         Me.txtBillingSGSTPercent.Size = New System.Drawing.Size(76, 27)
         Me.txtBillingSGSTPercent.TabIndex = 151
+        Me.txtBillingSGSTPercent.TabStop = False
         '
         'txtBillingCGSTPercent
         '
@@ -1915,6 +1923,7 @@ Partial Class AgnimainForm
         Me.txtBillingCGSTPercent.ReadOnly = True
         Me.txtBillingCGSTPercent.Size = New System.Drawing.Size(76, 27)
         Me.txtBillingCGSTPercent.TabIndex = 150
+        Me.txtBillingCGSTPercent.TabStop = False
         '
         'Label8
         '
@@ -1948,7 +1957,8 @@ Partial Class AgnimainForm
         Me.txtBillingDesignAmoutAfterGST.Name = "txtBillingDesignAmoutAfterGST"
         Me.txtBillingDesignAmoutAfterGST.ReadOnly = True
         Me.txtBillingDesignAmoutAfterGST.Size = New System.Drawing.Size(420, 34)
-        Me.txtBillingDesignAmoutAfterGST.TabIndex = 147
+        Me.txtBillingDesignAmoutAfterGST.TabIndex = 303
+        Me.txtBillingDesignAmoutAfterGST.TabStop = False
         '
         'Label6
         '
@@ -1982,7 +1992,8 @@ Partial Class AgnimainForm
         Me.txtBillingTotalGSTAmount.Name = "txtBillingTotalGSTAmount"
         Me.txtBillingTotalGSTAmount.ReadOnly = True
         Me.txtBillingTotalGSTAmount.Size = New System.Drawing.Size(420, 34)
-        Me.txtBillingTotalGSTAmount.TabIndex = 144
+        Me.txtBillingTotalGSTAmount.TabIndex = 302
+        Me.txtBillingTotalGSTAmount.TabStop = False
         '
         'Label4
         '
@@ -2005,6 +2016,7 @@ Partial Class AgnimainForm
         Me.txtBillingIGSTAmount.ReadOnly = True
         Me.txtBillingIGSTAmount.Size = New System.Drawing.Size(157, 27)
         Me.txtBillingIGSTAmount.TabIndex = 142
+        Me.txtBillingIGSTAmount.TabStop = False
         '
         'Label3
         '
@@ -2027,6 +2039,7 @@ Partial Class AgnimainForm
         Me.txtBillingSGSTAmount.ReadOnly = True
         Me.txtBillingSGSTAmount.Size = New System.Drawing.Size(157, 27)
         Me.txtBillingSGSTAmount.TabIndex = 140
+        Me.txtBillingSGSTAmount.TabStop = False
         '
         'Label2
         '
@@ -2049,6 +2062,7 @@ Partial Class AgnimainForm
         Me.txtBillingCGSTAmount.ReadOnly = True
         Me.txtBillingCGSTAmount.Size = New System.Drawing.Size(157, 27)
         Me.txtBillingCGSTAmount.TabIndex = 138
+        Me.txtBillingCGSTAmount.TabStop = False
         '
         'lblCancelledBillIndicator
         '
@@ -2073,7 +2087,7 @@ Partial Class AgnimainForm
         Me.btnBillingCancelCreateBill.Name = "btnBillingCancelCreateBill"
         Me.btnBillingCancelCreateBill.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
         Me.btnBillingCancelCreateBill.Size = New System.Drawing.Size(121, 41)
-        Me.btnBillingCancelCreateBill.TabIndex = 136
+        Me.btnBillingCancelCreateBill.TabIndex = 5
         Me.btnBillingCancelCreateBill.Text = "Back"
         Me.btnBillingCancelCreateBill.UseVisualStyleBackColor = True
         Me.btnBillingCancelCreateBill.Visible = False
@@ -2088,7 +2102,7 @@ Partial Class AgnimainForm
         Me.btnBillingConfirmCreateBill.Name = "btnBillingConfirmCreateBill"
         Me.btnBillingConfirmCreateBill.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
         Me.btnBillingConfirmCreateBill.Size = New System.Drawing.Size(108, 41)
-        Me.btnBillingConfirmCreateBill.TabIndex = 135
+        Me.btnBillingConfirmCreateBill.TabIndex = 4
         Me.btnBillingConfirmCreateBill.Text = "Confirm"
         Me.btnBillingConfirmCreateBill.UseVisualStyleBackColor = True
         Me.btnBillingConfirmCreateBill.Visible = False
@@ -2103,7 +2117,7 @@ Partial Class AgnimainForm
         Me.btnBillingCreateBill.Name = "btnBillingCreateBill"
         Me.btnBillingCreateBill.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
         Me.btnBillingCreateBill.Size = New System.Drawing.Size(198, 41)
-        Me.btnBillingCreateBill.TabIndex = 134
+        Me.btnBillingCreateBill.TabIndex = 3
         Me.btnBillingCreateBill.Text = "Create New Bill"
         Me.btnBillingCreateBill.UseVisualStyleBackColor = True
         '
@@ -2127,7 +2141,8 @@ Partial Class AgnimainForm
         Me.txtBillingPaidAmount.Name = "txtBillingPaidAmount"
         Me.txtBillingPaidAmount.ReadOnly = True
         Me.txtBillingPaidAmount.Size = New System.Drawing.Size(420, 34)
-        Me.txtBillingPaidAmount.TabIndex = 133
+        Me.txtBillingPaidAmount.TabIndex = 8
+        Me.txtBillingPaidAmount.TabStop = False
         '
         'btnBillingCancelBill
         '
@@ -2139,7 +2154,7 @@ Partial Class AgnimainForm
         Me.btnBillingCancelBill.Name = "btnBillingCancelBill"
         Me.btnBillingCancelBill.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
         Me.btnBillingCancelBill.Size = New System.Drawing.Size(219, 41)
-        Me.btnBillingCancelBill.TabIndex = 122
+        Me.btnBillingCancelBill.TabIndex = 6
         Me.btnBillingCancelBill.Text = "Mark Cancelled"
         Me.btnBillingCancelBill.UseVisualStyleBackColor = True
         '
@@ -2151,7 +2166,7 @@ Partial Class AgnimainForm
         Me.btnBilingOutstandingBalance.Margin = New System.Windows.Forms.Padding(4)
         Me.btnBilingOutstandingBalance.Name = "btnBilingOutstandingBalance"
         Me.btnBilingOutstandingBalance.Size = New System.Drawing.Size(294, 45)
-        Me.btnBilingOutstandingBalance.TabIndex = 121
+        Me.btnBilingOutstandingBalance.TabIndex = 9
         Me.btnBilingOutstandingBalance.Text = "Outstanding Balance"
         Me.btnBilingOutstandingBalance.UseVisualStyleBackColor = True
         '
@@ -2166,7 +2181,7 @@ Partial Class AgnimainForm
         Me.btnBillingClear.Name = "btnBillingClear"
         Me.btnBillingClear.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
         Me.btnBillingClear.Size = New System.Drawing.Size(169, 41)
-        Me.btnBillingClear.TabIndex = 118
+        Me.btnBillingClear.TabIndex = 7
         Me.btnBillingClear.Text = "Clear"
         Me.btnBillingClear.UseVisualStyleBackColor = True
         '
@@ -2181,7 +2196,7 @@ Partial Class AgnimainForm
         Me.btnBillingPrintBill.Name = "btnBillingPrintBill"
         Me.btnBillingPrintBill.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
         Me.btnBillingPrintBill.Size = New System.Drawing.Size(315, 62)
-        Me.btnBillingPrintBill.TabIndex = 23
+        Me.btnBillingPrintBill.TabIndex = 8
         Me.btnBillingPrintBill.Text = "Print This Bill"
         Me.btnBillingPrintBill.UseVisualStyleBackColor = True
         '
@@ -2217,7 +2232,8 @@ Partial Class AgnimainForm
         Me.txtBillingDesignAmoutBeforeGST.Name = "txtBillingDesignAmoutBeforeGST"
         Me.txtBillingDesignAmoutBeforeGST.ReadOnly = True
         Me.txtBillingDesignAmoutBeforeGST.Size = New System.Drawing.Size(420, 34)
-        Me.txtBillingDesignAmoutBeforeGST.TabIndex = 13
+        Me.txtBillingDesignAmoutBeforeGST.TabIndex = 301
+        Me.txtBillingDesignAmoutBeforeGST.TabStop = False
         '
         'txtBillingPrevBalance
         '
@@ -2227,7 +2243,8 @@ Partial Class AgnimainForm
         Me.txtBillingPrevBalance.Name = "txtBillingPrevBalance"
         Me.txtBillingPrevBalance.ReadOnly = True
         Me.txtBillingPrevBalance.Size = New System.Drawing.Size(420, 34)
-        Me.txtBillingPrevBalance.TabIndex = 12
+        Me.txtBillingPrevBalance.TabIndex = 300
+        Me.txtBillingPrevBalance.TabStop = False
         '
         'dpBillingBillDate
         '
@@ -2247,7 +2264,7 @@ Partial Class AgnimainForm
         Me.dpBillingBillDate.Name = "dpBillingBillDate"
         Me.dpBillingBillDate.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.dpBillingBillDate.Size = New System.Drawing.Size(420, 34)
-        Me.dpBillingBillDate.TabIndex = 11
+        Me.dpBillingBillDate.TabIndex = 2
         '
         'Label31
         '
@@ -2281,7 +2298,8 @@ Partial Class AgnimainForm
         Me.txtBillingRemainingBalance.Name = "txtBillingRemainingBalance"
         Me.txtBillingRemainingBalance.ReadOnly = True
         Me.txtBillingRemainingBalance.Size = New System.Drawing.Size(420, 34)
-        Me.txtBillingRemainingBalance.TabIndex = 16
+        Me.txtBillingRemainingBalance.TabIndex = 9
+        Me.txtBillingRemainingBalance.TabStop = False
         '
         'txtBillingTotalAmount
         '
@@ -2291,7 +2309,8 @@ Partial Class AgnimainForm
         Me.txtBillingTotalAmount.Name = "txtBillingTotalAmount"
         Me.txtBillingTotalAmount.ReadOnly = True
         Me.txtBillingTotalAmount.Size = New System.Drawing.Size(420, 34)
-        Me.txtBillingTotalAmount.TabIndex = 14
+        Me.txtBillingTotalAmount.TabIndex = 304
+        Me.txtBillingTotalAmount.TabStop = False
         '
         'Label26
         '
@@ -2411,6 +2430,7 @@ Partial Class AgnimainForm
         Me.tabDesign.Padding = New System.Windows.Forms.Padding(4)
         Me.tabDesign.Size = New System.Drawing.Size(1703, 911)
         Me.tabDesign.TabIndex = 1
+        Me.tabDesign.Tag = "tagDesignTab"
         Me.tabDesign.Text = "Designs"
         Me.tabDesign.ToolTipText = "Design Details"
         '
@@ -2424,7 +2444,7 @@ Partial Class AgnimainForm
         Me.cmbDesDesignList.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbDesDesignList.Name = "cmbDesDesignList"
         Me.cmbDesDesignList.Size = New System.Drawing.Size(427, 38)
-        Me.cmbDesDesignList.TabIndex = 127
+        Me.cmbDesDesignList.TabIndex = 1
         Me.cmbDesDesignList.ValueMember = "DesignNo"
         '
         'btnDesClear
@@ -2438,7 +2458,7 @@ Partial Class AgnimainForm
         Me.btnDesClear.Name = "btnDesClear"
         Me.btnDesClear.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
         Me.btnDesClear.Size = New System.Drawing.Size(157, 38)
-        Me.btnDesClear.TabIndex = 111
+        Me.btnDesClear.TabIndex = 12
         Me.btnDesClear.Text = "Clear"
         Me.btnDesClear.UseVisualStyleBackColor = False
         '
@@ -2466,7 +2486,7 @@ Partial Class AgnimainForm
         Me.cmbDesCustomerList.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbDesCustomerList.Name = "cmbDesCustomerList"
         Me.cmbDesCustomerList.Size = New System.Drawing.Size(427, 38)
-        Me.cmbDesCustomerList.TabIndex = 1
+        Me.cmbDesCustomerList.TabIndex = 0
         Me.cmbDesCustomerList.ValueMember = "CustNo"
         '
         'Label28
@@ -2478,7 +2498,7 @@ Partial Class AgnimainForm
         Me.Label28.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(175, 31)
-        Me.Label28.TabIndex = 104
+        Me.Label28.TabIndex = 32
         Me.Label28.Text = "Design Date"
         '
         'dpDesDesignDate
@@ -2490,7 +2510,7 @@ Partial Class AgnimainForm
         Me.dpDesDesignDate.Margin = New System.Windows.Forms.Padding(4)
         Me.dpDesDesignDate.Name = "dpDesDesignDate"
         Me.dpDesDesignDate.Size = New System.Drawing.Size(425, 37)
-        Me.dpDesDesignDate.TabIndex = 12
+        Me.dpDesDesignDate.TabIndex = 2
         '
         'Label22
         '
@@ -2512,7 +2532,7 @@ Partial Class AgnimainForm
         Me.Label21.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(81, 31)
-        Me.Label21.TabIndex = 24
+        Me.Label21.TabIndex = 37
         Me.Label21.Text = "Price"
         '
         'txtDesCalculatedPrice
@@ -2524,7 +2544,8 @@ Partial Class AgnimainForm
         Me.txtDesCalculatedPrice.Name = "txtDesCalculatedPrice"
         Me.txtDesCalculatedPrice.ReadOnly = True
         Me.txtDesCalculatedPrice.Size = New System.Drawing.Size(425, 37)
-        Me.txtDesCalculatedPrice.TabIndex = 17
+        Me.txtDesCalculatedPrice.TabIndex = 8
+        Me.txtDesCalculatedPrice.TabStop = False
         '
         'btnDesUpdate
         '
@@ -2537,7 +2558,7 @@ Partial Class AgnimainForm
         Me.btnDesUpdate.Name = "btnDesUpdate"
         Me.btnDesUpdate.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
         Me.btnDesUpdate.Size = New System.Drawing.Size(157, 38)
-        Me.btnDesUpdate.TabIndex = 22
+        Me.btnDesUpdate.TabIndex = 11
         Me.btnDesUpdate.Text = "   Update"
         Me.btnDesUpdate.UseVisualStyleBackColor = False
         '
@@ -2552,7 +2573,7 @@ Partial Class AgnimainForm
         Me.btnDesDelete.Name = "btnDesDelete"
         Me.btnDesDelete.Padding = New System.Windows.Forms.Padding(7, 0, 0, 0)
         Me.btnDesDelete.Size = New System.Drawing.Size(157, 38)
-        Me.btnDesDelete.TabIndex = 21
+        Me.btnDesDelete.TabIndex = 10
         Me.btnDesDelete.Text = "  Delete"
         Me.btnDesDelete.UseVisualStyleBackColor = False
         '
@@ -2567,7 +2588,7 @@ Partial Class AgnimainForm
         Me.btnDesAdd.Name = "btnDesAdd"
         Me.btnDesAdd.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
         Me.btnDesAdd.Size = New System.Drawing.Size(157, 38)
-        Me.btnDesAdd.TabIndex = 20
+        Me.btnDesAdd.TabIndex = 9
         Me.btnDesAdd.Text = "Add"
         Me.btnDesAdd.UseVisualStyleBackColor = False
         '
@@ -2580,7 +2601,7 @@ Partial Class AgnimainForm
         Me.Label20.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(178, 31)
-        Me.Label20.TabIndex = 17
+        Me.Label20.TabIndex = 33
         Me.Label20.Text = "Design Type"
         '
         'Label19
@@ -2625,7 +2646,7 @@ Partial Class AgnimainForm
         Me.Label16.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(155, 31)
-        Me.Label16.TabIndex = 13
+        Me.Label16.TabIndex = 34
         Me.Label16.Text = "Size (Inch)"
         '
         'Label15
@@ -2637,7 +2658,7 @@ Partial Class AgnimainForm
         Me.Label15.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(189, 31)
-        Me.Label15.TabIndex = 12
+        Me.Label15.TabIndex = 31
         Me.Label15.Text = "Design Name"
         '
         'Label14
@@ -2649,7 +2670,7 @@ Partial Class AgnimainForm
         Me.Label14.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(177, 31)
-        Me.Label14.TabIndex = 11
+        Me.Label14.TabIndex = 35
         Me.Label14.Text = "No of Colors"
         '
         'lblDesCostPerUnit
@@ -2661,7 +2682,7 @@ Partial Class AgnimainForm
         Me.lblDesCostPerUnit.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblDesCostPerUnit.Name = "lblDesCostPerUnit"
         Me.lblDesCostPerUnit.Size = New System.Drawing.Size(187, 31)
-        Me.lblDesCostPerUnit.TabIndex = 10
+        Me.lblDesCostPerUnit.TabIndex = 36
         Me.lblDesCostPerUnit.Text = "Cost per inch"
         '
         'Label12
@@ -2673,7 +2694,7 @@ Partial Class AgnimainForm
         Me.Label12.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(224, 31)
-        Me.Label12.TabIndex = 9
+        Me.Label12.TabIndex = 30
         Me.Label12.Text = "Customer Name"
         '
         'GroupBox2
@@ -2687,7 +2708,7 @@ Partial Class AgnimainForm
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Padding = New System.Windows.Forms.Padding(0)
         Me.GroupBox2.Size = New System.Drawing.Size(427, 62)
-        Me.GroupBox2.TabIndex = 18
+        Me.GroupBox2.TabIndex = 3
         Me.GroupBox2.TabStop = False
         '
         'radioDesPrint
@@ -2697,7 +2718,7 @@ Partial Class AgnimainForm
         Me.radioDesPrint.Margin = New System.Windows.Forms.Padding(4)
         Me.radioDesPrint.Name = "radioDesPrint"
         Me.radioDesPrint.Size = New System.Drawing.Size(96, 35)
-        Me.radioDesPrint.TabIndex = 20
+        Me.radioDesPrint.TabIndex = 2
         Me.radioDesPrint.Text = "Print"
         Me.radioDesPrint.UseVisualStyleBackColor = True
         '
@@ -2708,18 +2729,20 @@ Partial Class AgnimainForm
         Me.radioDesWorking.Margin = New System.Windows.Forms.Padding(4)
         Me.radioDesWorking.Name = "radioDesWorking"
         Me.radioDesWorking.Size = New System.Drawing.Size(141, 35)
-        Me.radioDesWorking.TabIndex = 19
+        Me.radioDesWorking.TabIndex = 1
         Me.radioDesWorking.Text = "Working"
         Me.radioDesWorking.UseVisualStyleBackColor = True
         '
         'radioDesWP
         '
         Me.radioDesWP.AutoSize = True
+        Me.radioDesWP.Checked = True
         Me.radioDesWP.Location = New System.Drawing.Point(29, 19)
         Me.radioDesWP.Margin = New System.Windows.Forms.Padding(4)
         Me.radioDesWP.Name = "radioDesWP"
         Me.radioDesWP.Size = New System.Drawing.Size(97, 35)
-        Me.radioDesWP.TabIndex = 18
+        Me.radioDesWP.TabIndex = 0
+        Me.radioDesWP.TabStop = True
         Me.radioDesWP.Text = "W+P"
         Me.radioDesWP.UseVisualStyleBackColor = True
         '
@@ -2730,7 +2753,7 @@ Partial Class AgnimainForm
         Me.txtDesCostPerUnit.Margin = New System.Windows.Forms.Padding(4)
         Me.txtDesCostPerUnit.Name = "txtDesCostPerUnit"
         Me.txtDesCostPerUnit.Size = New System.Drawing.Size(425, 37)
-        Me.txtDesCostPerUnit.TabIndex = 16
+        Me.txtDesCostPerUnit.TabIndex = 7
         '
         'txtDesNoOfColors
         '
@@ -2739,7 +2762,7 @@ Partial Class AgnimainForm
         Me.txtDesNoOfColors.Margin = New System.Windows.Forms.Padding(4)
         Me.txtDesNoOfColors.Name = "txtDesNoOfColors"
         Me.txtDesNoOfColors.Size = New System.Drawing.Size(425, 37)
-        Me.txtDesNoOfColors.TabIndex = 15
+        Me.txtDesNoOfColors.TabIndex = 6
         '
         'txtDesHeight
         '
@@ -2748,7 +2771,7 @@ Partial Class AgnimainForm
         Me.txtDesHeight.Margin = New System.Windows.Forms.Padding(4)
         Me.txtDesHeight.Name = "txtDesHeight"
         Me.txtDesHeight.Size = New System.Drawing.Size(164, 37)
-        Me.txtDesHeight.TabIndex = 14
+        Me.txtDesHeight.TabIndex = 5
         '
         'txtDesWidth
         '
@@ -2757,7 +2780,7 @@ Partial Class AgnimainForm
         Me.txtDesWidth.Margin = New System.Windows.Forms.Padding(4)
         Me.txtDesWidth.Name = "txtDesWidth"
         Me.txtDesWidth.Size = New System.Drawing.Size(152, 37)
-        Me.txtDesWidth.TabIndex = 13
+        Me.txtDesWidth.TabIndex = 4
         '
         'pbDesDesignImage
         '
@@ -2806,7 +2829,7 @@ Partial Class AgnimainForm
         Me.tabAllTabsHolder.SelectedIndex = 0
         Me.tabAllTabsHolder.ShowToolTips = True
         Me.tabAllTabsHolder.Size = New System.Drawing.Size(1711, 967)
-        Me.tabAllTabsHolder.TabIndex = 33
+        Me.tabAllTabsHolder.TabIndex = 0
         '
         'tabCustomer
         '
@@ -2846,6 +2869,7 @@ Partial Class AgnimainForm
         Me.tabCustomer.Padding = New System.Windows.Forms.Padding(4)
         Me.tabCustomer.Size = New System.Drawing.Size(1703, 911)
         Me.tabCustomer.TabIndex = 0
+        Me.tabCustomer.Tag = "tagCustomerTab"
         Me.tabCustomer.Text = "Customer"
         Me.tabCustomer.ToolTipText = "Customers information"
         '
@@ -2862,7 +2886,7 @@ Partial Class AgnimainForm
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Size = New System.Drawing.Size(436, 215)
-        Me.GroupBox1.TabIndex = 128
+        Me.GroupBox1.TabIndex = 12
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Design Cost Per Unit"
         '
@@ -2909,7 +2933,7 @@ Partial Class AgnimainForm
         Me.txtCustPrintCharge.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCustPrintCharge.Name = "txtCustPrintCharge"
         Me.txtCustPrintCharge.Size = New System.Drawing.Size(120, 37)
-        Me.txtCustPrintCharge.TabIndex = 22
+        Me.txtCustPrintCharge.TabIndex = 15
         '
         'txtCustWorkingCharge
         '
@@ -2918,7 +2942,7 @@ Partial Class AgnimainForm
         Me.txtCustWorkingCharge.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCustWorkingCharge.Name = "txtCustWorkingCharge"
         Me.txtCustWorkingCharge.Size = New System.Drawing.Size(120, 37)
-        Me.txtCustWorkingCharge.TabIndex = 21
+        Me.txtCustWorkingCharge.TabIndex = 14
         '
         'txtCustWPCharge
         '
@@ -2927,7 +2951,7 @@ Partial Class AgnimainForm
         Me.txtCustWPCharge.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCustWPCharge.Name = "txtCustWPCharge"
         Me.txtCustWPCharge.Size = New System.Drawing.Size(120, 37)
-        Me.txtCustWPCharge.TabIndex = 20
+        Me.txtCustWPCharge.TabIndex = 13
         '
         'lblLandline
         '
@@ -2957,7 +2981,7 @@ Partial Class AgnimainForm
         Me.GroupBox16.Name = "GroupBox16"
         Me.GroupBox16.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox16.Size = New System.Drawing.Size(436, 194)
-        Me.GroupBox16.TabIndex = 127
+        Me.GroupBox16.TabIndex = 8
         Me.GroupBox16.TabStop = False
         Me.GroupBox16.Text = "GST Details"
         '
@@ -3040,7 +3064,7 @@ Partial Class AgnimainForm
         Me.txtCustIGST.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCustIGST.Name = "txtCustIGST"
         Me.txtCustIGST.Size = New System.Drawing.Size(120, 37)
-        Me.txtCustIGST.TabIndex = 19
+        Me.txtCustIGST.TabIndex = 11
         '
         'txtCustSGST
         '
@@ -3049,7 +3073,7 @@ Partial Class AgnimainForm
         Me.txtCustSGST.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCustSGST.Name = "txtCustSGST"
         Me.txtCustSGST.Size = New System.Drawing.Size(120, 37)
-        Me.txtCustSGST.TabIndex = 18
+        Me.txtCustSGST.TabIndex = 10
         '
         'txtCustCGST
         '
@@ -3058,7 +3082,7 @@ Partial Class AgnimainForm
         Me.txtCustCGST.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCustCGST.Name = "txtCustCGST"
         Me.txtCustCGST.Size = New System.Drawing.Size(120, 37)
-        Me.txtCustCGST.TabIndex = 17
+        Me.txtCustCGST.TabIndex = 9
         '
         'lblEmail
         '
@@ -3091,7 +3115,7 @@ Partial Class AgnimainForm
         Me.txtWebsite.Margin = New System.Windows.Forms.Padding(4)
         Me.txtWebsite.Name = "txtWebsite"
         Me.txtWebsite.Size = New System.Drawing.Size(449, 37)
-        Me.txtWebsite.TabIndex = 16
+        Me.txtWebsite.TabIndex = 7
         '
         'lblMobile
         '
@@ -3112,7 +3136,7 @@ Partial Class AgnimainForm
         Me.txtLandline.Margin = New System.Windows.Forms.Padding(4)
         Me.txtLandline.Name = "txtLandline"
         Me.txtLandline.Size = New System.Drawing.Size(449, 37)
-        Me.txtLandline.TabIndex = 15
+        Me.txtLandline.TabIndex = 6
         '
         'txtEmail
         '
@@ -3121,7 +3145,7 @@ Partial Class AgnimainForm
         Me.txtEmail.Margin = New System.Windows.Forms.Padding(4)
         Me.txtEmail.Name = "txtEmail"
         Me.txtEmail.Size = New System.Drawing.Size(449, 37)
-        Me.txtEmail.TabIndex = 14
+        Me.txtEmail.TabIndex = 5
         '
         'txtMobile
         '
@@ -3130,7 +3154,7 @@ Partial Class AgnimainForm
         Me.txtMobile.Margin = New System.Windows.Forms.Padding(4)
         Me.txtMobile.Name = "txtMobile"
         Me.txtMobile.Size = New System.Drawing.Size(449, 37)
-        Me.txtMobile.TabIndex = 13
+        Me.txtMobile.TabIndex = 4
         '
         'btnCustClear
         '
@@ -3144,7 +3168,7 @@ Partial Class AgnimainForm
         Me.btnCustClear.Name = "btnCustClear"
         Me.btnCustClear.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
         Me.btnCustClear.Size = New System.Drawing.Size(157, 39)
-        Me.btnCustClear.TabIndex = 104
+        Me.btnCustClear.TabIndex = 19
         Me.btnCustClear.Text = "Clear"
         Me.btnCustClear.UseVisualStyleBackColor = False
         '
@@ -3181,7 +3205,7 @@ Partial Class AgnimainForm
         Me.btnCustUpdate.Name = "btnCustUpdate"
         Me.btnCustUpdate.Padding = New System.Windows.Forms.Padding(7, 0, 0, 0)
         Me.btnCustUpdate.Size = New System.Drawing.Size(179, 39)
-        Me.btnCustUpdate.TabIndex = 23
+        Me.btnCustUpdate.TabIndex = 18
         Me.btnCustUpdate.Text = "Update"
         Me.btnCustUpdate.UseVisualStyleBackColor = False
         '
@@ -3197,7 +3221,7 @@ Partial Class AgnimainForm
         Me.btnCustDelete.Name = "btnCustDelete"
         Me.btnCustDelete.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
         Me.btnCustDelete.Size = New System.Drawing.Size(172, 39)
-        Me.btnCustDelete.TabIndex = 22
+        Me.btnCustDelete.TabIndex = 17
         Me.btnCustDelete.Text = "Delete"
         Me.btnCustDelete.UseVisualStyleBackColor = False
         '
@@ -3213,7 +3237,7 @@ Partial Class AgnimainForm
         Me.btnCustAdd.Name = "btnCustAdd"
         Me.btnCustAdd.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
         Me.btnCustAdd.Size = New System.Drawing.Size(160, 39)
-        Me.btnCustAdd.TabIndex = 21
+        Me.btnCustAdd.TabIndex = 16
         Me.btnCustAdd.Text = "Add"
         Me.btnCustAdd.UseVisualStyleBackColor = False
         '
@@ -3278,7 +3302,7 @@ Partial Class AgnimainForm
         Me.txtAddress.Name = "txtAddress"
         Me.txtAddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtAddress.Size = New System.Drawing.Size(449, 89)
-        Me.txtAddress.TabIndex = 12
+        Me.txtAddress.TabIndex = 3
         '
         'txtOwnerName
         '
@@ -3287,7 +3311,7 @@ Partial Class AgnimainForm
         Me.txtOwnerName.Margin = New System.Windows.Forms.Padding(4)
         Me.txtOwnerName.Name = "txtOwnerName"
         Me.txtOwnerName.Size = New System.Drawing.Size(449, 37)
-        Me.txtOwnerName.TabIndex = 11
+        Me.txtOwnerName.TabIndex = 2
         '
         'tabPayment
         '
@@ -3333,6 +3357,7 @@ Partial Class AgnimainForm
         Me.tabPayment.Padding = New System.Windows.Forms.Padding(4)
         Me.tabPayment.Size = New System.Drawing.Size(1703, 911)
         Me.tabPayment.TabIndex = 6
+        Me.tabPayment.Tag = "tagPaymentTab"
         Me.tabPayment.Text = "Payment"
         Me.tabPayment.ToolTipText = "Payment Details"
         '
@@ -3357,6 +3382,7 @@ Partial Class AgnimainForm
         Me.txtPaymentBillNo.ReadOnly = True
         Me.txtPaymentBillNo.Size = New System.Drawing.Size(100, 34)
         Me.txtPaymentBillNo.TabIndex = 163
+        Me.txtPaymentBillNo.TabStop = False
         '
         'cmbPaymentPaymentNoList
         '
@@ -3370,6 +3396,7 @@ Partial Class AgnimainForm
         Me.cmbPaymentPaymentNoList.Name = "cmbPaymentPaymentNoList"
         Me.cmbPaymentPaymentNoList.Size = New System.Drawing.Size(118, 25)
         Me.cmbPaymentPaymentNoList.TabIndex = 162
+        Me.cmbPaymentPaymentNoList.TabStop = False
         Me.cmbPaymentPaymentNoList.ValueMember = "PaymentNo"
         Me.cmbPaymentPaymentNoList.Visible = False
         '
@@ -3383,7 +3410,7 @@ Partial Class AgnimainForm
         Me.btnPaymentCancelCreatePayment.Name = "btnPaymentCancelCreatePayment"
         Me.btnPaymentCancelCreatePayment.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
         Me.btnPaymentCancelCreatePayment.Size = New System.Drawing.Size(121, 41)
-        Me.btnPaymentCancelCreatePayment.TabIndex = 161
+        Me.btnPaymentCancelCreatePayment.TabIndex = 14
         Me.btnPaymentCancelCreatePayment.Text = "Back"
         Me.btnPaymentCancelCreatePayment.UseVisualStyleBackColor = True
         Me.btnPaymentCancelCreatePayment.Visible = False
@@ -3398,7 +3425,7 @@ Partial Class AgnimainForm
         Me.btnPaymentConfirmCreatePayment.Name = "btnPaymentConfirmCreatePayment"
         Me.btnPaymentConfirmCreatePayment.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
         Me.btnPaymentConfirmCreatePayment.Size = New System.Drawing.Size(108, 41)
-        Me.btnPaymentConfirmCreatePayment.TabIndex = 160
+        Me.btnPaymentConfirmCreatePayment.TabIndex = 13
         Me.btnPaymentConfirmCreatePayment.Text = "Confirm"
         Me.btnPaymentConfirmCreatePayment.UseVisualStyleBackColor = True
         Me.btnPaymentConfirmCreatePayment.Visible = False
@@ -3414,7 +3441,7 @@ Partial Class AgnimainForm
         Me.btnPaymentCreatePayment.Name = "btnPaymentCreatePayment"
         Me.btnPaymentCreatePayment.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
         Me.btnPaymentCreatePayment.Size = New System.Drawing.Size(265, 41)
-        Me.btnPaymentCreatePayment.TabIndex = 159
+        Me.btnPaymentCreatePayment.TabIndex = 12
         Me.btnPaymentCreatePayment.Text = "Create New Payment"
         Me.btnPaymentCreatePayment.UseVisualStyleBackColor = True
         '
@@ -3428,7 +3455,7 @@ Partial Class AgnimainForm
         Me.btnPaymentClear.Name = "btnPaymentClear"
         Me.btnPaymentClear.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
         Me.btnPaymentClear.Size = New System.Drawing.Size(164, 46)
-        Me.btnPaymentClear.TabIndex = 158
+        Me.btnPaymentClear.TabIndex = 16
         Me.btnPaymentClear.Text = "Clear"
         Me.btnPaymentClear.UseVisualStyleBackColor = True
         '
@@ -3467,6 +3494,7 @@ Partial Class AgnimainForm
         Me.txtPaymentNetBalance.ScrollBars = System.Windows.Forms.ScrollBars.Both
         Me.txtPaymentNetBalance.Size = New System.Drawing.Size(420, 34)
         Me.txtPaymentNetBalance.TabIndex = 148
+        Me.txtPaymentNetBalance.TabStop = False
         '
         'Label85
         '
@@ -3501,7 +3529,7 @@ Partial Class AgnimainForm
         Me.txtPaymentFinalPaidAmount.ReadOnly = True
         Me.txtPaymentFinalPaidAmount.ScrollBars = System.Windows.Forms.ScrollBars.Both
         Me.txtPaymentFinalPaidAmount.Size = New System.Drawing.Size(420, 34)
-        Me.txtPaymentFinalPaidAmount.TabIndex = 145
+        Me.txtPaymentFinalPaidAmount.TabIndex = 7
         '
         'txtPaymentUnPaidBilledAmount
         '
@@ -3512,6 +3540,7 @@ Partial Class AgnimainForm
         Me.txtPaymentUnPaidBilledAmount.ReadOnly = True
         Me.txtPaymentUnPaidBilledAmount.Size = New System.Drawing.Size(420, 34)
         Me.txtPaymentUnPaidBilledAmount.TabIndex = 144
+        Me.txtPaymentUnPaidBilledAmount.TabStop = False
         '
         'btnPaymentDelete
         '
@@ -3523,7 +3552,7 @@ Partial Class AgnimainForm
         Me.btnPaymentDelete.Name = "btnPaymentDelete"
         Me.btnPaymentDelete.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
         Me.btnPaymentDelete.Size = New System.Drawing.Size(184, 46)
-        Me.btnPaymentDelete.TabIndex = 12
+        Me.btnPaymentDelete.TabIndex = 15
         Me.btnPaymentDelete.Text = "  Delete"
         Me.btnPaymentDelete.UseVisualStyleBackColor = True
         '
@@ -3536,7 +3565,7 @@ Partial Class AgnimainForm
         Me.txtPaymentRemarks.Name = "txtPaymentRemarks"
         Me.txtPaymentRemarks.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtPaymentRemarks.Size = New System.Drawing.Size(398, 84)
-        Me.txtPaymentRemarks.TabIndex = 10
+        Me.txtPaymentRemarks.TabIndex = 11
         '
         'gbBankDetails
         '
@@ -3552,7 +3581,7 @@ Partial Class AgnimainForm
         Me.gbBankDetails.Name = "gbBankDetails"
         Me.gbBankDetails.Padding = New System.Windows.Forms.Padding(4)
         Me.gbBankDetails.Size = New System.Drawing.Size(697, 207)
-        Me.gbBankDetails.TabIndex = 135
+        Me.gbBankDetails.TabIndex = 8
         Me.gbBankDetails.TabStop = False
         Me.gbBankDetails.Text = "Bank Details"
         Me.gbBankDetails.Visible = False
@@ -3574,7 +3603,7 @@ Partial Class AgnimainForm
         Me.dpPaymentChequeDate.Margin = New System.Windows.Forms.Padding(4)
         Me.dpPaymentChequeDate.Name = "dpPaymentChequeDate"
         Me.dpPaymentChequeDate.Size = New System.Drawing.Size(420, 34)
-        Me.dpPaymentChequeDate.TabIndex = 9
+        Me.dpPaymentChequeDate.TabIndex = 10
         '
         'txtPaymentBankName
         '
@@ -3583,7 +3612,7 @@ Partial Class AgnimainForm
         Me.txtPaymentBankName.Margin = New System.Windows.Forms.Padding(4)
         Me.txtPaymentBankName.Name = "txtPaymentBankName"
         Me.txtPaymentBankName.Size = New System.Drawing.Size(420, 34)
-        Me.txtPaymentBankName.TabIndex = 8
+        Me.txtPaymentBankName.TabIndex = 9
         '
         'Label80
         '
@@ -3616,7 +3645,7 @@ Partial Class AgnimainForm
         Me.txtPaymentChequeNo.Margin = New System.Windows.Forms.Padding(4)
         Me.txtPaymentChequeNo.Name = "txtPaymentChequeNo"
         Me.txtPaymentChequeNo.Size = New System.Drawing.Size(420, 34)
-        Me.txtPaymentChequeNo.TabIndex = 7
+        Me.txtPaymentChequeNo.TabIndex = 8
         '
         'Label78
         '
@@ -3739,7 +3768,7 @@ Partial Class AgnimainForm
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Padding = New System.Windows.Forms.Padding(0)
         Me.GroupBox4.Size = New System.Drawing.Size(421, 55)
-        Me.GroupBox4.TabIndex = 117
+        Me.GroupBox4.TabIndex = 2
         Me.GroupBox4.TabStop = False
         '
         'radioPaymentByCash
@@ -3750,7 +3779,7 @@ Partial Class AgnimainForm
         Me.radioPaymentByCash.Margin = New System.Windows.Forms.Padding(4)
         Me.radioPaymentByCash.Name = "radioPaymentByCash"
         Me.radioPaymentByCash.Size = New System.Drawing.Size(153, 35)
-        Me.radioPaymentByCash.TabIndex = 2
+        Me.radioPaymentByCash.TabIndex = 0
         Me.radioPaymentByCash.TabStop = True
         Me.radioPaymentByCash.Text = " By Cash"
         Me.radioPaymentByCash.UseVisualStyleBackColor = True
@@ -3762,7 +3791,7 @@ Partial Class AgnimainForm
         Me.radioPaymentByCheque.Margin = New System.Windows.Forms.Padding(4)
         Me.radioPaymentByCheque.Name = "radioPaymentByCheque"
         Me.radioPaymentByCheque.Size = New System.Drawing.Size(178, 35)
-        Me.radioPaymentByCheque.TabIndex = 3
+        Me.radioPaymentByCheque.TabIndex = 2
         Me.radioPaymentByCheque.Text = "By Cheque"
         Me.radioPaymentByCheque.UseVisualStyleBackColor = True
         '
@@ -3799,6 +3828,7 @@ Partial Class AgnimainForm
         Me.txtPaymentDisplayBillNo.ReadOnly = True
         Me.txtPaymentDisplayBillNo.Size = New System.Drawing.Size(194, 34)
         Me.txtPaymentDisplayBillNo.TabIndex = 114
+        Me.txtPaymentDisplayBillNo.TabStop = False
         '
         'Label70
         '
@@ -3845,6 +3875,7 @@ Partial Class AgnimainForm
         Me.Settings.Padding = New System.Windows.Forms.Padding(3)
         Me.Settings.Size = New System.Drawing.Size(1703, 911)
         Me.Settings.TabIndex = 7
+        Me.Settings.Tag = "tagSettingsTab"
         Me.Settings.Text = "Settings"
         Me.Settings.UseVisualStyleBackColor = True
         '
@@ -4789,10 +4820,12 @@ Partial Class AgnimainForm
         Me.Label150.TabIndex = 33
         Me.Label150.Text = "Remaining Balance"
         '
-        'AgnimainForm
+        'AgniMainForm
         '
+        Me.AcceptButton = Me.btnReportSearch
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(156, Byte), Integer), CType(CType(213, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1647, 1037)
@@ -4801,7 +4834,7 @@ Partial Class AgnimainForm
         Me.Controls.Add(Me.tabAllTabsHolder)
         Me.Controls.Add(Me.PictureBox3)
         Me.Margin = New System.Windows.Forms.Padding(4)
-        Me.Name = "AgnimainForm"
+        Me.Name = "AgniMainForm"
         Me.Text = "Agni Designs"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.tabHelp.ResumeLayout(False)
@@ -4812,11 +4845,11 @@ Partial Class AgnimainForm
         CType(Me.dgReportBillGrid, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgBIllingBillDetails, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgReportDesignGrid, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dgDesDesignDetails, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pbReportDesignImage, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
         CType(Me.dgPaymentDetails, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgDesDesignDetails, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabBilling.ResumeLayout(False)
         Me.tabBilling.PerformLayout()
         Me.tabDesign.ResumeLayout(False)

@@ -20,8 +20,8 @@ Partial Class BillReportForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.reportViewerBillReport = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.btnBillReportExportPdf = New System.Windows.Forms.Button()
+        Me.btnBillReportPDFPath = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'reportViewerBillReport
@@ -40,39 +40,39 @@ Partial Class BillReportForm
         Me.reportViewerBillReport.ToolPanelWidth = 267
         Me.reportViewerBillReport.ViewTimeSelectionFormula = ""
         '
-        'Button1
+        'btnBillReportExportPdf
         '
-        Me.Button1.BackColor = System.Drawing.Color.Transparent
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Button1.Location = New System.Drawing.Point(656, 0)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(203, 38)
-        Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Export to PDF"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.btnBillReportExportPdf.BackColor = System.Drawing.Color.Transparent
+        Me.btnBillReportExportPdf.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBillReportExportPdf.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.btnBillReportExportPdf.Location = New System.Drawing.Point(705, 6)
+        Me.btnBillReportExportPdf.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnBillReportExportPdf.Name = "btnBillReportExportPdf"
+        Me.btnBillReportExportPdf.Size = New System.Drawing.Size(154, 28)
+        Me.btnBillReportExportPdf.TabIndex = 1
+        Me.btnBillReportExportPdf.Text = "Export to PDF"
+        Me.btnBillReportExportPdf.UseVisualStyleBackColor = False
         '
-        'Button2
+        'btnBillReportPDFPath
         '
-        Me.Button2.BackColor = System.Drawing.Color.Transparent
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Button2.Location = New System.Drawing.Point(867, 0)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(328, 38)
-        Me.Button2.TabIndex = 2
-        Me.Button2.Text = "PDF file Destination"
-        Me.Button2.UseVisualStyleBackColor = False
+        Me.btnBillReportPDFPath.BackColor = System.Drawing.Color.Transparent
+        Me.btnBillReportPDFPath.Font = New System.Drawing.Font("Arial", 9.0!)
+        Me.btnBillReportPDFPath.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.btnBillReportPDFPath.Location = New System.Drawing.Point(924, 6)
+        Me.btnBillReportPDFPath.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnBillReportPDFPath.Name = "btnBillReportPDFPath"
+        Me.btnBillReportPDFPath.Size = New System.Drawing.Size(154, 28)
+        Me.btnBillReportPDFPath.TabIndex = 2
+        Me.btnBillReportPDFPath.Text = "Set PDF Directory"
+        Me.btnBillReportPDFPath.UseVisualStyleBackColor = False
         '
         'BillReportForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1371, 911)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnBillReportPDFPath)
+        Me.Controls.Add(Me.btnBillReportExportPdf)
         Me.Controls.Add(Me.reportViewerBillReport)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "BillReportForm"
@@ -82,6 +82,6 @@ Partial Class BillReportForm
 
     End Sub
     Friend WithEvents reportViewerBillReport As CrystalDecisions.Windows.Forms.CrystalReportViewer
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents btnBillReportExportPdf As System.Windows.Forms.Button
+    Friend WithEvents btnBillReportPDFPath As System.Windows.Forms.Button
 End Class

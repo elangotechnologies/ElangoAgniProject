@@ -3,7 +3,7 @@ Imports System.IO
 Imports System.Threading
 'Imports NLog
 
-Public Class AgnimainForm
+Public Class AgniMainForm
     Dim dbConnection As SqlConnection
 
     'Dim log As Logger = LogManager.GetCurrentClassLogger()
@@ -12,107 +12,35 @@ Public Class AgnimainForm
     Dim BILL_TYPE_BILLED As Int16 = 1
     Dim BILL_TYPE_ALL As Int16 = 2
 
-    Public gSelectedCustNoIndex As Integer = -1
-    Public gSelectedBillNo As Integer = -1
-    Public gSelectedCustName As String = String.Empty
     Public gDisplayBillNo As Integer = 0
+
+    Public gSelectedBillNo As Integer = -1
+    Public gSelectedDisplayBillNo As String = String.Empty
+    Public gSelectedCustNo As Integer = -1
+    Public gSelectedCustName As String = String.Empty
 
     Private SEARCH_BY_COMPANY As Integer = 1
     Private SEARCH_BY_DESIGN As Integer = 2
     Private SEARCH_BY_BILL As Integer = 4
     Private SEARCH_BY_DATE As Integer = 8
 
-
-    Dim Cmd1, cmd2, cmd3, cmd10 As SqlCommand
-    Dim Sda1, Sda2, sda3, sda10 As SqlDataAdapter
-    Dim Ds1, Ds2, ds3, ds11 As DataSet
-    Dim customerTable, Dt2, dt3, dt11 As DataTable
-    Dim DataRow, Dr2, dr3, dr11, MyRow As DataRow
-    Dim Dc1, Dc2, dc3 As DataColumn
-    Dim Scb1, Scb2, scb3, scb10 As SqlCommandBuilder
-    Dim rwindex As Integer = 0
-    Public rowCount, b, c, inc As Integer
-    Dim CustId As Integer = 100
-    Dim DesId As Integer = 10000
-    Dim flag As Integer = 0
-    Dim filepath As String
-    Dim t12, t13, t14, t15 As Decimal
-    Dim indx, key1 As Integer
-    Public ds4 As New DataSet
-    Public dt4 As New DataTable
-    Public dr4 As DataRow
-    Public dc4(10) As DataColumn
-
-    Dim i As Int32
-    Dim key As String
-    Dim ds6 As New DataSet
-    Dim dt6 As New DataTable
-    Dim dc6(14), dc11(14) As DataColumn
-    Dim dr6 As DataRow
-
-    Dim ds7 As New DataSet
-    Dim dt7 As New DataTable
-    Dim dc7(13) As DataColumn
-    Dim dr7 As DataRow
-
-    Public ds9, ds10 As New DataSet
-    Public dt9, dt10 As New DataTable
-    Public dc9(13) As DataColumn
-    Public dr9, dr10 As DataRow
-    Public outbal, unbilled As Decimal
-    Public taxDeduction, tottaxDeduction As Decimal
-    Public Deduction, totDeduction As Decimal
-
-    Dim total, actpaid As Decimal
-    Public addrcount As Int16 = 5
-
-    Public billtable As DataTable
-    Public billkey As String
-    Public billcust, billdatestring As String
-    Public T17, T20, T21, t26, t27, t25, t31, t24 As Decimal
-    Public PrevBillNo As String = "NIL"
-
-    Public lastbillno As Int32
-    Public addrselected As Boolean = False
-    Public fromdatestr1, todatestr1 As String
-    Public cmprfromdate, cmprtodate As Date
-    Public cmprcomp As String
-
-    Dim datebased As Boolean = False
-    Dim searchboth As Boolean = False
-    Dim compbased As Boolean = False
-    Dim desbased As Boolean = False
-    Dim billbased As Boolean = False
-
-    Public compname As String = "Not Specified"
-    Public pdfdesfolder As String = "E:"
-    Public pdfdesfolder1 As String = "E:"
-    Public pdfdesfolder2 As String = "E:"
-
-    Dim desIdOpr As Integer
-
-
+    Private dbConnInitialized As Boolean = False
 
     Private Sub AgnimainForm_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
-        'Try
         If MessageBox.Show("This will close the program." + vbNewLine + "Are you really want to close?", "Application Closing", System.Windows.Forms.MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.No Then
             e.Cancel = True
         Else
             Login.Close()
             dbConnection.Close()
         End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
     End Sub
 
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
-        'log.Debug("Form is loading")
-
         dbConnection = New SqlConnection("server=agni\SQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
         dbConnection.Open()
+
+        dbConnInitialized = True
 
         tabAllTabsHolder.Width = Me.Width
         tabAllTabsHolder.Height = Me.Height
@@ -123,11 +51,11 @@ Public Class AgnimainForm
             gDisplayBillNo = lastBillRow.Item("DisplayBillNo")
         End If
 
-        'loadCustomerList()
         loadCustomerList()
         loadBillListInReport()
 
         resetAllScreens()
+        Me.AcceptButton = btnReportSearch
 
     End Sub
 
@@ -148,14 +76,11 @@ Public Class AgnimainForm
 
         Dim setCustomerListInvoker As New setCustomerListDelegate(AddressOf Me.setCustomerList)
         Me.BeginInvoke(setCustomerListInvoker, customerTable, Nothing)
-
     End Sub
 
     Delegate Sub setCustomerListDelegate(customerTable As DataTable, cmbCompanyList As ComboBox)
 
     Sub setCustomerList(customerTable As DataTable, Optional cmbCompanyList As ComboBox = Nothing)
-        'log.Debug("setCustomerList: entry")
-
         Dim dummyFirstRow As DataRow = customerTable.NewRow()
         dummyFirstRow("CustNo") = -1
         dummyFirstRow("CompName") = "Please select a customer..."
@@ -176,7 +101,6 @@ Public Class AgnimainForm
             cmbReportCustomerList.BindingContext = New BindingContext()
             cmbReportCustomerList.DataSource = customerTable
         End If
-
     End Sub
 
     Sub loadDesignList(custNo As Integer)
@@ -188,7 +112,6 @@ Public Class AgnimainForm
     Sub getDesignListTable(ByVal custNoObj As Object)
 
         Dim custNo = CType(custNoObj, Integer)
-
         Dim designQuery As SqlCommand
         If (custNo <> Nothing) Then
             designQuery = New SqlCommand("select DesignNo, DesignName from design where custNo=" + custNo.ToString, dbConnection)
@@ -218,7 +141,6 @@ Public Class AgnimainForm
         cmbDesDesignList.DataSource = designTable
 
         resetDesignScreen()
-
     End Sub
 
     Sub loadDesignChargePerUnit(custNo As Integer)
@@ -228,6 +150,7 @@ Public Class AgnimainForm
     End Sub
 
     Sub getDesignChargePerUnit(ByVal custNoObj As Object)
+
         Dim custNo = CType(custNoObj, Integer)
 
         Dim customerQuery = New SqlCommand("select WorkingPrintSqrInch, WorkingColor, PrintColor from customer where CustNo=" + custNo.ToString, dbConnection)
@@ -259,7 +182,6 @@ Public Class AgnimainForm
             lblDesCostPerUnit.Text = "Cost Per Inch"
             txtDesCostPerUnit.Text = chargingDetailsTable.Rows(0).Item("PrintColor").ToString
         End If
-
     End Sub
 
     Sub loadDesignGrid(custNo As Integer)
@@ -403,7 +325,6 @@ Public Class AgnimainForm
     End Sub
 
     Sub getPaymentListTable(ByVal custNoObj As Object)
-        'log.Debug("getPaymentListTable: entry")
         Dim custNo = CType(custNoObj, Integer)
 
         Dim paymentQuery As SqlCommand
@@ -455,7 +376,6 @@ Public Class AgnimainForm
 
         Dim custNo = CType(custNoObj, Integer)
 
-        'log.Debug("getPaymentGridTable: entry")
         Dim paymentQuery As SqlCommand
         If (custNo <> Nothing) Then
             paymentQuery = New SqlCommand("select p.*, p.UnPaidBilledAmount - p.FinalPaidAmount as NetBalance, b.DisplayBillNo  from payment p, bill b where p.BillNo = b.BillNo and p.custNo=" + custNo.ToString, dbConnection)
@@ -548,13 +468,9 @@ Public Class AgnimainForm
         End If
 
         Return designTable.Rows(0).Item(0)
-
-
     End Function
 
     Sub loadGSTForCustomerInBilling(custNo As Integer)
-        'Try
-
         Dim customerQuery = New SqlCommand("select ISNULL(CGST, 0) AS CGST, ISNULL(SGST, 0) AS SGST, ISNULL(IGST, 0) AS IGST from customer where CustNo=" + custNo.ToString, dbConnection)
         Dim customerAdapter = New SqlDataAdapter()
         customerAdapter.SelectCommand = customerQuery
@@ -573,16 +489,10 @@ Public Class AgnimainForm
         txtBillingCGSTPercent.Text = CGST.ToString
         txtBillingSGSTPercent.Text = SGST.ToString
         txtBillingIGSTPercent.Text = IGST.ToString
-
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
     End Sub
 
 
     Private Sub cmbCustCompanyList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbCustCustomerList.SelectedIndexChanged
-        'Try
-        gSelectedCustNoIndex = cmbCustCustomerList.SelectedIndex
 
         If (cmbCustCustomerList.SelectedIndex = -1 Or cmbCustCustomerList.SelectedValue = -1) Then
             resetCustomerScreen()
@@ -616,12 +526,6 @@ Public Class AgnimainForm
         Else
             MessageBox.Show("No data found for customer: " + custNo + "-" + cmbCustCustomerList.Text)
         End If
-
-
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-
     End Sub
 
     Sub resetAllScreens()
@@ -665,6 +569,7 @@ Public Class AgnimainForm
     End Sub
 
     Sub resetBillingControlsVisibilities()
+        Me.AcceptButton = btnBillingCreateBill
         cmbBillingBillNoList.Enabled = True
         btnBillingCreateBill.Visible = True
         btnBillingConfirmCreateBill.Visible = False
@@ -674,6 +579,7 @@ Public Class AgnimainForm
     End Sub
 
     Sub setBillingControlsVisibilitiesForCreateBill()
+        Me.AcceptButton = btnBillingConfirmCreateBill
         cmbBillingBillNoList.Enabled = False
         btnBillingCreateBill.Visible = False
         btnBillingConfirmCreateBill.Visible = True
@@ -702,6 +608,7 @@ Public Class AgnimainForm
     End Sub
 
     Sub resetPaymentControlsVisibilities()
+        Me.AcceptButton = btnPaymentCreatePayment
         btnPaymentCreatePayment.Visible = True
         btnPaymentConfirmCreatePayment.Visible = False
         btnPaymentCancelCreatePayment.Visible = False
@@ -715,6 +622,7 @@ Public Class AgnimainForm
     End Sub
 
     Sub setPaymentControlsVisibilitiesForCreatePayment()
+        Me.AcceptButton = btnPaymentConfirmCreatePayment
         cmbPaymentPaymentNoList.Enabled = False
         btnPaymentCreatePayment.Visible = False
         btnPaymentConfirmCreatePayment.Visible = True
@@ -728,8 +636,6 @@ Public Class AgnimainForm
     End Sub
 
     Sub resetPaymentScreen()
-        'log.Debug("resetPaymentScreen: resetting payment screen")
-
         resetPaymentControlsVisibilities()
 
         txtPaymentBillNo.Text = ""
@@ -797,14 +703,14 @@ Public Class AgnimainForm
                 MessageBox.Show("Company successfully added")
                 loadCustomerList()
             End If
+        Catch sqlEx As SqlException When sqlEx.Number = 2627
+            MsgBox("Duplicate customer entry. Please check if any other customer exists with same customer name")
         Catch ex As Exception
             MessageBox.Show("Message to Agni User:   " & ex.Message & " (Or) This Customer Record may already exist")
         End Try
     End Sub
 
     Private Sub btnCustDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCustDelete.Click
-        'Try
-
         If (cmbCustCustomerList.SelectedIndex = -1 Or cmbCustCustomerList.SelectedValue = -1) Then
             MessageBox.Show("Please select a customer")
             cmbCustCustomerList.Focus()
@@ -815,15 +721,7 @@ Public Class AgnimainForm
             VerifyingDelete.Button1.Text = "Delete "
             VerifyingDelete.Button1.Text += cmbCustCustomerList.Text
             VerifyingDelete.Show()
-            'deleteCompanyEntire()
         End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message & " (Or) This Customer Record may not exist")
-        'loadDesignGrid()
-        'refreshgrid2()
-        'refreshgrid3()
-        'RefreshList1()
-        'End 'Try
     End Sub
     Public Sub deleteSeletectedCustomer()
 
@@ -877,7 +775,6 @@ Public Class AgnimainForm
     End Function
 
     Private Sub btnCustUpdate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCustUpdate.Click
-        'Try
         If (cmbCustCustomerList.SelectedIndex = -1 Or cmbCustCustomerList.SelectedValue = -1) Then
             MessageBox.Show("Please select a customer")
             cmbCustCustomerList.Focus()
@@ -933,14 +830,10 @@ Public Class AgnimainForm
             resetCustomerScreen()
             loadCustomerList()
         End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message & " Or this Customer Record may not exist")
-        'End 'Try
     End Sub
 
 
     Private Sub btnDesAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDesAdd.Click
-        'Try
         If (cmbDesCustomerList.SelectedIndex = -1 Or cmbDesCustomerList.SelectedValue = -1) Then
             MessageBox.Show("Please select a customer")
             cmbDesCustomerList.Focus()
@@ -1029,30 +922,13 @@ Public Class AgnimainForm
             MessageBox.Show("Design successfully added")
             loadDesignList(custNo)
             loadDesignGrid(custNo)
-
-            'Catch ex As Exception
-            'MessageBox.Show("Message to Agni User:   " & ex.Message & " Or this design Record may already exist")
         End If
-        'End 'Try
-
     End Sub
 
     Private Sub PictureBox2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbDesDesignImage.Click
         pictureload()
     End Sub
     Private Sub pictureload()
-        'Try
-        'Dim file As New OpenFileDialog
-        'With file
-        '    '.InitialDirectory = "E:\Bill Images"
-        '    .Filter = "All Files|*.*|Bitmaps|*.bmp|GIFs|*.gif|JPEGs|*.jpg"
-        '    .FilterIndex = 7
-        'End With
-        'If file.ShowDialog() = Windows.Forms.DialogResult.OK Then
-        '    With PictureBox2
-        '        .Image = Image.FromFile(file.FileName)
-        '    End With
-        'End If
 
         If (cmbDesDesignList.Items.Count > 0) Then
             cmbDesDesignList.SelectedValue = -1
@@ -1060,47 +936,39 @@ Public Class AgnimainForm
             cmbDesDesignList.SelectedIndex = -1
         End If
 
-        Dim file As New OpenFileDialog
-        With file
+        Dim fileDialog As New OpenFileDialog
+        With fileDialog
             .Filter = "All Files|*.*|Bitmaps|*.bmp|GIFs|*.gif|JPEGs|*.jpg"
             .FilterIndex = 7
         End With
-        If file.ShowDialog() = Windows.Forms.DialogResult.OK Then
-            Dim Data() As Byte
-            Dim fs As New FileStream(Trim(file.FileName), FileMode.Open)
-            Data = New [Byte](fs.Length) {}
-            fs.Read(Data, 0, fs.Length)
-            Dim memorybits As New MemoryStream(Data)
-            Dim img As System.Drawing.Image
-            img = System.Drawing.Image.FromStream(memorybits)
-            Dim inp As New IntPtr
-            Dim thumb As System.Drawing.Image
-            thumb = img.GetThumbnailImage(pbDesDesignImage.Width, pbDesDesignImage.Height, Nothing, inp)
-            pbDesDesignImage.Image = thumb
+        If fileDialog.ShowDialog() = Windows.Forms.DialogResult.OK Then
+            Dim FileData() As Byte
+            Dim fileStream As New FileStream(Trim(fileDialog.FileName), FileMode.Open)
+            FileData = New [Byte](fileStream.Length) {}
+            fileStream.Read(FileData, 0, fileStream.Length)
+            Dim memoryStream As New MemoryStream(FileData)
+            Dim fileImage As System.Drawing.Image
+            fileImage = System.Drawing.Image.FromStream(memoryStream)
+            Dim intPointer As New IntPtr
+            Dim thumbnailImage As System.Drawing.Image
+            thumbnailImage = fileImage.GetThumbnailImage(pbDesDesignImage.Width, pbDesDesignImage.Height, Nothing, intPointer)
+            pbDesDesignImage.Image = thumbnailImage
             With pbDesDesignImage
-                .Image = thumb
+                .Image = thumbnailImage
             End With
-            fs.Close()
+            fileStream.Close()
         End If
-        filepath = file.FileName.ToString
-        Dim desname As String
+        Dim filepath As String = fileDialog.FileName.ToString
         Dim strFilename As String = filepath.Substring(filepath.LastIndexOf("\") + 1)
-        If strFilename.Equals("") Then
-        Else
+        If Not strFilename.Equals("") Then
+            'removing and adding handler is to avoid the auto selection of a existing design with same name
             RemoveHandler cmbDesDesignList.SelectedIndexChanged, AddressOf cmbDesDesignList_SelectedIndexChanged
-            desname = strFilename.Substring(0, strFilename.LastIndexOf("."))
-            cmbDesDesignList.Text = desname
+            Dim designName As String = strFilename.Substring(0, strFilename.LastIndexOf("."))
+            cmbDesDesignList.Text = designName
             AddHandler cmbDesDesignList.SelectedIndexChanged, AddressOf cmbDesDesignList_SelectedIndexChanged
-            'cmbDesDesignName.SelectedText = desname
         End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-
     End Sub
     Private Sub btnDesUpdate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDesUpdate.Click
-        ''Try
-
         If cmbDesDesignList.SelectedIndex = -1 Or cmbDesDesignList.SelectedValue = -1 Then
             MessageBox.Show("Please select a design")
             cmbDesDesignList.Focus()
@@ -1190,11 +1058,6 @@ Public Class AgnimainForm
             loadDesignList(custNo)
             loadDesignGrid(custNo)
         End If
-        ''Catch ex As Exception
-        '    'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        '    loadDesignGrid()
-        ''End 'Try
-
     End Sub
 
     Sub updateRecentDesignsAsBilled(custNo As Integer, BillNo As Integer)
@@ -1271,7 +1134,6 @@ Public Class AgnimainForm
     End Sub
 
     Private Sub btnDesDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDesDelete.Click
-        'Try
         If cmbDesDesignList.SelectedIndex = -1 Or cmbDesDesignList.SelectedValue = -1 Then
             MessageBox.Show("Please select a design")
             cmbDesDesignList.Focus()
@@ -1281,7 +1143,6 @@ Public Class AgnimainForm
         If MessageBox.Show("Do you want to delete the design " & cmbDesDesignList.Text, "Confirmation", System.Windows.Forms.MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
             Dim custNo As Integer = cmbDesCustomerList.SelectedValue
 
-            flag = 0
             Dim query As String = String.Empty
             query &= "DELETE FROM design where DesignNo=@designNo"
 
@@ -1299,17 +1160,12 @@ Public Class AgnimainForm
             loadDesignList(custNo)
             loadDesignGrid(custNo)
         End If
-
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
     End Sub
 
     Private Sub cmbBillingBillNoList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbBillingBillNoList.SelectedIndexChanged
-        'Try
-        'log.Debug("cmbBillingBillNoList_SelectedIndexChanged: entry")
 
-        'log.Debug("cmbBillingBillNoList_SelectedIndexChanged: cmbBillingBillNoList.SelectedIndex: " + cmbBillingBillNoList.SelectedIndex.ToString)
+        gSelectedBillNo = cmbBillingBillNoList.SelectedValue
+        gSelectedDisplayBillNo = cmbBillingBillNoList.Text
 
         If (cmbBillingBillNoList.SelectedIndex = -1 Or cmbBillingBillNoList.SelectedValue = -1) Then
             resetBillingScreen()
@@ -1349,16 +1205,13 @@ Public Class AgnimainForm
 
         Else
             MessageBox.Show("No data found for Bill: " + billNo.ToString)
-            ''log.Debug("cmbBillingBillNoList_SelectedIndexChanged: No data found for Bill: " + billNo.ToString)
         End If
-
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
     End Sub
 
-    Private Sub cmbBillingCompanyList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbBillingCustomerList.SelectedIndexChanged
-        'Try
+    Private Sub cmbBillingCustomerList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbBillingCustomerList.SelectedIndexChanged
+        gSelectedCustName = cmbBillingCustomerList.Text
+        gSelectedCustNo = cmbBillingCustomerList.SelectedValue
+
         If (cmbBillingCustomerList.SelectedIndex = -1 Or cmbBillingCustomerList.SelectedValue = -1) Then
             If (cmbBillingBillNoList.Items.Count > 0) Then
                 cmbBillingBillNoList.SelectedValue = -1
@@ -1371,58 +1224,32 @@ Public Class AgnimainForm
         Dim custNo As Integer = cmbBillingCustomerList.SelectedValue
         loadBillList(custNo)
         loadBillGrid(custNo)
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
     End Sub
 
     Private Sub btnBillingPrintBill_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBillingPrintBill.Click
-        'Try
         If cmbBillingBillNoList.SelectedIndex = -1 Or cmbBillingBillNoList.SelectedValue = -1 Then
             MsgBox("Please select a bill to print")
             cmbBillingBillNoList.Focus()
             Return
         End If
 
-        gSelectedBillNo = cmbBillingBillNoList.SelectedValue
-        gSelectedCustName = cmbBillingCustomerList.Text
-
         BillReportForm.Show()
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
     End Sub
 
     Private Sub cmbDesCompanyList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbDesCustomerList.SelectedIndexChanged
-        'Try
         If (cmbDesCustomerList.SelectedIndex = -1 Or cmbDesCustomerList.SelectedValue = -1) Then
-
-            'Dim dummyDesignListTable As DataTable = New DataTable
-            'dummyDesignListTable.TableName = "designName"
-            'Dim designNoColumn As DataColumn = New DataColumn("designNo", Type.GetType("System.Int32"))
-            'Dim designNameColumn As DataColumn = New DataColumn("designName", Type.GetType("System.String"))
-            'dummyDesignListTable.Columns.Add(designNoColumn)
-            'dummyDesignListTable.Columns.Add(designNameColumn)
-            'cmbDesDesignList.BindingContext = New BindingContext
-            'cmbDesDesignList.DataSource = dummyDesignListTable
-
             If (cmbDesDesignList.Items.Count > 0) Then
                 cmbDesDesignList.SelectedValue = -1
             Else
                 cmbDesDesignList.SelectedIndex = -1
             End If
-
             Return
         End If
 
         Dim custNo As Integer = cmbDesCustomerList.SelectedValue
-
         loadDesignChargePerUnit(custNo)
         loadDesignList(custNo)
         loadDesignGrid(custNo)
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
     End Sub
 
     Private Sub dgDesDesignDetails_CurrentCellChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles dgDesDesignDetails.CurrentCellChanged
@@ -1456,7 +1283,9 @@ Public Class AgnimainForm
     End Sub
 
     Private Sub chargeTypeCheckedChanged(sender As Object, e As EventArgs) Handles radioDesWP.CheckedChanged, radioDesWorking.CheckedChanged, radioDesPrint.CheckedChanged
-        'bwtDesChargeTypeLoadThread.RunWorkerAsync(cmbDesCompanyList.SelectedValue)
+        If dbConnInitialized = False Then
+            Return
+        End If
         loadDesignChargePerUnit(cmbDesCustomerList.SelectedValue)
     End Sub
 
@@ -1469,32 +1298,20 @@ Public Class AgnimainForm
     End Sub
 
     Private Sub Button38_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button38.Click
-        'Try
         If MessageBox.Show("Are you sure want to log off?", "Log off", System.Windows.Forms.MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
             Me.Hide()
             Login.ComboBox1.Text = ""
             Login.TextBox2.Text = ""
             Login.Show()
 
-            AddressReport.Close()
             BillReportForm.Close()
-            AllAddrReport.Close()
-            AllBillReport.Close()
-            Balance.Close()
             CustomerBillSummary.Close()
             Login.ComboBox1.Focus()
         End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
     End Sub
 
     Private Sub Button37_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button37.Click
-        'Try
         Me.Close()
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
     End Sub
 
 
@@ -1502,52 +1319,8 @@ Public Class AgnimainForm
         cmbCustCustomerList.Focus()
     End Sub
 
-    Private Sub DataGrid4_MouseDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs)
-        'Try
-        Dim bilr As DataTable
-        Dim billdate As Date
-        bilr = dgReportBillGrid.DataSource
-        billkey = bilr.Rows(dgReportBillGrid.CurrentRowIndex).Item(8).ToString + "/" + bilr.Rows(dgReportBillGrid.CurrentRowIndex).Item(1).ToString
-        billcust = bilr.Rows(dgReportBillGrid.CurrentRowIndex).Item(0)
-
-        Dim billkey1 As String = billkey
-        billkey1 = billkey1.Substring(billkey1.IndexOf("/") + 1, billkey1.Length - billkey1.IndexOf("/") - 1)
-        rowCount = dt3.Rows.Count - 1
-        Dim countcust As Int32 = 0
-        While (rowCount >= 0)
-            dr3 = dt3.Rows(rowCount)
-            If billcust.Equals(dr3.Item(0).ToString) And billkey1 >= dr3.Item(1) Then
-                countcust += 1
-                PrevBillNo = "NIL"
-                If countcust = 2 Then
-                    PrevBillNo = dr3.Item(8).ToString + "/" + dr3.Item(1).ToString
-                    Exit While
-                End If
-            End If
-            rowCount = rowCount - 1
-        End While
-
-        billdate = bilr.Rows(dgReportBillGrid.CurrentRowIndex).Item(2)
-        billdatestring = billdate.ToString("dd/MM/yyyy")
-        T17 = bilr.Rows(dgReportBillGrid.CurrentRowIndex).Item(5)
-        T20 = bilr.Rows(dgReportBillGrid.CurrentRowIndex).Item(3)
-        T21 = bilr.Rows(dgReportBillGrid.CurrentRowIndex).Item(4)
-        BillReportForm.Show()
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
-    End Sub
-
     Private Sub btnBilingOutstandingBalance_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBilingOutstandingBalance.Click
-        'Try
-        'Dim ds10 As DataSet
-
-
-
         CustomerBillSummary.Show()
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
     End Sub
 
     Private Sub radioPaymentByCash_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles radioPaymentByCash.CheckedChanged
@@ -1600,8 +1373,6 @@ Public Class AgnimainForm
     End Sub
     Private Sub btnBillingCreateBill_Click(sender As Object, e As EventArgs) Handles btnBillingCreateBill.Click
 
-        ''log.Debug("btnBillingCreateBill_Click: entry")
-
         If (cmbBillingCustomerList.SelectedIndex = -1 Or cmbBillingCustomerList.SelectedValue = -1) Then
             MessageBox.Show("Please select a customer")
             cmbBillingCustomerList.Focus()
@@ -1636,10 +1407,6 @@ Public Class AgnimainForm
         txtBillingRemainingBalance.Text = Format(Math.Round(totalAmountToPay), "0.00")
 
         setBillingControlsVisibilitiesForCreateBill()
-
-    End Sub
-
-    Private Sub cmbDesDesignList_TextChanged(sender As Object, e As EventArgs) Handles cmbDesDesignList.TextChanged
 
     End Sub
 
@@ -1758,7 +1525,6 @@ Public Class AgnimainForm
                     .Parameters.AddWithValue("@PaidAmount", Decimal.Parse(txtBillingPaidAmount.Text))
                     .Parameters.AddWithValue("@Cancelled", 0)
                 End With
-                'comm.ExecuteNonQuery()
                 newBillNo = CInt(comm.ExecuteScalar())
             End Using
 
@@ -1770,9 +1536,6 @@ Public Class AgnimainForm
 
             loadBillList(custNo)
             loadBillGrid(custNo)
-
-            'Catch ex As Exception
-            'MessageBox.Show("Message To Agni User:   " & ex.Message & " Or this design Record may already exist")
         End If
     End Sub
 
@@ -1809,7 +1572,6 @@ Public Class AgnimainForm
             End With
             comm.ExecuteNonQuery()
         End Using
-        'updateDesignsAsUnBilled(billNo)
 
         MessageBox.Show("Bill " + billNo.ToString + " is marked as cancelled bill. You need to create a new bill for the designs which were billed in this bill")
 
@@ -1827,8 +1589,6 @@ Public Class AgnimainForm
     End Sub
 
     Private Sub btnPaymentCreatePayment_Click(sender As Object, e As EventArgs) Handles btnPaymentCreatePayment.Click
-        ''log.Debug("btnBillingCreateBill_Click: entry")
-
         If (cmbPaymentCustomerList.SelectedIndex = -1 Or cmbPaymentCustomerList.SelectedValue = -1) Then
             MessageBox.Show("Please select a customer")
             cmbPaymentCustomerList.Focus()
@@ -2031,15 +1791,12 @@ Public Class AgnimainForm
 
     Private Sub cmbPaymentPaymentNoList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbPaymentPaymentNoList.SelectedIndexChanged
 
-        'log.Debug("cmbPaymentPaymentNoList_SelectedIndexChanged: cmbPaymentPaymentNoList.SelectedIndex: " + cmbPaymentPaymentNoList.SelectedIndex.ToString)
-
         If (cmbPaymentPaymentNoList.SelectedIndex = -1 Or cmbPaymentPaymentNoList.SelectedValue = -1) Then
             resetPaymentScreen()
             Return
         End If
 
         Dim paymentNo As Integer = cmbPaymentPaymentNoList.SelectedValue
-        ''log.Debug("cmbPaymentPaymentNoList_SelectedIndexChanged: cmbPaymentPaymentNoList.SelectedValue  : " + paymentNo.ToString)
         Dim paymentSelectQuery = New SqlCommand("select p.*,b.DisplayBillNo from payment p, bill b where p.BillNo = b.BillNo and p.PaymentNo=" + paymentNo.ToString, dbConnection)
         Dim paymentAdapter = New SqlDataAdapter()
         paymentAdapter.SelectCommand = paymentSelectQuery
@@ -2072,7 +1829,6 @@ Public Class AgnimainForm
             txtPaymentRemarks.Text = dataRow.Item("Remarks")
         Else
             MessageBox.Show("No data found for payment: " + paymentNo.ToString)
-            ''log.Debug("cmbPaymentPaymentNoList_SelectedIndexChanged: No data found for Bill: " + paymentNo.ToString)
         End If
     End Sub
 
@@ -2100,7 +1856,6 @@ Public Class AgnimainForm
     End Sub
 
     Private Sub btnPaymentDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPaymentDelete.Click
-        'Try
         If cmbPaymentPaymentNoList.SelectedIndex = -1 Or cmbPaymentPaymentNoList.SelectedValue = -1 Then
             MessageBox.Show("select the payment which you want to delete")
             cmbPaymentPaymentNoList.Focus()
@@ -2109,8 +1864,6 @@ Public Class AgnimainForm
             Dim selectedPaymentNo As Integer = cmbPaymentPaymentNoList.SelectedValue
 
             Dim lastPaymentRow As DataRow = getLastPaymentRow(custNo)
-
-            ''log.Debug("btnPaymentDelete_Click: selectedPaymentNo: " + selectedPaymentNo.ToString + " lastPaymentRow.Item(PaymentNo): " + lastPaymentRow.Item("PaymentNo").ToString)
 
             If (lastPaymentRow IsNot Nothing AndAlso selectedPaymentNo <> lastPaymentRow.Item("PaymentNo")) Then
                 MessageBox.Show("This is not the last payment. You can only delete the last payment")
@@ -2131,17 +1884,39 @@ Public Class AgnimainForm
                     loadBillGrid(custNo)
                     loadBillList(custNo)
                 End If
-
             End If
         End If
-
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
     End Sub
 
     Private Sub tabAllTabsHolder_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tabAllTabsHolder.SelectedIndexChanged
 
+        Dim selectedTab As TabPage = tabAllTabsHolder.SelectedTab
+        Dim selectedTabTag As String = selectedTab.Tag
+
+        If selectedTabTag.Equals("tagReportsTab") Then
+            Me.AcceptButton = btnReportSearch
+            radioReportCustName.Focus()
+        ElseIf selectedTabTag.Equals("tagCustomerTab") Then
+            Me.AcceptButton = btnCustAdd
+            cmbCustCustomerList.Focus()
+        ElseIf selectedTabTag.Equals("tagDesignTab") Then
+            Me.AcceptButton = btnDesAdd
+            cmbDesCustomerList.Focus()
+        ElseIf selectedTabTag.Equals("tagBillingTab") Then
+            If btnBillingCreateBill.Visible = True Then
+                Me.AcceptButton = btnBillingCreateBill
+            Else
+                Me.AcceptButton = btnBillingConfirmCreateBill
+            End If
+            cmbBillingCustomerList.Focus()
+        ElseIf selectedTabTag.Equals("tagPaymentTab") Then
+            If btnPaymentCreatePayment.Visible = True Then
+                Me.AcceptButton = btnPaymentCreatePayment
+            Else
+                Me.AcceptButton = btnPaymentConfirmCreatePayment
+            End If
+            cmbPaymentCustomerList.Focus()
+        End If
     End Sub
 
     Private Sub btnPaymentClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPaymentClear.Click
@@ -2158,8 +1933,6 @@ Public Class AgnimainForm
                                     radioReportDate.CheckedChanged,
                                     cbReportExtraDateFilter.CheckedChanged,
                                     radioReportDesignName.CheckedChanged
-        'Try
-
         lblReportCompName.Visible = False
         lblReportBillNo.Visible = False
         lblReportDesignNo.Visible = False
@@ -2199,9 +1972,6 @@ Public Class AgnimainForm
             dpReportFromDate.Visible = True
             dpReportToDate.Visible = True
         End If
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
     End Sub
 
     Private Sub cmbReportDesignList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -2242,7 +2012,6 @@ Public Class AgnimainForm
     End Sub
 
     Private Function getDesignImage(designNo As Integer) As Image
-
         Dim designSelectQuery = New SqlCommand("select Image from design where DesignNo=" + designNo.ToString, dbConnection)
         Dim designDataAdapter = New SqlDataAdapter()
         designDataAdapter.SelectCommand = designSelectQuery
@@ -2262,14 +2031,9 @@ Public Class AgnimainForm
         End If
 
         Return Nothing
-
-        ''Catch ex As Exception
-        '    'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        ''End 'Try
     End Function
 
     Private Sub btnReportSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnReportSearch.Click
-        'Try
         pbReportDesignImage.Image = Nothing
         dgReportDesignGrid.DataSource = Nothing
         dgReportBillGrid.DataSource = Nothing
@@ -2328,10 +2092,6 @@ Public Class AgnimainForm
             searchBillByDateRange(dpReportFromDate.Value, dpReportToDate.Value)
             searchPaymentByDateRange(dpReportFromDate.Value, dpReportToDate.Value)
         End If
-
-        'Catch ex As Exception
-        'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        'End 'Try
     End Sub
 
     Class SearchData
@@ -2375,7 +2135,6 @@ Public Class AgnimainForm
     End Sub
 
     Function fetchDesignTableByCustNo(searchData As SearchData) As DataTable
-
         Dim custNo As Integer = searchData.custNo
         Dim fromDate As Date = searchData.fromDate
         Dim toDate As Date = searchData.toDate
@@ -3207,7 +2966,7 @@ Public Class AgnimainForm
     End Function
 
     Private Sub cmbDesDesignList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbDesDesignList.SelectedIndexChanged
-         
+
         If (cmbDesDesignList.SelectedIndex = -1 Or cmbDesDesignList.SelectedValue = -1) Then
             resetDesignScreen()
             Return
@@ -3246,11 +3005,6 @@ Public Class AgnimainForm
         Else
             MessageBox.Show("No data found for design: " + cmbDesDesignList.Text)
         End If
-
-
-        ''Catch ex As Exception
-        '    'MessageBox.Show("Message to Agni User:   " & ex.Message)
-        ''End 'Try
     End Sub
 
 End Class

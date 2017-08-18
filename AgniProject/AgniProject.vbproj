@@ -120,12 +120,6 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddressReport.Designer.vb">
-      <DependentUpon>AddressReport.vb</DependentUpon>
-    </Compile>
-    <Compile Include="AddressReport.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="BillReportHolder.Designer.vb">
       <DependentUpon>BillReportHolder.vb</DependentUpon>
     </Compile>
@@ -139,47 +133,11 @@
       <DependentUpon>AgnimainForm.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AllAddrReport.Designer.vb">
-      <DependentUpon>AllAddrReport.vb</DependentUpon>
-    </Compile>
-    <Compile Include="AllAddrReport.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AllAddress.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AllAddress.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="AllBill.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AllBill.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="AllBillReport.Designer.vb">
-      <DependentUpon>AllBillReport.vb</DependentUpon>
-    </Compile>
-    <Compile Include="AllBillReport.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="Balance.Designer.vb">
-      <DependentUpon>Balance.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Balance.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="BillReport.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BillReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Address.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Address.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="changepwd.Designer.vb">
@@ -229,12 +187,6 @@
     <Compile Include="CustomerBillSummary.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OutBalanceReport.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OutBalanceReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="SplashScreen1.Designer.vb">
       <DependentUpon>SplashScreen1.vb</DependentUpon>
     </Compile>
@@ -249,10 +201,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AddressReport.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>AddressReport.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="BillReportHolder.resx">
       <SubType>Designer</SubType>
       <DependentUpon>BillReportHolder.vb</DependentUpon>
@@ -261,33 +209,9 @@
       <SubType>Designer</SubType>
       <DependentUpon>AgnimainForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AllAddrReport.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>AllAddrReport.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AllAddress.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>AllAddress.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AllBill.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>AllBill.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AllBillReport.resx">
-      <DependentUpon>AllBillReport.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Balance.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>Balance.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="BillReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>BillReport.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Address.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Address.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="changepwd.resx">
       <SubType>Designer</SubType>
@@ -310,10 +234,6 @@
     <EmbeddedResource Include="CustomerBillSummary.resx">
       <SubType>Designer</SubType>
       <DependentUpon>CustomerBillSummary.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OutBalanceReport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>OutBalanceReport.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="SplashScreen1.resx">
       <SubType>Designer</SubType>

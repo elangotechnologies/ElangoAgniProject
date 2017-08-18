@@ -2,25 +2,258 @@ Imports System.Data.SqlClient
 Imports System.IO
 ''Imports NLog
 Imports VB = Microsoft.VisualBasic
-Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
+Imports System.Threading
 Public Class BillReportForm
     'Dim log = LogManager.GetCurrentClassLogger()
 
     Dim dbConnection As SqlConnection
-    Dim cmd1, cmd2 As SqlCommand
-    Dim Sda1, Sda2 As SqlDataAdapter
-    Dim Ds1, Ds2, ds3, ds4, ds5, ds6 As DataSet
-    Dim Dt1, Dt2, dt3 As DataTable
-    Dim Dr2, dr3, dr4, dr5, dr6 As DataRow
-    Dim Dc2, dc3(3), dc4(10), dc5(3), dc6(6) As DataColumn
-    Dim Scb2, scb3 As SqlCommandBuilder
-    Dim desdate As Date
-    Dim desdatestr As String
+    Dim billCrystalReport As New BillReport
+    Dim billPDFDestPath As String = "E:"
+
+    Private ATTRIBUTE_BILL_PDF_PATH As String = "bill_pdf_dest_path"
+
     Public valueToConvert As String
     Private n, intpart, realpart, numchar, intword, realword, spltval, spltword As String
     Private flag As Boolean
-    Dim billReport As New BillReport
+
+
+    Private Sub BillReportForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        dbConnection = New SqlConnection("server=agni\SQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
+        dbConnection.Open()
+
+        Dim selectedBillNo As Integer = AgniMainForm.gSelectedBillNo
+        Dim selectedCustNo As Integer = AgniMainForm.gSelectedCustNo
+
+        If (selectedBillNo = -1) Then
+            Return
+        End If
+
+        loadBillDetails(selectedBillNo, selectedCustNo)
+
+    End Sub
+    Class SearchData
+        Public custNo, billNo As Integer
+        Sub New()
+            custNo = -1
+            billNo = -1
+        End Sub
+    End Class
+
+    Sub loadBillDetails(billNo As Integer, custNo As Integer)
+        Dim thread As Thread = New Thread(AddressOf fetchAndSetCompleteBillDetails)
+        thread.IsBackground = True
+        Dim searchData As SearchData = New SearchData
+        searchData.custNo = custNo
+        searchData.billNo = billNo
+        thread.Start(searchData)
+    End Sub
+
+    Sub fetchAndSetCompleteBillDetails(ByVal searchDataParam As Object)
+        Dim searchData As SearchData = CType(searchDataParam, SearchData)
+        Dim billNo As Integer = searchData.billNo
+        Dim custNo As Integer = searchData.custNo
+
+        fetchAndSetDesignDetails(billNo)
+        fetchAndSetCustomerDetails(custNo)
+        fetchAndSetBillDetails(billNo, custNo)
+
+    End Sub
+
+    Sub fetchAndSetDesignDetails(billNo As Integer)
+        Dim designQuery As SqlCommand
+        designQuery = New SqlCommand("select * from design where BillNo=" + billNo.ToString, dbConnection)
+        Dim designAdapter = New SqlDataAdapter()
+        designAdapter.SelectCommand = designQuery
+        Dim designDataSet = New DataSet
+        designAdapter.Fill(designDataSet, "design")
+        Dim designTable As DataTable = designDataSet.Tables(0)
+
+        If designTable.Rows.Count = 0 Then
+            Return
+        End If
+
+        Dim setDesignsInReportInvoker As New setDesignsInReportDelegate(AddressOf Me.setDesignsInReport)
+        Me.Invoke(setDesignsInReportInvoker, designTable)
+    End Sub
+
+    Delegate Sub setDesignsInReportDelegate(designTable As DataTable)
+
+    Sub setDesignsInReport(designTable As DataTable)
+        billCrystalReport.SetDataSource(designTable)
+        reportViewerBillReport.ReportSource = billCrystalReport
+    End Sub
+
+    Sub fetchAndSetCustomerDetails(custNo As Integer)
+
+        Dim customerQuery As SqlCommand
+        customerQuery = New SqlCommand("select CompName, GSTIN, Address from customer where custNo=" + custNo.ToString, dbConnection)
+        Dim customerAdapter = New SqlDataAdapter()
+        customerAdapter.SelectCommand = customerQuery
+        Dim customerDataSet = New DataSet
+        customerAdapter.Fill(customerDataSet, "customer")
+        Dim customerTable As DataTable = customerDataSet.Tables(0)
+
+        If customerTable.Rows.Count = 0 Then
+            Return
+        End If
+
+        Dim companyName = customerTable.Rows(0).Item("CompName").ToString
+        Dim compGSTIN = customerTable.Rows(0).Item("GSTIN").ToString
+        Dim compAddress = customerTable.Rows(0).Item("Address").ToString
+
+        Dim setCustDetailsInReportInvoker As New setCustDetailsInReportDelegate(AddressOf Me.setCustDetailsInReport)
+        Me.BeginInvoke(setCustDetailsInReportInvoker, companyName, compGSTIN, compAddress)
+    End Sub
+
+    Delegate Sub setCustDetailsInReportDelegate(companyName As String, compGSTIN As String, compAddress As String)
+
+    Sub setCustDetailsInReport(companyName As String, compGSTIN As String, compAddress As String)
+        billCrystalReport.SetParameterValue("CompName", companyName)
+        billCrystalReport.SetParameterValue("CompGSTIN", compGSTIN)
+        billCrystalReport.SetParameterValue("CompAddress", compAddress)
+    End Sub
+
+    Sub fetchAndSetBillDetails(billNo As Integer, custNo As Integer)
+
+        Dim billQuery As SqlCommand = New SqlCommand("SELECT TOP 2 * FROM bill where CustNo=" + custNo.ToString + "  and billNo <= " + billNo.ToString + " ORDER BY BillNo DESC", dbConnection)
+        Dim billAdapter = New SqlDataAdapter()
+        billAdapter.SelectCommand = billQuery
+        Dim billDataSet = New DataSet
+        billAdapter.Fill(billDataSet, "bill")
+        Dim billTable As DataTable = billDataSet.Tables(0)
+
+        If billTable.Rows.Count = 0 Then
+            Return
+        End If
+
+        Dim setBillDetailsInReportInvoker As New setBillDetailsInReportDelegate(AddressOf Me.setBillDetailsInReport)
+        Me.BeginInvoke(setBillDetailsInReportInvoker, billTable)
+    End Sub
+
+    Delegate Sub setBillDetailsInReportDelegate(billTable As DataTable)
+
+    Sub setBillDetailsInReport(billTable As DataTable)
+
+        billCrystalReport.SetParameterValue("BillNo", billTable.Rows(0).Item("DisplayBillNo").ToString)
+        billCrystalReport.SetParameterValue("BillDate", billTable.Rows(0).Item("BillDate"))
+        If (billTable.Rows.Count > 1) Then
+            billCrystalReport.SetParameterValue("PrevBillNo", billTable.Rows(1).Item("DisplayBillNo").ToString)
+        Else
+            billCrystalReport.SetParameterValue("PrevBillNo", "None")
+        End If
+
+        Dim designAmount As Decimal = AgniMainForm.txtBillingDesignAmoutBeforeGST.Text
+        Dim designAmountAfterGST As Decimal = AgniMainForm.txtBillingDesignAmoutAfterGST.Text
+        Dim CGST As Decimal = AgniMainForm.txtBillingCGSTPercent.Text
+        Dim SGST As Decimal = AgniMainForm.txtBillingSGSTPercent.Text
+        Dim IGST As Decimal = AgniMainForm.txtBillingIGSTPercent.Text
+        Dim CGSTAmount As Decimal = AgniMainForm.txtBillingCGSTAmount.Text
+        Dim SGSTAmount As Decimal = AgniMainForm.txtBillingSGSTAmount.Text
+        Dim IGSTAmount As Decimal = AgniMainForm.txtBillingIGSTAmount.Text
+        Dim totalGSTAmount As Decimal = AgniMainForm.txtBillingTotalGSTAmount.Text
+        Dim prevBalance As Decimal = AgniMainForm.txtBillingPrevBalance.Text
+        Dim paidAmountForThisBill As Decimal = AgniMainForm.txtBillingPaidAmount.Text
+        Dim netBalance As Decimal = AgniMainForm.txtBillingRemainingBalance.Text
+        Dim cancelledBill As String = If(billTable.Rows(0).Item("Cancelled") = 1, "This is a cancelled bill", "")
+
+        billCrystalReport.SetParameterValue("DesignsAmountBeforeTax", Format(Math.Round(designAmount), "0.00"))
+        billCrystalReport.SetParameterValue("CGST", CGST.ToString)
+        billCrystalReport.SetParameterValue("SGST", SGST.ToString)
+        billCrystalReport.SetParameterValue("IGST", IGST.ToString)
+        billCrystalReport.SetParameterValue("CGSTAmount", CGSTAmount.ToString)
+        billCrystalReport.SetParameterValue("SGSTAmount", SGSTAmount.ToString)
+        billCrystalReport.SetParameterValue("IGSTAmount", IGSTAmount.ToString)
+        billCrystalReport.SetParameterValue("TotalGSTTax", Format(Math.Round(totalGSTAmount), "0.00"))
+        billCrystalReport.SetParameterValue("DesignsAmountAfterTax", Format(Math.Round(designAmountAfterGST), "0.00"))
+
+        billCrystalReport.SetParameterValue("DesignsAmountBeforeTax", Format(Math.Round(designAmount), "0.00"))
+        billCrystalReport.SetParameterValue("DesignsCostInWords", getAmountInWords(designAmountAfterGST.ToString))
+        billCrystalReport.SetParameterValue("PaidAmountForThisBill", Format(Math.Round(paidAmountForThisBill), "0.00"))
+        billCrystalReport.SetParameterValue("PrevBalance", Format(Math.Round(prevBalance), "0.00"))
+        billCrystalReport.SetParameterValue("NetBalance", Format(Math.Round(netBalance), "0.00"))
+        billCrystalReport.SetParameterValue("CancelledBill", cancelledBill)
+    End Sub
+
+    Function getPdfDestPath() As String
+        Dim attributesTabe As DataTable = getAttributesTable(ATTRIBUTE_BILL_PDF_PATH)
+
+        If attributesTabe.Rows.Count = 0 Then
+            Return "E:"
+        End If
+
+        Dim dataRow As DataRow = attributesTabe.Rows(0)
+        Return dataRow.Item("AttributeValue")
+    End Function
+
+    Function getAttributesTable(attributeName As String) As DataTable
+        Dim attributeQuery = New SqlCommand("select * from attributes where AttributeName='" + attributeName + "'", dbConnection)
+        Dim attributeAdapter = New SqlDataAdapter()
+        attributeAdapter.SelectCommand = attributeQuery
+        Dim attributeDataSet = New DataSet
+        attributeAdapter.Fill(attributeDataSet, "attributes")
+        Return attributeDataSet.Tables(0)
+    End Function
+
+    Public Sub insertAttribute(attributeName As String, attributeValue As String)
+
+        Dim query As String = String.Empty
+        query &= "INSERT INTO attributes (AttributeName, AttributeValue) "
+        query &= "VALUES (@attributeName, @attributeValue)"
+
+        Using comm As New SqlCommand()
+            With comm
+                .Connection = dbConnection
+                .CommandType = CommandType.Text
+                .CommandText = query
+                .Parameters.AddWithValue("@attributeName", attributeName)
+                .Parameters.AddWithValue("@attributeValue", attributeValue)
+            End With
+            comm.ExecuteNonQuery()
+        End Using
+    End Sub
+
+    Private Sub btnBillReportExportPdf_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBillReportExportPdf.Click
+
+        Dim CrExportOptions As ExportOptions
+        Dim CrDiskFileDestinationOptions As New DiskFileDestinationOptions
+        Dim CrFormatTypeOptions As New PdfRtfWordFormatOptions
+        Dim billnumber = AgniMainForm.gSelectedBillNo
+        Dim displayBillnumber = AgniMainForm.gSelectedDisplayBillNo
+        Dim custName = AgniMainForm.gSelectedCustName
+        Dim pdfBillDestFolder As String = getPdfDestPath()
+        Dim fileName As String = pdfBillDestFolder + "\Bill#" + displayBillnumber + "_(#" + billnumber.ToString + ")_" + custName + ".pdf"
+        CrDiskFileDestinationOptions.DiskFileName = fileName
+        CrExportOptions = billCrystalReport.ExportOptions
+        With CrExportOptions
+            .ExportDestinationType = ExportDestinationType.DiskFile
+            .ExportFormatType = ExportFormatType.PortableDocFormat
+            .DestinationOptions = CrDiskFileDestinationOptions
+            .FormatOptions = CrFormatTypeOptions
+        End With
+        billCrystalReport.Export()
+        MsgBox("This bill is saved as '" + fileName + "'")
+
+    End Sub
+
+
+
+    Private Sub btnBillReportPDFPath_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBillReportPDFPath.Click
+        Try
+            Dim folderDialog As New FolderBrowserDialog
+            If folderDialog.ShowDialog() = Windows.Forms.DialogResult.OK Then
+
+                Dim billPdfPath As String = folderDialog.SelectedPath.ToString
+                MsgBox("From now on, the exported bill pdf files will be saved in '" + billPdfPath + "\' directory. You can changes this path again.")
+
+                insertAttribute(ATTRIBUTE_BILL_PDF_PATH, billPdfPath)
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show("message to agni user:   " & ex.Message)
+        End Try
+    End Sub
+
 
     Public Function getAmountInWords(valueToConvert As String) As String
         n = ""
@@ -122,156 +355,6 @@ Public Class BillReportForm
     End Sub
 
     Private Sub Agnireport_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
-        billReport.Dispose()
-    End Sub
-    Private Sub BillReportForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'Try
-
-        dbConnection = New SqlConnection("server=agni\SQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
-        dbConnection.Open()
-
-        Dim selectedBillNo As Integer = AgnimainForm.gSelectedBillNo
-
-        If (selectedBillNo = -1) Then
-            Return
-        End If
-
-        Dim designQuery As SqlCommand
-        designQuery = New SqlCommand("select * from design where BillNo=" + selectedBillNo.ToString, dbConnection)
-        Dim designAdapter = New SqlDataAdapter()
-        designAdapter.SelectCommand = designQuery
-        Dim designDataSet = New DataSet
-        designAdapter.Fill(designDataSet, "design")
-        Dim designTable As DataTable = designDataSet.Tables(0)
-
-        If designTable.Rows.Count = 0 Then
-            Return
-        End If
-
-        billReport.SetDataSource(designTable)
-
-        reportViewerBillReport.ReportSource = billReport
-
-        Dim selectedCustNo As Integer = designTable.Rows(0).Item("CustNo")
-        Dim customerQuery As SqlCommand
-        customerQuery = New SqlCommand("select CompName, GSTIN, Address from customer where custNo=" + selectedCustNo.ToString, dbConnection)
-        Dim customerAdapter = New SqlDataAdapter()
-        customerAdapter.SelectCommand = customerQuery
-        Dim customerDataSet = New DataSet
-        customerAdapter.Fill(customerDataSet, "customer")
-        Dim customerTable As DataTable = customerDataSet.Tables(0)
-
-        If customerTable.Rows.Count = 0 Then
-            Return
-        End If
-
-        Dim companyName = customerTable.Rows(0).Item("CompName")
-        Dim CompGSTIN = customerTable.Rows(0).Item("GSTIN")
-        Dim CompAddress = customerTable.Rows(0).Item("Address")
-
-        'billReport.Subreports.Item("BillHeader").SetDataSource(customerTable)
-        billReport.SetParameterValue("CompName", customerTable.Rows(0).Item("CompName").ToString)
-        billReport.SetParameterValue("CompGSTIN", customerTable.Rows(0).Item("GSTIN").ToString)
-        billReport.SetParameterValue("CompAddress", customerTable.Rows(0).Item("Address").ToString)
-
-        Dim invoiceQuery As SqlCommand
-        invoiceQuery = New SqlCommand("SELECT TOP 2 * FROM bill where CustNo=" + selectedCustNo.ToString + " ORDER BY BillNo DESC", dbConnection)
-        Dim invoiceAdapter = New SqlDataAdapter()
-        invoiceAdapter.SelectCommand = invoiceQuery
-        Dim invoiceDataSet = New DataSet
-        invoiceAdapter.Fill(invoiceDataSet, "bill")
-        Dim invoiceTable As DataTable = invoiceDataSet.Tables(0)
-
-        If invoiceTable.Rows.Count = 0 Then
-            Return
-        End If
-
-        billReport.SetParameterValue("BillNo", invoiceTable.Rows(0).Item("DisplayBillNo").ToString)
-        billReport.SetParameterValue("BillDate", invoiceTable.Rows(0).Item("BillDate"))
-        If (invoiceTable.Rows.Count > 1) Then
-            billReport.SetParameterValue("PrevBillNo", invoiceTable.Rows(1).Item("BillNo").ToString)
-        Else
-            billReport.SetParameterValue("PrevBillNo", "NIL")
-        End If
-
-        Dim designAmount As Decimal = AgnimainForm.txtBillingDesignAmoutBeforeGST.Text
-        Dim designAmountAfterGST As Decimal = AgnimainForm.txtBillingDesignAmoutAfterGST.Text
-        Dim CGST As Decimal = AgnimainForm.txtBillingCGSTPercent.Text
-        Dim SGST As Decimal = AgnimainForm.txtBillingSGSTPercent.Text
-        Dim IGST As Decimal = AgnimainForm.txtBillingIGSTPercent.Text
-        Dim CGSTAmount As Decimal = AgnimainForm.txtBillingCGSTAmount.Text
-        Dim SGSTAmount As Decimal = AgnimainForm.txtBillingSGSTAmount.Text
-        Dim IGSTAmount As Decimal = AgnimainForm.txtBillingIGSTAmount.Text
-        Dim totalGSTAmount As Decimal = AgnimainForm.txtBillingTotalGSTAmount.Text
-        Dim prevBalance As Decimal = AgnimainForm.txtBillingPrevBalance.Text
-        Dim paidAmountForThisBill As Decimal = AgnimainForm.txtBillingPaidAmount.Text
-        Dim netBalance As Decimal = AgnimainForm.txtBillingRemainingBalance.Text
-        Dim cancelledBill As String = If(invoiceTable.Rows(0).Item("Cancelled") = 1, "This is a cancelled bill", "")
-
-        billReport.SetParameterValue("DesignsAmountBeforeTax", Format(Math.Round(designAmount), "0.00"))
-        billReport.SetParameterValue("CGST", CGST.ToString)
-        billReport.SetParameterValue("SGST", SGST.ToString)
-        billReport.SetParameterValue("IGST", IGST.ToString)
-        billReport.SetParameterValue("CGSTAmount", CGSTAmount.ToString)
-        billReport.SetParameterValue("SGSTAmount", SGSTAmount.ToString)
-        billReport.SetParameterValue("IGSTAmount", IGSTAmount.ToString)
-        billReport.SetParameterValue("TotalGSTTax", Format(Math.Round(totalGSTAmount), "0.00"))
-        billReport.SetParameterValue("DesignsAmountAfterTax", Format(Math.Round(designAmountAfterGST), "0.00"))
-
-        billReport.SetParameterValue("DesignsAmountBeforeTax", Format(Math.Round(designAmount), "0.00"))
-        billReport.SetParameterValue("DesignsCostInWords", getAmountInWords(designAmountAfterGST.ToString))
-        billReport.SetParameterValue("PaidAmountForThisBill", Format(Math.Round(paidAmountForThisBill), "0.00"))
-        billReport.SetParameterValue("PrevBalance", Format(Math.Round(prevBalance), "0.00"))
-        billReport.SetParameterValue("NetBalance", Format(Math.Round(netBalance), "0.00"))
-        billReport.SetParameterValue("CancelledBill", cancelledBill)
-
-        '
-        'billReport.Subreports.Item("BillHeader").SetDataSource(InvoiceIdentityTable)
-        'objRpt.Subreports.Item("BillFooter").SetDataSource(ds6.Tables(0))
-        'objRpt.Subreports.Item("Amt2words").SetDataSource(ds6.Tables(0))
-
-
-        'Catch ex As Exception
-        '    MessageBox.Show("message to agni user:    " & ex.Message)
-        'End Try
-    End Sub
-
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        'Try
-        Dim CrExportOptions As ExportOptions
-            Dim CrDiskFileDestinationOptions As New DiskFileDestinationOptions
-            Dim CrFormatTypeOptions As New PdfRtfWordFormatOptions
-            Dim fname As String = ""
-            Dim billnumber = AgnimainForm.gSelectedBillNo
-            Dim custName = AgnimainForm.gSelectedCustName
-        'Dim billnumber1 As String = billnumber.Substring(billnumber.IndexOf("/") + 1, billnumber.Length - billnumber.IndexOf("/") - 1)
-        'billnumber = billnumber.Substring(0, billnumber.IndexOf("/"))
-        'fname = AgnimainForm.pdfdesfolder + "\Bill @" + billnumber + "#" + billnumber1 + " " + AgnimainForm.billcust + ".pdf"
-        fname = AgnimainForm.pdfdesfolder + "\Bill_" + billnumber.ToString + "_" + custName + ".pdf"
-        CrDiskFileDestinationOptions.DiskFileName = fname
-            CrExportOptions = billReport.ExportOptions
-            With CrExportOptions
-                .ExportDestinationType = ExportDestinationType.DiskFile
-                .ExportFormatType = ExportFormatType.PortableDocFormat
-                .DestinationOptions = CrDiskFileDestinationOptions
-                .FormatOptions = CrFormatTypeOptions
-            End With
-            billReport.Export()
-            MsgBox("'" + fname + "' is successfully created")
-        'Catch ex As Exception
-        '    MessageBox.Show("message to agni user:   " & ex.Message)
-        'End Try
-    End Sub
-
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
-        Try
-            Dim folder As New FolderBrowserDialog
-            If folder.ShowDialog() = Windows.Forms.DialogResult.OK Then
-                MsgBox("The PDF file will be saved in '" + folder.SelectedPath.ToString + "\'")
-                AgnimainForm.pdfdesfolder = folder.SelectedPath.ToString
-            End If
-        Catch ex As Exception
-            MessageBox.Show("message to agni user:   " & ex.Message)
-        End Try
+        billCrystalReport.Dispose()
     End Sub
 End Class

@@ -29,12 +29,8 @@ D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\stdole.dll
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\ShockwaveFlashObjects.dll
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.vbprojResolveAssemblyReference.cache
-D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.AddressReport.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.BillReportForm.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.AgnimainForm.resources
-D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.AllAddrReport.resources
-D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.AllBillReport.resources
-D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.Balance.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.changepwd.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.manageuser.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.Login.resources

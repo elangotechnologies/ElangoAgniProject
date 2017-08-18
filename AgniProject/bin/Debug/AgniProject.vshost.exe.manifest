@@ -48,14 +48,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AgniProject.exe" size="1182720">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AgniProject.exe" size="1175552">
       <assemblyIdentity name="AgniProject" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>0BfdxXKEY9tf1vkbt7N94vyGCIY1GPtfO6fzSV3/JCI=</dsig:DigestValue>
+        <dsig:DigestValue>QxIi32uCRLIklS0AFZq96R7T9Axfwi8XnWQTLBTb6sU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -300,14 +300,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EnvDTE.dll" size="261784">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EnvDTE.dll" size="245760">
       <assemblyIdentity name="EnvDTE" version="8.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>gUCV/69h+7JLsXTjBoI4IUvjyPlZI5lOm0Gjiyh7Ydk=</dsig:DigestValue>
+        <dsig:DigestValue>K4GhDEQZtOdWhnb/BpHVACzUI/yCLpdoIA8+h6N/hrY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -336,14 +336,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="stdole.dll" size="32408">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="stdole.dll" size="22344">
       <assemblyIdentity name="stdole" version="7.0.3300.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Pk2hziGFz3Q5Gbw1GiYw8iH29DaRwqhk99DGHlGtFpw=</dsig:DigestValue>
+        <dsig:DigestValue>jMi19KrJNkB1ILLnkqK/8gftgN9goxalLVafnSSLWHI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
