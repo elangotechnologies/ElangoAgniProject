@@ -41,6 +41,13 @@ Partial Class AgniMainForm
         Me.Label35 = New System.Windows.Forms.Label()
         Me.Label34 = New System.Windows.Forms.Label()
         Me.tabReports = New System.Windows.Forms.TabPage()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.juyt = New System.Windows.Forms.ComboBox()
+        Me.cbReportExtraDateFilter = New System.Windows.Forms.CheckBox()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.CheckBox4 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.Label45 = New System.Windows.Forms.Label()
         Me.lblReportPaidAmountWithDeduction = New System.Windows.Forms.Label()
         Me.Label49 = New System.Windows.Forms.Label()
         Me.lblReportPaidAmountActual = New System.Windows.Forms.Label()
@@ -61,6 +68,7 @@ Partial Class AgniMainForm
         Me.Label33 = New System.Windows.Forms.Label()
         Me.dgReportPaymentGrid = New System.Windows.Forms.DataGrid()
         Me.DataGridTableStyle3 = New System.Windows.Forms.DataGridTableStyle()
+        Me.dgPaymentDetails = New System.Windows.Forms.DataGrid()
         Me.DataGridTextBoxColumn20 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn21 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn22 = New System.Windows.Forms.DataGridTextBoxColumn()
@@ -81,7 +89,6 @@ Partial Class AgniMainForm
         Me.lblReportDesignNo = New System.Windows.Forms.Label()
         Me.dgReportBillGrid = New System.Windows.Forms.DataGrid()
         Me.DataGridTableStyle2 = New System.Windows.Forms.DataGridTableStyle()
-        Me.dgBIllingBillDetails = New System.Windows.Forms.DataGrid()
         Me.DataGridTextBoxColumn45 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn42 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn12 = New System.Windows.Forms.DataGridTextBoxColumn()
@@ -102,6 +109,7 @@ Partial Class AgniMainForm
         Me.DataGridBoolColumn2 = New System.Windows.Forms.DataGridBoolColumn()
         Me.dgReportDesignGrid = New System.Windows.Forms.DataGrid()
         Me.DataGridTableStyle1 = New System.Windows.Forms.DataGridTableStyle()
+        Me.dgDesDesignDetails = New System.Windows.Forms.DataGrid()
         Me.DataGridTextBoxColumn44 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn1 = New System.Windows.Forms.DataGridTextBoxColumn()
         Me.DataGridTextBoxColumn2 = New System.Windows.Forms.DataGridTextBoxColumn()
@@ -120,7 +128,6 @@ Partial Class AgniMainForm
         Me.lblReportFromDate = New System.Windows.Forms.Label()
         Me.dpReportToDate = New System.Windows.Forms.DateTimePicker()
         Me.dpReportFromDate = New System.Windows.Forms.DateTimePicker()
-        Me.cbReportExtraDateFilter = New System.Windows.Forms.CheckBox()
         Me.Label111 = New System.Windows.Forms.Label()
         Me.btnReportSearch = New System.Windows.Forms.Button()
         Me.lblReportCompName = New System.Windows.Forms.Label()
@@ -132,8 +139,7 @@ Partial Class AgniMainForm
         Me.radioReportCustName = New System.Windows.Forms.RadioButton()
         Me.radioReportBillNo = New System.Windows.Forms.RadioButton()
         Me.cmbReportBillNoList = New System.Windows.Forms.ComboBox()
-        Me.dgPaymentDetails = New System.Windows.Forms.DataGrid()
-        Me.dgDesDesignDetails = New System.Windows.Forms.DataGrid()
+        Me.dgBIllingBillDetails = New System.Windows.Forms.DataGrid()
         Me.tabBilling = New System.Windows.Forms.TabPage()
         Me.Label44 = New System.Windows.Forms.Label()
         Me.txtBillingActualBillNo = New System.Windows.Forms.TextBox()
@@ -371,14 +377,15 @@ Partial Class AgniMainForm
         Me.Label150 = New System.Windows.Forms.Label()
         Me.tabHelp.SuspendLayout()
         Me.tabReports.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         CType(Me.dgReportPaymentGrid, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgPaymentDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgReportBillGrid, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dgBIllingBillDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgReportDesignGrid, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgDesDesignDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbReportDesignImage, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox6.SuspendLayout()
-        CType(Me.dgPaymentDetails, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dgDesDesignDetails, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgBIllingBillDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabBilling.SuspendLayout()
         Me.tabDesign.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -411,11 +418,11 @@ Partial Class AgniMainForm
         Me.Button38.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
         Me.Button38.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button38.ImageKey = "arrowup.jpg"
-        Me.Button38.Location = New System.Drawing.Point(871, 26)
+        Me.Button38.Location = New System.Drawing.Point(653, 21)
         Me.Button38.Margin = New System.Windows.Forms.Padding(0)
         Me.Button38.Name = "Button38"
-        Me.Button38.Padding = New System.Windows.Forms.Padding(20, 0, 0, 0)
-        Me.Button38.Size = New System.Drawing.Size(360, 42)
+        Me.Button38.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
+        Me.Button38.Size = New System.Drawing.Size(270, 34)
         Me.Button38.TabIndex = 1000
         Me.Button38.TabStop = False
         Me.Button38.Text = "Log Off"
@@ -428,11 +435,10 @@ Partial Class AgniMainForm
         Me.Button37.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
         Me.Button37.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button37.ImageKey = "exit.jpg"
-        Me.Button37.Location = New System.Drawing.Point(1389, 29)
-        Me.Button37.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button37.Location = New System.Drawing.Point(1042, 24)
         Me.Button37.Name = "Button37"
-        Me.Button37.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
-        Me.Button37.Size = New System.Drawing.Size(160, 39)
+        Me.Button37.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.Button37.Size = New System.Drawing.Size(120, 32)
         Me.Button37.TabIndex = 1001
         Me.Button37.TabStop = False
         Me.Button37.Text = "Exit"
@@ -463,10 +469,9 @@ Partial Class AgniMainForm
         Me.tabHelp.Font = New System.Drawing.Font("Book Antiqua", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tabHelp.ImageKey = "help1.JPG"
         Me.tabHelp.Location = New System.Drawing.Point(4, 52)
-        Me.tabHelp.Margin = New System.Windows.Forms.Padding(4)
         Me.tabHelp.Name = "tabHelp"
-        Me.tabHelp.Padding = New System.Windows.Forms.Padding(4)
-        Me.tabHelp.Size = New System.Drawing.Size(1703, 911)
+        Me.tabHelp.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabHelp.Size = New System.Drawing.Size(1789, 910)
         Me.tabHelp.TabIndex = 5
         Me.tabHelp.Tag = "tagHelpTab"
         Me.tabHelp.Text = "Help"
@@ -475,50 +480,45 @@ Partial Class AgniMainForm
         'Label25
         '
         Me.Label25.AutoSize = True
-        Me.Label25.Location = New System.Drawing.Point(16, 538)
-        Me.Label25.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label25.Location = New System.Drawing.Point(12, 437)
         Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(293, 32)
+        Me.Label25.Size = New System.Drawing.Size(220, 26)
         Me.Label25.TabIndex = 23
         Me.Label25.Text = "Alt + r        -     Reports"
         '
         'Label68
         '
         Me.Label68.AutoSize = True
-        Me.Label68.Location = New System.Drawing.Point(16, 585)
-        Me.Label68.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label68.Location = New System.Drawing.Point(12, 475)
         Me.Label68.Name = "Label68"
-        Me.Label68.Size = New System.Drawing.Size(256, 32)
+        Me.Label68.Size = New System.Drawing.Size(194, 26)
         Me.Label68.TabIndex = 22
         Me.Label68.Text = "Alt + h        -    Help"
         '
         'Label67
         '
         Me.Label67.AutoSize = True
-        Me.Label67.Location = New System.Drawing.Point(16, 485)
-        Me.Label67.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label67.Location = New System.Drawing.Point(12, 394)
         Me.Label67.Name = "Label67"
-        Me.Label67.Size = New System.Drawing.Size(304, 32)
+        Me.Label67.Size = New System.Drawing.Size(231, 26)
         Me.Label67.TabIndex = 21
         Me.Label67.Text = "Alt + p        -    Payment"
         '
         'Label66
         '
         Me.Label66.AutoSize = True
-        Me.Label66.Location = New System.Drawing.Point(12, 390)
-        Me.Label66.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label66.Location = New System.Drawing.Point(9, 317)
         Me.Label66.Name = "Label66"
-        Me.Label66.Size = New System.Drawing.Size(283, 32)
+        Me.Label66.Size = New System.Drawing.Size(215, 26)
         Me.Label66.TabIndex = 20
         Me.Label66.Text = "Alt + d        -    Design"
         '
         'Label65
         '
         Me.Label65.AutoSize = True
-        Me.Label65.Location = New System.Drawing.Point(12, 437)
-        Me.Label65.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label65.Location = New System.Drawing.Point(9, 355)
         Me.Label65.Name = "Label65"
-        Me.Label65.Size = New System.Drawing.Size(280, 32)
+        Me.Label65.Size = New System.Drawing.Size(212, 26)
         Me.Label65.TabIndex = 19
         Me.Label65.Text = "Alt + b        -    Billing"
         '
@@ -527,30 +527,27 @@ Partial Class AgniMainForm
         Me.Label64.AutoSize = True
         Me.Label64.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label64.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Label64.Location = New System.Drawing.Point(12, 292)
-        Me.Label64.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label64.Location = New System.Drawing.Point(9, 237)
         Me.Label64.Name = "Label64"
-        Me.Label64.Size = New System.Drawing.Size(410, 31)
+        Me.Label64.Size = New System.Drawing.Size(331, 25)
         Me.Label64.TabIndex = 18
         Me.Label64.Text = "Shortcut Key For Easy Access"
         '
         'Label62
         '
         Me.Label62.AutoSize = True
-        Me.Label62.Location = New System.Drawing.Point(12, 341)
-        Me.Label62.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label62.Location = New System.Drawing.Point(9, 277)
         Me.Label62.Name = "Label62"
-        Me.Label62.Size = New System.Drawing.Size(318, 32)
+        Me.Label62.Size = New System.Drawing.Size(240, 26)
         Me.Label62.TabIndex = 17
         Me.Label62.Text = "Alt + c        -     Customer"
         '
         'Label43
         '
         Me.Label43.AutoSize = True
-        Me.Label43.Location = New System.Drawing.Point(797, 151)
-        Me.Label43.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label43.Location = New System.Drawing.Point(598, 123)
         Me.Label43.Name = "Label43"
-        Me.Label43.Size = New System.Drawing.Size(505, 96)
+        Me.Label43.Size = New System.Drawing.Size(386, 78)
         Me.Label43.TabIndex = 9
         Me.Label43.Text = "The Record is refering by other tables. " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "To delete this record ,first delete tho" &
     "se" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " refering records"
@@ -558,70 +555,63 @@ Partial Class AgniMainForm
         'Label42
         '
         Me.Label42.AutoSize = True
-        Me.Label42.Location = New System.Drawing.Point(12, 151)
-        Me.Label42.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label42.Location = New System.Drawing.Point(9, 123)
         Me.Label42.Name = "Label42"
-        Me.Label42.Size = New System.Drawing.Size(737, 32)
+        Me.Label42.Size = New System.Drawing.Size(568, 26)
         Me.Label42.TabIndex = 8
         Me.Label42.Text = "The DELETE statement conflicted with the REFERENCE.."
         '
         'Label41
         '
         Me.Label41.AutoSize = True
-        Me.Label41.Location = New System.Drawing.Point(797, 119)
-        Me.Label41.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label41.Location = New System.Drawing.Point(598, 97)
         Me.Label41.Name = "Label41"
-        Me.Label41.Size = New System.Drawing.Size(534, 32)
+        Me.Label41.Size = New System.Drawing.Size(411, 26)
         Me.Label41.TabIndex = 7
         Me.Label41.Text = "The Record is already exist in same name"
         '
         'Label40
         '
         Me.Label40.AutoSize = True
-        Me.Label40.Location = New System.Drawing.Point(12, 119)
-        Me.Label40.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label40.Location = New System.Drawing.Point(9, 97)
         Me.Label40.Name = "Label40"
-        Me.Label40.Size = New System.Drawing.Size(419, 32)
+        Me.Label40.Size = New System.Drawing.Size(319, 26)
         Me.Label40.TabIndex = 6
         Me.Label40.Text = "Violation of PRIMARY KEY ......"
         '
         'Label39
         '
         Me.Label39.AutoSize = True
-        Me.Label39.Location = New System.Drawing.Point(797, 87)
-        Me.Label39.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label39.Location = New System.Drawing.Point(598, 71)
         Me.Label39.Name = "Label39"
-        Me.Label39.Size = New System.Drawing.Size(301, 32)
+        Me.Label39.Size = New System.Drawing.Size(233, 26)
         Me.Label39.TabIndex = 5
         Me.Label39.Text = "No records is available"
         '
         'Label38
         '
         Me.Label38.AutoSize = True
-        Me.Label38.Location = New System.Drawing.Point(12, 87)
-        Me.Label38.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label38.Location = New System.Drawing.Point(9, 71)
         Me.Label38.Name = "Label38"
-        Me.Label38.Size = New System.Drawing.Size(381, 32)
+        Me.Label38.Size = New System.Drawing.Size(294, 26)
         Me.Label38.TabIndex = 4
         Me.Label38.Text = "There is no row at position -1"
         '
         'Label37
         '
         Me.Label37.AutoSize = True
-        Me.Label37.Location = New System.Drawing.Point(797, 55)
-        Me.Label37.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label37.Location = New System.Drawing.Point(598, 45)
         Me.Label37.Name = "Label37"
-        Me.Label37.Size = New System.Drawing.Size(301, 32)
+        Me.Label37.Size = New System.Drawing.Size(233, 26)
         Me.Label37.TabIndex = 3
         Me.Label37.Text = "No records is available"
         '
         'Label36
         '
         Me.Label36.AutoSize = True
-        Me.Label36.Location = New System.Drawing.Point(12, 55)
-        Me.Label36.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label36.Location = New System.Drawing.Point(9, 45)
         Me.Label36.Name = "Label36"
-        Me.Label36.Size = New System.Drawing.Size(372, 32)
+        Me.Label36.Size = New System.Drawing.Size(287, 26)
         Me.Label36.TabIndex = 2
         Me.Label36.Text = "There is no row at position 0"
         '
@@ -630,10 +620,9 @@ Partial Class AgniMainForm
         Me.Label35.AutoSize = True
         Me.Label35.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label35.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Label35.Location = New System.Drawing.Point(797, 25)
-        Me.Label35.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label35.Location = New System.Drawing.Point(598, 20)
         Me.Label35.Name = "Label35"
-        Me.Label35.Size = New System.Drawing.Size(139, 31)
+        Me.Label35.Size = New System.Drawing.Size(114, 25)
         Me.Label35.TabIndex = 1
         Me.Label35.Text = "Meanings"
         '
@@ -642,10 +631,9 @@ Partial Class AgniMainForm
         Me.Label34.AutoSize = True
         Me.Label34.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label34.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Label34.Location = New System.Drawing.Point(12, 25)
-        Me.Label34.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label34.Location = New System.Drawing.Point(9, 20)
         Me.Label34.Name = "Label34"
-        Me.Label34.Size = New System.Drawing.Size(146, 31)
+        Me.Label34.Size = New System.Drawing.Size(119, 25)
         Me.Label34.TabIndex = 0
         Me.Label34.Text = "Messages"
         '
@@ -653,6 +641,11 @@ Partial Class AgniMainForm
         '
         Me.tabReports.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.tabReports.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.tabReports.Controls.Add(Me.ComboBox1)
+        Me.tabReports.Controls.Add(Me.juyt)
+        Me.tabReports.Controls.Add(Me.cbReportExtraDateFilter)
+        Me.tabReports.Controls.Add(Me.GroupBox3)
+        Me.tabReports.Controls.Add(Me.Label45)
         Me.tabReports.Controls.Add(Me.lblReportPaidAmountWithDeduction)
         Me.tabReports.Controls.Add(Me.Label49)
         Me.tabReports.Controls.Add(Me.lblReportPaidAmountActual)
@@ -682,7 +675,6 @@ Partial Class AgniMainForm
         Me.tabReports.Controls.Add(Me.lblReportFromDate)
         Me.tabReports.Controls.Add(Me.dpReportToDate)
         Me.tabReports.Controls.Add(Me.dpReportFromDate)
-        Me.tabReports.Controls.Add(Me.cbReportExtraDateFilter)
         Me.tabReports.Controls.Add(Me.Label111)
         Me.tabReports.Controls.Add(Me.btnReportSearch)
         Me.tabReports.Controls.Add(Me.lblReportCompName)
@@ -695,14 +687,112 @@ Partial Class AgniMainForm
         Me.tabReports.ForeColor = System.Drawing.Color.White
         Me.tabReports.ImageKey = "search.jpg"
         Me.tabReports.Location = New System.Drawing.Point(4, 52)
-        Me.tabReports.Margin = New System.Windows.Forms.Padding(4)
+        Me.tabReports.Margin = New System.Windows.Forms.Padding(0)
         Me.tabReports.Name = "tabReports"
-        Me.tabReports.Padding = New System.Windows.Forms.Padding(4)
-        Me.tabReports.Size = New System.Drawing.Size(1703, 911)
+        Me.tabReports.Size = New System.Drawing.Size(1789, 910)
         Me.tabReports.TabIndex = 4
         Me.tabReports.Tag = "tagReportsTab"
         Me.tabReports.Text = "Reports"
         Me.tabReports.ToolTipText = "Search Records"
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.ComboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.ComboBox1.DisplayMember = "DisplayBillNo"
+        Me.ComboBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(582, 117)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(338, 32)
+        Me.ComboBox1.TabIndex = 163
+        Me.ComboBox1.ValueMember = "BillNo"
+        Me.ComboBox1.Visible = False
+        '
+        'juyt
+        '
+        Me.juyt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.juyt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.juyt.DisplayMember = "DisplayBillNo"
+        Me.juyt.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.juyt.FormattingEnabled = True
+        Me.juyt.Location = New System.Drawing.Point(561, 117)
+        Me.juyt.Name = "juyt"
+        Me.juyt.Size = New System.Drawing.Size(338, 32)
+        Me.juyt.TabIndex = 162
+        Me.juyt.ValueMember = "BillNo"
+        Me.juyt.Visible = False
+        '
+        'cbReportExtraDateFilter
+        '
+        Me.cbReportExtraDateFilter.AutoSize = True
+        Me.cbReportExtraDateFilter.FlatAppearance.BorderColor = System.Drawing.Color.Green
+        Me.cbReportExtraDateFilter.FlatAppearance.BorderSize = 3
+        Me.cbReportExtraDateFilter.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red
+        Me.cbReportExtraDateFilter.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.cbReportExtraDateFilter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green
+        Me.cbReportExtraDateFilter.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.cbReportExtraDateFilter.ForeColor = System.Drawing.Color.Black
+        Me.cbReportExtraDateFilter.Location = New System.Drawing.Point(539, 81)
+        Me.cbReportExtraDateFilter.Name = "cbReportExtraDateFilter"
+        Me.cbReportExtraDateFilter.Size = New System.Drawing.Size(63, 24)
+        Me.cbReportExtraDateFilter.TabIndex = 6
+        Me.cbReportExtraDateFilter.Text = "Date"
+        Me.cbReportExtraDateFilter.UseVisualStyleBackColor = True
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.CheckBox4)
+        Me.GroupBox3.Controls.Add(Me.CheckBox1)
+        Me.GroupBox3.Location = New System.Drawing.Point(193, 62)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(341, 48)
+        Me.GroupBox3.TabIndex = 161
+        Me.GroupBox3.TabStop = False
+        '
+        'CheckBox4
+        '
+        Me.CheckBox4.AutoSize = True
+        Me.CheckBox4.FlatAppearance.BorderColor = System.Drawing.Color.Green
+        Me.CheckBox4.FlatAppearance.BorderSize = 3
+        Me.CheckBox4.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red
+        Me.CheckBox4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.CheckBox4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green
+        Me.CheckBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.CheckBox4.ForeColor = System.Drawing.Color.Black
+        Me.CheckBox4.Location = New System.Drawing.Point(218, 19)
+        Me.CheckBox4.Name = "CheckBox4"
+        Me.CheckBox4.Size = New System.Drawing.Size(108, 24)
+        Me.CheckBox4.TabIndex = 159
+        Me.CheckBox4.Text = "Bill Number"
+        Me.CheckBox4.UseVisualStyleBackColor = True
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.FlatAppearance.BorderColor = System.Drawing.Color.Green
+        Me.CheckBox1.FlatAppearance.BorderSize = 3
+        Me.CheckBox1.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red
+        Me.CheckBox1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.CheckBox1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green
+        Me.CheckBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.CheckBox1.ForeColor = System.Drawing.Color.Black
+        Me.CheckBox1.Location = New System.Drawing.Point(16, 19)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(138, 24)
+        Me.CheckBox1.TabIndex = 158
+        Me.CheckBox1.Text = "Design Number"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
+        'Label45
+        '
+        Me.Label45.AutoSize = True
+        Me.Label45.ForeColor = System.Drawing.Color.Black
+        Me.Label45.Location = New System.Drawing.Point(92, 81)
+        Me.Label45.Name = "Label45"
+        Me.Label45.Size = New System.Drawing.Size(67, 24)
+        Me.Label45.TabIndex = 160
+        Me.Label45.Text = "Filters"
         '
         'lblReportPaidAmountWithDeduction
         '
@@ -710,11 +800,10 @@ Partial Class AgniMainForm
         Me.lblReportPaidAmountWithDeduction.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.lblReportPaidAmountWithDeduction.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblReportPaidAmountWithDeduction.ForeColor = System.Drawing.Color.White
-        Me.lblReportPaidAmountWithDeduction.Location = New System.Drawing.Point(1488, 829)
-        Me.lblReportPaidAmountWithDeduction.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblReportPaidAmountWithDeduction.MinimumSize = New System.Drawing.Size(170, 0)
+        Me.lblReportPaidAmountWithDeduction.Location = New System.Drawing.Point(1126, 844)
+        Me.lblReportPaidAmountWithDeduction.MinimumSize = New System.Drawing.Size(128, 0)
         Me.lblReportPaidAmountWithDeduction.Name = "lblReportPaidAmountWithDeduction"
-        Me.lblReportPaidAmountWithDeduction.Size = New System.Drawing.Size(170, 18)
+        Me.lblReportPaidAmountWithDeduction.Size = New System.Drawing.Size(128, 15)
         Me.lblReportPaidAmountWithDeduction.TabIndex = 156
         Me.lblReportPaidAmountWithDeduction.Text = "0"
         Me.lblReportPaidAmountWithDeduction.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -724,10 +813,9 @@ Partial Class AgniMainForm
         Me.Label49.AutoSize = True
         Me.Label49.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label49.ForeColor = System.Drawing.Color.Black
-        Me.Label49.Location = New System.Drawing.Point(1183, 829)
-        Me.Label49.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label49.Location = New System.Drawing.Point(897, 844)
         Me.Label49.Name = "Label49"
-        Me.Label49.Size = New System.Drawing.Size(278, 18)
+        Me.Label49.Size = New System.Drawing.Size(235, 15)
         Me.Label49.TabIndex = 157
         Me.Label49.Text = "Total Paid Amount (With Deduction)"
         '
@@ -737,11 +825,10 @@ Partial Class AgniMainForm
         Me.lblReportPaidAmountActual.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.lblReportPaidAmountActual.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblReportPaidAmountActual.ForeColor = System.Drawing.Color.White
-        Me.lblReportPaidAmountActual.Location = New System.Drawing.Point(1488, 797)
-        Me.lblReportPaidAmountActual.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblReportPaidAmountActual.MinimumSize = New System.Drawing.Size(170, 0)
+        Me.lblReportPaidAmountActual.Location = New System.Drawing.Point(1126, 818)
+        Me.lblReportPaidAmountActual.MinimumSize = New System.Drawing.Size(128, 0)
         Me.lblReportPaidAmountActual.Name = "lblReportPaidAmountActual"
-        Me.lblReportPaidAmountActual.Size = New System.Drawing.Size(170, 18)
+        Me.lblReportPaidAmountActual.Size = New System.Drawing.Size(128, 15)
         Me.lblReportPaidAmountActual.TabIndex = 154
         Me.lblReportPaidAmountActual.Text = "0"
         Me.lblReportPaidAmountActual.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -751,10 +838,9 @@ Partial Class AgniMainForm
         Me.Label53.AutoSize = True
         Me.Label53.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label53.ForeColor = System.Drawing.Color.Black
-        Me.Label53.Location = New System.Drawing.Point(1252, 797)
-        Me.Label53.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label53.Location = New System.Drawing.Point(949, 818)
         Me.Label53.Name = "Label53"
-        Me.Label53.Size = New System.Drawing.Size(209, 18)
+        Me.Label53.Size = New System.Drawing.Size(177, 15)
         Me.Label53.TabIndex = 155
         Me.Label53.Text = "Total Paid Amount (Actual)"
         '
@@ -764,11 +850,10 @@ Partial Class AgniMainForm
         Me.lblReportNoOfPayment.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.lblReportNoOfPayment.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblReportNoOfPayment.ForeColor = System.Drawing.Color.White
-        Me.lblReportNoOfPayment.Location = New System.Drawing.Point(1033, 798)
-        Me.lblReportNoOfPayment.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblReportNoOfPayment.MinimumSize = New System.Drawing.Size(100, 0)
+        Me.lblReportNoOfPayment.Location = New System.Drawing.Point(785, 818)
+        Me.lblReportNoOfPayment.MinimumSize = New System.Drawing.Size(75, 0)
         Me.lblReportNoOfPayment.Name = "lblReportNoOfPayment"
-        Me.lblReportNoOfPayment.Size = New System.Drawing.Size(100, 18)
+        Me.lblReportNoOfPayment.Size = New System.Drawing.Size(75, 15)
         Me.lblReportNoOfPayment.TabIndex = 152
         Me.lblReportNoOfPayment.Text = "0"
         Me.lblReportNoOfPayment.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -778,10 +863,9 @@ Partial Class AgniMainForm
         Me.Label55.AutoSize = True
         Me.Label55.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label55.ForeColor = System.Drawing.Color.Black
-        Me.Label55.Location = New System.Drawing.Point(866, 797)
-        Me.Label55.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label55.Location = New System.Drawing.Point(660, 818)
         Me.Label55.Name = "Label55"
-        Me.Label55.Size = New System.Drawing.Size(132, 18)
+        Me.Label55.Size = New System.Drawing.Size(109, 15)
         Me.Label55.TabIndex = 153
         Me.Label55.Text = "No.Of Payments"
         '
@@ -791,11 +875,10 @@ Partial Class AgniMainForm
         Me.lblReportBilledAmount.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.lblReportBilledAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblReportBilledAmount.ForeColor = System.Drawing.Color.White
-        Me.lblReportBilledAmount.Location = New System.Drawing.Point(523, 798)
-        Me.lblReportBilledAmount.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblReportBilledAmount.MinimumSize = New System.Drawing.Size(170, 0)
+        Me.lblReportBilledAmount.Location = New System.Drawing.Point(402, 818)
+        Me.lblReportBilledAmount.MinimumSize = New System.Drawing.Size(128, 0)
         Me.lblReportBilledAmount.Name = "lblReportBilledAmount"
-        Me.lblReportBilledAmount.Size = New System.Drawing.Size(170, 18)
+        Me.lblReportBilledAmount.Size = New System.Drawing.Size(128, 15)
         Me.lblReportBilledAmount.TabIndex = 150
         Me.lblReportBilledAmount.Text = "0"
         Me.lblReportBilledAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -805,10 +888,9 @@ Partial Class AgniMainForm
         Me.Label47.AutoSize = True
         Me.Label47.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label47.ForeColor = System.Drawing.Color.Black
-        Me.Label47.Location = New System.Drawing.Point(334, 798)
-        Me.Label47.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label47.Location = New System.Drawing.Point(260, 818)
         Me.Label47.Name = "Label47"
-        Me.Label47.Size = New System.Drawing.Size(154, 18)
+        Me.Label47.Size = New System.Drawing.Size(132, 15)
         Me.Label47.TabIndex = 151
         Me.Label47.Text = "Total Billed Amount"
         '
@@ -818,11 +900,10 @@ Partial Class AgniMainForm
         Me.lblReportNoOfBills.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.lblReportNoOfBills.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblReportNoOfBills.ForeColor = System.Drawing.Color.White
-        Me.lblReportNoOfBills.Location = New System.Drawing.Point(152, 797)
-        Me.lblReportNoOfBills.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblReportNoOfBills.MinimumSize = New System.Drawing.Size(100, 0)
+        Me.lblReportNoOfBills.Location = New System.Drawing.Point(124, 818)
+        Me.lblReportNoOfBills.MinimumSize = New System.Drawing.Size(75, 0)
         Me.lblReportNoOfBills.Name = "lblReportNoOfBills"
-        Me.lblReportNoOfBills.Size = New System.Drawing.Size(100, 18)
+        Me.lblReportNoOfBills.Size = New System.Drawing.Size(75, 15)
         Me.lblReportNoOfBills.TabIndex = 148
         Me.lblReportNoOfBills.Text = "0"
         Me.lblReportNoOfBills.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -832,10 +913,9 @@ Partial Class AgniMainForm
         Me.Label51.AutoSize = True
         Me.Label51.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label51.ForeColor = System.Drawing.Color.Black
-        Me.Label51.Location = New System.Drawing.Point(13, 797)
-        Me.Label51.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label51.Location = New System.Drawing.Point(20, 818)
         Me.Label51.Name = "Label51"
-        Me.Label51.Size = New System.Drawing.Size(90, 18)
+        Me.Label51.Size = New System.Drawing.Size(75, 15)
         Me.Label51.TabIndex = 149
         Me.Label51.Text = "No.Of Bills"
         '
@@ -845,11 +925,10 @@ Partial Class AgniMainForm
         Me.lblReportTotDesignAmount.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.lblReportTotDesignAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblReportTotDesignAmount.ForeColor = System.Drawing.Color.White
-        Me.lblReportTotDesignAmount.Location = New System.Drawing.Point(1412, 478)
-        Me.lblReportTotDesignAmount.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblReportTotDesignAmount.MinimumSize = New System.Drawing.Size(170, 0)
+        Me.lblReportTotDesignAmount.Location = New System.Drawing.Point(1069, 558)
+        Me.lblReportTotDesignAmount.MinimumSize = New System.Drawing.Size(128, 0)
         Me.lblReportTotDesignAmount.Name = "lblReportTotDesignAmount"
-        Me.lblReportTotDesignAmount.Size = New System.Drawing.Size(170, 18)
+        Me.lblReportTotDesignAmount.Size = New System.Drawing.Size(128, 15)
         Me.lblReportTotDesignAmount.TabIndex = 146
         Me.lblReportTotDesignAmount.Text = "0"
         Me.lblReportTotDesignAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -859,10 +938,9 @@ Partial Class AgniMainForm
         Me.Label50.AutoSize = True
         Me.Label50.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label50.ForeColor = System.Drawing.Color.Black
-        Me.Label50.Location = New System.Drawing.Point(1208, 478)
-        Me.Label50.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label50.Location = New System.Drawing.Point(916, 558)
         Me.Label50.Name = "Label50"
-        Me.Label50.Size = New System.Drawing.Size(165, 18)
+        Me.Label50.Size = New System.Drawing.Size(140, 15)
         Me.Label50.TabIndex = 147
         Me.Label50.Text = "Total Design Amount"
         '
@@ -872,11 +950,10 @@ Partial Class AgniMainForm
         Me.lblReportUnBilledDesignAmount.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.lblReportUnBilledDesignAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblReportUnBilledDesignAmount.ForeColor = System.Drawing.Color.White
-        Me.lblReportUnBilledDesignAmount.Location = New System.Drawing.Point(985, 478)
-        Me.lblReportUnBilledDesignAmount.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblReportUnBilledDesignAmount.MinimumSize = New System.Drawing.Size(170, 0)
+        Me.lblReportUnBilledDesignAmount.Location = New System.Drawing.Point(749, 558)
+        Me.lblReportUnBilledDesignAmount.MinimumSize = New System.Drawing.Size(128, 0)
         Me.lblReportUnBilledDesignAmount.Name = "lblReportUnBilledDesignAmount"
-        Me.lblReportUnBilledDesignAmount.Size = New System.Drawing.Size(170, 18)
+        Me.lblReportUnBilledDesignAmount.Size = New System.Drawing.Size(128, 15)
         Me.lblReportUnBilledDesignAmount.TabIndex = 144
         Me.lblReportUnBilledDesignAmount.Text = "0"
         Me.lblReportUnBilledDesignAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -886,10 +963,9 @@ Partial Class AgniMainForm
         Me.Label48.AutoSize = True
         Me.Label48.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label48.ForeColor = System.Drawing.Color.Black
-        Me.Label48.Location = New System.Drawing.Point(750, 478)
-        Me.Label48.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label48.Location = New System.Drawing.Point(572, 558)
         Me.Label48.Name = "Label48"
-        Me.Label48.Size = New System.Drawing.Size(189, 18)
+        Me.Label48.Size = New System.Drawing.Size(163, 15)
         Me.Label48.TabIndex = 145
         Me.Label48.Text = "UnBilled Design Amount"
         '
@@ -899,11 +975,10 @@ Partial Class AgniMainForm
         Me.lblReportBilledDesignAmount.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.lblReportBilledDesignAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblReportBilledDesignAmount.ForeColor = System.Drawing.Color.White
-        Me.lblReportBilledDesignAmount.Location = New System.Drawing.Point(523, 478)
-        Me.lblReportBilledDesignAmount.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblReportBilledDesignAmount.MinimumSize = New System.Drawing.Size(170, 0)
+        Me.lblReportBilledDesignAmount.Location = New System.Drawing.Point(402, 558)
+        Me.lblReportBilledDesignAmount.MinimumSize = New System.Drawing.Size(128, 0)
         Me.lblReportBilledDesignAmount.Name = "lblReportBilledDesignAmount"
-        Me.lblReportBilledDesignAmount.Size = New System.Drawing.Size(170, 18)
+        Me.lblReportBilledDesignAmount.Size = New System.Drawing.Size(128, 15)
         Me.lblReportBilledDesignAmount.TabIndex = 142
         Me.lblReportBilledDesignAmount.Text = "0"
         Me.lblReportBilledDesignAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -913,10 +988,9 @@ Partial Class AgniMainForm
         Me.Label46.AutoSize = True
         Me.Label46.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label46.ForeColor = System.Drawing.Color.Black
-        Me.Label46.Location = New System.Drawing.Point(314, 478)
-        Me.Label46.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label46.Location = New System.Drawing.Point(246, 558)
         Me.Label46.Name = "Label46"
-        Me.Label46.Size = New System.Drawing.Size(168, 18)
+        Me.Label46.Size = New System.Drawing.Size(145, 15)
         Me.Label46.TabIndex = 143
         Me.Label46.Text = "Billed Design Amount"
         '
@@ -926,11 +1000,10 @@ Partial Class AgniMainForm
         Me.lblReportNoOfDesigns.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.lblReportNoOfDesigns.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblReportNoOfDesigns.ForeColor = System.Drawing.Color.White
-        Me.lblReportNoOfDesigns.Location = New System.Drawing.Point(152, 478)
-        Me.lblReportNoOfDesigns.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblReportNoOfDesigns.MinimumSize = New System.Drawing.Size(100, 0)
+        Me.lblReportNoOfDesigns.Location = New System.Drawing.Point(124, 558)
+        Me.lblReportNoOfDesigns.MinimumSize = New System.Drawing.Size(75, 0)
         Me.lblReportNoOfDesigns.Name = "lblReportNoOfDesigns"
-        Me.lblReportNoOfDesigns.Size = New System.Drawing.Size(100, 18)
+        Me.lblReportNoOfDesigns.Size = New System.Drawing.Size(75, 15)
         Me.lblReportNoOfDesigns.TabIndex = 140
         Me.lblReportNoOfDesigns.Text = "0"
         Me.lblReportNoOfDesigns.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -940,10 +1013,9 @@ Partial Class AgniMainForm
         Me.Label33.AutoSize = True
         Me.Label33.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label33.ForeColor = System.Drawing.Color.Black
-        Me.Label33.Location = New System.Drawing.Point(13, 478)
-        Me.Label33.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label33.Location = New System.Drawing.Point(20, 558)
         Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(119, 18)
+        Me.Label33.Size = New System.Drawing.Size(99, 15)
         Me.Label33.TabIndex = 141
         Me.Label33.Text = "No.Of Designs"
         '
@@ -965,24 +1037,53 @@ Partial Class AgniMainForm
         Me.dgReportPaymentGrid.HeaderFont = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
         Me.dgReportPaymentGrid.HeaderForeColor = System.Drawing.Color.Lavender
         Me.dgReportPaymentGrid.LinkColor = System.Drawing.Color.Teal
-        Me.dgReportPaymentGrid.Location = New System.Drawing.Point(853, 517)
-        Me.dgReportPaymentGrid.Margin = New System.Windows.Forms.Padding(4)
+        Me.dgReportPaymentGrid.Location = New System.Drawing.Point(653, 593)
         Me.dgReportPaymentGrid.Name = "dgReportPaymentGrid"
         Me.dgReportPaymentGrid.ParentRowsBackColor = System.Drawing.Color.Lavender
         Me.dgReportPaymentGrid.ParentRowsForeColor = System.Drawing.Color.MidnightBlue
         Me.dgReportPaymentGrid.ReadOnly = True
         Me.dgReportPaymentGrid.SelectionBackColor = System.Drawing.Color.Teal
         Me.dgReportPaymentGrid.SelectionForeColor = System.Drawing.Color.PaleGreen
-        Me.dgReportPaymentGrid.Size = New System.Drawing.Size(809, 263)
+        Me.dgReportPaymentGrid.Size = New System.Drawing.Size(607, 214)
         Me.dgReportPaymentGrid.TabIndex = 139
         Me.dgReportPaymentGrid.TableStyles.AddRange(New System.Windows.Forms.DataGridTableStyle() {Me.DataGridTableStyle3})
         '
         'DataGridTableStyle3
         '
-        Me.DataGridTableStyle3.DataGrid = Me.dgPaymentDetails
+        Me.DataGridTableStyle3.DataGrid = Me.dgReportPaymentGrid
         Me.DataGridTableStyle3.GridColumnStyles.AddRange(New System.Windows.Forms.DataGridColumnStyle() {Me.DataGridTextBoxColumn20, Me.DataGridTextBoxColumn21, Me.DataGridTextBoxColumn22, Me.DataGridTextBoxColumn23, Me.DataGridTextBoxColumn24, Me.DataGridTextBoxColumn25, Me.DataGridTextBoxColumn26, Me.DataGridTextBoxColumn27, Me.DataGridTextBoxColumn32, Me.DataGridTextBoxColumn33, Me.DataGridTextBoxColumn28, Me.DataGridTextBoxColumn29, Me.DataGridTextBoxColumn30, Me.DataGridTextBoxColumn31, Me.DataGridTextBoxColumn43})
         Me.DataGridTableStyle3.HeaderForeColor = System.Drawing.SystemColors.ControlText
         Me.DataGridTableStyle3.MappingName = "payment"
+        '
+        'dgPaymentDetails
+        '
+        Me.dgPaymentDetails.AllowSorting = False
+        Me.dgPaymentDetails.AlternatingBackColor = System.Drawing.Color.GhostWhite
+        Me.dgPaymentDetails.BackColor = System.Drawing.Color.GhostWhite
+        Me.dgPaymentDetails.BackgroundColor = System.Drawing.Color.Lavender
+        Me.dgPaymentDetails.CaptionBackColor = System.Drawing.Color.RoyalBlue
+        Me.dgPaymentDetails.CaptionForeColor = System.Drawing.Color.White
+        Me.dgPaymentDetails.CaptionText = "Payment Details"
+        Me.dgPaymentDetails.DataMember = ""
+        Me.dgPaymentDetails.FlatMode = True
+        Me.dgPaymentDetails.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgPaymentDetails.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.dgPaymentDetails.GridLineColor = System.Drawing.Color.RoyalBlue
+        Me.dgPaymentDetails.HeaderBackColor = System.Drawing.Color.MidnightBlue
+        Me.dgPaymentDetails.HeaderFont = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.dgPaymentDetails.HeaderForeColor = System.Drawing.Color.Lavender
+        Me.dgPaymentDetails.LinkColor = System.Drawing.Color.Teal
+        Me.dgPaymentDetails.Location = New System.Drawing.Point(-3, 450)
+        Me.dgPaymentDetails.Name = "dgPaymentDetails"
+        Me.dgPaymentDetails.ParentRowsBackColor = System.Drawing.Color.Lavender
+        Me.dgPaymentDetails.ParentRowsForeColor = System.Drawing.Color.MidnightBlue
+        Me.dgPaymentDetails.ReadOnly = True
+        Me.dgPaymentDetails.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgPaymentDetails.SelectionForeColor = System.Drawing.Color.PaleGreen
+        Me.dgPaymentDetails.Size = New System.Drawing.Size(1261, 242)
+        Me.dgPaymentDetails.TabIndex = 138
+        Me.dgPaymentDetails.TableStyles.AddRange(New System.Windows.Forms.DataGridTableStyle() {Me.DataGridTableStyle3})
+        Me.dgPaymentDetails.TabStop = False
         '
         'DataGridTextBoxColumn20
         '
@@ -1109,30 +1210,27 @@ Partial Class AgniMainForm
         Me.lblReportDesignNameHint.AutoSize = True
         Me.lblReportDesignNameHint.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblReportDesignNameHint.ForeColor = System.Drawing.Color.Black
-        Me.lblReportDesignNameHint.Location = New System.Drawing.Point(714, 70)
-        Me.lblReportDesignNameHint.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblReportDesignNameHint.Location = New System.Drawing.Point(536, 140)
         Me.lblReportDesignNameHint.Name = "lblReportDesignNameHint"
-        Me.lblReportDesignNameHint.Size = New System.Drawing.Size(249, 17)
+        Me.lblReportDesignNameHint.Size = New System.Drawing.Size(186, 13)
         Me.lblReportDesignNameHint.TabIndex = 78
         Me.lblReportDesignNameHint.Text = "Please enter part of any Design Name"
         '
         'txtReportDesignName
         '
         Me.txtReportDesignName.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtReportDesignName.Location = New System.Drawing.Point(649, 86)
-        Me.txtReportDesignName.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtReportDesignName.Location = New System.Drawing.Point(192, 116)
         Me.txtReportDesignName.Name = "txtReportDesignName"
-        Me.txtReportDesignName.Size = New System.Drawing.Size(449, 37)
+        Me.txtReportDesignName.Size = New System.Drawing.Size(338, 31)
         Me.txtReportDesignName.TabIndex = 9
         '
         'lblReportDesignNo
         '
         Me.lblReportDesignNo.AutoSize = True
         Me.lblReportDesignNo.ForeColor = System.Drawing.Color.Black
-        Me.lblReportDesignNo.Location = New System.Drawing.Point(26, 66)
-        Me.lblReportDesignNo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblReportDesignNo.Location = New System.Drawing.Point(16, 128)
         Me.lblReportDesignNo.Name = "lblReportDesignNo"
-        Me.lblReportDesignNo.Size = New System.Drawing.Size(171, 29)
+        Me.lblReportDesignNo.Size = New System.Drawing.Size(136, 24)
         Me.lblReportDesignNo.TabIndex = 76
         Me.lblReportDesignNo.Text = "Design Name"
         '
@@ -1154,8 +1252,7 @@ Partial Class AgniMainForm
         Me.dgReportBillGrid.HeaderFont = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
         Me.dgReportBillGrid.HeaderForeColor = System.Drawing.Color.Lavender
         Me.dgReportBillGrid.LinkColor = System.Drawing.Color.Teal
-        Me.dgReportBillGrid.Location = New System.Drawing.Point(8, 517)
-        Me.dgReportBillGrid.Margin = New System.Windows.Forms.Padding(4)
+        Me.dgReportBillGrid.Location = New System.Drawing.Point(19, 593)
         Me.dgReportBillGrid.Name = "dgReportBillGrid"
         Me.dgReportBillGrid.ParentRowsBackColor = System.Drawing.Color.Lavender
         Me.dgReportBillGrid.ParentRowsForeColor = System.Drawing.Color.MidnightBlue
@@ -1163,50 +1260,17 @@ Partial Class AgniMainForm
         Me.dgReportBillGrid.ReadOnly = True
         Me.dgReportBillGrid.SelectionBackColor = System.Drawing.Color.Teal
         Me.dgReportBillGrid.SelectionForeColor = System.Drawing.Color.PaleGreen
-        Me.dgReportBillGrid.Size = New System.Drawing.Size(814, 263)
+        Me.dgReportBillGrid.Size = New System.Drawing.Size(610, 214)
         Me.dgReportBillGrid.TabIndex = 75
         Me.dgReportBillGrid.TableStyles.AddRange(New System.Windows.Forms.DataGridTableStyle() {Me.DataGridTableStyle2})
         '
         'DataGridTableStyle2
         '
-        Me.DataGridTableStyle2.DataGrid = Me.dgReportBillGrid
+        Me.DataGridTableStyle2.DataGrid = Me.dgBIllingBillDetails
         Me.DataGridTableStyle2.GridColumnStyles.AddRange(New System.Windows.Forms.DataGridColumnStyle() {Me.DataGridTextBoxColumn45, Me.DataGridTextBoxColumn42, Me.DataGridTextBoxColumn12, Me.DataGridTextBoxColumn13, Me.DataGridTextBoxColumn14, Me.DataGridTextBoxColumn15, Me.DataGridTextBoxColumn34, Me.DataGridTextBoxColumn35, Me.DataGridTextBoxColumn36, Me.DataGridTextBoxColumn37, Me.DataGridTextBoxColumn38, Me.DataGridTextBoxColumn39, Me.DataGridTextBoxColumn41, Me.DataGridTextBoxColumn40, Me.DataGridTextBoxColumn16, Me.DataGridTextBoxColumn17, Me.DataGridTextBoxColumn18, Me.DataGridBoolColumn2})
         Me.DataGridTableStyle2.HeaderFont = New System.Drawing.Font("Tahoma", 9.75!)
         Me.DataGridTableStyle2.HeaderForeColor = System.Drawing.SystemColors.ControlText
         Me.DataGridTableStyle2.MappingName = "bill"
-        '
-        'dgBIllingBillDetails
-        '
-        Me.dgBIllingBillDetails.AllowSorting = False
-        Me.dgBIllingBillDetails.AlternatingBackColor = System.Drawing.Color.GhostWhite
-        Me.dgBIllingBillDetails.BackColor = System.Drawing.Color.GhostWhite
-        Me.dgBIllingBillDetails.BackgroundColor = System.Drawing.Color.Lavender
-        Me.dgBIllingBillDetails.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dgBIllingBillDetails.CaptionBackColor = System.Drawing.Color.RoyalBlue
-        Me.dgBIllingBillDetails.CaptionForeColor = System.Drawing.Color.White
-        Me.dgBIllingBillDetails.CaptionText = "Bill Details"
-        Me.dgBIllingBillDetails.DataMember = ""
-        Me.dgBIllingBillDetails.FlatMode = True
-        Me.dgBIllingBillDetails.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dgBIllingBillDetails.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.dgBIllingBillDetails.GridLineColor = System.Drawing.Color.RoyalBlue
-        Me.dgBIllingBillDetails.HeaderBackColor = System.Drawing.Color.MidnightBlue
-        Me.dgBIllingBillDetails.HeaderFont = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.dgBIllingBillDetails.HeaderForeColor = System.Drawing.Color.LavenderBlush
-        Me.dgBIllingBillDetails.LinkColor = System.Drawing.Color.Teal
-        Me.dgBIllingBillDetails.Location = New System.Drawing.Point(35, 571)
-        Me.dgBIllingBillDetails.Margin = New System.Windows.Forms.Padding(4)
-        Me.dgBIllingBillDetails.Name = "dgBIllingBillDetails"
-        Me.dgBIllingBillDetails.ParentRowsBackColor = System.Drawing.Color.Lavender
-        Me.dgBIllingBillDetails.ParentRowsForeColor = System.Drawing.Color.MidnightBlue
-        Me.dgBIllingBillDetails.PreferredColumnWidth = 130
-        Me.dgBIllingBillDetails.ReadOnly = True
-        Me.dgBIllingBillDetails.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgBIllingBillDetails.SelectionForeColor = System.Drawing.Color.PaleGreen
-        Me.dgBIllingBillDetails.Size = New System.Drawing.Size(1548, 283)
-        Me.dgBIllingBillDetails.TabIndex = 26
-        Me.dgBIllingBillDetails.TableStyles.AddRange(New System.Windows.Forms.DataGridTableStyle() {Me.DataGridTableStyle2})
-        Me.dgBIllingBillDetails.TabStop = False
         '
         'DataGridTextBoxColumn45
         '
@@ -1369,15 +1433,14 @@ Partial Class AgniMainForm
         Me.dgReportDesignGrid.HeaderFont = New System.Drawing.Font("Tahoma", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dgReportDesignGrid.HeaderForeColor = System.Drawing.Color.Lavender
         Me.dgReportDesignGrid.LinkColor = System.Drawing.Color.Teal
-        Me.dgReportDesignGrid.Location = New System.Drawing.Point(8, 187)
-        Me.dgReportDesignGrid.Margin = New System.Windows.Forms.Padding(4)
+        Me.dgReportDesignGrid.Location = New System.Drawing.Point(19, 325)
         Me.dgReportDesignGrid.Name = "dgReportDesignGrid"
         Me.dgReportDesignGrid.ParentRowsBackColor = System.Drawing.Color.Lavender
         Me.dgReportDesignGrid.ParentRowsForeColor = System.Drawing.Color.MidnightBlue
         Me.dgReportDesignGrid.ReadOnly = True
         Me.dgReportDesignGrid.SelectionBackColor = System.Drawing.Color.Teal
         Me.dgReportDesignGrid.SelectionForeColor = System.Drawing.Color.PaleGreen
-        Me.dgReportDesignGrid.Size = New System.Drawing.Size(1341, 277)
+        Me.dgReportDesignGrid.Size = New System.Drawing.Size(1006, 225)
         Me.dgReportDesignGrid.TabIndex = 74
         Me.dgReportDesignGrid.TableStyles.AddRange(New System.Windows.Forms.DataGridTableStyle() {Me.DataGridTableStyle1})
         '
@@ -1388,6 +1451,36 @@ Partial Class AgniMainForm
         Me.DataGridTableStyle1.HeaderFont = New System.Drawing.Font("Tahoma", 9.0!)
         Me.DataGridTableStyle1.HeaderForeColor = System.Drawing.SystemColors.ControlText
         Me.DataGridTableStyle1.MappingName = "design"
+        '
+        'dgDesDesignDetails
+        '
+        Me.dgDesDesignDetails.AllowSorting = False
+        Me.dgDesDesignDetails.AlternatingBackColor = System.Drawing.Color.GhostWhite
+        Me.dgDesDesignDetails.BackColor = System.Drawing.Color.GhostWhite
+        Me.dgDesDesignDetails.BackgroundColor = System.Drawing.Color.Lavender
+        Me.dgDesDesignDetails.CaptionBackColor = System.Drawing.Color.RoyalBlue
+        Me.dgDesDesignDetails.CaptionForeColor = System.Drawing.Color.White
+        Me.dgDesDesignDetails.CaptionText = "Design Details"
+        Me.dgDesDesignDetails.DataMember = ""
+        Me.dgDesDesignDetails.FlatMode = True
+        Me.dgDesDesignDetails.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgDesDesignDetails.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.dgDesDesignDetails.GridLineColor = System.Drawing.Color.RoyalBlue
+        Me.dgDesDesignDetails.HeaderBackColor = System.Drawing.Color.MidnightBlue
+        Me.dgDesDesignDetails.HeaderFont = New System.Drawing.Font("Tahoma", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgDesDesignDetails.HeaderForeColor = System.Drawing.Color.Lavender
+        Me.dgDesDesignDetails.LinkColor = System.Drawing.Color.Teal
+        Me.dgDesDesignDetails.Location = New System.Drawing.Point(50, 349)
+        Me.dgDesDesignDetails.Name = "dgDesDesignDetails"
+        Me.dgDesDesignDetails.ParentRowsBackColor = System.Drawing.Color.Lavender
+        Me.dgDesDesignDetails.ParentRowsForeColor = System.Drawing.Color.MidnightBlue
+        Me.dgDesDesignDetails.ReadOnly = True
+        Me.dgDesDesignDetails.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgDesDesignDetails.SelectionForeColor = System.Drawing.Color.PaleGreen
+        Me.dgDesDesignDetails.Size = New System.Drawing.Size(1224, 293)
+        Me.dgDesDesignDetails.TabIndex = 128
+        Me.dgDesDesignDetails.TableStyles.AddRange(New System.Windows.Forms.DataGridTableStyle() {Me.DataGridTableStyle1})
+        Me.dgDesDesignDetails.TabStop = False
         '
         'DataGridTextBoxColumn44
         '
@@ -1499,10 +1592,9 @@ Partial Class AgniMainForm
         '
         Me.lblReportBillNo.AutoSize = True
         Me.lblReportBillNo.ForeColor = System.Drawing.Color.Black
-        Me.lblReportBillNo.Location = New System.Drawing.Point(26, 66)
-        Me.lblReportBillNo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblReportBillNo.Location = New System.Drawing.Point(16, 128)
         Me.lblReportBillNo.Name = "lblReportBillNo"
-        Me.lblReportBillNo.Size = New System.Drawing.Size(151, 29)
+        Me.lblReportBillNo.Size = New System.Drawing.Size(119, 24)
         Me.lblReportBillNo.TabIndex = 73
         Me.lblReportBillNo.Text = "Bill Number"
         '
@@ -1510,10 +1602,9 @@ Partial Class AgniMainForm
         '
         Me.lblReportToDate.AutoSize = True
         Me.lblReportToDate.ForeColor = System.Drawing.Color.Black
-        Me.lblReportToDate.Location = New System.Drawing.Point(26, 150)
-        Me.lblReportToDate.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblReportToDate.Location = New System.Drawing.Point(92, 230)
         Me.lblReportToDate.Name = "lblReportToDate"
-        Me.lblReportToDate.Size = New System.Drawing.Size(106, 29)
+        Me.lblReportToDate.Size = New System.Drawing.Size(83, 24)
         Me.lblReportToDate.TabIndex = 71
         Me.lblReportToDate.Text = "To Date"
         Me.lblReportToDate.Visible = False
@@ -1522,10 +1613,9 @@ Partial Class AgniMainForm
         '
         Me.lblReportFromDate.AutoSize = True
         Me.lblReportFromDate.ForeColor = System.Drawing.Color.Black
-        Me.lblReportFromDate.Location = New System.Drawing.Point(26, 108)
-        Me.lblReportFromDate.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblReportFromDate.Location = New System.Drawing.Point(68, 180)
         Me.lblReportFromDate.Name = "lblReportFromDate"
-        Me.lblReportFromDate.Size = New System.Drawing.Size(135, 29)
+        Me.lblReportFromDate.Size = New System.Drawing.Size(107, 24)
         Me.lblReportFromDate.TabIndex = 69
         Me.lblReportFromDate.Text = "From Date"
         Me.lblReportFromDate.Visible = False
@@ -1535,10 +1625,9 @@ Partial Class AgniMainForm
         Me.dpReportToDate.CustomFormat = "dd/MM/yyyy"
         Me.dpReportToDate.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dpReportToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dpReportToDate.Location = New System.Drawing.Point(257, 146)
-        Me.dpReportToDate.Margin = New System.Windows.Forms.Padding(4)
+        Me.dpReportToDate.Location = New System.Drawing.Point(192, 227)
         Me.dpReportToDate.Name = "dpReportToDate"
-        Me.dpReportToDate.Size = New System.Drawing.Size(449, 35)
+        Me.dpReportToDate.Size = New System.Drawing.Size(338, 29)
         Me.dpReportToDate.TabIndex = 11
         Me.dpReportToDate.Visible = False
         '
@@ -1547,38 +1636,19 @@ Partial Class AgniMainForm
         Me.dpReportFromDate.CustomFormat = "dd/MM/yyyy"
         Me.dpReportFromDate.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dpReportFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dpReportFromDate.Location = New System.Drawing.Point(257, 106)
-        Me.dpReportFromDate.Margin = New System.Windows.Forms.Padding(4)
+        Me.dpReportFromDate.Location = New System.Drawing.Point(192, 178)
         Me.dpReportFromDate.Name = "dpReportFromDate"
-        Me.dpReportFromDate.Size = New System.Drawing.Size(449, 35)
+        Me.dpReportFromDate.Size = New System.Drawing.Size(338, 29)
         Me.dpReportFromDate.TabIndex = 10
         Me.dpReportFromDate.Visible = False
-        '
-        'cbReportExtraDateFilter
-        '
-        Me.cbReportExtraDateFilter.AutoSize = True
-        Me.cbReportExtraDateFilter.FlatAppearance.BorderColor = System.Drawing.Color.Green
-        Me.cbReportExtraDateFilter.FlatAppearance.BorderSize = 3
-        Me.cbReportExtraDateFilter.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red
-        Me.cbReportExtraDateFilter.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.cbReportExtraDateFilter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green
-        Me.cbReportExtraDateFilter.ForeColor = System.Drawing.Color.Black
-        Me.cbReportExtraDateFilter.Location = New System.Drawing.Point(1142, 16)
-        Me.cbReportExtraDateFilter.Margin = New System.Windows.Forms.Padding(4)
-        Me.cbReportExtraDateFilter.Name = "cbReportExtraDateFilter"
-        Me.cbReportExtraDateFilter.Size = New System.Drawing.Size(193, 33)
-        Me.cbReportExtraDateFilter.TabIndex = 6
-        Me.cbReportExtraDateFilter.Text = "Filter By Date"
-        Me.cbReportExtraDateFilter.UseVisualStyleBackColor = True
         '
         'Label111
         '
         Me.Label111.AutoSize = True
         Me.Label111.ForeColor = System.Drawing.Color.Black
-        Me.Label111.Location = New System.Drawing.Point(11, 17)
-        Me.Label111.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label111.Location = New System.Drawing.Point(5, 22)
         Me.Label111.Name = "Label111"
-        Me.Label111.Size = New System.Drawing.Size(212, 29)
+        Me.Label111.Size = New System.Drawing.Size(170, 24)
         Me.Label111.TabIndex = 40
         Me.Label111.Text = "Search Based on"
         '
@@ -1590,11 +1660,10 @@ Partial Class AgniMainForm
         Me.btnReportSearch.ForeColor = System.Drawing.Color.Black
         Me.btnReportSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnReportSearch.ImageKey = "(none)"
-        Me.btnReportSearch.Location = New System.Drawing.Point(781, 131)
-        Me.btnReportSearch.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnReportSearch.Location = New System.Drawing.Point(582, 212)
         Me.btnReportSearch.Name = "btnReportSearch"
-        Me.btnReportSearch.Padding = New System.Windows.Forms.Padding(4, 0, 0, 0)
-        Me.btnReportSearch.Size = New System.Drawing.Size(109, 39)
+        Me.btnReportSearch.Padding = New System.Windows.Forms.Padding(3, 0, 0, 0)
+        Me.btnReportSearch.Size = New System.Drawing.Size(89, 34)
         Me.btnReportSearch.TabIndex = 12
         Me.btnReportSearch.Text = "Search"
         Me.btnReportSearch.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1604,10 +1673,9 @@ Partial Class AgniMainForm
         '
         Me.lblReportCompName.AutoSize = True
         Me.lblReportCompName.ForeColor = System.Drawing.Color.Black
-        Me.lblReportCompName.Location = New System.Drawing.Point(26, 66)
-        Me.lblReportCompName.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblReportCompName.Location = New System.Drawing.Point(16, 128)
         Me.lblReportCompName.Name = "lblReportCompName"
-        Me.lblReportCompName.Size = New System.Drawing.Size(198, 29)
+        Me.lblReportCompName.Size = New System.Drawing.Size(159, 24)
         Me.lblReportCompName.TabIndex = 4
         Me.lblReportCompName.Text = "Company Name"
         '
@@ -1618,10 +1686,9 @@ Partial Class AgniMainForm
         Me.cmbReportCustomerList.DisplayMember = "CompName"
         Me.cmbReportCustomerList.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbReportCustomerList.FormattingEnabled = True
-        Me.cmbReportCustomerList.Location = New System.Drawing.Point(155, 86)
-        Me.cmbReportCustomerList.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbReportCustomerList.Location = New System.Drawing.Point(192, 129)
         Me.cmbReportCustomerList.Name = "cmbReportCustomerList"
-        Me.cmbReportCustomerList.Size = New System.Drawing.Size(449, 37)
+        Me.cmbReportCustomerList.Size = New System.Drawing.Size(338, 32)
         Me.cmbReportCustomerList.TabIndex = 7
         Me.cmbReportCustomerList.ValueMember = "CustNo"
         '
@@ -1630,10 +1697,9 @@ Partial Class AgniMainForm
         Me.pbReportDesignImage.BackColor = System.Drawing.Color.FromArgb(CType(CType(222, Byte), Integer), CType(CType(222, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.pbReportDesignImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.pbReportDesignImage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.pbReportDesignImage.Location = New System.Drawing.Point(1357, 180)
-        Me.pbReportDesignImage.Margin = New System.Windows.Forms.Padding(4)
+        Me.pbReportDesignImage.Location = New System.Drawing.Point(1031, 319)
         Me.pbReportDesignImage.Name = "pbReportDesignImage"
-        Me.pbReportDesignImage.Size = New System.Drawing.Size(307, 283)
+        Me.pbReportDesignImage.Size = New System.Drawing.Size(231, 231)
         Me.pbReportDesignImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pbReportDesignImage.TabIndex = 28
         Me.pbReportDesignImage.TabStop = False
@@ -1644,11 +1710,11 @@ Partial Class AgniMainForm
         Me.GroupBox6.Controls.Add(Me.radioReportDate)
         Me.GroupBox6.Controls.Add(Me.radioReportCustName)
         Me.GroupBox6.Controls.Add(Me.radioReportBillNo)
-        Me.GroupBox6.Location = New System.Drawing.Point(239, -1)
+        Me.GroupBox6.Location = New System.Drawing.Point(192, 4)
         Me.GroupBox6.Margin = New System.Windows.Forms.Padding(0)
         Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox6.Size = New System.Drawing.Size(876, 54)
+        Me.GroupBox6.Padding = New System.Windows.Forms.Padding(0)
+        Me.GroupBox6.Size = New System.Drawing.Size(657, 55)
         Me.GroupBox6.TabIndex = 1
         Me.GroupBox6.TabStop = False
         '
@@ -1657,10 +1723,9 @@ Partial Class AgniMainForm
         Me.radioReportDesignName.AutoSize = True
         Me.radioReportDesignName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.radioReportDesignName.ForeColor = System.Drawing.Color.Black
-        Me.radioReportDesignName.Location = New System.Drawing.Point(657, 18)
-        Me.radioReportDesignName.Margin = New System.Windows.Forms.Padding(4)
+        Me.radioReportDesignName.Location = New System.Drawing.Point(490, 20)
         Me.radioReportDesignName.Name = "radioReportDesignName"
-        Me.radioReportDesignName.Size = New System.Drawing.Size(151, 29)
+        Me.radioReportDesignName.Size = New System.Drawing.Size(123, 24)
         Me.radioReportDesignName.TabIndex = 5
         Me.radioReportDesignName.Text = "Design Name"
         Me.radioReportDesignName.UseVisualStyleBackColor = True
@@ -1670,10 +1735,9 @@ Partial Class AgniMainForm
         Me.radioReportDate.AutoSize = True
         Me.radioReportDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.radioReportDate.ForeColor = System.Drawing.Color.Black
-        Me.radioReportDate.Location = New System.Drawing.Point(260, 17)
-        Me.radioReportDate.Margin = New System.Windows.Forms.Padding(4)
+        Me.radioReportDate.Location = New System.Drawing.Point(192, 19)
         Me.radioReportDate.Name = "radioReportDate"
-        Me.radioReportDate.Size = New System.Drawing.Size(136, 29)
+        Me.radioReportDate.Size = New System.Drawing.Size(114, 24)
         Me.radioReportDate.TabIndex = 2
         Me.radioReportDate.Text = "Date Range"
         Me.radioReportDate.UseVisualStyleBackColor = True
@@ -1684,10 +1748,9 @@ Partial Class AgniMainForm
         Me.radioReportCustName.Checked = True
         Me.radioReportCustName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.radioReportCustName.ForeColor = System.Drawing.Color.Black
-        Me.radioReportCustName.Location = New System.Drawing.Point(21, 17)
-        Me.radioReportCustName.Margin = New System.Windows.Forms.Padding(4)
+        Me.radioReportCustName.Location = New System.Drawing.Point(13, 19)
         Me.radioReportCustName.Name = "radioReportCustName"
-        Me.radioReportCustName.Size = New System.Drawing.Size(175, 29)
+        Me.radioReportCustName.Size = New System.Drawing.Size(142, 24)
         Me.radioReportCustName.TabIndex = 2
         Me.radioReportCustName.TabStop = True
         Me.radioReportCustName.Text = "Customer Name"
@@ -1698,10 +1761,9 @@ Partial Class AgniMainForm
         Me.radioReportBillNo.AutoSize = True
         Me.radioReportBillNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.radioReportBillNo.ForeColor = System.Drawing.Color.Black
-        Me.radioReportBillNo.Location = New System.Drawing.Point(457, 18)
-        Me.radioReportBillNo.Margin = New System.Windows.Forms.Padding(4)
+        Me.radioReportBillNo.Location = New System.Drawing.Point(340, 20)
         Me.radioReportBillNo.Name = "radioReportBillNo"
-        Me.radioReportBillNo.Size = New System.Drawing.Size(132, 29)
+        Me.radioReportBillNo.Size = New System.Drawing.Size(107, 24)
         Me.radioReportBillNo.TabIndex = 4
         Me.radioReportBillNo.Text = "Bill Number"
         Me.radioReportBillNo.UseVisualStyleBackColor = True
@@ -1713,75 +1775,44 @@ Partial Class AgniMainForm
         Me.cmbReportBillNoList.DisplayMember = "DisplayBillNo"
         Me.cmbReportBillNoList.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbReportBillNoList.FormattingEnabled = True
-        Me.cmbReportBillNoList.Location = New System.Drawing.Point(257, 61)
-        Me.cmbReportBillNoList.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbReportBillNoList.Location = New System.Drawing.Point(192, 128)
         Me.cmbReportBillNoList.Name = "cmbReportBillNoList"
-        Me.cmbReportBillNoList.Size = New System.Drawing.Size(449, 37)
+        Me.cmbReportBillNoList.Size = New System.Drawing.Size(338, 32)
         Me.cmbReportBillNoList.TabIndex = 8
         Me.cmbReportBillNoList.ValueMember = "BillNo"
         Me.cmbReportBillNoList.Visible = False
         '
-        'dgPaymentDetails
+        'dgBIllingBillDetails
         '
-        Me.dgPaymentDetails.AllowSorting = False
-        Me.dgPaymentDetails.AlternatingBackColor = System.Drawing.Color.GhostWhite
-        Me.dgPaymentDetails.BackColor = System.Drawing.Color.GhostWhite
-        Me.dgPaymentDetails.BackgroundColor = System.Drawing.Color.Lavender
-        Me.dgPaymentDetails.CaptionBackColor = System.Drawing.Color.RoyalBlue
-        Me.dgPaymentDetails.CaptionForeColor = System.Drawing.Color.White
-        Me.dgPaymentDetails.CaptionText = "Payment Details"
-        Me.dgPaymentDetails.DataMember = ""
-        Me.dgPaymentDetails.FlatMode = True
-        Me.dgPaymentDetails.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dgPaymentDetails.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.dgPaymentDetails.GridLineColor = System.Drawing.Color.RoyalBlue
-        Me.dgPaymentDetails.HeaderBackColor = System.Drawing.Color.MidnightBlue
-        Me.dgPaymentDetails.HeaderFont = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.dgPaymentDetails.HeaderForeColor = System.Drawing.Color.Lavender
-        Me.dgPaymentDetails.LinkColor = System.Drawing.Color.Teal
-        Me.dgPaymentDetails.Location = New System.Drawing.Point(-4, 554)
-        Me.dgPaymentDetails.Margin = New System.Windows.Forms.Padding(4)
-        Me.dgPaymentDetails.Name = "dgPaymentDetails"
-        Me.dgPaymentDetails.ParentRowsBackColor = System.Drawing.Color.Lavender
-        Me.dgPaymentDetails.ParentRowsForeColor = System.Drawing.Color.MidnightBlue
-        Me.dgPaymentDetails.ReadOnly = True
-        Me.dgPaymentDetails.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgPaymentDetails.SelectionForeColor = System.Drawing.Color.PaleGreen
-        Me.dgPaymentDetails.Size = New System.Drawing.Size(1681, 298)
-        Me.dgPaymentDetails.TabIndex = 138
-        Me.dgPaymentDetails.TableStyles.AddRange(New System.Windows.Forms.DataGridTableStyle() {Me.DataGridTableStyle3})
-        Me.dgPaymentDetails.TabStop = False
-        '
-        'dgDesDesignDetails
-        '
-        Me.dgDesDesignDetails.AllowSorting = False
-        Me.dgDesDesignDetails.AlternatingBackColor = System.Drawing.Color.GhostWhite
-        Me.dgDesDesignDetails.BackColor = System.Drawing.Color.GhostWhite
-        Me.dgDesDesignDetails.BackgroundColor = System.Drawing.Color.Lavender
-        Me.dgDesDesignDetails.CaptionBackColor = System.Drawing.Color.RoyalBlue
-        Me.dgDesDesignDetails.CaptionForeColor = System.Drawing.Color.White
-        Me.dgDesDesignDetails.CaptionText = "Design Details"
-        Me.dgDesDesignDetails.DataMember = ""
-        Me.dgDesDesignDetails.FlatMode = True
-        Me.dgDesDesignDetails.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dgDesDesignDetails.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.dgDesDesignDetails.GridLineColor = System.Drawing.Color.RoyalBlue
-        Me.dgDesDesignDetails.HeaderBackColor = System.Drawing.Color.MidnightBlue
-        Me.dgDesDesignDetails.HeaderFont = New System.Drawing.Font("Tahoma", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dgDesDesignDetails.HeaderForeColor = System.Drawing.Color.Lavender
-        Me.dgDesDesignDetails.LinkColor = System.Drawing.Color.Teal
-        Me.dgDesDesignDetails.Location = New System.Drawing.Point(67, 429)
-        Me.dgDesDesignDetails.Margin = New System.Windows.Forms.Padding(4)
-        Me.dgDesDesignDetails.Name = "dgDesDesignDetails"
-        Me.dgDesDesignDetails.ParentRowsBackColor = System.Drawing.Color.Lavender
-        Me.dgDesDesignDetails.ParentRowsForeColor = System.Drawing.Color.MidnightBlue
-        Me.dgDesDesignDetails.ReadOnly = True
-        Me.dgDesDesignDetails.SelectionBackColor = System.Drawing.Color.Teal
-        Me.dgDesDesignDetails.SelectionForeColor = System.Drawing.Color.PaleGreen
-        Me.dgDesDesignDetails.Size = New System.Drawing.Size(1632, 361)
-        Me.dgDesDesignDetails.TabIndex = 128
-        Me.dgDesDesignDetails.TableStyles.AddRange(New System.Windows.Forms.DataGridTableStyle() {Me.DataGridTableStyle1})
-        Me.dgDesDesignDetails.TabStop = False
+        Me.dgBIllingBillDetails.AllowSorting = False
+        Me.dgBIllingBillDetails.AlternatingBackColor = System.Drawing.Color.GhostWhite
+        Me.dgBIllingBillDetails.BackColor = System.Drawing.Color.GhostWhite
+        Me.dgBIllingBillDetails.BackgroundColor = System.Drawing.Color.Lavender
+        Me.dgBIllingBillDetails.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgBIllingBillDetails.CaptionBackColor = System.Drawing.Color.RoyalBlue
+        Me.dgBIllingBillDetails.CaptionForeColor = System.Drawing.Color.White
+        Me.dgBIllingBillDetails.CaptionText = "Bill Details"
+        Me.dgBIllingBillDetails.DataMember = ""
+        Me.dgBIllingBillDetails.FlatMode = True
+        Me.dgBIllingBillDetails.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgBIllingBillDetails.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.dgBIllingBillDetails.GridLineColor = System.Drawing.Color.RoyalBlue
+        Me.dgBIllingBillDetails.HeaderBackColor = System.Drawing.Color.MidnightBlue
+        Me.dgBIllingBillDetails.HeaderFont = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.dgBIllingBillDetails.HeaderForeColor = System.Drawing.Color.LavenderBlush
+        Me.dgBIllingBillDetails.LinkColor = System.Drawing.Color.Teal
+        Me.dgBIllingBillDetails.Location = New System.Drawing.Point(26, 464)
+        Me.dgBIllingBillDetails.Name = "dgBIllingBillDetails"
+        Me.dgBIllingBillDetails.ParentRowsBackColor = System.Drawing.Color.Lavender
+        Me.dgBIllingBillDetails.ParentRowsForeColor = System.Drawing.Color.MidnightBlue
+        Me.dgBIllingBillDetails.PreferredColumnWidth = 130
+        Me.dgBIllingBillDetails.ReadOnly = True
+        Me.dgBIllingBillDetails.SelectionBackColor = System.Drawing.Color.Teal
+        Me.dgBIllingBillDetails.SelectionForeColor = System.Drawing.Color.PaleGreen
+        Me.dgBIllingBillDetails.Size = New System.Drawing.Size(1161, 230)
+        Me.dgBIllingBillDetails.TabIndex = 26
+        Me.dgBIllingBillDetails.TableStyles.AddRange(New System.Windows.Forms.DataGridTableStyle() {Me.DataGridTableStyle2})
+        Me.dgBIllingBillDetails.TabStop = False
         '
         'tabBilling
         '
@@ -1836,10 +1867,9 @@ Partial Class AgniMainForm
         Me.tabBilling.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tabBilling.ImageKey = "bill2.jpg"
         Me.tabBilling.Location = New System.Drawing.Point(4, 52)
-        Me.tabBilling.Margin = New System.Windows.Forms.Padding(4)
         Me.tabBilling.Name = "tabBilling"
-        Me.tabBilling.Padding = New System.Windows.Forms.Padding(4)
-        Me.tabBilling.Size = New System.Drawing.Size(1703, 911)
+        Me.tabBilling.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabBilling.Size = New System.Drawing.Size(1789, 910)
         Me.tabBilling.TabIndex = 2
         Me.tabBilling.Tag = "tagBillingTab"
         Me.tabBilling.Text = "Billing"
@@ -1850,21 +1880,19 @@ Partial Class AgniMainForm
         Me.Label44.AutoSize = True
         Me.Label44.Font = New System.Drawing.Font("Garamond", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label44.ForeColor = System.Drawing.Color.Black
-        Me.Label44.Location = New System.Drawing.Point(647, 79)
-        Me.Label44.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label44.Location = New System.Drawing.Point(485, 64)
         Me.Label44.Name = "Label44"
-        Me.Label44.Size = New System.Drawing.Size(79, 16)
+        Me.Label44.Size = New System.Drawing.Size(60, 12)
         Me.Label44.TabIndex = 166
         Me.Label44.Text = "Internal No"
         '
         'txtBillingActualBillNo
         '
         Me.txtBillingActualBillNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBillingActualBillNo.Location = New System.Drawing.Point(734, 69)
-        Me.txtBillingActualBillNo.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtBillingActualBillNo.Location = New System.Drawing.Point(550, 56)
         Me.txtBillingActualBillNo.Name = "txtBillingActualBillNo"
         Me.txtBillingActualBillNo.ReadOnly = True
-        Me.txtBillingActualBillNo.Size = New System.Drawing.Size(96, 34)
+        Me.txtBillingActualBillNo.Size = New System.Drawing.Size(73, 29)
         Me.txtBillingActualBillNo.TabIndex = 165
         Me.txtBillingActualBillNo.TabStop = False
         '
@@ -1873,10 +1901,9 @@ Partial Class AgniMainForm
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.ForeColor = System.Drawing.Color.Black
-        Me.Label11.Location = New System.Drawing.Point(1041, 216)
-        Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label11.Location = New System.Drawing.Point(781, 176)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(86, 25)
+        Me.Label11.Size = New System.Drawing.Size(71, 20)
         Me.Label11.TabIndex = 154
         Me.Label11.Text = "Amount"
         '
@@ -1885,43 +1912,39 @@ Partial Class AgniMainForm
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.Black
-        Me.Label10.Location = New System.Drawing.Point(968, 219)
-        Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label10.Location = New System.Drawing.Point(726, 178)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(31, 25)
+        Me.Label10.Size = New System.Drawing.Size(24, 20)
         Me.Label10.TabIndex = 153
         Me.Label10.Text = "%"
         '
         'txtBillingIGSTPercent
         '
         Me.txtBillingIGSTPercent.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBillingIGSTPercent.Location = New System.Drawing.Point(945, 344)
-        Me.txtBillingIGSTPercent.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtBillingIGSTPercent.Location = New System.Drawing.Point(709, 280)
         Me.txtBillingIGSTPercent.Name = "txtBillingIGSTPercent"
         Me.txtBillingIGSTPercent.ReadOnly = True
-        Me.txtBillingIGSTPercent.Size = New System.Drawing.Size(76, 27)
+        Me.txtBillingIGSTPercent.Size = New System.Drawing.Size(58, 23)
         Me.txtBillingIGSTPercent.TabIndex = 152
         Me.txtBillingIGSTPercent.TabStop = False
         '
         'txtBillingSGSTPercent
         '
         Me.txtBillingSGSTPercent.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBillingSGSTPercent.Location = New System.Drawing.Point(945, 296)
-        Me.txtBillingSGSTPercent.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtBillingSGSTPercent.Location = New System.Drawing.Point(709, 240)
         Me.txtBillingSGSTPercent.Name = "txtBillingSGSTPercent"
         Me.txtBillingSGSTPercent.ReadOnly = True
-        Me.txtBillingSGSTPercent.Size = New System.Drawing.Size(76, 27)
+        Me.txtBillingSGSTPercent.Size = New System.Drawing.Size(58, 23)
         Me.txtBillingSGSTPercent.TabIndex = 151
         Me.txtBillingSGSTPercent.TabStop = False
         '
         'txtBillingCGSTPercent
         '
         Me.txtBillingCGSTPercent.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBillingCGSTPercent.Location = New System.Drawing.Point(945, 246)
-        Me.txtBillingCGSTPercent.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtBillingCGSTPercent.Location = New System.Drawing.Point(709, 200)
         Me.txtBillingCGSTPercent.Name = "txtBillingCGSTPercent"
         Me.txtBillingCGSTPercent.ReadOnly = True
-        Me.txtBillingCGSTPercent.Size = New System.Drawing.Size(76, 27)
+        Me.txtBillingCGSTPercent.Size = New System.Drawing.Size(58, 23)
         Me.txtBillingCGSTPercent.TabIndex = 150
         Me.txtBillingCGSTPercent.TabStop = False
         '
@@ -1930,10 +1953,9 @@ Partial Class AgniMainForm
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.Black
-        Me.Label8.Location = New System.Drawing.Point(209, 342)
-        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label8.Location = New System.Drawing.Point(157, 278)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(140, 19)
+        Me.Label8.Size = New System.Drawing.Size(111, 15)
         Me.Label8.TabIndex = 149
         Me.Label8.Text = "After applying GST"
         '
@@ -1942,21 +1964,19 @@ Partial Class AgniMainForm
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.ForeColor = System.Drawing.Color.Black
-        Me.Label9.Location = New System.Drawing.Point(29, 314)
-        Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label9.Location = New System.Drawing.Point(22, 255)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(212, 31)
+        Me.Label9.Size = New System.Drawing.Size(171, 25)
         Me.Label9.TabIndex = 148
         Me.Label9.Text = "Design Amount"
         '
         'txtBillingDesignAmoutAfterGST
         '
         Me.txtBillingDesignAmoutAfterGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBillingDesignAmoutAfterGST.Location = New System.Drawing.Point(410, 321)
-        Me.txtBillingDesignAmoutAfterGST.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtBillingDesignAmoutAfterGST.Location = New System.Drawing.Point(308, 261)
         Me.txtBillingDesignAmoutAfterGST.Name = "txtBillingDesignAmoutAfterGST"
         Me.txtBillingDesignAmoutAfterGST.ReadOnly = True
-        Me.txtBillingDesignAmoutAfterGST.Size = New System.Drawing.Size(420, 34)
+        Me.txtBillingDesignAmoutAfterGST.Size = New System.Drawing.Size(316, 29)
         Me.txtBillingDesignAmoutAfterGST.TabIndex = 303
         Me.txtBillingDesignAmoutAfterGST.TabStop = False
         '
@@ -1965,10 +1985,9 @@ Partial Class AgniMainForm
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.Black
-        Me.Label6.Location = New System.Drawing.Point(197, 249)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label6.Location = New System.Drawing.Point(148, 202)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(152, 19)
+        Me.Label6.Size = New System.Drawing.Size(118, 15)
         Me.Label6.TabIndex = 146
         Me.Label6.Text = "Before applying GST"
         '
@@ -1977,21 +1996,19 @@ Partial Class AgniMainForm
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(29, 270)
-        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label5.Location = New System.Drawing.Point(22, 219)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(147, 31)
+        Me.Label5.Size = New System.Drawing.Size(118, 25)
         Me.Label5.TabIndex = 145
         Me.Label5.Text = "Total GST"
         '
         'txtBillingTotalGSTAmount
         '
         Me.txtBillingTotalGSTAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBillingTotalGSTAmount.Location = New System.Drawing.Point(410, 269)
-        Me.txtBillingTotalGSTAmount.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtBillingTotalGSTAmount.Location = New System.Drawing.Point(308, 219)
         Me.txtBillingTotalGSTAmount.Name = "txtBillingTotalGSTAmount"
         Me.txtBillingTotalGSTAmount.ReadOnly = True
-        Me.txtBillingTotalGSTAmount.Size = New System.Drawing.Size(420, 34)
+        Me.txtBillingTotalGSTAmount.Size = New System.Drawing.Size(316, 29)
         Me.txtBillingTotalGSTAmount.TabIndex = 302
         Me.txtBillingTotalGSTAmount.TabStop = False
         '
@@ -2000,21 +2017,19 @@ Partial Class AgniMainForm
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.Black
-        Me.Label4.Location = New System.Drawing.Point(870, 348)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label4.Location = New System.Drawing.Point(652, 283)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(63, 25)
+        Me.Label4.Size = New System.Drawing.Size(51, 20)
         Me.Label4.TabIndex = 143
         Me.Label4.Text = "IGST"
         '
         'txtBillingIGSTAmount
         '
         Me.txtBillingIGSTAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBillingIGSTAmount.Location = New System.Drawing.Point(1041, 342)
-        Me.txtBillingIGSTAmount.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtBillingIGSTAmount.Location = New System.Drawing.Point(781, 278)
         Me.txtBillingIGSTAmount.Name = "txtBillingIGSTAmount"
         Me.txtBillingIGSTAmount.ReadOnly = True
-        Me.txtBillingIGSTAmount.Size = New System.Drawing.Size(157, 27)
+        Me.txtBillingIGSTAmount.Size = New System.Drawing.Size(119, 23)
         Me.txtBillingIGSTAmount.TabIndex = 142
         Me.txtBillingIGSTAmount.TabStop = False
         '
@@ -2023,21 +2038,19 @@ Partial Class AgniMainForm
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.Black
-        Me.Label3.Location = New System.Drawing.Point(860, 300)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label3.Location = New System.Drawing.Point(645, 244)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(72, 25)
+        Me.Label3.Size = New System.Drawing.Size(57, 20)
         Me.Label3.TabIndex = 141
         Me.Label3.Text = "SGST"
         '
         'txtBillingSGSTAmount
         '
         Me.txtBillingSGSTAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBillingSGSTAmount.Location = New System.Drawing.Point(1041, 294)
-        Me.txtBillingSGSTAmount.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtBillingSGSTAmount.Location = New System.Drawing.Point(781, 239)
         Me.txtBillingSGSTAmount.Name = "txtBillingSGSTAmount"
         Me.txtBillingSGSTAmount.ReadOnly = True
-        Me.txtBillingSGSTAmount.Size = New System.Drawing.Size(157, 27)
+        Me.txtBillingSGSTAmount.Size = New System.Drawing.Size(119, 23)
         Me.txtBillingSGSTAmount.TabIndex = 140
         Me.txtBillingSGSTAmount.TabStop = False
         '
@@ -2046,21 +2059,19 @@ Partial Class AgniMainForm
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.Black
-        Me.Label2.Location = New System.Drawing.Point(860, 249)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Location = New System.Drawing.Point(645, 202)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(73, 25)
+        Me.Label2.Size = New System.Drawing.Size(57, 20)
         Me.Label2.TabIndex = 139
         Me.Label2.Text = "CGST"
         '
         'txtBillingCGSTAmount
         '
         Me.txtBillingCGSTAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBillingCGSTAmount.Location = New System.Drawing.Point(1041, 244)
-        Me.txtBillingCGSTAmount.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtBillingCGSTAmount.Location = New System.Drawing.Point(781, 198)
         Me.txtBillingCGSTAmount.Name = "txtBillingCGSTAmount"
         Me.txtBillingCGSTAmount.ReadOnly = True
-        Me.txtBillingCGSTAmount.Size = New System.Drawing.Size(157, 27)
+        Me.txtBillingCGSTAmount.Size = New System.Drawing.Size(119, 23)
         Me.txtBillingCGSTAmount.TabIndex = 138
         Me.txtBillingCGSTAmount.TabStop = False
         '
@@ -2069,10 +2080,9 @@ Partial Class AgniMainForm
         Me.lblCancelledBillIndicator.AutoSize = True
         Me.lblCancelledBillIndicator.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCancelledBillIndicator.ForeColor = System.Drawing.Color.Red
-        Me.lblCancelledBillIndicator.Location = New System.Drawing.Point(838, 74)
-        Me.lblCancelledBillIndicator.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblCancelledBillIndicator.Location = New System.Drawing.Point(628, 60)
         Me.lblCancelledBillIndicator.Name = "lblCancelledBillIndicator"
-        Me.lblCancelledBillIndicator.Size = New System.Drawing.Size(183, 20)
+        Me.lblCancelledBillIndicator.Size = New System.Drawing.Size(156, 17)
         Me.lblCancelledBillIndicator.TabIndex = 137
         Me.lblCancelledBillIndicator.Text = "This is cancelled bill"
         Me.lblCancelledBillIndicator.Visible = False
@@ -2082,11 +2092,10 @@ Partial Class AgniMainForm
         Me.btnBillingCancelCreateBill.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnBillingCancelCreateBill.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnBillingCancelCreateBill.ImageKey = "(none)"
-        Me.btnBillingCancelCreateBill.Location = New System.Drawing.Point(1094, 121)
-        Me.btnBillingCancelCreateBill.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnBillingCancelCreateBill.Location = New System.Drawing.Point(820, 98)
         Me.btnBillingCancelCreateBill.Name = "btnBillingCancelCreateBill"
-        Me.btnBillingCancelCreateBill.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
-        Me.btnBillingCancelCreateBill.Size = New System.Drawing.Size(121, 41)
+        Me.btnBillingCancelCreateBill.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnBillingCancelCreateBill.Size = New System.Drawing.Size(91, 33)
         Me.btnBillingCancelCreateBill.TabIndex = 5
         Me.btnBillingCancelCreateBill.Text = "Back"
         Me.btnBillingCancelCreateBill.UseVisualStyleBackColor = True
@@ -2097,11 +2106,10 @@ Partial Class AgniMainForm
         Me.btnBillingConfirmCreateBill.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnBillingConfirmCreateBill.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnBillingConfirmCreateBill.ImageKey = "(none)"
-        Me.btnBillingConfirmCreateBill.Location = New System.Drawing.Point(962, 122)
-        Me.btnBillingConfirmCreateBill.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnBillingConfirmCreateBill.Location = New System.Drawing.Point(722, 99)
         Me.btnBillingConfirmCreateBill.Name = "btnBillingConfirmCreateBill"
-        Me.btnBillingConfirmCreateBill.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
-        Me.btnBillingConfirmCreateBill.Size = New System.Drawing.Size(108, 41)
+        Me.btnBillingConfirmCreateBill.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnBillingConfirmCreateBill.Size = New System.Drawing.Size(81, 33)
         Me.btnBillingConfirmCreateBill.TabIndex = 4
         Me.btnBillingConfirmCreateBill.Text = "Confirm"
         Me.btnBillingConfirmCreateBill.UseVisualStyleBackColor = True
@@ -2112,11 +2120,10 @@ Partial Class AgniMainForm
         Me.btnBillingCreateBill.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnBillingCreateBill.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnBillingCreateBill.ImageKey = "(none)"
-        Me.btnBillingCreateBill.Location = New System.Drawing.Point(1017, 121)
-        Me.btnBillingCreateBill.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnBillingCreateBill.Location = New System.Drawing.Point(763, 98)
         Me.btnBillingCreateBill.Name = "btnBillingCreateBill"
-        Me.btnBillingCreateBill.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
-        Me.btnBillingCreateBill.Size = New System.Drawing.Size(198, 41)
+        Me.btnBillingCreateBill.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnBillingCreateBill.Size = New System.Drawing.Size(148, 33)
         Me.btnBillingCreateBill.TabIndex = 3
         Me.btnBillingCreateBill.Text = "Create New Bill"
         Me.btnBillingCreateBill.UseVisualStyleBackColor = True
@@ -2126,21 +2133,19 @@ Partial Class AgniMainForm
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(29, 432)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Location = New System.Drawing.Point(22, 351)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(179, 31)
+        Me.Label1.Size = New System.Drawing.Size(145, 25)
         Me.Label1.TabIndex = 132
         Me.Label1.Text = "Paid Amount"
         '
         'txtBillingPaidAmount
         '
         Me.txtBillingPaidAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBillingPaidAmount.Location = New System.Drawing.Point(410, 429)
-        Me.txtBillingPaidAmount.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtBillingPaidAmount.Location = New System.Drawing.Point(308, 349)
         Me.txtBillingPaidAmount.Name = "txtBillingPaidAmount"
         Me.txtBillingPaidAmount.ReadOnly = True
-        Me.txtBillingPaidAmount.Size = New System.Drawing.Size(420, 34)
+        Me.txtBillingPaidAmount.Size = New System.Drawing.Size(316, 29)
         Me.txtBillingPaidAmount.TabIndex = 8
         Me.txtBillingPaidAmount.TabStop = False
         '
@@ -2149,11 +2154,10 @@ Partial Class AgniMainForm
         Me.btnBillingCancelBill.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnBillingCancelBill.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnBillingCancelBill.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnBillingCancelBill.Location = New System.Drawing.Point(1218, 121)
-        Me.btnBillingCancelBill.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnBillingCancelBill.Location = New System.Drawing.Point(914, 98)
         Me.btnBillingCancelBill.Name = "btnBillingCancelBill"
-        Me.btnBillingCancelBill.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
-        Me.btnBillingCancelBill.Size = New System.Drawing.Size(219, 41)
+        Me.btnBillingCancelBill.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnBillingCancelBill.Size = New System.Drawing.Size(164, 33)
         Me.btnBillingCancelBill.TabIndex = 6
         Me.btnBillingCancelBill.Text = "Mark Cancelled"
         Me.btnBillingCancelBill.UseVisualStyleBackColor = True
@@ -2162,10 +2166,9 @@ Partial Class AgniMainForm
         '
         Me.btnBilingOutstandingBalance.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnBilingOutstandingBalance.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
-        Me.btnBilingOutstandingBalance.Location = New System.Drawing.Point(1289, 463)
-        Me.btnBilingOutstandingBalance.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnBilingOutstandingBalance.Location = New System.Drawing.Point(967, 376)
         Me.btnBilingOutstandingBalance.Name = "btnBilingOutstandingBalance"
-        Me.btnBilingOutstandingBalance.Size = New System.Drawing.Size(294, 45)
+        Me.btnBilingOutstandingBalance.Size = New System.Drawing.Size(220, 37)
         Me.btnBilingOutstandingBalance.TabIndex = 9
         Me.btnBilingOutstandingBalance.Text = "Outstanding Balance"
         Me.btnBilingOutstandingBalance.UseVisualStyleBackColor = True
@@ -2176,11 +2179,10 @@ Partial Class AgniMainForm
         Me.btnBillingClear.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
         Me.btnBillingClear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnBillingClear.ImageKey = "erase.JPG"
-        Me.btnBillingClear.Location = New System.Drawing.Point(1445, 121)
-        Me.btnBillingClear.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnBillingClear.Location = New System.Drawing.Point(1084, 98)
         Me.btnBillingClear.Name = "btnBillingClear"
-        Me.btnBillingClear.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
-        Me.btnBillingClear.Size = New System.Drawing.Size(169, 41)
+        Me.btnBillingClear.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnBillingClear.Size = New System.Drawing.Size(127, 33)
         Me.btnBillingClear.TabIndex = 7
         Me.btnBillingClear.Text = "Clear"
         Me.btnBillingClear.UseVisualStyleBackColor = True
@@ -2191,11 +2193,10 @@ Partial Class AgniMainForm
         Me.btnBillingPrintBill.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
         Me.btnBillingPrintBill.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnBillingPrintBill.ImageKey = "printer5.jpg"
-        Me.btnBillingPrintBill.Location = New System.Drawing.Point(1122, 17)
-        Me.btnBillingPrintBill.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnBillingPrintBill.Location = New System.Drawing.Point(842, 14)
         Me.btnBillingPrintBill.Name = "btnBillingPrintBill"
-        Me.btnBillingPrintBill.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
-        Me.btnBillingPrintBill.Size = New System.Drawing.Size(315, 62)
+        Me.btnBillingPrintBill.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnBillingPrintBill.Size = New System.Drawing.Size(236, 50)
         Me.btnBillingPrintBill.TabIndex = 8
         Me.btnBillingPrintBill.Text = "Print This Bill"
         Me.btnBillingPrintBill.UseVisualStyleBackColor = True
@@ -2205,10 +2206,9 @@ Partial Class AgniMainForm
         Me.Label32.AutoSize = True
         Me.Label32.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label32.ForeColor = System.Drawing.Color.Black
-        Me.Label32.Location = New System.Drawing.Point(29, 219)
-        Me.Label32.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label32.Location = New System.Drawing.Point(22, 178)
         Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(212, 31)
+        Me.Label32.Size = New System.Drawing.Size(171, 25)
         Me.Label32.TabIndex = 117
         Me.Label32.Text = "Design Amount"
         '
@@ -2217,32 +2217,29 @@ Partial Class AgniMainForm
         Me.Label30.AutoSize = True
         Me.Label30.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label30.ForeColor = System.Drawing.Color.Black
-        Me.Label30.Location = New System.Drawing.Point(29, 171)
-        Me.Label30.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label30.Location = New System.Drawing.Point(22, 139)
         Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(222, 31)
+        Me.Label30.Size = New System.Drawing.Size(180, 25)
         Me.Label30.TabIndex = 116
         Me.Label30.Text = "UnPaid Balance"
         '
         'txtBillingDesignAmoutBeforeGST
         '
         Me.txtBillingDesignAmoutBeforeGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBillingDesignAmoutBeforeGST.Location = New System.Drawing.Point(410, 221)
-        Me.txtBillingDesignAmoutBeforeGST.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtBillingDesignAmoutBeforeGST.Location = New System.Drawing.Point(308, 180)
         Me.txtBillingDesignAmoutBeforeGST.Name = "txtBillingDesignAmoutBeforeGST"
         Me.txtBillingDesignAmoutBeforeGST.ReadOnly = True
-        Me.txtBillingDesignAmoutBeforeGST.Size = New System.Drawing.Size(420, 34)
+        Me.txtBillingDesignAmoutBeforeGST.Size = New System.Drawing.Size(316, 29)
         Me.txtBillingDesignAmoutBeforeGST.TabIndex = 301
         Me.txtBillingDesignAmoutBeforeGST.TabStop = False
         '
         'txtBillingPrevBalance
         '
         Me.txtBillingPrevBalance.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBillingPrevBalance.Location = New System.Drawing.Point(410, 168)
-        Me.txtBillingPrevBalance.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtBillingPrevBalance.Location = New System.Drawing.Point(308, 136)
         Me.txtBillingPrevBalance.Name = "txtBillingPrevBalance"
         Me.txtBillingPrevBalance.ReadOnly = True
-        Me.txtBillingPrevBalance.Size = New System.Drawing.Size(420, 34)
+        Me.txtBillingPrevBalance.Size = New System.Drawing.Size(316, 29)
         Me.txtBillingPrevBalance.TabIndex = 300
         Me.txtBillingPrevBalance.TabStop = False
         '
@@ -2259,11 +2256,10 @@ Partial Class AgniMainForm
         Me.dpBillingBillDate.CustomFormat = "dd/MM/yyyy"
         Me.dpBillingBillDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dpBillingBillDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dpBillingBillDate.Location = New System.Drawing.Point(410, 119)
-        Me.dpBillingBillDate.Margin = New System.Windows.Forms.Padding(4)
+        Me.dpBillingBillDate.Location = New System.Drawing.Point(308, 97)
         Me.dpBillingBillDate.Name = "dpBillingBillDate"
         Me.dpBillingBillDate.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.dpBillingBillDate.Size = New System.Drawing.Size(420, 34)
+        Me.dpBillingBillDate.Size = New System.Drawing.Size(316, 29)
         Me.dpBillingBillDate.TabIndex = 2
         '
         'Label31
@@ -2271,10 +2267,9 @@ Partial Class AgniMainForm
         Me.Label31.AutoSize = True
         Me.Label31.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label31.ForeColor = System.Drawing.Color.Black
-        Me.Label31.Location = New System.Drawing.Point(29, 120)
-        Me.Label31.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label31.Location = New System.Drawing.Point(22, 98)
         Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(124, 31)
+        Me.Label31.Size = New System.Drawing.Size(101, 25)
         Me.Label31.TabIndex = 107
         Me.Label31.Text = "Bill Date"
         '
@@ -2283,32 +2278,29 @@ Partial Class AgniMainForm
         Me.Label27.AutoSize = True
         Me.Label27.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label27.ForeColor = System.Drawing.Color.Black
-        Me.Label27.Location = New System.Drawing.Point(29, 477)
-        Me.Label27.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label27.Location = New System.Drawing.Point(22, 388)
         Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(265, 31)
+        Me.Label27.Size = New System.Drawing.Size(215, 25)
         Me.Label27.TabIndex = 11
         Me.Label27.Text = "Remaining Balance"
         '
         'txtBillingRemainingBalance
         '
         Me.txtBillingRemainingBalance.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBillingRemainingBalance.Location = New System.Drawing.Point(410, 477)
-        Me.txtBillingRemainingBalance.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtBillingRemainingBalance.Location = New System.Drawing.Point(308, 388)
         Me.txtBillingRemainingBalance.Name = "txtBillingRemainingBalance"
         Me.txtBillingRemainingBalance.ReadOnly = True
-        Me.txtBillingRemainingBalance.Size = New System.Drawing.Size(420, 34)
+        Me.txtBillingRemainingBalance.Size = New System.Drawing.Size(316, 29)
         Me.txtBillingRemainingBalance.TabIndex = 9
         Me.txtBillingRemainingBalance.TabStop = False
         '
         'txtBillingTotalAmount
         '
         Me.txtBillingTotalAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBillingTotalAmount.Location = New System.Drawing.Point(410, 375)
-        Me.txtBillingTotalAmount.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtBillingTotalAmount.Location = New System.Drawing.Point(308, 305)
         Me.txtBillingTotalAmount.Name = "txtBillingTotalAmount"
         Me.txtBillingTotalAmount.ReadOnly = True
-        Me.txtBillingTotalAmount.Size = New System.Drawing.Size(420, 34)
+        Me.txtBillingTotalAmount.Size = New System.Drawing.Size(316, 29)
         Me.txtBillingTotalAmount.TabIndex = 304
         Me.txtBillingTotalAmount.TabStop = False
         '
@@ -2317,10 +2309,9 @@ Partial Class AgniMainForm
         Me.Label26.AutoSize = True
         Me.Label26.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label26.ForeColor = System.Drawing.Color.Black
-        Me.Label26.Location = New System.Drawing.Point(29, 370)
-        Me.Label26.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label26.Location = New System.Drawing.Point(22, 301)
         Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(187, 31)
+        Me.Label26.Size = New System.Drawing.Size(151, 25)
         Me.Label26.TabIndex = 6
         Me.Label26.Text = "Total Amount"
         '
@@ -2329,10 +2320,9 @@ Partial Class AgniMainForm
         Me.Label24.AutoSize = True
         Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label24.ForeColor = System.Drawing.Color.Black
-        Me.Label24.Location = New System.Drawing.Point(29, 69)
-        Me.Label24.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label24.Location = New System.Drawing.Point(22, 56)
         Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(164, 31)
+        Me.Label24.Size = New System.Drawing.Size(133, 25)
         Me.Label24.TabIndex = 3
         Me.Label24.Text = "Bill Number"
         '
@@ -2343,10 +2333,9 @@ Partial Class AgniMainForm
         Me.cmbBillingBillNoList.DisplayMember = "DisplayBillNo"
         Me.cmbBillingBillNoList.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbBillingBillNoList.FormattingEnabled = True
-        Me.cmbBillingBillNoList.Location = New System.Drawing.Point(410, 67)
-        Me.cmbBillingBillNoList.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbBillingBillNoList.Location = New System.Drawing.Point(308, 54)
         Me.cmbBillingBillNoList.Name = "cmbBillingBillNoList"
-        Me.cmbBillingBillNoList.Size = New System.Drawing.Size(222, 37)
+        Me.cmbBillingBillNoList.Size = New System.Drawing.Size(168, 32)
         Me.cmbBillingBillNoList.TabIndex = 1
         Me.cmbBillingBillNoList.ValueMember = "BillNo"
         '
@@ -2357,10 +2346,9 @@ Partial Class AgniMainForm
         Me.cmbBillingCustomerList.DisplayMember = "CompName"
         Me.cmbBillingCustomerList.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbBillingCustomerList.FormattingEnabled = True
-        Me.cmbBillingCustomerList.Location = New System.Drawing.Point(410, 15)
-        Me.cmbBillingCustomerList.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbBillingCustomerList.Location = New System.Drawing.Point(308, 12)
         Me.cmbBillingCustomerList.Name = "cmbBillingCustomerList"
-        Me.cmbBillingCustomerList.Size = New System.Drawing.Size(420, 37)
+        Me.cmbBillingCustomerList.Size = New System.Drawing.Size(316, 32)
         Me.cmbBillingCustomerList.TabIndex = 0
         Me.cmbBillingCustomerList.ValueMember = "CustNo"
         '
@@ -2369,10 +2357,9 @@ Partial Class AgniMainForm
         Me.Label23.AutoSize = True
         Me.Label23.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label23.ForeColor = System.Drawing.Color.Black
-        Me.Label23.Location = New System.Drawing.Point(29, 18)
-        Me.Label23.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label23.Location = New System.Drawing.Point(22, 15)
         Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(224, 31)
+        Me.Label23.Size = New System.Drawing.Size(179, 25)
         Me.Label23.TabIndex = 0
         Me.Label23.Text = "Customer Name"
         '
@@ -2381,10 +2368,9 @@ Partial Class AgniMainForm
         Me.Label29.AutoSize = True
         Me.Label29.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label29.ForeColor = System.Drawing.Color.Black
-        Me.Label29.Location = New System.Drawing.Point(151, 399)
-        Me.Label29.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label29.Location = New System.Drawing.Point(113, 324)
         Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(198, 19)
+        Me.Label29.Size = New System.Drawing.Size(154, 15)
         Me.Label29.TabIndex = 113
         Me.Label29.Text = "(Balance + Design Amount)"
         '
@@ -2425,10 +2411,9 @@ Partial Class AgniMainForm
         Me.tabDesign.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold)
         Me.tabDesign.ImageKey = "design icon.jpg"
         Me.tabDesign.Location = New System.Drawing.Point(4, 52)
-        Me.tabDesign.Margin = New System.Windows.Forms.Padding(4)
         Me.tabDesign.Name = "tabDesign"
-        Me.tabDesign.Padding = New System.Windows.Forms.Padding(4)
-        Me.tabDesign.Size = New System.Drawing.Size(1703, 911)
+        Me.tabDesign.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabDesign.Size = New System.Drawing.Size(1789, 910)
         Me.tabDesign.TabIndex = 1
         Me.tabDesign.Tag = "tagDesignTab"
         Me.tabDesign.Text = "Designs"
@@ -2440,10 +2425,9 @@ Partial Class AgniMainForm
         Me.cmbDesDesignList.DisplayMember = "DesignName"
         Me.cmbDesDesignList.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbDesDesignList.FormattingEnabled = True
-        Me.cmbDesDesignList.Location = New System.Drawing.Point(308, 59)
-        Me.cmbDesDesignList.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbDesDesignList.Location = New System.Drawing.Point(231, 48)
         Me.cmbDesDesignList.Name = "cmbDesDesignList"
-        Me.cmbDesDesignList.Size = New System.Drawing.Size(427, 38)
+        Me.cmbDesDesignList.Size = New System.Drawing.Size(321, 33)
         Me.cmbDesDesignList.TabIndex = 1
         Me.cmbDesDesignList.ValueMember = "DesignNo"
         '
@@ -2453,11 +2437,10 @@ Partial Class AgniMainForm
         Me.btnDesClear.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnDesClear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnDesClear.ImageKey = "erase.JPG"
-        Me.btnDesClear.Location = New System.Drawing.Point(1445, 318)
-        Me.btnDesClear.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnDesClear.Location = New System.Drawing.Point(1084, 258)
         Me.btnDesClear.Name = "btnDesClear"
-        Me.btnDesClear.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
-        Me.btnDesClear.Size = New System.Drawing.Size(157, 38)
+        Me.btnDesClear.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnDesClear.Size = New System.Drawing.Size(118, 31)
         Me.btnDesClear.TabIndex = 12
         Me.btnDesClear.Text = "Clear"
         Me.btnDesClear.UseVisualStyleBackColor = False
@@ -2468,10 +2451,9 @@ Partial Class AgniMainForm
         Me.btnDesEditPrice.BackgroundImage = CType(resources.GetObject("btnDesEditPrice.BackgroundImage"), System.Drawing.Image)
         Me.btnDesEditPrice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnDesEditPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDesEditPrice.Location = New System.Drawing.Point(745, 368)
-        Me.btnDesEditPrice.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnDesEditPrice.Location = New System.Drawing.Point(559, 299)
         Me.btnDesEditPrice.Name = "btnDesEditPrice"
-        Me.btnDesEditPrice.Size = New System.Drawing.Size(45, 39)
+        Me.btnDesEditPrice.Size = New System.Drawing.Size(34, 32)
         Me.btnDesEditPrice.TabIndex = 110
         Me.btnDesEditPrice.UseVisualStyleBackColor = False
         '
@@ -2482,10 +2464,9 @@ Partial Class AgniMainForm
         Me.cmbDesCustomerList.DisplayMember = "CompName"
         Me.cmbDesCustomerList.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbDesCustomerList.FormattingEnabled = True
-        Me.cmbDesCustomerList.Location = New System.Drawing.Point(308, 15)
-        Me.cmbDesCustomerList.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbDesCustomerList.Location = New System.Drawing.Point(231, 12)
         Me.cmbDesCustomerList.Name = "cmbDesCustomerList"
-        Me.cmbDesCustomerList.Size = New System.Drawing.Size(427, 38)
+        Me.cmbDesCustomerList.Size = New System.Drawing.Size(321, 33)
         Me.cmbDesCustomerList.TabIndex = 0
         Me.cmbDesCustomerList.ValueMember = "CustNo"
         '
@@ -2494,10 +2475,9 @@ Partial Class AgniMainForm
         Me.Label28.AutoSize = True
         Me.Label28.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
         Me.Label28.ForeColor = System.Drawing.Color.Black
-        Me.Label28.Location = New System.Drawing.Point(69, 108)
-        Me.Label28.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label28.Location = New System.Drawing.Point(52, 88)
         Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(175, 31)
+        Me.Label28.Size = New System.Drawing.Size(141, 25)
         Me.Label28.TabIndex = 32
         Me.Label28.Text = "Design Date"
         '
@@ -2506,20 +2486,18 @@ Partial Class AgniMainForm
         Me.dpDesDesignDate.CustomFormat = "dd/MM/yyyy"
         Me.dpDesDesignDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dpDesDesignDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dpDesDesignDate.Location = New System.Drawing.Point(309, 103)
-        Me.dpDesDesignDate.Margin = New System.Windows.Forms.Padding(4)
+        Me.dpDesDesignDate.Location = New System.Drawing.Point(232, 84)
         Me.dpDesDesignDate.Name = "dpDesDesignDate"
-        Me.dpDesDesignDate.Size = New System.Drawing.Size(425, 37)
+        Me.dpDesDesignDate.Size = New System.Drawing.Size(320, 31)
         Me.dpDesDesignDate.TabIndex = 2
         '
         'Label22
         '
         Me.Label22.AutoSize = True
         Me.Label22.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label22.Location = New System.Drawing.Point(1055, 15)
-        Me.Label22.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label22.Location = New System.Drawing.Point(791, 12)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(594, 31)
+        Me.Label22.Size = New System.Drawing.Size(485, 25)
         Me.Label22.TabIndex = 98
         Me.Label22.Text = "Click in the below box to load/change picture"
         '
@@ -2528,10 +2506,9 @@ Partial Class AgniMainForm
         Me.Label21.AutoSize = True
         Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
         Me.Label21.ForeColor = System.Drawing.Color.Black
-        Me.Label21.Location = New System.Drawing.Point(72, 375)
-        Me.Label21.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label21.Location = New System.Drawing.Point(54, 305)
         Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(81, 31)
+        Me.Label21.Size = New System.Drawing.Size(66, 25)
         Me.Label21.TabIndex = 37
         Me.Label21.Text = "Price"
         '
@@ -2539,11 +2516,10 @@ Partial Class AgniMainForm
         '
         Me.txtDesCalculatedPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDesCalculatedPrice.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtDesCalculatedPrice.Location = New System.Drawing.Point(310, 368)
-        Me.txtDesCalculatedPrice.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtDesCalculatedPrice.Location = New System.Drawing.Point(232, 299)
         Me.txtDesCalculatedPrice.Name = "txtDesCalculatedPrice"
         Me.txtDesCalculatedPrice.ReadOnly = True
-        Me.txtDesCalculatedPrice.Size = New System.Drawing.Size(425, 37)
+        Me.txtDesCalculatedPrice.Size = New System.Drawing.Size(320, 31)
         Me.txtDesCalculatedPrice.TabIndex = 8
         Me.txtDesCalculatedPrice.TabStop = False
         '
@@ -2553,11 +2529,10 @@ Partial Class AgniMainForm
         Me.btnDesUpdate.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnDesUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnDesUpdate.ImageKey = "update.jpg"
-        Me.btnDesUpdate.Location = New System.Drawing.Point(1280, 318)
-        Me.btnDesUpdate.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnDesUpdate.Location = New System.Drawing.Point(960, 258)
         Me.btnDesUpdate.Name = "btnDesUpdate"
-        Me.btnDesUpdate.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
-        Me.btnDesUpdate.Size = New System.Drawing.Size(157, 38)
+        Me.btnDesUpdate.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnDesUpdate.Size = New System.Drawing.Size(118, 31)
         Me.btnDesUpdate.TabIndex = 11
         Me.btnDesUpdate.Text = "   Update"
         Me.btnDesUpdate.UseVisualStyleBackColor = False
@@ -2568,11 +2543,10 @@ Partial Class AgniMainForm
         Me.btnDesDelete.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnDesDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnDesDelete.ImageKey = "delete.JPG"
-        Me.btnDesDelete.Location = New System.Drawing.Point(1115, 318)
-        Me.btnDesDelete.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnDesDelete.Location = New System.Drawing.Point(836, 258)
         Me.btnDesDelete.Name = "btnDesDelete"
-        Me.btnDesDelete.Padding = New System.Windows.Forms.Padding(7, 0, 0, 0)
-        Me.btnDesDelete.Size = New System.Drawing.Size(157, 38)
+        Me.btnDesDelete.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
+        Me.btnDesDelete.Size = New System.Drawing.Size(118, 31)
         Me.btnDesDelete.TabIndex = 10
         Me.btnDesDelete.Text = "  Delete"
         Me.btnDesDelete.UseVisualStyleBackColor = False
@@ -2583,11 +2557,10 @@ Partial Class AgniMainForm
         Me.btnDesAdd.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnDesAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnDesAdd.ImageKey = "add.JPG"
-        Me.btnDesAdd.Location = New System.Drawing.Point(949, 318)
-        Me.btnDesAdd.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnDesAdd.Location = New System.Drawing.Point(712, 258)
         Me.btnDesAdd.Name = "btnDesAdd"
-        Me.btnDesAdd.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
-        Me.btnDesAdd.Size = New System.Drawing.Size(157, 38)
+        Me.btnDesAdd.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnDesAdd.Size = New System.Drawing.Size(118, 31)
         Me.btnDesAdd.TabIndex = 9
         Me.btnDesAdd.Text = "Add"
         Me.btnDesAdd.UseVisualStyleBackColor = False
@@ -2597,10 +2570,9 @@ Partial Class AgniMainForm
         Me.Label20.AutoSize = True
         Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
         Me.Label20.ForeColor = System.Drawing.Color.Black
-        Me.Label20.Location = New System.Drawing.Point(69, 159)
-        Me.Label20.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label20.Location = New System.Drawing.Point(52, 129)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(178, 31)
+        Me.Label20.Size = New System.Drawing.Size(144, 25)
         Me.Label20.TabIndex = 33
         Me.Label20.Text = "Design Type"
         '
@@ -2608,10 +2580,9 @@ Partial Class AgniMainForm
         '
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label19.Location = New System.Drawing.Point(494, 232)
-        Me.Label19.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label19.Location = New System.Drawing.Point(370, 188)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(33, 31)
+        Me.Label19.Size = New System.Drawing.Size(27, 25)
         Me.Label19.TabIndex = 16
         Me.Label19.Text = "X"
         '
@@ -2619,10 +2590,9 @@ Partial Class AgniMainForm
         '
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("Book Antiqua", 11.25!, System.Drawing.FontStyle.Bold)
-        Me.Label18.Location = New System.Drawing.Point(566, 203)
-        Me.Label18.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label18.Location = New System.Drawing.Point(424, 165)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(71, 23)
+        Me.Label18.Size = New System.Drawing.Size(57, 19)
         Me.Label18.TabIndex = 15
         Me.Label18.Text = "Height"
         '
@@ -2630,10 +2600,9 @@ Partial Class AgniMainForm
         '
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Book Antiqua", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.Location = New System.Drawing.Point(306, 203)
-        Me.Label17.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label17.Location = New System.Drawing.Point(230, 165)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(65, 23)
+        Me.Label17.Size = New System.Drawing.Size(52, 19)
         Me.Label17.TabIndex = 14
         Me.Label17.Text = "Width"
         '
@@ -2642,10 +2611,9 @@ Partial Class AgniMainForm
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
         Me.Label16.ForeColor = System.Drawing.Color.Black
-        Me.Label16.Location = New System.Drawing.Point(70, 232)
-        Me.Label16.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label16.Location = New System.Drawing.Point(52, 188)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(155, 31)
+        Me.Label16.Size = New System.Drawing.Size(125, 25)
         Me.Label16.TabIndex = 34
         Me.Label16.Text = "Size (Inch)"
         '
@@ -2654,10 +2622,9 @@ Partial Class AgniMainForm
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
         Me.Label15.ForeColor = System.Drawing.Color.Black
-        Me.Label15.Location = New System.Drawing.Point(69, 63)
-        Me.Label15.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label15.Location = New System.Drawing.Point(52, 51)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(189, 31)
+        Me.Label15.Size = New System.Drawing.Size(152, 25)
         Me.Label15.TabIndex = 31
         Me.Label15.Text = "Design Name"
         '
@@ -2666,10 +2633,9 @@ Partial Class AgniMainForm
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
         Me.Label14.ForeColor = System.Drawing.Color.Black
-        Me.Label14.Location = New System.Drawing.Point(72, 276)
-        Me.Label14.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label14.Location = New System.Drawing.Point(54, 224)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(177, 31)
+        Me.Label14.Size = New System.Drawing.Size(143, 25)
         Me.Label14.TabIndex = 35
         Me.Label14.Text = "No of Colors"
         '
@@ -2678,10 +2644,9 @@ Partial Class AgniMainForm
         Me.lblDesCostPerUnit.AutoSize = True
         Me.lblDesCostPerUnit.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
         Me.lblDesCostPerUnit.ForeColor = System.Drawing.Color.Black
-        Me.lblDesCostPerUnit.Location = New System.Drawing.Point(72, 323)
-        Me.lblDesCostPerUnit.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblDesCostPerUnit.Location = New System.Drawing.Point(54, 262)
         Me.lblDesCostPerUnit.Name = "lblDesCostPerUnit"
-        Me.lblDesCostPerUnit.Size = New System.Drawing.Size(187, 31)
+        Me.lblDesCostPerUnit.Size = New System.Drawing.Size(152, 25)
         Me.lblDesCostPerUnit.TabIndex = 36
         Me.lblDesCostPerUnit.Text = "Cost per inch"
         '
@@ -2690,10 +2655,9 @@ Partial Class AgniMainForm
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
         Me.Label12.ForeColor = System.Drawing.Color.Black
-        Me.Label12.Location = New System.Drawing.Point(69, 18)
-        Me.Label12.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label12.Location = New System.Drawing.Point(52, 15)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(224, 31)
+        Me.Label12.Size = New System.Drawing.Size(179, 25)
         Me.Label12.TabIndex = 30
         Me.Label12.Text = "Customer Name"
         '
@@ -2703,21 +2667,20 @@ Partial Class AgniMainForm
         Me.GroupBox2.Controls.Add(Me.radioDesWorking)
         Me.GroupBox2.Controls.Add(Me.radioDesWP)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(307, 138)
+        Me.GroupBox2.Location = New System.Drawing.Point(230, 112)
         Me.GroupBox2.Margin = New System.Windows.Forms.Padding(0)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Padding = New System.Windows.Forms.Padding(0)
-        Me.GroupBox2.Size = New System.Drawing.Size(427, 62)
+        Me.GroupBox2.Size = New System.Drawing.Size(320, 50)
         Me.GroupBox2.TabIndex = 3
         Me.GroupBox2.TabStop = False
         '
         'radioDesPrint
         '
         Me.radioDesPrint.AutoSize = True
-        Me.radioDesPrint.Location = New System.Drawing.Point(310, 19)
-        Me.radioDesPrint.Margin = New System.Windows.Forms.Padding(4)
+        Me.radioDesPrint.Location = New System.Drawing.Point(232, 15)
         Me.radioDesPrint.Name = "radioDesPrint"
-        Me.radioDesPrint.Size = New System.Drawing.Size(96, 35)
+        Me.radioDesPrint.Size = New System.Drawing.Size(79, 29)
         Me.radioDesPrint.TabIndex = 2
         Me.radioDesPrint.Text = "Print"
         Me.radioDesPrint.UseVisualStyleBackColor = True
@@ -2725,10 +2688,9 @@ Partial Class AgniMainForm
         'radioDesWorking
         '
         Me.radioDesWorking.AutoSize = True
-        Me.radioDesWorking.Location = New System.Drawing.Point(148, 19)
-        Me.radioDesWorking.Margin = New System.Windows.Forms.Padding(4)
+        Me.radioDesWorking.Location = New System.Drawing.Point(111, 15)
         Me.radioDesWorking.Name = "radioDesWorking"
-        Me.radioDesWorking.Size = New System.Drawing.Size(141, 35)
+        Me.radioDesWorking.Size = New System.Drawing.Size(116, 29)
         Me.radioDesWorking.TabIndex = 1
         Me.radioDesWorking.Text = "Working"
         Me.radioDesWorking.UseVisualStyleBackColor = True
@@ -2737,10 +2699,9 @@ Partial Class AgniMainForm
         '
         Me.radioDesWP.AutoSize = True
         Me.radioDesWP.Checked = True
-        Me.radioDesWP.Location = New System.Drawing.Point(29, 19)
-        Me.radioDesWP.Margin = New System.Windows.Forms.Padding(4)
+        Me.radioDesWP.Location = New System.Drawing.Point(22, 15)
         Me.radioDesWP.Name = "radioDesWP"
-        Me.radioDesWP.Size = New System.Drawing.Size(97, 35)
+        Me.radioDesWP.Size = New System.Drawing.Size(79, 29)
         Me.radioDesWP.TabIndex = 0
         Me.radioDesWP.TabStop = True
         Me.radioDesWP.Text = "W+P"
@@ -2749,37 +2710,33 @@ Partial Class AgniMainForm
         'txtDesCostPerUnit
         '
         Me.txtDesCostPerUnit.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDesCostPerUnit.Location = New System.Drawing.Point(312, 319)
-        Me.txtDesCostPerUnit.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtDesCostPerUnit.Location = New System.Drawing.Point(234, 259)
         Me.txtDesCostPerUnit.Name = "txtDesCostPerUnit"
-        Me.txtDesCostPerUnit.Size = New System.Drawing.Size(425, 37)
+        Me.txtDesCostPerUnit.Size = New System.Drawing.Size(320, 31)
         Me.txtDesCostPerUnit.TabIndex = 7
         '
         'txtDesNoOfColors
         '
         Me.txtDesNoOfColors.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDesNoOfColors.Location = New System.Drawing.Point(312, 272)
-        Me.txtDesNoOfColors.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtDesNoOfColors.Location = New System.Drawing.Point(234, 221)
         Me.txtDesNoOfColors.Name = "txtDesNoOfColors"
-        Me.txtDesNoOfColors.Size = New System.Drawing.Size(425, 37)
+        Me.txtDesNoOfColors.Size = New System.Drawing.Size(320, 31)
         Me.txtDesNoOfColors.TabIndex = 6
         '
         'txtDesHeight
         '
         Me.txtDesHeight.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDesHeight.Location = New System.Drawing.Point(572, 228)
-        Me.txtDesHeight.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtDesHeight.Location = New System.Drawing.Point(429, 185)
         Me.txtDesHeight.Name = "txtDesHeight"
-        Me.txtDesHeight.Size = New System.Drawing.Size(164, 37)
+        Me.txtDesHeight.Size = New System.Drawing.Size(124, 31)
         Me.txtDesHeight.TabIndex = 5
         '
         'txtDesWidth
         '
         Me.txtDesWidth.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDesWidth.Location = New System.Drawing.Point(312, 228)
-        Me.txtDesWidth.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtDesWidth.Location = New System.Drawing.Point(234, 185)
         Me.txtDesWidth.Name = "txtDesWidth"
-        Me.txtDesWidth.Size = New System.Drawing.Size(152, 37)
+        Me.txtDesWidth.Size = New System.Drawing.Size(115, 31)
         Me.txtDesWidth.TabIndex = 4
         '
         'pbDesDesignImage
@@ -2788,10 +2745,9 @@ Partial Class AgniMainForm
         Me.pbDesDesignImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pbDesDesignImage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.pbDesDesignImage.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.pbDesDesignImage.Location = New System.Drawing.Point(1204, 52)
-        Me.pbDesDesignImage.Margin = New System.Windows.Forms.Padding(4)
+        Me.pbDesDesignImage.Location = New System.Drawing.Point(903, 42)
         Me.pbDesDesignImage.Name = "pbDesDesignImage"
-        Me.pbDesDesignImage.Size = New System.Drawing.Size(264, 243)
+        Me.pbDesDesignImage.Size = New System.Drawing.Size(199, 198)
         Me.pbDesDesignImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pbDesDesignImage.TabIndex = 21
         Me.pbDesDesignImage.TabStop = False
@@ -2800,10 +2756,9 @@ Partial Class AgniMainForm
         '
         Me.Button33.BackColor = System.Drawing.Color.Transparent
         Me.Button33.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button33.Location = New System.Drawing.Point(1223, 146)
-        Me.Button33.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button33.Location = New System.Drawing.Point(917, 119)
         Me.Button33.Name = "Button33"
-        Me.Button33.Size = New System.Drawing.Size(233, 38)
+        Me.Button33.Size = New System.Drawing.Size(175, 31)
         Me.Button33.TabIndex = 109
         Me.Button33.Text = "To Select picture"
         Me.Button33.UseVisualStyleBackColor = False
@@ -2821,14 +2776,13 @@ Partial Class AgniMainForm
         Me.tabAllTabsHolder.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tabAllTabsHolder.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.tabAllTabsHolder.ItemSize = New System.Drawing.Size(202, 48)
-        Me.tabAllTabsHolder.Location = New System.Drawing.Point(-2, 113)
-        Me.tabAllTabsHolder.Margin = New System.Windows.Forms.Padding(4)
+        Me.tabAllTabsHolder.Location = New System.Drawing.Point(-2, 92)
         Me.tabAllTabsHolder.Multiline = True
         Me.tabAllTabsHolder.Name = "tabAllTabsHolder"
         Me.tabAllTabsHolder.Padding = New System.Drawing.Point(20, 3)
         Me.tabAllTabsHolder.SelectedIndex = 0
         Me.tabAllTabsHolder.ShowToolTips = True
-        Me.tabAllTabsHolder.Size = New System.Drawing.Size(1711, 967)
+        Me.tabAllTabsHolder.Size = New System.Drawing.Size(1797, 966)
         Me.tabAllTabsHolder.TabIndex = 0
         '
         'tabCustomer
@@ -2864,10 +2818,9 @@ Partial Class AgniMainForm
         Me.tabCustomer.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold)
         Me.tabCustomer.ImageKey = "cust.jpg"
         Me.tabCustomer.Location = New System.Drawing.Point(4, 52)
-        Me.tabCustomer.Margin = New System.Windows.Forms.Padding(4)
         Me.tabCustomer.Name = "tabCustomer"
-        Me.tabCustomer.Padding = New System.Windows.Forms.Padding(4)
-        Me.tabCustomer.Size = New System.Drawing.Size(1703, 911)
+        Me.tabCustomer.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabCustomer.Size = New System.Drawing.Size(1789, 910)
         Me.tabCustomer.TabIndex = 0
         Me.tabCustomer.Tag = "tagCustomerTab"
         Me.tabCustomer.Text = "Customer"
@@ -2881,11 +2834,9 @@ Partial Class AgniMainForm
         Me.GroupBox1.Controls.Add(Me.txtCustPrintCharge)
         Me.GroupBox1.Controls.Add(Me.txtCustWorkingCharge)
         Me.GroupBox1.Controls.Add(Me.txtCustWPCharge)
-        Me.GroupBox1.Location = New System.Drawing.Point(803, 315)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
+        Me.GroupBox1.Location = New System.Drawing.Point(602, 256)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Size = New System.Drawing.Size(436, 215)
+        Me.GroupBox1.Size = New System.Drawing.Size(327, 175)
         Me.GroupBox1.TabIndex = 12
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Design Cost Per Unit"
@@ -2895,10 +2846,9 @@ Partial Class AgniMainForm
         Me.lblPrintCharge.AutoSize = True
         Me.lblPrintCharge.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblPrintCharge.ForeColor = System.Drawing.Color.Black
-        Me.lblPrintCharge.Location = New System.Drawing.Point(18, 151)
-        Me.lblPrintCharge.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblPrintCharge.Location = New System.Drawing.Point(14, 123)
         Me.lblPrintCharge.Name = "lblPrintCharge"
-        Me.lblPrintCharge.Size = New System.Drawing.Size(154, 31)
+        Me.lblPrintCharge.Size = New System.Drawing.Size(124, 25)
         Me.lblPrintCharge.TabIndex = 18
         Me.lblPrintCharge.Text = "Print/Color"
         '
@@ -2907,10 +2857,9 @@ Partial Class AgniMainForm
         Me.lblWorkingCharge.AutoSize = True
         Me.lblWorkingCharge.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblWorkingCharge.ForeColor = System.Drawing.Color.Black
-        Me.lblWorkingCharge.Location = New System.Drawing.Point(18, 105)
-        Me.lblWorkingCharge.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblWorkingCharge.Location = New System.Drawing.Point(14, 85)
         Me.lblWorkingCharge.Name = "lblWorkingCharge"
-        Me.lblWorkingCharge.Size = New System.Drawing.Size(199, 31)
+        Me.lblWorkingCharge.Size = New System.Drawing.Size(161, 25)
         Me.lblWorkingCharge.TabIndex = 16
         Me.lblWorkingCharge.Text = "Working/Color"
         '
@@ -2919,38 +2868,34 @@ Partial Class AgniMainForm
         Me.lblWPChargeDetails.AutoSize = True
         Me.lblWPChargeDetails.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblWPChargeDetails.ForeColor = System.Drawing.Color.Black
-        Me.lblWPChargeDetails.Location = New System.Drawing.Point(18, 54)
-        Me.lblWPChargeDetails.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblWPChargeDetails.Location = New System.Drawing.Point(14, 44)
         Me.lblWPChargeDetails.Name = "lblWPChargeDetails"
-        Me.lblWPChargeDetails.Size = New System.Drawing.Size(180, 31)
+        Me.lblWPChargeDetails.Size = New System.Drawing.Size(145, 25)
         Me.lblWPChargeDetails.TabIndex = 12
         Me.lblWPChargeDetails.Text = "W+P/sqrinch"
         '
         'txtCustPrintCharge
         '
         Me.txtCustPrintCharge.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCustPrintCharge.Location = New System.Drawing.Point(249, 148)
-        Me.txtCustPrintCharge.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtCustPrintCharge.Location = New System.Drawing.Point(187, 120)
         Me.txtCustPrintCharge.Name = "txtCustPrintCharge"
-        Me.txtCustPrintCharge.Size = New System.Drawing.Size(120, 37)
+        Me.txtCustPrintCharge.Size = New System.Drawing.Size(91, 31)
         Me.txtCustPrintCharge.TabIndex = 15
         '
         'txtCustWorkingCharge
         '
         Me.txtCustWorkingCharge.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCustWorkingCharge.Location = New System.Drawing.Point(249, 99)
-        Me.txtCustWorkingCharge.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtCustWorkingCharge.Location = New System.Drawing.Point(187, 80)
         Me.txtCustWorkingCharge.Name = "txtCustWorkingCharge"
-        Me.txtCustWorkingCharge.Size = New System.Drawing.Size(120, 37)
+        Me.txtCustWorkingCharge.Size = New System.Drawing.Size(91, 31)
         Me.txtCustWorkingCharge.TabIndex = 14
         '
         'txtCustWPCharge
         '
         Me.txtCustWPCharge.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCustWPCharge.Location = New System.Drawing.Point(249, 51)
-        Me.txtCustWPCharge.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtCustWPCharge.Location = New System.Drawing.Point(187, 41)
         Me.txtCustWPCharge.Name = "txtCustWPCharge"
-        Me.txtCustWPCharge.Size = New System.Drawing.Size(120, 37)
+        Me.txtCustWPCharge.Size = New System.Drawing.Size(91, 31)
         Me.txtCustWPCharge.TabIndex = 13
         '
         'lblLandline
@@ -2958,10 +2903,9 @@ Partial Class AgniMainForm
         Me.lblLandline.AutoSize = True
         Me.lblLandline.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblLandline.ForeColor = System.Drawing.Color.Black
-        Me.lblLandline.Location = New System.Drawing.Point(41, 434)
-        Me.lblLandline.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblLandline.Location = New System.Drawing.Point(31, 353)
         Me.lblLandline.Name = "lblLandline"
-        Me.lblLandline.Size = New System.Drawing.Size(124, 31)
+        Me.lblLandline.Size = New System.Drawing.Size(102, 25)
         Me.lblLandline.TabIndex = 18
         Me.lblLandline.Text = "Landline"
         '
@@ -2976,11 +2920,9 @@ Partial Class AgniMainForm
         Me.GroupBox16.Controls.Add(Me.txtCustIGST)
         Me.GroupBox16.Controls.Add(Me.txtCustSGST)
         Me.GroupBox16.Controls.Add(Me.txtCustCGST)
-        Me.GroupBox16.Location = New System.Drawing.Point(803, 93)
-        Me.GroupBox16.Margin = New System.Windows.Forms.Padding(4)
+        Me.GroupBox16.Location = New System.Drawing.Point(602, 76)
         Me.GroupBox16.Name = "GroupBox16"
-        Me.GroupBox16.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox16.Size = New System.Drawing.Size(436, 194)
+        Me.GroupBox16.Size = New System.Drawing.Size(327, 158)
         Me.GroupBox16.TabIndex = 8
         Me.GroupBox16.TabStop = False
         Me.GroupBox16.Text = "GST Details"
@@ -2990,10 +2932,9 @@ Partial Class AgniMainForm
         Me.Label87.AutoSize = True
         Me.Label87.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label87.ForeColor = System.Drawing.Color.Black
-        Me.Label87.Location = New System.Drawing.Point(377, 81)
-        Me.Label87.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label87.Location = New System.Drawing.Point(283, 66)
         Me.Label87.Name = "Label87"
-        Me.Label87.Size = New System.Drawing.Size(39, 31)
+        Me.Label87.Size = New System.Drawing.Size(32, 25)
         Me.Label87.TabIndex = 21
         Me.Label87.Text = "%"
         '
@@ -3002,10 +2943,9 @@ Partial Class AgniMainForm
         Me.Label60.AutoSize = True
         Me.Label60.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label60.ForeColor = System.Drawing.Color.Black
-        Me.Label60.Location = New System.Drawing.Point(377, 133)
-        Me.Label60.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label60.Location = New System.Drawing.Point(283, 108)
         Me.Label60.Name = "Label60"
-        Me.Label60.Size = New System.Drawing.Size(39, 31)
+        Me.Label60.Size = New System.Drawing.Size(32, 25)
         Me.Label60.TabIndex = 20
         Me.Label60.Text = "%"
         '
@@ -3014,10 +2954,9 @@ Partial Class AgniMainForm
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.Black
-        Me.Label7.Location = New System.Drawing.Point(377, 32)
-        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label7.Location = New System.Drawing.Point(283, 26)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(39, 31)
+        Me.Label7.Size = New System.Drawing.Size(32, 25)
         Me.Label7.TabIndex = 19
         Me.Label7.Text = "%"
         '
@@ -3026,10 +2965,9 @@ Partial Class AgniMainForm
         Me.lblIGST.AutoSize = True
         Me.lblIGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblIGST.ForeColor = System.Drawing.Color.Black
-        Me.lblIGST.Location = New System.Drawing.Point(37, 136)
-        Me.lblIGST.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblIGST.Location = New System.Drawing.Point(28, 110)
         Me.lblIGST.Name = "lblIGST"
-        Me.lblIGST.Size = New System.Drawing.Size(82, 31)
+        Me.lblIGST.Size = New System.Drawing.Size(64, 25)
         Me.lblIGST.TabIndex = 18
         Me.lblIGST.Text = "IGST"
         '
@@ -3038,10 +2976,9 @@ Partial Class AgniMainForm
         Me.lblSGST.AutoSize = True
         Me.lblSGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSGST.ForeColor = System.Drawing.Color.Black
-        Me.lblSGST.Location = New System.Drawing.Point(37, 87)
-        Me.lblSGST.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblSGST.Location = New System.Drawing.Point(28, 71)
         Me.lblSGST.Name = "lblSGST"
-        Me.lblSGST.Size = New System.Drawing.Size(92, 31)
+        Me.lblSGST.Size = New System.Drawing.Size(73, 25)
         Me.lblSGST.TabIndex = 16
         Me.lblSGST.Text = "SGST"
         '
@@ -3050,38 +2987,34 @@ Partial Class AgniMainForm
         Me.lblCGST.AutoSize = True
         Me.lblCGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCGST.ForeColor = System.Drawing.Color.Black
-        Me.lblCGST.Location = New System.Drawing.Point(37, 38)
-        Me.lblCGST.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblCGST.Location = New System.Drawing.Point(28, 31)
         Me.lblCGST.Name = "lblCGST"
-        Me.lblCGST.Size = New System.Drawing.Size(94, 31)
+        Me.lblCGST.Size = New System.Drawing.Size(74, 25)
         Me.lblCGST.TabIndex = 12
         Me.lblCGST.Text = "CGST"
         '
         'txtCustIGST
         '
         Me.txtCustIGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCustIGST.Location = New System.Drawing.Point(249, 130)
-        Me.txtCustIGST.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtCustIGST.Location = New System.Drawing.Point(187, 106)
         Me.txtCustIGST.Name = "txtCustIGST"
-        Me.txtCustIGST.Size = New System.Drawing.Size(120, 37)
+        Me.txtCustIGST.Size = New System.Drawing.Size(91, 31)
         Me.txtCustIGST.TabIndex = 11
         '
         'txtCustSGST
         '
         Me.txtCustSGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCustSGST.Location = New System.Drawing.Point(249, 81)
-        Me.txtCustSGST.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtCustSGST.Location = New System.Drawing.Point(187, 66)
         Me.txtCustSGST.Name = "txtCustSGST"
-        Me.txtCustSGST.Size = New System.Drawing.Size(120, 37)
+        Me.txtCustSGST.Size = New System.Drawing.Size(91, 31)
         Me.txtCustSGST.TabIndex = 10
         '
         'txtCustCGST
         '
         Me.txtCustCGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCustCGST.Location = New System.Drawing.Point(249, 32)
-        Me.txtCustCGST.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtCustCGST.Location = New System.Drawing.Point(187, 26)
         Me.txtCustCGST.Name = "txtCustCGST"
-        Me.txtCustCGST.Size = New System.Drawing.Size(120, 37)
+        Me.txtCustCGST.Size = New System.Drawing.Size(91, 31)
         Me.txtCustCGST.TabIndex = 9
         '
         'lblEmail
@@ -3089,10 +3022,9 @@ Partial Class AgniMainForm
         Me.lblEmail.AutoSize = True
         Me.lblEmail.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblEmail.ForeColor = System.Drawing.Color.Black
-        Me.lblEmail.Location = New System.Drawing.Point(41, 376)
-        Me.lblEmail.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblEmail.Location = New System.Drawing.Point(31, 306)
         Me.lblEmail.Name = "lblEmail"
-        Me.lblEmail.Size = New System.Drawing.Size(124, 31)
+        Me.lblEmail.Size = New System.Drawing.Size(99, 25)
         Me.lblEmail.TabIndex = 16
         Me.lblEmail.Text = "Email ID"
         '
@@ -3101,20 +3033,18 @@ Partial Class AgniMainForm
         Me.lblWebsite.AutoSize = True
         Me.lblWebsite.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblWebsite.ForeColor = System.Drawing.Color.Black
-        Me.lblWebsite.Location = New System.Drawing.Point(41, 492)
-        Me.lblWebsite.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblWebsite.Location = New System.Drawing.Point(31, 400)
         Me.lblWebsite.Name = "lblWebsite"
-        Me.lblWebsite.Size = New System.Drawing.Size(119, 31)
+        Me.lblWebsite.Size = New System.Drawing.Size(97, 25)
         Me.lblWebsite.TabIndex = 13
         Me.lblWebsite.Text = "Website"
         '
         'txtWebsite
         '
         Me.txtWebsite.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtWebsite.Location = New System.Drawing.Point(308, 492)
-        Me.txtWebsite.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtWebsite.Location = New System.Drawing.Point(231, 400)
         Me.txtWebsite.Name = "txtWebsite"
-        Me.txtWebsite.Size = New System.Drawing.Size(449, 37)
+        Me.txtWebsite.Size = New System.Drawing.Size(338, 31)
         Me.txtWebsite.TabIndex = 7
         '
         'lblMobile
@@ -3122,38 +3052,34 @@ Partial Class AgniMainForm
         Me.lblMobile.AutoSize = True
         Me.lblMobile.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMobile.ForeColor = System.Drawing.Color.Black
-        Me.lblMobile.Location = New System.Drawing.Point(41, 318)
-        Me.lblMobile.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblMobile.Location = New System.Drawing.Point(31, 258)
         Me.lblMobile.Name = "lblMobile"
-        Me.lblMobile.Size = New System.Drawing.Size(99, 31)
+        Me.lblMobile.Size = New System.Drawing.Size(82, 25)
         Me.lblMobile.TabIndex = 12
         Me.lblMobile.Text = "Mobile"
         '
         'txtLandline
         '
         Me.txtLandline.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtLandline.Location = New System.Drawing.Point(308, 433)
-        Me.txtLandline.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtLandline.Location = New System.Drawing.Point(231, 352)
         Me.txtLandline.Name = "txtLandline"
-        Me.txtLandline.Size = New System.Drawing.Size(449, 37)
+        Me.txtLandline.Size = New System.Drawing.Size(338, 31)
         Me.txtLandline.TabIndex = 6
         '
         'txtEmail
         '
         Me.txtEmail.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtEmail.Location = New System.Drawing.Point(308, 374)
-        Me.txtEmail.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtEmail.Location = New System.Drawing.Point(231, 304)
         Me.txtEmail.Name = "txtEmail"
-        Me.txtEmail.Size = New System.Drawing.Size(449, 37)
+        Me.txtEmail.Size = New System.Drawing.Size(338, 31)
         Me.txtEmail.TabIndex = 5
         '
         'txtMobile
         '
         Me.txtMobile.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMobile.Location = New System.Drawing.Point(308, 315)
-        Me.txtMobile.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtMobile.Location = New System.Drawing.Point(231, 256)
         Me.txtMobile.Name = "txtMobile"
-        Me.txtMobile.Size = New System.Drawing.Size(449, 37)
+        Me.txtMobile.Size = New System.Drawing.Size(338, 31)
         Me.txtMobile.TabIndex = 4
         '
         'btnCustClear
@@ -3163,11 +3089,10 @@ Partial Class AgniMainForm
         Me.btnCustClear.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
         Me.btnCustClear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnCustClear.ImageKey = "erase.JPG"
-        Me.btnCustClear.Location = New System.Drawing.Point(988, 594)
-        Me.btnCustClear.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnCustClear.Location = New System.Drawing.Point(741, 483)
         Me.btnCustClear.Name = "btnCustClear"
-        Me.btnCustClear.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
-        Me.btnCustClear.Size = New System.Drawing.Size(157, 39)
+        Me.btnCustClear.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnCustClear.Size = New System.Drawing.Size(118, 32)
         Me.btnCustClear.TabIndex = 19
         Me.btnCustClear.Text = "Clear"
         Me.btnCustClear.UseVisualStyleBackColor = False
@@ -3177,20 +3102,18 @@ Partial Class AgniMainForm
         Me.lblGSTIN.AutoSize = True
         Me.lblGSTIN.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblGSTIN.ForeColor = System.Drawing.Color.Black
-        Me.lblGSTIN.Location = New System.Drawing.Point(41, 89)
-        Me.lblGSTIN.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblGSTIN.Location = New System.Drawing.Point(31, 72)
         Me.lblGSTIN.Name = "lblGSTIN"
-        Me.lblGSTIN.Size = New System.Drawing.Size(103, 31)
+        Me.lblGSTIN.Size = New System.Drawing.Size(80, 25)
         Me.lblGSTIN.TabIndex = 99
         Me.lblGSTIN.Text = "GSTIN"
         '
         'txtGstIn
         '
         Me.txtGstIn.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtGstIn.Location = New System.Drawing.Point(308, 86)
-        Me.txtGstIn.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtGstIn.Location = New System.Drawing.Point(231, 70)
         Me.txtGstIn.Name = "txtGstIn"
-        Me.txtGstIn.Size = New System.Drawing.Size(449, 37)
+        Me.txtGstIn.Size = New System.Drawing.Size(338, 31)
         Me.txtGstIn.TabIndex = 1
         '
         'btnCustUpdate
@@ -3200,11 +3123,10 @@ Partial Class AgniMainForm
         Me.btnCustUpdate.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
         Me.btnCustUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnCustUpdate.ImageKey = "update.jpg"
-        Me.btnCustUpdate.Location = New System.Drawing.Point(789, 594)
-        Me.btnCustUpdate.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnCustUpdate.Location = New System.Drawing.Point(592, 483)
         Me.btnCustUpdate.Name = "btnCustUpdate"
-        Me.btnCustUpdate.Padding = New System.Windows.Forms.Padding(7, 0, 0, 0)
-        Me.btnCustUpdate.Size = New System.Drawing.Size(179, 39)
+        Me.btnCustUpdate.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
+        Me.btnCustUpdate.Size = New System.Drawing.Size(134, 32)
         Me.btnCustUpdate.TabIndex = 18
         Me.btnCustUpdate.Text = "Update"
         Me.btnCustUpdate.UseVisualStyleBackColor = False
@@ -3216,11 +3138,10 @@ Partial Class AgniMainForm
         Me.btnCustDelete.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
         Me.btnCustDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnCustDelete.ImageKey = "delete.JPG"
-        Me.btnCustDelete.Location = New System.Drawing.Point(597, 594)
-        Me.btnCustDelete.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnCustDelete.Location = New System.Drawing.Point(448, 483)
         Me.btnCustDelete.Name = "btnCustDelete"
-        Me.btnCustDelete.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
-        Me.btnCustDelete.Size = New System.Drawing.Size(172, 39)
+        Me.btnCustDelete.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnCustDelete.Size = New System.Drawing.Size(129, 32)
         Me.btnCustDelete.TabIndex = 17
         Me.btnCustDelete.Text = "Delete"
         Me.btnCustDelete.UseVisualStyleBackColor = False
@@ -3232,11 +3153,10 @@ Partial Class AgniMainForm
         Me.btnCustAdd.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
         Me.btnCustAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnCustAdd.ImageKey = "add.JPG"
-        Me.btnCustAdd.Location = New System.Drawing.Point(416, 594)
-        Me.btnCustAdd.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnCustAdd.Location = New System.Drawing.Point(312, 483)
         Me.btnCustAdd.Name = "btnCustAdd"
-        Me.btnCustAdd.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
-        Me.btnCustAdd.Size = New System.Drawing.Size(160, 39)
+        Me.btnCustAdd.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnCustAdd.Size = New System.Drawing.Size(120, 32)
         Me.btnCustAdd.TabIndex = 16
         Me.btnCustAdd.Text = "Add"
         Me.btnCustAdd.UseVisualStyleBackColor = False
@@ -3246,10 +3166,9 @@ Partial Class AgniMainForm
         Me.lblProprietor.AutoSize = True
         Me.lblProprietor.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblProprietor.ForeColor = System.Drawing.Color.Black
-        Me.lblProprietor.Location = New System.Drawing.Point(41, 148)
-        Me.lblProprietor.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblProprietor.Location = New System.Drawing.Point(31, 120)
         Me.lblProprietor.Name = "lblProprietor"
-        Me.lblProprietor.Size = New System.Drawing.Size(235, 31)
+        Me.lblProprietor.Size = New System.Drawing.Size(190, 25)
         Me.lblProprietor.TabIndex = 21
         Me.lblProprietor.Text = "Proprietor  Name"
         '
@@ -3258,10 +3177,9 @@ Partial Class AgniMainForm
         Me.lblAddress.AutoSize = True
         Me.lblAddress.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAddress.ForeColor = System.Drawing.Color.Black
-        Me.lblAddress.Location = New System.Drawing.Point(41, 207)
-        Me.lblAddress.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblAddress.Location = New System.Drawing.Point(31, 168)
         Me.lblAddress.Name = "lblAddress"
-        Me.lblAddress.Size = New System.Drawing.Size(137, 31)
+        Me.lblAddress.Size = New System.Drawing.Size(112, 25)
         Me.lblAddress.TabIndex = 20
         Me.lblAddress.Text = "Address  "
         '
@@ -3271,46 +3189,41 @@ Partial Class AgniMainForm
         Me.lblCustomerName.BackColor = System.Drawing.Color.Transparent
         Me.lblCustomerName.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCustomerName.ForeColor = System.Drawing.Color.Black
-        Me.lblCustomerName.Location = New System.Drawing.Point(41, 30)
-        Me.lblCustomerName.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblCustomerName.Location = New System.Drawing.Point(31, 24)
         Me.lblCustomerName.Name = "lblCustomerName"
-        Me.lblCustomerName.Size = New System.Drawing.Size(224, 31)
+        Me.lblCustomerName.Size = New System.Drawing.Size(179, 25)
         Me.lblCustomerName.TabIndex = 11
         Me.lblCustomerName.Text = "Customer Name"
         '
         'cmbCustCustomerList
         '
         Me.cmbCustCustomerList.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.cmbCustCustomerList.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cmbCustCustomerList.DisplayMember = "CompName"
         Me.cmbCustCustomerList.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbCustCustomerList.FormattingEnabled = True
-        Me.cmbCustCustomerList.Location = New System.Drawing.Point(308, 26)
-        Me.cmbCustCustomerList.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbCustCustomerList.Location = New System.Drawing.Point(231, 21)
         Me.cmbCustCustomerList.MaxDropDownItems = 10
         Me.cmbCustCustomerList.Name = "cmbCustCustomerList"
-        Me.cmbCustCustomerList.Size = New System.Drawing.Size(449, 38)
+        Me.cmbCustCustomerList.Size = New System.Drawing.Size(338, 33)
         Me.cmbCustCustomerList.TabIndex = 0
         Me.cmbCustCustomerList.ValueMember = "CustNo"
         '
         'txtAddress
         '
         Me.txtAddress.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtAddress.Location = New System.Drawing.Point(308, 204)
-        Me.txtAddress.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtAddress.Location = New System.Drawing.Point(231, 166)
         Me.txtAddress.Multiline = True
         Me.txtAddress.Name = "txtAddress"
         Me.txtAddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtAddress.Size = New System.Drawing.Size(449, 89)
+        Me.txtAddress.Size = New System.Drawing.Size(338, 73)
         Me.txtAddress.TabIndex = 3
         '
         'txtOwnerName
         '
         Me.txtOwnerName.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtOwnerName.Location = New System.Drawing.Point(308, 145)
-        Me.txtOwnerName.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtOwnerName.Location = New System.Drawing.Point(231, 118)
         Me.txtOwnerName.Name = "txtOwnerName"
-        Me.txtOwnerName.Size = New System.Drawing.Size(449, 37)
+        Me.txtOwnerName.Size = New System.Drawing.Size(338, 31)
         Me.txtOwnerName.TabIndex = 2
         '
         'tabPayment
@@ -3352,10 +3265,9 @@ Partial Class AgniMainForm
         Me.tabPayment.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.tabPayment.ImageKey = "payment.jpg"
         Me.tabPayment.Location = New System.Drawing.Point(4, 52)
-        Me.tabPayment.Margin = New System.Windows.Forms.Padding(4)
         Me.tabPayment.Name = "tabPayment"
-        Me.tabPayment.Padding = New System.Windows.Forms.Padding(4)
-        Me.tabPayment.Size = New System.Drawing.Size(1703, 911)
+        Me.tabPayment.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabPayment.Size = New System.Drawing.Size(1789, 910)
         Me.tabPayment.TabIndex = 6
         Me.tabPayment.Tag = "tagPaymentTab"
         Me.tabPayment.Text = "Payment"
@@ -3366,21 +3278,19 @@ Partial Class AgniMainForm
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Garamond", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.ForeColor = System.Drawing.Color.Black
-        Me.Label13.Location = New System.Drawing.Point(559, 72)
-        Me.Label13.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label13.Location = New System.Drawing.Point(419, 58)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(95, 16)
+        Me.Label13.Size = New System.Drawing.Size(72, 12)
         Me.Label13.TabIndex = 164
         Me.Label13.Text = "Actual Bill No"
         '
         'txtPaymentBillNo
         '
         Me.txtPaymentBillNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPaymentBillNo.Location = New System.Drawing.Point(662, 62)
-        Me.txtPaymentBillNo.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtPaymentBillNo.Location = New System.Drawing.Point(496, 50)
         Me.txtPaymentBillNo.Name = "txtPaymentBillNo"
         Me.txtPaymentBillNo.ReadOnly = True
-        Me.txtPaymentBillNo.Size = New System.Drawing.Size(100, 34)
+        Me.txtPaymentBillNo.Size = New System.Drawing.Size(76, 29)
         Me.txtPaymentBillNo.TabIndex = 163
         Me.txtPaymentBillNo.TabStop = False
         '
@@ -3391,10 +3301,9 @@ Partial Class AgniMainForm
         Me.cmbPaymentPaymentNoList.DisplayMember = "DisplayPaymentNo"
         Me.cmbPaymentPaymentNoList.Font = New System.Drawing.Font("Garamond", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbPaymentPaymentNoList.FormattingEnabled = True
-        Me.cmbPaymentPaymentNoList.Location = New System.Drawing.Point(952, 236)
-        Me.cmbPaymentPaymentNoList.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbPaymentPaymentNoList.Location = New System.Drawing.Point(714, 192)
         Me.cmbPaymentPaymentNoList.Name = "cmbPaymentPaymentNoList"
-        Me.cmbPaymentPaymentNoList.Size = New System.Drawing.Size(118, 25)
+        Me.cmbPaymentPaymentNoList.Size = New System.Drawing.Size(90, 21)
         Me.cmbPaymentPaymentNoList.TabIndex = 162
         Me.cmbPaymentPaymentNoList.TabStop = False
         Me.cmbPaymentPaymentNoList.ValueMember = "PaymentNo"
@@ -3405,11 +3314,10 @@ Partial Class AgniMainForm
         Me.btnPaymentCancelCreatePayment.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnPaymentCancelCreatePayment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnPaymentCancelCreatePayment.ImageKey = "(none)"
-        Me.btnPaymentCancelCreatePayment.Location = New System.Drawing.Point(553, 504)
-        Me.btnPaymentCancelCreatePayment.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnPaymentCancelCreatePayment.Location = New System.Drawing.Point(415, 410)
         Me.btnPaymentCancelCreatePayment.Name = "btnPaymentCancelCreatePayment"
-        Me.btnPaymentCancelCreatePayment.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
-        Me.btnPaymentCancelCreatePayment.Size = New System.Drawing.Size(121, 41)
+        Me.btnPaymentCancelCreatePayment.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnPaymentCancelCreatePayment.Size = New System.Drawing.Size(91, 33)
         Me.btnPaymentCancelCreatePayment.TabIndex = 14
         Me.btnPaymentCancelCreatePayment.Text = "Back"
         Me.btnPaymentCancelCreatePayment.UseVisualStyleBackColor = True
@@ -3420,11 +3328,10 @@ Partial Class AgniMainForm
         Me.btnPaymentConfirmCreatePayment.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnPaymentConfirmCreatePayment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnPaymentConfirmCreatePayment.ImageKey = "(none)"
-        Me.btnPaymentConfirmCreatePayment.Location = New System.Drawing.Point(416, 504)
-        Me.btnPaymentConfirmCreatePayment.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnPaymentConfirmCreatePayment.Location = New System.Drawing.Point(312, 410)
         Me.btnPaymentConfirmCreatePayment.Name = "btnPaymentConfirmCreatePayment"
-        Me.btnPaymentConfirmCreatePayment.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
-        Me.btnPaymentConfirmCreatePayment.Size = New System.Drawing.Size(108, 41)
+        Me.btnPaymentConfirmCreatePayment.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnPaymentConfirmCreatePayment.Size = New System.Drawing.Size(81, 33)
         Me.btnPaymentConfirmCreatePayment.TabIndex = 13
         Me.btnPaymentConfirmCreatePayment.Text = "Confirm"
         Me.btnPaymentConfirmCreatePayment.UseVisualStyleBackColor = True
@@ -3436,11 +3343,10 @@ Partial Class AgniMainForm
         Me.btnPaymentCreatePayment.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnPaymentCreatePayment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnPaymentCreatePayment.ImageKey = "(none)"
-        Me.btnPaymentCreatePayment.Location = New System.Drawing.Point(409, 504)
-        Me.btnPaymentCreatePayment.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnPaymentCreatePayment.Location = New System.Drawing.Point(307, 410)
         Me.btnPaymentCreatePayment.Name = "btnPaymentCreatePayment"
-        Me.btnPaymentCreatePayment.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
-        Me.btnPaymentCreatePayment.Size = New System.Drawing.Size(265, 41)
+        Me.btnPaymentCreatePayment.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnPaymentCreatePayment.Size = New System.Drawing.Size(199, 33)
         Me.btnPaymentCreatePayment.TabIndex = 12
         Me.btnPaymentCreatePayment.Text = "Create New Payment"
         Me.btnPaymentCreatePayment.UseVisualStyleBackColor = True
@@ -3450,11 +3356,10 @@ Partial Class AgniMainForm
         Me.btnPaymentClear.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
         Me.btnPaymentClear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnPaymentClear.ImageKey = "erase.JPG"
-        Me.btnPaymentClear.Location = New System.Drawing.Point(885, 499)
-        Me.btnPaymentClear.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnPaymentClear.Location = New System.Drawing.Point(664, 405)
         Me.btnPaymentClear.Name = "btnPaymentClear"
-        Me.btnPaymentClear.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
-        Me.btnPaymentClear.Size = New System.Drawing.Size(164, 46)
+        Me.btnPaymentClear.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnPaymentClear.Size = New System.Drawing.Size(123, 37)
         Me.btnPaymentClear.TabIndex = 16
         Me.btnPaymentClear.Text = "Clear"
         Me.btnPaymentClear.UseVisualStyleBackColor = True
@@ -3464,10 +3369,9 @@ Partial Class AgniMainForm
         Me.Label117.AutoSize = True
         Me.Label117.Font = New System.Drawing.Font("Garamond", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label117.ForeColor = System.Drawing.Color.Black
-        Me.Label117.Location = New System.Drawing.Point(807, 239)
-        Me.Label117.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label117.Location = New System.Drawing.Point(605, 194)
         Me.Label117.Name = "Label117"
-        Me.Label117.Size = New System.Drawing.Size(137, 17)
+        Me.Label117.Size = New System.Drawing.Size(111, 13)
         Me.Label117.TabIndex = 157
         Me.Label117.Text = "Payment No - Hidden"
         Me.Label117.Visible = False
@@ -3477,22 +3381,20 @@ Partial Class AgniMainForm
         Me.Label86.AutoSize = True
         Me.Label86.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label86.ForeColor = System.Drawing.Color.Black
-        Me.Label86.Location = New System.Drawing.Point(804, 274)
-        Me.Label86.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label86.Location = New System.Drawing.Point(603, 223)
         Me.Label86.Name = "Label86"
-        Me.Label86.Size = New System.Drawing.Size(173, 31)
+        Me.Label86.Size = New System.Drawing.Size(140, 25)
         Me.Label86.TabIndex = 149
         Me.Label86.Text = "Net Balance"
         '
         'txtPaymentNetBalance
         '
         Me.txtPaymentNetBalance.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
-        Me.txtPaymentNetBalance.Location = New System.Drawing.Point(1027, 271)
-        Me.txtPaymentNetBalance.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtPaymentNetBalance.Location = New System.Drawing.Point(770, 220)
         Me.txtPaymentNetBalance.Name = "txtPaymentNetBalance"
         Me.txtPaymentNetBalance.ReadOnly = True
         Me.txtPaymentNetBalance.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.txtPaymentNetBalance.Size = New System.Drawing.Size(420, 34)
+        Me.txtPaymentNetBalance.Size = New System.Drawing.Size(316, 29)
         Me.txtPaymentNetBalance.TabIndex = 148
         Me.txtPaymentNetBalance.TabStop = False
         '
@@ -3501,10 +3403,9 @@ Partial Class AgniMainForm
         Me.Label85.AutoSize = True
         Me.Label85.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label85.ForeColor = System.Drawing.Color.Black
-        Me.Label85.Location = New System.Drawing.Point(804, 344)
-        Me.Label85.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label85.Location = New System.Drawing.Point(603, 280)
         Me.Label85.Name = "Label85"
-        Me.Label85.Size = New System.Drawing.Size(130, 31)
+        Me.Label85.Size = New System.Drawing.Size(104, 25)
         Me.Label85.TabIndex = 147
         Me.Label85.Text = "Remarks"
         '
@@ -3513,32 +3414,29 @@ Partial Class AgniMainForm
         Me.Label69.AutoSize = True
         Me.Label69.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label69.ForeColor = System.Drawing.Color.Black
-        Me.Label69.Location = New System.Drawing.Point(4, 408)
-        Me.Label69.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label69.Location = New System.Drawing.Point(3, 332)
         Me.Label69.Name = "Label69"
-        Me.Label69.Size = New System.Drawing.Size(251, 31)
+        Me.Label69.Size = New System.Drawing.Size(204, 25)
         Me.Label69.TabIndex = 146
         Me.Label69.Text = "Final Paid Amount"
         '
         'txtPaymentFinalPaidAmount
         '
         Me.txtPaymentFinalPaidAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
-        Me.txtPaymentFinalPaidAmount.Location = New System.Drawing.Point(341, 407)
-        Me.txtPaymentFinalPaidAmount.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtPaymentFinalPaidAmount.Location = New System.Drawing.Point(256, 331)
         Me.txtPaymentFinalPaidAmount.Name = "txtPaymentFinalPaidAmount"
         Me.txtPaymentFinalPaidAmount.ReadOnly = True
         Me.txtPaymentFinalPaidAmount.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.txtPaymentFinalPaidAmount.Size = New System.Drawing.Size(420, 34)
+        Me.txtPaymentFinalPaidAmount.Size = New System.Drawing.Size(316, 29)
         Me.txtPaymentFinalPaidAmount.TabIndex = 7
         '
         'txtPaymentUnPaidBilledAmount
         '
         Me.txtPaymentUnPaidBilledAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPaymentUnPaidBilledAmount.Location = New System.Drawing.Point(341, 109)
-        Me.txtPaymentUnPaidBilledAmount.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtPaymentUnPaidBilledAmount.Location = New System.Drawing.Point(256, 89)
         Me.txtPaymentUnPaidBilledAmount.Name = "txtPaymentUnPaidBilledAmount"
         Me.txtPaymentUnPaidBilledAmount.ReadOnly = True
-        Me.txtPaymentUnPaidBilledAmount.Size = New System.Drawing.Size(420, 34)
+        Me.txtPaymentUnPaidBilledAmount.Size = New System.Drawing.Size(316, 29)
         Me.txtPaymentUnPaidBilledAmount.TabIndex = 144
         Me.txtPaymentUnPaidBilledAmount.TabStop = False
         '
@@ -3547,11 +3445,10 @@ Partial Class AgniMainForm
         Me.btnPaymentDelete.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
         Me.btnPaymentDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnPaymentDelete.ImageKey = "delete.JPG"
-        Me.btnPaymentDelete.Location = New System.Drawing.Point(682, 499)
-        Me.btnPaymentDelete.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnPaymentDelete.Location = New System.Drawing.Point(512, 405)
         Me.btnPaymentDelete.Name = "btnPaymentDelete"
-        Me.btnPaymentDelete.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
-        Me.btnPaymentDelete.Size = New System.Drawing.Size(184, 46)
+        Me.btnPaymentDelete.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnPaymentDelete.Size = New System.Drawing.Size(138, 37)
         Me.btnPaymentDelete.TabIndex = 15
         Me.btnPaymentDelete.Text = "  Delete"
         Me.btnPaymentDelete.UseVisualStyleBackColor = True
@@ -3559,12 +3456,11 @@ Partial Class AgniMainForm
         'txtPaymentRemarks
         '
         Me.txtPaymentRemarks.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
-        Me.txtPaymentRemarks.Location = New System.Drawing.Point(1027, 337)
-        Me.txtPaymentRemarks.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtPaymentRemarks.Location = New System.Drawing.Point(770, 274)
         Me.txtPaymentRemarks.Multiline = True
         Me.txtPaymentRemarks.Name = "txtPaymentRemarks"
         Me.txtPaymentRemarks.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtPaymentRemarks.Size = New System.Drawing.Size(398, 84)
+        Me.txtPaymentRemarks.Size = New System.Drawing.Size(300, 69)
         Me.txtPaymentRemarks.TabIndex = 11
         '
         'gbBankDetails
@@ -3576,11 +3472,9 @@ Partial Class AgniMainForm
         Me.gbBankDetails.Controls.Add(Me.txtPaymentChequeNo)
         Me.gbBankDetails.Controls.Add(Me.Label78)
         Me.gbBankDetails.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.gbBankDetails.Location = New System.Drawing.Point(795, 21)
-        Me.gbBankDetails.Margin = New System.Windows.Forms.Padding(4)
+        Me.gbBankDetails.Location = New System.Drawing.Point(596, 17)
         Me.gbBankDetails.Name = "gbBankDetails"
-        Me.gbBankDetails.Padding = New System.Windows.Forms.Padding(4)
-        Me.gbBankDetails.Size = New System.Drawing.Size(697, 207)
+        Me.gbBankDetails.Size = New System.Drawing.Size(523, 168)
         Me.gbBankDetails.TabIndex = 8
         Me.gbBankDetails.TabStop = False
         Me.gbBankDetails.Text = "Bank Details"
@@ -3599,19 +3493,17 @@ Partial Class AgniMainForm
         Me.dpPaymentChequeDate.CustomFormat = "dd/MM/yyyy"
         Me.dpPaymentChequeDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dpPaymentChequeDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dpPaymentChequeDate.Location = New System.Drawing.Point(256, 145)
-        Me.dpPaymentChequeDate.Margin = New System.Windows.Forms.Padding(4)
+        Me.dpPaymentChequeDate.Location = New System.Drawing.Point(192, 118)
         Me.dpPaymentChequeDate.Name = "dpPaymentChequeDate"
-        Me.dpPaymentChequeDate.Size = New System.Drawing.Size(420, 34)
+        Me.dpPaymentChequeDate.Size = New System.Drawing.Size(316, 29)
         Me.dpPaymentChequeDate.TabIndex = 10
         '
         'txtPaymentBankName
         '
         Me.txtPaymentBankName.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPaymentBankName.Location = New System.Drawing.Point(255, 91)
-        Me.txtPaymentBankName.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtPaymentBankName.Location = New System.Drawing.Point(191, 74)
         Me.txtPaymentBankName.Name = "txtPaymentBankName"
-        Me.txtPaymentBankName.Size = New System.Drawing.Size(420, 34)
+        Me.txtPaymentBankName.Size = New System.Drawing.Size(316, 29)
         Me.txtPaymentBankName.TabIndex = 9
         '
         'Label80
@@ -3619,10 +3511,9 @@ Partial Class AgniMainForm
         Me.Label80.AutoSize = True
         Me.Label80.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label80.ForeColor = System.Drawing.Color.Black
-        Me.Label80.Location = New System.Drawing.Point(45, 151)
-        Me.Label80.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label80.Location = New System.Drawing.Point(34, 123)
         Me.Label80.Name = "Label80"
-        Me.Label80.Size = New System.Drawing.Size(185, 31)
+        Me.Label80.Size = New System.Drawing.Size(149, 25)
         Me.Label80.TabIndex = 129
         Me.Label80.Text = "Cheque Date"
         '
@@ -3631,20 +3522,18 @@ Partial Class AgniMainForm
         Me.Label79.AutoSize = True
         Me.Label79.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label79.ForeColor = System.Drawing.Color.Black
-        Me.Label79.Location = New System.Drawing.Point(45, 96)
-        Me.Label79.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label79.Location = New System.Drawing.Point(34, 78)
         Me.Label79.Name = "Label79"
-        Me.Label79.Size = New System.Drawing.Size(164, 31)
+        Me.Label79.Size = New System.Drawing.Size(132, 25)
         Me.Label79.TabIndex = 128
         Me.Label79.Text = "Bank Name"
         '
         'txtPaymentChequeNo
         '
         Me.txtPaymentChequeNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPaymentChequeNo.Location = New System.Drawing.Point(256, 37)
-        Me.txtPaymentChequeNo.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtPaymentChequeNo.Location = New System.Drawing.Point(192, 30)
         Me.txtPaymentChequeNo.Name = "txtPaymentChequeNo"
-        Me.txtPaymentChequeNo.Size = New System.Drawing.Size(420, 34)
+        Me.txtPaymentChequeNo.Size = New System.Drawing.Size(316, 29)
         Me.txtPaymentChequeNo.TabIndex = 8
         '
         'Label78
@@ -3652,10 +3541,9 @@ Partial Class AgniMainForm
         Me.Label78.AutoSize = True
         Me.Label78.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label78.ForeColor = System.Drawing.Color.Black
-        Me.Label78.Location = New System.Drawing.Point(45, 42)
-        Me.Label78.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label78.Location = New System.Drawing.Point(34, 34)
         Me.Label78.Name = "Label78"
-        Me.Label78.Size = New System.Drawing.Size(169, 31)
+        Me.Label78.Size = New System.Drawing.Size(136, 25)
         Me.Label78.TabIndex = 127
         Me.Label78.Text = "Cheque No."
         '
@@ -3673,10 +3561,9 @@ Partial Class AgniMainForm
         Me.dpPaymentDate.Enabled = False
         Me.dpPaymentDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dpPaymentDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dpPaymentDate.Location = New System.Drawing.Point(341, 159)
-        Me.dpPaymentDate.Margin = New System.Windows.Forms.Padding(4)
+        Me.dpPaymentDate.Location = New System.Drawing.Point(256, 129)
         Me.dpPaymentDate.Name = "dpPaymentDate"
-        Me.dpPaymentDate.Size = New System.Drawing.Size(420, 34)
+        Me.dpPaymentDate.Size = New System.Drawing.Size(316, 29)
         Me.dpPaymentDate.TabIndex = 1
         '
         'Label77
@@ -3684,32 +3571,29 @@ Partial Class AgniMainForm
         Me.Label77.AutoSize = True
         Me.Label77.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label77.ForeColor = System.Drawing.Color.Black
-        Me.Label77.Location = New System.Drawing.Point(33, 164)
-        Me.Label77.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label77.Location = New System.Drawing.Point(25, 133)
         Me.Label77.Name = "Label77"
-        Me.Label77.Size = New System.Drawing.Size(280, 31)
+        Me.Label77.Size = New System.Drawing.Size(226, 25)
         Me.Label77.TabIndex = 126
         Me.Label77.Text = "Amount Paying Date"
         '
         'txtPaymentTaxDeductionAmount
         '
         Me.txtPaymentTaxDeductionAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
-        Me.txtPaymentTaxDeductionAmount.Location = New System.Drawing.Point(341, 359)
-        Me.txtPaymentTaxDeductionAmount.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtPaymentTaxDeductionAmount.Location = New System.Drawing.Point(256, 292)
         Me.txtPaymentTaxDeductionAmount.Name = "txtPaymentTaxDeductionAmount"
         Me.txtPaymentTaxDeductionAmount.ReadOnly = True
         Me.txtPaymentTaxDeductionAmount.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.txtPaymentTaxDeductionAmount.Size = New System.Drawing.Size(420, 34)
+        Me.txtPaymentTaxDeductionAmount.Size = New System.Drawing.Size(316, 29)
         Me.txtPaymentTaxDeductionAmount.TabIndex = 6
         '
         'txtPaymentDiscountAmount
         '
         Me.txtPaymentDiscountAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPaymentDiscountAmount.Location = New System.Drawing.Point(341, 311)
-        Me.txtPaymentDiscountAmount.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtPaymentDiscountAmount.Location = New System.Drawing.Point(256, 253)
         Me.txtPaymentDiscountAmount.Name = "txtPaymentDiscountAmount"
         Me.txtPaymentDiscountAmount.ReadOnly = True
-        Me.txtPaymentDiscountAmount.Size = New System.Drawing.Size(420, 34)
+        Me.txtPaymentDiscountAmount.Size = New System.Drawing.Size(316, 29)
         Me.txtPaymentDiscountAmount.TabIndex = 5
         '
         'Label76
@@ -3717,21 +3601,19 @@ Partial Class AgniMainForm
         Me.Label76.AutoSize = True
         Me.Label76.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label76.ForeColor = System.Drawing.Color.Black
-        Me.Label76.Location = New System.Drawing.Point(33, 362)
-        Me.Label76.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label76.Location = New System.Drawing.Point(25, 294)
         Me.Label76.Name = "Label76"
-        Me.Label76.Size = New System.Drawing.Size(202, 31)
+        Me.Label76.Size = New System.Drawing.Size(164, 25)
         Me.Label76.TabIndex = 122
         Me.Label76.Text = "Tax Deduction"
         '
         'txtPaymentActualPaidAmount
         '
         Me.txtPaymentActualPaidAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPaymentActualPaidAmount.Location = New System.Drawing.Point(341, 263)
-        Me.txtPaymentActualPaidAmount.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtPaymentActualPaidAmount.Location = New System.Drawing.Point(256, 214)
         Me.txtPaymentActualPaidAmount.Name = "txtPaymentActualPaidAmount"
         Me.txtPaymentActualPaidAmount.ReadOnly = True
-        Me.txtPaymentActualPaidAmount.Size = New System.Drawing.Size(420, 34)
+        Me.txtPaymentActualPaidAmount.Size = New System.Drawing.Size(316, 29)
         Me.txtPaymentActualPaidAmount.TabIndex = 4
         '
         'Label75
@@ -3739,10 +3621,9 @@ Partial Class AgniMainForm
         Me.Label75.AutoSize = True
         Me.Label75.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label75.ForeColor = System.Drawing.Color.Black
-        Me.Label75.Location = New System.Drawing.Point(33, 314)
-        Me.Label75.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label75.Location = New System.Drawing.Point(25, 255)
         Me.Label75.Name = "Label75"
-        Me.Label75.Size = New System.Drawing.Size(129, 31)
+        Me.Label75.Size = New System.Drawing.Size(104, 25)
         Me.Label75.TabIndex = 120
         Me.Label75.Text = "Discount"
         '
@@ -3751,10 +3632,9 @@ Partial Class AgniMainForm
         Me.Label74.AutoSize = True
         Me.Label74.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label74.ForeColor = System.Drawing.Color.Black
-        Me.Label74.Location = New System.Drawing.Point(11, 264)
-        Me.Label74.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label74.Location = New System.Drawing.Point(8, 214)
         Me.Label74.Name = "Label74"
-        Me.Label74.Size = New System.Drawing.Size(269, 31)
+        Me.Label74.Size = New System.Drawing.Size(218, 25)
         Me.Label74.TabIndex = 118
         Me.Label74.Text = "Actual Paid Amount"
         '
@@ -3763,11 +3643,11 @@ Partial Class AgniMainForm
         Me.GroupBox4.Controls.Add(Me.radioPaymentByCash)
         Me.GroupBox4.Controls.Add(Me.radioPaymentByCheque)
         Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox4.Location = New System.Drawing.Point(341, 195)
+        Me.GroupBox4.Location = New System.Drawing.Point(256, 158)
         Me.GroupBox4.Margin = New System.Windows.Forms.Padding(0)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Padding = New System.Windows.Forms.Padding(0)
-        Me.GroupBox4.Size = New System.Drawing.Size(421, 55)
+        Me.GroupBox4.Size = New System.Drawing.Size(316, 45)
         Me.GroupBox4.TabIndex = 2
         Me.GroupBox4.TabStop = False
         '
@@ -3775,10 +3655,9 @@ Partial Class AgniMainForm
         '
         Me.radioPaymentByCash.AutoSize = True
         Me.radioPaymentByCash.Checked = True
-        Me.radioPaymentByCash.Location = New System.Drawing.Point(18, 16)
-        Me.radioPaymentByCash.Margin = New System.Windows.Forms.Padding(4)
+        Me.radioPaymentByCash.Location = New System.Drawing.Point(14, 13)
         Me.radioPaymentByCash.Name = "radioPaymentByCash"
-        Me.radioPaymentByCash.Size = New System.Drawing.Size(153, 35)
+        Me.radioPaymentByCash.Size = New System.Drawing.Size(125, 29)
         Me.radioPaymentByCash.TabIndex = 0
         Me.radioPaymentByCash.TabStop = True
         Me.radioPaymentByCash.Text = " By Cash"
@@ -3787,10 +3666,9 @@ Partial Class AgniMainForm
         'radioPaymentByCheque
         '
         Me.radioPaymentByCheque.AutoSize = True
-        Me.radioPaymentByCheque.Location = New System.Drawing.Point(239, 16)
-        Me.radioPaymentByCheque.Margin = New System.Windows.Forms.Padding(4)
+        Me.radioPaymentByCheque.Location = New System.Drawing.Point(179, 13)
         Me.radioPaymentByCheque.Name = "radioPaymentByCheque"
-        Me.radioPaymentByCheque.Size = New System.Drawing.Size(178, 35)
+        Me.radioPaymentByCheque.Size = New System.Drawing.Size(145, 29)
         Me.radioPaymentByCheque.TabIndex = 2
         Me.radioPaymentByCheque.Text = "By Cheque"
         Me.radioPaymentByCheque.UseVisualStyleBackColor = True
@@ -3800,10 +3678,9 @@ Partial Class AgniMainForm
         Me.Label73.AutoSize = True
         Me.Label73.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label73.ForeColor = System.Drawing.Color.Black
-        Me.Label73.Location = New System.Drawing.Point(33, 220)
-        Me.Label73.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label73.Location = New System.Drawing.Point(25, 179)
         Me.Label73.Name = "Label73"
-        Me.Label73.Size = New System.Drawing.Size(207, 31)
+        Me.Label73.Size = New System.Drawing.Size(168, 25)
         Me.Label73.TabIndex = 116
         Me.Label73.Text = "Payment Mode"
         '
@@ -3812,21 +3689,19 @@ Partial Class AgniMainForm
         Me.Label72.AutoSize = True
         Me.Label72.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label72.ForeColor = System.Drawing.Color.Black
-        Me.Label72.Location = New System.Drawing.Point(26, 110)
-        Me.Label72.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label72.Location = New System.Drawing.Point(20, 89)
         Me.Label72.Name = "Label72"
-        Me.Label72.Size = New System.Drawing.Size(264, 31)
+        Me.Label72.Size = New System.Drawing.Size(214, 25)
         Me.Label72.TabIndex = 115
         Me.Label72.Text = "UnPaid Bill Amount"
         '
         'txtPaymentDisplayBillNo
         '
         Me.txtPaymentDisplayBillNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPaymentDisplayBillNo.Location = New System.Drawing.Point(341, 62)
-        Me.txtPaymentDisplayBillNo.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtPaymentDisplayBillNo.Location = New System.Drawing.Point(256, 50)
         Me.txtPaymentDisplayBillNo.Name = "txtPaymentDisplayBillNo"
         Me.txtPaymentDisplayBillNo.ReadOnly = True
-        Me.txtPaymentDisplayBillNo.Size = New System.Drawing.Size(194, 34)
+        Me.txtPaymentDisplayBillNo.Size = New System.Drawing.Size(146, 29)
         Me.txtPaymentDisplayBillNo.TabIndex = 114
         Me.txtPaymentDisplayBillNo.TabStop = False
         '
@@ -3835,10 +3710,9 @@ Partial Class AgniMainForm
         Me.Label70.AutoSize = True
         Me.Label70.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label70.ForeColor = System.Drawing.Color.Black
-        Me.Label70.Location = New System.Drawing.Point(33, 65)
-        Me.Label70.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label70.Location = New System.Drawing.Point(25, 53)
         Me.Label70.Name = "Label70"
-        Me.Label70.Size = New System.Drawing.Size(164, 31)
+        Me.Label70.Size = New System.Drawing.Size(133, 25)
         Me.Label70.TabIndex = 111
         Me.Label70.Text = "Bill Number"
         '
@@ -3849,10 +3723,9 @@ Partial Class AgniMainForm
         Me.cmbPaymentCustomerList.DisplayMember = "CompName"
         Me.cmbPaymentCustomerList.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbPaymentCustomerList.FormattingEnabled = True
-        Me.cmbPaymentCustomerList.Location = New System.Drawing.Point(342, 15)
-        Me.cmbPaymentCustomerList.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbPaymentCustomerList.Location = New System.Drawing.Point(256, 12)
         Me.cmbPaymentCustomerList.Name = "cmbPaymentCustomerList"
-        Me.cmbPaymentCustomerList.Size = New System.Drawing.Size(420, 37)
+        Me.cmbPaymentCustomerList.Size = New System.Drawing.Size(316, 32)
         Me.cmbPaymentCustomerList.TabIndex = 0
         Me.cmbPaymentCustomerList.ValueMember = "CustNo"
         '
@@ -3861,19 +3734,19 @@ Partial Class AgniMainForm
         Me.Label71.AutoSize = True
         Me.Label71.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label71.ForeColor = System.Drawing.Color.Black
-        Me.Label71.Location = New System.Drawing.Point(33, 21)
-        Me.Label71.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label71.Location = New System.Drawing.Point(25, 17)
         Me.Label71.Name = "Label71"
-        Me.Label71.Size = New System.Drawing.Size(224, 31)
+        Me.Label71.Size = New System.Drawing.Size(179, 25)
         Me.Label71.TabIndex = 109
         Me.Label71.Text = "Customer Name"
         '
         'Settings
         '
         Me.Settings.Location = New System.Drawing.Point(4, 52)
+        Me.Settings.Margin = New System.Windows.Forms.Padding(2)
         Me.Settings.Name = "Settings"
-        Me.Settings.Padding = New System.Windows.Forms.Padding(3)
-        Me.Settings.Size = New System.Drawing.Size(1703, 911)
+        Me.Settings.Padding = New System.Windows.Forms.Padding(2)
+        Me.Settings.Size = New System.Drawing.Size(1789, 910)
         Me.Settings.TabIndex = 7
         Me.Settings.Tag = "tagSettingsTab"
         Me.Settings.Text = "Settings"
@@ -3883,9 +3756,9 @@ Partial Class AgniMainForm
         '
         Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
         Me.PictureBox3.Location = New System.Drawing.Point(0, -1)
-        Me.PictureBox3.Margin = New System.Windows.Forms.Padding(133, 123, 133, 123)
+        Me.PictureBox3.Margin = New System.Windows.Forms.Padding(100)
         Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(292, 128)
+        Me.PictureBox3.Size = New System.Drawing.Size(219, 104)
         Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox3.TabIndex = 34
         Me.PictureBox3.TabStop = False
@@ -3995,7 +3868,7 @@ Partial Class AgniMainForm
         Me.ComboBox8.FormattingEnabled = True
         Me.ComboBox8.Location = New System.Drawing.Point(460, 51)
         Me.ComboBox8.Name = "ComboBox8"
-        Me.ComboBox8.Size = New System.Drawing.Size(264, 37)
+        Me.ComboBox8.Size = New System.Drawing.Size(264, 32)
         Me.ComboBox8.TabIndex = 1
         Me.ComboBox8.Visible = False
         '
@@ -4187,7 +4060,7 @@ Partial Class AgniMainForm
         Me.DateTimePicker5.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.DateTimePicker5.Location = New System.Drawing.Point(844, 46)
         Me.DateTimePicker5.Name = "DateTimePicker5"
-        Me.DateTimePicker5.Size = New System.Drawing.Size(212, 35)
+        Me.DateTimePicker5.Size = New System.Drawing.Size(212, 29)
         Me.DateTimePicker5.TabIndex = 6
         '
         'DateTimePicker8
@@ -4197,7 +4070,7 @@ Partial Class AgniMainForm
         Me.DateTimePicker8.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.DateTimePicker8.Location = New System.Drawing.Point(844, 10)
         Me.DateTimePicker8.Name = "DateTimePicker8"
-        Me.DateTimePicker8.Size = New System.Drawing.Size(212, 35)
+        Me.DateTimePicker8.Size = New System.Drawing.Size(212, 29)
         Me.DateTimePicker8.TabIndex = 5
         '
         'ComboBox11
@@ -4208,7 +4081,7 @@ Partial Class AgniMainForm
         Me.ComboBox11.FormattingEnabled = True
         Me.ComboBox11.Location = New System.Drawing.Point(177, 51)
         Me.ComboBox11.Name = "ComboBox11"
-        Me.ComboBox11.Size = New System.Drawing.Size(270, 37)
+        Me.ComboBox11.Size = New System.Drawing.Size(270, 32)
         Me.ComboBox11.TabIndex = 0
         '
         'Button55
@@ -4251,7 +4124,7 @@ Partial Class AgniMainForm
         Me.RadioButton9.ForeColor = System.Drawing.Color.Black
         Me.RadioButton9.Location = New System.Drawing.Point(16, 14)
         Me.RadioButton9.Name = "RadioButton9"
-        Me.RadioButton9.Size = New System.Drawing.Size(129, 21)
+        Me.RadioButton9.Size = New System.Drawing.Size(100, 17)
         Me.RadioButton9.TabIndex = 12
         Me.RadioButton9.Text = "Company Name"
         Me.RadioButton9.UseVisualStyleBackColor = True
@@ -4262,7 +4135,7 @@ Partial Class AgniMainForm
         Me.RadioButton10.ForeColor = System.Drawing.Color.Black
         Me.RadioButton10.Location = New System.Drawing.Point(199, 15)
         Me.RadioButton10.Name = "RadioButton10"
-        Me.RadioButton10.Size = New System.Drawing.Size(101, 21)
+        Me.RadioButton10.Size = New System.Drawing.Size(78, 17)
         Me.RadioButton10.TabIndex = 12
         Me.RadioButton10.Text = "Bill Number"
         Me.RadioButton10.UseVisualStyleBackColor = True
@@ -4275,7 +4148,7 @@ Partial Class AgniMainForm
         Me.ComboBox12.FormattingEnabled = True
         Me.ComboBox12.Location = New System.Drawing.Point(177, 51)
         Me.ComboBox12.Name = "ComboBox12"
-        Me.ComboBox12.Size = New System.Drawing.Size(270, 37)
+        Me.ComboBox12.Size = New System.Drawing.Size(270, 32)
         Me.ComboBox12.TabIndex = 0
         Me.ComboBox12.Visible = False
         '
@@ -4297,7 +4170,7 @@ Partial Class AgniMainForm
         Me.Label128.ForeColor = System.Drawing.Color.Black
         Me.Label128.Location = New System.Drawing.Point(6, 19)
         Me.Label128.Name = "Label128"
-        Me.Label128.Size = New System.Drawing.Size(136, 24)
+        Me.Label128.Size = New System.Drawing.Size(111, 18)
         Me.Label128.TabIndex = 21
         Me.Label128.Text = "Resulted Bills"
         '
@@ -4309,7 +4182,7 @@ Partial Class AgniMainForm
         Me.Label129.ForeColor = System.Drawing.Color.White
         Me.Label129.Location = New System.Drawing.Point(125, 19)
         Me.Label129.Name = "Label129"
-        Me.Label129.Size = New System.Drawing.Size(24, 25)
+        Me.Label129.Size = New System.Drawing.Size(19, 20)
         Me.Label129.TabIndex = 24
         Me.Label129.Text = "0"
         '
@@ -4460,7 +4333,7 @@ Partial Class AgniMainForm
         Me.ComboBox13.FormattingEnabled = True
         Me.ComboBox13.Location = New System.Drawing.Point(460, 51)
         Me.ComboBox13.Name = "ComboBox13"
-        Me.ComboBox13.Size = New System.Drawing.Size(264, 37)
+        Me.ComboBox13.Size = New System.Drawing.Size(264, 32)
         Me.ComboBox13.TabIndex = 1
         Me.ComboBox13.Visible = False
         '
@@ -4652,7 +4525,7 @@ Partial Class AgniMainForm
         Me.DateTimePicker9.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.DateTimePicker9.Location = New System.Drawing.Point(844, 46)
         Me.DateTimePicker9.Name = "DateTimePicker9"
-        Me.DateTimePicker9.Size = New System.Drawing.Size(212, 35)
+        Me.DateTimePicker9.Size = New System.Drawing.Size(212, 29)
         Me.DateTimePicker9.TabIndex = 6
         '
         'DateTimePicker10
@@ -4662,7 +4535,7 @@ Partial Class AgniMainForm
         Me.DateTimePicker10.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.DateTimePicker10.Location = New System.Drawing.Point(844, 10)
         Me.DateTimePicker10.Name = "DateTimePicker10"
-        Me.DateTimePicker10.Size = New System.Drawing.Size(212, 35)
+        Me.DateTimePicker10.Size = New System.Drawing.Size(212, 29)
         Me.DateTimePicker10.TabIndex = 5
         '
         'ComboBox14
@@ -4673,7 +4546,7 @@ Partial Class AgniMainForm
         Me.ComboBox14.FormattingEnabled = True
         Me.ComboBox14.Location = New System.Drawing.Point(177, 51)
         Me.ComboBox14.Name = "ComboBox14"
-        Me.ComboBox14.Size = New System.Drawing.Size(270, 37)
+        Me.ComboBox14.Size = New System.Drawing.Size(270, 32)
         Me.ComboBox14.TabIndex = 0
         '
         'Button61
@@ -4716,7 +4589,7 @@ Partial Class AgniMainForm
         Me.RadioButton11.ForeColor = System.Drawing.Color.Black
         Me.RadioButton11.Location = New System.Drawing.Point(16, 14)
         Me.RadioButton11.Name = "RadioButton11"
-        Me.RadioButton11.Size = New System.Drawing.Size(129, 21)
+        Me.RadioButton11.Size = New System.Drawing.Size(100, 17)
         Me.RadioButton11.TabIndex = 12
         Me.RadioButton11.Text = "Company Name"
         Me.RadioButton11.UseVisualStyleBackColor = True
@@ -4727,7 +4600,7 @@ Partial Class AgniMainForm
         Me.RadioButton12.ForeColor = System.Drawing.Color.Black
         Me.RadioButton12.Location = New System.Drawing.Point(199, 15)
         Me.RadioButton12.Name = "RadioButton12"
-        Me.RadioButton12.Size = New System.Drawing.Size(101, 21)
+        Me.RadioButton12.Size = New System.Drawing.Size(78, 17)
         Me.RadioButton12.TabIndex = 12
         Me.RadioButton12.Text = "Bill Number"
         Me.RadioButton12.UseVisualStyleBackColor = True
@@ -4740,7 +4613,7 @@ Partial Class AgniMainForm
         Me.ComboBox15.FormattingEnabled = True
         Me.ComboBox15.Location = New System.Drawing.Point(177, 51)
         Me.ComboBox15.Name = "ComboBox15"
-        Me.ComboBox15.Size = New System.Drawing.Size(270, 37)
+        Me.ComboBox15.Size = New System.Drawing.Size(270, 32)
         Me.ComboBox15.TabIndex = 0
         Me.ComboBox15.Visible = False
         '
@@ -4762,7 +4635,7 @@ Partial Class AgniMainForm
         Me.Label146.ForeColor = System.Drawing.Color.Black
         Me.Label146.Location = New System.Drawing.Point(6, 19)
         Me.Label146.Name = "Label146"
-        Me.Label146.Size = New System.Drawing.Size(136, 24)
+        Me.Label146.Size = New System.Drawing.Size(111, 18)
         Me.Label146.TabIndex = 21
         Me.Label146.Text = "Resulted Bills"
         '
@@ -4774,7 +4647,7 @@ Partial Class AgniMainForm
         Me.Label147.ForeColor = System.Drawing.Color.White
         Me.Label147.Location = New System.Drawing.Point(125, 19)
         Me.Label147.Name = "Label147"
-        Me.Label147.Size = New System.Drawing.Size(24, 25)
+        Me.Label147.Size = New System.Drawing.Size(19, 20)
         Me.Label147.TabIndex = 24
         Me.Label147.Text = "0"
         '
@@ -4823,33 +4696,35 @@ Partial Class AgniMainForm
         'AgniMainForm
         '
         Me.AcceptButton = Me.btnReportSearch
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(156, Byte), Integer), CType(CType(213, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1647, 1037)
+        Me.ClientSize = New System.Drawing.Size(1437, 856)
         Me.Controls.Add(Me.Button38)
         Me.Controls.Add(Me.Button37)
         Me.Controls.Add(Me.tabAllTabsHolder)
         Me.Controls.Add(Me.PictureBox3)
-        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "AgniMainForm"
+        Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show
         Me.Text = "Agni Designs"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.tabHelp.ResumeLayout(False)
         Me.tabHelp.PerformLayout()
         Me.tabReports.ResumeLayout(False)
         Me.tabReports.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         CType(Me.dgReportPaymentGrid, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgPaymentDetails, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgReportBillGrid, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dgBIllingBillDetails, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgReportDesignGrid, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgDesDesignDetails, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pbReportDesignImage, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
-        CType(Me.dgPaymentDetails, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dgDesDesignDetails, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgBIllingBillDetails, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabBilling.ResumeLayout(False)
         Me.tabBilling.PerformLayout()
         Me.tabDesign.ResumeLayout(False)
@@ -5245,4 +5120,10 @@ Partial Class AgniMainForm
     Friend WithEvents Label55 As Label
     Friend WithEvents lblReportPaidAmountWithDeduction As Label
     Friend WithEvents Label49 As Label
+    Friend WithEvents Label45 As Label
+    Friend WithEvents CheckBox4 As CheckBox
+    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents juyt As ComboBox
 End Class

@@ -496,10 +496,12 @@ Public Class AgniMainForm
 
         If (cmbCustCustomerList.SelectedIndex = -1 Or cmbCustCustomerList.SelectedValue = -1) Then
             resetCustomerScreen()
+            gSelectedCustNo = -1
             Return
         End If
 
         Dim custNo As Integer = cmbCustCustomerList.SelectedValue
+        gSelectedCustNo = custNo
 
         Dim custSelectQuery = New SqlCommand("select * from customer where custno=" + custNo.ToString, dbConnection)
         Dim customerDataAdapter = New SqlDataAdapter()
@@ -775,14 +777,15 @@ Public Class AgniMainForm
     End Function
 
     Private Sub btnCustUpdate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCustUpdate.Click
-        If (cmbCustCustomerList.SelectedIndex = -1 Or cmbCustCustomerList.SelectedValue = -1) Then
+
+        If (gSelectedCustNo = -1) Then
             MessageBox.Show("Please select a customer")
             cmbCustCustomerList.Focus()
             Return
         End If
 
         If cmbCustCustomerList.Text.Trim.Equals("") Then
-            MessageBox.Show("Enter Valid company Name")
+            MessageBox.Show("Enter Valid customer Name")
             cmbCustCustomerList.Focus()
         ElseIf txtGstIn.Text.Trim.Equals("") Then
             MessageBox.Show("Enter GSTIN number")
@@ -797,7 +800,7 @@ Public Class AgniMainForm
             MessageBox.Show("Enter Mobile Number")
             txtMobile.Focus()
         Else
-            Dim custNo As Integer = cmbCustCustomerList.SelectedValue
+            Dim custNo As Integer = gSelectedCustNo
             Dim query As String = String.Empty
             query &= "UPDATE customer SET CompName=@CompName, GSTIN=@GSTIN, OwnerName=@OwnerName, Address=@Address,"
             query &= "Mobile=@Mobile, Landline=@Landline, Email=@Email, Website=@Website, CGST=@CGST, SGST=@SGST, "
@@ -3005,6 +3008,10 @@ Public Class AgniMainForm
         Else
             MessageBox.Show("No data found for design: " + cmbDesDesignList.Text)
         End If
+    End Sub
+
+    Private Sub GroupBox3_Enter(sender As Object, e As EventArgs) Handles GroupBox3.Enter
+
     End Sub
 
 End Class
