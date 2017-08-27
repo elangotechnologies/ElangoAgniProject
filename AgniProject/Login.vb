@@ -99,7 +99,7 @@ Public Class Login
                 ComboBox1.Focus()
             End If
 
-            AgniMainForm.Button38.Text = "Log Off " + uname
+            'AgniMainForm.Button38.Text = "Log Off " + uname
             If type.Equals("Others") Then
                 AgniMainForm.btnCustAdd.Enabled = False
                 AgniMainForm.btnCustDelete.Enabled = False

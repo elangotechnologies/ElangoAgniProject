@@ -36,7 +36,6 @@ D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.manageuser.
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.Login.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.Resources.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.SplashScreen1.resources
-D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.VerifyingDelete.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.vbproj.GenerateResource.Cache
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.exe.manifest
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.application
@@ -46,3 +45,7 @@ D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.pdb
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\AgniProject.pdb
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\AgniProject.xml
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.CustomerBillSummary.resources
+D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\NLog.dll
+D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\NLog.xml
+D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.ImagePopup.resources
+D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.DeleteConfirmation.resources

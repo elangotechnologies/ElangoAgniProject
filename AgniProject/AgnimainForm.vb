@@ -1,12 +1,12 @@
 Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Threading
-'Imports NLog
+Imports NLog
 
 Public Class AgniMainForm
     Dim dbConnection As SqlConnection
 
-    'Dim log As Logger = LogManager.GetCurrentClassLogger()
+    Dim log As Logger = LogManager.GetCurrentClassLogger()
 
     Dim BILL_TYPE_UNBILLED As Int16 = 0
     Dim BILL_TYPE_BILLED As Int16 = 1
@@ -42,8 +42,6 @@ Public Class AgniMainForm
 
         dbConnInitialized = True
 
-        tabAllTabsHolder.Width = Me.Width
-        tabAllTabsHolder.Height = Me.Height
         dpBillingBillDate.Value = DateTime.Today
 
         Dim lastBillRow As DataRow = getLastBillRow()
@@ -52,17 +50,31 @@ Public Class AgniMainForm
         End If
 
         loadCustomerList()
-        loadBillListInReport()
+        loadBillList(Nothing, cmbReportBillNoList)
 
         resetAllScreens()
         Me.AcceptButton = btnReportSearch
 
+        'ToolTip1.SetToolTip(dgDesDesignDetails, " ")
+
+        alignReportControls()
     End Sub
+
 
     Sub loadCustomerList()
         Dim thread As Thread = New Thread(AddressOf getCustomerListTable)
         thread.IsBackground = True
         thread.Start()
+    End Sub
+
+    Sub alignReportControls()
+        groupReportFilters.Location = reportLine2.Location
+        groupReportMoreFilters.Location = reportLine3.Location
+        groupReportCustomerName.Location = reportLine4.Location
+        groupReportDesignNumber.Location = reportLine4_1.Location
+        groupReportBillNumber.Location = reportLine5.Location
+        groupReportDesignName.Location = reportLine5_1.Location
+        groupReportDateRange.Location = reportLine6.Location
     End Sub
 
     Sub getCustomerListTable()
@@ -103,15 +115,21 @@ Public Class AgniMainForm
         End If
     End Sub
 
-    Sub loadDesignList(custNo As Integer)
+    Sub loadDesignList(custNo As Integer, Optional cmbDesignListControl As ComboBox = Nothing)
         Dim thread As Thread = New Thread(AddressOf getDesignListTable)
         thread.IsBackground = True
-        thread.Start(custNo)
+
+        Dim searchData As SearchData = New SearchData
+        searchData.comboBoxControl = cmbDesignListControl
+        searchData.custNo = custNo
+        thread.Start(searchData)
     End Sub
 
-    Sub getDesignListTable(ByVal custNoObj As Object)
+    Sub getDesignListTable(ByVal searchDataParam As Object)
 
-        Dim custNo = CType(custNoObj, Integer)
+        Dim searchData As SearchData = CType(searchDataParam, SearchData)
+
+        Dim custNo = searchData.custNo
         Dim designQuery As SqlCommand
         If (custNo <> Nothing) Then
             designQuery = New SqlCommand("select DesignNo, DesignName from design where custNo=" + custNo.ToString, dbConnection)
@@ -126,21 +144,26 @@ Public Class AgniMainForm
         Dim designTable As DataTable = designDataSet.Tables(0)
 
         Dim setDesignListInvoker As New setDesignListDelegate(AddressOf Me.setDesignList)
-        Me.BeginInvoke(setDesignListInvoker, designTable)
+        Me.BeginInvoke(setDesignListInvoker, designTable, searchData.comboBoxControl)
     End Sub
 
-    Delegate Sub setDesignListDelegate(designTable As DataTable)
+    Delegate Sub setDesignListDelegate(designTable As DataTable, cmbDesignListControl As ComboBox)
 
-    Sub setDesignList(designTable As DataTable)
+    Sub setDesignList(designTable As DataTable, Optional cmbDesignListControl As ComboBox = Nothing)
         Dim dummyFirstRow As DataRow = designTable.NewRow()
         dummyFirstRow("DesignNo") = -1
         dummyFirstRow("DesignName") = "Please select a design..."
         designTable.Rows.InsertAt(dummyFirstRow, 0)
 
-        cmbDesDesignList.BindingContext = New BindingContext()
-        cmbDesDesignList.DataSource = designTable
-
-        resetDesignScreen()
+        If cmbDesignListControl IsNot Nothing Then
+            cmbDesignListControl.BindingContext = New BindingContext()
+            cmbDesignListControl.DataSource = designTable
+        Else
+            cmbDesDesignList.BindingContext = New BindingContext()
+            cmbDesDesignList.DataSource = designTable
+            resetDesignScreen()
+        End If
+        
     End Sub
 
     Sub loadDesignChargePerUnit(custNo As Integer)
@@ -218,23 +241,26 @@ Public Class AgniMainForm
 
     Sub setDesignGrid(designTable As DataTable)
         dgDesDesignDetails.DataSource = designTable
+        If designTable.Rows.Count > 0 Then
+            dgDesDesignDetails.FirstDisplayedScrollingRowIndex = designTable.Rows.Count - 1
+        End If
     End Sub
 
-    Sub loadBillList(custNo As Integer)
+    Sub loadBillList(Optional custNo As Integer = Nothing, Optional cmbBillListControl As ComboBox = Nothing)
         Dim thread As Thread = New Thread(AddressOf getBillListTable)
         thread.IsBackground = True
-        thread.Start(custNo)
+
+        Dim searchData As SearchData = New SearchData
+        searchData.comboBoxControl = cmbBillListControl
+        searchData.custNo = custNo
+        thread.Start(searchData)
+
     End Sub
 
-    Sub loadBillListInReport()
-        Dim thread As Thread = New Thread(AddressOf getBillListTable)
-        thread.IsBackground = True
-        thread.Start(Nothing)
-    End Sub
+    Sub getBillListTable(ByVal searchDataParam As Object)
 
-    Sub getBillListTable(ByVal custNoObj As Object)
-
-        Dim custNo = CType(custNoObj, Integer)
+        Dim searchData As SearchData = CType(searchDataParam, SearchData)
+        Dim custNo = searchData.custNo
 
         Dim billQuery As SqlCommand
         If (custNo <> Nothing) Then
@@ -250,29 +276,28 @@ Public Class AgniMainForm
         Dim billTable As DataTable = billDataSet.Tables(0)
 
         Dim setBillingListInvoker As New setBillingListDelegate(AddressOf Me.setBillingList)
-        Me.BeginInvoke(setBillingListInvoker, billTable, Nothing)
+        Me.BeginInvoke(setBillingListInvoker, billTable, searchData.comboBoxControl)
 
     End Sub
 
-    Delegate Sub setBillingListDelegate(billTable As DataTable, cmbBillList As ComboBox)
+    Delegate Sub setBillingListDelegate(billTable As DataTable, cmbBillListControl As ComboBox)
 
-    Sub setBillingList(billTable As DataTable, Optional cmbBillList As ComboBox = Nothing)
+    Sub setBillingList(billTable As DataTable, Optional cmbBillListControl As ComboBox = Nothing)
 
         Dim dummyFirstRow As DataRow = billTable.NewRow()
         dummyFirstRow("BillNo") = -1
         dummyFirstRow("DisplayBillNo") = "Select Bill..."
         billTable.Rows.InsertAt(dummyFirstRow, 0)
 
-        If cmbBillList IsNot Nothing Then
-            cmbBillingBillNoList.BindingContext = New BindingContext()
-            cmbBillList.DataSource = billTable
+        If cmbBillListControl IsNot Nothing Then
+            cmbBillListControl.BindingContext = New BindingContext()
+            cmbBillListControl.DataSource = billTable
         Else
             cmbBillingBillNoList.BindingContext = New BindingContext()
             cmbBillingBillNoList.DataSource = billTable
-            cmbReportBillNoList.BindingContext = New BindingContext()
-            cmbReportBillNoList.DataSource = billTable
+            resetBillingScreen()
         End If
-        resetBillingScreen()
+
     End Sub
 
     Sub loadBillGrid(custNo As Integer)
@@ -316,6 +341,10 @@ Public Class AgniMainForm
 
     Sub setBillingGrid(billTable As DataTable)
         dgBIllingBillDetails.DataSource = billTable
+
+        If billTable.Rows.Count > 0 Then
+            dgBIllingBillDetails.FirstDisplayedScrollingRowIndex = billTable.Rows.Count - 1
+        End If
     End Sub
 
     Sub loadPaymentList(custNo As Integer)
@@ -397,6 +426,10 @@ Public Class AgniMainForm
 
     Sub setPaymentGrid(paymentTable As DataTable)
         dgPaymentDetails.DataSource = paymentTable
+
+        If paymentTable.Rows.Count > 0 Then
+            dgPaymentDetails.FirstDisplayedScrollingRowIndex = paymentTable.Rows.Count - 1
+        End If
     End Sub
 
 
@@ -635,6 +668,7 @@ Public Class AgniMainForm
         dpPaymentDate.Enabled = True
         btnPaymentDelete.Visible = False
         btnPaymentClear.Visible = False
+        log.Debug("setPaymentControlsVisibilitiesForCreatePayment called and done")
     End Sub
 
     Sub resetPaymentScreen()
@@ -654,6 +688,7 @@ Public Class AgniMainForm
         txtPaymentNetBalance.Text = ""
         txtPaymentRemarks.Text = ""
         txtPaymentUnPaidBilledAmount.Text = ""
+        log.Debug("resetPaymentScreen is called and done")
     End Sub
 
     Public Sub btnCustAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCustAdd.Click
@@ -720,9 +755,9 @@ Public Class AgniMainForm
         End If
 
         If MessageBox.Show("All Designs, Bills and Payments will be deleted belongs to this customer." + vbNewLine + vbNewLine + "  Do you want to delete this Customer - " & cmbCustCustomerList.Text & " ?", "WARNING", System.Windows.Forms.MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
-            VerifyingDelete.Button1.Text = "Delete "
-            VerifyingDelete.Button1.Text += cmbCustCustomerList.Text
-            VerifyingDelete.Show()
+            DeleteConfirmation.Button1.Text = "Delete "
+            DeleteConfirmation.Button1.Text += cmbCustCustomerList.Text
+            DeleteConfirmation.Show()
         End If
     End Sub
     Public Sub deleteSeletectedCustomer()
@@ -928,10 +963,13 @@ Public Class AgniMainForm
         End If
     End Sub
 
-    Private Sub PictureBox2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbDesDesignImage.Click
-        pictureload()
+    Private Sub pbDesDesignImage_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles pbDesDesignImage.Click
+        loadPictureChooseDialog()
     End Sub
-    Private Sub pictureload()
+
+    Private Sub loadPictureChooseDialog()
+
+        log.Debug("pictureload: loading the picture")
 
         If (cmbDesDesignList.Items.Count > 0) Then
             cmbDesDesignList.SelectedValue = -1
@@ -1256,7 +1294,7 @@ Public Class AgniMainForm
     End Sub
 
     Private Sub dgDesDesignDetails_CurrentCellChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles dgDesDesignDetails.CurrentCellChanged
-        cmbDesDesignList.SelectedIndex = dgDesDesignDetails.CurrentRowIndex + 1
+
     End Sub
 
     Private Sub btnCustClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCustClear.Click
@@ -1300,7 +1338,7 @@ Public Class AgniMainForm
         End If
     End Sub
 
-    Private Sub Button38_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button38.Click
+    Private Sub Button38_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If MessageBox.Show("Are you sure want to log off?", "Log off", System.Windows.Forms.MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
             Me.Hide()
             Login.ComboBox1.Text = ""
@@ -1313,7 +1351,7 @@ Public Class AgniMainForm
         End If
     End Sub
 
-    Private Sub Button37_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button37.Click
+    Private Sub Button37_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.Close()
     End Sub
 
@@ -1543,6 +1581,11 @@ Public Class AgniMainForm
     End Sub
 
     Private Sub btnBillingCancelCreateBill_Click(sender As Object, e As EventArgs) Handles btnBillingCancelCreateBill.Click
+        If (cmbBillingBillNoList.SelectedIndex = -1 Or cmbBillingBillNoList.SelectedValue = -1) Then
+            resetBillingScreen()
+            cmbBillingBillNoList.Text = ""
+        End If
+
         If (cmbBillingBillNoList.Items.Count > 0) Then
             cmbBillingBillNoList.SelectedValue = -1
         Else
@@ -1583,14 +1626,6 @@ Public Class AgniMainForm
 
     End Sub
 
-    Private Sub dgBIllingBillDetails_CurrentCellChanged(sender As Object, e As EventArgs) Handles dgBIllingBillDetails.CurrentCellChanged
-        cmbBillingBillNoList.SelectedIndex = dgBIllingBillDetails.CurrentRowIndex + 1
-
-        If btnBillingConfirmCreateBill.Visible = True Then
-            resetBillingControlsVisibilities()
-        End If
-    End Sub
-
     Private Sub btnPaymentCreatePayment_Click(sender As Object, e As EventArgs) Handles btnPaymentCreatePayment.Click
         If (cmbPaymentCustomerList.SelectedIndex = -1 Or cmbPaymentCustomerList.SelectedValue = -1) Then
             MessageBox.Show("Please select a customer")
@@ -1617,6 +1652,7 @@ Public Class AgniMainForm
         txtPaymentBillNo.Text = lastBillRow.Item("BillNo")
         txtPaymentUnPaidBilledAmount.Text = Format(unPaidBalance, "0.00")
 
+        log.Debug("btnPaymentCreatePayment_Click: before calling setPaymentControlsVisibilitiesForCreatePayment")
         setPaymentControlsVisibilitiesForCreatePayment()
     End Sub
 
@@ -1764,7 +1800,7 @@ Public Class AgniMainForm
     End Sub
 
     Sub calculateDesignCostOnChange(sender As Object, e As EventArgs) Handles txtDesWidth.TextChanged, txtDesHeight.TextChanged,
-        txtDesNoOfColors.TextChanged, txtDesCostPerUnit.TextChanged
+        txtDesNoOfColors.TextChanged, txtDesCostPerUnit.TextChanged, TextBox4.TextChanged, TextBox3.TextChanged, TextBox2.TextChanged, TextBox1.TextChanged
 
         Dim designWidth As Decimal = 0
         Dim designHeight As Decimal = 0
@@ -1782,15 +1818,6 @@ Public Class AgniMainForm
         txtDesCalculatedPrice.Text = Math.Round(designCost)
     End Sub
 
-
-    Private Sub dgPaymentDetails_CurrentCellChanged(sender As Object, e As EventArgs) Handles dgPaymentDetails.CurrentCellChanged
-
-        cmbPaymentPaymentNoList.SelectedIndex = dgPaymentDetails.CurrentRowIndex + 1
-
-        If btnPaymentConfirmCreatePayment.Visible = True Then
-            resetPaymentControlsVisibilities()
-        End If
-    End Sub
 
     Private Sub cmbPaymentPaymentNoList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbPaymentPaymentNoList.SelectedIndexChanged
 
@@ -1935,45 +1962,54 @@ Public Class AgniMainForm
                                     radioReportBillNo.CheckedChanged,
                                     radioReportDate.CheckedChanged,
                                     cbReportExtraDateFilter.CheckedChanged,
-                                    radioReportDesignName.CheckedChanged
-        lblReportCompName.Visible = False
-        lblReportBillNo.Visible = False
-        lblReportDesignNo.Visible = False
-        lblReportFromDate.Visible = False
-        lblReportToDate.Visible = False
-        lblReportDesignNameHint.Visible = False
-        cbReportExtraDateFilter.Visible = False
-        cmbReportCustomerList.Visible = False
-        cmbReportBillNoList.Visible = False
-        txtReportDesignName.Visible = False
-        dpReportFromDate.Visible = False
-        dpReportToDate.Visible = False
+                                    radioReportDesignName.CheckedChanged,
+                                    radioReportFilterDesignNumber.CheckedChanged,
+                                    radioReportFilterBillNo.CheckedChanged,
+                                    radioReportFilterDesignName.CheckedChanged
+        groupReportFilters.Visible = False
+        groupReportMoreFilters.Visible = False
+        groupReportCustomerName.Visible = False
+        groupReportDesignNumber.Visible = False
+        groupReportDesignName.Visible = False
+        groupReportBillNumber.Visible = False
+        groupReportDateRange.Visible = False
 
         If radioReportCustName.Checked Then
-            lblReportCompName.Visible = True
-            cmbReportCustomerList.Visible = True
-            cbReportExtraDateFilter.Visible = True
+            groupReportFilters.Visible = True
+            groupReportFilters.Location = reportLine2.Location
+            groupReportMoreFilters.Visible = True
+            groupReportMoreFilters.Location = reportLine3.Location
+            groupReportCustomerName.Visible = True
+            groupReportCustomerName.Location = reportLine4.Location
         ElseIf radioReportBillNo.Checked Then
-            lblReportBillNo.Visible = True
-            cmbReportBillNoList.Visible = True
-            cbReportExtraDateFilter.Visible = True
+            groupReportMoreFilters.Visible = True
+            groupReportMoreFilters.Location = reportLine2.Location
+            groupReportBillNumber.Visible = True
+            groupReportBillNumber.Location = reportLine3.Location
         ElseIf radioReportDesignName.Checked Then
-            lblReportDesignNo.Visible = True
-            txtReportDesignName.Visible = True
-            lblReportDesignNameHint.Visible = True
-            cbReportExtraDateFilter.Visible = True
+            groupReportMoreFilters.Visible = True
+            groupReportMoreFilters.Location = reportLine2.Location
+            groupReportDesignName.Visible = True
+            groupReportDesignName.Location = reportLine3.Location
         ElseIf radioReportDate.Checked Then
-            lblReportFromDate.Visible = False
-            lblReportToDate.Visible = True
-            dpReportFromDate.Visible = True
-            dpReportToDate.Visible = True
+            groupReportDateRange.Visible = True
+            groupReportDateRange.Location = reportLine2.Location
+        End If
+
+        If groupReportFilters.Visible = True Then
+            If radioReportFilterDesignNumber.Checked = True Then
+                groupReportDesignNumber.Visible = True
+            ElseIf radioReportFilterBillNo.Checked = True Then
+                groupReportBillNumber.Visible = True
+                groupReportBillNumber.Location = reportLine4_1.Location
+            ElseIf radioReportFilterDesignName.Checked = True Then
+                groupReportDesignName.Visible = True
+                groupReportDesignName.Location = reportLine4_1.Location
+            End If
         End If
 
         If cbReportExtraDateFilter.Checked = True Then
-            lblReportFromDate.Visible = False
-            lblReportToDate.Visible = True
-            dpReportFromDate.Visible = True
-            dpReportToDate.Visible = True
+            groupReportDateRange.Visible = True
         End If
     End Sub
 
@@ -2002,18 +2038,6 @@ Public Class AgniMainForm
         Return searchFilter
     End Function
 
-    Private Sub dgReportDesignGrid_CurrentCellChanged(sender As Object, e As EventArgs) Handles dgReportDesignGrid.CurrentCellChanged
-        Dim rowIndex As Integer = dgReportDesignGrid.CurrentRowIndex
-        Dim designtable As DataTable = dgReportDesignGrid.DataSource
-
-        If designtable.Rows.Count = 0 Then
-            Return
-        End If
-
-        Dim designNo = designtable.Rows(rowIndex).Item("DesignNo")
-        pbReportDesignImage.Image = getDesignImage(designNo)
-    End Sub
-
     Private Function getDesignImage(designNo As Integer) As Image
         Dim designSelectQuery = New SqlCommand("select Image from design where DesignNo=" + designNo.ToString, dbConnection)
         Dim designDataAdapter = New SqlDataAdapter()
@@ -2030,7 +2054,7 @@ Public Class AgniMainForm
         If Not dataRow.Item("Image") Is DBNull.Value Then
             Dim designImage() As Byte = CType(dataRow.Item("Image"), Byte())
             Dim designImageBuffer As New MemoryStream(designImage)
-            Return Image.FromStream(designImageBuffer)
+            Return New Bitmap(designImageBuffer)
         End If
 
         Return Nothing
@@ -2038,8 +2062,8 @@ Public Class AgniMainForm
 
     Private Sub btnReportSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnReportSearch.Click
         pbReportDesignImage.Image = Nothing
-        dgReportDesignGrid.DataSource = Nothing
-        dgReportBillGrid.DataSource = Nothing
+        'dgReportDesignGrid.DataSource = Nothing
+        'dgReportBillGrid.DataSource = Nothing
 
         Dim searchFilter As Integer = getSearchFilter()
 
@@ -2102,6 +2126,7 @@ Public Class AgniMainForm
         Public custNo, billNo As Integer
         Public designName As String
         Public fromDate, toDate As Date
+        Public comboBoxControl As ComboBox
 
         Sub New()
             custNo = -1
@@ -2109,6 +2134,7 @@ Public Class AgniMainForm
             designName = String.Empty
             fromDate = Date.Today
             toDate = Date.Today
+            comboBoxControl = Nothing
         End Sub
 
     End Class
@@ -2188,6 +2214,7 @@ Public Class AgniMainForm
     Delegate Sub showDesignSearchResultDelegate(designTable As DataTable)
 
     Sub showDesignSearchResult(designTable As DataTable)
+        dgReportDesignGrid.BindingContext = New BindingContext
         dgReportDesignGrid.DataSource = designTable
     End Sub
 
@@ -2970,6 +2997,8 @@ Public Class AgniMainForm
 
     Private Sub cmbDesDesignList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbDesDesignList.SelectedIndexChanged
 
+        log.Debug("cmbDesDesignList_SelectedIndexChanged: " + cmbDesDesignList.SelectedIndex.ToString)
+
         If (cmbDesDesignList.SelectedIndex = -1 Or cmbDesDesignList.SelectedValue = -1) Then
             resetDesignScreen()
             Return
@@ -3001,7 +3030,8 @@ Public Class AgniMainForm
             Else
                 Dim designImage() As Byte = CType(dataRow.Item("Image"), Byte())
                 Dim designImageBuffer As New MemoryStream(designImage)
-                pbDesDesignImage.Image = Image.FromStream(designImageBuffer)
+                pbDesDesignImage.Image = New Bitmap(designImageBuffer)
+                'Image.FromStream(designImageBuffer)
             End If
             txtDesCalculatedPrice.Text = dataRow.Item("Price")
             dpDesDesignDate.Text = dataRow.Item("DesignDate")
@@ -3010,10 +3040,136 @@ Public Class AgniMainForm
         End If
     End Sub
 
-    Private Sub GroupBox3_Enter(sender As Object, e As EventArgs) Handles GroupBox3.Enter
+    Private Sub dgDesDesignDetails_RowEnter(sender As Object, e As DataGridViewCellEventArgs) Handles dgDesDesignDetails.RowEnter
+        Dim designNo As Integer = dgDesDesignDetails.Item("designNo", e.RowIndex).Value
+        cmbDesDesignList.SelectedValue = designNo
+
+        'dgDesDesignDetails.Item("Image", e.RowIndex).ToolTipText = ToolTip1.ToString
+    End Sub
+
+    Dim imagePopup As ImagePopup = New ImagePopup
+
+    Private Sub dgDesDesignDetails_CellMouseEnter(sender As Object, e As DataGridViewCellEventArgs) Handles dgDesDesignDetails.CellMouseEnter
+        'Dim designNo As Integer = dgDesDesignDetails.Item("designNo", e.RowIndex).Value
+
+        Dim rowIndex As Integer = e.RowIndex
+        Dim columnIndex As Integer = e.ColumnIndex
+        Dim columnName As String = dgDesDesignDetails.Columns(columnIndex).Name
+
+        If dgDesDesignDetails.RowCount > 0 And rowIndex >= 0 And columnIndex < dgDesDesignDetails.ColumnCount And columnName.Equals("Image") Then
+
+            Dim designImage() As Byte = CType(dgDesDesignDetails.Item("Image", rowIndex).Value, Byte())
+            Dim designImageBuffer As New MemoryStream(designImage)
+            Dim imageToShow As Image = New Bitmap(designImageBuffer)
+
+            imagePopup.Show()
+            imagePopup.Width = 900
+            imagePopup.Height = 800
+
+            imagePopup.loadImage(imageToShow)
+        End If
+
 
     End Sub
 
+    Private Sub dgDesDesignDetails_CellMouseLeave(sender As Object, e As DataGridViewCellEventArgs) Handles dgDesDesignDetails.CellMouseLeave
+        imagePopup.Hide()
+    End Sub
+
+    Private Sub pbDesDesignImage_MouseEnter(sender As Object, e As EventArgs) Handles pbDesDesignImage.MouseEnter
+
+        If pbDesDesignImage.Image IsNot Nothing Then
+
+            Dim imageToShow As Image = pbDesDesignImage.Image
+
+            imagePopup.Show()
+            imagePopup.Width = 900
+            imagePopup.Height = 800
+
+            imagePopup.Left = 0
+
+            imagePopup.loadImage(imageToShow)
+        End If
+    End Sub
+
+    Private Sub pbDesDesignImage_MouseLeave(sender As Object, e As EventArgs) Handles pbDesDesignImage.MouseLeave
+        imagePopup.Hide()
+    End Sub
+
+
+    Private Sub dgBIllingBillDetails_RowEnter(sender As Object, e As DataGridViewCellEventArgs) Handles dgBIllingBillDetails.RowEnter
+        Dim billNo As Integer = dgBIllingBillDetails.Item("InternalBillNo", e.RowIndex).Value
+        cmbBillingBillNoList.SelectedValue = billNo
+
+        If btnBillingConfirmCreateBill.Visible = True Then
+            resetBillingControlsVisibilities()
+        End If
+    End Sub
+
+    Private Sub dgPaymentDetails_RowEnter(sender As Object, e As DataGridViewCellEventArgs) Handles dgPaymentDetails.RowEnter
+        Dim paymentNo As Integer = dgPaymentDetails.Item("PaymentNo", e.RowIndex).Value
+        cmbPaymentPaymentNoList.SelectedValue = paymentNo
+
+        If btnPaymentConfirmCreatePayment.Visible = True Then
+            'resetPaymentControlsVisibilities()
+        End If
+    End Sub
+
+    Private Sub dgReportDesignGrid_RowEnter(sender As Object, e As DataGridViewCellEventArgs) Handles dgReportDesignGrid.RowEnter
+
+        Dim rowIndex As Integer = e.RowIndex
+
+        If dgReportDesignGrid.RowCount > 0 And rowIndex >= 0 And dgReportDesignGrid.Columns.Contains("ReportDesignImage") Then
+
+            Dim designImage() As Byte = CType(dgReportDesignGrid.Item("ReportDesignImage", rowIndex).Value, Byte())
+            Dim designImageBuffer As New MemoryStream(designImage)
+            Dim imageToShow As Image = New Bitmap(designImageBuffer)
+
+            pbReportDesignImage.Image = imageToShow
+
+        End If
+    End Sub
+
+    Private Sub tabReports_Click(sender As Object, e As EventArgs) Handles tabReports.Click
+
+    End Sub
+
+    Private Sub RadioButton3_CheckedChanged(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub Label82_Click(sender As Object, e As EventArgs) Handles Label82.Click
+
+    End Sub
+
+    Private Sub groupReportSearchCategory_Enter(sender As Object, e As EventArgs) Handles groupReportSearchCategory.Enter
+
+    End Sub
+
+    Private Sub cmbReportCustomerList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbReportCustomerList.SelectedIndexChanged
+        If (cmbReportCustomerList.SelectedIndex = -1 Or cmbReportCustomerList.SelectedValue = -1) Then
+            If (cmbReportDesignNoList.Items.Count > 0) Then
+                cmbReportDesignNoList.SelectedValue = -1
+            Else
+                cmbReportDesignNoList.SelectedIndex = -1
+            End If
+            Return
+        End If
+
+        Dim custNo As Integer = cmbReportCustomerList.SelectedValue
+        loadDesignList(custNo, cmbReportDesignNoList)
+
+        If (cmbReportCustomerList.SelectedIndex = -1 Or cmbReportCustomerList.SelectedValue = -1) Then
+            If (cmbReportBillNoList.Items.Count > 0) Then
+                cmbReportBillNoList.SelectedValue = -1
+            Else
+                cmbReportBillNoList.SelectedIndex = -1
+            End If
+            Return
+        End If
+
+        loadBillList(custNo, cmbReportBillNoList)
+    End Sub
 End Class
 
 

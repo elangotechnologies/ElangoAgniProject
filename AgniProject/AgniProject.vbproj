@@ -91,6 +91,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.Windows.Forms.dll</HintPath>
     </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.5.0.0-beta09\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -146,6 +149,12 @@
     <Compile Include="changepwd.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ImagePopup.Designer.vb">
+      <DependentUpon>ImagePopup.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ImagePopup.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="manageuser.Designer.vb">
       <DependentUpon>manageuser.vb</DependentUpon>
     </Compile>
@@ -193,10 +202,10 @@
     <Compile Include="SplashScreen1.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VerifyingDelete.Designer.vb">
-      <DependentUpon>VerifyingDelete.vb</DependentUpon>
+    <Compile Include="DeleteConfirmation.Designer.vb">
+      <DependentUpon>DeleteConfirmation.vb</DependentUpon>
     </Compile>
-    <Compile Include="VerifyingDelete.vb">
+    <Compile Include="DeleteConfirmation.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -216,6 +225,9 @@
     <EmbeddedResource Include="changepwd.resx">
       <SubType>Designer</SubType>
       <DependentUpon>changepwd.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImagePopup.resx">
+      <DependentUpon>ImagePopup.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="manageuser.resx">
       <SubType>Designer</SubType>
@@ -239,9 +251,9 @@
       <SubType>Designer</SubType>
       <DependentUpon>SplashScreen1.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VerifyingDelete.resx">
+    <EmbeddedResource Include="DeleteConfirmation.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>VerifyingDelete.vb</DependentUpon>
+      <DependentUpon>DeleteConfirmation.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

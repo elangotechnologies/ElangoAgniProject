@@ -1,5 +1,5 @@
 Imports System.Data.SqlClient
-Public Class VerifyingDelete
+Public Class DeleteConfirmation
     Public uname1, pwd1, type1 As String
     Dim a, inc As Integer
     Dim flag As Boolean = False
