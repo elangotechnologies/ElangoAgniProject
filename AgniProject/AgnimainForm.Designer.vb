@@ -19,111 +19,111 @@ Partial Class AgniMainForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle417 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle418 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle433 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle434 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle419 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle420 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle421 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle422 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle423 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle424 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle425 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle426 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle427 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle428 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle429 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle430 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle431 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle432 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle435 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle436 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle453 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle454 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle437 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle438 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle439 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle440 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle441 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle442 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle443 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle444 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle445 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle446 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle447 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle448 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle449 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle450 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle451 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle452 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle455 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle456 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle467 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle468 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle457 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle458 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle459 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle460 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle461 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle462 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle463 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle464 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle465 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle466 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle469 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle470 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle487 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle488 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle471 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle472 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle473 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle474 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle475 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle476 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle477 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle478 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle479 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle480 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle481 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle482 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle483 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle484 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle485 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle486 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle489 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle490 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle501 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle502 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle491 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle492 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle493 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle494 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle495 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle496 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle497 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle498 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle499 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle500 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle37 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle38 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle31 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle32 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle33 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle34 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle35 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle36 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle39 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle40 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle51 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle52 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle41 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle42 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle43 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle44 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle45 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle46 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle47 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle48 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle49 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle50 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle53 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle54 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle71 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle72 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle55 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle56 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle57 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle58 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle59 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle60 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle61 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle62 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle63 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle64 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle65 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle66 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle67 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle68 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle69 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle70 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle73 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle74 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle85 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle86 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle75 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle76 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle77 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle78 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle79 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle80 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle81 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle82 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle83 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle84 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AgniMainForm))
-        Dim DataGridViewCellStyle503 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle504 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle519 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle520 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle505 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle506 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle507 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle508 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle509 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle510 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle511 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle512 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle513 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle514 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle515 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle516 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle517 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle518 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle87 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle88 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle103 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle104 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle89 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle90 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle91 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle92 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle93 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle94 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle95 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle96 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle97 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle98 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle99 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle100 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle101 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle102 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.tabHelp = New System.Windows.Forms.TabPage()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.Label68 = New System.Windows.Forms.Label()
@@ -143,14 +143,34 @@ Partial Class AgniMainForm
         Me.Label35 = New System.Windows.Forms.Label()
         Me.Label34 = New System.Windows.Forms.Label()
         Me.tabReports = New System.Windows.Forms.TabPage()
+        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.lblReportUnBilledDesignAmount = New System.Windows.Forms.Label()
+        Me.Label33 = New System.Windows.Forms.Label()
+        Me.lblReportNoOfDesigns = New System.Windows.Forms.Label()
+        Me.Label46 = New System.Windows.Forms.Label()
+        Me.lblReportBilledDesignAmount = New System.Windows.Forms.Label()
+        Me.Label48 = New System.Windows.Forms.Label()
+        Me.Label50 = New System.Windows.Forms.Label()
+        Me.lblReportTotDesignAmount = New System.Windows.Forms.Label()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.cbReportSearchByDateRange = New System.Windows.Forms.CheckBox()
+        Me.cbReportSearchByBillNo = New System.Windows.Forms.CheckBox()
+        Me.cbReportSearchByDesignNo = New System.Windows.Forms.CheckBox()
+        Me.cbReportSearchByDesignName = New System.Windows.Forms.CheckBox()
+        Me.cbReportSearchByCustomer = New System.Windows.Forms.CheckBox()
+        Me.reportPlaceHolder4 = New System.Windows.Forms.GroupBox()
+        Me.reportPlaceHolder2 = New System.Windows.Forms.GroupBox()
+        Me.reportPlaceHolder5 = New System.Windows.Forms.GroupBox()
+        Me.reportPlaceHolder3 = New System.Windows.Forms.GroupBox()
+        Me.reportPlaceHolder1 = New System.Windows.Forms.GroupBox()
         Me.groupReportDesignName = New System.Windows.Forms.GroupBox()
         Me.Label84 = New System.Windows.Forms.Label()
         Me.txtReportDesignName = New System.Windows.Forms.TextBox()
         Me.lblReportDesignNameHint = New System.Windows.Forms.Label()
-        Me.groupReportDesignNumber = New System.Windows.Forms.GroupBox()
+        Me.groupReportDesignList = New System.Windows.Forms.GroupBox()
         Me.cmbReportDesignNoList = New System.Windows.Forms.ComboBox()
         Me.Label83 = New System.Windows.Forms.Label()
-        Me.groupReportBillNumber = New System.Windows.Forms.GroupBox()
+        Me.groupReportBillNo = New System.Windows.Forms.GroupBox()
         Me.Label82 = New System.Windows.Forms.Label()
         Me.cmbReportBillNoList = New System.Windows.Forms.ComboBox()
         Me.groupReportCustomerName = New System.Windows.Forms.GroupBox()
@@ -161,21 +181,20 @@ Partial Class AgniMainForm
         Me.dpReportToDate = New System.Windows.Forms.DateTimePicker()
         Me.lblReportFromDate = New System.Windows.Forms.Label()
         Me.lblReportToDate = New System.Windows.Forms.Label()
-        Me.groupReportMoreFilters = New System.Windows.Forms.GroupBox()
-        Me.cbReportExtraDateFilter = New System.Windows.Forms.CheckBox()
         Me.GroupBox21 = New System.Windows.Forms.GroupBox()
         Me.dgReportPaymentGrid = New System.Windows.Forms.DataGridView()
         Me.ReportPaymentPaymentNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReportPaymentDisplayBillNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ReportPaymentCustName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReportPaymentBillNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReportPaymentUnPaidBilledAmount = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReportPaymentPaymentDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReportPaymentPaymentMode = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.reportPaymentActualPaidAmount = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReportPaymentDiscount = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ReportPaymentNetBalance = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReportPaymentTaxDeduction = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReportPaymentFinalPaidAmount = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ReportPaymentNetBalance = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReportPaymentChequeNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReportPaymentBankName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReportPaymentChequeDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -183,6 +202,7 @@ Partial Class AgniMainForm
         Me.GroupBox20 = New System.Windows.Forms.GroupBox()
         Me.dgReportBillGrid = New System.Windows.Forms.DataGridView()
         Me.ReportBillDisplayBillNO = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ReportBillCustName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReportBillBillNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReportBillBillDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReportBillUnPaidAmountTillNow = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -202,6 +222,7 @@ Partial Class AgniMainForm
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.dgReportDesignGrid = New System.Windows.Forms.DataGridView()
         Me.ReportDesignNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.custName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReportDesignName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReportDesignImage = New System.Windows.Forms.DataGridViewImageColumn()
         Me.ReportUnitType = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -214,10 +235,6 @@ Partial Class AgniMainForm
         Me.ReportBilled = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.ReportBillNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReportCustNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.groupReportFilters = New System.Windows.Forms.GroupBox()
-        Me.radioReportFilterDesignNumber = New System.Windows.Forms.RadioButton()
-        Me.radioReportFilterDesignName = New System.Windows.Forms.RadioButton()
-        Me.radioReportFilterBillNo = New System.Windows.Forms.RadioButton()
         Me.lblReportPaidAmountWithDeduction = New System.Windows.Forms.Label()
         Me.Label49 = New System.Windows.Forms.Label()
         Me.lblReportPaidAmountActual = New System.Windows.Forms.Label()
@@ -228,22 +245,9 @@ Partial Class AgniMainForm
         Me.Label47 = New System.Windows.Forms.Label()
         Me.lblReportNoOfBills = New System.Windows.Forms.Label()
         Me.Label51 = New System.Windows.Forms.Label()
-        Me.lblReportTotDesignAmount = New System.Windows.Forms.Label()
-        Me.Label50 = New System.Windows.Forms.Label()
-        Me.lblReportUnBilledDesignAmount = New System.Windows.Forms.Label()
-        Me.Label48 = New System.Windows.Forms.Label()
-        Me.lblReportBilledDesignAmount = New System.Windows.Forms.Label()
-        Me.Label46 = New System.Windows.Forms.Label()
-        Me.lblReportNoOfDesigns = New System.Windows.Forms.Label()
-        Me.Label33 = New System.Windows.Forms.Label()
         Me.Label111 = New System.Windows.Forms.Label()
         Me.btnReportSearch = New System.Windows.Forms.Button()
         Me.pbReportDesignImage = New System.Windows.Forms.PictureBox()
-        Me.groupReportSearchCategory = New System.Windows.Forms.GroupBox()
-        Me.radioReportDesignName = New System.Windows.Forms.RadioButton()
-        Me.radioReportDate = New System.Windows.Forms.RadioButton()
-        Me.radioReportCustName = New System.Windows.Forms.RadioButton()
-        Me.radioReportBillNo = New System.Windows.Forms.RadioButton()
         Me.tabBilling = New System.Windows.Forms.TabPage()
         Me.GroupBox18 = New System.Windows.Forms.GroupBox()
         Me.txtBillingIGSTAmount = New System.Windows.Forms.TextBox()
@@ -310,19 +314,7 @@ Partial Class AgniMainForm
         Me.Label23 = New System.Windows.Forms.Label()
         Me.Label29 = New System.Windows.Forms.Label()
         Me.tabDesign = New System.Windows.Forms.TabPage()
-        Me.GroupBox8 = New System.Windows.Forms.GroupBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Label52 = New System.Windows.Forms.Label()
-        Me.Label54 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.Label56 = New System.Windows.Forms.Label()
         Me.GroupBox7 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox15 = New System.Windows.Forms.GroupBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.Label57 = New System.Windows.Forms.Label()
-        Me.Label58 = New System.Windows.Forms.Label()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.Label59 = New System.Windows.Forms.Label()
         Me.txtDesHeight = New System.Windows.Forms.TextBox()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
@@ -543,40 +535,29 @@ Partial Class AgniMainForm
         Me.Label150 = New System.Windows.Forms.Label()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
-        Me.reportLine2 = New System.Windows.Forms.GroupBox()
-        Me.reportLine3 = New System.Windows.Forms.GroupBox()
-        Me.reportLine4 = New System.Windows.Forms.GroupBox()
-        Me.reportLine5 = New System.Windows.Forms.GroupBox()
-        Me.reportLine6 = New System.Windows.Forms.GroupBox()
-        Me.reportLine5_1 = New System.Windows.Forms.GroupBox()
-        Me.reportLine4_1 = New System.Windows.Forms.GroupBox()
-        Me.Label45 = New System.Windows.Forms.Label()
-        Me.Label61 = New System.Windows.Forms.Label()
+        Me.GroupBox8 = New System.Windows.Forms.GroupBox()
         Me.tabHelp.SuspendLayout()
         Me.tabReports.SuspendLayout()
+        Me.GroupBox6.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         Me.groupReportDesignName.SuspendLayout()
-        Me.groupReportDesignNumber.SuspendLayout()
-        Me.groupReportBillNumber.SuspendLayout()
+        Me.groupReportDesignList.SuspendLayout()
+        Me.groupReportBillNo.SuspendLayout()
         Me.groupReportCustomerName.SuspendLayout()
         Me.groupReportDateRange.SuspendLayout()
-        Me.groupReportMoreFilters.SuspendLayout()
         Me.GroupBox21.SuspendLayout()
         CType(Me.dgReportPaymentGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox20.SuspendLayout()
         CType(Me.dgReportBillGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
         CType(Me.dgReportDesignGrid, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.groupReportFilters.SuspendLayout()
         CType(Me.pbReportDesignImage, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.groupReportSearchCategory.SuspendLayout()
         Me.tabBilling.SuspendLayout()
         Me.GroupBox18.SuspendLayout()
         Me.GroupBox17.SuspendLayout()
         CType(Me.dgBIllingBillDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabDesign.SuspendLayout()
-        Me.GroupBox8.SuspendLayout()
         Me.GroupBox7.SuspendLayout()
-        Me.GroupBox15.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         CType(Me.dgDesDesignDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -601,6 +582,7 @@ Partial Class AgniMainForm
         Me.GroupBox13.SuspendLayout()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox8.SuspendLayout()
         Me.SuspendLayout()
         '
         'tabHelp
@@ -800,44 +782,28 @@ Partial Class AgniMainForm
         '
         Me.tabReports.BackColor = System.Drawing.SystemColors.Window
         Me.tabReports.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.tabReports.Controls.Add(Me.Label61)
-        Me.tabReports.Controls.Add(Me.Label45)
-        Me.tabReports.Controls.Add(Me.reportLine5_1)
-        Me.tabReports.Controls.Add(Me.reportLine4_1)
-        Me.tabReports.Controls.Add(Me.reportLine6)
-        Me.tabReports.Controls.Add(Me.reportLine5)
-        Me.tabReports.Controls.Add(Me.reportLine4)
-        Me.tabReports.Controls.Add(Me.reportLine3)
-        Me.tabReports.Controls.Add(Me.reportLine2)
-        Me.tabReports.Controls.Add(Me.groupReportSearchCategory)
+        Me.tabReports.Controls.Add(Me.GroupBox8)
+        Me.tabReports.Controls.Add(Me.GroupBox6)
+        Me.tabReports.Controls.Add(Me.GroupBox3)
+        Me.tabReports.Controls.Add(Me.reportPlaceHolder4)
+        Me.tabReports.Controls.Add(Me.reportPlaceHolder2)
+        Me.tabReports.Controls.Add(Me.reportPlaceHolder5)
+        Me.tabReports.Controls.Add(Me.reportPlaceHolder3)
+        Me.tabReports.Controls.Add(Me.reportPlaceHolder1)
         Me.tabReports.Controls.Add(Me.groupReportDesignName)
-        Me.tabReports.Controls.Add(Me.groupReportDesignNumber)
-        Me.tabReports.Controls.Add(Me.groupReportBillNumber)
+        Me.tabReports.Controls.Add(Me.groupReportDesignList)
+        Me.tabReports.Controls.Add(Me.groupReportBillNo)
         Me.tabReports.Controls.Add(Me.groupReportCustomerName)
         Me.tabReports.Controls.Add(Me.groupReportDateRange)
-        Me.tabReports.Controls.Add(Me.groupReportMoreFilters)
         Me.tabReports.Controls.Add(Me.GroupBox21)
         Me.tabReports.Controls.Add(Me.GroupBox20)
         Me.tabReports.Controls.Add(Me.GroupBox4)
-        Me.tabReports.Controls.Add(Me.groupReportFilters)
         Me.tabReports.Controls.Add(Me.lblReportPaidAmountWithDeduction)
         Me.tabReports.Controls.Add(Me.Label49)
         Me.tabReports.Controls.Add(Me.lblReportPaidAmountActual)
         Me.tabReports.Controls.Add(Me.Label53)
         Me.tabReports.Controls.Add(Me.lblReportNoOfPayment)
         Me.tabReports.Controls.Add(Me.Label55)
-        Me.tabReports.Controls.Add(Me.lblReportBilledAmount)
-        Me.tabReports.Controls.Add(Me.Label47)
-        Me.tabReports.Controls.Add(Me.lblReportNoOfBills)
-        Me.tabReports.Controls.Add(Me.Label51)
-        Me.tabReports.Controls.Add(Me.lblReportTotDesignAmount)
-        Me.tabReports.Controls.Add(Me.Label50)
-        Me.tabReports.Controls.Add(Me.lblReportUnBilledDesignAmount)
-        Me.tabReports.Controls.Add(Me.Label48)
-        Me.tabReports.Controls.Add(Me.lblReportBilledDesignAmount)
-        Me.tabReports.Controls.Add(Me.Label46)
-        Me.tabReports.Controls.Add(Me.lblReportNoOfDesigns)
-        Me.tabReports.Controls.Add(Me.Label33)
         Me.tabReports.Controls.Add(Me.Label111)
         Me.tabReports.Controls.Add(Me.btnReportSearch)
         Me.tabReports.Controls.Add(Me.pbReportDesignImage)
@@ -854,15 +820,284 @@ Partial Class AgniMainForm
         Me.tabReports.Text = "Reports"
         Me.tabReports.ToolTipText = "Search Records"
         '
+        'GroupBox6
+        '
+        Me.GroupBox6.Controls.Add(Me.lblReportUnBilledDesignAmount)
+        Me.GroupBox6.Controls.Add(Me.Label33)
+        Me.GroupBox6.Controls.Add(Me.lblReportNoOfDesigns)
+        Me.GroupBox6.Controls.Add(Me.Label46)
+        Me.GroupBox6.Controls.Add(Me.lblReportBilledDesignAmount)
+        Me.GroupBox6.Controls.Add(Me.Label48)
+        Me.GroupBox6.Controls.Add(Me.Label50)
+        Me.GroupBox6.Controls.Add(Me.lblReportTotDesignAmount)
+        Me.GroupBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox6.Location = New System.Drawing.Point(26, 541)
+        Me.GroupBox6.Name = "GroupBox6"
+        Me.GroupBox6.Size = New System.Drawing.Size(1100, 66)
+        Me.GroupBox6.TabIndex = 79
+        Me.GroupBox6.TabStop = False
+        Me.GroupBox6.Text = "Design Summary"
+        '
+        'lblReportUnBilledDesignAmount
+        '
+        Me.lblReportUnBilledDesignAmount.AutoSize = True
+        Me.lblReportUnBilledDesignAmount.BackColor = System.Drawing.Color.MediumSeaGreen
+        Me.lblReportUnBilledDesignAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblReportUnBilledDesignAmount.ForeColor = System.Drawing.Color.White
+        Me.lblReportUnBilledDesignAmount.Location = New System.Drawing.Point(654, 34)
+        Me.lblReportUnBilledDesignAmount.MinimumSize = New System.Drawing.Size(140, 0)
+        Me.lblReportUnBilledDesignAmount.Name = "lblReportUnBilledDesignAmount"
+        Me.lblReportUnBilledDesignAmount.Padding = New System.Windows.Forms.Padding(3)
+        Me.lblReportUnBilledDesignAmount.Size = New System.Drawing.Size(140, 24)
+        Me.lblReportUnBilledDesignAmount.TabIndex = 144
+        Me.lblReportUnBilledDesignAmount.Text = "0"
+        Me.lblReportUnBilledDesignAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label33
+        '
+        Me.Label33.AutoSize = True
+        Me.Label33.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label33.ForeColor = System.Drawing.Color.Black
+        Me.Label33.Location = New System.Drawing.Point(177, 14)
+        Me.Label33.Name = "Label33"
+        Me.Label33.Size = New System.Drawing.Size(99, 15)
+        Me.Label33.TabIndex = 141
+        Me.Label33.Text = "No.Of Designs"
+        '
+        'lblReportNoOfDesigns
+        '
+        Me.lblReportNoOfDesigns.AutoSize = True
+        Me.lblReportNoOfDesigns.BackColor = System.Drawing.Color.MediumSeaGreen
+        Me.lblReportNoOfDesigns.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblReportNoOfDesigns.ForeColor = System.Drawing.Color.White
+        Me.lblReportNoOfDesigns.Location = New System.Drawing.Point(180, 34)
+        Me.lblReportNoOfDesigns.MinimumSize = New System.Drawing.Size(95, 0)
+        Me.lblReportNoOfDesigns.Name = "lblReportNoOfDesigns"
+        Me.lblReportNoOfDesigns.Padding = New System.Windows.Forms.Padding(3)
+        Me.lblReportNoOfDesigns.Size = New System.Drawing.Size(95, 24)
+        Me.lblReportNoOfDesigns.TabIndex = 140
+        Me.lblReportNoOfDesigns.Text = "0"
+        Me.lblReportNoOfDesigns.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label46
+        '
+        Me.Label46.AutoSize = True
+        Me.Label46.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label46.ForeColor = System.Drawing.Color.Black
+        Me.Label46.Location = New System.Drawing.Point(389, 14)
+        Me.Label46.Name = "Label46"
+        Me.Label46.Size = New System.Drawing.Size(145, 15)
+        Me.Label46.TabIndex = 143
+        Me.Label46.Text = "Billed Design Amount"
+        '
+        'lblReportBilledDesignAmount
+        '
+        Me.lblReportBilledDesignAmount.AutoSize = True
+        Me.lblReportBilledDesignAmount.BackColor = System.Drawing.Color.MediumSeaGreen
+        Me.lblReportBilledDesignAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblReportBilledDesignAmount.ForeColor = System.Drawing.Color.White
+        Me.lblReportBilledDesignAmount.Location = New System.Drawing.Point(394, 34)
+        Me.lblReportBilledDesignAmount.MinimumSize = New System.Drawing.Size(140, 0)
+        Me.lblReportBilledDesignAmount.Name = "lblReportBilledDesignAmount"
+        Me.lblReportBilledDesignAmount.Padding = New System.Windows.Forms.Padding(3)
+        Me.lblReportBilledDesignAmount.Size = New System.Drawing.Size(140, 24)
+        Me.lblReportBilledDesignAmount.TabIndex = 142
+        Me.lblReportBilledDesignAmount.Text = "0"
+        Me.lblReportBilledDesignAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label48
+        '
+        Me.Label48.AutoSize = True
+        Me.Label48.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label48.ForeColor = System.Drawing.Color.Black
+        Me.Label48.Location = New System.Drawing.Point(652, 14)
+        Me.Label48.Name = "Label48"
+        Me.Label48.Size = New System.Drawing.Size(163, 15)
+        Me.Label48.TabIndex = 145
+        Me.Label48.Text = "UnBilled Design Amount"
+        '
+        'Label50
+        '
+        Me.Label50.AutoSize = True
+        Me.Label50.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label50.ForeColor = System.Drawing.Color.Black
+        Me.Label50.Location = New System.Drawing.Point(893, 14)
+        Me.Label50.Name = "Label50"
+        Me.Label50.Size = New System.Drawing.Size(140, 15)
+        Me.Label50.TabIndex = 147
+        Me.Label50.Text = "Total Design Amount"
+        '
+        'lblReportTotDesignAmount
+        '
+        Me.lblReportTotDesignAmount.AutoSize = True
+        Me.lblReportTotDesignAmount.BackColor = System.Drawing.Color.MediumSeaGreen
+        Me.lblReportTotDesignAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblReportTotDesignAmount.ForeColor = System.Drawing.Color.White
+        Me.lblReportTotDesignAmount.Location = New System.Drawing.Point(893, 34)
+        Me.lblReportTotDesignAmount.MinimumSize = New System.Drawing.Size(140, 0)
+        Me.lblReportTotDesignAmount.Name = "lblReportTotDesignAmount"
+        Me.lblReportTotDesignAmount.Padding = New System.Windows.Forms.Padding(3)
+        Me.lblReportTotDesignAmount.Size = New System.Drawing.Size(140, 24)
+        Me.lblReportTotDesignAmount.TabIndex = 146
+        Me.lblReportTotDesignAmount.Text = "0"
+        Me.lblReportTotDesignAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.cbReportSearchByDateRange)
+        Me.GroupBox3.Controls.Add(Me.cbReportSearchByBillNo)
+        Me.GroupBox3.Controls.Add(Me.cbReportSearchByDesignNo)
+        Me.GroupBox3.Controls.Add(Me.cbReportSearchByDesignName)
+        Me.GroupBox3.Controls.Add(Me.cbReportSearchByCustomer)
+        Me.GroupBox3.Location = New System.Drawing.Point(179, 4)
+        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(0)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(0)
+        Me.GroupBox3.Size = New System.Drawing.Size(922, 42)
+        Me.GroupBox3.TabIndex = 6
+        Me.GroupBox3.TabStop = False
+        '
+        'cbReportSearchByDateRange
+        '
+        Me.cbReportSearchByDateRange.AutoSize = True
+        Me.cbReportSearchByDateRange.FlatAppearance.BorderColor = System.Drawing.Color.Green
+        Me.cbReportSearchByDateRange.FlatAppearance.BorderSize = 3
+        Me.cbReportSearchByDateRange.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red
+        Me.cbReportSearchByDateRange.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.cbReportSearchByDateRange.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green
+        Me.cbReportSearchByDateRange.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.cbReportSearchByDateRange.ForeColor = System.Drawing.Color.Black
+        Me.cbReportSearchByDateRange.Location = New System.Drawing.Point(788, 15)
+        Me.cbReportSearchByDateRange.Name = "cbReportSearchByDateRange"
+        Me.cbReportSearchByDateRange.Size = New System.Drawing.Size(115, 24)
+        Me.cbReportSearchByDateRange.TabIndex = 11
+        Me.cbReportSearchByDateRange.Text = "Date Range"
+        Me.cbReportSearchByDateRange.UseVisualStyleBackColor = True
+        '
+        'cbReportSearchByBillNo
+        '
+        Me.cbReportSearchByBillNo.AutoSize = True
+        Me.cbReportSearchByBillNo.FlatAppearance.BorderColor = System.Drawing.Color.Green
+        Me.cbReportSearchByBillNo.FlatAppearance.BorderSize = 3
+        Me.cbReportSearchByBillNo.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red
+        Me.cbReportSearchByBillNo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.cbReportSearchByBillNo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green
+        Me.cbReportSearchByBillNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.cbReportSearchByBillNo.ForeColor = System.Drawing.Color.Black
+        Me.cbReportSearchByBillNo.Location = New System.Drawing.Point(215, 15)
+        Me.cbReportSearchByBillNo.Name = "cbReportSearchByBillNo"
+        Me.cbReportSearchByBillNo.Size = New System.Drawing.Size(108, 24)
+        Me.cbReportSearchByBillNo.TabIndex = 10
+        Me.cbReportSearchByBillNo.Text = "Bill Number"
+        Me.cbReportSearchByBillNo.UseVisualStyleBackColor = True
+        '
+        'cbReportSearchByDesignNo
+        '
+        Me.cbReportSearchByDesignNo.AutoSize = True
+        Me.cbReportSearchByDesignNo.FlatAppearance.BorderColor = System.Drawing.Color.Green
+        Me.cbReportSearchByDesignNo.FlatAppearance.BorderSize = 3
+        Me.cbReportSearchByDesignNo.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red
+        Me.cbReportSearchByDesignNo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.cbReportSearchByDesignNo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green
+        Me.cbReportSearchByDesignNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.cbReportSearchByDesignNo.ForeColor = System.Drawing.Color.Black
+        Me.cbReportSearchByDesignNo.Location = New System.Drawing.Point(380, 15)
+        Me.cbReportSearchByDesignNo.Name = "cbReportSearchByDesignNo"
+        Me.cbReportSearchByDesignNo.Size = New System.Drawing.Size(127, 24)
+        Me.cbReportSearchByDesignNo.TabIndex = 8
+        Me.cbReportSearchByDesignNo.Text = "Select Design"
+        Me.cbReportSearchByDesignNo.UseVisualStyleBackColor = True
+        '
+        'cbReportSearchByDesignName
+        '
+        Me.cbReportSearchByDesignName.AutoSize = True
+        Me.cbReportSearchByDesignName.FlatAppearance.BorderColor = System.Drawing.Color.Green
+        Me.cbReportSearchByDesignName.FlatAppearance.BorderSize = 3
+        Me.cbReportSearchByDesignName.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red
+        Me.cbReportSearchByDesignName.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.cbReportSearchByDesignName.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green
+        Me.cbReportSearchByDesignName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.cbReportSearchByDesignName.ForeColor = System.Drawing.Color.Black
+        Me.cbReportSearchByDesignName.Location = New System.Drawing.Point(564, 15)
+        Me.cbReportSearchByDesignName.Name = "cbReportSearchByDesignName"
+        Me.cbReportSearchByDesignName.Size = New System.Drawing.Size(167, 24)
+        Me.cbReportSearchByDesignName.TabIndex = 9
+        Me.cbReportSearchByDesignName.Text = "Enter Design Name"
+        Me.cbReportSearchByDesignName.UseVisualStyleBackColor = True
+        '
+        'cbReportSearchByCustomer
+        '
+        Me.cbReportSearchByCustomer.AutoSize = True
+        Me.cbReportSearchByCustomer.Checked = True
+        Me.cbReportSearchByCustomer.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.cbReportSearchByCustomer.FlatAppearance.BorderColor = System.Drawing.Color.Green
+        Me.cbReportSearchByCustomer.FlatAppearance.BorderSize = 3
+        Me.cbReportSearchByCustomer.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red
+        Me.cbReportSearchByCustomer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.cbReportSearchByCustomer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green
+        Me.cbReportSearchByCustomer.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.cbReportSearchByCustomer.ForeColor = System.Drawing.Color.Black
+        Me.cbReportSearchByCustomer.Location = New System.Drawing.Point(15, 15)
+        Me.cbReportSearchByCustomer.Name = "cbReportSearchByCustomer"
+        Me.cbReportSearchByCustomer.Size = New System.Drawing.Size(143, 24)
+        Me.cbReportSearchByCustomer.TabIndex = 0
+        Me.cbReportSearchByCustomer.Text = "Customer Name"
+        Me.cbReportSearchByCustomer.UseVisualStyleBackColor = True
+        '
+        'reportPlaceHolder4
+        '
+        Me.reportPlaceHolder4.Location = New System.Drawing.Point(571, 110)
+        Me.reportPlaceHolder4.Name = "reportPlaceHolder4"
+        Me.reportPlaceHolder4.Size = New System.Drawing.Size(23, 42)
+        Me.reportPlaceHolder4.TabIndex = 168
+        Me.reportPlaceHolder4.TabStop = False
+        Me.reportPlaceHolder4.Visible = False
+        '
+        'reportPlaceHolder2
+        '
+        Me.reportPlaceHolder2.Location = New System.Drawing.Point(571, 46)
+        Me.reportPlaceHolder2.Name = "reportPlaceHolder2"
+        Me.reportPlaceHolder2.Size = New System.Drawing.Size(23, 42)
+        Me.reportPlaceHolder2.TabIndex = 167
+        Me.reportPlaceHolder2.TabStop = False
+        Me.reportPlaceHolder2.Visible = False
+        '
+        'reportPlaceHolder5
+        '
+        Me.reportPlaceHolder5.Location = New System.Drawing.Point(180, 174)
+        Me.reportPlaceHolder5.Name = "reportPlaceHolder5"
+        Me.reportPlaceHolder5.Size = New System.Drawing.Size(23, 42)
+        Me.reportPlaceHolder5.TabIndex = 165
+        Me.reportPlaceHolder5.TabStop = False
+        Me.reportPlaceHolder5.Visible = False
+        '
+        'reportPlaceHolder3
+        '
+        Me.reportPlaceHolder3.Location = New System.Drawing.Point(179, 110)
+        Me.reportPlaceHolder3.Name = "reportPlaceHolder3"
+        Me.reportPlaceHolder3.Size = New System.Drawing.Size(23, 42)
+        Me.reportPlaceHolder3.TabIndex = 164
+        Me.reportPlaceHolder3.TabStop = False
+        Me.reportPlaceHolder3.Visible = False
+        '
+        'reportPlaceHolder1
+        '
+        Me.reportPlaceHolder1.Location = New System.Drawing.Point(179, 46)
+        Me.reportPlaceHolder1.Name = "reportPlaceHolder1"
+        Me.reportPlaceHolder1.Size = New System.Drawing.Size(23, 42)
+        Me.reportPlaceHolder1.TabIndex = 163
+        Me.reportPlaceHolder1.TabStop = False
+        Me.reportPlaceHolder1.Visible = False
+        '
         'groupReportDesignName
         '
         Me.groupReportDesignName.Controls.Add(Me.Label84)
         Me.groupReportDesignName.Controls.Add(Me.txtReportDesignName)
         Me.groupReportDesignName.Controls.Add(Me.lblReportDesignNameHint)
-        Me.groupReportDesignName.Location = New System.Drawing.Point(654, 195)
+        Me.groupReportDesignName.Location = New System.Drawing.Point(599, 110)
         Me.groupReportDesignName.Name = "groupReportDesignName"
         Me.groupReportDesignName.Size = New System.Drawing.Size(356, 65)
-        Me.groupReportDesignName.TabIndex = 311
+        Me.groupReportDesignName.TabIndex = 3
         Me.groupReportDesignName.TabStop = False
         '
         'Label84
@@ -872,9 +1107,9 @@ Partial Class AgniMainForm
         Me.Label84.ForeColor = System.Drawing.Color.Black
         Me.Label84.Location = New System.Drawing.Point(6, 12)
         Me.Label84.Name = "Label84"
-        Me.Label84.Size = New System.Drawing.Size(98, 18)
+        Me.Label84.Size = New System.Drawing.Size(137, 18)
         Me.Label84.TabIndex = 72
-        Me.Label84.Text = "Design Name"
+        Me.Label84.Text = "Enter Design Name"
         '
         'txtReportDesignName
         '
@@ -882,7 +1117,7 @@ Partial Class AgniMainForm
         Me.txtReportDesignName.Location = New System.Drawing.Point(9, 33)
         Me.txtReportDesignName.Name = "txtReportDesignName"
         Me.txtReportDesignName.Size = New System.Drawing.Size(338, 24)
-        Me.txtReportDesignName.TabIndex = 9
+        Me.txtReportDesignName.TabIndex = 0
         '
         'lblReportDesignNameHint
         '
@@ -895,15 +1130,15 @@ Partial Class AgniMainForm
         Me.lblReportDesignNameHint.TabIndex = 78
         Me.lblReportDesignNameHint.Text = "Please enter part of any Design Name"
         '
-        'groupReportDesignNumber
+        'groupReportDesignList
         '
-        Me.groupReportDesignNumber.Controls.Add(Me.cmbReportDesignNoList)
-        Me.groupReportDesignNumber.Controls.Add(Me.Label83)
-        Me.groupReportDesignNumber.Location = New System.Drawing.Point(654, 131)
-        Me.groupReportDesignNumber.Name = "groupReportDesignNumber"
-        Me.groupReportDesignNumber.Size = New System.Drawing.Size(356, 65)
-        Me.groupReportDesignNumber.TabIndex = 165
-        Me.groupReportDesignNumber.TabStop = False
+        Me.groupReportDesignList.Controls.Add(Me.cmbReportDesignNoList)
+        Me.groupReportDesignList.Controls.Add(Me.Label83)
+        Me.groupReportDesignList.Location = New System.Drawing.Point(208, 110)
+        Me.groupReportDesignList.Name = "groupReportDesignList"
+        Me.groupReportDesignList.Size = New System.Drawing.Size(356, 65)
+        Me.groupReportDesignList.TabIndex = 2
+        Me.groupReportDesignList.TabStop = False
         '
         'cmbReportDesignNoList
         '
@@ -914,7 +1149,7 @@ Partial Class AgniMainForm
         Me.cmbReportDesignNoList.Location = New System.Drawing.Point(6, 33)
         Me.cmbReportDesignNoList.Name = "cmbReportDesignNoList"
         Me.cmbReportDesignNoList.Size = New System.Drawing.Size(338, 26)
-        Me.cmbReportDesignNoList.TabIndex = 310
+        Me.cmbReportDesignNoList.TabIndex = 0
         Me.cmbReportDesignNoList.ValueMember = "DesignNo"
         '
         'Label83
@@ -924,19 +1159,19 @@ Partial Class AgniMainForm
         Me.Label83.ForeColor = System.Drawing.Color.Black
         Me.Label83.Location = New System.Drawing.Point(6, 12)
         Me.Label83.Name = "Label83"
-        Me.Label83.Size = New System.Drawing.Size(111, 18)
+        Me.Label83.Size = New System.Drawing.Size(143, 18)
         Me.Label83.TabIndex = 72
-        Me.Label83.Text = "Design Number"
+        Me.Label83.Text = "Select Design Name"
         '
-        'groupReportBillNumber
+        'groupReportBillNo
         '
-        Me.groupReportBillNumber.Controls.Add(Me.Label82)
-        Me.groupReportBillNumber.Controls.Add(Me.cmbReportBillNoList)
-        Me.groupReportBillNumber.Location = New System.Drawing.Point(264, 195)
-        Me.groupReportBillNumber.Name = "groupReportBillNumber"
-        Me.groupReportBillNumber.Size = New System.Drawing.Size(356, 65)
-        Me.groupReportBillNumber.TabIndex = 165
-        Me.groupReportBillNumber.TabStop = False
+        Me.groupReportBillNo.Controls.Add(Me.Label82)
+        Me.groupReportBillNo.Controls.Add(Me.cmbReportBillNoList)
+        Me.groupReportBillNo.Location = New System.Drawing.Point(599, 46)
+        Me.groupReportBillNo.Name = "groupReportBillNo"
+        Me.groupReportBillNo.Size = New System.Drawing.Size(356, 65)
+        Me.groupReportBillNo.TabIndex = 1
+        Me.groupReportBillNo.TabStop = False
         '
         'Label82
         '
@@ -959,17 +1194,17 @@ Partial Class AgniMainForm
         Me.cmbReportBillNoList.Location = New System.Drawing.Point(7, 32)
         Me.cmbReportBillNoList.Name = "cmbReportBillNoList"
         Me.cmbReportBillNoList.Size = New System.Drawing.Size(338, 26)
-        Me.cmbReportBillNoList.TabIndex = 8
+        Me.cmbReportBillNoList.TabIndex = 0
         Me.cmbReportBillNoList.ValueMember = "BillNo"
         '
         'groupReportCustomerName
         '
         Me.groupReportCustomerName.Controls.Add(Me.Label81)
         Me.groupReportCustomerName.Controls.Add(Me.cmbReportCustomerList)
-        Me.groupReportCustomerName.Location = New System.Drawing.Point(264, 131)
+        Me.groupReportCustomerName.Location = New System.Drawing.Point(209, 46)
         Me.groupReportCustomerName.Name = "groupReportCustomerName"
         Me.groupReportCustomerName.Size = New System.Drawing.Size(356, 65)
-        Me.groupReportCustomerName.TabIndex = 164
+        Me.groupReportCustomerName.TabIndex = 0
         Me.groupReportCustomerName.TabStop = False
         '
         'Label81
@@ -993,7 +1228,7 @@ Partial Class AgniMainForm
         Me.cmbReportCustomerList.Location = New System.Drawing.Point(6, 32)
         Me.cmbReportCustomerList.Name = "cmbReportCustomerList"
         Me.cmbReportCustomerList.Size = New System.Drawing.Size(338, 26)
-        Me.cmbReportCustomerList.TabIndex = 7
+        Me.cmbReportCustomerList.TabIndex = 0
         Me.cmbReportCustomerList.ValueMember = "CustNo"
         '
         'groupReportDateRange
@@ -1002,38 +1237,38 @@ Partial Class AgniMainForm
         Me.groupReportDateRange.Controls.Add(Me.dpReportToDate)
         Me.groupReportDateRange.Controls.Add(Me.lblReportFromDate)
         Me.groupReportDateRange.Controls.Add(Me.lblReportToDate)
-        Me.groupReportDateRange.Location = New System.Drawing.Point(263, 256)
+        Me.groupReportDateRange.Location = New System.Drawing.Point(209, 174)
         Me.groupReportDateRange.Name = "groupReportDateRange"
-        Me.groupReportDateRange.Size = New System.Drawing.Size(478, 52)
-        Me.groupReportDateRange.TabIndex = 163
+        Me.groupReportDateRange.Size = New System.Drawing.Size(356, 65)
+        Me.groupReportDateRange.TabIndex = 4
         Me.groupReportDateRange.TabStop = False
         '
         'dpReportFromDate
         '
         Me.dpReportFromDate.CustomFormat = "dd/MM/yyyy"
-        Me.dpReportFromDate.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dpReportFromDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!)
         Me.dpReportFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dpReportFromDate.Location = New System.Drawing.Point(58, 17)
+        Me.dpReportFromDate.Location = New System.Drawing.Point(11, 34)
         Me.dpReportFromDate.Name = "dpReportFromDate"
-        Me.dpReportFromDate.Size = New System.Drawing.Size(163, 29)
-        Me.dpReportFromDate.TabIndex = 10
+        Me.dpReportFromDate.Size = New System.Drawing.Size(156, 24)
+        Me.dpReportFromDate.TabIndex = 0
         '
         'dpReportToDate
         '
         Me.dpReportToDate.CustomFormat = "dd/MM/yyyy"
-        Me.dpReportToDate.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dpReportToDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!)
         Me.dpReportToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dpReportToDate.Location = New System.Drawing.Point(301, 17)
+        Me.dpReportToDate.Location = New System.Drawing.Point(188, 34)
         Me.dpReportToDate.Name = "dpReportToDate"
-        Me.dpReportToDate.Size = New System.Drawing.Size(163, 29)
-        Me.dpReportToDate.TabIndex = 11
+        Me.dpReportToDate.Size = New System.Drawing.Size(156, 24)
+        Me.dpReportToDate.TabIndex = 1
         '
         'lblReportFromDate
         '
         Me.lblReportFromDate.AutoSize = True
         Me.lblReportFromDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblReportFromDate.ForeColor = System.Drawing.Color.Black
-        Me.lblReportFromDate.Location = New System.Drawing.Point(8, 22)
+        Me.lblReportFromDate.Location = New System.Drawing.Point(8, 12)
         Me.lblReportFromDate.Name = "lblReportFromDate"
         Me.lblReportFromDate.Size = New System.Drawing.Size(44, 18)
         Me.lblReportFromDate.TabIndex = 69
@@ -1044,37 +1279,11 @@ Partial Class AgniMainForm
         Me.lblReportToDate.AutoSize = True
         Me.lblReportToDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!)
         Me.lblReportToDate.ForeColor = System.Drawing.Color.Black
-        Me.lblReportToDate.Location = New System.Drawing.Point(269, 22)
+        Me.lblReportToDate.Location = New System.Drawing.Point(185, 13)
         Me.lblReportToDate.Name = "lblReportToDate"
         Me.lblReportToDate.Size = New System.Drawing.Size(26, 18)
         Me.lblReportToDate.TabIndex = 71
         Me.lblReportToDate.Text = "To"
-        '
-        'groupReportMoreFilters
-        '
-        Me.groupReportMoreFilters.Controls.Add(Me.cbReportExtraDateFilter)
-        Me.groupReportMoreFilters.Location = New System.Drawing.Point(263, 89)
-        Me.groupReportMoreFilters.Name = "groupReportMoreFilters"
-        Me.groupReportMoreFilters.Size = New System.Drawing.Size(657, 42)
-        Me.groupReportMoreFilters.TabIndex = 162
-        Me.groupReportMoreFilters.TabStop = False
-        '
-        'cbReportExtraDateFilter
-        '
-        Me.cbReportExtraDateFilter.AutoSize = True
-        Me.cbReportExtraDateFilter.FlatAppearance.BorderColor = System.Drawing.Color.Green
-        Me.cbReportExtraDateFilter.FlatAppearance.BorderSize = 3
-        Me.cbReportExtraDateFilter.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red
-        Me.cbReportExtraDateFilter.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.cbReportExtraDateFilter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green
-        Me.cbReportExtraDateFilter.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.cbReportExtraDateFilter.ForeColor = System.Drawing.Color.Black
-        Me.cbReportExtraDateFilter.Location = New System.Drawing.Point(13, 14)
-        Me.cbReportExtraDateFilter.Name = "cbReportExtraDateFilter"
-        Me.cbReportExtraDateFilter.Size = New System.Drawing.Size(63, 24)
-        Me.cbReportExtraDateFilter.TabIndex = 6
-        Me.cbReportExtraDateFilter.Text = "Date"
-        Me.cbReportExtraDateFilter.UseVisualStyleBackColor = True
         '
         'GroupBox21
         '
@@ -1092,30 +1301,30 @@ Partial Class AgniMainForm
         Me.dgReportPaymentGrid.AllowUserToAddRows = False
         Me.dgReportPaymentGrid.AllowUserToDeleteRows = False
         Me.dgReportPaymentGrid.AllowUserToOrderColumns = True
-        DataGridViewCellStyle417.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.dgReportPaymentGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle417
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.dgReportPaymentGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dgReportPaymentGrid.BackgroundColor = System.Drawing.Color.Lavender
         Me.dgReportPaymentGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgReportPaymentGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical
         Me.dgReportPaymentGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
-        DataGridViewCellStyle418.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle418.BackColor = System.Drawing.Color.RoyalBlue
-        DataGridViewCellStyle418.Font = New System.Drawing.Font("Comic Sans MS", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle418.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle418.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle418.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle418.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgReportPaymentGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle418
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Comic Sans MS", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgReportPaymentGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgReportPaymentGrid.ColumnHeadersHeight = 35
-        Me.dgReportPaymentGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ReportPaymentPaymentNo, Me.ReportPaymentDisplayBillNo, Me.ReportPaymentBillNo, Me.ReportPaymentUnPaidBilledAmount, Me.ReportPaymentPaymentDate, Me.ReportPaymentPaymentMode, Me.reportPaymentActualPaidAmount, Me.ReportPaymentDiscount, Me.ReportPaymentNetBalance, Me.ReportPaymentTaxDeduction, Me.ReportPaymentFinalPaidAmount, Me.ReportPaymentChequeNo, Me.ReportPaymentBankName, Me.ReportPaymentChequeDate, Me.ReportPaymentRemarks})
-        DataGridViewCellStyle433.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle433.BackColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle433.Font = New System.Drawing.Font("Comic Sans MS", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle433.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle433.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle433.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle433.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgReportPaymentGrid.DefaultCellStyle = DataGridViewCellStyle433
+        Me.dgReportPaymentGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ReportPaymentPaymentNo, Me.ReportPaymentDisplayBillNo, Me.ReportPaymentCustName, Me.ReportPaymentBillNo, Me.ReportPaymentUnPaidBilledAmount, Me.ReportPaymentPaymentDate, Me.ReportPaymentPaymentMode, Me.reportPaymentActualPaidAmount, Me.ReportPaymentDiscount, Me.ReportPaymentTaxDeduction, Me.ReportPaymentFinalPaidAmount, Me.ReportPaymentNetBalance, Me.ReportPaymentChequeNo, Me.ReportPaymentBankName, Me.ReportPaymentChequeDate, Me.ReportPaymentRemarks})
+        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle17.BackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle17.Font = New System.Drawing.Font("Comic Sans MS", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle17.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgReportPaymentGrid.DefaultCellStyle = DataGridViewCellStyle17
         Me.dgReportPaymentGrid.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgReportPaymentGrid.EnableHeadersVisualStyles = False
         Me.dgReportPaymentGrid.GridColor = System.Drawing.Color.Maroon
@@ -1124,16 +1333,17 @@ Partial Class AgniMainForm
         Me.dgReportPaymentGrid.Name = "dgReportPaymentGrid"
         Me.dgReportPaymentGrid.ReadOnly = True
         Me.dgReportPaymentGrid.RowHeadersVisible = False
-        DataGridViewCellStyle434.BackColor = System.Drawing.Color.Lavender
-        DataGridViewCellStyle434.Font = New System.Drawing.Font("Comic Sans MS", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle434.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgReportPaymentGrid.RowsDefaultCellStyle = DataGridViewCellStyle434
+        DataGridViewCellStyle18.BackColor = System.Drawing.Color.Lavender
+        DataGridViewCellStyle18.Font = New System.Drawing.Font("Comic Sans MS", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgReportPaymentGrid.RowsDefaultCellStyle = DataGridViewCellStyle18
         Me.dgReportPaymentGrid.RowTemplate.Height = 25
         Me.dgReportPaymentGrid.RowTemplate.ReadOnly = True
         Me.dgReportPaymentGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgReportPaymentGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgReportPaymentGrid.Size = New System.Drawing.Size(933, 251)
-        Me.dgReportPaymentGrid.TabIndex = 2
+        Me.dgReportPaymentGrid.TabIndex = 0
         '
         'ReportPaymentPaymentNo
         '
@@ -1147,21 +1357,30 @@ Partial Class AgniMainForm
         'ReportPaymentDisplayBillNo
         '
         Me.ReportPaymentDisplayBillNo.DataPropertyName = "DisplayBillNo"
-        DataGridViewCellStyle419.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle419.Format = "0.00"
-        Me.ReportPaymentDisplayBillNo.DefaultCellStyle = DataGridViewCellStyle419
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.Format = "0.00"
+        Me.ReportPaymentDisplayBillNo.DefaultCellStyle = DataGridViewCellStyle3
         Me.ReportPaymentDisplayBillNo.Frozen = True
         Me.ReportPaymentDisplayBillNo.HeaderText = "Bill No"
         Me.ReportPaymentDisplayBillNo.Name = "ReportPaymentDisplayBillNo"
         Me.ReportPaymentDisplayBillNo.ReadOnly = True
         Me.ReportPaymentDisplayBillNo.Width = 90
         '
+        'ReportPaymentCustName
+        '
+        Me.ReportPaymentCustName.DataPropertyName = "CompName"
+        Me.ReportPaymentCustName.Frozen = True
+        Me.ReportPaymentCustName.HeaderText = "Customer Name"
+        Me.ReportPaymentCustName.Name = "ReportPaymentCustName"
+        Me.ReportPaymentCustName.ReadOnly = True
+        Me.ReportPaymentCustName.Width = 200
+        '
         'ReportPaymentBillNo
         '
         Me.ReportPaymentBillNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.ReportPaymentBillNo.DataPropertyName = "BillNO"
-        DataGridViewCellStyle420.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.ReportPaymentBillNo.DefaultCellStyle = DataGridViewCellStyle420
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.ReportPaymentBillNo.DefaultCellStyle = DataGridViewCellStyle4
         Me.ReportPaymentBillNo.HeaderText = "Internal Bill No"
         Me.ReportPaymentBillNo.Name = "ReportPaymentBillNo"
         Me.ReportPaymentBillNo.ReadOnly = True
@@ -1170,8 +1389,8 @@ Partial Class AgniMainForm
         'ReportPaymentUnPaidBilledAmount
         '
         Me.ReportPaymentUnPaidBilledAmount.DataPropertyName = "UnPaidBilledAmount"
-        DataGridViewCellStyle421.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.ReportPaymentUnPaidBilledAmount.DefaultCellStyle = DataGridViewCellStyle421
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.ReportPaymentUnPaidBilledAmount.DefaultCellStyle = DataGridViewCellStyle5
         Me.ReportPaymentUnPaidBilledAmount.HeaderText = "Balance"
         Me.ReportPaymentUnPaidBilledAmount.Name = "ReportPaymentUnPaidBilledAmount"
         Me.ReportPaymentUnPaidBilledAmount.ReadOnly = True
@@ -1179,9 +1398,9 @@ Partial Class AgniMainForm
         'ReportPaymentPaymentDate
         '
         Me.ReportPaymentPaymentDate.DataPropertyName = "PaymentDate"
-        DataGridViewCellStyle422.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle422.Format = "dd\/MM\/yyyy"
-        Me.ReportPaymentPaymentDate.DefaultCellStyle = DataGridViewCellStyle422
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.Format = "dd\/MM\/yyyy"
+        Me.ReportPaymentPaymentDate.DefaultCellStyle = DataGridViewCellStyle6
         Me.ReportPaymentPaymentDate.HeaderText = "Date"
         Me.ReportPaymentPaymentDate.Name = "ReportPaymentPaymentDate"
         Me.ReportPaymentPaymentDate.ReadOnly = True
@@ -1189,9 +1408,9 @@ Partial Class AgniMainForm
         'ReportPaymentPaymentMode
         '
         Me.ReportPaymentPaymentMode.DataPropertyName = "PaymentMode"
-        DataGridViewCellStyle423.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle423.Format = "0.00"
-        Me.ReportPaymentPaymentMode.DefaultCellStyle = DataGridViewCellStyle423
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle7.Format = "0.00"
+        Me.ReportPaymentPaymentMode.DefaultCellStyle = DataGridViewCellStyle7
         Me.ReportPaymentPaymentMode.HeaderText = "Mode"
         Me.ReportPaymentPaymentMode.Name = "ReportPaymentPaymentMode"
         Me.ReportPaymentPaymentMode.ReadOnly = True
@@ -1199,9 +1418,9 @@ Partial Class AgniMainForm
         'reportPaymentActualPaidAmount
         '
         Me.reportPaymentActualPaidAmount.DataPropertyName = "ActualPaidAmount"
-        DataGridViewCellStyle424.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle424.Format = "0.00"
-        Me.reportPaymentActualPaidAmount.DefaultCellStyle = DataGridViewCellStyle424
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle8.Format = "0.00"
+        Me.reportPaymentActualPaidAmount.DefaultCellStyle = DataGridViewCellStyle8
         Me.reportPaymentActualPaidAmount.HeaderText = "Actual Paid"
         Me.reportPaymentActualPaidAmount.Name = "reportPaymentActualPaidAmount"
         Me.reportPaymentActualPaidAmount.ReadOnly = True
@@ -1210,30 +1429,19 @@ Partial Class AgniMainForm
         'ReportPaymentDiscount
         '
         Me.ReportPaymentDiscount.DataPropertyName = "Discount"
-        DataGridViewCellStyle425.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle425.Format = "0.00"
-        Me.ReportPaymentDiscount.DefaultCellStyle = DataGridViewCellStyle425
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle9.Format = "0.00"
+        Me.ReportPaymentDiscount.DefaultCellStyle = DataGridViewCellStyle9
         Me.ReportPaymentDiscount.HeaderText = "Discount"
         Me.ReportPaymentDiscount.Name = "ReportPaymentDiscount"
         Me.ReportPaymentDiscount.ReadOnly = True
         '
-        'ReportPaymentNetBalance
-        '
-        Me.ReportPaymentNetBalance.DataPropertyName = "NetBalance"
-        DataGridViewCellStyle426.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle426.Format = "0.00"
-        Me.ReportPaymentNetBalance.DefaultCellStyle = DataGridViewCellStyle426
-        Me.ReportPaymentNetBalance.HeaderText = "Net Balance"
-        Me.ReportPaymentNetBalance.Name = "ReportPaymentNetBalance"
-        Me.ReportPaymentNetBalance.ReadOnly = True
-        Me.ReportPaymentNetBalance.Width = 110
-        '
         'ReportPaymentTaxDeduction
         '
         Me.ReportPaymentTaxDeduction.DataPropertyName = "TaxDeduction"
-        DataGridViewCellStyle427.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle427.Format = "0.00"
-        Me.ReportPaymentTaxDeduction.DefaultCellStyle = DataGridViewCellStyle427
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle10.Format = "0.00"
+        Me.ReportPaymentTaxDeduction.DefaultCellStyle = DataGridViewCellStyle10
         Me.ReportPaymentTaxDeduction.HeaderText = "Tax Deduction"
         Me.ReportPaymentTaxDeduction.Name = "ReportPaymentTaxDeduction"
         Me.ReportPaymentTaxDeduction.ReadOnly = True
@@ -1242,20 +1450,31 @@ Partial Class AgniMainForm
         'ReportPaymentFinalPaidAmount
         '
         Me.ReportPaymentFinalPaidAmount.DataPropertyName = "FinalPaidAmount"
-        DataGridViewCellStyle428.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle428.Format = "0.00"
-        Me.ReportPaymentFinalPaidAmount.DefaultCellStyle = DataGridViewCellStyle428
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle11.Format = "0.00"
+        Me.ReportPaymentFinalPaidAmount.DefaultCellStyle = DataGridViewCellStyle11
         Me.ReportPaymentFinalPaidAmount.HeaderText = "Final Paid"
         Me.ReportPaymentFinalPaidAmount.Name = "ReportPaymentFinalPaidAmount"
         Me.ReportPaymentFinalPaidAmount.ReadOnly = True
         Me.ReportPaymentFinalPaidAmount.Width = 120
         '
+        'ReportPaymentNetBalance
+        '
+        Me.ReportPaymentNetBalance.DataPropertyName = "NetBalance"
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle12.Format = "0.00"
+        Me.ReportPaymentNetBalance.DefaultCellStyle = DataGridViewCellStyle12
+        Me.ReportPaymentNetBalance.HeaderText = "Net Balance"
+        Me.ReportPaymentNetBalance.Name = "ReportPaymentNetBalance"
+        Me.ReportPaymentNetBalance.ReadOnly = True
+        Me.ReportPaymentNetBalance.Width = 110
+        '
         'ReportPaymentChequeNo
         '
         Me.ReportPaymentChequeNo.DataPropertyName = "ChequeNo"
-        DataGridViewCellStyle429.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle429.Format = "0.00"
-        Me.ReportPaymentChequeNo.DefaultCellStyle = DataGridViewCellStyle429
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle13.Format = "0.00"
+        Me.ReportPaymentChequeNo.DefaultCellStyle = DataGridViewCellStyle13
         Me.ReportPaymentChequeNo.HeaderText = "Cheque No"
         Me.ReportPaymentChequeNo.Name = "ReportPaymentChequeNo"
         Me.ReportPaymentChequeNo.ReadOnly = True
@@ -1264,9 +1483,9 @@ Partial Class AgniMainForm
         'ReportPaymentBankName
         '
         Me.ReportPaymentBankName.DataPropertyName = "BankName"
-        DataGridViewCellStyle430.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle430.Format = "0.00"
-        Me.ReportPaymentBankName.DefaultCellStyle = DataGridViewCellStyle430
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle14.Format = "0.00"
+        Me.ReportPaymentBankName.DefaultCellStyle = DataGridViewCellStyle14
         Me.ReportPaymentBankName.HeaderText = "Bank Name"
         Me.ReportPaymentBankName.Name = "ReportPaymentBankName"
         Me.ReportPaymentBankName.ReadOnly = True
@@ -1275,9 +1494,9 @@ Partial Class AgniMainForm
         'ReportPaymentChequeDate
         '
         Me.ReportPaymentChequeDate.DataPropertyName = "ChequeDate"
-        DataGridViewCellStyle431.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle431.Format = "dd\/MM\/yyyy"
-        Me.ReportPaymentChequeDate.DefaultCellStyle = DataGridViewCellStyle431
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle15.Format = "dd\/MM\/yyyy"
+        Me.ReportPaymentChequeDate.DefaultCellStyle = DataGridViewCellStyle15
         Me.ReportPaymentChequeDate.HeaderText = "Cheque Date"
         Me.ReportPaymentChequeDate.Name = "ReportPaymentChequeDate"
         Me.ReportPaymentChequeDate.ReadOnly = True
@@ -1286,9 +1505,9 @@ Partial Class AgniMainForm
         'ReportPaymentRemarks
         '
         Me.ReportPaymentRemarks.DataPropertyName = "Remarks"
-        DataGridViewCellStyle432.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle432.Format = "0.00"
-        Me.ReportPaymentRemarks.DefaultCellStyle = DataGridViewCellStyle432
+        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle16.Format = "0.00"
+        Me.ReportPaymentRemarks.DefaultCellStyle = DataGridViewCellStyle16
         Me.ReportPaymentRemarks.HeaderText = "Remarks"
         Me.ReportPaymentRemarks.Name = "ReportPaymentRemarks"
         Me.ReportPaymentRemarks.ReadOnly = True
@@ -1297,7 +1516,7 @@ Partial Class AgniMainForm
         '
         Me.GroupBox20.Controls.Add(Me.dgReportBillGrid)
         Me.GroupBox20.Font = New System.Drawing.Font("Comic Sans MS", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox20.Location = New System.Drawing.Point(26, 639)
+        Me.GroupBox20.Location = New System.Drawing.Point(26, 613)
         Me.GroupBox20.Name = "GroupBox20"
         Me.GroupBox20.Size = New System.Drawing.Size(873, 280)
         Me.GroupBox20.TabIndex = 306
@@ -1308,30 +1527,30 @@ Partial Class AgniMainForm
         '
         Me.dgReportBillGrid.AllowUserToAddRows = False
         Me.dgReportBillGrid.AllowUserToDeleteRows = False
-        DataGridViewCellStyle435.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.dgReportBillGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle435
+        DataGridViewCellStyle19.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.dgReportBillGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle19
         Me.dgReportBillGrid.BackgroundColor = System.Drawing.Color.Lavender
         Me.dgReportBillGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgReportBillGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical
         Me.dgReportBillGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
-        DataGridViewCellStyle436.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle436.BackColor = System.Drawing.Color.RoyalBlue
-        DataGridViewCellStyle436.Font = New System.Drawing.Font("Comic Sans MS", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle436.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle436.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle436.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle436.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgReportBillGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle436
+        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle20.BackColor = System.Drawing.Color.RoyalBlue
+        DataGridViewCellStyle20.Font = New System.Drawing.Font("Comic Sans MS", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle20.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgReportBillGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle20
         Me.dgReportBillGrid.ColumnHeadersHeight = 50
-        Me.dgReportBillGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ReportBillDisplayBillNO, Me.ReportBillBillNo, Me.ReportBillBillDate, Me.ReportBillUnPaidAmountTillNow, Me.ReportBillDesignCost, Me.ReportBillCGST, Me.ReportBillSGST, Me.ReportBillIGST, Me.ReportBillCGSTAmount, Me.ReportBillSGSTAmount, Me.ReportBillIGSTAmount, Me.ReportBillGSTAmount, Me.ReportBillDesignAmountGST, Me.ReportBillTotalAmount, Me.ReportBillPaidAmount, Me.ReportBillRemainingBalance, Me.ReportBillCancelled})
-        DataGridViewCellStyle453.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle453.BackColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle453.Font = New System.Drawing.Font("Comic Sans MS", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle453.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle453.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle453.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle453.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgReportBillGrid.DefaultCellStyle = DataGridViewCellStyle453
+        Me.dgReportBillGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ReportBillDisplayBillNO, Me.ReportBillCustName, Me.ReportBillBillNo, Me.ReportBillBillDate, Me.ReportBillUnPaidAmountTillNow, Me.ReportBillDesignCost, Me.ReportBillCGST, Me.ReportBillSGST, Me.ReportBillIGST, Me.ReportBillCGSTAmount, Me.ReportBillSGSTAmount, Me.ReportBillIGSTAmount, Me.ReportBillGSTAmount, Me.ReportBillDesignAmountGST, Me.ReportBillTotalAmount, Me.ReportBillPaidAmount, Me.ReportBillRemainingBalance, Me.ReportBillCancelled})
+        DataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle37.BackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle37.Font = New System.Drawing.Font("Comic Sans MS", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle37.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle37.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgReportBillGrid.DefaultCellStyle = DataGridViewCellStyle37
         Me.dgReportBillGrid.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgReportBillGrid.EnableHeadersVisualStyles = False
         Me.dgReportBillGrid.GridColor = System.Drawing.Color.Maroon
@@ -1340,34 +1559,44 @@ Partial Class AgniMainForm
         Me.dgReportBillGrid.Name = "dgReportBillGrid"
         Me.dgReportBillGrid.ReadOnly = True
         Me.dgReportBillGrid.RowHeadersVisible = False
-        DataGridViewCellStyle454.BackColor = System.Drawing.Color.Lavender
-        DataGridViewCellStyle454.Font = New System.Drawing.Font("Comic Sans MS", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle454.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgReportBillGrid.RowsDefaultCellStyle = DataGridViewCellStyle454
+        DataGridViewCellStyle38.BackColor = System.Drawing.Color.Lavender
+        DataGridViewCellStyle38.Font = New System.Drawing.Font("Comic Sans MS", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle38.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgReportBillGrid.RowsDefaultCellStyle = DataGridViewCellStyle38
         Me.dgReportBillGrid.RowTemplate.Height = 25
         Me.dgReportBillGrid.RowTemplate.ReadOnly = True
         Me.dgReportBillGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgReportBillGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgReportBillGrid.Size = New System.Drawing.Size(867, 251)
-        Me.dgReportBillGrid.TabIndex = 2
+        Me.dgReportBillGrid.TabIndex = 0
         '
         'ReportBillDisplayBillNO
         '
         Me.ReportBillDisplayBillNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.ReportBillDisplayBillNO.DataPropertyName = "DisplayBillNO"
-        DataGridViewCellStyle437.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.ReportBillDisplayBillNO.DefaultCellStyle = DataGridViewCellStyle437
+        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.ReportBillDisplayBillNO.DefaultCellStyle = DataGridViewCellStyle21
         Me.ReportBillDisplayBillNO.Frozen = True
         Me.ReportBillDisplayBillNO.HeaderText = "Bill No"
         Me.ReportBillDisplayBillNO.Name = "ReportBillDisplayBillNO"
         Me.ReportBillDisplayBillNO.ReadOnly = True
         Me.ReportBillDisplayBillNO.Width = 85
         '
+        'ReportBillCustName
+        '
+        Me.ReportBillCustName.DataPropertyName = "CompName"
+        Me.ReportBillCustName.Frozen = True
+        Me.ReportBillCustName.HeaderText = "Customer Name"
+        Me.ReportBillCustName.Name = "ReportBillCustName"
+        Me.ReportBillCustName.ReadOnly = True
+        Me.ReportBillCustName.Width = 200
+        '
         'ReportBillBillNo
         '
         Me.ReportBillBillNo.DataPropertyName = "BillNo"
-        DataGridViewCellStyle438.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.ReportBillBillNo.DefaultCellStyle = DataGridViewCellStyle438
+        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.ReportBillBillNo.DefaultCellStyle = DataGridViewCellStyle22
         Me.ReportBillBillNo.HeaderText = "Internal No"
         Me.ReportBillBillNo.Name = "ReportBillBillNo"
         Me.ReportBillBillNo.ReadOnly = True
@@ -1376,9 +1605,9 @@ Partial Class AgniMainForm
         'ReportBillBillDate
         '
         Me.ReportBillBillDate.DataPropertyName = "BillDate"
-        DataGridViewCellStyle439.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle439.Format = "dd\/MM\/yyyy"
-        Me.ReportBillBillDate.DefaultCellStyle = DataGridViewCellStyle439
+        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle23.Format = "dd\/MM\/yyyy"
+        Me.ReportBillBillDate.DefaultCellStyle = DataGridViewCellStyle23
         Me.ReportBillBillDate.HeaderText = "Bill Date"
         Me.ReportBillBillDate.Name = "ReportBillBillDate"
         Me.ReportBillBillDate.ReadOnly = True
@@ -1387,9 +1616,9 @@ Partial Class AgniMainForm
         'ReportBillUnPaidAmountTillNow
         '
         Me.ReportBillUnPaidAmountTillNow.DataPropertyName = "UnPaidAmountTillNow"
-        DataGridViewCellStyle440.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle440.Format = "0.00"
-        Me.ReportBillUnPaidAmountTillNow.DefaultCellStyle = DataGridViewCellStyle440
+        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle24.Format = "0.00"
+        Me.ReportBillUnPaidAmountTillNow.DefaultCellStyle = DataGridViewCellStyle24
         Me.ReportBillUnPaidAmountTillNow.HeaderText = "Prev Balance"
         Me.ReportBillUnPaidAmountTillNow.Name = "ReportBillUnPaidAmountTillNow"
         Me.ReportBillUnPaidAmountTillNow.ReadOnly = True
@@ -1398,9 +1627,9 @@ Partial Class AgniMainForm
         'ReportBillDesignCost
         '
         Me.ReportBillDesignCost.DataPropertyName = "DesignCost"
-        DataGridViewCellStyle441.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle441.Format = "0.00"
-        Me.ReportBillDesignCost.DefaultCellStyle = DataGridViewCellStyle441
+        DataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle25.Format = "0.00"
+        Me.ReportBillDesignCost.DefaultCellStyle = DataGridViewCellStyle25
         Me.ReportBillDesignCost.HeaderText = "Design Amount"
         Me.ReportBillDesignCost.Name = "ReportBillDesignCost"
         Me.ReportBillDesignCost.ReadOnly = True
@@ -1409,9 +1638,9 @@ Partial Class AgniMainForm
         'ReportBillCGST
         '
         Me.ReportBillCGST.DataPropertyName = "CGST"
-        DataGridViewCellStyle442.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle442.Format = "0.00"
-        Me.ReportBillCGST.DefaultCellStyle = DataGridViewCellStyle442
+        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle26.Format = "0.00"
+        Me.ReportBillCGST.DefaultCellStyle = DataGridViewCellStyle26
         Me.ReportBillCGST.HeaderText = "CGST%"
         Me.ReportBillCGST.Name = "ReportBillCGST"
         Me.ReportBillCGST.ReadOnly = True
@@ -1420,9 +1649,9 @@ Partial Class AgniMainForm
         'ReportBillSGST
         '
         Me.ReportBillSGST.DataPropertyName = "SGST"
-        DataGridViewCellStyle443.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle443.Format = "0.00"
-        Me.ReportBillSGST.DefaultCellStyle = DataGridViewCellStyle443
+        DataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle27.Format = "0.00"
+        Me.ReportBillSGST.DefaultCellStyle = DataGridViewCellStyle27
         Me.ReportBillSGST.HeaderText = "SGST%"
         Me.ReportBillSGST.Name = "ReportBillSGST"
         Me.ReportBillSGST.ReadOnly = True
@@ -1431,9 +1660,9 @@ Partial Class AgniMainForm
         'ReportBillIGST
         '
         Me.ReportBillIGST.DataPropertyName = "IGST"
-        DataGridViewCellStyle444.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle444.Format = "0.00"
-        Me.ReportBillIGST.DefaultCellStyle = DataGridViewCellStyle444
+        DataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle28.Format = "0.00"
+        Me.ReportBillIGST.DefaultCellStyle = DataGridViewCellStyle28
         Me.ReportBillIGST.HeaderText = "IGST%"
         Me.ReportBillIGST.Name = "ReportBillIGST"
         Me.ReportBillIGST.ReadOnly = True
@@ -1442,9 +1671,9 @@ Partial Class AgniMainForm
         'ReportBillCGSTAmount
         '
         Me.ReportBillCGSTAmount.DataPropertyName = "CGSTAmount"
-        DataGridViewCellStyle445.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle445.Format = "0.00"
-        Me.ReportBillCGSTAmount.DefaultCellStyle = DataGridViewCellStyle445
+        DataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle29.Format = "0.00"
+        Me.ReportBillCGSTAmount.DefaultCellStyle = DataGridViewCellStyle29
         Me.ReportBillCGSTAmount.HeaderText = "CGSTAmount"
         Me.ReportBillCGSTAmount.Name = "ReportBillCGSTAmount"
         Me.ReportBillCGSTAmount.ReadOnly = True
@@ -1453,9 +1682,9 @@ Partial Class AgniMainForm
         'ReportBillSGSTAmount
         '
         Me.ReportBillSGSTAmount.DataPropertyName = "SGSTAmount"
-        DataGridViewCellStyle446.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle446.Format = "0.00"
-        Me.ReportBillSGSTAmount.DefaultCellStyle = DataGridViewCellStyle446
+        DataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle30.Format = "0.00"
+        Me.ReportBillSGSTAmount.DefaultCellStyle = DataGridViewCellStyle30
         Me.ReportBillSGSTAmount.HeaderText = "SGST Amount"
         Me.ReportBillSGSTAmount.Name = "ReportBillSGSTAmount"
         Me.ReportBillSGSTAmount.ReadOnly = True
@@ -1464,9 +1693,9 @@ Partial Class AgniMainForm
         'ReportBillIGSTAmount
         '
         Me.ReportBillIGSTAmount.DataPropertyName = "IGSTAmount"
-        DataGridViewCellStyle447.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle447.Format = "0.00"
-        Me.ReportBillIGSTAmount.DefaultCellStyle = DataGridViewCellStyle447
+        DataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle31.Format = "0.00"
+        Me.ReportBillIGSTAmount.DefaultCellStyle = DataGridViewCellStyle31
         Me.ReportBillIGSTAmount.HeaderText = "IGSTAmount"
         Me.ReportBillIGSTAmount.Name = "ReportBillIGSTAmount"
         Me.ReportBillIGSTAmount.ReadOnly = True
@@ -1475,9 +1704,9 @@ Partial Class AgniMainForm
         'ReportBillGSTAmount
         '
         Me.ReportBillGSTAmount.DataPropertyName = "GSTAmount"
-        DataGridViewCellStyle448.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle448.Format = "0.00"
-        Me.ReportBillGSTAmount.DefaultCellStyle = DataGridViewCellStyle448
+        DataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle32.Format = "0.00"
+        Me.ReportBillGSTAmount.DefaultCellStyle = DataGridViewCellStyle32
         Me.ReportBillGSTAmount.HeaderText = "Total GST Amount"
         Me.ReportBillGSTAmount.Name = "ReportBillGSTAmount"
         Me.ReportBillGSTAmount.ReadOnly = True
@@ -1486,9 +1715,9 @@ Partial Class AgniMainForm
         'ReportBillDesignAmountGST
         '
         Me.ReportBillDesignAmountGST.DataPropertyName = "DesignAmountGST"
-        DataGridViewCellStyle449.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle449.Format = "0.00"
-        Me.ReportBillDesignAmountGST.DefaultCellStyle = DataGridViewCellStyle449
+        DataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle33.Format = "0.00"
+        Me.ReportBillDesignAmountGST.DefaultCellStyle = DataGridViewCellStyle33
         Me.ReportBillDesignAmountGST.HeaderText = "Design Amount GST"
         Me.ReportBillDesignAmountGST.Name = "ReportBillDesignAmountGST"
         Me.ReportBillDesignAmountGST.ReadOnly = True
@@ -1497,9 +1726,9 @@ Partial Class AgniMainForm
         'ReportBillTotalAmount
         '
         Me.ReportBillTotalAmount.DataPropertyName = "TotalAmount"
-        DataGridViewCellStyle450.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle450.Format = "0.00"
-        Me.ReportBillTotalAmount.DefaultCellStyle = DataGridViewCellStyle450
+        DataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle34.Format = "0.00"
+        Me.ReportBillTotalAmount.DefaultCellStyle = DataGridViewCellStyle34
         Me.ReportBillTotalAmount.HeaderText = "Total Amount"
         Me.ReportBillTotalAmount.Name = "ReportBillTotalAmount"
         Me.ReportBillTotalAmount.ReadOnly = True
@@ -1509,9 +1738,9 @@ Partial Class AgniMainForm
         'ReportBillPaidAmount
         '
         Me.ReportBillPaidAmount.DataPropertyName = "PaidAmount"
-        DataGridViewCellStyle451.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle451.Format = "0.00"
-        Me.ReportBillPaidAmount.DefaultCellStyle = DataGridViewCellStyle451
+        DataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle35.Format = "0.00"
+        Me.ReportBillPaidAmount.DefaultCellStyle = DataGridViewCellStyle35
         Me.ReportBillPaidAmount.HeaderText = "Paid Amount"
         Me.ReportBillPaidAmount.Name = "ReportBillPaidAmount"
         Me.ReportBillPaidAmount.ReadOnly = True
@@ -1520,9 +1749,9 @@ Partial Class AgniMainForm
         'ReportBillRemainingBalance
         '
         Me.ReportBillRemainingBalance.DataPropertyName = "RemainingBalance"
-        DataGridViewCellStyle452.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle452.Format = "0.00"
-        Me.ReportBillRemainingBalance.DefaultCellStyle = DataGridViewCellStyle452
+        DataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle36.Format = "0.00"
+        Me.ReportBillRemainingBalance.DefaultCellStyle = DataGridViewCellStyle36
         Me.ReportBillRemainingBalance.HeaderText = "Remaining Balance"
         Me.ReportBillRemainingBalance.Name = "ReportBillRemainingBalance"
         Me.ReportBillRemainingBalance.ReadOnly = True
@@ -1539,9 +1768,9 @@ Partial Class AgniMainForm
         '
         Me.GroupBox4.Controls.Add(Me.dgReportDesignGrid)
         Me.GroupBox4.Font = New System.Drawing.Font("Comic Sans MS", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox4.Location = New System.Drawing.Point(23, 314)
+        Me.GroupBox4.Location = New System.Drawing.Point(23, 238)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(1103, 233)
+        Me.GroupBox4.Size = New System.Drawing.Size(1103, 309)
         Me.GroupBox4.TabIndex = 164
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Design Details"
@@ -1550,30 +1779,30 @@ Partial Class AgniMainForm
         '
         Me.dgReportDesignGrid.AllowUserToAddRows = False
         Me.dgReportDesignGrid.AllowUserToDeleteRows = False
-        DataGridViewCellStyle455.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.dgReportDesignGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle455
+        DataGridViewCellStyle39.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.dgReportDesignGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle39
         Me.dgReportDesignGrid.BackgroundColor = System.Drawing.Color.Lavender
         Me.dgReportDesignGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgReportDesignGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical
         Me.dgReportDesignGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
-        DataGridViewCellStyle456.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle456.BackColor = System.Drawing.Color.RoyalBlue
-        DataGridViewCellStyle456.Font = New System.Drawing.Font("Comic Sans MS", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle456.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle456.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle456.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle456.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgReportDesignGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle456
+        DataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle40.BackColor = System.Drawing.Color.RoyalBlue
+        DataGridViewCellStyle40.Font = New System.Drawing.Font("Comic Sans MS", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle40.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle40.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle40.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgReportDesignGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle40
         Me.dgReportDesignGrid.ColumnHeadersHeight = 35
-        Me.dgReportDesignGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ReportDesignNo, Me.ReportDesignName, Me.ReportDesignImage, Me.ReportUnitType, Me.ReportUnitCost, Me.ReportWidth, Me.ReportHeight, Me.ReportColors, Me.ReportPrice, Me.ReportDesignDate, Me.ReportBilled, Me.ReportBillNo, Me.ReportCustNo})
-        DataGridViewCellStyle467.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle467.BackColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle467.Font = New System.Drawing.Font("Comic Sans MS", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle467.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle467.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle467.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle467.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgReportDesignGrid.DefaultCellStyle = DataGridViewCellStyle467
+        Me.dgReportDesignGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ReportDesignNo, Me.custName, Me.ReportDesignName, Me.ReportDesignImage, Me.ReportUnitType, Me.ReportUnitCost, Me.ReportWidth, Me.ReportHeight, Me.ReportColors, Me.ReportPrice, Me.ReportDesignDate, Me.ReportBilled, Me.ReportBillNo, Me.ReportCustNo})
+        DataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle51.BackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle51.Font = New System.Drawing.Font("Comic Sans MS", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle51.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle51.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle51.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle51.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgReportDesignGrid.DefaultCellStyle = DataGridViewCellStyle51
         Me.dgReportDesignGrid.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgReportDesignGrid.EnableHeadersVisualStyles = False
         Me.dgReportDesignGrid.GridColor = System.Drawing.Color.Maroon
@@ -1582,35 +1811,44 @@ Partial Class AgniMainForm
         Me.dgReportDesignGrid.Name = "dgReportDesignGrid"
         Me.dgReportDesignGrid.ReadOnly = True
         Me.dgReportDesignGrid.RowHeadersVisible = False
-        DataGridViewCellStyle468.BackColor = System.Drawing.Color.Lavender
-        DataGridViewCellStyle468.Font = New System.Drawing.Font("Comic Sans MS", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle468.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle468.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgReportDesignGrid.RowsDefaultCellStyle = DataGridViewCellStyle468
+        DataGridViewCellStyle52.BackColor = System.Drawing.Color.Lavender
+        DataGridViewCellStyle52.Font = New System.Drawing.Font("Comic Sans MS", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle52.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle52.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgReportDesignGrid.RowsDefaultCellStyle = DataGridViewCellStyle52
         Me.dgReportDesignGrid.RowTemplate.Height = 25
         Me.dgReportDesignGrid.RowTemplate.ReadOnly = True
         Me.dgReportDesignGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgReportDesignGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgReportDesignGrid.Size = New System.Drawing.Size(1097, 204)
-        Me.dgReportDesignGrid.TabIndex = 2
+        Me.dgReportDesignGrid.Size = New System.Drawing.Size(1097, 280)
+        Me.dgReportDesignGrid.TabIndex = 0
         '
         'ReportDesignNo
         '
         Me.ReportDesignNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.ReportDesignNo.DataPropertyName = "DesignNo"
-        DataGridViewCellStyle457.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.ReportDesignNo.DefaultCellStyle = DataGridViewCellStyle457
+        DataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.ReportDesignNo.DefaultCellStyle = DataGridViewCellStyle41
         Me.ReportDesignNo.Frozen = True
         Me.ReportDesignNo.HeaderText = "Design No"
         Me.ReportDesignNo.Name = "ReportDesignNo"
         Me.ReportDesignNo.ReadOnly = True
         Me.ReportDesignNo.Width = 113
         '
+        'custName
+        '
+        Me.custName.DataPropertyName = "CompName"
+        Me.custName.Frozen = True
+        Me.custName.HeaderText = "Customer Name"
+        Me.custName.Name = "custName"
+        Me.custName.ReadOnly = True
+        Me.custName.Width = 200
+        '
         'ReportDesignName
         '
         Me.ReportDesignName.DataPropertyName = "DesignName"
-        DataGridViewCellStyle458.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.ReportDesignName.DefaultCellStyle = DataGridViewCellStyle458
+        DataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.ReportDesignName.DefaultCellStyle = DataGridViewCellStyle42
         Me.ReportDesignName.HeaderText = "Design Name"
         Me.ReportDesignName.Name = "ReportDesignName"
         Me.ReportDesignName.ReadOnly = True
@@ -1628,8 +1866,8 @@ Partial Class AgniMainForm
         'ReportUnitType
         '
         Me.ReportUnitType.DataPropertyName = "Type"
-        DataGridViewCellStyle459.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.ReportUnitType.DefaultCellStyle = DataGridViewCellStyle459
+        DataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.ReportUnitType.DefaultCellStyle = DataGridViewCellStyle43
         Me.ReportUnitType.HeaderText = "Unit Type"
         Me.ReportUnitType.Name = "ReportUnitType"
         Me.ReportUnitType.ReadOnly = True
@@ -1637,8 +1875,8 @@ Partial Class AgniMainForm
         'ReportUnitCost
         '
         Me.ReportUnitCost.DataPropertyName = "UnitCost"
-        DataGridViewCellStyle460.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.ReportUnitCost.DefaultCellStyle = DataGridViewCellStyle460
+        DataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.ReportUnitCost.DefaultCellStyle = DataGridViewCellStyle44
         Me.ReportUnitCost.HeaderText = "Cost/Unit"
         Me.ReportUnitCost.Name = "ReportUnitCost"
         Me.ReportUnitCost.ReadOnly = True
@@ -1646,8 +1884,8 @@ Partial Class AgniMainForm
         'ReportWidth
         '
         Me.ReportWidth.DataPropertyName = "Width"
-        DataGridViewCellStyle461.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.ReportWidth.DefaultCellStyle = DataGridViewCellStyle461
+        DataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.ReportWidth.DefaultCellStyle = DataGridViewCellStyle45
         Me.ReportWidth.HeaderText = "Width"
         Me.ReportWidth.Name = "ReportWidth"
         Me.ReportWidth.ReadOnly = True
@@ -1656,8 +1894,8 @@ Partial Class AgniMainForm
         'ReportHeight
         '
         Me.ReportHeight.DataPropertyName = "Height"
-        DataGridViewCellStyle462.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.ReportHeight.DefaultCellStyle = DataGridViewCellStyle462
+        DataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.ReportHeight.DefaultCellStyle = DataGridViewCellStyle46
         Me.ReportHeight.HeaderText = "Height"
         Me.ReportHeight.Name = "ReportHeight"
         Me.ReportHeight.ReadOnly = True
@@ -1666,8 +1904,8 @@ Partial Class AgniMainForm
         'ReportColors
         '
         Me.ReportColors.DataPropertyName = "Colors"
-        DataGridViewCellStyle463.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.ReportColors.DefaultCellStyle = DataGridViewCellStyle463
+        DataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.ReportColors.DefaultCellStyle = DataGridViewCellStyle47
         Me.ReportColors.HeaderText = "Colors"
         Me.ReportColors.Name = "ReportColors"
         Me.ReportColors.ReadOnly = True
@@ -1675,8 +1913,8 @@ Partial Class AgniMainForm
         'ReportPrice
         '
         Me.ReportPrice.DataPropertyName = "Price"
-        DataGridViewCellStyle464.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.ReportPrice.DefaultCellStyle = DataGridViewCellStyle464
+        DataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.ReportPrice.DefaultCellStyle = DataGridViewCellStyle48
         Me.ReportPrice.HeaderText = "Price"
         Me.ReportPrice.Name = "ReportPrice"
         Me.ReportPrice.ReadOnly = True
@@ -1685,9 +1923,9 @@ Partial Class AgniMainForm
         'ReportDesignDate
         '
         Me.ReportDesignDate.DataPropertyName = "DesignDate"
-        DataGridViewCellStyle465.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle465.Format = "dd\/MM\/yyyy"
-        Me.ReportDesignDate.DefaultCellStyle = DataGridViewCellStyle465
+        DataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle49.Format = "dd\/MM\/yyyy"
+        Me.ReportDesignDate.DefaultCellStyle = DataGridViewCellStyle49
         Me.ReportDesignDate.HeaderText = "Date"
         Me.ReportDesignDate.Name = "ReportDesignDate"
         Me.ReportDesignDate.ReadOnly = True
@@ -1704,9 +1942,9 @@ Partial Class AgniMainForm
         'ReportBillNo
         '
         Me.ReportBillNo.DataPropertyName = "BillNo"
-        DataGridViewCellStyle466.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle466.NullValue = "Yet to bill"
-        Me.ReportBillNo.DefaultCellStyle = DataGridViewCellStyle466
+        DataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle50.NullValue = "Yet to bill"
+        Me.ReportBillNo.DefaultCellStyle = DataGridViewCellStyle50
         Me.ReportBillNo.HeaderText = "Bill No"
         Me.ReportBillNo.Name = "ReportBillNo"
         Me.ReportBillNo.ReadOnly = True
@@ -1719,65 +1957,17 @@ Partial Class AgniMainForm
         Me.ReportCustNo.ReadOnly = True
         Me.ReportCustNo.Visible = False
         '
-        'groupReportFilters
-        '
-        Me.groupReportFilters.Controls.Add(Me.radioReportFilterDesignNumber)
-        Me.groupReportFilters.Controls.Add(Me.radioReportFilterDesignName)
-        Me.groupReportFilters.Controls.Add(Me.radioReportFilterBillNo)
-        Me.groupReportFilters.Location = New System.Drawing.Point(264, 46)
-        Me.groupReportFilters.Name = "groupReportFilters"
-        Me.groupReportFilters.Size = New System.Drawing.Size(657, 42)
-        Me.groupReportFilters.TabIndex = 161
-        Me.groupReportFilters.TabStop = False
-        '
-        'radioReportFilterDesignNumber
-        '
-        Me.radioReportFilterDesignNumber.AutoSize = True
-        Me.radioReportFilterDesignNumber.Checked = True
-        Me.radioReportFilterDesignNumber.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.radioReportFilterDesignNumber.ForeColor = System.Drawing.Color.Black
-        Me.radioReportFilterDesignNumber.Location = New System.Drawing.Point(13, 15)
-        Me.radioReportFilterDesignNumber.Name = "radioReportFilterDesignNumber"
-        Me.radioReportFilterDesignNumber.Size = New System.Drawing.Size(137, 24)
-        Me.radioReportFilterDesignNumber.TabIndex = 8
-        Me.radioReportFilterDesignNumber.TabStop = True
-        Me.radioReportFilterDesignNumber.Text = "Design Number"
-        Me.radioReportFilterDesignNumber.UseVisualStyleBackColor = True
-        '
-        'radioReportFilterDesignName
-        '
-        Me.radioReportFilterDesignName.AutoSize = True
-        Me.radioReportFilterDesignName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.radioReportFilterDesignName.ForeColor = System.Drawing.Color.Black
-        Me.radioReportFilterDesignName.Location = New System.Drawing.Point(345, 14)
-        Me.radioReportFilterDesignName.Name = "radioReportFilterDesignName"
-        Me.radioReportFilterDesignName.Size = New System.Drawing.Size(123, 24)
-        Me.radioReportFilterDesignName.TabIndex = 7
-        Me.radioReportFilterDesignName.Text = "Design Name"
-        Me.radioReportFilterDesignName.UseVisualStyleBackColor = True
-        '
-        'radioReportFilterBillNo
-        '
-        Me.radioReportFilterBillNo.AutoSize = True
-        Me.radioReportFilterBillNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.radioReportFilterBillNo.ForeColor = System.Drawing.Color.Black
-        Me.radioReportFilterBillNo.Location = New System.Drawing.Point(193, 14)
-        Me.radioReportFilterBillNo.Name = "radioReportFilterBillNo"
-        Me.radioReportFilterBillNo.Size = New System.Drawing.Size(107, 24)
-        Me.radioReportFilterBillNo.TabIndex = 6
-        Me.radioReportFilterBillNo.Text = "Bill Number"
-        Me.radioReportFilterBillNo.UseVisualStyleBackColor = True
-        '
         'lblReportPaidAmountWithDeduction
         '
         Me.lblReportPaidAmountWithDeduction.AutoSize = True
-        Me.lblReportPaidAmountWithDeduction.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblReportPaidAmountWithDeduction.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblReportPaidAmountWithDeduction.BackColor = System.Drawing.Color.MediumSeaGreen
+        Me.lblReportPaidAmountWithDeduction.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold)
         Me.lblReportPaidAmountWithDeduction.ForeColor = System.Drawing.Color.White
         Me.lblReportPaidAmountWithDeduction.Location = New System.Drawing.Point(1145, 964)
         Me.lblReportPaidAmountWithDeduction.MinimumSize = New System.Drawing.Size(128, 0)
         Me.lblReportPaidAmountWithDeduction.Name = "lblReportPaidAmountWithDeduction"
-        Me.lblReportPaidAmountWithDeduction.Size = New System.Drawing.Size(128, 15)
+        Me.lblReportPaidAmountWithDeduction.Padding = New System.Windows.Forms.Padding(3)
+        Me.lblReportPaidAmountWithDeduction.Size = New System.Drawing.Size(128, 24)
         Me.lblReportPaidAmountWithDeduction.TabIndex = 156
         Me.lblReportPaidAmountWithDeduction.Text = "0"
         Me.lblReportPaidAmountWithDeduction.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1796,13 +1986,14 @@ Partial Class AgniMainForm
         'lblReportPaidAmountActual
         '
         Me.lblReportPaidAmountActual.AutoSize = True
-        Me.lblReportPaidAmountActual.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblReportPaidAmountActual.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblReportPaidAmountActual.BackColor = System.Drawing.Color.MediumSeaGreen
+        Me.lblReportPaidAmountActual.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold)
         Me.lblReportPaidAmountActual.ForeColor = System.Drawing.Color.White
         Me.lblReportPaidAmountActual.Location = New System.Drawing.Point(1145, 938)
         Me.lblReportPaidAmountActual.MinimumSize = New System.Drawing.Size(128, 0)
         Me.lblReportPaidAmountActual.Name = "lblReportPaidAmountActual"
-        Me.lblReportPaidAmountActual.Size = New System.Drawing.Size(128, 15)
+        Me.lblReportPaidAmountActual.Padding = New System.Windows.Forms.Padding(3)
+        Me.lblReportPaidAmountActual.Size = New System.Drawing.Size(128, 24)
         Me.lblReportPaidAmountActual.TabIndex = 154
         Me.lblReportPaidAmountActual.Text = "0"
         Me.lblReportPaidAmountActual.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1821,13 +2012,14 @@ Partial Class AgniMainForm
         'lblReportNoOfPayment
         '
         Me.lblReportNoOfPayment.AutoSize = True
-        Me.lblReportNoOfPayment.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblReportNoOfPayment.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblReportNoOfPayment.BackColor = System.Drawing.Color.MediumSeaGreen
+        Me.lblReportNoOfPayment.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold)
         Me.lblReportNoOfPayment.ForeColor = System.Drawing.Color.White
-        Me.lblReportNoOfPayment.Location = New System.Drawing.Point(792, 935)
+        Me.lblReportNoOfPayment.Location = New System.Drawing.Point(1419, 938)
         Me.lblReportNoOfPayment.MinimumSize = New System.Drawing.Size(75, 0)
         Me.lblReportNoOfPayment.Name = "lblReportNoOfPayment"
-        Me.lblReportNoOfPayment.Size = New System.Drawing.Size(75, 15)
+        Me.lblReportNoOfPayment.Padding = New System.Windows.Forms.Padding(3)
+        Me.lblReportNoOfPayment.Size = New System.Drawing.Size(75, 24)
         Me.lblReportNoOfPayment.TabIndex = 152
         Me.lblReportNoOfPayment.Text = "0"
         Me.lblReportNoOfPayment.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1837,7 +2029,7 @@ Partial Class AgniMainForm
         Me.Label55.AutoSize = True
         Me.Label55.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label55.ForeColor = System.Drawing.Color.Black
-        Me.Label55.Location = New System.Drawing.Point(667, 935)
+        Me.Label55.Location = New System.Drawing.Point(1294, 938)
         Me.Label55.Name = "Label55"
         Me.Label55.Size = New System.Drawing.Size(109, 15)
         Me.Label55.TabIndex = 153
@@ -1846,13 +2038,14 @@ Partial Class AgniMainForm
         'lblReportBilledAmount
         '
         Me.lblReportBilledAmount.AutoSize = True
-        Me.lblReportBilledAmount.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblReportBilledAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblReportBilledAmount.BackColor = System.Drawing.Color.MediumSeaGreen
+        Me.lblReportBilledAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold)
         Me.lblReportBilledAmount.ForeColor = System.Drawing.Color.White
-        Me.lblReportBilledAmount.Location = New System.Drawing.Point(409, 935)
+        Me.lblReportBilledAmount.Location = New System.Drawing.Point(443, 29)
         Me.lblReportBilledAmount.MinimumSize = New System.Drawing.Size(128, 0)
         Me.lblReportBilledAmount.Name = "lblReportBilledAmount"
-        Me.lblReportBilledAmount.Size = New System.Drawing.Size(128, 15)
+        Me.lblReportBilledAmount.Padding = New System.Windows.Forms.Padding(3)
+        Me.lblReportBilledAmount.Size = New System.Drawing.Size(128, 24)
         Me.lblReportBilledAmount.TabIndex = 150
         Me.lblReportBilledAmount.Text = "0"
         Me.lblReportBilledAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1862,7 +2055,7 @@ Partial Class AgniMainForm
         Me.Label47.AutoSize = True
         Me.Label47.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label47.ForeColor = System.Drawing.Color.Black
-        Me.Label47.Location = New System.Drawing.Point(267, 935)
+        Me.Label47.Location = New System.Drawing.Point(301, 29)
         Me.Label47.Name = "Label47"
         Me.Label47.Size = New System.Drawing.Size(132, 15)
         Me.Label47.TabIndex = 151
@@ -1871,13 +2064,14 @@ Partial Class AgniMainForm
         'lblReportNoOfBills
         '
         Me.lblReportNoOfBills.AutoSize = True
-        Me.lblReportNoOfBills.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblReportNoOfBills.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblReportNoOfBills.BackColor = System.Drawing.Color.MediumSeaGreen
+        Me.lblReportNoOfBills.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold)
         Me.lblReportNoOfBills.ForeColor = System.Drawing.Color.White
-        Me.lblReportNoOfBills.Location = New System.Drawing.Point(131, 935)
+        Me.lblReportNoOfBills.Location = New System.Drawing.Point(165, 29)
         Me.lblReportNoOfBills.MinimumSize = New System.Drawing.Size(75, 0)
         Me.lblReportNoOfBills.Name = "lblReportNoOfBills"
-        Me.lblReportNoOfBills.Size = New System.Drawing.Size(75, 15)
+        Me.lblReportNoOfBills.Padding = New System.Windows.Forms.Padding(3)
+        Me.lblReportNoOfBills.Size = New System.Drawing.Size(75, 24)
         Me.lblReportNoOfBills.TabIndex = 148
         Me.lblReportNoOfBills.Text = "0"
         Me.lblReportNoOfBills.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1887,111 +2081,11 @@ Partial Class AgniMainForm
         Me.Label51.AutoSize = True
         Me.Label51.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label51.ForeColor = System.Drawing.Color.Black
-        Me.Label51.Location = New System.Drawing.Point(27, 935)
+        Me.Label51.Location = New System.Drawing.Point(61, 29)
         Me.Label51.Name = "Label51"
         Me.Label51.Size = New System.Drawing.Size(75, 15)
         Me.Label51.TabIndex = 149
         Me.Label51.Text = "No.Of Bills"
-        '
-        'lblReportTotDesignAmount
-        '
-        Me.lblReportTotDesignAmount.AutoSize = True
-        Me.lblReportTotDesignAmount.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblReportTotDesignAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblReportTotDesignAmount.ForeColor = System.Drawing.Color.White
-        Me.lblReportTotDesignAmount.Location = New System.Drawing.Point(725, 606)
-        Me.lblReportTotDesignAmount.MinimumSize = New System.Drawing.Size(128, 0)
-        Me.lblReportTotDesignAmount.Name = "lblReportTotDesignAmount"
-        Me.lblReportTotDesignAmount.Size = New System.Drawing.Size(128, 15)
-        Me.lblReportTotDesignAmount.TabIndex = 146
-        Me.lblReportTotDesignAmount.Text = "0"
-        Me.lblReportTotDesignAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'Label50
-        '
-        Me.Label50.AutoSize = True
-        Me.Label50.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label50.ForeColor = System.Drawing.Color.Black
-        Me.Label50.Location = New System.Drawing.Point(572, 606)
-        Me.Label50.Name = "Label50"
-        Me.Label50.Size = New System.Drawing.Size(140, 15)
-        Me.Label50.TabIndex = 147
-        Me.Label50.Text = "Total Design Amount"
-        '
-        'lblReportUnBilledDesignAmount
-        '
-        Me.lblReportUnBilledDesignAmount.AutoSize = True
-        Me.lblReportUnBilledDesignAmount.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblReportUnBilledDesignAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblReportUnBilledDesignAmount.ForeColor = System.Drawing.Color.White
-        Me.lblReportUnBilledDesignAmount.Location = New System.Drawing.Point(749, 558)
-        Me.lblReportUnBilledDesignAmount.MinimumSize = New System.Drawing.Size(128, 0)
-        Me.lblReportUnBilledDesignAmount.Name = "lblReportUnBilledDesignAmount"
-        Me.lblReportUnBilledDesignAmount.Size = New System.Drawing.Size(128, 15)
-        Me.lblReportUnBilledDesignAmount.TabIndex = 144
-        Me.lblReportUnBilledDesignAmount.Text = "0"
-        Me.lblReportUnBilledDesignAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'Label48
-        '
-        Me.Label48.AutoSize = True
-        Me.Label48.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label48.ForeColor = System.Drawing.Color.Black
-        Me.Label48.Location = New System.Drawing.Point(572, 558)
-        Me.Label48.Name = "Label48"
-        Me.Label48.Size = New System.Drawing.Size(163, 15)
-        Me.Label48.TabIndex = 145
-        Me.Label48.Text = "UnBilled Design Amount"
-        '
-        'lblReportBilledDesignAmount
-        '
-        Me.lblReportBilledDesignAmount.AutoSize = True
-        Me.lblReportBilledDesignAmount.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblReportBilledDesignAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblReportBilledDesignAmount.ForeColor = System.Drawing.Color.White
-        Me.lblReportBilledDesignAmount.Location = New System.Drawing.Point(402, 558)
-        Me.lblReportBilledDesignAmount.MinimumSize = New System.Drawing.Size(128, 0)
-        Me.lblReportBilledDesignAmount.Name = "lblReportBilledDesignAmount"
-        Me.lblReportBilledDesignAmount.Size = New System.Drawing.Size(128, 15)
-        Me.lblReportBilledDesignAmount.TabIndex = 142
-        Me.lblReportBilledDesignAmount.Text = "0"
-        Me.lblReportBilledDesignAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'Label46
-        '
-        Me.Label46.AutoSize = True
-        Me.Label46.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label46.ForeColor = System.Drawing.Color.Black
-        Me.Label46.Location = New System.Drawing.Point(246, 558)
-        Me.Label46.Name = "Label46"
-        Me.Label46.Size = New System.Drawing.Size(145, 15)
-        Me.Label46.TabIndex = 143
-        Me.Label46.Text = "Billed Design Amount"
-        '
-        'lblReportNoOfDesigns
-        '
-        Me.lblReportNoOfDesigns.AutoSize = True
-        Me.lblReportNoOfDesigns.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblReportNoOfDesigns.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblReportNoOfDesigns.ForeColor = System.Drawing.Color.White
-        Me.lblReportNoOfDesigns.Location = New System.Drawing.Point(124, 558)
-        Me.lblReportNoOfDesigns.MinimumSize = New System.Drawing.Size(75, 0)
-        Me.lblReportNoOfDesigns.Name = "lblReportNoOfDesigns"
-        Me.lblReportNoOfDesigns.Size = New System.Drawing.Size(75, 15)
-        Me.lblReportNoOfDesigns.TabIndex = 140
-        Me.lblReportNoOfDesigns.Text = "0"
-        Me.lblReportNoOfDesigns.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'Label33
-        '
-        Me.Label33.AutoSize = True
-        Me.Label33.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label33.ForeColor = System.Drawing.Color.Black
-        Me.Label33.Location = New System.Drawing.Point(20, 558)
-        Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(99, 15)
-        Me.Label33.TabIndex = 141
-        Me.Label33.Text = "No.Of Designs"
         '
         'Label111
         '
@@ -2012,11 +2106,11 @@ Partial Class AgniMainForm
         Me.btnReportSearch.ForeColor = System.Drawing.Color.Black
         Me.btnReportSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnReportSearch.ImageKey = "(none)"
-        Me.btnReportSearch.Location = New System.Drawing.Point(1037, 274)
+        Me.btnReportSearch.Location = New System.Drawing.Point(587, 181)
         Me.btnReportSearch.Name = "btnReportSearch"
         Me.btnReportSearch.Padding = New System.Windows.Forms.Padding(3, 0, 0, 0)
         Me.btnReportSearch.Size = New System.Drawing.Size(89, 34)
-        Me.btnReportSearch.TabIndex = 12
+        Me.btnReportSearch.TabIndex = 5
         Me.btnReportSearch.Text = "Search"
         Me.btnReportSearch.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnReportSearch.UseVisualStyleBackColor = False
@@ -2032,70 +2126,6 @@ Partial Class AgniMainForm
         Me.pbReportDesignImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pbReportDesignImage.TabIndex = 28
         Me.pbReportDesignImage.TabStop = False
-        '
-        'groupReportSearchCategory
-        '
-        Me.groupReportSearchCategory.Controls.Add(Me.radioReportDesignName)
-        Me.groupReportSearchCategory.Controls.Add(Me.radioReportDate)
-        Me.groupReportSearchCategory.Controls.Add(Me.radioReportCustName)
-        Me.groupReportSearchCategory.Controls.Add(Me.radioReportBillNo)
-        Me.groupReportSearchCategory.Location = New System.Drawing.Point(234, 4)
-        Me.groupReportSearchCategory.Margin = New System.Windows.Forms.Padding(0)
-        Me.groupReportSearchCategory.Name = "groupReportSearchCategory"
-        Me.groupReportSearchCategory.Padding = New System.Windows.Forms.Padding(0)
-        Me.groupReportSearchCategory.Size = New System.Drawing.Size(657, 42)
-        Me.groupReportSearchCategory.TabIndex = 1
-        Me.groupReportSearchCategory.TabStop = False
-        '
-        'radioReportDesignName
-        '
-        Me.radioReportDesignName.AutoSize = True
-        Me.radioReportDesignName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.radioReportDesignName.ForeColor = System.Drawing.Color.Black
-        Me.radioReportDesignName.Location = New System.Drawing.Point(490, 14)
-        Me.radioReportDesignName.Name = "radioReportDesignName"
-        Me.radioReportDesignName.Size = New System.Drawing.Size(123, 24)
-        Me.radioReportDesignName.TabIndex = 5
-        Me.radioReportDesignName.Text = "Design Name"
-        Me.radioReportDesignName.UseVisualStyleBackColor = True
-        '
-        'radioReportDate
-        '
-        Me.radioReportDate.AutoSize = True
-        Me.radioReportDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.radioReportDate.ForeColor = System.Drawing.Color.Black
-        Me.radioReportDate.Location = New System.Drawing.Point(193, 14)
-        Me.radioReportDate.Name = "radioReportDate"
-        Me.radioReportDate.Size = New System.Drawing.Size(114, 24)
-        Me.radioReportDate.TabIndex = 2
-        Me.radioReportDate.Text = "Date Range"
-        Me.radioReportDate.UseVisualStyleBackColor = True
-        '
-        'radioReportCustName
-        '
-        Me.radioReportCustName.AutoSize = True
-        Me.radioReportCustName.Checked = True
-        Me.radioReportCustName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.radioReportCustName.ForeColor = System.Drawing.Color.Black
-        Me.radioReportCustName.Location = New System.Drawing.Point(13, 14)
-        Me.radioReportCustName.Name = "radioReportCustName"
-        Me.radioReportCustName.Size = New System.Drawing.Size(142, 24)
-        Me.radioReportCustName.TabIndex = 2
-        Me.radioReportCustName.TabStop = True
-        Me.radioReportCustName.Text = "Customer Name"
-        Me.radioReportCustName.UseVisualStyleBackColor = True
-        '
-        'radioReportBillNo
-        '
-        Me.radioReportBillNo.AutoSize = True
-        Me.radioReportBillNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.radioReportBillNo.ForeColor = System.Drawing.Color.Black
-        Me.radioReportBillNo.Location = New System.Drawing.Point(345, 14)
-        Me.radioReportBillNo.Name = "radioReportBillNo"
-        Me.radioReportBillNo.Size = New System.Drawing.Size(107, 24)
-        Me.radioReportBillNo.TabIndex = 4
-        Me.radioReportBillNo.Text = "Bill Number"
-        Me.radioReportBillNo.UseVisualStyleBackColor = True
         '
         'tabBilling
         '
@@ -2298,30 +2328,30 @@ Partial Class AgniMainForm
         '
         Me.dgBIllingBillDetails.AllowUserToAddRows = False
         Me.dgBIllingBillDetails.AllowUserToDeleteRows = False
-        DataGridViewCellStyle469.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.dgBIllingBillDetails.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle469
+        DataGridViewCellStyle53.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.dgBIllingBillDetails.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle53
         Me.dgBIllingBillDetails.BackgroundColor = System.Drawing.Color.Lavender
         Me.dgBIllingBillDetails.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgBIllingBillDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical
         Me.dgBIllingBillDetails.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
-        DataGridViewCellStyle470.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle470.BackColor = System.Drawing.Color.RoyalBlue
-        DataGridViewCellStyle470.Font = New System.Drawing.Font("Comic Sans MS", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle470.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle470.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle470.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle470.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgBIllingBillDetails.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle470
+        DataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle54.BackColor = System.Drawing.Color.RoyalBlue
+        DataGridViewCellStyle54.Font = New System.Drawing.Font("Comic Sans MS", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle54.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle54.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle54.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle54.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgBIllingBillDetails.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle54
         Me.dgBIllingBillDetails.ColumnHeadersHeight = 50
         Me.dgBIllingBillDetails.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DisplayBillNO, Me.InternalBillNo, Me.BillDate, Me.UnPaidAmountTillNow, Me.DesignCost, Me.CGST, Me.SGST, Me.IGST, Me.CGSTAmount, Me.SGSTAmount, Me.IGSTAmount, Me.GSTAmount, Me.DesignAmountGST, Me.TotalAmount, Me.PaidAmount, Me.RemainingBalance, Me.Cancelled})
-        DataGridViewCellStyle487.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle487.BackColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle487.Font = New System.Drawing.Font("Comic Sans MS", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle487.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle487.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle487.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle487.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgBIllingBillDetails.DefaultCellStyle = DataGridViewCellStyle487
+        DataGridViewCellStyle71.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle71.BackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle71.Font = New System.Drawing.Font("Comic Sans MS", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle71.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle71.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle71.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle71.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgBIllingBillDetails.DefaultCellStyle = DataGridViewCellStyle71
         Me.dgBIllingBillDetails.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgBIllingBillDetails.EnableHeadersVisualStyles = False
         Me.dgBIllingBillDetails.GridColor = System.Drawing.Color.Maroon
@@ -2330,10 +2360,10 @@ Partial Class AgniMainForm
         Me.dgBIllingBillDetails.Name = "dgBIllingBillDetails"
         Me.dgBIllingBillDetails.ReadOnly = True
         Me.dgBIllingBillDetails.RowHeadersVisible = False
-        DataGridViewCellStyle488.BackColor = System.Drawing.Color.Lavender
-        DataGridViewCellStyle488.Font = New System.Drawing.Font("Comic Sans MS", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle488.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgBIllingBillDetails.RowsDefaultCellStyle = DataGridViewCellStyle488
+        DataGridViewCellStyle72.BackColor = System.Drawing.Color.Lavender
+        DataGridViewCellStyle72.Font = New System.Drawing.Font("Comic Sans MS", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle72.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgBIllingBillDetails.RowsDefaultCellStyle = DataGridViewCellStyle72
         Me.dgBIllingBillDetails.RowTemplate.Height = 25
         Me.dgBIllingBillDetails.RowTemplate.ReadOnly = True
         Me.dgBIllingBillDetails.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
@@ -2345,8 +2375,8 @@ Partial Class AgniMainForm
         '
         Me.DisplayBillNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.DisplayBillNO.DataPropertyName = "DisplayBillNO"
-        DataGridViewCellStyle471.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DisplayBillNO.DefaultCellStyle = DataGridViewCellStyle471
+        DataGridViewCellStyle55.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DisplayBillNO.DefaultCellStyle = DataGridViewCellStyle55
         Me.DisplayBillNO.Frozen = True
         Me.DisplayBillNO.HeaderText = "Bill No"
         Me.DisplayBillNO.Name = "DisplayBillNO"
@@ -2356,8 +2386,8 @@ Partial Class AgniMainForm
         'InternalBillNo
         '
         Me.InternalBillNo.DataPropertyName = "BillNo"
-        DataGridViewCellStyle472.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.InternalBillNo.DefaultCellStyle = DataGridViewCellStyle472
+        DataGridViewCellStyle56.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.InternalBillNo.DefaultCellStyle = DataGridViewCellStyle56
         Me.InternalBillNo.HeaderText = "Internal No"
         Me.InternalBillNo.Name = "InternalBillNo"
         Me.InternalBillNo.ReadOnly = True
@@ -2366,9 +2396,9 @@ Partial Class AgniMainForm
         'BillDate
         '
         Me.BillDate.DataPropertyName = "BillDate"
-        DataGridViewCellStyle473.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle473.Format = "dd\/MM\/yyyy"
-        Me.BillDate.DefaultCellStyle = DataGridViewCellStyle473
+        DataGridViewCellStyle57.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle57.Format = "dd\/MM\/yyyy"
+        Me.BillDate.DefaultCellStyle = DataGridViewCellStyle57
         Me.BillDate.HeaderText = "Bill Date"
         Me.BillDate.Name = "BillDate"
         Me.BillDate.ReadOnly = True
@@ -2377,9 +2407,9 @@ Partial Class AgniMainForm
         'UnPaidAmountTillNow
         '
         Me.UnPaidAmountTillNow.DataPropertyName = "UnPaidAmountTillNow"
-        DataGridViewCellStyle474.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle474.Format = "0.00"
-        Me.UnPaidAmountTillNow.DefaultCellStyle = DataGridViewCellStyle474
+        DataGridViewCellStyle58.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle58.Format = "0.00"
+        Me.UnPaidAmountTillNow.DefaultCellStyle = DataGridViewCellStyle58
         Me.UnPaidAmountTillNow.HeaderText = "Prev Balance"
         Me.UnPaidAmountTillNow.Name = "UnPaidAmountTillNow"
         Me.UnPaidAmountTillNow.ReadOnly = True
@@ -2388,9 +2418,9 @@ Partial Class AgniMainForm
         'DesignCost
         '
         Me.DesignCost.DataPropertyName = "DesignCost"
-        DataGridViewCellStyle475.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle475.Format = "0.00"
-        Me.DesignCost.DefaultCellStyle = DataGridViewCellStyle475
+        DataGridViewCellStyle59.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle59.Format = "0.00"
+        Me.DesignCost.DefaultCellStyle = DataGridViewCellStyle59
         Me.DesignCost.HeaderText = "Design Amount"
         Me.DesignCost.Name = "DesignCost"
         Me.DesignCost.ReadOnly = True
@@ -2399,9 +2429,9 @@ Partial Class AgniMainForm
         'CGST
         '
         Me.CGST.DataPropertyName = "CGST"
-        DataGridViewCellStyle476.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle476.Format = "0.00"
-        Me.CGST.DefaultCellStyle = DataGridViewCellStyle476
+        DataGridViewCellStyle60.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle60.Format = "0.00"
+        Me.CGST.DefaultCellStyle = DataGridViewCellStyle60
         Me.CGST.HeaderText = "CGST%"
         Me.CGST.Name = "CGST"
         Me.CGST.ReadOnly = True
@@ -2410,9 +2440,9 @@ Partial Class AgniMainForm
         'SGST
         '
         Me.SGST.DataPropertyName = "SGST"
-        DataGridViewCellStyle477.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle477.Format = "0.00"
-        Me.SGST.DefaultCellStyle = DataGridViewCellStyle477
+        DataGridViewCellStyle61.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle61.Format = "0.00"
+        Me.SGST.DefaultCellStyle = DataGridViewCellStyle61
         Me.SGST.HeaderText = "SGST%"
         Me.SGST.Name = "SGST"
         Me.SGST.ReadOnly = True
@@ -2421,9 +2451,9 @@ Partial Class AgniMainForm
         'IGST
         '
         Me.IGST.DataPropertyName = "IGST"
-        DataGridViewCellStyle478.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle478.Format = "0.00"
-        Me.IGST.DefaultCellStyle = DataGridViewCellStyle478
+        DataGridViewCellStyle62.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle62.Format = "0.00"
+        Me.IGST.DefaultCellStyle = DataGridViewCellStyle62
         Me.IGST.HeaderText = "IGST%"
         Me.IGST.Name = "IGST"
         Me.IGST.ReadOnly = True
@@ -2432,9 +2462,9 @@ Partial Class AgniMainForm
         'CGSTAmount
         '
         Me.CGSTAmount.DataPropertyName = "CGSTAmount"
-        DataGridViewCellStyle479.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle479.Format = "0.00"
-        Me.CGSTAmount.DefaultCellStyle = DataGridViewCellStyle479
+        DataGridViewCellStyle63.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle63.Format = "0.00"
+        Me.CGSTAmount.DefaultCellStyle = DataGridViewCellStyle63
         Me.CGSTAmount.HeaderText = "CGSTAmount"
         Me.CGSTAmount.Name = "CGSTAmount"
         Me.CGSTAmount.ReadOnly = True
@@ -2443,9 +2473,9 @@ Partial Class AgniMainForm
         'SGSTAmount
         '
         Me.SGSTAmount.DataPropertyName = "SGSTAmount"
-        DataGridViewCellStyle480.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle480.Format = "0.00"
-        Me.SGSTAmount.DefaultCellStyle = DataGridViewCellStyle480
+        DataGridViewCellStyle64.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle64.Format = "0.00"
+        Me.SGSTAmount.DefaultCellStyle = DataGridViewCellStyle64
         Me.SGSTAmount.HeaderText = "SGST Amount"
         Me.SGSTAmount.Name = "SGSTAmount"
         Me.SGSTAmount.ReadOnly = True
@@ -2454,9 +2484,9 @@ Partial Class AgniMainForm
         'IGSTAmount
         '
         Me.IGSTAmount.DataPropertyName = "IGSTAmount"
-        DataGridViewCellStyle481.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle481.Format = "0.00"
-        Me.IGSTAmount.DefaultCellStyle = DataGridViewCellStyle481
+        DataGridViewCellStyle65.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle65.Format = "0.00"
+        Me.IGSTAmount.DefaultCellStyle = DataGridViewCellStyle65
         Me.IGSTAmount.HeaderText = "IGSTAmount"
         Me.IGSTAmount.Name = "IGSTAmount"
         Me.IGSTAmount.ReadOnly = True
@@ -2465,9 +2495,9 @@ Partial Class AgniMainForm
         'GSTAmount
         '
         Me.GSTAmount.DataPropertyName = "GSTAmount"
-        DataGridViewCellStyle482.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle482.Format = "0.00"
-        Me.GSTAmount.DefaultCellStyle = DataGridViewCellStyle482
+        DataGridViewCellStyle66.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle66.Format = "0.00"
+        Me.GSTAmount.DefaultCellStyle = DataGridViewCellStyle66
         Me.GSTAmount.HeaderText = "Total GST Amount"
         Me.GSTAmount.Name = "GSTAmount"
         Me.GSTAmount.ReadOnly = True
@@ -2476,9 +2506,9 @@ Partial Class AgniMainForm
         'DesignAmountGST
         '
         Me.DesignAmountGST.DataPropertyName = "DesignAmountGST"
-        DataGridViewCellStyle483.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle483.Format = "0.00"
-        Me.DesignAmountGST.DefaultCellStyle = DataGridViewCellStyle483
+        DataGridViewCellStyle67.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle67.Format = "0.00"
+        Me.DesignAmountGST.DefaultCellStyle = DataGridViewCellStyle67
         Me.DesignAmountGST.HeaderText = "Design Amount GST"
         Me.DesignAmountGST.Name = "DesignAmountGST"
         Me.DesignAmountGST.ReadOnly = True
@@ -2487,9 +2517,9 @@ Partial Class AgniMainForm
         'TotalAmount
         '
         Me.TotalAmount.DataPropertyName = "TotalAmount"
-        DataGridViewCellStyle484.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle484.Format = "0.00"
-        Me.TotalAmount.DefaultCellStyle = DataGridViewCellStyle484
+        DataGridViewCellStyle68.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle68.Format = "0.00"
+        Me.TotalAmount.DefaultCellStyle = DataGridViewCellStyle68
         Me.TotalAmount.HeaderText = "Total Amount"
         Me.TotalAmount.Name = "TotalAmount"
         Me.TotalAmount.ReadOnly = True
@@ -2499,9 +2529,9 @@ Partial Class AgniMainForm
         'PaidAmount
         '
         Me.PaidAmount.DataPropertyName = "PaidAmount"
-        DataGridViewCellStyle485.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle485.Format = "0.00"
-        Me.PaidAmount.DefaultCellStyle = DataGridViewCellStyle485
+        DataGridViewCellStyle69.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle69.Format = "0.00"
+        Me.PaidAmount.DefaultCellStyle = DataGridViewCellStyle69
         Me.PaidAmount.HeaderText = "Paid Amount"
         Me.PaidAmount.Name = "PaidAmount"
         Me.PaidAmount.ReadOnly = True
@@ -2510,9 +2540,9 @@ Partial Class AgniMainForm
         'RemainingBalance
         '
         Me.RemainingBalance.DataPropertyName = "RemainingBalance"
-        DataGridViewCellStyle486.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle486.Format = "0.00"
-        Me.RemainingBalance.DefaultCellStyle = DataGridViewCellStyle486
+        DataGridViewCellStyle70.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle70.Format = "0.00"
+        Me.RemainingBalance.DefaultCellStyle = DataGridViewCellStyle70
         Me.RemainingBalance.HeaderText = "Remaining Balance"
         Me.RemainingBalance.Name = "RemainingBalance"
         Me.RemainingBalance.ReadOnly = True
@@ -2913,7 +2943,6 @@ Partial Class AgniMainForm
         '
         Me.tabDesign.BackColor = System.Drawing.SystemColors.Window
         Me.tabDesign.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.tabDesign.Controls.Add(Me.GroupBox8)
         Me.tabDesign.Controls.Add(Me.GroupBox7)
         Me.tabDesign.Controls.Add(Me.GroupBox5)
         Me.tabDesign.Controls.Add(Me.cmbDesDesignList)
@@ -2950,71 +2979,8 @@ Partial Class AgniMainForm
         Me.tabDesign.Text = "Designs"
         Me.tabDesign.ToolTipText = "Design Details"
         '
-        'GroupBox8
-        '
-        Me.GroupBox8.Controls.Add(Me.TextBox1)
-        Me.GroupBox8.Controls.Add(Me.Label52)
-        Me.GroupBox8.Controls.Add(Me.Label54)
-        Me.GroupBox8.Controls.Add(Me.TextBox2)
-        Me.GroupBox8.Controls.Add(Me.Label56)
-        Me.GroupBox8.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox8.Location = New System.Drawing.Point(283, 200)
-        Me.GroupBox8.Margin = New System.Windows.Forms.Padding(0)
-        Me.GroupBox8.Name = "GroupBox8"
-        Me.GroupBox8.Padding = New System.Windows.Forms.Padding(0)
-        Me.GroupBox8.Size = New System.Drawing.Size(423, 57)
-        Me.GroupBox8.TabIndex = 4
-        Me.GroupBox8.TabStop = False
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(286, 19)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(124, 31)
-        Me.TextBox1.TabIndex = 1
-        '
-        'Label52
-        '
-        Me.Label52.AutoSize = True
-        Me.Label52.Font = New System.Drawing.Font("Book Antiqua", 11.25!, System.Drawing.FontStyle.Bold)
-        Me.Label52.Location = New System.Drawing.Point(223, 25)
-        Me.Label52.Name = "Label52"
-        Me.Label52.Size = New System.Drawing.Size(57, 19)
-        Me.Label52.TabIndex = 15
-        Me.Label52.Text = "Height"
-        '
-        'Label54
-        '
-        Me.Label54.AutoSize = True
-        Me.Label54.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label54.Location = New System.Drawing.Point(190, 22)
-        Me.Label54.Name = "Label54"
-        Me.Label54.Size = New System.Drawing.Size(27, 25)
-        Me.Label54.TabIndex = 16
-        Me.Label54.Text = "X"
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(69, 19)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(115, 31)
-        Me.TextBox2.TabIndex = 0
-        '
-        'Label56
-        '
-        Me.Label56.AutoSize = True
-        Me.Label56.Font = New System.Drawing.Font("Book Antiqua", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label56.Location = New System.Drawing.Point(9, 25)
-        Me.Label56.Name = "Label56"
-        Me.Label56.Size = New System.Drawing.Size(52, 19)
-        Me.Label56.TabIndex = 14
-        Me.Label56.Text = "Width"
-        '
         'GroupBox7
         '
-        Me.GroupBox7.Controls.Add(Me.GroupBox15)
         Me.GroupBox7.Controls.Add(Me.txtDesHeight)
         Me.GroupBox7.Controls.Add(Me.Label18)
         Me.GroupBox7.Controls.Add(Me.Label19)
@@ -3028,68 +2994,6 @@ Partial Class AgniMainForm
         Me.GroupBox7.Size = New System.Drawing.Size(423, 57)
         Me.GroupBox7.TabIndex = 4
         Me.GroupBox7.TabStop = False
-        '
-        'GroupBox15
-        '
-        Me.GroupBox15.Controls.Add(Me.TextBox3)
-        Me.GroupBox15.Controls.Add(Me.Label57)
-        Me.GroupBox15.Controls.Add(Me.Label58)
-        Me.GroupBox15.Controls.Add(Me.TextBox4)
-        Me.GroupBox15.Controls.Add(Me.Label59)
-        Me.GroupBox15.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox15.Location = New System.Drawing.Point(0, 0)
-        Me.GroupBox15.Margin = New System.Windows.Forms.Padding(0)
-        Me.GroupBox15.Name = "GroupBox15"
-        Me.GroupBox15.Padding = New System.Windows.Forms.Padding(0)
-        Me.GroupBox15.Size = New System.Drawing.Size(423, 57)
-        Me.GroupBox15.TabIndex = 4
-        Me.GroupBox15.TabStop = False
-        '
-        'TextBox3
-        '
-        Me.TextBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox3.Location = New System.Drawing.Point(276, 16)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(124, 31)
-        Me.TextBox3.TabIndex = 5
-        '
-        'Label57
-        '
-        Me.Label57.AutoSize = True
-        Me.Label57.Font = New System.Drawing.Font("Book Antiqua", 11.25!, System.Drawing.FontStyle.Bold)
-        Me.Label57.Location = New System.Drawing.Point(221, 25)
-        Me.Label57.Name = "Label57"
-        Me.Label57.Size = New System.Drawing.Size(57, 19)
-        Me.Label57.TabIndex = 15
-        Me.Label57.Text = "Height"
-        '
-        'Label58
-        '
-        Me.Label58.AutoSize = True
-        Me.Label58.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label58.Location = New System.Drawing.Point(188, 19)
-        Me.Label58.Name = "Label58"
-        Me.Label58.Size = New System.Drawing.Size(27, 25)
-        Me.Label58.TabIndex = 16
-        Me.Label58.Text = "X"
-        '
-        'TextBox4
-        '
-        Me.TextBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox4.Location = New System.Drawing.Point(67, 16)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(115, 31)
-        Me.TextBox4.TabIndex = 4
-        '
-        'Label59
-        '
-        Me.Label59.AutoSize = True
-        Me.Label59.Font = New System.Drawing.Font("Book Antiqua", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label59.Location = New System.Drawing.Point(9, 25)
-        Me.Label59.Name = "Label59"
-        Me.Label59.Size = New System.Drawing.Size(52, 19)
-        Me.Label59.TabIndex = 14
-        Me.Label59.Text = "Width"
         '
         'txtDesHeight
         '
@@ -3143,7 +3047,7 @@ Partial Class AgniMainForm
         Me.GroupBox5.Font = New System.Drawing.Font("Comic Sans MS", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox5.Location = New System.Drawing.Point(36, 461)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(1845, 519)
+        Me.GroupBox5.Size = New System.Drawing.Size(1845, 482)
         Me.GroupBox5.TabIndex = 12
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Design Details"
@@ -3152,30 +3056,30 @@ Partial Class AgniMainForm
         '
         Me.dgDesDesignDetails.AllowUserToAddRows = False
         Me.dgDesDesignDetails.AllowUserToDeleteRows = False
-        DataGridViewCellStyle489.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.dgDesDesignDetails.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle489
+        DataGridViewCellStyle73.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.dgDesDesignDetails.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle73
         Me.dgDesDesignDetails.BackgroundColor = System.Drawing.Color.Lavender
         Me.dgDesDesignDetails.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgDesDesignDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical
         Me.dgDesDesignDetails.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
-        DataGridViewCellStyle490.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle490.BackColor = System.Drawing.Color.RoyalBlue
-        DataGridViewCellStyle490.Font = New System.Drawing.Font("Comic Sans MS", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle490.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle490.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle490.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle490.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgDesDesignDetails.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle490
+        DataGridViewCellStyle74.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle74.BackColor = System.Drawing.Color.RoyalBlue
+        DataGridViewCellStyle74.Font = New System.Drawing.Font("Comic Sans MS", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle74.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle74.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle74.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle74.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgDesDesignDetails.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle74
         Me.dgDesDesignDetails.ColumnHeadersHeight = 35
         Me.dgDesDesignDetails.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DesignNo, Me.DesignName, Me.Type, Me.UnitCost, Me.Width, Me.Height, Me.Colors, Me.Price, Me.DesignDate, Me.Billed, Me.BillNo, Me.Image, Me.CustNo})
-        DataGridViewCellStyle501.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle501.BackColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle501.Font = New System.Drawing.Font("Comic Sans MS", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle501.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle501.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle501.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle501.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgDesDesignDetails.DefaultCellStyle = DataGridViewCellStyle501
+        DataGridViewCellStyle85.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle85.BackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle85.Font = New System.Drawing.Font("Comic Sans MS", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle85.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle85.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle85.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle85.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgDesDesignDetails.DefaultCellStyle = DataGridViewCellStyle85
         Me.dgDesDesignDetails.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgDesDesignDetails.EnableHeadersVisualStyles = False
         Me.dgDesDesignDetails.GridColor = System.Drawing.Color.Maroon
@@ -3184,23 +3088,23 @@ Partial Class AgniMainForm
         Me.dgDesDesignDetails.Name = "dgDesDesignDetails"
         Me.dgDesDesignDetails.ReadOnly = True
         Me.dgDesDesignDetails.RowHeadersVisible = False
-        DataGridViewCellStyle502.BackColor = System.Drawing.Color.Lavender
-        DataGridViewCellStyle502.Font = New System.Drawing.Font("Comic Sans MS", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle502.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgDesDesignDetails.RowsDefaultCellStyle = DataGridViewCellStyle502
+        DataGridViewCellStyle86.BackColor = System.Drawing.Color.Lavender
+        DataGridViewCellStyle86.Font = New System.Drawing.Font("Comic Sans MS", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle86.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgDesDesignDetails.RowsDefaultCellStyle = DataGridViewCellStyle86
         Me.dgDesDesignDetails.RowTemplate.Height = 25
         Me.dgDesDesignDetails.RowTemplate.ReadOnly = True
         Me.dgDesDesignDetails.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgDesDesignDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgDesDesignDetails.Size = New System.Drawing.Size(1839, 490)
+        Me.dgDesDesignDetails.Size = New System.Drawing.Size(1839, 453)
         Me.dgDesDesignDetails.TabIndex = 0
         '
         'DesignNo
         '
         Me.DesignNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.DesignNo.DataPropertyName = "DesignNo"
-        DataGridViewCellStyle491.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DesignNo.DefaultCellStyle = DataGridViewCellStyle491
+        DataGridViewCellStyle75.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DesignNo.DefaultCellStyle = DataGridViewCellStyle75
         Me.DesignNo.Frozen = True
         Me.DesignNo.HeaderText = "Design No"
         Me.DesignNo.Name = "DesignNo"
@@ -3210,8 +3114,8 @@ Partial Class AgniMainForm
         'DesignName
         '
         Me.DesignName.DataPropertyName = "DesignName"
-        DataGridViewCellStyle492.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DesignName.DefaultCellStyle = DataGridViewCellStyle492
+        DataGridViewCellStyle76.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DesignName.DefaultCellStyle = DataGridViewCellStyle76
         Me.DesignName.HeaderText = "Design Name"
         Me.DesignName.Name = "DesignName"
         Me.DesignName.ReadOnly = True
@@ -3220,8 +3124,8 @@ Partial Class AgniMainForm
         'Type
         '
         Me.Type.DataPropertyName = "Type"
-        DataGridViewCellStyle493.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Type.DefaultCellStyle = DataGridViewCellStyle493
+        DataGridViewCellStyle77.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Type.DefaultCellStyle = DataGridViewCellStyle77
         Me.Type.HeaderText = "Unit Type"
         Me.Type.Name = "Type"
         Me.Type.ReadOnly = True
@@ -3230,8 +3134,8 @@ Partial Class AgniMainForm
         'UnitCost
         '
         Me.UnitCost.DataPropertyName = "UnitCost"
-        DataGridViewCellStyle494.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.UnitCost.DefaultCellStyle = DataGridViewCellStyle494
+        DataGridViewCellStyle78.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.UnitCost.DefaultCellStyle = DataGridViewCellStyle78
         Me.UnitCost.HeaderText = "Cost/Unit"
         Me.UnitCost.Name = "UnitCost"
         Me.UnitCost.ReadOnly = True
@@ -3240,8 +3144,8 @@ Partial Class AgniMainForm
         'Width
         '
         Me.Width.DataPropertyName = "Width"
-        DataGridViewCellStyle495.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Width.DefaultCellStyle = DataGridViewCellStyle495
+        DataGridViewCellStyle79.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Width.DefaultCellStyle = DataGridViewCellStyle79
         Me.Width.HeaderText = "Width"
         Me.Width.Name = "Width"
         Me.Width.ReadOnly = True
@@ -3250,8 +3154,8 @@ Partial Class AgniMainForm
         'Height
         '
         Me.Height.DataPropertyName = "Height"
-        DataGridViewCellStyle496.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Height.DefaultCellStyle = DataGridViewCellStyle496
+        DataGridViewCellStyle80.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Height.DefaultCellStyle = DataGridViewCellStyle80
         Me.Height.HeaderText = "Height"
         Me.Height.Name = "Height"
         Me.Height.ReadOnly = True
@@ -3260,8 +3164,8 @@ Partial Class AgniMainForm
         'Colors
         '
         Me.Colors.DataPropertyName = "Colors"
-        DataGridViewCellStyle497.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Colors.DefaultCellStyle = DataGridViewCellStyle497
+        DataGridViewCellStyle81.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Colors.DefaultCellStyle = DataGridViewCellStyle81
         Me.Colors.HeaderText = "Colors"
         Me.Colors.Name = "Colors"
         Me.Colors.ReadOnly = True
@@ -3270,8 +3174,8 @@ Partial Class AgniMainForm
         'Price
         '
         Me.Price.DataPropertyName = "Price"
-        DataGridViewCellStyle498.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Price.DefaultCellStyle = DataGridViewCellStyle498
+        DataGridViewCellStyle82.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Price.DefaultCellStyle = DataGridViewCellStyle82
         Me.Price.HeaderText = "Price"
         Me.Price.Name = "Price"
         Me.Price.ReadOnly = True
@@ -3280,9 +3184,9 @@ Partial Class AgniMainForm
         'DesignDate
         '
         Me.DesignDate.DataPropertyName = "DesignDate"
-        DataGridViewCellStyle499.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle499.Format = "dd\/MM\/yyyy"
-        Me.DesignDate.DefaultCellStyle = DataGridViewCellStyle499
+        DataGridViewCellStyle83.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle83.Format = "dd\/MM\/yyyy"
+        Me.DesignDate.DefaultCellStyle = DataGridViewCellStyle83
         Me.DesignDate.HeaderText = "Date"
         Me.DesignDate.Name = "DesignDate"
         Me.DesignDate.ReadOnly = True
@@ -3299,9 +3203,9 @@ Partial Class AgniMainForm
         'BillNo
         '
         Me.BillNo.DataPropertyName = "BillNo"
-        DataGridViewCellStyle500.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle500.NullValue = "Yet to bill"
-        Me.BillNo.DefaultCellStyle = DataGridViewCellStyle500
+        DataGridViewCellStyle84.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle84.NullValue = "Yet to bill"
+        Me.BillNo.DefaultCellStyle = DataGridViewCellStyle84
         Me.BillNo.HeaderText = "Bill No"
         Me.BillNo.Name = "BillNo"
         Me.BillNo.ReadOnly = True
@@ -4212,30 +4116,30 @@ Partial Class AgniMainForm
         Me.dgPaymentDetails.AllowUserToAddRows = False
         Me.dgPaymentDetails.AllowUserToDeleteRows = False
         Me.dgPaymentDetails.AllowUserToOrderColumns = True
-        DataGridViewCellStyle503.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.dgPaymentDetails.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle503
+        DataGridViewCellStyle87.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.dgPaymentDetails.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle87
         Me.dgPaymentDetails.BackgroundColor = System.Drawing.Color.Lavender
         Me.dgPaymentDetails.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgPaymentDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical
         Me.dgPaymentDetails.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
-        DataGridViewCellStyle504.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle504.BackColor = System.Drawing.Color.RoyalBlue
-        DataGridViewCellStyle504.Font = New System.Drawing.Font("Comic Sans MS", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle504.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle504.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle504.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle504.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgPaymentDetails.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle504
+        DataGridViewCellStyle88.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle88.BackColor = System.Drawing.Color.RoyalBlue
+        DataGridViewCellStyle88.Font = New System.Drawing.Font("Comic Sans MS", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle88.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle88.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle88.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle88.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgPaymentDetails.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle88
         Me.dgPaymentDetails.ColumnHeadersHeight = 35
         Me.dgPaymentDetails.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PaymentNo, Me.internalPaymentBillNo, Me.PaymentBillNo, Me.UnPaidBilledAmount, Me.PaymentDate, Me.PaymentMode, Me.ActualPaidAmount, Me.Discount, Me.NetBalance, Me.TaxDeduction, Me.FinalPaidAmount, Me.ChequeNo, Me.BankName, Me.ChequeDate, Me.Remarks})
-        DataGridViewCellStyle519.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle519.BackColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle519.Font = New System.Drawing.Font("Comic Sans MS", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle519.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle519.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle519.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle519.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgPaymentDetails.DefaultCellStyle = DataGridViewCellStyle519
+        DataGridViewCellStyle103.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle103.BackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle103.Font = New System.Drawing.Font("Comic Sans MS", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle103.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle103.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle103.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle103.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgPaymentDetails.DefaultCellStyle = DataGridViewCellStyle103
         Me.dgPaymentDetails.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgPaymentDetails.EnableHeadersVisualStyles = False
         Me.dgPaymentDetails.GridColor = System.Drawing.Color.Maroon
@@ -4244,10 +4148,10 @@ Partial Class AgniMainForm
         Me.dgPaymentDetails.Name = "dgPaymentDetails"
         Me.dgPaymentDetails.ReadOnly = True
         Me.dgPaymentDetails.RowHeadersVisible = False
-        DataGridViewCellStyle520.BackColor = System.Drawing.Color.Lavender
-        DataGridViewCellStyle520.Font = New System.Drawing.Font("Comic Sans MS", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle520.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgPaymentDetails.RowsDefaultCellStyle = DataGridViewCellStyle520
+        DataGridViewCellStyle104.BackColor = System.Drawing.Color.Lavender
+        DataGridViewCellStyle104.Font = New System.Drawing.Font("Comic Sans MS", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle104.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgPaymentDetails.RowsDefaultCellStyle = DataGridViewCellStyle104
         Me.dgPaymentDetails.RowTemplate.Height = 25
         Me.dgPaymentDetails.RowTemplate.ReadOnly = True
         Me.dgPaymentDetails.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
@@ -4267,9 +4171,9 @@ Partial Class AgniMainForm
         'internalPaymentBillNo
         '
         Me.internalPaymentBillNo.DataPropertyName = "DisplayBillNo"
-        DataGridViewCellStyle505.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle505.Format = "0.00"
-        Me.internalPaymentBillNo.DefaultCellStyle = DataGridViewCellStyle505
+        DataGridViewCellStyle89.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle89.Format = "0.00"
+        Me.internalPaymentBillNo.DefaultCellStyle = DataGridViewCellStyle89
         Me.internalPaymentBillNo.Frozen = True
         Me.internalPaymentBillNo.HeaderText = "Bill No"
         Me.internalPaymentBillNo.Name = "internalPaymentBillNo"
@@ -4279,8 +4183,8 @@ Partial Class AgniMainForm
         '
         Me.PaymentBillNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.PaymentBillNo.DataPropertyName = "DisplayBillNO"
-        DataGridViewCellStyle506.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.PaymentBillNo.DefaultCellStyle = DataGridViewCellStyle506
+        DataGridViewCellStyle90.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.PaymentBillNo.DefaultCellStyle = DataGridViewCellStyle90
         Me.PaymentBillNo.HeaderText = "Internal Bill No"
         Me.PaymentBillNo.Name = "PaymentBillNo"
         Me.PaymentBillNo.ReadOnly = True
@@ -4289,8 +4193,8 @@ Partial Class AgniMainForm
         'UnPaidBilledAmount
         '
         Me.UnPaidBilledAmount.DataPropertyName = "UnPaidBilledAmount"
-        DataGridViewCellStyle507.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.UnPaidBilledAmount.DefaultCellStyle = DataGridViewCellStyle507
+        DataGridViewCellStyle91.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.UnPaidBilledAmount.DefaultCellStyle = DataGridViewCellStyle91
         Me.UnPaidBilledAmount.HeaderText = "Balance"
         Me.UnPaidBilledAmount.Name = "UnPaidBilledAmount"
         Me.UnPaidBilledAmount.ReadOnly = True
@@ -4299,9 +4203,9 @@ Partial Class AgniMainForm
         'PaymentDate
         '
         Me.PaymentDate.DataPropertyName = "PaymentDate"
-        DataGridViewCellStyle508.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle508.Format = "dd\/MM\/yyyy"
-        Me.PaymentDate.DefaultCellStyle = DataGridViewCellStyle508
+        DataGridViewCellStyle92.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle92.Format = "dd\/MM\/yyyy"
+        Me.PaymentDate.DefaultCellStyle = DataGridViewCellStyle92
         Me.PaymentDate.HeaderText = "Date"
         Me.PaymentDate.Name = "PaymentDate"
         Me.PaymentDate.ReadOnly = True
@@ -4310,9 +4214,9 @@ Partial Class AgniMainForm
         'PaymentMode
         '
         Me.PaymentMode.DataPropertyName = "PaymentMode"
-        DataGridViewCellStyle509.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle509.Format = "0.00"
-        Me.PaymentMode.DefaultCellStyle = DataGridViewCellStyle509
+        DataGridViewCellStyle93.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle93.Format = "0.00"
+        Me.PaymentMode.DefaultCellStyle = DataGridViewCellStyle93
         Me.PaymentMode.HeaderText = "Mode"
         Me.PaymentMode.Name = "PaymentMode"
         Me.PaymentMode.ReadOnly = True
@@ -4321,9 +4225,9 @@ Partial Class AgniMainForm
         'ActualPaidAmount
         '
         Me.ActualPaidAmount.DataPropertyName = "ActualPaidAmount"
-        DataGridViewCellStyle510.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle510.Format = "0.00"
-        Me.ActualPaidAmount.DefaultCellStyle = DataGridViewCellStyle510
+        DataGridViewCellStyle94.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle94.Format = "0.00"
+        Me.ActualPaidAmount.DefaultCellStyle = DataGridViewCellStyle94
         Me.ActualPaidAmount.HeaderText = "Actual Paid"
         Me.ActualPaidAmount.Name = "ActualPaidAmount"
         Me.ActualPaidAmount.ReadOnly = True
@@ -4332,9 +4236,9 @@ Partial Class AgniMainForm
         'Discount
         '
         Me.Discount.DataPropertyName = "Discount"
-        DataGridViewCellStyle511.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle511.Format = "0.00"
-        Me.Discount.DefaultCellStyle = DataGridViewCellStyle511
+        DataGridViewCellStyle95.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle95.Format = "0.00"
+        Me.Discount.DefaultCellStyle = DataGridViewCellStyle95
         Me.Discount.HeaderText = "Discount"
         Me.Discount.Name = "Discount"
         Me.Discount.ReadOnly = True
@@ -4343,9 +4247,9 @@ Partial Class AgniMainForm
         'NetBalance
         '
         Me.NetBalance.DataPropertyName = "NetBalance"
-        DataGridViewCellStyle512.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle512.Format = "0.00"
-        Me.NetBalance.DefaultCellStyle = DataGridViewCellStyle512
+        DataGridViewCellStyle96.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle96.Format = "0.00"
+        Me.NetBalance.DefaultCellStyle = DataGridViewCellStyle96
         Me.NetBalance.HeaderText = "Net Balance"
         Me.NetBalance.Name = "NetBalance"
         Me.NetBalance.ReadOnly = True
@@ -4354,9 +4258,9 @@ Partial Class AgniMainForm
         'TaxDeduction
         '
         Me.TaxDeduction.DataPropertyName = "TaxDeduction"
-        DataGridViewCellStyle513.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle513.Format = "0.00"
-        Me.TaxDeduction.DefaultCellStyle = DataGridViewCellStyle513
+        DataGridViewCellStyle97.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle97.Format = "0.00"
+        Me.TaxDeduction.DefaultCellStyle = DataGridViewCellStyle97
         Me.TaxDeduction.HeaderText = "Tax Deduction"
         Me.TaxDeduction.Name = "TaxDeduction"
         Me.TaxDeduction.ReadOnly = True
@@ -4365,9 +4269,9 @@ Partial Class AgniMainForm
         'FinalPaidAmount
         '
         Me.FinalPaidAmount.DataPropertyName = "FinalPaidAmount"
-        DataGridViewCellStyle514.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle514.Format = "0.00"
-        Me.FinalPaidAmount.DefaultCellStyle = DataGridViewCellStyle514
+        DataGridViewCellStyle98.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle98.Format = "0.00"
+        Me.FinalPaidAmount.DefaultCellStyle = DataGridViewCellStyle98
         Me.FinalPaidAmount.HeaderText = "Final Paid"
         Me.FinalPaidAmount.Name = "FinalPaidAmount"
         Me.FinalPaidAmount.ReadOnly = True
@@ -4376,9 +4280,9 @@ Partial Class AgniMainForm
         'ChequeNo
         '
         Me.ChequeNo.DataPropertyName = "ChequeNo"
-        DataGridViewCellStyle515.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle515.Format = "0.00"
-        Me.ChequeNo.DefaultCellStyle = DataGridViewCellStyle515
+        DataGridViewCellStyle99.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle99.Format = "0.00"
+        Me.ChequeNo.DefaultCellStyle = DataGridViewCellStyle99
         Me.ChequeNo.HeaderText = "Cheque No"
         Me.ChequeNo.Name = "ChequeNo"
         Me.ChequeNo.ReadOnly = True
@@ -4387,9 +4291,9 @@ Partial Class AgniMainForm
         'BankName
         '
         Me.BankName.DataPropertyName = "BankName"
-        DataGridViewCellStyle516.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle516.Format = "0.00"
-        Me.BankName.DefaultCellStyle = DataGridViewCellStyle516
+        DataGridViewCellStyle100.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle100.Format = "0.00"
+        Me.BankName.DefaultCellStyle = DataGridViewCellStyle100
         Me.BankName.HeaderText = "Bank Name"
         Me.BankName.Name = "BankName"
         Me.BankName.ReadOnly = True
@@ -4398,9 +4302,9 @@ Partial Class AgniMainForm
         'ChequeDate
         '
         Me.ChequeDate.DataPropertyName = "ChequeDate"
-        DataGridViewCellStyle517.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle517.Format = "dd\/MM\/yyyy"
-        Me.ChequeDate.DefaultCellStyle = DataGridViewCellStyle517
+        DataGridViewCellStyle101.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle101.Format = "dd\/MM\/yyyy"
+        Me.ChequeDate.DefaultCellStyle = DataGridViewCellStyle101
         Me.ChequeDate.HeaderText = "Cheque Date"
         Me.ChequeDate.Name = "ChequeDate"
         Me.ChequeDate.ReadOnly = True
@@ -4409,9 +4313,9 @@ Partial Class AgniMainForm
         'Remarks
         '
         Me.Remarks.DataPropertyName = "Remarks"
-        DataGridViewCellStyle518.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle518.Format = "0.00"
-        Me.Remarks.DefaultCellStyle = DataGridViewCellStyle518
+        DataGridViewCellStyle102.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle102.Format = "0.00"
+        Me.Remarks.DefaultCellStyle = DataGridViewCellStyle102
         Me.Remarks.HeaderText = "Remarks"
         Me.Remarks.Name = "Remarks"
         Me.Remarks.ReadOnly = True
@@ -5760,90 +5664,19 @@ Partial Class AgniMainForm
         Me.PictureBox5.TabIndex = 28
         Me.PictureBox5.TabStop = False
         '
-        'reportLine2
+        'GroupBox8
         '
-        Me.reportLine2.Location = New System.Drawing.Point(234, 46)
-        Me.reportLine2.Name = "reportLine2"
-        Me.reportLine2.Size = New System.Drawing.Size(23, 42)
-        Me.reportLine2.TabIndex = 163
-        Me.reportLine2.TabStop = False
-        Me.reportLine2.Visible = False
-        '
-        'reportLine3
-        '
-        Me.reportLine3.Location = New System.Drawing.Point(234, 89)
-        Me.reportLine3.Name = "reportLine3"
-        Me.reportLine3.Size = New System.Drawing.Size(23, 42)
-        Me.reportLine3.TabIndex = 164
-        Me.reportLine3.TabStop = False
-        Me.reportLine3.Visible = False
-        '
-        'reportLine4
-        '
-        Me.reportLine4.Location = New System.Drawing.Point(234, 131)
-        Me.reportLine4.Name = "reportLine4"
-        Me.reportLine4.Size = New System.Drawing.Size(23, 42)
-        Me.reportLine4.TabIndex = 165
-        Me.reportLine4.TabStop = False
-        Me.reportLine4.Visible = False
-        '
-        'reportLine5
-        '
-        Me.reportLine5.Location = New System.Drawing.Point(234, 195)
-        Me.reportLine5.Name = "reportLine5"
-        Me.reportLine5.Size = New System.Drawing.Size(23, 42)
-        Me.reportLine5.TabIndex = 166
-        Me.reportLine5.TabStop = False
-        Me.reportLine5.Visible = False
-        '
-        'reportLine6
-        '
-        Me.reportLine6.Location = New System.Drawing.Point(234, 256)
-        Me.reportLine6.Name = "reportLine6"
-        Me.reportLine6.Size = New System.Drawing.Size(23, 42)
-        Me.reportLine6.TabIndex = 312
-        Me.reportLine6.TabStop = False
-        Me.reportLine6.Visible = False
-        '
-        'reportLine5_1
-        '
-        Me.reportLine5_1.Location = New System.Drawing.Point(626, 195)
-        Me.reportLine5_1.Name = "reportLine5_1"
-        Me.reportLine5_1.Size = New System.Drawing.Size(23, 42)
-        Me.reportLine5_1.TabIndex = 168
-        Me.reportLine5_1.TabStop = False
-        Me.reportLine5_1.Visible = False
-        '
-        'reportLine4_1
-        '
-        Me.reportLine4_1.Location = New System.Drawing.Point(626, 131)
-        Me.reportLine4_1.Name = "reportLine4_1"
-        Me.reportLine4_1.Size = New System.Drawing.Size(23, 42)
-        Me.reportLine4_1.TabIndex = 167
-        Me.reportLine4_1.TabStop = False
-        Me.reportLine4_1.Visible = False
-        '
-        'Label45
-        '
-        Me.Label45.AutoSize = True
-        Me.Label45.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label45.ForeColor = System.Drawing.Color.Black
-        Me.Label45.Location = New System.Drawing.Point(50, 61)
-        Me.Label45.Name = "Label45"
-        Me.Label45.Size = New System.Drawing.Size(51, 24)
-        Me.Label45.TabIndex = 313
-        Me.Label45.Text = "Filter"
-        '
-        'Label61
-        '
-        Me.Label61.AutoSize = True
-        Me.Label61.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label61.ForeColor = System.Drawing.Color.Black
-        Me.Label61.Location = New System.Drawing.Point(51, 101)
-        Me.Label61.Name = "Label61"
-        Me.Label61.Size = New System.Drawing.Size(99, 24)
-        Me.Label61.TabIndex = 314
-        Me.Label61.Text = "Extra Filter"
+        Me.GroupBox8.Controls.Add(Me.Label51)
+        Me.GroupBox8.Controls.Add(Me.lblReportNoOfBills)
+        Me.GroupBox8.Controls.Add(Me.Label47)
+        Me.GroupBox8.Controls.Add(Me.lblReportBilledAmount)
+        Me.GroupBox8.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox8.Location = New System.Drawing.Point(26, 896)
+        Me.GroupBox8.Name = "GroupBox8"
+        Me.GroupBox8.Size = New System.Drawing.Size(873, 66)
+        Me.GroupBox8.TabIndex = 148
+        Me.GroupBox8.TabStop = False
+        Me.GroupBox8.Text = "Design Summary"
         '
         'AgniMainForm
         '
@@ -5863,29 +5696,27 @@ Partial Class AgniMainForm
         Me.tabHelp.PerformLayout()
         Me.tabReports.ResumeLayout(False)
         Me.tabReports.PerformLayout()
+        Me.GroupBox6.ResumeLayout(False)
+        Me.GroupBox6.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.groupReportDesignName.ResumeLayout(False)
         Me.groupReportDesignName.PerformLayout()
-        Me.groupReportDesignNumber.ResumeLayout(False)
-        Me.groupReportDesignNumber.PerformLayout()
-        Me.groupReportBillNumber.ResumeLayout(False)
-        Me.groupReportBillNumber.PerformLayout()
+        Me.groupReportDesignList.ResumeLayout(False)
+        Me.groupReportDesignList.PerformLayout()
+        Me.groupReportBillNo.ResumeLayout(False)
+        Me.groupReportBillNo.PerformLayout()
         Me.groupReportCustomerName.ResumeLayout(False)
         Me.groupReportCustomerName.PerformLayout()
         Me.groupReportDateRange.ResumeLayout(False)
         Me.groupReportDateRange.PerformLayout()
-        Me.groupReportMoreFilters.ResumeLayout(False)
-        Me.groupReportMoreFilters.PerformLayout()
         Me.GroupBox21.ResumeLayout(False)
         CType(Me.dgReportPaymentGrid, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox20.ResumeLayout(False)
         CType(Me.dgReportBillGrid, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox4.ResumeLayout(False)
         CType(Me.dgReportDesignGrid, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.groupReportFilters.ResumeLayout(False)
-        Me.groupReportFilters.PerformLayout()
         CType(Me.pbReportDesignImage, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.groupReportSearchCategory.ResumeLayout(False)
-        Me.groupReportSearchCategory.PerformLayout()
         Me.tabBilling.ResumeLayout(False)
         Me.tabBilling.PerformLayout()
         Me.GroupBox18.ResumeLayout(False)
@@ -5894,12 +5725,8 @@ Partial Class AgniMainForm
         CType(Me.dgBIllingBillDetails, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabDesign.ResumeLayout(False)
         Me.tabDesign.PerformLayout()
-        Me.GroupBox8.ResumeLayout(False)
-        Me.GroupBox8.PerformLayout()
         Me.GroupBox7.ResumeLayout(False)
         Me.GroupBox7.PerformLayout()
-        Me.GroupBox15.ResumeLayout(False)
-        Me.GroupBox15.PerformLayout()
         Me.GroupBox5.ResumeLayout(False)
         CType(Me.dgDesDesignDetails, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
@@ -5936,6 +5763,8 @@ Partial Class AgniMainForm
         Me.GroupBox13.PerformLayout()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox8.ResumeLayout(False)
+        Me.GroupBox8.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -6064,10 +5893,7 @@ Partial Class AgniMainForm
     Friend WithEvents Label117 As System.Windows.Forms.Label
     Friend WithEvents btnPaymentClear As System.Windows.Forms.Button
     Friend WithEvents cmbReportBillNoList As System.Windows.Forms.ComboBox
-    Friend WithEvents radioReportBillNo As System.Windows.Forms.RadioButton
     Friend WithEvents Label111 As System.Windows.Forms.Label
-    Friend WithEvents groupReportSearchCategory As System.Windows.Forms.GroupBox
-    Friend WithEvents radioReportCustName As System.Windows.Forms.RadioButton
     Friend WithEvents Label114 As System.Windows.Forms.Label
     Friend WithEvents Label115 As System.Windows.Forms.Label
     Friend WithEvents Label116 As System.Windows.Forms.Label
@@ -6144,7 +5970,6 @@ Partial Class AgniMainForm
     Friend WithEvents Label148 As System.Windows.Forms.Label
     Friend WithEvents Label149 As System.Windows.Forms.Label
     Friend WithEvents Label150 As System.Windows.Forms.Label
-    Friend WithEvents cbReportExtraDateFilter As System.Windows.Forms.CheckBox
     Friend WithEvents cmbDesDesignList As System.Windows.Forms.ComboBox
     Friend WithEvents GroupBox16 As GroupBox
     Friend WithEvents Label87 As Label
@@ -6210,8 +6035,6 @@ Partial Class AgniMainForm
     Friend WithEvents lblReportFromDate As Label
     Friend WithEvents dpReportToDate As DateTimePicker
     Friend WithEvents dpReportFromDate As DateTimePicker
-    Friend WithEvents radioReportDate As RadioButton
-    Friend WithEvents radioReportDesignName As RadioButton
     Friend WithEvents txtReportDesignName As TextBox
     Friend WithEvents lblReportDesignNameHint As Label
     Friend WithEvents lblReportTotDesignAmount As Label
@@ -6232,22 +6055,9 @@ Partial Class AgniMainForm
     Friend WithEvents Label55 As Label
     Friend WithEvents lblReportPaidAmountWithDeduction As Label
     Friend WithEvents Label49 As Label
-    Friend WithEvents groupReportFilters As GroupBox
     Friend WithEvents GroupBox5 As GroupBox
     Friend WithEvents dgDesDesignDetails As DataGridView
     Friend WithEvents GroupBox7 As GroupBox
-    Friend WithEvents GroupBox8 As GroupBox
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Label52 As Label
-    Friend WithEvents Label54 As Label
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents Label56 As Label
-    Friend WithEvents GroupBox15 As GroupBox
-    Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents Label57 As Label
-    Friend WithEvents Label58 As Label
-    Friend WithEvents TextBox4 As TextBox
-    Friend WithEvents Label59 As Label
     Friend WithEvents GroupBox17 As GroupBox
     Friend WithEvents dgBIllingBillDetails As DataGridView
     Friend WithEvents DesignNo As DataGridViewTextBoxColumn
@@ -6306,20 +6116,45 @@ Partial Class AgniMainForm
     Friend WithEvents dgReportPaymentGrid As DataGridView
     Friend WithEvents GroupBox20 As GroupBox
     Friend WithEvents dgReportBillGrid As DataGridView
-    Friend WithEvents ReportDesignNo As DataGridViewTextBoxColumn
-    Friend WithEvents ReportDesignName As DataGridViewTextBoxColumn
-    Friend WithEvents ReportDesignImage As DataGridViewImageColumn
-    Friend WithEvents ReportUnitType As DataGridViewTextBoxColumn
-    Friend WithEvents ReportUnitCost As DataGridViewTextBoxColumn
-    Friend WithEvents ReportWidth As DataGridViewTextBoxColumn
-    Friend WithEvents ReportHeight As DataGridViewTextBoxColumn
-    Friend WithEvents ReportColors As DataGridViewTextBoxColumn
-    Friend WithEvents ReportPrice As DataGridViewTextBoxColumn
-    Friend WithEvents ReportDesignDate As DataGridViewTextBoxColumn
-    Friend WithEvents ReportBilled As DataGridViewCheckBoxColumn
-    Friend WithEvents ReportBillNo As DataGridViewTextBoxColumn
-    Friend WithEvents ReportCustNo As DataGridViewTextBoxColumn
+    Friend WithEvents groupReportCustomerName As GroupBox
+    Friend WithEvents groupReportDateRange As GroupBox
+    Friend WithEvents groupReportDesignName As GroupBox
+    Friend WithEvents Label84 As Label
+    Friend WithEvents groupReportDesignList As GroupBox
+    Friend WithEvents cmbReportDesignNoList As ComboBox
+    Friend WithEvents Label83 As Label
+    Friend WithEvents groupReportBillNo As GroupBox
+    Friend WithEvents Label82 As Label
+    Friend WithEvents Label81 As Label
+    Friend WithEvents reportPlaceHolder5 As GroupBox
+    Friend WithEvents reportPlaceHolder3 As GroupBox
+    Friend WithEvents reportPlaceHolder1 As GroupBox
+    Friend WithEvents reportPlaceHolder4 As GroupBox
+    Friend WithEvents reportPlaceHolder2 As GroupBox
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents cbReportSearchByDateRange As CheckBox
+    Friend WithEvents cbReportSearchByBillNo As CheckBox
+    Friend WithEvents cbReportSearchByDesignName As CheckBox
+    Friend WithEvents cbReportSearchByDesignNo As CheckBox
+    Friend WithEvents cbReportSearchByCustomer As CheckBox
+    Friend WithEvents ReportPaymentPaymentNo As DataGridViewTextBoxColumn
+    Friend WithEvents ReportPaymentDisplayBillNo As DataGridViewTextBoxColumn
+    Friend WithEvents ReportPaymentCustName As DataGridViewTextBoxColumn
+    Friend WithEvents ReportPaymentBillNo As DataGridViewTextBoxColumn
+    Friend WithEvents ReportPaymentUnPaidBilledAmount As DataGridViewTextBoxColumn
+    Friend WithEvents ReportPaymentPaymentDate As DataGridViewTextBoxColumn
+    Friend WithEvents ReportPaymentPaymentMode As DataGridViewTextBoxColumn
+    Friend WithEvents reportPaymentActualPaidAmount As DataGridViewTextBoxColumn
+    Friend WithEvents ReportPaymentDiscount As DataGridViewTextBoxColumn
+    Friend WithEvents ReportPaymentTaxDeduction As DataGridViewTextBoxColumn
+    Friend WithEvents ReportPaymentFinalPaidAmount As DataGridViewTextBoxColumn
+    Friend WithEvents ReportPaymentNetBalance As DataGridViewTextBoxColumn
+    Friend WithEvents ReportPaymentChequeNo As DataGridViewTextBoxColumn
+    Friend WithEvents ReportPaymentBankName As DataGridViewTextBoxColumn
+    Friend WithEvents ReportPaymentChequeDate As DataGridViewTextBoxColumn
+    Friend WithEvents ReportPaymentRemarks As DataGridViewTextBoxColumn
     Friend WithEvents ReportBillDisplayBillNO As DataGridViewTextBoxColumn
+    Friend WithEvents ReportBillCustName As DataGridViewTextBoxColumn
     Friend WithEvents ReportBillBillNo As DataGridViewTextBoxColumn
     Friend WithEvents ReportBillBillDate As DataGridViewTextBoxColumn
     Friend WithEvents ReportBillUnPaidAmountTillNow As DataGridViewTextBoxColumn
@@ -6336,42 +6171,20 @@ Partial Class AgniMainForm
     Friend WithEvents ReportBillPaidAmount As DataGridViewTextBoxColumn
     Friend WithEvents ReportBillRemainingBalance As DataGridViewTextBoxColumn
     Friend WithEvents ReportBillCancelled As DataGridViewCheckBoxColumn
-    Friend WithEvents ReportPaymentPaymentNo As DataGridViewTextBoxColumn
-    Friend WithEvents ReportPaymentDisplayBillNo As DataGridViewTextBoxColumn
-    Friend WithEvents ReportPaymentBillNo As DataGridViewTextBoxColumn
-    Friend WithEvents ReportPaymentUnPaidBilledAmount As DataGridViewTextBoxColumn
-    Friend WithEvents ReportPaymentPaymentDate As DataGridViewTextBoxColumn
-    Friend WithEvents ReportPaymentPaymentMode As DataGridViewTextBoxColumn
-    Friend WithEvents reportPaymentActualPaidAmount As DataGridViewTextBoxColumn
-    Friend WithEvents ReportPaymentDiscount As DataGridViewTextBoxColumn
-    Friend WithEvents ReportPaymentNetBalance As DataGridViewTextBoxColumn
-    Friend WithEvents ReportPaymentTaxDeduction As DataGridViewTextBoxColumn
-    Friend WithEvents ReportPaymentFinalPaidAmount As DataGridViewTextBoxColumn
-    Friend WithEvents ReportPaymentChequeNo As DataGridViewTextBoxColumn
-    Friend WithEvents ReportPaymentBankName As DataGridViewTextBoxColumn
-    Friend WithEvents ReportPaymentChequeDate As DataGridViewTextBoxColumn
-    Friend WithEvents ReportPaymentRemarks As DataGridViewTextBoxColumn
-    Friend WithEvents radioReportFilterDesignName As RadioButton
-    Friend WithEvents radioReportFilterBillNo As RadioButton
-    Friend WithEvents groupReportMoreFilters As GroupBox
-    Friend WithEvents radioReportFilterDesignNumber As RadioButton
-    Friend WithEvents groupReportCustomerName As GroupBox
-    Friend WithEvents groupReportDateRange As GroupBox
-    Friend WithEvents groupReportDesignName As GroupBox
-    Friend WithEvents Label84 As Label
-    Friend WithEvents groupReportDesignNumber As GroupBox
-    Friend WithEvents cmbReportDesignNoList As ComboBox
-    Friend WithEvents Label83 As Label
-    Friend WithEvents groupReportBillNumber As GroupBox
-    Friend WithEvents Label82 As Label
-    Friend WithEvents Label81 As Label
-    Friend WithEvents reportLine4 As GroupBox
-    Friend WithEvents reportLine3 As GroupBox
-    Friend WithEvents reportLine2 As GroupBox
-    Friend WithEvents reportLine6 As GroupBox
-    Friend WithEvents reportLine5 As GroupBox
-    Friend WithEvents reportLine5_1 As GroupBox
-    Friend WithEvents reportLine4_1 As GroupBox
-    Friend WithEvents Label61 As Label
-    Friend WithEvents Label45 As Label
+    Friend WithEvents ReportDesignNo As DataGridViewTextBoxColumn
+    Friend WithEvents custName As DataGridViewTextBoxColumn
+    Friend WithEvents ReportDesignName As DataGridViewTextBoxColumn
+    Friend WithEvents ReportDesignImage As DataGridViewImageColumn
+    Friend WithEvents ReportUnitType As DataGridViewTextBoxColumn
+    Friend WithEvents ReportUnitCost As DataGridViewTextBoxColumn
+    Friend WithEvents ReportWidth As DataGridViewTextBoxColumn
+    Friend WithEvents ReportHeight As DataGridViewTextBoxColumn
+    Friend WithEvents ReportColors As DataGridViewTextBoxColumn
+    Friend WithEvents ReportPrice As DataGridViewTextBoxColumn
+    Friend WithEvents ReportDesignDate As DataGridViewTextBoxColumn
+    Friend WithEvents ReportBilled As DataGridViewCheckBoxColumn
+    Friend WithEvents ReportBillNo As DataGridViewTextBoxColumn
+    Friend WithEvents ReportCustNo As DataGridViewTextBoxColumn
+    Friend WithEvents GroupBox6 As GroupBox
+    Friend WithEvents GroupBox8 As GroupBox
 End Class
