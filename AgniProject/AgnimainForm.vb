@@ -1,12 +1,12 @@
 Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Threading
-Imports NLog
+'Imports NLog
 
 Public Class AgniMainForm
     Dim dbConnection As SqlConnection
 
-    Dim log As Logger = LogManager.GetCurrentClassLogger()
+    'Dim log As Logger = LogManager.GetCurrentClassLogger()
 
     Dim BILL_TYPE_UNBILLED As Int16 = 0
     Dim BILL_TYPE_BILLED As Int16 = 1
@@ -90,7 +90,7 @@ Public Class AgniMainForm
     End Sub
 
     Sub getCustomerListTable()
-        'log.Debug("getCustomerListTable: entry")
+        ''log.debug("getCustomerListTable: entry")
         Dim customerQuery = New SqlCommand("select CustNo,CompName from customer", dbConnection)
         Dim customerAdapter = New SqlDataAdapter()
         customerAdapter.SelectCommand = customerQuery
@@ -689,7 +689,7 @@ Public Class AgniMainForm
         dpPaymentDate.Enabled = True
         btnPaymentDelete.Visible = False
         btnPaymentClear.Visible = False
-        log.Debug("setPaymentControlsVisibilitiesForCreatePayment called and done")
+        'log.debug("setPaymentControlsVisibilitiesForCreatePayment called and done")
     End Sub
 
     Sub resetPaymentScreen()
@@ -709,7 +709,7 @@ Public Class AgniMainForm
         txtPaymentNetBalance.Text = ""
         txtPaymentRemarks.Text = ""
         txtPaymentUnPaidBilledAmount.Text = ""
-        log.Debug("resetPaymentScreen is called and done")
+        'log.debug("resetPaymentScreen is called and done")
     End Sub
 
     Public Sub btnCustAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCustAdd.Click
@@ -990,7 +990,7 @@ Public Class AgniMainForm
 
     Private Sub loadPictureChooseDialog()
 
-        log.Debug("pictureload: loading the picture")
+        'log.debug("pictureload: loading the picture")
 
         resetIndexOfComboBox(cmbDesDesignList)
 
@@ -1641,7 +1641,7 @@ Public Class AgniMainForm
         txtPaymentBillNo.Text = lastBillRow.Item("BillNo")
         txtPaymentUnPaidBilledAmount.Text = Format(unPaidBalance, "0.00")
 
-        log.Debug("btnPaymentCreatePayment_Click: before calling setPaymentControlsVisibilitiesForCreatePayment")
+        'log.debug("btnPaymentCreatePayment_Click: before calling setPaymentControlsVisibilitiesForCreatePayment")
         setPaymentControlsVisibilitiesForCreatePayment()
     End Sub
 
@@ -2197,7 +2197,9 @@ Public Class AgniMainForm
                             ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost+b.UnPaidAmountTillNow as TotalAmount, 
                             (((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost+b.UnPaidAmountTillNow)-b.PaidAmount as RemainingBalance, b.Cancelled from bill b, customer c"
         Else
-            billQuery = "select count(1) as BillsCount, isnull(sum(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost),0) as TotBilledAmount from bill b, customer c"
+            billQuery = "select count(1) as BillsCount, isnull(sum(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost),0) as TotBilledAmount, 
+                            isnull(sum((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100),0) as TotGSTAmount, isnull(sum(b.PaidAmount),0) as TotPaidAmount,
+                            isnull(sum(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost),0) - isnull(sum(b.PaidAmount),0) as NetBalance from bill b, customer c"
         End If
 
         Dim billQueryWhereClause As String = String.Empty
@@ -2424,7 +2426,7 @@ Public Class AgniMainForm
     Function fetchDesignTableForReport(searchQuery As String) As DataTable
         Dim designQueryCommand As SqlCommand = New SqlCommand(searchQuery, dbConnection)
 
-        log.Debug("fetchDesignTableForReport: searchQuery: " + searchQuery)
+        'log.debug("fetchDesignTableForReport: searchQuery: " + searchQuery)
 
         Dim designAdapter = New SqlDataAdapter()
         designAdapter.SelectCommand = designQueryCommand
@@ -2477,7 +2479,7 @@ Public Class AgniMainForm
     Function fetchBillTableForReport(searchQuery As String) As DataTable
         Dim billQueryCommand As SqlCommand = New SqlCommand(searchQuery, dbConnection)
 
-        log.Debug("fetchBillTableForReport: searchQuery: " + searchQuery)
+        'log.debug("fetchBillTableForReport: searchQuery: " + searchQuery)
 
         Dim billAdapter = New SqlDataAdapter()
         billAdapter.SelectCommand = billQueryCommand
@@ -2501,7 +2503,9 @@ Public Class AgniMainForm
 
         Dim dataRow As DataRow = billSummaryTable.Rows(0)
         lblReportNoOfBills.Text = dataRow.Item("BillsCount")
-        lblReportBilledAmount.Text = Format(dataRow.Item("TotBilledAmount"), "0.00")
+        lblReportBillBilledAmount.Text = Format(dataRow.Item("TotBilledAmount"), "0.00")
+        lblReportBIllPaidAmount.Text = Format(dataRow.Item("TotPaidAmount"), "0.00")
+        lblReportBillNetBalance.Text = Format(dataRow.Item("NetBalance"), "0.00")
     End Sub
 
     Sub searchPayment(searchData As SearchData)
@@ -2524,7 +2528,7 @@ Public Class AgniMainForm
 
     Function fetchPaymentTableForReport(searchQuery As String) As DataTable
         Dim paymentQueryCommand As SqlCommand = New SqlCommand(searchQuery, dbConnection)
-        log.Debug("fetchPaymentTableForReport: searchQuery: " + searchQuery)
+        'log.debug("fetchPaymentTableForReport: searchQuery: " + searchQuery)
 
         Dim paymentAdapter = New SqlDataAdapter()
         paymentAdapter.SelectCommand = paymentQueryCommand
@@ -2554,7 +2558,7 @@ Public Class AgniMainForm
 
     Private Sub cmbDesDesignList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbDesDesignList.SelectedIndexChanged
 
-        log.Debug("cmbDesDesignList_SelectedIndexChanged: " + cmbDesDesignList.SelectedIndex.ToString)
+        'log.debug("cmbDesDesignList_SelectedIndexChanged: " + cmbDesDesignList.SelectedIndex.ToString)
 
         If (cmbDesDesignList.SelectedIndex = -1 Or cmbDesDesignList.SelectedValue = -1) Then
             resetDesignScreen()
@@ -2677,6 +2681,11 @@ Public Class AgniMainForm
         Dim rowIndex As Integer = e.RowIndex
 
         If dgReportDesignGrid.RowCount > 0 And rowIndex >= 0 And dgReportDesignGrid.Columns.Contains("ReportDesignImage") Then
+
+            If (dgReportDesignGrid.Item("ReportDesignImage", rowIndex).Value Is DBNull.Value) Then
+                pbReportDesignImage.Image = Nothing
+                Return
+            End If
 
             Dim designImage() As Byte = CType(dgReportDesignGrid.Item("ReportDesignImage", rowIndex).Value, Byte())
             Dim designImageBuffer As New MemoryStream(designImage)

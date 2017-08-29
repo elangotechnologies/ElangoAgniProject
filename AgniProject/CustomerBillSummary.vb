@@ -39,7 +39,7 @@ Public Class CustomerBillSummary
                                         (select c.custno, c.compname, count(d.DesignNo) as designCount, isnull(sum(CASE WHEN d.Billed = 1 THEN d.Price ELSE 0 END),0) AS billedDesAmtNoGST, isnull(sum(CASE WHEN d.Billed = 0 THEN d.Price ELSE 0 END),0) AS unbilledDesAmtNoGST, isnull(sum(d.Price),0) as TotDeisgnAmtNoGST from customer c left join design d on c.custno = d.custno group by c.custno, c.compname) as cd,
                                         (select c.custno, isnull(sum(b.DesignCost+((isnull(b.CGST,0)+isnull(b.SGST,0)+isnull(b.IGST,0))*b.DesignCost/100)),0) AS billedDesAmtWithGST, isnull(sum(b.PaidAmount),0) as FinalPaidAmount from customer c left join bill b on c.custno = b.custno group by c.custno) as cb,
                                         (select c.custno, isnull(sum(p.ActualPaidAmount),0) as ActPaidAmount, isnull(sum(p.Discount),0) as Discount, isnull(sum(p.TaxDeduction),0) as TaxDeduction  from customer c left join payment p on c.custno = p.custno group by c.custno) as cp
-                                        where cd.custno = cb.custno and cd.custno = cp.custno", dbConnection)
+                                        where cd.custno = cb.custno and cd.custno = cp.custno order by cd.compname asc", dbConnection)
         End If
 
         Dim billSummaryAdapter = New SqlDataAdapter()

@@ -45,7 +45,5 @@ D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.pdb
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\AgniProject.pdb
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\AgniProject.xml
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.CustomerBillSummary.resources
-D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\NLog.dll
-D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\NLog.xml
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.ImagePopup.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.DeleteConfirmation.resources
