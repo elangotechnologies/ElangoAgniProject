@@ -55,6 +55,7 @@ Public Class AgniMainForm
         End If
 
         loadCustomerList()
+        loadCustomerGrid()
         'loadBillList(Nothing, cmbReportBillNoList)
 
         resetAllScreens()
@@ -182,7 +183,6 @@ Public Class AgniMainForm
         Else
             cmbDesDesignList.BindingContext = New BindingContext()
             cmbDesDesignList.DataSource = designTable
-            resetDesignScreen()
         End If
 
     End Sub
@@ -225,6 +225,39 @@ Public Class AgniMainForm
         ElseIf radioDesPrint.Checked Then
             lblDesCostPerUnit.Text = "Cost Per Inch"
             txtDesCostPerUnit.Text = chargingDetailsTable.Rows(0).Item("PrintColor").ToString
+        End If
+    End Sub
+
+    Sub loadCustomerGrid()
+        Dim thread As Thread = New Thread(AddressOf getCustomerGridTable)
+        thread.IsBackground = True
+        thread.Start()
+    End Sub
+
+    Sub getCustomerGridTable()
+
+        Dim customerTable As DataTable = fetchCustomerTable()
+        Dim setCustomerGridInvoker As New setCustomerGridDelegate(AddressOf Me.setCustomerGrid)
+        Me.BeginInvoke(setCustomerGridInvoker, customerTable)
+    End Sub
+
+    Function fetchCustomerTable() As DataTable
+
+        Dim customerQuery As SqlCommand = New SqlCommand("select * from customer", dbConnection)
+
+        Dim customerAdapter = New SqlDataAdapter()
+        customerAdapter.SelectCommand = customerQuery
+        Dim customerDataSet = New DataSet
+        customerAdapter.Fill(customerDataSet, "customer")
+        Return customerDataSet.Tables(0)
+    End Function
+
+    Delegate Sub setCustomerGridDelegate(customerTable As DataTable)
+
+    Sub setCustomerGrid(customerTable As DataTable)
+        dgCustCustomerDetails.DataSource = customerTable
+        If customerTable.Rows.Count > 0 Then
+            dgCustCustomerDetails.FirstDisplayedScrollingRowIndex = customerTable.Rows.Count - 1
         End If
     End Sub
 
@@ -428,9 +461,9 @@ Public Class AgniMainForm
 
         Dim paymentQuery As SqlCommand
         If (custNo <> Nothing) Then
-            paymentQuery = New SqlCommand("select p.*, p.UnPaidBilledAmount - p.FinalPaidAmount as NetBalance, b.DisplayBillNo  from payment p, bill b where p.BillNo = b.BillNo and p.custNo=" + custNo.ToString, dbConnection)
+            paymentQuery = New SqlCommand("select p.PaymentNo, p.BillNo, p.PaymentDate, p.PaymentMode, round(p.UnPaidBilledAmount, 0) as UnPaidBilledAmount, round(p.ActualPaidAmount, 0) as ActualPaidAmount, round(p.Discount,0) as Discount, round(p.FinalPaidAmount,0) as FinalPaidAmount, round(p.UnPaidBilledAmount - p.FinalPaidAmount, 0) as NetBalance, p.ChequeNo, p.BankName, p.ChequeDate, p.Remarks, b.DisplayBillNo from payment p, bill b where p.BillNo = b.BillNo and p.custNo=" + custNo.ToString, dbConnection)
         Else
-            paymentQuery = New SqlCommand("select p.*, p.UnPaidBilledAmount - p.FinalPaidAmount as NetBalance, b.DisplayBillNo  from payment p, bill b where p.BillNo = b.BillNo", dbConnection)
+            paymentQuery = New SqlCommand("select p.PaymentNo, p.BillNo, p.PaymentDate, p.PaymentMode, round(p.UnPaidBilledAmount, 0) as UnPaidBilledAmount, round(p.ActualPaidAmount, 0) as ActualPaidAmount, round(p.Discount,0) as Discount, round(p.FinalPaidAmount,0) as FinalPaidAmount, round(p.UnPaidBilledAmount - p.FinalPaidAmount, 0) as NetBalance, p.ChequeNo, p.BankName, p.ChequeDate, p.Remarks, b.DisplayBillNo from payment p, bill b where p.BillNo = b.BillNo", dbConnection)
         End If
 
         Dim paymentAdapter = New SqlDataAdapter()
@@ -621,7 +654,7 @@ Public Class AgniMainForm
         End If
         txtDesCalculatedPrice.Text = ""
         pbDesDesignImage.Image = Nothing
-        cmbDesDesignList.Focus()
+        cmbDesCustomerList.Focus()
     End Sub
 
     Sub resetBillingControlsVisibilities()
@@ -660,7 +693,7 @@ Public Class AgniMainForm
         txtBillingTotalAmount.Text = ""
         txtBillingPaidAmount.Text = ""
         txtBillingRemainingBalance.Text = ""
-        cmbBillingBillNoList.Focus()
+        cmbBillingCustomerList.Focus()
     End Sub
 
     Sub resetPaymentControlsVisibilities()
@@ -671,7 +704,6 @@ Public Class AgniMainForm
         cmbPaymentPaymentNoList.Enabled = True
         txtPaymentActualPaidAmount.ReadOnly = True
         txtPaymentDiscountAmount.ReadOnly = True
-        txtPaymentTaxDeductionAmount.ReadOnly = True
         dpPaymentDate.Enabled = False
         btnPaymentDelete.Visible = True
         btnPaymentClear.Visible = True
@@ -685,7 +717,6 @@ Public Class AgniMainForm
         btnPaymentCancelCreatePayment.Visible = True
         txtPaymentActualPaidAmount.ReadOnly = False
         txtPaymentDiscountAmount.ReadOnly = False
-        txtPaymentTaxDeductionAmount.ReadOnly = False
         dpPaymentDate.Enabled = True
         btnPaymentDelete.Visible = False
         btnPaymentClear.Visible = False
@@ -701,7 +732,6 @@ Public Class AgniMainForm
         radioPaymentByCash.Checked = True
         txtPaymentActualPaidAmount.Text = ""
         txtPaymentDiscountAmount.Text = ""
-        txtPaymentTaxDeductionAmount.Text = ""
         txtPaymentFinalPaidAmount.Text = ""
         txtPaymentChequeNo.Text = ""
         txtPaymentBankName.Text = ""
@@ -760,6 +790,7 @@ Public Class AgniMainForm
                 End Using
                 MessageBox.Show("Company successfully added")
                 loadCustomerList()
+                loadCustomerGrid()
             End If
         Catch sqlEx As SqlException When sqlEx.Number = 2627
             MsgBox("Duplicate customer entry. Please check if any other customer exists with same customer name")
@@ -803,6 +834,7 @@ Public Class AgniMainForm
         End Using
         MessageBox.Show("Company successfully deleted")
         loadCustomerList()
+        loadCustomerGrid()
         resetAllScreens()
     End Sub
 
@@ -888,6 +920,7 @@ Public Class AgniMainForm
             MessageBox.Show("Company successfully updated")
             resetCustomerScreen()
             loadCustomerList()
+            loadCustomerGrid()
         End If
     End Sub
 
@@ -1302,10 +1335,6 @@ Public Class AgniMainForm
         loadDesignGrid(custNo)
     End Sub
 
-    Private Sub dgDesDesignDetails_CurrentCellChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles dgDesDesignDetails.CurrentCellChanged
-
-    End Sub
-
     Private Sub btnCustClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCustClear.Click
         resetIndexOfComboBox(cmbCustCustomerList)
     End Sub
@@ -1382,27 +1411,25 @@ Public Class AgniMainForm
 
     End Sub
 
-    Sub calculatePaymentFinalPaidAmount() Handles txtPaymentActualPaidAmount.TextChanged, txtPaymentDiscountAmount.TextChanged, txtPaymentTaxDeductionAmount.TextChanged
+    Sub calculatePaymentFinalPaidAmount() Handles txtPaymentActualPaidAmount.TextChanged, txtPaymentDiscountAmount.TextChanged
 
         Dim actualPaidAmount As Decimal = 0
         Dim discountAmount As Decimal = 0
-        Dim taxDeductionAmount As Decimal = 0
         Dim unPaidBillAmount As Decimal = 0
 
         Decimal.TryParse(txtPaymentActualPaidAmount.Text, actualPaidAmount)
         Decimal.TryParse(txtPaymentDiscountAmount.Text, discountAmount)
-        Decimal.TryParse(txtPaymentTaxDeductionAmount.Text, taxDeductionAmount)
         Decimal.TryParse(txtPaymentUnPaidBilledAmount.Text, unPaidBillAmount)
 
-        Dim finalPaidAmount As Decimal = actualPaidAmount + discountAmount + taxDeductionAmount
+        Dim finalPaidAmount As Decimal = actualPaidAmount + discountAmount
 
         If unPaidBillAmount < finalPaidAmount Then
             MsgBox("The payment amount cannot be greater than the unpaid billed amount. Please correct the payment amount")
             Return
         End If
 
-        txtPaymentFinalPaidAmount.Text = Format(finalPaidAmount, "0.00")
-        txtPaymentNetBalance.Text = Format((unPaidBillAmount - finalPaidAmount), "0.00")
+        txtPaymentFinalPaidAmount.Text = Format(Math.Round(finalPaidAmount), "0.00")
+        txtPaymentNetBalance.Text = Format(Math.Round((unPaidBillAmount - finalPaidAmount)), "0.00")
 
     End Sub
     Private Sub btnBillingCreateBill_Click(sender As Object, e As EventArgs) Handles btnBillingCreateBill.Click
@@ -1466,14 +1493,29 @@ Public Class AgniMainForm
         Return Nothing
     End Function
 
-    Function getLastPaymentRow(Optional custNo As Integer = Nothing) As DataRow
+    Function getLastPaymentRow(Optional custNo As Integer = Nothing, Optional withBankDetails As Boolean = False) As DataRow
 
-        Dim paymentSelectQuery As SqlCommand
+        Dim paymentQueryStr As String = "select * from payment where PaymentNo=(select max(PaymentNo) from payment"
+        Dim paymentQueryWhereClause As String = String.Empty
+
         If (custNo <> Nothing) Then
-            paymentSelectQuery = New SqlCommand("select * from payment where PaymentNo=(select max(PaymentNo) from payment where custno=" + custNo.ToString + ")", dbConnection)
-        Else
-            paymentSelectQuery = New SqlCommand("select * from payment where PaymentNo=(select max(PaymentNo) from payment)", dbConnection)
+            paymentQueryWhereClause += " custNo = " + custNo.ToString
         End If
+
+        If (withBankDetails = True) Then
+            If paymentQueryWhereClause IsNot String.Empty Then
+                paymentQueryWhereClause += " and "
+            End If
+            paymentQueryWhereClause += " BankName is not null"
+        End If
+
+        If paymentQueryWhereClause IsNot String.Empty Then
+            paymentQueryStr += " where " + paymentQueryWhereClause
+        End If
+
+        paymentQueryStr += ")"
+
+        Dim paymentSelectQuery As SqlCommand = New SqlCommand(paymentQueryStr, dbConnection)
 
         Dim paymentAdapter = New SqlDataAdapter()
         paymentAdapter.SelectCommand = paymentSelectQuery
@@ -1492,9 +1534,9 @@ Public Class AgniMainForm
 
         Dim billSelectQuery As SqlCommand
         If (custNo <> Nothing) Then
-            billSelectQuery = New SqlCommand("select sum(PaidAmount) from bill where custno=" + custNo.ToString, dbConnection)
+            billSelectQuery = New SqlCommand("Select sum(PaidAmount) from bill where custno=" + custNo.ToString, dbConnection)
         Else
-            billSelectQuery = New SqlCommand("select sum(PaidAmount) from bill", dbConnection)
+            billSelectQuery = New SqlCommand("Select sum(PaidAmount) from bill", dbConnection)
         End If
 
         Dim billAdapter = New SqlDataAdapter()
@@ -1539,7 +1581,7 @@ Public Class AgniMainForm
 
             Dim query As String = String.Empty
             query &= "INSERT INTO bill (DisplayBillNo, CustNo, BillDate, DesignCost, CGST, SGST, IGST, UnPaidAmountTillNow, PaidAmount, Cancelled) "
-            query &= "VALUES (@DisplayBillNo, @CustNo, @BillDate, @DesignCost, @CGST, @SGST, @IGST, @UnPaidAmountTillNow, @PaidAmount, @Cancelled); SELECT SCOPE_IDENTITY()"
+            query &= "VALUES (@DisplayBillNo, @CustNo, @BillDate, @DesignCost, @CGST, @SGST, @IGST, @UnPaidAmountTillNow, @PaidAmount, @Cancelled); Select SCOPE_IDENTITY()"
 
             gDisplayBillNo += 1
 
@@ -1586,7 +1628,7 @@ Public Class AgniMainForm
     Private Sub btnBillingCancelBill_Click(sender As Object, e As EventArgs) Handles btnBillingCancelBill.Click
 
         If (cmbBillingBillNoList.SelectedIndex = -1 Or cmbBillingBillNoList.SelectedValue = -1) Then
-            MessageBox.Show("Please select a bill")
+            MessageBox.Show("Please Select a bill")
             cmbBillingBillNoList.Focus()
             Return
         End If
@@ -1595,7 +1637,7 @@ Public Class AgniMainForm
         Dim custNo As Integer = cmbBillingCustomerList.SelectedValue
 
         Dim updateQuery As String = String.Empty
-        updateQuery &= "update bill set Cancelled=@Cancelled where BillNo=@BillNo"
+        updateQuery &= "update bill Set Cancelled=@Cancelled where BillNo=@BillNo"
 
         Using comm As New SqlCommand()
             With comm
@@ -1608,7 +1650,7 @@ Public Class AgniMainForm
             comm.ExecuteNonQuery()
         End Using
 
-        MessageBox.Show("Bill " + billNo.ToString + " is marked as cancelled bill. You need to create a new bill for the designs which were billed in this bill")
+        MessageBox.Show("Bill " + billNo.ToString + " Is marked As cancelled bill. You need To create a New bill For the designs which were billed In this bill")
 
         loadBillList(custNo)
         loadBillGrid(custNo)
@@ -1617,7 +1659,7 @@ Public Class AgniMainForm
 
     Private Sub btnPaymentCreatePayment_Click(sender As Object, e As EventArgs) Handles btnPaymentCreatePayment.Click
         If (cmbPaymentCustomerList.SelectedIndex = -1 Or cmbPaymentCustomerList.SelectedValue = -1) Then
-            MessageBox.Show("Please select a customer")
+            MessageBox.Show("Please Select a customer")
             cmbPaymentCustomerList.Focus()
             Return
         End If
@@ -1631,18 +1673,26 @@ Public Class AgniMainForm
         Dim lastBillRow As DataRow = getLastBillRow(custNo)
 
         If (lastBillRow Is Nothing Or unPaidBalance = 0) Then
-            MessageBox.Show("This customer has no due amount to make the payment. All bills are paid by this customer")
+            MessageBox.Show("This customer has no due amount To make the payment. All bills are paid by this customer")
             Return
         End If
 
         resetPaymentScreen()
 
+        Dim lastPaymentRowWithBankInfo As DataRow = getLastPaymentRow(custNo, True)
+        If lastPaymentRowWithBankInfo IsNot Nothing Then
+            txtPaymentBankName.Text = lastPaymentRowWithBankInfo.Item("BankName")
+            txtPaymentChequeNo.Text = lastPaymentRowWithBankInfo.Item("ChequeNo")
+        End If
+
         txtPaymentDisplayBillNo.Text = lastBillRow.Item("DisplayBillNo")
         txtPaymentBillNo.Text = lastBillRow.Item("BillNo")
-        txtPaymentUnPaidBilledAmount.Text = Format(unPaidBalance, "0.00")
+        txtPaymentUnPaidBilledAmount.Text = Format(Math.Round(unPaidBalance), "0.00")
 
         'log.debug("btnPaymentCreatePayment_Click: before calling setPaymentControlsVisibilitiesForCreatePayment")
         setPaymentControlsVisibilitiesForCreatePayment()
+
+        txtPaymentActualPaidAmount.Focus()
     End Sub
 
     Private Sub btnPaymentConfirmCreatePayment_Click(sender As Object, e As EventArgs) Handles btnPaymentConfirmCreatePayment.Click
@@ -1656,8 +1706,8 @@ Public Class AgniMainForm
         ElseIf Val(txtPaymentUnPaidBilledAmount.Text) = 0 Then
             MessageBox.Show("There is no balance anmount to pay")
             txtPaymentUnPaidBilledAmount.Focus()
-        ElseIf txtPaymentActualPaidAmount.Text.Trim.Equals("") And txtPaymentDiscountAmount.Text.Trim.Equals("") And txtPaymentTaxDeductionAmount.Text.Trim.Equals("") Then
-            MessageBox.Show("Enter Payment Amount or Deduction or Tax Deduction")
+        ElseIf txtPaymentActualPaidAmount.Text.Trim.Equals("") And txtPaymentDiscountAmount.Text.Trim.Equals("") Then
+            MessageBox.Show("Enter Payment Amount or Discount")
             txtPaymentActualPaidAmount.Focus()
         ElseIf txtPaymentFinalPaidAmount.Text.Trim.Equals("") Then
             MessageBox.Show("Enter amount to be credited")
@@ -1675,17 +1725,15 @@ Public Class AgniMainForm
 
             Dim actualPaidAmount As Decimal = 0
             Dim discountAmount As Decimal = 0
-            Dim taxDeductionAmount As Decimal = 0
             Dim unPaidBillAmount As Decimal = 0
 
             Decimal.TryParse(txtPaymentActualPaidAmount.Text, actualPaidAmount)
             Decimal.TryParse(txtPaymentDiscountAmount.Text, discountAmount)
-            Decimal.TryParse(txtPaymentTaxDeductionAmount.Text, taxDeductionAmount)
             Decimal.TryParse(txtPaymentUnPaidBilledAmount.Text, unPaidBillAmount)
 
-            Dim finalPaidAmount As Decimal = actualPaidAmount + discountAmount + taxDeductionAmount
+            Dim finalPaidAmount As Decimal = actualPaidAmount + discountAmount
 
-            If (unPaidBillAmount < (actualPaidAmount + discountAmount + taxDeductionAmount)) Then
+            If (unPaidBillAmount < (actualPaidAmount + discountAmount)) Then
                 MessageBox.Show("You cannot pay more amount than the the unpaid bill amount")
                 Return
             End If
@@ -1703,9 +1751,9 @@ Public Class AgniMainForm
 
             Dim query As String = String.Empty
             query &= "INSERT INTO payment (CustNo, BillNo, UnPaidBilledAmount, PaymentDate, PaymentMode, ActualPaidAmount, "
-            query &= "Discount, TaxDeduction, ChequeNo, BankName, ChequeDate, Remarks, FinalPaidAmount) "
+            query &= "Discount, ChequeNo, BankName, ChequeDate, Remarks, FinalPaidAmount) "
             query &= "VALUES (@CustNo, @BillNo, @UnPaidBilledAmount, @PaymentDate, @PaymentMode, @ActualPaidAmount, "
-            query &= "@Discount, @TaxDeduction, @ChequeNo, @BankName, @ChequeDate, @Remarks, @FinalPaidAmount); SELECT SCOPE_IDENTITY()"
+            query &= "@Discount, @ChequeNo, @BankName, @ChequeDate, @Remarks, @FinalPaidAmount); SELECT SCOPE_IDENTITY()"
 
             Using comm As New SqlCommand()
                 With comm
@@ -1719,7 +1767,6 @@ Public Class AgniMainForm
                     .Parameters.AddWithValue("@PaymentMode", paymentType)
                     .Parameters.AddWithValue("@ActualPaidAmount", actualPaidAmount)
                     .Parameters.AddWithValue("@Discount", discountAmount)
-                    .Parameters.AddWithValue("@TaxDeduction", taxDeductionAmount)
                     .Parameters.AddWithValue("@Remarks", txtPaymentRemarks.Text)
                     .Parameters.AddWithValue("@FinalPaidAmount", txtPaymentFinalPaidAmount.Text)
                 End With
@@ -1835,12 +1882,11 @@ Public Class AgniMainForm
 
             txtPaymentActualPaidAmount.Text = dataRow.Item("ActualPaidAmount")
             txtPaymentDiscountAmount.Text = dataRow.Item("Discount")
-            txtPaymentTaxDeductionAmount.Text = dataRow.Item("TaxDeduction")
             txtPaymentFinalPaidAmount.Text = dataRow.Item("FinalPaidAmount")
             txtPaymentChequeNo.Text = If(dataRow.Item("ChequeNo") Is DBNull.Value, String.Empty, dataRow.Item("ChequeNo"))
             txtPaymentBankName.Text = If(dataRow.Item("BankName") Is DBNull.Value, String.Empty, dataRow.Item("BankName"))
             dpPaymentChequeDate.Text = If(dataRow.Item("ChequeDate") Is DBNull.Value, String.Empty, dataRow.Item("ChequeDate"))
-            txtPaymentNetBalance.Text = dataRow.Item("UnPaidBilledAmount") - (dataRow.Item("ActualPaidAmount") + dataRow.Item("Discount") + dataRow.Item("TaxDeduction"))
+            txtPaymentNetBalance.Text = Math.Round(dataRow.Item("UnPaidBilledAmount") - (dataRow.Item("ActualPaidAmount") + dataRow.Item("Discount")))
             txtPaymentRemarks.Text = dataRow.Item("Remarks")
         Else
             MessageBox.Show("No data found for payment: " + paymentNo.ToString)
@@ -1917,6 +1963,7 @@ Public Class AgniMainForm
         ElseIf selectedTabTag.Equals("tagDesignTab") Then
             Me.AcceptButton = btnDesAdd
             cmbDesCustomerList.Focus()
+            resetIndexOfComboBox(cmbDesCustomerList)
         ElseIf selectedTabTag.Equals("tagBillingTab") Then
             If btnBillingCreateBill.Visible = True Then
                 Me.AcceptButton = btnBillingCreateBill
@@ -1924,6 +1971,7 @@ Public Class AgniMainForm
                 Me.AcceptButton = btnBillingConfirmCreateBill
             End If
             cmbBillingCustomerList.Focus()
+            resetIndexOfComboBox(cmbBillingCustomerList)
         ElseIf selectedTabTag.Equals("tagPaymentTab") Then
             If btnPaymentCreatePayment.Visible = True Then
                 Me.AcceptButton = btnPaymentCreatePayment
@@ -1931,6 +1979,7 @@ Public Class AgniMainForm
                 Me.AcceptButton = btnPaymentConfirmCreatePayment
             End If
             cmbPaymentCustomerList.Focus()
+            resetIndexOfComboBox(cmbPaymentCustomerList)
         End If
     End Sub
 
@@ -2602,8 +2651,8 @@ Public Class AgniMainForm
     End Sub
 
     Private Sub dgDesDesignDetails_RowEnter(sender As Object, e As DataGridViewCellEventArgs) Handles dgDesDesignDetails.RowEnter
-        Dim designNo As Integer = dgDesDesignDetails.Item("designNo", e.RowIndex).Value
-        cmbDesDesignList.SelectedValue = designNo
+        'Dim designNo As Integer = dgDesDesignDetails.Item("designNo", e.RowIndex).Value
+        'cmbDesDesignList.SelectedValue = designNo
 
         'dgDesDesignDetails.Item("Image", e.RowIndex).ToolTipText = ToolTip1.ToString
     End Sub
@@ -2659,21 +2708,28 @@ Public Class AgniMainForm
 
 
     Private Sub dgBIllingBillDetails_RowEnter(sender As Object, e As DataGridViewCellEventArgs) Handles dgBIllingBillDetails.RowEnter
-        Dim billNo As Integer = dgBIllingBillDetails.Item("InternalBillNo", e.RowIndex).Value
-        cmbBillingBillNoList.SelectedValue = billNo
 
-        If btnBillingConfirmCreateBill.Visible = True Then
-            resetBillingControlsVisibilities()
-        End If
+        'If btnBillingConfirmCreateBill.Visible = True Then
+        '    MsgBox("You are in the middle of creating a Bill. You need to either complete the Bill creation or exit the Bill Creation to view any other Bills")
+        '    Return
+        'End If
+
+        'Dim billNo As Integer = dgBIllingBillDetails.Item("InternalBillNo", e.RowIndex).Value
+        'cmbBillingBillNoList.SelectedValue = billNo
+
     End Sub
 
     Private Sub dgPaymentDetails_RowEnter(sender As Object, e As DataGridViewCellEventArgs) Handles dgPaymentDetails.RowEnter
-        Dim paymentNo As Integer = dgPaymentDetails.Item("PaymentNo", e.RowIndex).Value
-        cmbPaymentPaymentNoList.SelectedValue = paymentNo
 
-        If btnPaymentConfirmCreatePayment.Visible = True Then
-            'resetPaymentControlsVisibilities()
-        End If
+        'If btnPaymentConfirmCreatePayment.Visible = True Then
+        '    MsgBox("You are in the middle of creating a Payment. You need to either complete the payment creation or exit the create payment to view any other payment")
+        '    Return
+        'End If
+
+        'Dim paymentNo As Integer = dgPaymentDetails.Item("PaymentNo", e.RowIndex).Value
+        'cmbPaymentPaymentNoList.SelectedValue = paymentNo
+
+
     End Sub
 
     Private Sub dgReportDesignGrid_RowEnter(sender As Object, e As DataGridViewCellEventArgs) Handles dgReportDesignGrid.RowEnter
@@ -2722,6 +2778,51 @@ Public Class AgniMainForm
         loadDesignList(Nothing, cmbReportDesignNoList, cmbReportBillNoList.SelectedValue)
     End Sub
 
+    Private Sub dgDesDesignDetails_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgDesDesignDetails.CellClick
+        If e.RowIndex < 0 Then
+            Return
+        End If
+
+        Dim designNo As Integer = dgDesDesignDetails.Item("designNo", e.RowIndex).Value
+        cmbDesDesignList.SelectedValue = designNo
+    End Sub
+
+    Private Sub dgBIllingBillDetails_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgBIllingBillDetails.CellClick
+        If e.RowIndex < 0 Then
+            Return
+        End If
+
+        If btnBillingConfirmCreateBill.Visible = True Then
+            MsgBox("You are in the middle of creating a Bill. You need to either complete the Bill creation or exit the Bill Creation to view any other Bills")
+            Return
+        End If
+
+        Dim billNo As Integer = dgBIllingBillDetails.Item("InternalBillNo", e.RowIndex).Value
+        cmbBillingBillNoList.SelectedValue = billNo
+    End Sub
+
+    Private Sub dgPaymentDetails_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgPaymentDetails.CellClick
+        If e.RowIndex < 0 Then
+            Return
+        End If
+
+        If btnPaymentConfirmCreatePayment.Visible = True Then
+            MsgBox("You are in the middle of creating a Payment. You need to either complete the payment creation or exit the create payment to view any other payment")
+            Return
+        End If
+
+        Dim paymentNo As Integer = dgPaymentDetails.Item("PaymentNo", e.RowIndex).Value
+        cmbPaymentPaymentNoList.SelectedValue = paymentNo
+    End Sub
+
+    Private Sub dgCustCustomerDetails_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgCustCustomerDetails.CellClick
+        If e.RowIndex < 0 Then
+            Return
+        End If
+
+        Dim CustNo As Integer = dgCustCustomerDetails.Item("CustomerCustNo", e.RowIndex).Value
+        cmbCustCustomerList.SelectedValue = CustNo
+    End Sub
 End Class
 
 
