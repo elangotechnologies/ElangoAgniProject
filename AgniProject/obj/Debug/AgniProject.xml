@@ -52,12 +52,72 @@ Represents a strongly typed in-memory cache of data.
 Represents the strongly named DataTable class.
 </summary>
 </member>
+<member name="T:AgniProject.DataSet1.OutstandingBalanceDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:AgniProject.DataSet1.TotalOutstandingBalanceDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:AgniProject.DataSet1.BillSearchResultDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:AgniProject.DataSet1.TotalBillSearchResultDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
 <member name="T:AgniProject.DataSet1.DesignDetailsRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
 </member>
+<member name="T:AgniProject.DataSet1.OutstandingBalanceRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:AgniProject.DataSet1.TotalOutstandingBalanceRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:AgniProject.DataSet1.BillSearchResultRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:AgniProject.DataSet1.TotalBillSearchResultRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
 <member name="T:AgniProject.DataSet1.DesignDetailsRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:AgniProject.DataSet1.OutstandingBalanceRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:AgniProject.DataSet1.TotalOutstandingBalanceRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:AgniProject.DataSet1.BillSearchResultRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:AgniProject.DataSet1.TotalBillSearchResultRowChangeEvent">
 <summary>
 Row event argument class
 </summary>

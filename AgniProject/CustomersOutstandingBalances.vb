@@ -1,6 +1,6 @@
 Imports System.Data.SqlClient
 
-Public Class CustomerBillSummary
+Public Class CustomersOutstandingBalances
 
     Dim dbConnection As SqlConnection
 
@@ -25,7 +25,7 @@ Public Class CustomerBillSummary
         If (custNo <> Nothing) Then
             billSummarySelectQuery = New SqlCommand("select cd.custno, cd.compname, cd.designCount, round(cd.billedDesAmtNoGST,0) as billedDesAmtNoGST, round(cd.unbilledDesAmtNoGST,0) as unbilledDesAmtNoGST, round(cd.TotDeisgnAmtNoGST,0) as TotDeisgnAmtNoGST, round(cb.billedDesAmtWithGST,0) as billedDesAmtWithGST,
                                         round(cp.ActPaidAmount,0) as ActPaidAmount, round(cp.Discount,0) as Discount, 
-                                        round(cb.FinalPaidAmount,0) as FinalPaidAmount, round(cb.billedDesAmtWithGST - cb.FinalPaidAmount, 0) as NetBalance
+                                        round(cb.FinalPaidAmount,0) as FinalPaidAmount, round(cb.billedDesAmtWithGST - cb.FinalPaidAmount, 0) as UnPaidBilledAmount, round(cd.unbilledDesAmtNoGST + (cb.billedDesAmtWithGST - cb.FinalPaidAmount), 0) as OutstandingBalance
                                         from 
                                         (select c.custno, c.compname, count(d.DesignNo) as designCount, isnull(sum(CASE WHEN d.Billed = 1 THEN d.Price ELSE 0 END),0) AS billedDesAmtNoGST, isnull(sum(CASE WHEN d.Billed = 0 THEN d.Price ELSE 0 END),0) AS unbilledDesAmtNoGST, isnull(sum(d.Price),0) as TotDeisgnAmtNoGST from customer c left join design d on c.custno = d.custno where c.custno=" + custNo.ToString + " group by c.custno, c.compname) as cd,
                                         (select c.custno, isnull(sum(b.DesignCost+((isnull(b.CGST,0)+isnull(b.SGST,0)+isnull(b.IGST,0))*b.DesignCost/100)),0) AS billedDesAmtWithGST, isnull(sum(b.PaidAmount),0) as FinalPaidAmount from customer c left join bill b on c.custno = b.custno  where c.custno=" + custNo.ToString + " group by c.custno) as cb,
@@ -34,7 +34,7 @@ Public Class CustomerBillSummary
         Else
             billSummarySelectQuery = New SqlCommand("select cd.custno, cd.compname, cd.designCount, round(cd.billedDesAmtNoGST,0) as billedDesAmtNoGST, round(cd.unbilledDesAmtNoGST,0) as unbilledDesAmtNoGST, round(cd.TotDeisgnAmtNoGST,0) as TotDeisgnAmtNoGST, round(cb.billedDesAmtWithGST,0) as billedDesAmtWithGST,
                                         round(cp.ActPaidAmount,0) as ActPaidAmount, round(cp.Discount,0) as Discount, 
-                                        round(cb.FinalPaidAmount,0) as FinalPaidAmount, round(cb.billedDesAmtWithGST - cb.FinalPaidAmount, 0) as NetBalance
+                                        round(cb.FinalPaidAmount,0) as FinalPaidAmount, round(cb.billedDesAmtWithGST - cb.FinalPaidAmount, 0) as UnPaidBilledAmount, round(cd.unbilledDesAmtNoGST + (cb.billedDesAmtWithGST - cb.FinalPaidAmount), 0) as OutstandingBalance
                                         from 
                                         (select c.custno, c.compname, count(d.DesignNo) as designCount, isnull(sum(CASE WHEN d.Billed = 1 THEN d.Price ELSE 0 END),0) AS billedDesAmtNoGST, isnull(sum(CASE WHEN d.Billed = 0 THEN d.Price ELSE 0 END),0) AS unbilledDesAmtNoGST, isnull(sum(d.Price),0) as TotDeisgnAmtNoGST from customer c left join design d on c.custno = d.custno group by c.custno, c.compname) as cd,
                                         (select c.custno, isnull(sum(b.DesignCost+((isnull(b.CGST,0)+isnull(b.SGST,0)+isnull(b.IGST,0))*b.DesignCost/100)),0) AS billedDesAmtWithGST, isnull(sum(b.PaidAmount),0) as FinalPaidAmount from customer c left join bill b on c.custno = b.custno group by c.custno) as cb,
@@ -52,9 +52,9 @@ Public Class CustomerBillSummary
     Function getTotalBillSummary() As DataTable
 
         Dim totalBillSummarySelectQuery As SqlCommand
-        totalBillSummarySelectQuery = New SqlCommand("select count(custno) as CustCount, sum(designCount) as TotDesignCount,sum(billCount) as TotBillCount, round(sum(unbilledDesAmtNoGST),0) as TotUnbilledDesAmt,
-                                        round(sum(ActPaidAmount),0) as TotActualPaidAmount, round(sum(Discount),0) as TotDiscount, round(sum(billedDesAmtWithGST),0) as TotBilledAmt, 
-                                        round(sum(FinalPaidAmount),0) as TotPaidAmount, round(sum(NetBalance),0) as TotUnPaidBillAmount
+        totalBillSummarySelectQuery = New SqlCommand("select isnull(count(custno),0) as CustCount, isnull(sum(designCount),0) as TotDesignCount,isnull(sum(billCount),0) as TotBillCount, isnull(round(sum(unbilledDesAmtNoGST),0),0) as TotUnbilledDesAmt,
+                                        round(isnull(sum(ActPaidAmount),0),0) as TotActualPaidAmount, round(isnull(sum(Discount),0),0) as TotDiscount, round(isnull(sum(billedDesAmtWithGST),0),0) as TotBilledAmt, 
+                                        round(isnull(sum(FinalPaidAmount),0),0) as TotPaidAmount, round(isnull(sum(NetBalance),0),0) as TotUnPaidBillAmount
                                         from(
                                         select cd.custno, cd.compname, cd.designCount, cd.billedDesAmtNoGST, cd.unbilledDesAmtNoGST, cd.TotDeisgnAmtNoGST, cb.billedDesAmtWithGST,
                                         cp.ActPaidAmount, cp.Discount, cb.billCount,
@@ -108,5 +108,10 @@ Public Class CustomerBillSummary
         lblUnpaidBillAmount.Text = Format(Math.Round(dataRow.Item("TotUnPaidBillAmount")), "0.00")
         lblOutstandingBalance.Text = Format(Math.Round(dataRow.Item("TotUnPaidBillAmount") + dataRow.Item("TotUnbilledDesAmt")), "0.00")
 
+
+    End Sub
+
+    Private Sub Button21_Click(sender As Object, e As EventArgs) Handles btnPrintOutstandingReport.Click
+        OutstandingCrystalReportHolder.Show()
     End Sub
 End Class

@@ -18,7 +18,7 @@ Imports System
 Imports System.ComponentModel
 
 
-Public Class BillReport
+Public Class BillCrystalReport
     Inherits ReportClass
     
     Public Sub New()
@@ -296,7 +296,7 @@ Public Class CachedBillReport
     End Property
     
     Public Overridable Function CreateReport() As CrystalDecisions.CrystalReports.Engine.ReportDocument Implements CrystalDecisions.ReportSource.ICachedReport.CreateReport
-        Dim rpt As BillReport = New BillReport()
+        Dim rpt As BillCrystalReport = New BillCrystalReport()
         rpt.Site = Me.Site
         Return rpt
     End Function

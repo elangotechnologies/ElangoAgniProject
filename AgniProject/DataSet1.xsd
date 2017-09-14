@@ -28,6 +28,42 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="OutstandingBalance" msprop:Generator_TableClassName="OutstandingBalanceDataTable" msprop:Generator_TableVarName="tableOutstandingBalance" msprop:Generator_RowChangedName="OutstandingBalanceRowChanged" msprop:Generator_TablePropName="OutstandingBalance" msprop:Generator_RowDeletingName="OutstandingBalanceRowDeleting" msprop:Generator_RowChangingName="OutstandingBalanceRowChanging" msprop:Generator_RowEvHandlerName="OutstandingBalanceRowChangeEventHandler" msprop:Generator_RowDeletedName="OutstandingBalanceRowDeleted" msprop:Generator_RowClassName="OutstandingBalanceRow" msprop:Generator_UserTableName="OutstandingBalance" msprop:Generator_RowEvArgName="OutstandingBalanceRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CompanyName" msprop:Generator_ColumnVarNameInTable="columnCompanyName" msprop:Generator_ColumnPropNameInRow="CompanyName" msprop:Generator_ColumnPropNameInTable="CompanyNameColumn" msprop:Generator_UserColumnName="CompanyName" type="xs:string" minOccurs="0" />
+              <xs:element name="UnBilledAmount" msprop:Generator_ColumnVarNameInTable="columnUnBilledAmount" msprop:Generator_ColumnPropNameInRow="UnBilledAmount" msprop:Generator_ColumnPropNameInTable="UnBilledAmountColumn" msprop:Generator_UserColumnName="UnBilledAmount" type="xs:string" minOccurs="0" />
+              <xs:element name="UnPaidBilledAmount" msprop:Generator_ColumnVarNameInTable="columnUnPaidBilledAmount" msprop:Generator_ColumnPropNameInRow="UnPaidBilledAmount" msprop:Generator_ColumnPropNameInTable="UnPaidBilledAmountColumn" msprop:Generator_UserColumnName="UnPaidBilledAmount" type="xs:string" minOccurs="0" />
+              <xs:element name="OutstandingBalance" msprop:Generator_ColumnVarNameInTable="columnOutstandingBalance" msprop:Generator_ColumnPropNameInRow="OutstandingBalance" msprop:Generator_ColumnPropNameInTable="OutstandingBalanceColumn" msprop:Generator_UserColumnName="OutstandingBalance" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TotalOutstandingBalance" msprop:Generator_TableClassName="TotalOutstandingBalanceDataTable" msprop:Generator_TableVarName="tableTotalOutstandingBalance" msprop:Generator_RowChangedName="TotalOutstandingBalanceRowChanged" msprop:Generator_TablePropName="TotalOutstandingBalance" msprop:Generator_RowDeletingName="TotalOutstandingBalanceRowDeleting" msprop:Generator_RowChangingName="TotalOutstandingBalanceRowChanging" msprop:Generator_RowEvHandlerName="TotalOutstandingBalanceRowChangeEventHandler" msprop:Generator_RowDeletedName="TotalOutstandingBalanceRowDeleted" msprop:Generator_RowClassName="TotalOutstandingBalanceRow" msprop:Generator_UserTableName="TotalOutstandingBalance" msprop:Generator_RowEvArgName="TotalOutstandingBalanceRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TotalUnBilledAmount" msdata:Caption="UnBilledAmount" msprop:Generator_ColumnVarNameInTable="columnTotalUnBilledAmount" msprop:Generator_ColumnPropNameInRow="TotalUnBilledAmount" msprop:Generator_ColumnPropNameInTable="TotalUnBilledAmountColumn" msprop:Generator_UserColumnName="TotalUnBilledAmount" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalUnPaidBilledAmount" msdata:Caption="UnPaidBilledAmount" msprop:Generator_ColumnVarNameInTable="columnTotalUnPaidBilledAmount" msprop:Generator_ColumnPropNameInRow="TotalUnPaidBilledAmount" msprop:Generator_ColumnPropNameInTable="TotalUnPaidBilledAmountColumn" msprop:Generator_UserColumnName="TotalUnPaidBilledAmount" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalOutstandingBalance" msdata:Caption="OutstandingBalance" msprop:Generator_ColumnVarNameInTable="columnTotalOutstandingBalance" msprop:Generator_ColumnPropNameInRow="TotalOutstandingBalance" msprop:Generator_ColumnPropNameInTable="TotalOutstandingBalanceColumn" msprop:Generator_UserColumnName="TotalOutstandingBalance" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="BillSearchResult" msprop:Generator_TableClassName="BillSearchResultDataTable" msprop:Generator_TableVarName="tableBillSearchResult" msprop:Generator_RowChangedName="BillSearchResultRowChanged" msprop:Generator_TablePropName="BillSearchResult" msprop:Generator_RowDeletingName="BillSearchResultRowDeleting" msprop:Generator_RowChangingName="BillSearchResultRowChanging" msprop:Generator_RowEvHandlerName="BillSearchResultRowChangeEventHandler" msprop:Generator_RowDeletedName="BillSearchResultRowDeleted" msprop:Generator_RowClassName="BillSearchResultRow" msprop:Generator_UserTableName="BillSearchResult" msprop:Generator_RowEvArgName="BillSearchResultRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CustomerName" msprop:Generator_ColumnVarNameInTable="columnCustomerName" msprop:Generator_ColumnPropNameInRow="CustomerName" msprop:Generator_ColumnPropNameInTable="CustomerNameColumn" msprop:Generator_UserColumnName="CustomerName" type="xs:string" minOccurs="0" />
+              <xs:element name="DisplayBillNo" msprop:Generator_ColumnVarNameInTable="columnDisplayBillNo" msprop:Generator_ColumnPropNameInRow="DisplayBillNo" msprop:Generator_ColumnPropNameInTable="DisplayBillNoColumn" msprop:Generator_UserColumnName="DisplayBillNo" type="xs:string" minOccurs="0" />
+              <xs:element name="BillDate" msprop:Generator_ColumnVarNameInTable="columnBillDate" msprop:Generator_ColumnPropNameInRow="BillDate" msprop:Generator_ColumnPropNameInTable="BillDateColumn" msprop:Generator_UserColumnName="BillDate" type="xs:string" minOccurs="0" />
+              <xs:element name="BillAmount" msprop:Generator_ColumnVarNameInTable="columnBillAmount" msprop:Generator_ColumnPropNameInRow="BillAmount" msprop:Generator_ColumnPropNameInTable="BillAmountColumn" msprop:Generator_UserColumnName="BillAmount" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TotalBillSearchResult" msprop:Generator_TableClassName="TotalBillSearchResultDataTable" msprop:Generator_TableVarName="tableTotalBillSearchResult" msprop:Generator_RowChangedName="TotalBillSearchResultRowChanged" msprop:Generator_TablePropName="TotalBillSearchResult" msprop:Generator_RowDeletingName="TotalBillSearchResultRowDeleting" msprop:Generator_RowChangingName="TotalBillSearchResultRowChanging" msprop:Generator_RowEvHandlerName="TotalBillSearchResultRowChangeEventHandler" msprop:Generator_RowDeletedName="TotalBillSearchResultRowDeleted" msprop:Generator_RowClassName="TotalBillSearchResultRow" msprop:Generator_UserTableName="TotalBillSearchResult" msprop:Generator_RowEvArgName="TotalBillSearchResultRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TotalBillAmount" msprop:Generator_ColumnVarNameInTable="columnTotalBillAmount" msprop:Generator_ColumnPropNameInRow="TotalBillAmount" msprop:Generator_ColumnPropNameInTable="TotalBillAmountColumn" msprop:Generator_UserColumnName="TotalBillAmount" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

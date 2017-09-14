@@ -28,6 +28,8 @@ Public Class AgniMainForm
     Private gDBConnInitialized As Boolean = False
     Private gFormLoadCompleted As Boolean = False
 
+    Public gBillSearchResutlDataSet As DataSet = Nothing
+    Public gBillSearchFilterText As String = Nothing
     Dim reportControlsPlaceHolders() As GroupBox
 
 
@@ -374,12 +376,12 @@ Public Class AgniMainForm
         Dim billQuery As SqlCommand
         If (custNo <> Nothing) Then
             billQuery = New SqlCommand("select BillNo, DisplayBillNo, BillDate, DesignCost, UnPaidAmountTillNow, CGST, CGST*DesignCost/100 as CGSTAmount, 
-                            SGST, SGST*DesignCost/100 as SGSTAmount, IGST, IGST*DesignCost/100 as IGSTAmount, (CGST+ SGST+ IGST)*DesignCost/100 as GSTAmount, ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost as DesignAmountGST, PaidAmount, 
+                            SGST, SGST*DesignCost/100 as SGSTAmount, IGST, IGST*DesignCost/100 as IGSTAmount, (CGST+ SGST+ IGST)*DesignCost/100 as GSTAmount, ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost as BillAmount, PaidAmount, 
                             ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost+UnPaidAmountTillNow as TotalAmount, 
                             (((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost+UnPaidAmountTillNow)-PaidAmount as RemainingBalance, Cancelled  from bill where custNo=" + custNo.ToString, dbConnection)
         Else
             billQuery = New SqlCommand("select BillNo, DisplayBillNo, BillDate, DesignCost, UnPaidAmountTillNow, CGST, CGST*DesignCost/100 as CGSTAmount, 
-                            SGST, SGST*DesignCost/100 as SGSTAmount, IGST, IGST*DesignCost/100 as IGSTAmount, (CGST+ SGST+ IGST)*DesignCost/100 as GSTAmount, ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost as DesignAmountGST, PaidAmount, 
+                            SGST, SGST*DesignCost/100 as SGSTAmount, IGST, IGST*DesignCost/100 as IGSTAmount, (CGST+ SGST+ IGST)*DesignCost/100 as GSTAmount, ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost as BillAmount, PaidAmount, 
                             ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost+UnPaidAmountTillNow as TotalAmount, 
                             (((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost+UnPaidAmountTillNow)-PaidAmount as RemainingBalance, Cancelled  from bill", dbConnection)
         End If
@@ -1372,7 +1374,7 @@ Public Class AgniMainForm
             Login.Show()
 
             BillReportForm.Close()
-            CustomerBillSummary.Close()
+            CustomersOutstandingBalances.Close()
             Login.ComboBox1.Focus()
         End If
     End Sub
@@ -1387,7 +1389,7 @@ Public Class AgniMainForm
     End Sub
 
     Private Sub btnBilingOutstandingBalance_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBilingOutstandingBalance.Click
-        CustomerBillSummary.Show()
+        CustomersOutstandingBalances.Show()
     End Sub
 
     Private Sub radioPaymentByCash_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles radioPaymentByCash.CheckedChanged
@@ -2241,14 +2243,14 @@ Public Class AgniMainForm
         Dim billQuery As String
 
         If isSummary = False Then
-            billQuery = "select c.CompName, b.BillNo, b.DisplayBillNo, b.BillDate, b.DesignCost, b.UnPaidAmountTillNow, b.CGST, b.CGST*b.DesignCost/100 as CGSTAmount, 
-                            b.SGST, b.SGST*b.DesignCost/100 as SGSTAmount, b.IGST, b.IGST*b.DesignCost/100 as IGSTAmount, (b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100 as GSTAmount, ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost as DesignAmountGST, b.PaidAmount, 
+            billQuery = "select c.CompName as CustomerName, b.BillNo, b.DisplayBillNo, b.BillDate, b.DesignCost, b.UnPaidAmountTillNow, b.CGST, b.CGST*b.DesignCost/100 as CGSTAmount, 
+                            b.SGST, b.SGST*b.DesignCost/100 as SGSTAmount, b.IGST, b.IGST*b.DesignCost/100 as IGSTAmount, (b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100 as GSTAmount, ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost as BillAmount, b.PaidAmount, 
                             ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost+b.UnPaidAmountTillNow as TotalAmount, 
                             (((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost+b.UnPaidAmountTillNow)-b.PaidAmount as RemainingBalance, b.Cancelled from bill b, customer c"
         Else
-            billQuery = "select count(1) as BillsCount, isnull(sum(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost),0) as TotBilledAmount, 
-                            isnull(sum((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100),0) as TotGSTAmount, isnull(sum(b.PaidAmount),0) as TotPaidAmount,
-                            isnull(sum(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost),0) - isnull(sum(b.PaidAmount),0) as NetBalance from bill b, customer c"
+            billQuery = "select count(1) as BillsCount, isnull(sum(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost),0) as TotalBillAmount, 
+                            isnull(sum((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100),0) as TotalGSTAmount, isnull(sum(b.PaidAmount),0) as TotalPaidAmount,
+                            isnull(sum(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost),0) - isnull(sum(b.PaidAmount),0) as TotalNetBalance from bill b, customer c"
         End If
 
         Dim billQueryWhereClause As String = String.Empty
@@ -2379,26 +2381,46 @@ Public Class AgniMainForm
         End If
 
         Dim searchData As SearchData = New SearchData
+        'To use in Bill Search report
+        gBillSearchFilterText = ""
 
         If (searchFilter And SEARCH_BY_CUSTOMER) <> 0 Then
             searchData.custNo = cmbReportCustomerList.SelectedValue
+            gBillSearchFilterText += "Customer Name   : " + cmbReportCustomerList.Text.ToString
         End If
 
         If (searchFilter And SEARCH_BY_BILL_NO) <> 0 Then
             searchData.billNo = cmbReportBillNoList.SelectedValue
+            If gBillSearchFilterText IsNot String.Empty Then
+                gBillSearchFilterText += Chr(10) + Chr(13)
+            End If
+            gBillSearchFilterText += "Bill Number          : " + cmbReportBillNoList.Text.ToString
         End If
 
         If (searchFilter And SEARCH_BY_DESIGN_NO) <> 0 Then
             searchData.designNo = cmbReportDesignNoList.SelectedValue
+            If gBillSearchFilterText IsNot String.Empty Then
+                gBillSearchFilterText += Chr(10) + Chr(13)
+            End If
+            gBillSearchFilterText += "Design Name      : " + cmbReportDesignNoList.Text.ToString
         End If
 
         If (searchFilter And SEARCH_BY_DESIGN_NAME) <> 0 Then
             searchData.designName = txtReportDesignName.Text
+            If gBillSearchFilterText IsNot String.Empty Then
+                gBillSearchFilterText += Chr(10) + Chr(13)
+            End If
+            gBillSearchFilterText += "Design Name       : " + searchData.designName
         End If
 
         If (searchFilter And SEARCH_BY_DATE_RANGE) <> 0 Then
             searchData.fromDate = dpReportFromDate.Value
             searchData.toDate = dpReportToDate.Value
+            If gBillSearchFilterText IsNot String.Empty Then
+                gBillSearchFilterText += Chr(10) + Chr(13)
+            End If
+            gBillSearchFilterText += "From Date            : " + searchData.fromDate.ToString("dd/MM/yyyy")
+            gBillSearchFilterText += Chr(10) + Chr(13) + "To Date                : " + searchData.toDate.ToString("dd/MM/yyyy")
         End If
 
         Dim designSearchQuery As String = getDesignSearchQuery(searchData)
@@ -2515,17 +2537,24 @@ Public Class AgniMainForm
 
     Sub fetchBillForReport(ByVal searchDataParam As Object)
         Dim searchData As SearchData = CType(searchDataParam, SearchData)
-        Dim billTable As DataTable = fetchBillTableForReport(searchData.billQuery)
+        Dim billTable As DataTable = fetchBillTableForReport(searchData.billQuery, "BillSearchResult")
         Dim showBillSearchResultInvoker As New showBillSearchResultDelegate(AddressOf Me.showBillSearchResult)
         Me.BeginInvoke(showBillSearchResultInvoker, billTable)
 
-        Dim billsummarytable As DataTable = fetchBillTableForReport(searchData.billSummaryQuery)
+        Dim billsummarytable As DataTable = fetchBillTableForReport(searchData.billSummaryQuery, "TotalBillSearchResult")
         Dim showbillsummarysearchresultinvoker As New showBillSummarySearchResultDelegate(AddressOf Me.showBillSummarySearchResult)
         Me.BeginInvoke(showbillsummarysearchresultinvoker, billsummarytable)
 
+        If gBillSearchResutlDataSet IsNot Nothing Then
+            gBillSearchResutlDataSet.Dispose()
+        End If
+        gBillSearchResutlDataSet = New DataSet
+        gBillSearchResutlDataSet.Tables.Add(billTable.Copy)
+        gBillSearchResutlDataSet.Tables.Add(billsummarytable.Copy)
+
     End Sub
 
-    Function fetchBillTableForReport(searchQuery As String) As DataTable
+    Function fetchBillTableForReport(searchQuery As String, resultTableName As String) As DataTable
         Dim billQueryCommand As SqlCommand = New SqlCommand(searchQuery, dbConnection)
 
         'log.debug("fetchBillTableForReport: searchQuery: " + searchQuery)
@@ -2533,7 +2562,7 @@ Public Class AgniMainForm
         Dim billAdapter = New SqlDataAdapter()
         billAdapter.SelectCommand = billQueryCommand
         Dim billDataSet = New DataSet
-        billAdapter.Fill(billDataSet, "bill")
+        billAdapter.Fill(billDataSet, resultTableName)
         Return billDataSet.Tables(0)
     End Function
 
@@ -2552,9 +2581,9 @@ Public Class AgniMainForm
 
         Dim dataRow As DataRow = billSummaryTable.Rows(0)
         lblReportNoOfBills.Text = dataRow.Item("BillsCount")
-        lblReportBillBilledAmount.Text = Format(dataRow.Item("TotBilledAmount"), "0.00")
-        lblReportBIllPaidAmount.Text = Format(dataRow.Item("TotPaidAmount"), "0.00")
-        lblReportBillNetBalance.Text = Format(dataRow.Item("NetBalance"), "0.00")
+        lblReportBillBilledAmount.Text = Format(dataRow.Item("TotalBillAmount"), "0.00")
+        lblReportBIllPaidAmount.Text = Format(dataRow.Item("TotalPaidAmount"), "0.00")
+        lblReportBillNetBalance.Text = Format(dataRow.Item("TotalNetBalance"), "0.00")
     End Sub
 
     Sub searchPayment(searchData As SearchData)
@@ -2823,6 +2852,10 @@ Public Class AgniMainForm
         Dim CustNo As Integer = dgCustCustomerDetails.Item("CustomerCustNo", e.RowIndex).Value
         cmbCustCustomerList.SelectedValue = CustNo
     End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        BillSearchCrystalReportHolder.Show()
+        'AllBillReport.Show()
+    End Sub
+
 End Class
-
-

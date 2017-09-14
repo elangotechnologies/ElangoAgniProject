@@ -8,7 +8,7 @@ Public Class BillReportForm
     'Dim log = LogManager.GetCurrentClassLogger()
 
     Dim dbConnection As SqlConnection
-    Dim billCrystalReport As New BillReport
+    Dim billCrystalReport As New BillCrystalReport
     Dim billPDFDestPath As String = "E:"
 
     Private ATTRIBUTE_BILL_PDF_PATH As String = "bill_pdf_dest_path"

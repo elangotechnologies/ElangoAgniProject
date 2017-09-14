@@ -1,8 +1,17 @@
 ﻿Partial Class DataSet1
-    Partial Public Class DesignDetailsDataTable
-        Private Sub DesignDetailsDataTable_DesignDetailsRowChanging(sender As Object, e As DesignDetailsRowChangeEvent) Handles Me.DesignDetailsRowChanging
+    Partial Public Class TotalBillSearchResultDataTable
 
-        End Sub
+    End Class
+
+    Partial Public Class BillSearchResultDataTable
+
+    End Class
+
+    Partial Public Class TotalOutstandingBalanceDataTable
+    End Class
+
+    Partial Public Class DesignDetailsDataTable
+
 
     End Class
 
