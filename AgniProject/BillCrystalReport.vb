@@ -27,7 +27,7 @@ Public Class BillCrystalReport
     
     Public Overrides Property ResourceName() As String
         Get
-            Return "BillReport.rpt"
+            Return "BillCrystalReport.rpt"
         End Get
         Set
             'Do nothing
@@ -45,7 +45,7 @@ Public Class BillCrystalReport
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "AgniProject.BillReport.rpt"
+            Return "AgniProject.BillCrystalReport.rpt"
         End Get
         Set
             'Do nothing

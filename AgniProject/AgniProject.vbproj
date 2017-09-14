@@ -232,7 +232,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="BillCrystalReportHolder.resx">
-      <SubType>Designer</SubType>
       <DependentUpon>BillCrystalReportHolder.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AgnimainForm.resx">
@@ -240,7 +239,6 @@
       <DependentUpon>AgnimainForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BillCrystalReport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>BillCrystalReport.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="changepwd.resx">
