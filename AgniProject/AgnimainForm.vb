@@ -2243,7 +2243,7 @@ Public Class AgniMainForm
         Dim billQuery As String
 
         If isSummary = False Then
-            billQuery = "select c.CompName as CustomerName, b.BillNo, b.DisplayBillNo, b.BillDate, b.DesignCost, b.UnPaidAmountTillNow, b.CGST, b.CGST*b.DesignCost/100 as CGSTAmount, 
+            billQuery = "select c.CompName as CustomerName, c.GSTIN as GSTNo, b.BillNo, b.DisplayBillNo, b.BillDate, b.DesignCost, b.UnPaidAmountTillNow, b.CGST, b.CGST*b.DesignCost/100 as CGSTAmount, 
                             b.SGST, b.SGST*b.DesignCost/100 as SGSTAmount, b.IGST, b.IGST*b.DesignCost/100 as IGSTAmount, (b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100 as GSTAmount, ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost as BillAmount, b.PaidAmount, 
                             ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost+b.UnPaidAmountTillNow as TotalAmount, 
                             (((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost+b.UnPaidAmountTillNow)-b.PaidAmount as RemainingBalance, b.Cancelled from bill b, customer c"
@@ -2853,9 +2853,12 @@ Public Class AgniMainForm
         cmbCustCustomerList.SelectedValue = CustNo
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnPrintBillSearchDetails.Click
         BillSearchCrystalReportHolder.Show()
         'AllBillReport.Show()
     End Sub
 
+    Private Sub btnPrintGSTDetails_Click(sender As Object, e As EventArgs) Handles btnPrintGSTDetails.Click
+        GSTCrystalReportHolder.Show()
+    End Sub
 End Class

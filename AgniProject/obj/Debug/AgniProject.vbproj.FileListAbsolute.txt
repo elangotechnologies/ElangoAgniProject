@@ -49,3 +49,4 @@ D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.application
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.exe
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.xml
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.pdb
+D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.GSTCrystalReportHolder.resources
