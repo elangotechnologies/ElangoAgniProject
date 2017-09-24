@@ -175,31 +175,31 @@ Public Class BillReportForm
         billCrystalReport.SetParameterValue("CancelledBill", cancelledBill)
     End Sub
 
-    Function getPdfDestPath() As String
-        Dim attributesTabe As DataTable = getAttributesTable(ATTRIBUTE_BILL_PDF_PATH)
-
-        If attributesTabe.Rows.Count = 0 Then
-            Return "E:"
-        End If
-
-        Dim dataRow As DataRow = attributesTabe.Rows(0)
-        Return dataRow.Item("AttributeValue")
-    End Function
-
-    Function getAttributesTable(attributeName As String) As DataTable
+    Function getAttribute(attributeName As String) As String
         Dim attributeQuery = New SqlCommand("select * from attributes where AttributeName='" + attributeName + "'", dbConnection)
         Dim attributeAdapter = New SqlDataAdapter()
         attributeAdapter.SelectCommand = attributeQuery
         Dim attributeDataSet = New DataSet
         attributeAdapter.Fill(attributeDataSet, "attributes")
-        Return attributeDataSet.Tables(0)
+        Dim attributeTable As DataTable = attributeDataSet.Tables(0)
+
+        If attributeTable.Rows.Count > 0 Then
+            Return attributeTable.Rows(0).Item("AttributeValue")
+        End If
+        Return Nothing
     End Function
 
-    Public Sub insertAttribute(attributeName As String, attributeValue As String)
+    Public Sub insertOrReplaceAttribute(attributeName As String, attributeValue As String)
 
         Dim query As String = String.Empty
-        query &= "INSERT INTO attributes (AttributeName, AttributeValue) "
-        query &= "VALUES (@attributeName, @attributeValue)"
+        query &= "begin tran
+           update attributes with (serializable) set AttributeValue =  @attributeValue
+           where AttributeName = @attributeName
+           if @@rowcount = 0
+           begin
+              insert into attributes (AttributeName, AttributeValue) values (@attributeName, @attributeValue)
+           end
+        commit tran"
 
         Using comm As New SqlCommand()
             With comm
@@ -221,7 +221,10 @@ Public Class BillReportForm
         Dim billnumber = AgniMainForm.gSelectedBillNo
         Dim displayBillnumber = AgniMainForm.gSelectedDisplayBillNo
         Dim custName = AgniMainForm.gSelectedCustName
-        Dim pdfBillDestFolder As String = getPdfDestPath()
+        Dim pdfBillDestFolder As String = getAttribute(ATTRIBUTE_BILL_PDF_PATH)
+        If pdfBillDestFolder Is Nothing Then
+            pdfBillDestFolder = "E:"
+        End If
         Dim fileName As String = pdfBillDestFolder + "\Bill#" + displayBillnumber + "_(#" + billnumber.ToString + ")_" + custName + ".pdf"
         CrDiskFileDestinationOptions.DiskFileName = fileName
         CrExportOptions = billCrystalReport.ExportOptions
@@ -244,9 +247,8 @@ Public Class BillReportForm
             If folderDialog.ShowDialog() = Windows.Forms.DialogResult.OK Then
 
                 Dim billPdfPath As String = folderDialog.SelectedPath.ToString
-                MsgBox("From now on, the exported bill pdf files will be saved in '" + billPdfPath + "\' directory. You can changes this path again.")
-
-                insertAttribute(ATTRIBUTE_BILL_PDF_PATH, billPdfPath)
+                insertOrReplaceAttribute(ATTRIBUTE_BILL_PDF_PATH, billPdfPath)
+                MsgBox("Hereafter the exported bill pdf files will be saved in '" + billPdfPath + "\' directory. If you wish you can change this path again")
             End If
 
         Catch ex As Exception

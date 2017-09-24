@@ -12,8 +12,6 @@ Public Class AgniMainForm
     Dim BILL_TYPE_BILLED As Int16 = 1
     Dim BILL_TYPE_ALL As Int16 = 2
 
-    Public gDisplayBillNo As Integer = 0
-
     Public gSelectedBillNo As Integer = -1
     Public gSelectedDisplayBillNo As String = String.Empty
     Public gSelectedCustNo As Integer = -1
@@ -31,6 +29,8 @@ Public Class AgniMainForm
     Public gBillSearchResutlDataSet As DataSet = Nothing
     Public gBillSearchFilterText As String = Nothing
     Dim reportControlsPlaceHolders() As GroupBox
+
+    Private ATTRIBUTE_LAST_BILL_NO As String = "last_bill_no"
 
 
     Private Sub AgnimainForm_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
@@ -51,14 +51,8 @@ Public Class AgniMainForm
 
         dpBillingBillDate.Value = DateTime.Today
 
-        Dim lastBillRow As DataRow = getLastBillRow()
-        If (lastBillRow IsNot Nothing) Then
-            gDisplayBillNo = lastBillRow.Item("DisplayBillNo")
-        End If
-
         loadCustomerList()
         loadCustomerGrid()
-        'loadBillList(Nothing, cmbReportBillNoList)
 
         resetAllScreens()
         Me.AcceptButton = btnReportSearch
@@ -401,6 +395,45 @@ Public Class AgniMainForm
         If billTable.Rows.Count > 0 Then
             dgBIllingBillDetails.FirstDisplayedScrollingRowIndex = billTable.Rows.Count - 1
         End If
+    End Sub
+
+    Sub loadLastBill(Optional custNo As Integer = Nothing)
+        Dim thread As Thread = New Thread(AddressOf getLastBillRowInThread)
+        thread.IsBackground = True
+
+        Dim searchData As SearchData = New SearchData
+        searchData.custNo = custNo
+        thread.Start(searchData)
+
+    End Sub
+
+    Sub getLastBillRowInThread(ByVal searchDataParam As Object)
+
+        Dim searchData As SearchData = CType(searchDataParam, SearchData)
+        Dim custNo = searchData.custNo
+
+        Dim lastBillRow As DataRow = getLastBillRow(custNo)
+
+        Dim setLastBillInScreenInvoker As New setLastBillInScreenDelegate(AddressOf Me.setLastBillInScreen)
+        Me.BeginInvoke(setLastBillInScreenInvoker, lastBillRow)
+
+    End Sub
+
+    Delegate Sub setLastBillInScreenDelegate(billTable As DataRow)
+
+    Sub setLastBillInScreen(billRow As DataRow)
+
+        If billRow IsNot Nothing Then
+            panelLastBillNo.Visible = True
+            txtBillingLastBillNo.Text = billRow.Item("DisplayBillNo")
+            txtBillingLastBillAmount.Text = Format(billRow.Item("BillAmount"), "0.00")
+        Else
+            panelLastBillNo.Visible = False
+            txtBillingLastBillNo.Text = ""
+            txtBillingLastBillAmount.Text = ""
+        End If
+
+
     End Sub
 
     Sub loadPaymentList(custNo As Integer)
@@ -1304,6 +1337,7 @@ Public Class AgniMainForm
     Private Sub cmbBillingCustomerList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbBillingCustomerList.SelectedIndexChanged
         gSelectedCustName = cmbBillingCustomerList.Text
         gSelectedCustNo = cmbBillingCustomerList.SelectedValue
+        panelLastBillNo.Visible = False
 
         If (cmbBillingCustomerList.SelectedIndex = -1 Or cmbBillingCustomerList.SelectedValue = -1) Then
             resetIndexOfComboBox(cmbBillingBillNoList)
@@ -1313,6 +1347,7 @@ Public Class AgniMainForm
         Dim custNo As Integer = cmbBillingCustomerList.SelectedValue
         loadBillList(custNo)
         loadBillGrid(custNo)
+        loadLastBill(custNo)
     End Sub
 
     Private Sub btnBillingPrintBill_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBillingPrintBill.Click
@@ -1477,9 +1512,9 @@ Public Class AgniMainForm
 
         Dim billSelectQuery As SqlCommand
         If (custNo <> Nothing) Then
-            billSelectQuery = New SqlCommand("select * from bill where billno=(select max(billno) from bill where custno=" + custNo.ToString + ")", dbConnection)
+            billSelectQuery = New SqlCommand("select *, ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost as BillAmount from bill where billno=(select max(billno) from bill where custno=" + custNo.ToString + ")", dbConnection)
         Else
-            billSelectQuery = New SqlCommand("select * from bill where billno=(select max(billno) from bill)", dbConnection)
+            billSelectQuery = New SqlCommand("select *, ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost as BillAmount from bill where billno=(select max(billno) from bill)", dbConnection)
         End If
 
         Dim billAdapter = New SqlDataAdapter()
@@ -1585,14 +1620,20 @@ Public Class AgniMainForm
             query &= "INSERT INTO bill (DisplayBillNo, CustNo, BillDate, DesignCost, CGST, SGST, IGST, UnPaidAmountTillNow, PaidAmount, Cancelled) "
             query &= "VALUES (@DisplayBillNo, @CustNo, @BillDate, @DesignCost, @CGST, @SGST, @IGST, @UnPaidAmountTillNow, @PaidAmount, @Cancelled); Select SCOPE_IDENTITY()"
 
-            gDisplayBillNo += 1
+            Dim displayBillNoStr As String = getAttribute(ATTRIBUTE_LAST_BILL_NO)
+            Dim displayBillNo As Integer = 0
+            If displayBillNoStr IsNot Nothing Then
+                displayBillNo = Integer.Parse(displayBillNoStr)
+            End If
+            displayBillNo = displayBillNo + 1
+
 
             Using comm As New SqlCommand()
                 With comm
                     .Connection = dbConnection
                     .CommandType = CommandType.Text
                     .CommandText = query
-                    .Parameters.AddWithValue("@DisplayBillNo", gDisplayBillNo)
+                    .Parameters.AddWithValue("@DisplayBillNo", displayBillNo)
                     .Parameters.AddWithValue("@CustNo", cmbBillingCustomerList.SelectedValue)
                     .Parameters.AddWithValue("@BillDate", dpBillingBillDate.Value)
                     .Parameters.AddWithValue("@DesignCost", Decimal.Parse(txtBillingDesignAmoutBeforeGST.Text))
@@ -1607,7 +1648,7 @@ Public Class AgniMainForm
             End Using
 
             updateRecentDesignsAsBilled(cmbBillingCustomerList.SelectedValue, newBillNo)
-
+            insertOrReplaceAttribute(ATTRIBUTE_LAST_BILL_NO, displayBillNo.ToString)
             MessageBox.Show("Bill successfully added")
 
             Dim custNo As Integer = cmbBillingCustomerList.SelectedValue
@@ -1791,7 +1832,7 @@ Public Class AgniMainForm
             addPaidAmountInBill(txtPaymentBillNo.Text, txtPaymentFinalPaidAmount.Text)
 
             MessageBox.Show("Payment successfully added")
-            Dim custNo As Integer = cmbBillingCustomerList.SelectedValue
+            Dim custNo As Integer = cmbPaymentCustomerList.SelectedValue
             loadPaymentList(custNo)
             loadPaymentGrid(custNo)
         End If
@@ -2089,7 +2130,7 @@ Public Class AgniMainForm
             placeHolderIndex += 1
         End If
 
-        btnReportSearch.Location = New Point(reportControlsPlaceHolders(placeHolderIndex).Location.X + 40, reportControlsPlaceHolders(placeHolderIndex).Location.Y + 20)
+        panelReportButtons.Location = New Point(reportControlsPlaceHolders(placeHolderIndex).Location.X + 40, reportControlsPlaceHolders(placeHolderIndex).Location.Y + 20)
 
         If sender Is cbReportSearchByCustomer Then
             gLastSearchByCustomerCheckedValue = cbReportSearchByCustomer.Checked
@@ -2854,11 +2895,107 @@ Public Class AgniMainForm
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnPrintBillSearchDetails.Click
+        If dgReportBillGrid.Rows.Count = 0 Then
+            MsgBox("There are no bills to print the bill report. Please refine your search criteria")
+            Return
+        End If
+
         BillSearchCrystalReportHolder.Show()
-        'AllBillReport.Show()
     End Sub
 
     Private Sub btnPrintGSTDetails_Click(sender As Object, e As EventArgs) Handles btnPrintGSTDetails.Click
+        If dgReportBillGrid.Rows.Count = 0 Then
+            MsgBox("There are no bills to print the GST report. Please refine your search criteria")
+            Return
+        End If
+
         GSTCrystalReportHolder.Show()
+    End Sub
+
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles btnSettingsBackupDatabase.Click
+        Dim folderDialog As New FolderBrowserDialog
+        If folderDialog.ShowDialog() = Windows.Forms.DialogResult.OK Then
+
+            Dim DBBackupPath As String = folderDialog.SelectedPath.ToString
+            Dim todayDateTime As String = DateTime.Now.ToString("yyyyMMddHHmmss")
+            Dim DBBackupFileName As String = "backup database agnidatabase to disk='" + DBBackupPath + "\Agni_DB_Backup_" + todayDateTime + ".bak'"
+
+            Dim cmd As SqlCommand = New SqlCommand(DBBackupFileName, dbConnection)
+            cmd.ExecuteNonQuery()
+
+            MsgBox("The Database backup stored in file: " + DBBackupFileName)
+
+        End If
+
+
+    End Sub
+
+    Private Sub btnSettingsResetBilNo_Click(sender As Object, e As EventArgs) Handles btnSettingsResetBilNo.Click
+        If MessageBox.Show("This operatoin will reset the bill number to 1 and you cannot reverse this operation. Do you really want to reset the bill number to 1? ", "Confirmation", System.Windows.Forms.MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
+            insertOrReplaceAttribute(ATTRIBUTE_LAST_BILL_NO, "0")
+            MsgBox("The bill number has been reset. Next time you generate the bill the bill number will start with 1. If you have mistakenly did this operation then immediately contact the software maintenance team for help")
+        End If
+
+    End Sub
+
+    Public Sub insertOrReplaceAttribute(attributeName As String, attributeValue As String)
+
+        Dim query As String = String.Empty
+        query &= "begin tran
+           update attributes with (serializable) set AttributeValue =  @attributeValue
+           where AttributeName = @attributeName
+           if @@rowcount = 0
+           begin
+              insert into attributes (AttributeName, AttributeValue) values (@attributeName, @attributeValue)
+           end
+        commit tran"
+
+        Using comm As New SqlCommand()
+            With comm
+                .Connection = dbConnection
+                .CommandType = CommandType.Text
+                .CommandText = query
+                .Parameters.AddWithValue("@attributeName", attributeName)
+                .Parameters.AddWithValue("@attributeValue", attributeValue)
+            End With
+            comm.ExecuteNonQuery()
+        End Using
+    End Sub
+
+    Function getAttribute(attributeName As String) As String
+        Dim attributeQuery = New SqlCommand("select * from attributes where AttributeName='" + attributeName + "'", dbConnection)
+        Dim attributeAdapter = New SqlDataAdapter()
+        attributeAdapter.SelectCommand = attributeQuery
+        Dim attributeDataSet = New DataSet
+        attributeAdapter.Fill(attributeDataSet, "attributes")
+        Dim attributeTable As DataTable = attributeDataSet.Tables(0)
+
+        If attributeTable.Rows.Count > 0 Then
+            Return attributeTable.Rows(0).Item("AttributeValue")
+        End If
+        Return Nothing
+    End Function
+
+    Private Sub btnReportSearchReset_Click(sender As Object, e As EventArgs) Handles btnReportSearchReset.Click
+        resetIndexOfComboBox(cmbReportCustomerList)
+        resetIndexOfComboBox(cmbReportBillNoList)
+        resetIndexOfComboBox(cmbReportDesignNoList)
+        txtReportDesignName.Text = ""
+        dpReportFromDate.Text = DateTime.Today
+        dpReportToDate.Text = DateTime.Today
+        Call CType(dgReportDesignGrid.DataSource, DataTable).Rows.Clear()
+        Call CType(dgReportBillGrid.DataSource, DataTable).Rows.Clear()
+        Call CType(dgReportPaymentGrid.DataSource, DataTable).Rows.Clear()
+        lblReportNoOfDesigns.Text = 0
+        lblReportBilledDesignAmount.Text = 0
+        lblReportUnBilledDesignAmount.Text = 0
+        lblReportTotDesignAmount.Text = 0
+        lblReportNoOfBills.Text = 0
+        lblReportBillBilledAmount.Text = 0
+        lblReportBIllPaidAmount.Text = 0
+        lblReportBillNetBalance.Text = 0
+        lblReportNoOfPayment.Text = 0
+        lblReportPaidAmountActual.Text = 0
+        lblReportPaidAmountWithDeduction.Text = 0
     End Sub
 End Class
