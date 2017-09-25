@@ -21,8 +21,8 @@ Partial Class CustomersOutstandingBalances
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -35,23 +35,11 @@ Partial Class CustomersOutstandingBalances
         Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.bwtCustomerSummaryLoadThread = New System.ComponentModel.BackgroundWorker()
         Me.bwtTotalBillSummaryLoadThread = New System.ComponentModel.BackgroundWorker()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.dgCustomerBillSummary = New System.Windows.Forms.DataGridView()
-        Me.CompName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CustNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.designCount = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BilledDesAmtNoGST = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.unbilledDesAmtNoGST = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TotDeisgnAmtNoGST = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BilledDesAmtWithGST = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ActPaidAmount = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Discount = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TaxDeduction = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FinalPaidAmount = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.UnPaidBilledAmount = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.OutstandingBalance = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblOutstandingBalance = New System.Windows.Forms.Label()
@@ -75,6 +63,19 @@ Partial Class CustomersOutstandingBalances
         Me.Label5 = New System.Windows.Forms.Label()
         Me.btnPrintOutstandingReport = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.CompName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CustNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.designCount = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BilledDesAmtNoGST = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.unbilledDesAmtNoGST = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TotDeisgnAmtNoGST = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BilledDesAmtWithGST = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ActPaidAmount = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Discount = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TaxDeduction = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FinalPaidAmount = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.UnPaidBilledAmount = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OutstandingBalance = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox5.SuspendLayout()
         CType(Me.dgCustomerBillSummary, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -119,14 +120,14 @@ Partial Class CustomersOutstandingBalances
         Me.dgCustomerBillSummary.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgCustomerBillSummary.ColumnHeadersHeight = 51
         Me.dgCustomerBillSummary.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CompName, Me.CustNo, Me.designCount, Me.BilledDesAmtNoGST, Me.unbilledDesAmtNoGST, Me.TotDeisgnAmtNoGST, Me.BilledDesAmtWithGST, Me.ActPaidAmount, Me.Discount, Me.TaxDeduction, Me.FinalPaidAmount, Me.UnPaidBilledAmount, Me.OutstandingBalance})
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle15.BackColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgCustomerBillSummary.DefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle16.BackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle16.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgCustomerBillSummary.DefaultCellStyle = DataGridViewCellStyle16
         Me.dgCustomerBillSummary.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgCustomerBillSummary.EnableHeadersVisualStyles = False
         Me.dgCustomerBillSummary.GridColor = System.Drawing.Color.Maroon
@@ -135,157 +136,16 @@ Partial Class CustomersOutstandingBalances
         Me.dgCustomerBillSummary.Name = "dgCustomerBillSummary"
         Me.dgCustomerBillSummary.ReadOnly = True
         Me.dgCustomerBillSummary.RowHeadersVisible = False
-        DataGridViewCellStyle16.BackColor = System.Drawing.Color.Lavender
-        DataGridViewCellStyle16.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgCustomerBillSummary.RowsDefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle17.BackColor = System.Drawing.Color.Lavender
+        DataGridViewCellStyle17.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgCustomerBillSummary.RowsDefaultCellStyle = DataGridViewCellStyle17
         Me.dgCustomerBillSummary.RowTemplate.Height = 25
         Me.dgCustomerBillSummary.RowTemplate.ReadOnly = True
         Me.dgCustomerBillSummary.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgCustomerBillSummary.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgCustomerBillSummary.Size = New System.Drawing.Size(1910, 812)
         Me.dgCustomerBillSummary.TabIndex = 0
-        '
-        'CompName
-        '
-        Me.CompName.DataPropertyName = "CompName"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.CompName.DefaultCellStyle = DataGridViewCellStyle3
-        Me.CompName.Frozen = True
-        Me.CompName.HeaderText = "Customer Name"
-        Me.CompName.Name = "CompName"
-        Me.CompName.ReadOnly = True
-        Me.CompName.Width = 200
-        '
-        'CustNo
-        '
-        Me.CustNo.DataPropertyName = "CustNo"
-        Me.CustNo.HeaderText = "Cust No"
-        Me.CustNo.Name = "CustNo"
-        Me.CustNo.ReadOnly = True
-        Me.CustNo.Visible = False
-        '
-        'designCount
-        '
-        Me.designCount.DataPropertyName = "designCount"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.designCount.DefaultCellStyle = DataGridViewCellStyle4
-        Me.designCount.HeaderText = "Design Count"
-        Me.designCount.Name = "designCount"
-        Me.designCount.ReadOnly = True
-        Me.designCount.Width = 150
-        '
-        'BilledDesAmtNoGST
-        '
-        Me.BilledDesAmtNoGST.DataPropertyName = "BilledDesAmtNoGST"
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle5.Format = "0.00"
-        Me.BilledDesAmtNoGST.DefaultCellStyle = DataGridViewCellStyle5
-        Me.BilledDesAmtNoGST.HeaderText = "Billed Amt No GST"
-        Me.BilledDesAmtNoGST.Name = "BilledDesAmtNoGST"
-        Me.BilledDesAmtNoGST.ReadOnly = True
-        Me.BilledDesAmtNoGST.Visible = False
-        Me.BilledDesAmtNoGST.Width = 190
-        '
-        'unbilledDesAmtNoGST
-        '
-        Me.unbilledDesAmtNoGST.DataPropertyName = "unbilledDesAmtNoGST"
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle6.Format = "0.00"
-        Me.unbilledDesAmtNoGST.DefaultCellStyle = DataGridViewCellStyle6
-        Me.unbilledDesAmtNoGST.HeaderText = "UnBilled Amount"
-        Me.unbilledDesAmtNoGST.Name = "unbilledDesAmtNoGST"
-        Me.unbilledDesAmtNoGST.ReadOnly = True
-        Me.unbilledDesAmtNoGST.Width = 190
-        '
-        'TotDeisgnAmtNoGST
-        '
-        Me.TotDeisgnAmtNoGST.DataPropertyName = "TotDeisgnAmtNoGST"
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle7.Format = "0.00"
-        Me.TotDeisgnAmtNoGST.DefaultCellStyle = DataGridViewCellStyle7
-        Me.TotDeisgnAmtNoGST.HeaderText = "Tot Deisgn Amt No GST"
-        Me.TotDeisgnAmtNoGST.Name = "TotDeisgnAmtNoGST"
-        Me.TotDeisgnAmtNoGST.ReadOnly = True
-        Me.TotDeisgnAmtNoGST.Visible = False
-        Me.TotDeisgnAmtNoGST.Width = 190
-        '
-        'BilledDesAmtWithGST
-        '
-        Me.BilledDesAmtWithGST.DataPropertyName = "BilledDesAmtWithGST"
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
-        DataGridViewCellStyle8.Format = "0.00"
-        Me.BilledDesAmtWithGST.DefaultCellStyle = DataGridViewCellStyle8
-        Me.BilledDesAmtWithGST.HeaderText = "Billed Amount"
-        Me.BilledDesAmtWithGST.Name = "BilledDesAmtWithGST"
-        Me.BilledDesAmtWithGST.ReadOnly = True
-        Me.BilledDesAmtWithGST.Width = 190
-        '
-        'ActPaidAmount
-        '
-        Me.ActPaidAmount.DataPropertyName = "ActPaidAmount"
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle9.Format = "0.00"
-        Me.ActPaidAmount.DefaultCellStyle = DataGridViewCellStyle9
-        Me.ActPaidAmount.HeaderText = "Actual Paid Amount"
-        Me.ActPaidAmount.Name = "ActPaidAmount"
-        Me.ActPaidAmount.ReadOnly = True
-        Me.ActPaidAmount.Width = 190
-        '
-        'Discount
-        '
-        Me.Discount.DataPropertyName = "Discount"
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle10.Format = "0.00"
-        Me.Discount.DefaultCellStyle = DataGridViewCellStyle10
-        Me.Discount.HeaderText = "Discount"
-        Me.Discount.Name = "Discount"
-        Me.Discount.ReadOnly = True
-        Me.Discount.Width = 170
-        '
-        'TaxDeduction
-        '
-        Me.TaxDeduction.DataPropertyName = "TaxDeduction"
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle11.Format = "0.00"
-        Me.TaxDeduction.DefaultCellStyle = DataGridViewCellStyle11
-        Me.TaxDeduction.HeaderText = "Tax Deduction"
-        Me.TaxDeduction.Name = "TaxDeduction"
-        Me.TaxDeduction.ReadOnly = True
-        Me.TaxDeduction.Width = 170
-        '
-        'FinalPaidAmount
-        '
-        Me.FinalPaidAmount.DataPropertyName = "FinalPaidAmount"
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle12.Format = "0.00"
-        Me.FinalPaidAmount.DefaultCellStyle = DataGridViewCellStyle12
-        Me.FinalPaidAmount.HeaderText = "Final Paid Amount"
-        Me.FinalPaidAmount.Name = "FinalPaidAmount"
-        Me.FinalPaidAmount.ReadOnly = True
-        Me.FinalPaidAmount.Width = 190
-        '
-        'UnPaidBilledAmount
-        '
-        Me.UnPaidBilledAmount.DataPropertyName = "UnPaidBilledAmount"
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle13.Format = "0.00"
-        Me.UnPaidBilledAmount.DefaultCellStyle = DataGridViewCellStyle13
-        Me.UnPaidBilledAmount.HeaderText = "UnPaid Bill Amount"
-        Me.UnPaidBilledAmount.Name = "UnPaidBilledAmount"
-        Me.UnPaidBilledAmount.ReadOnly = True
-        Me.UnPaidBilledAmount.Width = 190
-        '
-        'OutstandingBalance
-        '
-        Me.OutstandingBalance.DataPropertyName = "OutstandingBalance"
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle14.Format = "0.00"
-        Me.OutstandingBalance.DefaultCellStyle = DataGridViewCellStyle14
-        Me.OutstandingBalance.HeaderText = "Outstanding Balance"
-        Me.OutstandingBalance.Name = "OutstandingBalance"
-        Me.OutstandingBalance.ReadOnly = True
-        Me.OutstandingBalance.Width = 200
         '
         'GroupBox2
         '
@@ -591,6 +451,149 @@ Partial Class CustomersOutstandingBalances
         Me.GroupBox1.TabIndex = 136
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Total Bill Summary"
+        '
+        'CompName
+        '
+        Me.CompName.DataPropertyName = "CompName"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.CompName.DefaultCellStyle = DataGridViewCellStyle3
+        Me.CompName.Frozen = True
+        Me.CompName.HeaderText = "Customer Name"
+        Me.CompName.Name = "CompName"
+        Me.CompName.ReadOnly = True
+        Me.CompName.Width = 200
+        '
+        'CustNo
+        '
+        Me.CustNo.DataPropertyName = "CustNo"
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.CustNo.DefaultCellStyle = DataGridViewCellStyle4
+        Me.CustNo.HeaderText = "Cust No"
+        Me.CustNo.Name = "CustNo"
+        Me.CustNo.ReadOnly = True
+        Me.CustNo.Visible = False
+        '
+        'designCount
+        '
+        Me.designCount.DataPropertyName = "designCount"
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.designCount.DefaultCellStyle = DataGridViewCellStyle5
+        Me.designCount.HeaderText = "Design Count"
+        Me.designCount.Name = "designCount"
+        Me.designCount.ReadOnly = True
+        Me.designCount.Width = 150
+        '
+        'BilledDesAmtNoGST
+        '
+        Me.BilledDesAmtNoGST.DataPropertyName = "BilledDesAmtNoGST"
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle6.Format = "0.00"
+        Me.BilledDesAmtNoGST.DefaultCellStyle = DataGridViewCellStyle6
+        Me.BilledDesAmtNoGST.HeaderText = "Billed Amt No GST"
+        Me.BilledDesAmtNoGST.Name = "BilledDesAmtNoGST"
+        Me.BilledDesAmtNoGST.ReadOnly = True
+        Me.BilledDesAmtNoGST.Visible = False
+        Me.BilledDesAmtNoGST.Width = 190
+        '
+        'unbilledDesAmtNoGST
+        '
+        Me.unbilledDesAmtNoGST.DataPropertyName = "unbilledDesAmtNoGST"
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle7.Format = "0.00"
+        Me.unbilledDesAmtNoGST.DefaultCellStyle = DataGridViewCellStyle7
+        Me.unbilledDesAmtNoGST.HeaderText = "UnBilled Amount"
+        Me.unbilledDesAmtNoGST.Name = "unbilledDesAmtNoGST"
+        Me.unbilledDesAmtNoGST.ReadOnly = True
+        Me.unbilledDesAmtNoGST.Width = 190
+        '
+        'TotDeisgnAmtNoGST
+        '
+        Me.TotDeisgnAmtNoGST.DataPropertyName = "TotDeisgnAmtNoGST"
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle8.Format = "0.00"
+        Me.TotDeisgnAmtNoGST.DefaultCellStyle = DataGridViewCellStyle8
+        Me.TotDeisgnAmtNoGST.HeaderText = "Tot Deisgn Amt No GST"
+        Me.TotDeisgnAmtNoGST.Name = "TotDeisgnAmtNoGST"
+        Me.TotDeisgnAmtNoGST.ReadOnly = True
+        Me.TotDeisgnAmtNoGST.Visible = False
+        Me.TotDeisgnAmtNoGST.Width = 190
+        '
+        'BilledDesAmtWithGST
+        '
+        Me.BilledDesAmtWithGST.DataPropertyName = "BilledDesAmtWithGST"
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight
+        DataGridViewCellStyle9.Format = "0.00"
+        Me.BilledDesAmtWithGST.DefaultCellStyle = DataGridViewCellStyle9
+        Me.BilledDesAmtWithGST.HeaderText = "Billed Amount"
+        Me.BilledDesAmtWithGST.Name = "BilledDesAmtWithGST"
+        Me.BilledDesAmtWithGST.ReadOnly = True
+        Me.BilledDesAmtWithGST.Width = 190
+        '
+        'ActPaidAmount
+        '
+        Me.ActPaidAmount.DataPropertyName = "ActPaidAmount"
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle10.Format = "0.00"
+        Me.ActPaidAmount.DefaultCellStyle = DataGridViewCellStyle10
+        Me.ActPaidAmount.HeaderText = "Actual Paid Amount"
+        Me.ActPaidAmount.Name = "ActPaidAmount"
+        Me.ActPaidAmount.ReadOnly = True
+        Me.ActPaidAmount.Width = 190
+        '
+        'Discount
+        '
+        Me.Discount.DataPropertyName = "Discount"
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle11.Format = "0.00"
+        Me.Discount.DefaultCellStyle = DataGridViewCellStyle11
+        Me.Discount.HeaderText = "Discount"
+        Me.Discount.Name = "Discount"
+        Me.Discount.ReadOnly = True
+        Me.Discount.Width = 170
+        '
+        'TaxDeduction
+        '
+        Me.TaxDeduction.DataPropertyName = "TaxDeduction"
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle12.Format = "0.00"
+        Me.TaxDeduction.DefaultCellStyle = DataGridViewCellStyle12
+        Me.TaxDeduction.HeaderText = "Tax Deduction"
+        Me.TaxDeduction.Name = "TaxDeduction"
+        Me.TaxDeduction.ReadOnly = True
+        Me.TaxDeduction.Width = 170
+        '
+        'FinalPaidAmount
+        '
+        Me.FinalPaidAmount.DataPropertyName = "FinalPaidAmount"
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle13.Format = "0.00"
+        Me.FinalPaidAmount.DefaultCellStyle = DataGridViewCellStyle13
+        Me.FinalPaidAmount.HeaderText = "Final Paid Amount"
+        Me.FinalPaidAmount.Name = "FinalPaidAmount"
+        Me.FinalPaidAmount.ReadOnly = True
+        Me.FinalPaidAmount.Width = 190
+        '
+        'UnPaidBilledAmount
+        '
+        Me.UnPaidBilledAmount.DataPropertyName = "UnPaidBilledAmount"
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle14.Format = "0.00"
+        Me.UnPaidBilledAmount.DefaultCellStyle = DataGridViewCellStyle14
+        Me.UnPaidBilledAmount.HeaderText = "UnPaid Bill Amount"
+        Me.UnPaidBilledAmount.Name = "UnPaidBilledAmount"
+        Me.UnPaidBilledAmount.ReadOnly = True
+        Me.UnPaidBilledAmount.Width = 190
+        '
+        'OutstandingBalance
+        '
+        Me.OutstandingBalance.DataPropertyName = "OutstandingBalance"
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle15.Format = "0.00"
+        Me.OutstandingBalance.DefaultCellStyle = DataGridViewCellStyle15
+        Me.OutstandingBalance.HeaderText = "Outstanding Balance"
+        Me.OutstandingBalance.Name = "OutstandingBalance"
+        Me.OutstandingBalance.ReadOnly = True
+        Me.OutstandingBalance.Width = 200
         '
         'CustomersOutstandingBalances
         '

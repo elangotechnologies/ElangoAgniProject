@@ -369,15 +369,15 @@ Public Class AgniMainForm
 
         Dim billQuery As SqlCommand
         If (custNo <> Nothing) Then
-            billQuery = New SqlCommand("select BillNo, DisplayBillNo, BillDate, DesignCost, UnPaidAmountTillNow, CGST, CGST*DesignCost/100 as CGSTAmount, 
-                            SGST, SGST*DesignCost/100 as SGSTAmount, IGST, IGST*DesignCost/100 as IGSTAmount, (CGST+ SGST+ IGST)*DesignCost/100 as GSTAmount, ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost as BillAmount, PaidAmount, 
-                            ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost+UnPaidAmountTillNow as TotalAmount, 
-                            (((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost+UnPaidAmountTillNow)-PaidAmount as RemainingBalance, Cancelled  from bill where custNo=" + custNo.ToString, dbConnection)
+            billQuery = New SqlCommand("select BillNo, DisplayBillNo, BillDate, Round(DesignCost,0) as DesignCost, Round(UnPaidAmountTillNow,0) as UnPaidAmountTillNow, CGST, CGST*DesignCost/100 as CGSTAmount, 
+                            SGST, SGST*DesignCost/100 as SGSTAmount, IGST, IGST*DesignCost/100 as IGSTAmount, (CGST+ SGST+ IGST)*DesignCost/100 as GSTAmount, Round(((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost,0) as BillAmount, Round(PaidAmount,0) as PaidAmount, 
+                            Round(((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost,0)+Round(UnPaidAmountTillNow,0) as TotalAmount, 
+                            (Round(((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost,0)+Round(UnPaidAmountTillNow,0))-Round(PaidAmount,0) as RemainingBalance, Cancelled  from bill where custNo=" + custNo.ToString, dbConnection)
         Else
-            billQuery = New SqlCommand("select BillNo, DisplayBillNo, BillDate, DesignCost, UnPaidAmountTillNow, CGST, CGST*DesignCost/100 as CGSTAmount, 
-                            SGST, SGST*DesignCost/100 as SGSTAmount, IGST, IGST*DesignCost/100 as IGSTAmount, (CGST+ SGST+ IGST)*DesignCost/100 as GSTAmount, ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost as BillAmount, PaidAmount, 
-                            ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost+UnPaidAmountTillNow as TotalAmount, 
-                            (((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost+UnPaidAmountTillNow)-PaidAmount as RemainingBalance, Cancelled  from bill", dbConnection)
+            billQuery = New SqlCommand("select BillNo, DisplayBillNo, BillDate, Round(DesignCost,0) as DesignCost, Round(UnPaidAmountTillNow,0) as UnPaidAmountTillNow, CGST, CGST*DesignCost/100 as CGSTAmount, 
+                            SGST, SGST*DesignCost/100 as SGSTAmount, IGST, IGST*DesignCost/100 as IGSTAmount, (CGST+ SGST+ IGST)*DesignCost/100 as GSTAmount, Round(((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost,0) as BillAmount, Round(PaidAmount,0) as PaidAmount, 
+                            Round(((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost,0)+Round(UnPaidAmountTillNow,0) as TotalAmount, 
+                            (Round(((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost,0)+Round(UnPaidAmountTillNow,0))-Round(PaidAmount,0) as RemainingBalance, Cancelled  from bill", dbConnection)
         End If
 
         Dim billAdapter = New SqlDataAdapter()
@@ -522,6 +522,7 @@ Public Class AgniMainForm
     End Sub
 
 
+
     Function getDesignAmountWithGSTTax(billedType As Int16, Optional custNo As Integer = Nothing) As Decimal
 
         Dim designQueryString = "select sum(designAmountWithTax) from (
@@ -559,7 +560,6 @@ Public Class AgniMainForm
         End If
 
         Return designTable.Rows(0).Item(0)
-
 
     End Function
 
@@ -1481,9 +1481,7 @@ Public Class AgniMainForm
         Dim custNo = cmbBillingCustomerList.SelectedValue
 
         Dim unBilledDesignAmount As Decimal = getDesignAmountWithoutGSTTax(BILL_TYPE_UNBILLED, custNo)
-        Dim billedDesignAmount As Decimal = getDesignAmountWithGSTTax(BILL_TYPE_BILLED, custNo)
-        Dim totalBillsPaidAmount As Decimal = getAllBillsPaidAmount(custNo)
-        Dim unPaidBalance As Decimal = billedDesignAmount - totalBillsPaidAmount
+        Dim unPaidBalance As Decimal = getUnpaidBilledAmount(custNo)
 
         If (unBilledDesignAmount = 0) Then
             MessageBox.Show("There are no designs to bill or all the designs are billed already for this customer")
@@ -1567,13 +1565,13 @@ Public Class AgniMainForm
         Return Nothing
     End Function
 
-    Function getAllBillsPaidAmount(Optional custNo As Integer = Nothing) As Decimal
+    Function getUnpaidBilledAmount(Optional custNo As Integer = Nothing) As Decimal
 
         Dim billSelectQuery As SqlCommand
         If (custNo <> Nothing) Then
-            billSelectQuery = New SqlCommand("Select sum(PaidAmount) from bill where custno=" + custNo.ToString, dbConnection)
+            billSelectQuery = New SqlCommand("Select sum(round(DesignCost+((isnull(CGST,0)+isnull(SGST,0)+isnull(IGST,0))*DesignCost/100),0))-sum(paidamount) as UnPaidBilledAmount from bill where custno=" + custNo.ToString, dbConnection)
         Else
-            billSelectQuery = New SqlCommand("Select sum(PaidAmount) from bill", dbConnection)
+            billSelectQuery = New SqlCommand("Select sum(round(DesignCost+((isnull(CGST,0)+isnull(SGST,0)+isnull(IGST,0))*DesignCost/100),0))-sum(paidamount) as UnPaidBilledAmount from bill", dbConnection)
         End If
 
         Dim billAdapter = New SqlDataAdapter()
@@ -1708,10 +1706,7 @@ Public Class AgniMainForm
         End If
 
         Dim custNo = cmbPaymentCustomerList.SelectedValue
-
-        Dim billedDesignAmount As Decimal = getDesignAmountWithGSTTax(BILL_TYPE_BILLED, custNo)
-        Dim totalBillsPaidAmount As Decimal = getAllBillsPaidAmount(custNo)
-        Dim unPaidBalance As Decimal = billedDesignAmount - totalBillsPaidAmount
+        Dim unPaidBalance As Decimal = getUnpaidBilledAmount(custNo)
 
         Dim lastBillRow As DataRow = getLastBillRow(custNo)
 
@@ -2284,14 +2279,14 @@ Public Class AgniMainForm
         Dim billQuery As String
 
         If isSummary = False Then
-            billQuery = "select c.CompName as CustomerName, c.GSTIN as GSTNo, b.BillNo, b.DisplayBillNo, b.BillDate, b.DesignCost, b.UnPaidAmountTillNow, b.CGST, b.CGST*b.DesignCost/100 as CGSTAmount, 
-                            b.SGST, b.SGST*b.DesignCost/100 as SGSTAmount, b.IGST, b.IGST*b.DesignCost/100 as IGSTAmount, (b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100 as GSTAmount, ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost as BillAmount, b.PaidAmount, 
-                            ((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost+b.UnPaidAmountTillNow as TotalAmount, 
-                            (((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost+b.UnPaidAmountTillNow)-b.PaidAmount as RemainingBalance, b.Cancelled from bill b, customer c"
+            billQuery = "select c.CompName as CustomerName, c.GSTIN as GSTNo, b.BillNo, b.DisplayBillNo, b.BillDate, Round(b.DesignCost,0)  as DesignCost, Round(b.UnPaidAmountTillNow,0) as UnPaidAmountTillNow, b.CGST, b.CGST*b.DesignCost/100 as CGSTAmount, 
+                            b.SGST, b.SGST*b.DesignCost/100 as SGSTAmount, b.IGST, b.IGST*b.DesignCost/100 as IGSTAmount, (b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100 as GSTAmount, Round(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost,0) as BillAmount, b.PaidAmount, 
+                            Round(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost,0)+Round(b.UnPaidAmountTillNow,0) as TotalAmount, 
+                            (Round(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost,0)+Round(b.UnPaidAmountTillNow,0))-Round(b.PaidAmount,0) as RemainingBalance, b.Cancelled from bill b, customer c"
         Else
-            billQuery = "select count(1) as BillsCount, isnull(sum(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost),0) as TotalBillAmount, 
+            billQuery = "select count(1) as BillsCount, isnull(sum(Round(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost,0)),0) as TotalBillAmount, 
                             isnull(sum((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100),0) as TotalGSTAmount, isnull(sum(b.PaidAmount),0) as TotalPaidAmount,
-                            isnull(sum(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost),0) - isnull(sum(b.PaidAmount),0) as TotalNetBalance from bill b, customer c"
+                            isnull(sum(Round(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost,0)),0) - isnull(sum(b.PaidAmount),0) as TotalNetBalance from bill b, customer c"
         End If
 
         Dim billQueryWhereClause As String = String.Empty
