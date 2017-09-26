@@ -1510,9 +1510,9 @@ Public Class AgniMainForm
 
         Dim billSelectQuery As SqlCommand
         If (custNo <> Nothing) Then
-            billSelectQuery = New SqlCommand("select *, ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost as BillAmount from bill where billno=(select max(billno) from bill where custno=" + custNo.ToString + ")", dbConnection)
+            billSelectQuery = New SqlCommand("select *, Round(((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost,0) as BillAmount from bill where billno=(select max(billno) from bill where custno=" + custNo.ToString + ")", dbConnection)
         Else
-            billSelectQuery = New SqlCommand("select *, ((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost as BillAmount from bill where billno=(select max(billno) from bill)", dbConnection)
+            billSelectQuery = New SqlCommand("select *, Round(((CGST+ SGST+ IGST)*DesignCost/100)+DesignCost,0) as BillAmount from bill where billno=(select max(billno) from bill)", dbConnection)
         End If
 
         Dim billAdapter = New SqlDataAdapter()
