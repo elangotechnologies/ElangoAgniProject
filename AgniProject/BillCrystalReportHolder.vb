@@ -225,7 +225,7 @@ Public Class BillReportForm
         If pdfBillDestFolder Is Nothing Then
             pdfBillDestFolder = "E:"
         End If
-        Dim fileName As String = pdfBillDestFolder + "\Bill#" + displayBillnumber + "_(#" + billnumber.ToString + ")_" + custName + ".pdf"
+        Dim fileName As String = pdfBillDestFolder + "\Bill_" + displayBillnumber + "_" + custName + ".pdf"
         CrDiskFileDestinationOptions.DiskFileName = fileName
         CrExportOptions = billCrystalReport.ExportOptions
         With CrExportOptions
