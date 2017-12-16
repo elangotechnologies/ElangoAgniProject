@@ -1,12 +1,12 @@
 Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Threading
-'Imports NLog
+Imports NLog
 
 Public Class AgniMainForm
     Dim dbConnection As SqlConnection
 
-    'Dim log As Logger = LogManager.GetCurrentClassLogger()
+    ''Dim log As Logger = LogManager.GetCurrentClassLogger()
 
     Dim BILL_TYPE_UNBILLED As Int16 = 0
     Dim BILL_TYPE_BILLED As Int16 = 1
@@ -44,7 +44,7 @@ Public Class AgniMainForm
 
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        dbConnection = New SqlConnection("server=agni\SQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
+        dbConnection = New SqlConnection("server=DESKTOP-EHEMD7K\ELASQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
         dbConnection.Open()
 
         gDBConnInitialized = True
@@ -2284,9 +2284,9 @@ Public Class AgniMainForm
                             Round(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost,0)+Round(b.UnPaidAmountTillNow,0) as TotalAmount, 
                             (Round(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost,0)+Round(b.UnPaidAmountTillNow,0))-Round(b.PaidAmount,0) as RemainingBalance, b.Cancelled from bill b, customer c"
         Else
-            billQuery = "select count(1) as BillsCount, isnull(sum(Round(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost,0)),0) as TotalBillAmount, 
+            billQuery = "select count(1) as BillsCount, sum(isnull(Round(b.DesignCost,0),0)) as TotalDesignCost, isnull(round(sum(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost),0),0) as TotalBillAmount, 
                             isnull(sum((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100),0) as TotalGSTAmount, isnull(sum(b.PaidAmount),0) as TotalPaidAmount,
-                            isnull(sum(Round(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost,0)),0) - isnull(sum(b.PaidAmount),0) as TotalNetBalance from bill b, customer c"
+                            isnull(round(sum(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost),0),0) - isnull(sum(b.PaidAmount),0) as TotalNetBalance from bill b, customer c"
         End If
 
         Dim billQueryWhereClause As String = String.Empty
@@ -2593,7 +2593,7 @@ Public Class AgniMainForm
     Function fetchBillTableForReport(searchQuery As String, resultTableName As String) As DataTable
         Dim billQueryCommand As SqlCommand = New SqlCommand(searchQuery, dbConnection)
 
-        'log.debug("fetchBillTableForReport: searchQuery: " + searchQuery)
+        ''Log.debug("fetchBillTableForReport: searchQuery: " + searchQuery)
 
         Dim billAdapter = New SqlDataAdapter()
         billAdapter.SelectCommand = billQueryCommand

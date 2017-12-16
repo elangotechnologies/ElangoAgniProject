@@ -20,7 +20,6 @@ D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\AgniProject.exe
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\AgniProject.pdb
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\AgniProject.xml
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\crdb_adoplus.dll
-D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\CrystalDecisions.CrystalReports.Design.dll
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\CrystalDecisions.Data.AdoDotNetInterop.dll
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\CrystalDecisions.ReportSource.dll
@@ -28,7 +27,6 @@ D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\CrystalDecisions.Shared
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\CrystalDecisions.Windows.Forms.dll
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\System.Web.Services.dll
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\EnvDTE.dll
-D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\CrystalDecisions.Web.dll
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
@@ -50,3 +48,12 @@ D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.exe
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.xml
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.pdb
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.GSTCrystalReportHolder.resources
+D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\Microsoft.VisualStudio.OLE.Interop.dll
+D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.dll
+D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\Microsoft.VisualStudio.Shell.Interop.dll
+D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\Microsoft.VisualStudio.VSHelp.dll
+D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\Microsoft.VisualStudio.Shell.Interop.8.0.dll
+D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\Microsoft.VisualStudio.ProjectAggregator.dll
+D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.8.0.dll
+D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\Microsoft.MSXML.dll
+D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.vbproj.CoreCompileInputs.cache

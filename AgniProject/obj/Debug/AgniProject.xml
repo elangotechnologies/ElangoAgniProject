@@ -37,11 +37,6 @@ AgniProject
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
-<member name="P:AgniProject.My.Resources.Resources.vasithwam">
-<summary>
-  Looks up a localized resource of type System.Drawing.Bitmap.
-</summary>
-</member>
 <member name="T:AgniProject.DataSet1">
 <summary>
 Represents a strongly typed in-memory cache of data.

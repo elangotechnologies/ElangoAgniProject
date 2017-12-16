@@ -339,11 +339,11 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\Agnoi logo.png" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="Resources\Agnoi logo.png" />
     <None Include="Resources\vasithwam.jpg" />
     <None Include="Resources\login.jpg" />
     <None Include="Resources\start.jpg" />
@@ -369,6 +369,9 @@
       <ProductName>SQL Server 2005 Express Edition</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
