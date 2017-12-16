@@ -44,21 +44,6 @@ Partial Class SplashScreen1
         Me.MainLayoutPanel.Size = New System.Drawing.Size(747, 328)
         Me.MainLayoutPanel.TabIndex = 0
         '
-        'DetailsLayoutPanel
-        '
-        Me.DetailsLayoutPanel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DetailsLayoutPanel.BackColor = System.Drawing.Color.Transparent
-        Me.DetailsLayoutPanel.BackgroundImage = Global.AgniProject.My.Resources.Resources.vasithwam
-        Me.DetailsLayoutPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.DetailsLayoutPanel.ColumnCount = 1
-        Me.DetailsLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 321.0!))
-        Me.DetailsLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142.0!))
-        Me.DetailsLayoutPanel.Location = New System.Drawing.Point(433, 229)
-        Me.DetailsLayoutPanel.Name = "DetailsLayoutPanel"
-        Me.DetailsLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.0!))
-        Me.DetailsLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.0!))
-        Me.DetailsLayoutPanel.Size = New System.Drawing.Size(311, 96)
-        Me.DetailsLayoutPanel.TabIndex = 1
         '
         'SplashScreen1
         '

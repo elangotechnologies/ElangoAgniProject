@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -18,6 +18,14 @@
     </ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
     <SignManifests>true</SignManifests>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <PublishUrl>H:\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -28,7 +36,9 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <BootstrapperComponentsLocation>Relative</BootstrapperComponentsLocation>
     <BootstrapperComponentsUrl>H:\VasithwamProject\AgniProject\3</BootstrapperComponentsUrl>
@@ -40,7 +50,8 @@
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>AgniProject.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -49,19 +60,47 @@
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>AgniProject.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>Off</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
-    <Reference Include="CrystalDecisions.Enterprise.Framework, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
-    <Reference Include="CrystalDecisions.Enterprise.InfoStore, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
-    <Reference Include="CrystalDecisions.ReportSource, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
-    <Reference Include="CrystalDecisions.Shared, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
-    <Reference Include="CrystalDecisions.Windows.Forms, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="crdb_adoplus">
+      <HintPath>C:\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win64_x64\crdb_adoplus.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Data.AdoDotNetInterop, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.ReportSource.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.Windows.Forms.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -81,16 +120,10 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddressReport.Designer.vb">
-      <DependentUpon>AddressReport.vb</DependentUpon>
+    <Compile Include="BillCrystalReportHolder.Designer.vb">
+      <DependentUpon>BillCrystalReportHolder.vb</DependentUpon>
     </Compile>
-    <Compile Include="AddressReport.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AgniReport.Designer.vb">
-      <DependentUpon>AgniReport.vb</DependentUpon>
-    </Compile>
-    <Compile Include="AgniReport.vb">
+    <Compile Include="BillCrystalReportHolder.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AgnimainForm.vb">
@@ -100,53 +133,59 @@
       <DependentUpon>AgnimainForm.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AllAddrReport.Designer.vb">
-      <DependentUpon>AllAddrReport.vb</DependentUpon>
-    </Compile>
-    <Compile Include="AllAddrReport.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AllAddress.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AllAddress.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="AllBill.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AllBill.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="AllBillReport.Designer.vb">
-      <DependentUpon>AllBillReport.vb</DependentUpon>
-    </Compile>
-    <Compile Include="AllBillReport.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="Balance.Designer.vb">
-      <DependentUpon>Balance.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Balance.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BillReport.vb">
+    <Compile Include="BillCrystalReport.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BillReport.rpt</DependentUpon>
+      <DependentUpon>BillCrystalReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Address.vb">
+    <Compile Include="BillSearchCrystalReportHolder.Designer.vb">
+      <DependentUpon>BillSearchCrystalReportHolder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="BillSearchCrystalReportHolder.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GSTCrystalReportHolder.Designer.vb">
+      <DependentUpon>GSTCrystalReportHolder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GSTCrystalReportHolder.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OutstandingBalanceCrystalReport.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Address.rpt</DependentUpon>
+      <DependentUpon>OutstandingBalanceCrystalReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BillSearchCrystalReport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BillSearchCrystalReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GSTCrystalReport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GSTCrystalReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="changepwd.Designer.vb">
       <DependentUpon>changepwd.vb</DependentUpon>
     </Compile>
     <Compile Include="changepwd.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OutstandingCrystalReportHolder.Designer.vb">
+      <DependentUpon>OutstandingCrystalReportHolder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="OutstandingCrystalReportHolder.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImagePopup.Designer.vb">
+      <DependentUpon>ImagePopup.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ImagePopup.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="manageuser.Designer.vb">
@@ -184,17 +223,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="OutBalance.Designer.vb">
-      <DependentUpon>OutBalance.vb</DependentUpon>
+    <Compile Include="CustomersOutstandingBalances.Designer.vb">
+      <DependentUpon>CustomersOutstandingBalances.vb</DependentUpon>
     </Compile>
-    <Compile Include="OutBalance.vb">
+    <Compile Include="CustomersOutstandingBalances.vb">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OutBalanceReport.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OutBalanceReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="SplashScreen1.Designer.vb">
       <DependentUpon>SplashScreen1.vb</DependentUpon>
@@ -202,57 +235,48 @@
     <Compile Include="SplashScreen1.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VerifyingDelete.Designer.vb">
-      <DependentUpon>VerifyingDelete.vb</DependentUpon>
+    <Compile Include="DeleteConfirmation.Designer.vb">
+      <DependentUpon>DeleteConfirmation.vb</DependentUpon>
     </Compile>
-    <Compile Include="VerifyingDelete.vb">
+    <Compile Include="DeleteConfirmation.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AddressReport.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>AddressReport.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AgniReport.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>AgniReport.vb</DependentUpon>
+    <EmbeddedResource Include="BillCrystalReportHolder.resx">
+      <DependentUpon>BillCrystalReportHolder.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AgnimainForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>AgnimainForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AllAddrReport.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>AllAddrReport.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AllAddress.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>AllAddress.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AllBill.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>AllBill.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AllBillReport.resx">
-      <DependentUpon>AllBillReport.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Balance.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>Balance.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BillReport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>BillReport.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Address.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Address.vb</LastGenOutput>
+    <EmbeddedResource Include="BillCrystalReport.rpt">
+      <LastGenOutput>BillCrystalReport.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="changepwd.resx">
       <SubType>Designer</SubType>
       <DependentUpon>changepwd.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BillSearchCrystalReportHolder.resx">
+      <DependentUpon>BillSearchCrystalReportHolder.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GSTCrystalReportHolder.resx">
+      <DependentUpon>GSTCrystalReportHolder.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OutstandingBalanceCrystalReport.rpt">
+      <LastGenOutput>OutstandingBalanceCrystalReport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BillSearchCrystalReport.rpt">
+      <LastGenOutput>BillSearchCrystalReport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GSTCrystalReport.rpt">
+      <LastGenOutput>GSTCrystalReport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OutstandingCrystalReportHolder.resx">
+      <DependentUpon>OutstandingCrystalReportHolder.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImagePopup.resx">
+      <DependentUpon>ImagePopup.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="manageuser.resx">
       <SubType>Designer</SubType>
@@ -268,24 +292,21 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="OutBalance.resx">
+    <EmbeddedResource Include="CustomersOutstandingBalances.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>OutBalance.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OutBalanceReport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>OutBalanceReport.vb</LastGenOutput>
+      <DependentUpon>CustomersOutstandingBalances.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SplashScreen1.resx">
       <SubType>Designer</SubType>
       <DependentUpon>SplashScreen1.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VerifyingDelete.resx">
+    <EmbeddedResource Include="DeleteConfirmation.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>VerifyingDelete.vb</DependentUpon>
+      <DependentUpon>DeleteConfirmation.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -298,6 +319,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DataSet1.xsc">
@@ -314,6 +336,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="1270723726_graphic_design.ico" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Resources\Agnoi logo.png" />
     <None Include="Resources\vasithwam.jpg" />
     <None Include="Resources\login.jpg" />
     <None Include="Resources\start.jpg" />
@@ -329,11 +359,19 @@
       <ProductName>.NET Framework 2.0</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Sql.Server.Express.1.0">
       <Visible>False</Visible>
       <ProductName>SQL Server 2005 Express Edition</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

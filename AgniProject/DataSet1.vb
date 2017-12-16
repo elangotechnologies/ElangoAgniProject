@@ -1,22 +1,18 @@
 ﻿Partial Class DataSet1
-    Partial Class DataTable8DataTable
-
-        Private Sub DataTable8DataTable_DataTable8RowChanging(ByVal sender As System.Object, ByVal e As DataTable8RowChangeEvent) Handles Me.DataTable8RowChanging
-
-        End Sub
+    Partial Public Class TotalBillSearchResultDataTable
 
     End Class
 
-    Partial Class DataTable6DataTable
-
-        Private Sub DataTable6DataTable_ColumnChanging(ByVal sender As System.Object, ByVal e As System.Data.DataColumnChangeEventArgs) Handles Me.ColumnChanging
-
-
-        End Sub
+    Partial Public Class BillSearchResultDataTable
 
     End Class
 
-    Partial Class DataTable4DataTable
+    Partial Public Class TotalOutstandingBalanceDataTable
+    End Class
+
+    Partial Public Class DesignDetailsDataTable
+
+
     End Class
 
 End Class

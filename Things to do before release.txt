@@ -1,0 +1,32 @@
+1) Rename the connection string to agni\SQLEXPRESS
+2) Remove the NLog lines and also the library from project reference to avoid runtime errors
+
+
+
+
+
+How to add logs 
+
+1) Tools -> NuGet Package Manager, serach Nlog
+2) Install the NLog and NLog conf file which is listed by your search. If it is installed, then click uninstall and then again install it. Currently installed version is 4.4.2
+3) Copy paste the following text to NLog.config file in the project.
+<?xml version="1.0" encoding="utf-8" ?>
+<nlog xmlns="http://www.nlog-project.org/schemas/NLog.xsd"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.nlog-project.org/schemas/NLog.xsd NLog.xsd"
+      autoReload="true"
+      throwExceptions="true"
+      internalLogLevel="Trace" internalLogFile="D:\\temp\\nlog-internal.log" internalLogToConsole="true">
+  
+  <targets>
+    <target name="file" xsi:type="File" fileName="D:\\temp\\AgniProject.log" layout="${date}: ${message}"/>
+    <target name="eventlog" xsi:type="EventLog" source="My App" log="Application" layout="${date}: ${message} ${stacktrace}"/>
+  </targets>
+  <rules>
+    <logger name="*" minlevel="Trace" writeTo="file" />
+    <logger name="*" minlevel="Fatal" writeTo="eventlog" />
+  </rules>
+</nlog>
+4) Imports NLog
+5) Dim log As Logger = LogManager.GetCurrentClassLogger()
+6) log.debug("getCustomerListTable: entry")

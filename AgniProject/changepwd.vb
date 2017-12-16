@@ -23,7 +23,7 @@ Public Class changepwd
 
     Private Sub changepwd_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
-            Con = New SqlConnection("server=agni\SQLEXPRESS;Database=agnidatabase;Integrated Security=true")
+            Con = New SqlConnection("Data Source=ELAPC;Initial Catalog=agnidatabase;Integrated Security=True")
             Con.Open()
             Cmd5 = New SqlCommand("select * from login", Con)
             Sda5 = New SqlDataAdapter()
