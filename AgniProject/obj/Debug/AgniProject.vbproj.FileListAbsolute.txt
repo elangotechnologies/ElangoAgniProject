@@ -12,7 +12,6 @@ D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.SplashScree
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.DeleteConfirmation.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.vbproj.GenerateResource.Cache
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.vbprojResolveAssemblyReference.cache
-D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\NLog.config
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\AgniProject.exe.config
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\AgniProject.exe.manifest
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\AgniProject.application

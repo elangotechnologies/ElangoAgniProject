@@ -336,12 +336,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="1270723726_graphic_design.ico" />
-    <Content Include="NLog.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <None Include="NLog.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="packages.config" />
     <None Include="Resources\Agnoi logo.png" />
     <None Include="Resources\vasithwam.jpg" />

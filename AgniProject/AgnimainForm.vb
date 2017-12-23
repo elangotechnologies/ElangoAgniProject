@@ -1,7 +1,7 @@
 Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Threading
-Imports NLog
+'Imports NLog
 
 Public Class AgniMainForm
     Dim dbConnection As SqlConnection
@@ -44,7 +44,7 @@ Public Class AgniMainForm
 
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        dbConnection = New SqlConnection("server=DESKTOP-EHEMD7K\ELASQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
+        dbConnection = New SqlConnection("server=agni\SQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
         dbConnection.Open()
 
         gDBConnInitialized = True
@@ -2279,14 +2279,14 @@ Public Class AgniMainForm
         Dim billQuery As String
 
         If isSummary = False Then
-            billQuery = "select c.CompName as CustomerName, c.GSTIN as GSTNo, b.BillNo, b.DisplayBillNo, b.BillDate, Round(b.DesignCost,0)  as DesignCost, Round(b.UnPaidAmountTillNow,0) as UnPaidAmountTillNow, b.CGST, b.CGST*b.DesignCost/100 as CGSTAmount, 
-                            b.SGST, b.SGST*b.DesignCost/100 as SGSTAmount, b.IGST, b.IGST*b.DesignCost/100 as IGSTAmount, (b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100 as GSTAmount, Round(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost,0) as BillAmount, b.PaidAmount, 
-                            Round(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost,0)+Round(b.UnPaidAmountTillNow,0) as TotalAmount, 
-                            (Round(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost,0)+Round(b.UnPaidAmountTillNow,0))-Round(b.PaidAmount,0) as RemainingBalance, b.Cancelled from bill b, customer c"
+            billQuery = "select c.CompName as CustomerName, c.GSTIN as GSTNo, b.BillNo, b.DisplayBillNo, b.BillDate, dbo.BankersRound(b.DesignCost,0) as DesignCost, dbo.BankersRound(b.UnPaidAmountTillNow,0) as UnPaidAmountTillNow, b.CGST, b.CGST*b.DesignCost/100 as CGSTAmount, 
+                            b.SGST, b.SGST*b.DesignCost/100 as SGSTAmount, b.IGST, b.IGST*b.DesignCost/100 as IGSTAmount, dbo.BankersRound((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100,0) as GSTAmount, dbo.BankersRound(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100),0)+dbo.BankersRound(b.DesignCost,0) as BillAmount, b.PaidAmount, 
+                            dbo.BankersRound(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100),0)+dbo.BankersRound(b.DesignCost,0)+dbo.BankersRound(b.UnPaidAmountTillNow,0) as TotalAmount, 
+                            (dbo.BankersRound(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100),0)+dbo.BankersRound(b.DesignCost,0)+dbo.BankersRound(b.UnPaidAmountTillNow,0))-dbo.BankersRound(b.PaidAmount,0) as RemainingBalance, b.Cancelled from bill b, customer c"
         Else
-            billQuery = "select count(1) as BillsCount, sum(isnull(Round(b.DesignCost,0),0)) as TotalDesignCost, isnull(round(sum(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost),0),0) as TotalBillAmount, 
-                            isnull(sum((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100),0) as TotalGSTAmount, isnull(sum(b.PaidAmount),0) as TotalPaidAmount,
-                            isnull(round(sum(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100)+b.DesignCost),0),0) - isnull(sum(b.PaidAmount),0) as TotalNetBalance from bill b, customer c"
+            billQuery = "select count(1) as BillsCount, sum(isnull(dbo.BankersRound(b.DesignCost,0),0)) as TotalDesignCost, sum(isnull(dbo.BankersRound(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100),0)+dbo.BankersRound(b.DesignCost,0),0)) as TotalBillAmount, 
+                            sum(isnull(dbo.BankersRound((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100,0),0)) as TotalGSTAmount, sum(isnull(b.PaidAmount,0)) as TotalPaidAmount,
+                            sum(isnull(dbo.BankersRound(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100),0)+dbo.BankersRound(b.DesignCost,0),0)) - sum(isnull(b.PaidAmount,0)) as TotalNetBalance from bill b, customer c"
         End If
 
         Dim billQueryWhereClause As String = String.Empty
@@ -2333,7 +2333,6 @@ Public Class AgniMainForm
         If billQueryWhereClause IsNot String.Empty Then
             billQuery += " where " + billQueryWhereClause
         End If
-
 
         Return billQuery
     End Function

@@ -53,14 +53,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AgniProject.exe" size="1841664">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AgniProject.exe" size="1842176">
       <assemblyIdentity name="AgniProject" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>i6E7XDuNXN8Gxt8eti1DRlbTFKgASF5eO8bcmQjX6NA=</dsig:DigestValue>
+        <dsig:DigestValue>gGZDVgXliZcStcjp6X5PUuLt4QJVBM4GSZwOtYdOBoY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -440,15 +440,6 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>yYWdvvHgpQc0AD3lFqbOMxwObBciTZzmGmKm9wP8hDw=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="NLog.config" size="822">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>rlY5PzRTn+kbk7tjN92n4abe+XLzRbAxuDtfZIf1GYc=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

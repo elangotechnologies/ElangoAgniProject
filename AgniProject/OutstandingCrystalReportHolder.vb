@@ -1,7 +1,7 @@
 ﻿Imports System.Data.SqlClient
 
 Imports System.IO
-''Imports NLog
+'''Imports NLog
 Imports VB = Microsoft.VisualBasic
 Imports CrystalDecisions.Shared
 Imports System.Threading
@@ -13,7 +13,7 @@ Public Class OutstandingCrystalReportHolder
 
 
     Private Sub OutstandingBalanceReportForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        dbConnection = New SqlConnection("server=DESKTOP-EHEMD7K\ELASQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
+        dbConnection = New SqlConnection("server=agni\SQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
         dbConnection.Open()
 
         loadOutstandingBalance()

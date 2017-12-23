@@ -1,6 +1,6 @@
 Imports System.Data.SqlClient
 Imports System.IO
-''Imports NLog
+'Imports NLog
 Imports VB = Microsoft.VisualBasic
 Imports CrystalDecisions.Shared
 Imports System.Threading
@@ -19,7 +19,7 @@ Public Class BillReportForm
 
 
     Private Sub BillReportForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        dbConnection = New SqlConnection("server=DESKTOP-EHEMD7K\ELASQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
+        dbConnection = New SqlConnection("server=agni\SQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
         dbConnection.Open()
 
         Dim selectedBillNo As Integer = AgniMainForm.gSelectedBillNo
@@ -30,6 +30,7 @@ Public Class BillReportForm
         End If
 
         loadBillDetails(selectedBillNo, selectedCustNo)
+        'log.debug("BillReportForm_Load complete")
 
     End Sub
     Class SearchData
@@ -152,6 +153,7 @@ Public Class BillReportForm
         Dim SGSTAmount As Decimal = AgniMainForm.txtBillingSGSTAmount.Text
         Dim IGSTAmount As Decimal = AgniMainForm.txtBillingIGSTAmount.Text
         Dim totalGSTAmount As Decimal = AgniMainForm.txtBillingTotalGSTAmount.Text
+        ''MsgBox(totalGSTAmount)
         Dim prevBalance As Decimal = AgniMainForm.txtBillingPrevBalance.Text
         Dim paidAmountForThisBill As Decimal = AgniMainForm.txtBillingPaidAmount.Text
         Dim netBalance As Decimal = AgniMainForm.txtBillingRemainingBalance.Text
@@ -166,8 +168,6 @@ Public Class BillReportForm
         billCrystalReport.SetParameterValue("IGSTAmount", IGSTAmount.ToString)
         billCrystalReport.SetParameterValue("TotalGSTTax", Format(Math.Round(totalGSTAmount), "0.00"))
         billCrystalReport.SetParameterValue("DesignsAmountAfterTax", Format(Math.Round(designAmountAfterGST), "0.00"))
-
-        billCrystalReport.SetParameterValue("DesignsAmountBeforeTax", Format(Math.Round(designAmount), "0.00"))
         billCrystalReport.SetParameterValue("DesignsCostInWords", getAmountInWords(designAmountAfterGST.ToString))
         billCrystalReport.SetParameterValue("PaidAmountForThisBill", Format(Math.Round(paidAmountForThisBill), "0.00"))
         billCrystalReport.SetParameterValue("PrevBalance", Format(Math.Round(prevBalance), "0.00"))

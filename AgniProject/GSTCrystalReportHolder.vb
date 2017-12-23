@@ -1,7 +1,7 @@
 ﻿Imports System.Data.SqlClient
 
 Imports System.IO
-''Imports NLog
+'''Imports NLog
 Imports VB = Microsoft.VisualBasic
 Imports CrystalDecisions.Shared
 Imports System.Threading
