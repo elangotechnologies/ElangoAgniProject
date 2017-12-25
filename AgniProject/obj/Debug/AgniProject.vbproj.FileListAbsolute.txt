@@ -56,3 +56,8 @@ D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\Microsoft.VisualStudio.
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.8.0.dll
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\Microsoft.MSXML.dll
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.vbproj.CoreCompileInputs.cache
+D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.PaymentSearchCrystalReportHolder.resources
+D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.BillAndPaymentHistoryCrystalReportHolder.resources
+D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\NLog.config
+D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\NLog.dll
+D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\NLog.xml

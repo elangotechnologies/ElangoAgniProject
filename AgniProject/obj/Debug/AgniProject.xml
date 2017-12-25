@@ -77,6 +77,26 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
+<member name="T:AgniProject.DataSet1.BillAndPaymentHistoryDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:AgniProject.DataSet1.BillAndPaymentHistorySummaryDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:AgniProject.DataSet1.TotalPaymentSearchResultDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:AgniProject.DataSet1.PaymentSearchResultDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
 <member name="T:AgniProject.DataSet1.DesignDetailsRow">
 <summary>
 Represents strongly named DataRow class.
@@ -112,6 +132,26 @@ Represents strongly named DataRow class.
 Represents strongly named DataRow class.
 </summary>
 </member>
+<member name="T:AgniProject.DataSet1.BillAndPaymentHistoryRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:AgniProject.DataSet1.BillAndPaymentHistorySummaryRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:AgniProject.DataSet1.TotalPaymentSearchResultRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:AgniProject.DataSet1.PaymentSearchResultRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
 <member name="T:AgniProject.DataSet1.DesignDetailsRowChangeEvent">
 <summary>
 Row event argument class
@@ -143,6 +183,26 @@ Row event argument class
 </summary>
 </member>
 <member name="T:AgniProject.DataSet1.TotalGSTDataRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:AgniProject.DataSet1.BillAndPaymentHistoryRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:AgniProject.DataSet1.BillAndPaymentHistorySummaryRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:AgniProject.DataSet1.TotalPaymentSearchResultRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:AgniProject.DataSet1.PaymentSearchResultRowChangeEvent">
 <summary>
 Row event argument class
 </summary>

@@ -1,12 +1,12 @@
 Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Threading
-'Imports NLog
+Imports NLog
 
 Public Class AgniMainForm
     Dim dbConnection As SqlConnection
 
-    ''Dim log As Logger = LogManager.GetCurrentClassLogger()
+    Dim log As Logger = LogManager.GetCurrentClassLogger()
 
     Dim BILL_TYPE_UNBILLED As Int16 = 0
     Dim BILL_TYPE_BILLED As Int16 = 1
@@ -16,6 +16,7 @@ Public Class AgniMainForm
     Public gSelectedDisplayBillNo As String = String.Empty
     Public gSelectedCustNo As Integer = -1
     Public gSelectedCustName As String = String.Empty
+    Public gSelectedDesignNo As Integer = -1
 
     Private SEARCH_BY_CUSTOMER As Integer = 1
     Private SEARCH_BY_BILL_NO As Integer = 2
@@ -26,8 +27,10 @@ Public Class AgniMainForm
     Private gDBConnInitialized As Boolean = False
     Private gFormLoadCompleted As Boolean = False
 
-    Public gBillSearchResutlDataSet As DataSet = Nothing
-    Public gBillSearchFilterText As String = Nothing
+    Public gBillSearchResultDataSet As DataSet = Nothing
+    Public gPaymentSearchResultDataSet As DataSet = Nothing
+    Public gBillAndPaymentHistoryDataSet As DataSet = Nothing
+    Public gReportSearchFilterText As String = Nothing
     Dim reportControlsPlaceHolders() As GroupBox
 
     Private ATTRIBUTE_LAST_BILL_NO As String = "last_bill_no"
@@ -44,7 +47,7 @@ Public Class AgniMainForm
 
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        dbConnection = New SqlConnection("server=agni\SQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
+        dbConnection = New SqlConnection("server=DESKTOP-EHEMD7K\ELASQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
         dbConnection.Open()
 
         gDBConnInitialized = True
@@ -88,7 +91,7 @@ Public Class AgniMainForm
 
     Sub getCustomerListTable()
         ''log.debug("getCustomerListTable: entry")
-        Dim customerQuery = New SqlCommand("select CustNo,CompName from customer", dbConnection)
+        Dim customerQuery = New SqlCommand("select CustNo,CompName from customer order by CompName", dbConnection)
         Dim customerAdapter = New SqlDataAdapter()
         customerAdapter.SelectCommand = customerQuery
         Dim customerDataSet = New DataSet
@@ -239,7 +242,7 @@ Public Class AgniMainForm
 
     Function fetchCustomerTable() As DataTable
 
-        Dim customerQuery As SqlCommand = New SqlCommand("select * from customer", dbConnection)
+        Dim customerQuery As SqlCommand = New SqlCommand("select * from customer order by CompName", dbConnection)
 
         Dim customerAdapter = New SqlDataAdapter()
         customerAdapter.SelectCommand = customerQuery
@@ -275,9 +278,9 @@ Public Class AgniMainForm
     Function fetchDesignTable(Optional custNo As Integer = Nothing) As DataTable
         Dim designQuery As SqlCommand
         If (custNo <> Nothing) Then
-            designQuery = New SqlCommand("select * from design where custNo=" + custNo.ToString + " order by DesignNo ASC", dbConnection)
+            designQuery = New SqlCommand("select DesignNo, DesignDate, DesignName, Type,  Width, Height, Colors, UnitCost, Price, Billed, BillNo, Image, CustNo from design where custNo=" + custNo.ToString + " order by DesignNo ASC", dbConnection)
         Else
-            designQuery = New SqlCommand("select * from design order by DesignNo ASC", dbConnection)
+            designQuery = New SqlCommand("select DesignNo, DesignDate, DesignName, Type,  Width, Height, Colors, UnitCost, Price, Billed, BillNo, Image, CustNo from design order by DesignNo ASC", dbConnection)
         End If
 
         Dim designAdapter = New SqlDataAdapter()
@@ -290,6 +293,11 @@ Public Class AgniMainForm
     Delegate Sub setDesignGridDelegate(designTable As DataTable)
 
     Sub setDesignGrid(designTable As DataTable)
+
+        Dim primaryKey(0) As DataColumn
+        primaryKey(0) = designTable.Columns("DesignNo")
+        designTable.PrimaryKey = primaryKey
+
         dgDesDesignDetails.DataSource = designTable
         If designTable.Rows.Count > 0 Then
             dgDesDesignDetails.FirstDisplayedScrollingRowIndex = designTable.Rows.Count - 1
@@ -1095,7 +1103,7 @@ Public Class AgniMainForm
         End If
     End Sub
     Private Sub btnDesUpdate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDesUpdate.Click
-        If cmbDesDesignList.SelectedIndex = -1 Or cmbDesDesignList.SelectedValue = -1 Then
+        If gSelectedDesignNo = -1 Then
             MessageBox.Show("Please select a design")
             cmbDesDesignList.Focus()
             Return
@@ -1120,6 +1128,16 @@ Public Class AgniMainForm
             MessageBox.Show("Enter Valid Total cost")
             txtDesCalculatedPrice.Focus()
         Else
+            Dim designTable As DataTable = dgDesDesignDetails.DataSource
+            Dim dataRow As DataRow = designTable.Rows.Find(gSelectedDesignNo)
+            Dim isBilled As Boolean = dataRow.Item("billed")
+            Dim designTypeInDB As String = dataRow.Item("Type")
+            Dim designWidthInDB As Decimal = dataRow.Item("Width")
+            Dim designHeightInDB As Decimal = dataRow.Item("Height")
+            Dim calculatedPriceInDB As Decimal = dataRow.Item("Price")
+            Dim colorsInDB As Integer = dataRow.Item("Colors")
+            Dim unitCostInDB As Decimal = dataRow.Item("UnitCost")
+
             Dim memoryStream As New MemoryStream()
             Dim imageBuffer() As Byte
             If pbDesDesignImage.Image Is Nothing Then
@@ -1153,6 +1171,43 @@ Public Class AgniMainForm
                 designHeight = Decimal.Parse(txtDesHeight.Text.Trim)
             End If
 
+            Dim calculatedPrice As Decimal = Decimal.Parse(txtDesCalculatedPrice.Text.Trim)
+            Dim colors As Integer = Integer.Parse(txtDesNoOfColors.Text.Trim)
+            Dim unitCost As Decimal = Decimal.Parse(txtDesCostPerUnit.Text.Trim)
+
+            If (isBilled) Then
+                If designType <> designTypeInDB Then
+                    MessageBox.Show("This design is already billed. Design's Type cannot be changed if the design is billed already. First delete the respective bill and try again this operation.")
+                    gbDesignType.Focus()
+                    Return
+                End If
+                If designWidth <> designWidthInDB Then
+                    MessageBox.Show("This design is already billed. Design's Width cannot be changed if the design is billed already. First delete the respective bill and try again this operation.")
+                    txtDesWidth.Focus()
+                    Return
+                End If
+                If designHeight <> designHeightInDB Then
+                    MessageBox.Show("This design is already billed. Design's Height cannot be changed if the design is billed already. First delete the respective bill and try again this operation.")
+                    txtDesHeight.Focus()
+                    Return
+                End If
+                If calculatedPrice <> calculatedPriceInDB Then
+                    MessageBox.Show("This design is already billed. Design's price cannot be changed if the design is billed already. First delete the respective bill and try again this operation.")
+                    txtDesCalculatedPrice.Focus()
+                    Return
+                End If
+                If colors <> colorsInDB Then
+                    MessageBox.Show("This design is already billed. Design's Colors Per Unit cannot be changed if the design is billed already. First delete the respective bill and try again this operation.")
+                    txtDesNoOfColors.Focus()
+                    Return
+                End If
+                If unitCost <> unitCostInDB Then
+                    MessageBox.Show("This design is already billed. Design's Cost Per Unit cannot be changed if the design is billed already. First delete the respective bill and try again this operation.")
+                    txtDesCostPerUnit.Focus()
+                    Return
+                End If
+            End If
+
             Dim custNo As Integer = cmbDesCustomerList.SelectedValue
 
             Dim query As String = String.Empty
@@ -1165,14 +1220,14 @@ Public Class AgniMainForm
                     .Connection = dbConnection
                     .CommandType = CommandType.Text
                     .CommandText = query
-                    .Parameters.AddWithValue("@DesignNo", cmbDesDesignList.SelectedValue)
+                    .Parameters.AddWithValue("@DesignNo", gSelectedDesignNo)
                     .Parameters.AddWithValue("@DesignName", cmbDesDesignList.Text)
                     .Parameters.AddWithValue("@Height", designHeight)
                     .Parameters.AddWithValue("@Width", designWidth)
-                    .Parameters.AddWithValue("@Colors", Integer.Parse(txtDesNoOfColors.Text.Trim))
-                    .Parameters.AddWithValue("@UnitCost", Decimal.Parse(txtDesCostPerUnit.Text.Trim))
+                    .Parameters.AddWithValue("@Colors", colors)
+                    .Parameters.AddWithValue("@UnitCost", unitCost)
                     .Parameters.AddWithValue("@Type", designType)
-                    .Parameters.AddWithValue("@Price", Decimal.Parse(txtDesCalculatedPrice.Text.Trim))
+                    .Parameters.AddWithValue("@Price", calculatedPrice)
                     .Parameters.AddWithValue("@DesignDate", dpDesDesignDate.Value)
                 End With
                 Dim designImage As New SqlParameter("@Image", SqlDbType.Image)
@@ -1260,8 +1315,17 @@ Public Class AgniMainForm
     End Sub
 
     Private Sub btnDesDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDesDelete.Click
-        If cmbDesDesignList.SelectedIndex = -1 Or cmbDesDesignList.SelectedValue = -1 Then
+        If gSelectedDesignNo = -1 Then
             MessageBox.Show("Please select a design")
+            cmbDesDesignList.Focus()
+            Return
+        End If
+
+        Dim designTable As DataTable = dgDesDesignDetails.DataSource
+        Dim dataRow As DataRow = designTable.Rows.Find(gSelectedDesignNo)
+        Dim isBilled As Boolean = dataRow.Item("billed")
+        If (isBilled) Then
+            MessageBox.Show("This design is already billed. Billed designs cannot be deleted. First delete the respective bill and try again this operation.")
             cmbDesDesignList.Focus()
             Return
         End If
@@ -1295,6 +1359,7 @@ Public Class AgniMainForm
 
         If (cmbBillingBillNoList.SelectedIndex = -1 Or cmbBillingBillNoList.SelectedValue = -1) Then
             resetBillingScreen()
+            gSelectedBillNo = -1
             Return
         End If
 
@@ -1370,6 +1435,7 @@ Public Class AgniMainForm
         loadDesignChargePerUnit(custNo)
         loadDesignList(custNo)
         loadDesignGrid(custNo)
+
     End Sub
 
     Private Sub btnCustClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCustClear.Click
@@ -1995,13 +2061,33 @@ Public Class AgniMainForm
         If selectedTabTag.Equals("tagReportsTab") Then
             Me.AcceptButton = btnReportSearch
             cmbReportCustomerList.Focus()
+            Dim designReportTable As DataTable = dgReportDesignGrid.DataSource
+            If (designReportTable IsNot Nothing) Then
+                designReportTable.Rows.Clear()
+            End If
+            Dim billReportTable As DataTable = dgReportBillGrid.DataSource
+            If (billReportTable IsNot Nothing) Then
+                billReportTable.Rows.Clear()
+            End If
+            Dim paymentReportTable As DataTable = dgReportPaymentGrid.DataSource
+            If (paymentReportTable IsNot Nothing) Then
+                paymentReportTable.Rows.Clear()
+            End If
         ElseIf selectedTabTag.Equals("tagCustomerTab") Then
             Me.AcceptButton = btnCustAdd
             cmbCustCustomerList.Focus()
+            Dim customerTable As DataTable = dgCustCustomerDetails.DataSource
+            If (customerTable IsNot Nothing) Then
+                customerTable.Rows.Clear()
+            End If
         ElseIf selectedTabTag.Equals("tagDesignTab") Then
             Me.AcceptButton = btnDesAdd
             cmbDesCustomerList.Focus()
             resetIndexOfComboBox(cmbDesCustomerList)
+            Dim designTable As DataTable = dgDesDesignDetails.DataSource
+            If (designTable IsNot Nothing) Then
+                designTable.Rows.Clear()
+            End If
         ElseIf selectedTabTag.Equals("tagBillingTab") Then
             If btnBillingCreateBill.Visible = True Then
                 Me.AcceptButton = btnBillingCreateBill
@@ -2010,14 +2096,22 @@ Public Class AgniMainForm
             End If
             cmbBillingCustomerList.Focus()
             resetIndexOfComboBox(cmbBillingCustomerList)
+            Dim billingTable As DataTable = dgBIllingBillDetails.DataSource
+            If (billingTable IsNot Nothing) Then
+                billingTable.Rows.Clear()
+            End If
         ElseIf selectedTabTag.Equals("tagPaymentTab") Then
-            If btnPaymentCreatePayment.Visible = True Then
+                If btnPaymentCreatePayment.Visible = True Then
                 Me.AcceptButton = btnPaymentCreatePayment
             Else
                 Me.AcceptButton = btnPaymentConfirmCreatePayment
             End If
             cmbPaymentCustomerList.Focus()
             resetIndexOfComboBox(cmbPaymentCustomerList)
+            Dim paymentTable As DataTable = dgPaymentDetails.DataSource
+            If (paymentTable IsNot Nothing) Then
+                paymentTable.Rows.Clear()
+            End If
         End If
     End Sub
 
@@ -2213,7 +2307,7 @@ Public Class AgniMainForm
         Dim designQuery As String
 
         If isSummary = False Then
-            designQuery = "Select c.CompName, d.* From design d, customer c"
+            designQuery = "Select c.CompName, d.DesignNo, d.DesignDate, d.DesignName, d.Type,  d.Width, d.Height, d.Colors, d.UnitCost, d.Price, d.Billed, d.BillNo, d.Image, d.CustNo From design d, customer c"
         Else
             designQuery = "select count(1) as designCount, isnull(sum(CASE WHEN d.Billed = 1 THEN d.Price ELSE 0 END),0) AS billedDesignAmount, isnull(sum(CASE WHEN d.Billed = 0 THEN d.Price ELSE 0 END),0) AS unbilledDesignAmount, isnull(sum(d.Price),0) as TotalDesignAmount from design d,customer c"
         End If
@@ -2349,9 +2443,15 @@ Public Class AgniMainForm
         Dim paymentQuery As String
 
         If isSummary = False Then
-            paymentQuery = "select c.CompName,p.*, p.UnPaidBilledAmount - p.FinalPaidAmount as NetBalance, b.DisplayBillNo  from payment p, bill b, customer c"
+            paymentQuery = "select c.CompName as CustomerName, b.DisplayBillNo, 
+                            b.BillDate, dbo.BankersRound(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100),0)+dbo.BankersRound(b.DesignCost,0) as BillAmount,
+                            p.UnPaidBilledAmount as NetBalanceBeforePayment,
+                            p.UnPaidBilledAmount - p.FinalPaidAmount as NetBalanceAfterPayment, p.*
+                            from payment p, bill b, customer c"
         Else
-            paymentQuery = "select count(1) as PaymentCount, isnull(sum(p.ActualPaidAmount),0) as TotPaidAmountActual, isnull(sum(p.FinalPaidAmount),0) as TotPaidAmountAfterAdjustment from payment p, bill b, customer c"
+            paymentQuery = "select count(1) as PaymentCount, sum(isnull(dbo.BankersRound(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100),0)+dbo.BankersRound(b.DesignCost,0),0)) as TotalBillAmount, 
+                            isnull(sum(p.ActualPaidAmount),0) as TotPaidAmountActual, sum(isnull(p.FinalPaidAmount,0)) as TotalFinalPaidAmount, 
+                            sum(isnull(dbo.BankersRound(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100),0)+dbo.BankersRound(b.DesignCost,0),0)) - sum(isnull(p.FinalPaidAmount,0)) as TotalNetBalance from payment p, bill b, customer c"
         End If
 
         Dim paymentQueryWhereClause As String = String.Empty
@@ -2402,6 +2502,22 @@ Public Class AgniMainForm
         Return paymentQuery
     End Function
 
+    Function getBillAndPaymentHistoryQuery(billSearchQuery As String, paymentSearchQuery As String) As String
+
+        Dim billAndPaymentHistoryQuery As String = "Select BR.CustomerName, BR.DisplayBillNo, BR.BillDate, PR.PaymentDate, 
+        BR.BillAmount, isnull(PR.NetBalanceBeforePayment, Br.BillAmount + Br.UnPaidAmountTillNow) As NetBalanceBeforePayment, 
+        isnull(PR.FinalPaidAmount,0) as FinalPaidAmount, isnull(PR.NetBalanceAfterPayment, Br.BillAmount + Br.UnPaidAmountTillNow) As NetBalanceAfterPayment from
+        (" + billSearchQuery + ") As BR 
+        Left Join
+        (" + paymentSearchQuery + ") as PR 
+        On BR.BillNo = PR.BillNo"
+
+        log.Debug("getBillAndPaymentHistoryQuery: billAndPaymentHistoryQuery: " + billAndPaymentHistoryQuery)
+
+        Return billAndPaymentHistoryQuery
+
+    End Function
+
     Private Sub btnReportSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnReportSearch.Click
         pbReportDesignImage.Image = Nothing
 
@@ -2417,45 +2533,45 @@ Public Class AgniMainForm
 
         Dim searchData As SearchData = New SearchData
         'To use in Bill Search report
-        gBillSearchFilterText = ""
+        gReportSearchFilterText = ""
 
         If (searchFilter And SEARCH_BY_CUSTOMER) <> 0 Then
             searchData.custNo = cmbReportCustomerList.SelectedValue
-            gBillSearchFilterText += "Customer Name   : " + cmbReportCustomerList.Text.ToString
+            gReportSearchFilterText += "Customer Name   : " + cmbReportCustomerList.Text.ToString
         End If
 
         If (searchFilter And SEARCH_BY_BILL_NO) <> 0 Then
             searchData.billNo = cmbReportBillNoList.SelectedValue
-            If gBillSearchFilterText IsNot String.Empty Then
-                gBillSearchFilterText += Chr(10) + Chr(13)
+            If gReportSearchFilterText IsNot String.Empty Then
+                gReportSearchFilterText += Chr(10) + Chr(13)
             End If
-            gBillSearchFilterText += "Bill Number          : " + cmbReportBillNoList.Text.ToString
+            gReportSearchFilterText += "Bill Number          : " + cmbReportBillNoList.Text.ToString
         End If
 
         If (searchFilter And SEARCH_BY_DESIGN_NO) <> 0 Then
             searchData.designNo = cmbReportDesignNoList.SelectedValue
-            If gBillSearchFilterText IsNot String.Empty Then
-                gBillSearchFilterText += Chr(10) + Chr(13)
+            If gReportSearchFilterText IsNot String.Empty Then
+                gReportSearchFilterText += Chr(10) + Chr(13)
             End If
-            gBillSearchFilterText += "Design Name      : " + cmbReportDesignNoList.Text.ToString
+            gReportSearchFilterText += "Design Name      : " + cmbReportDesignNoList.Text.ToString
         End If
 
         If (searchFilter And SEARCH_BY_DESIGN_NAME) <> 0 Then
             searchData.designName = txtReportDesignName.Text
-            If gBillSearchFilterText IsNot String.Empty Then
-                gBillSearchFilterText += Chr(10) + Chr(13)
+            If gReportSearchFilterText IsNot String.Empty Then
+                gReportSearchFilterText += Chr(10) + Chr(13)
             End If
-            gBillSearchFilterText += "Design Name       : " + searchData.designName
+            gReportSearchFilterText += "Design Name       : " + searchData.designName
         End If
 
         If (searchFilter And SEARCH_BY_DATE_RANGE) <> 0 Then
             searchData.fromDate = dpReportFromDate.Value
             searchData.toDate = dpReportToDate.Value
-            If gBillSearchFilterText IsNot String.Empty Then
-                gBillSearchFilterText += Chr(10) + Chr(13)
+            If gReportSearchFilterText IsNot String.Empty Then
+                gReportSearchFilterText += Chr(10) + Chr(13)
             End If
-            gBillSearchFilterText += "From Date            : " + searchData.fromDate.ToString("dd/MM/yyyy")
-            gBillSearchFilterText += Chr(10) + Chr(13) + "To Date                : " + searchData.toDate.ToString("dd/MM/yyyy")
+            gReportSearchFilterText += "From Date            : " + searchData.fromDate.ToString("dd/MM/yyyy")
+            gReportSearchFilterText += Chr(10) + Chr(13) + "To Date                : " + searchData.toDate.ToString("dd/MM/yyyy")
         End If
 
         Dim designSearchQuery As String = getDesignSearchQuery(searchData)
@@ -2476,6 +2592,8 @@ Public Class AgniMainForm
         searchData.paymentSummaryQuery = paymentSummarySearchQuery
         searchPayment(searchData)
 
+        Dim billAndPaymentHistoryQuery As String = getBillAndPaymentHistoryQuery(billSearchQuery, paymentSearchQuery)
+        searchBillAndPaymentHistory(billAndPaymentHistoryQuery)
 
     End Sub
 
@@ -2572,34 +2690,22 @@ Public Class AgniMainForm
 
     Sub fetchBillForReport(ByVal searchDataParam As Object)
         Dim searchData As SearchData = CType(searchDataParam, SearchData)
-        Dim billTable As DataTable = fetchBillTableForReport(searchData.billQuery, "BillSearchResult")
+        Dim billTable As DataTable = executeQueryAndReturnTable(searchData.billQuery, "BillSearchResult")
         Dim showBillSearchResultInvoker As New showBillSearchResultDelegate(AddressOf Me.showBillSearchResult)
         Me.BeginInvoke(showBillSearchResultInvoker, billTable)
 
-        Dim billsummarytable As DataTable = fetchBillTableForReport(searchData.billSummaryQuery, "TotalBillSearchResult")
+        Dim billsummarytable As DataTable = executeQueryAndReturnTable(searchData.billSummaryQuery, "TotalBillSearchResult")
         Dim showbillsummarysearchresultinvoker As New showBillSummarySearchResultDelegate(AddressOf Me.showBillSummarySearchResult)
         Me.BeginInvoke(showbillsummarysearchresultinvoker, billsummarytable)
 
-        If gBillSearchResutlDataSet IsNot Nothing Then
-            gBillSearchResutlDataSet.Dispose()
+        If gBillSearchResultDataSet IsNot Nothing Then
+            gBillSearchResultDataSet.Dispose()
         End If
-        gBillSearchResutlDataSet = New DataSet
-        gBillSearchResutlDataSet.Tables.Add(billTable.Copy)
-        gBillSearchResutlDataSet.Tables.Add(billsummarytable.Copy)
+        gBillSearchResultDataSet = New DataSet
+        gBillSearchResultDataSet.Tables.Add(billTable.Copy)
+        gBillSearchResultDataSet.Tables.Add(billsummarytable.Copy)
 
     End Sub
-
-    Function fetchBillTableForReport(searchQuery As String, resultTableName As String) As DataTable
-        Dim billQueryCommand As SqlCommand = New SqlCommand(searchQuery, dbConnection)
-
-        ''Log.debug("fetchBillTableForReport: searchQuery: " + searchQuery)
-
-        Dim billAdapter = New SqlDataAdapter()
-        billAdapter.SelectCommand = billQueryCommand
-        Dim billDataSet = New DataSet
-        billAdapter.Fill(billDataSet, resultTableName)
-        Return billDataSet.Tables(0)
-    End Function
 
     Delegate Sub showBillSearchResultDelegate(billTable As DataTable)
 
@@ -2610,15 +2716,17 @@ Public Class AgniMainForm
     Delegate Sub showBillSummarySearchResultDelegate(billSummaryTable As DataTable)
 
     Sub showBillSummarySearchResult(billSummaryTable As DataTable)
+        log.Debug("showBillSummarySearchResult called")
         If billSummaryTable.Rows.Count = 0 Then
             Return
         End If
 
         Dim dataRow As DataRow = billSummaryTable.Rows(0)
         lblReportNoOfBills.Text = dataRow.Item("BillsCount")
-        lblReportBillBilledAmount.Text = Format(dataRow.Item("TotalBillAmount"), "0.00")
-        lblReportBIllPaidAmount.Text = Format(dataRow.Item("TotalPaidAmount"), "0.00")
-        lblReportBillNetBalance.Text = Format(dataRow.Item("TotalNetBalance"), "0.00")
+
+        lblReportBillBilledAmount.Text = If(IsDBNull(dataRow.Item("TotalBillAmount")), "0", Format(dataRow.Item("TotalBillAmount"), "0.00"))
+        lblReportBIllPaidAmount.Text = If(IsDBNull(dataRow.Item("TotalPaidAmount")), "0", Format(dataRow.Item("TotalPaidAmount"), "0.00"))
+        lblReportBillNetBalance.Text = If(IsDBNull(dataRow.Item("TotalNetBalance")), "0", Format(dataRow.Item("TotalNetBalance"), "0.00"))
     End Sub
 
     Sub searchPayment(searchData As SearchData)
@@ -2630,25 +2738,21 @@ Public Class AgniMainForm
     Sub fetchPaymentForReport(ByVal searchDataParam As Object)
         Dim searchData As SearchData = CType(searchDataParam, SearchData)
 
-        Dim paymentTable As DataTable = fetchPaymentTableForReport(searchData.paymentQuery)
+        Dim paymentTable As DataTable = executeQueryAndReturnTable(searchData.paymentQuery, "PaymentSearchResult")
         Dim showPaymentSearchResultInvoker As New showPaymentSearchResultDelegate(AddressOf Me.showPaymentSearchResult)
         Me.BeginInvoke(showPaymentSearchResultInvoker, paymentTable)
 
-        Dim paymentSummaryTable As DataTable = fetchPaymentTableForReport(searchData.paymentSummaryQuery)
+        Dim paymentSummaryTable As DataTable = executeQueryAndReturnTable(searchData.paymentSummaryQuery, "TotalPaymentSearchResult")
         Dim showPaymentSummarySearchResultInvoker As New showPaymentSummarySearchResultDelegate(AddressOf Me.showPaymentSummarySearchResult)
         Me.BeginInvoke(showPaymentSummarySearchResultInvoker, paymentSummaryTable)
+
+        If gPaymentSearchResultDataSet IsNot Nothing Then
+            gPaymentSearchResultDataSet.Dispose()
+        End If
+        gPaymentSearchResultDataSet = New DataSet
+        gPaymentSearchResultDataSet.Tables.Add(paymentTable.Copy)
+        gPaymentSearchResultDataSet.Tables.Add(paymentSummaryTable.Copy)
     End Sub
-
-    Function fetchPaymentTableForReport(searchQuery As String) As DataTable
-        Dim paymentQueryCommand As SqlCommand = New SqlCommand(searchQuery, dbConnection)
-        'log.debug("fetchPaymentTableForReport: searchQuery: " + searchQuery)
-
-        Dim paymentAdapter = New SqlDataAdapter()
-        paymentAdapter.SelectCommand = paymentQueryCommand
-        Dim paymentDataSet = New DataSet
-        paymentAdapter.Fill(paymentDataSet, "payment")
-        Return paymentDataSet.Tables(0)
-    End Function
 
     Delegate Sub showPaymentSearchResultDelegate(paymentTable As DataTable)
 
@@ -2665,20 +2769,48 @@ Public Class AgniMainForm
 
         Dim dataRow As DataRow = paymentSummaryTable.Rows(0)
         lblReportNoOfPayment.Text = dataRow.Item("PaymentCount")
-        lblReportPaidAmountActual.Text = Format(dataRow.Item("TotPaidAmountActual"), "0.00")
-        lblReportPaidAmountWithDeduction.Text = Format(dataRow.Item("TotPaidAmountAfterAdjustment"), "0.00")
+        lblReportPaidAmountActual.Text = If(IsDBNull(dataRow.Item("TotPaidAmountActual")), "0", Format(dataRow.Item("TotPaidAmountActual"), "0.00"))
+        lblReportPaidAmountWithDeduction.Text = If(IsDBNull(dataRow.Item("TotalFInalPaidAmount")), "0", Format(dataRow.Item("TotalFInalPaidAmount"), "0.00"))
     End Sub
+
+    Sub searchBillAndPaymentHistory(billAndPaymentHistoryQuery As String)
+        Dim thread As Thread = New Thread(AddressOf fetchBillAndPaymentHistoryForReport)
+        thread.IsBackground = True
+        thread.Start(billAndPaymentHistoryQuery)
+    End Sub
+
+    Sub fetchBillAndPaymentHistoryForReport(ByVal billAndPaymentHistoryQuery As String)
+        Dim billAndPaymentHistoryTable As DataTable = executeQueryAndReturnTable(billAndPaymentHistoryQuery, "BillAndPaymentHistory")
+
+        If gBillAndPaymentHistoryDataSet IsNot Nothing Then
+            gBillAndPaymentHistoryDataSet.Dispose()
+        End If
+        gBillAndPaymentHistoryDataSet = New DataSet
+        gBillAndPaymentHistoryDataSet.Tables.Add(billAndPaymentHistoryTable.Copy)
+    End Sub
+
+    Function executeQueryAndReturnTable(searchQuery As String, resultTableName As String) As DataTable
+        Dim sqlQueryCommand As SqlCommand = New SqlCommand(searchQuery, dbConnection)
+        Dim sqlTableAdapter = New SqlDataAdapter()
+        sqlTableAdapter.SelectCommand = sqlQueryCommand
+        Dim dataSet = New DataSet
+        sqlTableAdapter.Fill(dataSet, resultTableName)
+        Return dataSet.Tables(0)
+    End Function
 
     Private Sub cmbDesDesignList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbDesDesignList.SelectedIndexChanged
 
-        'log.debug("cmbDesDesignList_SelectedIndexChanged: " + cmbDesDesignList.SelectedIndex.ToString)
+        'log.Debug("cmbDesDesignList_SelectedIndexChanged: " + cmbDesDesignList.SelectedIndex.ToString)
 
         If (cmbDesDesignList.SelectedIndex = -1 Or cmbDesDesignList.SelectedValue = -1) Then
             resetDesignScreen()
+            gSelectedDesignNo = -1
             Return
         End If
 
         Dim designNo As Integer = cmbDesDesignList.SelectedValue
+        gSelectedDesignNo = designNo
+
         Dim designSelectQuery = New SqlCommand("select * from design where DesignNo=" + designNo.ToString, dbConnection)
         Dim designDataAdapter = New SqlDataAdapter()
         designDataAdapter.SelectCommand = designSelectQuery
@@ -2890,7 +3022,7 @@ Public Class AgniMainForm
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnPrintBillSearchDetails.Click
         If dgReportBillGrid.Rows.Count = 0 Then
-            MsgBox("There are no bills to print the bill report. Please refine your search criteria")
+            MsgBox("There are no bills to show the bill report. Please refine your search criteria")
             Return
         End If
 
@@ -2899,7 +3031,7 @@ Public Class AgniMainForm
 
     Private Sub btnPrintGSTDetails_Click(sender As Object, e As EventArgs) Handles btnPrintGSTDetails.Click
         If dgReportBillGrid.Rows.Count = 0 Then
-            MsgBox("There are no bills to print the GST report. Please refine your search criteria")
+            MsgBox("There are no bills to show the GST report. Please refine your search criteria")
             Return
         End If
 
@@ -2991,5 +3123,103 @@ Public Class AgniMainForm
         lblReportNoOfPayment.Text = 0
         lblReportPaidAmountActual.Text = 0
         lblReportPaidAmountWithDeduction.Text = 0
+    End Sub
+
+    Private Sub btnPrintPaymentDetails_Click(sender As Object, e As EventArgs) Handles btnPrintPaymentDetails.Click
+        If dgReportPaymentGrid.Rows.Count = 0 Then
+            MsgBox("There are no payment to show the Payment only report. Please refine your search criteria")
+            Return
+        End If
+
+        PaymentSearchCrystalReportHolder.Show()
+    End Sub
+
+    Private Sub Button1_Click_2(sender As Object, e As EventArgs) Handles Button1.Click
+        If dgReportPaymentGrid.Rows.Count = 0 Then
+            MsgBox("There are no payment to show the Bill and Payment details report. Please refine your search criteria")
+            Return
+        End If
+
+        BillAndPaymentHistoryCrystalReportHolder.Show()
+    End Sub
+
+    Private Sub btnBillingDeleteBill_Click(sender As Object, e As EventArgs) Handles btnBillingDeleteBill.Click
+        If gSelectedBillNo = -1 Then
+            MessageBox.Show("Please select a bill")
+            cmbDesDesignList.Focus()
+            Return
+        End If
+
+        Dim billTable As DataTable = dgBIllingBillDetails.DataSource
+
+        billTable.DefaultView.Sort = "BillNo ASC"
+        billTable = billTable.DefaultView.ToTable
+
+        Dim lastBillRow As DataRow = billTable.Rows(billTable.Rows.Count - 1)
+        Dim lastRowBillNo As Integer = lastBillRow.Item("BillNo")
+
+        If (lastRowBillNo <> gSelectedBillNo) Then
+            MessageBox.Show("Sorry, This bill is not last bill, so it cannot be deleted. You can delete only the last bill and also that last bill should not have any payments towards it.")
+            cmbBillingBillNoList.Focus()
+            Return
+        End If
+
+        Dim primaryKey(0) As DataColumn
+        primaryKey(0) = billTable.Columns("BillNo")
+        billTable.PrimaryKey = primaryKey
+
+        Dim dataRow As DataRow = billTable.Rows.Find(gSelectedBillNo)
+        Dim paidAmount As Decimal = dataRow.Item("PaidAmount")
+        If (paidAmount > 0) Then
+            MessageBox.Show("Sorry, This bill is having payments, so it cannot be deleted. You can delete only the last bill and also that last bill 
+                should not have any payments towards it. First try to delete the respective payments and try this operation.")
+            cmbBillingBillNoList.Focus()
+            Return
+        End If
+
+        If MessageBox.Show("Do you want to delete the bill " & gSelectedDisplayBillNo, "Confirmation", System.Windows.Forms.MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
+            Dim custNo As Integer = cmbBillingCustomerList.SelectedValue
+
+            Dim query As String = "DELETE FROM Bill where BillNo=@billNo"
+
+            Using comm As New SqlCommand()
+                With comm
+                    .Connection = dbConnection
+                    .CommandType = CommandType.Text
+                    .CommandText = query
+                    .Parameters.AddWithValue("@billNo", gSelectedBillNo)
+                End With
+                comm.ExecuteNonQuery()
+            End Using
+
+            log.Debug("btnBillingDeleteBill_Click: custNo.ToString : " + custNo.ToString + " gSelectedBillNo.ToString: " + gSelectedBillNo.ToString)
+
+            Dim designQuery As String = "update design set Billed=@Billed, BillNo=@BillNo where CustNo=@CustNo and BillNo=@deletedBillNo"
+
+            Using comm As New SqlCommand()
+                With comm
+                    .Connection = dbConnection
+                    .CommandType = CommandType.Text
+                    .CommandText = designQuery
+                    .Parameters.AddWithValue("@CustNo", custNo.ToString)
+                    .Parameters.AddWithValue("@deletedBillNo", gSelectedBillNo)
+                    .Parameters.AddWithValue("@Billed", False)
+                    .Parameters.AddWithValue("@BillNo", DBNull.Value)
+                End With
+                Dim affectedRowsCount As Integer = comm.ExecuteNonQuery()
+                log.Debug("btnBillingDeleteBill_Click: affectedRowsCount: " + affectedRowsCount.ToString)
+            End Using
+
+            gSelectedBillNo = -1
+            gSelectedDisplayBillNo = String.Empty
+
+            loadBillList(custNo)
+            loadBillGrid(custNo)
+
+            loadDesignList(custNo)
+            loadDesignGrid(custNo)
+
+            MessageBox.Show("Bill successfully deleted")
+        End If
     End Sub
 End Class

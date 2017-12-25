@@ -1,4 +1,8 @@
 ﻿Partial Class DataSet1
+
+    Partial Public Class BillAndPaymentHistorySummaryDataTable
+    End Class
+
     Partial Public Class TotalBillSearchResultDataTable
 
     End Class

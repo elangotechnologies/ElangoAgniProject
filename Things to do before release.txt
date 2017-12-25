@@ -16,10 +16,10 @@ How to add logs
       xsi:schemaLocation="http://www.nlog-project.org/schemas/NLog.xsd NLog.xsd"
       autoReload="true"
       throwExceptions="true"
-      internalLogLevel="Trace" internalLogFile="D:\\temp\\nlog-internal.log" internalLogToConsole="true">
+      internalLogLevel="Trace" internalLogFile="D:\\AgniProject.nlog-internal.log" internalLogToConsole="true">
   
   <targets>
-    <target name="file" xsi:type="File" fileName="D:\\temp\\AgniProject.log" layout="${date}: ${message}"/>
+    <target name="file" xsi:type="File" fileName="D:\\AgniProject.log" layout="${date}: ${message}"/>
     <target name="eventlog" xsi:type="EventLog" source="My App" log="Application" layout="${date}: ${message} ${stacktrace}"/>
   </targets>
   <rules>
