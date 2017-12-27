@@ -13,7 +13,6 @@ Partial Class SplashScreen1
         MyBase.Dispose(disposing)
     End Sub
     Friend WithEvents MainLayoutPanel As System.Windows.Forms.TableLayoutPanel
-    Friend WithEvents DetailsLayoutPanel As System.Windows.Forms.TableLayoutPanel
 
     'Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
@@ -23,9 +22,7 @@ Partial Class SplashScreen1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.MainLayoutPanel = New System.Windows.Forms.TableLayoutPanel
-        Me.DetailsLayoutPanel = New System.Windows.Forms.TableLayoutPanel
-        Me.MainLayoutPanel.SuspendLayout()
+        Me.MainLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
         Me.SuspendLayout()
         '
         'MainLayoutPanel
@@ -35,7 +32,6 @@ Partial Class SplashScreen1
         Me.MainLayoutPanel.ColumnCount = 2
         Me.MainLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 243.0!))
         Me.MainLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 504.0!))
-        Me.MainLayoutPanel.Controls.Add(Me.DetailsLayoutPanel, 1, 0)
         Me.MainLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.MainLayoutPanel.Location = New System.Drawing.Point(0, 0)
         Me.MainLayoutPanel.Name = "MainLayoutPanel"
@@ -43,7 +39,6 @@ Partial Class SplashScreen1
         Me.MainLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 328.0!))
         Me.MainLayoutPanel.Size = New System.Drawing.Size(747, 328)
         Me.MainLayoutPanel.TabIndex = 0
-        '
         '
         'SplashScreen1
         '
@@ -58,7 +53,6 @@ Partial Class SplashScreen1
         Me.Name = "SplashScreen1"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.MainLayoutPanel.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub

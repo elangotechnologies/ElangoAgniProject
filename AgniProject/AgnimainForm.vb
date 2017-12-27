@@ -66,6 +66,33 @@ Public Class AgniMainForm
 
         reportControlsPlaceHolders = {reportPlaceHolder1, reportPlaceHolder2, reportPlaceHolder3, reportPlaceHolder4, reportPlaceHolder5}
         cbReportSearchByFilterChanged(cbReportSearchByCustomer, Nothing)
+
+        handleUserPermissions(Login.gIsCurrentUserAdministrator)
+
+    End Sub
+
+    Private Sub handleUserPermissions(isCurrentUserAdministrator As Boolean)
+        If isCurrentUserAdministrator Then
+            setEnabledStateForWriteOperations(True)
+        Else
+            setEnabledStateForWriteOperations(False)
+        End If
+    End Sub
+
+    Private Sub setEnabledStateForWriteOperations(enabledState As Boolean)
+        btnCustAdd.Enabled = enabledState
+        btnCustUpdate.Enabled = enabledState
+        btnCustDelete.Enabled = enabledState
+        btnDesAdd.Enabled = enabledState
+        btnDesUpdate.Enabled = enabledState
+        btnDesDelete.Enabled = enabledState
+        btnBillingCreateBill.Enabled = enabledState
+        btnBillingDeleteBill.Enabled = enabledState
+        btnBillingCancelBill.Enabled = enabledState
+        btnPaymentCreatePayment.Enabled = enabledState
+        btnPaymentDelete.Enabled = enabledState
+        btnSettingsResetBilNo.Enabled = enabledState
+        btnSettingsBackupDatabase.Enabled = enabledState
     End Sub
 
     Function getDummyDesignTable() As DataTable
@@ -255,6 +282,7 @@ Public Class AgniMainForm
 
     Sub setCustomerGrid(customerTable As DataTable)
         dgCustCustomerDetails.DataSource = customerTable
+        log.Debug("setting customerTable count" + customerTable.Rows.Count.ToString)
         If customerTable.Rows.Count > 0 Then
             dgCustCustomerDetails.FirstDisplayedScrollingRowIndex = customerTable.Rows.Count - 1
         End If
@@ -704,6 +732,10 @@ Public Class AgniMainForm
         Me.AcceptButton = btnBillingCreateBill
         cmbBillingBillNoList.Enabled = True
         btnBillingCreateBill.Visible = True
+        btnBillingDeleteBill.Visible = True
+        btnBillingClear.Visible = True
+        btnBillingPrintBill.Visible = True
+        btnBillingCancelBill.Visible = True
         btnBillingConfirmCreateBill.Visible = False
         btnBillingCancelCreateBill.Visible = False
         btnBillingCancelBill.Text = "Mark Cancelled"
@@ -716,6 +748,10 @@ Public Class AgniMainForm
         btnBillingCreateBill.Visible = False
         btnBillingConfirmCreateBill.Visible = True
         btnBillingCancelCreateBill.Visible = True
+        btnBillingDeleteBill.Visible = False
+        btnBillingClear.Visible = False
+        btnBillingPrintBill.Visible = False
+        btnBillingCancelBill.Visible = False
     End Sub
 
     Sub resetBillingScreen()
@@ -1470,13 +1506,13 @@ Public Class AgniMainForm
     Private Sub Button38_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If MessageBox.Show("Are you sure want to log off?", "Log off", System.Windows.Forms.MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
             Me.Hide()
-            Login.ComboBox1.Text = ""
-            Login.TextBox2.Text = ""
+            Login.cmbLoginUserName.Text = ""
+            Login.txtLoginPassword.Text = ""
             Login.Show()
 
             BillReportForm.Close()
             CustomersOutstandingBalances.Close()
-            Login.ComboBox1.Focus()
+            Login.cmbLoginUserName.Focus()
         End If
     End Sub
 
@@ -2076,10 +2112,10 @@ Public Class AgniMainForm
         ElseIf selectedTabTag.Equals("tagCustomerTab") Then
             Me.AcceptButton = btnCustAdd
             cmbCustCustomerList.Focus()
-            Dim customerTable As DataTable = dgCustCustomerDetails.DataSource
-            If (customerTable IsNot Nothing) Then
-                customerTable.Rows.Clear()
-            End If
+            'Dim customerTable As DataTable = dgCustCustomerDetails.DataSource
+            'If (customerTable IsNot Nothing) Then
+            '    customerTable.Rows.Clear()
+            'End If
         ElseIf selectedTabTag.Equals("tagDesignTab") Then
             Me.AcceptButton = btnDesAdd
             cmbDesCustomerList.Focus()
@@ -2512,7 +2548,7 @@ Public Class AgniMainForm
         (" + paymentSearchQuery + ") as PR 
         On BR.BillNo = PR.BillNo"
 
-        log.Debug("getBillAndPaymentHistoryQuery: billAndPaymentHistoryQuery: " + billAndPaymentHistoryQuery)
+        'log.Debug("getBillAndPaymentHistoryQuery: billAndPaymentHistoryQuery: " + billAndPaymentHistoryQuery)
 
         Return billAndPaymentHistoryQuery
 
@@ -2716,7 +2752,7 @@ Public Class AgniMainForm
     Delegate Sub showBillSummarySearchResultDelegate(billSummaryTable As DataTable)
 
     Sub showBillSummarySearchResult(billSummaryTable As DataTable)
-        log.Debug("showBillSummarySearchResult called")
+        'log.Debug("showBillSummarySearchResult called")
         If billSummaryTable.Rows.Count = 0 Then
             Return
         End If
@@ -3192,7 +3228,7 @@ Public Class AgniMainForm
                 comm.ExecuteNonQuery()
             End Using
 
-            log.Debug("btnBillingDeleteBill_Click: custNo.ToString : " + custNo.ToString + " gSelectedBillNo.ToString: " + gSelectedBillNo.ToString)
+            'log.Debug("btnBillingDeleteBill_Click: custNo.ToString : " + custNo.ToString + " gSelectedBillNo.ToString: " + gSelectedBillNo.ToString)
 
             Dim designQuery As String = "update design set Billed=@Billed, BillNo=@BillNo where CustNo=@CustNo and BillNo=@deletedBillNo"
 
@@ -3206,8 +3242,7 @@ Public Class AgniMainForm
                     .Parameters.AddWithValue("@Billed", False)
                     .Parameters.AddWithValue("@BillNo", DBNull.Value)
                 End With
-                Dim affectedRowsCount As Integer = comm.ExecuteNonQuery()
-                log.Debug("btnBillingDeleteBill_Click: affectedRowsCount: " + affectedRowsCount.ToString)
+                comm.ExecuteNonQuery()
             End Using
 
             gSelectedBillNo = -1

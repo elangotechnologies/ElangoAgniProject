@@ -197,10 +197,10 @@
       <DependentUpon>GSTCrystalReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="changepwd.Designer.vb">
-      <DependentUpon>changepwd.vb</DependentUpon>
+    <Compile Include="ChangePassword.Designer.vb">
+      <DependentUpon>ChangePassword.vb</DependentUpon>
     </Compile>
-    <Compile Include="changepwd.vb">
+    <Compile Include="ChangePassword.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="OutstandingCrystalReportHolder.Designer.vb">
@@ -215,10 +215,10 @@
     <Compile Include="ImagePopup.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="manageuser.Designer.vb">
-      <DependentUpon>manageuser.vb</DependentUpon>
+    <Compile Include="ManageUsers.Designer.vb">
+      <DependentUpon>ManageUsers.vb</DependentUpon>
     </Compile>
-    <Compile Include="manageuser.vb">
+    <Compile Include="ManageUsers.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DataSet1.vb">
@@ -284,9 +284,9 @@
     <EmbeddedResource Include="BillCrystalReport.rpt">
       <LastGenOutput>BillCrystalReport.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="changepwd.resx">
+    <EmbeddedResource Include="ChangePassword.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>changepwd.vb</DependentUpon>
+      <DependentUpon>ChangePassword.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BillSearchCrystalReportHolder.resx">
       <DependentUpon>BillSearchCrystalReportHolder.vb</DependentUpon>
@@ -315,9 +315,9 @@
     <EmbeddedResource Include="ImagePopup.resx">
       <DependentUpon>ImagePopup.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="manageuser.resx">
+    <EmbeddedResource Include="ManageUsers.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>manageuser.vb</DependentUpon>
+      <DependentUpon>ManageUsers.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <SubType>Designer</SubType>

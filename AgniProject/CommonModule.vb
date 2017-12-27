@@ -1,7 +1,11 @@
 ﻿Imports VB = Microsoft.VisualBasic
 
 Module CommonModule
-    Public valueToConvert As String
+
+    Public USER_TYPE_ADMINISTRATOR As Integer = 1
+    Public USER_TYPE_GUEST As Integer = 2
+
+    Private valueToConvert As String
     Private n, intpart, realpart, numchar, intword, realword, spltval, spltword As String
     Private flag As Boolean
 

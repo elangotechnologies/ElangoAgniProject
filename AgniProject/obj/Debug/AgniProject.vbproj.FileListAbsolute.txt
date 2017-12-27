@@ -1,10 +1,8 @@
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.BillReportForm.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.AgniMainForm.resources
-D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.changepwd.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.BillSearchCrystalReportHolder.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.OutstandingCrystalReportHolder.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.ImagePopup.resources
-D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.manageuser.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.Login.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.Resources.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.CustomersOutstandingBalances.resources
@@ -61,3 +59,5 @@ D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.BillAndPaym
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\NLog.config
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\NLog.dll
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\NLog.xml
+D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.ChangePassword.resources
+D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.ManageUsers.resources
