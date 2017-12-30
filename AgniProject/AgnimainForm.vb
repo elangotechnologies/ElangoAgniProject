@@ -1,12 +1,12 @@
 Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Threading
-Imports NLog
+'Imports NLog
 
 Public Class AgniMainForm
     Dim dbConnection As SqlConnection
 
-    Dim log As Logger = LogManager.GetCurrentClassLogger()
+    'Dim log As Logger = LogManager.GetCurrentClassLogger()
 
     Dim BILL_TYPE_UNBILLED As Int16 = 0
     Dim BILL_TYPE_BILLED As Int16 = 1
@@ -47,7 +47,7 @@ Public Class AgniMainForm
 
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        dbConnection = New SqlConnection("server=DESKTOP-EHEMD7K\ELASQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
+        dbConnection = New SqlConnection("server=agni\SQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
         dbConnection.Open()
 
         gDBConnInitialized = True
@@ -117,7 +117,7 @@ Public Class AgniMainForm
     End Sub
 
     Sub getCustomerListTable()
-        ''log.debug("getCustomerListTable: entry")
+        'log.Debug("getCustomerListTable: entry")
         Dim customerQuery = New SqlCommand("select CustNo,CompName from customer order by CompName", dbConnection)
         Dim customerAdapter = New SqlDataAdapter()
         customerAdapter.SelectCommand = customerQuery
@@ -282,7 +282,7 @@ Public Class AgniMainForm
 
     Sub setCustomerGrid(customerTable As DataTable)
         dgCustCustomerDetails.DataSource = customerTable
-        log.Debug("setting customerTable count" + customerTable.Rows.Count.ToString)
+        'log.Debug("setting customerTable count" + customerTable.Rows.Count.ToString)
         If customerTable.Rows.Count > 0 Then
             dgCustCustomerDetails.FirstDisplayedScrollingRowIndex = customerTable.Rows.Count - 1
         End If
@@ -799,7 +799,7 @@ Public Class AgniMainForm
         dpPaymentDate.Enabled = True
         btnPaymentDelete.Visible = False
         btnPaymentClear.Visible = False
-        'log.debug("setPaymentControlsVisibilitiesForCreatePayment called and done")
+        'log.Debug("setPaymentControlsVisibilitiesForCreatePayment called and done")
     End Sub
 
     Sub resetPaymentScreen()
@@ -818,7 +818,7 @@ Public Class AgniMainForm
         txtPaymentNetBalance.Text = ""
         txtPaymentRemarks.Text = ""
         txtPaymentUnPaidBilledAmount.Text = ""
-        'log.debug("resetPaymentScreen is called and done")
+        'log.Debug("resetPaymentScreen is called and done")
     End Sub
 
     Public Sub btnCustAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCustAdd.Click
@@ -1124,7 +1124,7 @@ Public Class AgniMainForm
 
     Private Sub loadPictureChooseDialog()
 
-        'log.debug("pictureload: loading the picture")
+        'log.Debug("pictureload: loading the picture")
 
         resetIndexOfComboBox(cmbDesDesignList)
 
@@ -1887,7 +1887,7 @@ Public Class AgniMainForm
         txtPaymentBillNo.Text = lastBillRow.Item("BillNo")
         txtPaymentUnPaidBilledAmount.Text = Format(Math.Round(unPaidBalance), "0.00")
 
-        'log.debug("btnPaymentCreatePayment_Click: before calling setPaymentControlsVisibilitiesForCreatePayment")
+        'log.Debug("btnPaymentCreatePayment_Click: before calling setPaymentControlsVisibilitiesForCreatePayment")
         setPaymentControlsVisibilitiesForCreatePayment()
 
         txtPaymentActualPaidAmount.Focus()
@@ -2769,7 +2769,7 @@ Public Class AgniMainForm
     Function fetchDesignTableForReport(searchQuery As String) As DataTable
         Dim designQueryCommand As SqlCommand = New SqlCommand(searchQuery, dbConnection)
 
-        'log.debug("fetchDesignTableForReport: searchQuery: " + searchQuery)
+        'log.Debug("fetchDesignTableForReport: searchQuery: " + searchQuery)
 
         Dim designAdapter = New SqlDataAdapter()
         designAdapter.SelectCommand = designQueryCommand
@@ -3177,10 +3177,18 @@ Public Class AgniMainForm
 
     Private Sub btnSettingsResetBilNo_Click(sender As Object, e As EventArgs) Handles btnSettingsResetBilNo.Click
         If MessageBox.Show("This operatoin will reset the bill number to 1 and you cannot reverse this operation. Do you really want to reset the bill number to 1? ", "Confirmation", System.Windows.Forms.MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
-            insertOrReplaceAttribute(ATTRIBUTE_LAST_BILL_NO, "0")
-            MsgBox("The bill number has been reset. Next time you generate the bill the bill number will start with 1. If you have mistakenly did this operation then immediately contact the software maintenance team for help")
-        End If
+            Dim actionResult As DialogResult = ActionConfirmation.ShowDialog()
+            ActionConfirmation.Dispose()
 
+            If actionResult = System.Windows.Forms.DialogResult.Cancel Then
+                'No need to anything as this result you get is when the user is canceled the Action Dialog
+            ElseIf actionResult = System.Windows.Forms.DialogResult.Yes Then
+                insertOrReplaceAttribute(ATTRIBUTE_LAST_BILL_NO, "0")
+                MsgBox("The bill number has been reset. Next time you generate the bill the bill number will start with 1. If you have mistakenly did this operation then immediately contact the software maintenance team for help")
+            ElseIf actionResult = System.Windows.Forms.DialogResult.No Then
+                MsgBox("You do not have permission for this operation. Please try with Administrator user when prompted for confirmation")
+            End If
+        End If
     End Sub
 
     Public Sub insertOrReplaceAttribute(attributeName As String, attributeValue As String)

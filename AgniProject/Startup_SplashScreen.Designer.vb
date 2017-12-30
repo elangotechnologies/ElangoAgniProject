@@ -13,7 +13,7 @@ Partial Class Startup_SplashScreen
             MyBase.Dispose(disposing)
         End Try
     End Sub
-    Friend WithEvents ApplicationTitle As System.Windows.Forms.Label
+    Friend WithEvents ApplicationTitle_Ela As System.Windows.Forms.Label
     Friend WithEvents Version As System.Windows.Forms.Label
     Friend WithEvents MainLayoutPanel As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents DetailsLayoutPanel As System.Windows.Forms.TableLayoutPanel
@@ -28,9 +28,9 @@ Partial Class Startup_SplashScreen
     Private Sub InitializeComponent()
         Me.MainLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
         Me.DetailsLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.Version = New System.Windows.Forms.Label()
-        Me.ApplicationTitle = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.ApplicationTitle_Ela = New System.Windows.Forms.Label()
         Me.MainLayoutPanel.SuspendLayout()
         Me.DetailsLayoutPanel.SuspendLayout()
         Me.SuspendLayout()
@@ -43,7 +43,7 @@ Partial Class Startup_SplashScreen
         Me.MainLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300.0!))
         Me.MainLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200.0!))
         Me.MainLayoutPanel.Controls.Add(Me.DetailsLayoutPanel, 1, 1)
-        Me.MainLayoutPanel.Controls.Add(Me.ApplicationTitle, 0, 1)
+        Me.MainLayoutPanel.Controls.Add(Me.ApplicationTitle_Ela, 0, 1)
         Me.MainLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.MainLayoutPanel.Location = New System.Drawing.Point(0, 0)
         Me.MainLayoutPanel.Name = "MainLayoutPanel"
@@ -71,18 +71,6 @@ Partial Class Startup_SplashScreen
         Me.DetailsLayoutPanel.Size = New System.Drawing.Size(193, 79)
         Me.DetailsLayoutPanel.TabIndex = 1
         '
-        'Label1
-        '
-        Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Arial", 14.0!, System.Drawing.FontStyle.Bold)
-        Me.Label1.ForeColor = System.Drawing.Color.DarkRed
-        Me.Label1.Location = New System.Drawing.Point(3, 29)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(190, 29)
-        Me.Label1.TabIndex = 3
-        Me.Label1.Text = "Welcomes You!"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
         'Version
         '
         Me.Version.BackColor = System.Drawing.Color.Transparent
@@ -95,17 +83,29 @@ Partial Class Startup_SplashScreen
         Me.Version.Text = " Version 1.01"
         Me.Version.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'ApplicationTitle
+        'Label1
         '
-        Me.ApplicationTitle.BackColor = System.Drawing.Color.Transparent
-        Me.ApplicationTitle.Font = New System.Drawing.Font("Arial", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.ApplicationTitle.ForeColor = System.Drawing.Color.Black
-        Me.ApplicationTitle.Location = New System.Drawing.Point(3, 218)
-        Me.ApplicationTitle.Name = "ApplicationTitle"
-        Me.ApplicationTitle.Size = New System.Drawing.Size(294, 85)
-        Me.ApplicationTitle.TabIndex = 0
-        Me.ApplicationTitle.Text = "AGNI BILLING SOFTWARE"
-        Me.ApplicationTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Font = New System.Drawing.Font("Arial", 14.0!, System.Drawing.FontStyle.Bold)
+        Me.Label1.ForeColor = System.Drawing.Color.DarkRed
+        Me.Label1.Location = New System.Drawing.Point(3, 29)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(190, 29)
+        Me.Label1.TabIndex = 3
+        Me.Label1.Text = "Welcomes You!"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'ApplicationTitle_Ela
+        '
+        Me.ApplicationTitle_Ela.BackColor = System.Drawing.Color.Transparent
+        Me.ApplicationTitle_Ela.Font = New System.Drawing.Font("Arial", 16.0!, System.Drawing.FontStyle.Bold)
+        Me.ApplicationTitle_Ela.ForeColor = System.Drawing.Color.Black
+        Me.ApplicationTitle_Ela.Location = New System.Drawing.Point(3, 218)
+        Me.ApplicationTitle_Ela.Name = "ApplicationTitle_Ela"
+        Me.ApplicationTitle_Ela.Size = New System.Drawing.Size(294, 85)
+        Me.ApplicationTitle_Ela.TabIndex = 0
+        Me.ApplicationTitle_Ela.Text = "AGNI BILLING SOFTWARE"
+        Me.ApplicationTitle_Ela.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Startup_SplashScreen
         '

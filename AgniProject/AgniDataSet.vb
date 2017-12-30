@@ -1,4 +1,4 @@
-﻿Partial Class DataSet1
+﻿Partial Class AgniDataSet
 
     Partial Public Class BillAndPaymentHistorySummaryDataTable
     End Class

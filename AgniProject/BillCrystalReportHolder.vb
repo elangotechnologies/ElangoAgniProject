@@ -15,7 +15,7 @@ Public Class BillReportForm
 
 
     Private Sub BillReportForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        dbConnection = New SqlConnection("server=DESKTOP-EHEMD7K\ELASQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
+        dbConnection = New SqlConnection("server=agni\SQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
         dbConnection.Open()
 
         Dim selectedBillNo As Integer = AgniMainForm.gSelectedBillNo
@@ -26,7 +26,7 @@ Public Class BillReportForm
         End If
 
         loadBillDetails(selectedBillNo, selectedCustNo)
-        'log.debug("BillReportForm_Load complete")
+        'log.Debug("BillReportForm_Load complete")
 
     End Sub
     Class SearchData

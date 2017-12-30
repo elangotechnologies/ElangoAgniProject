@@ -91,9 +91,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.Windows.Forms.dll</HintPath>
     </Reference>
-    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.4.12\lib\net45\NLog.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -156,10 +153,10 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CommonModule.vb" />
-    <Compile Include="DataSet1.Designer.vb">
+    <Compile Include="AgniDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet1.xsd</DependentUpon>
+      <DependentUpon>AgniDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="BillAndPaymentHistoryCrystalReport.vb">
       <DependentUpon>BillAndPaymentHistoryCrystalReport.rpt</DependentUpon>
@@ -221,8 +218,8 @@
     <Compile Include="ManageUsers.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DataSet1.vb">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
+    <Compile Include="AgniDataSet.vb">
+      <DependentUpon>AgniDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Login.Designer.vb">
       <DependentUpon>Login.vb</DependentUpon>
@@ -361,16 +358,16 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="DataSet1.xsc">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
+    <None Include="AgniDataSet.xsc">
+      <DependentUpon>AgniDataSet.xsd</DependentUpon>
     </None>
-    <None Include="DataSet1.xsd">
+    <None Include="AgniDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet1.Designer.vb</LastGenOutput>
+      <LastGenOutput>AgniDataSet.Designer.vb</LastGenOutput>
     </None>
-    <None Include="DataSet1.xss">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
+    <None Include="AgniDataSet.xss">
+      <DependentUpon>AgniDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

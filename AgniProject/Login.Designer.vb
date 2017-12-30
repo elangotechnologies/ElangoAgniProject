@@ -28,7 +28,7 @@ Partial Class Login
         Me.btnLoginManageUsers = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.cmbLoginUserName = New System.Windows.Forms.ComboBox()
-        Me.DataSet11 = New AgniProject.DataSet1()
+        Me.DataSet11 = New AgniProject.AgniDataSet()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataSet11, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -165,5 +165,5 @@ Partial Class Login
     Friend WithEvents btnLoginManageUsers As System.Windows.Forms.Button
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents cmbLoginUserName As System.Windows.Forms.ComboBox
-    Friend WithEvents DataSet11 As DataSet1
+    Friend WithEvents DataSet11 As AgniDataSet
 End Class

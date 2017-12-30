@@ -37,172 +37,172 @@ AgniProject
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1">
+<member name="T:AgniProject.AgniDataSet">
 <summary>
 Represents a strongly typed in-memory cache of data.
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.DesignDetailsDataTable">
+<member name="T:AgniProject.AgniDataSet.DesignDetailsDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.OutstandingBalanceDataTable">
+<member name="T:AgniProject.AgniDataSet.OutstandingBalanceDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.TotalOutstandingBalanceDataTable">
+<member name="T:AgniProject.AgniDataSet.TotalOutstandingBalanceDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.BillSearchResultDataTable">
+<member name="T:AgniProject.AgniDataSet.BillSearchResultDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.TotalBillSearchResultDataTable">
+<member name="T:AgniProject.AgniDataSet.TotalBillSearchResultDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.GSTDataDataTable">
+<member name="T:AgniProject.AgniDataSet.GSTDataDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.TotalGSTDataDataTable">
+<member name="T:AgniProject.AgniDataSet.TotalGSTDataDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.BillAndPaymentHistoryDataTable">
+<member name="T:AgniProject.AgniDataSet.BillAndPaymentHistoryDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.BillAndPaymentHistorySummaryDataTable">
+<member name="T:AgniProject.AgniDataSet.BillAndPaymentHistorySummaryDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.TotalPaymentSearchResultDataTable">
+<member name="T:AgniProject.AgniDataSet.TotalPaymentSearchResultDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.PaymentSearchResultDataTable">
+<member name="T:AgniProject.AgniDataSet.PaymentSearchResultDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.DesignDetailsRow">
+<member name="T:AgniProject.AgniDataSet.DesignDetailsRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.OutstandingBalanceRow">
+<member name="T:AgniProject.AgniDataSet.OutstandingBalanceRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.TotalOutstandingBalanceRow">
+<member name="T:AgniProject.AgniDataSet.TotalOutstandingBalanceRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.BillSearchResultRow">
+<member name="T:AgniProject.AgniDataSet.BillSearchResultRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.TotalBillSearchResultRow">
+<member name="T:AgniProject.AgniDataSet.TotalBillSearchResultRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.GSTDataRow">
+<member name="T:AgniProject.AgniDataSet.GSTDataRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.TotalGSTDataRow">
+<member name="T:AgniProject.AgniDataSet.TotalGSTDataRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.BillAndPaymentHistoryRow">
+<member name="T:AgniProject.AgniDataSet.BillAndPaymentHistoryRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.BillAndPaymentHistorySummaryRow">
+<member name="T:AgniProject.AgniDataSet.BillAndPaymentHistorySummaryRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.TotalPaymentSearchResultRow">
+<member name="T:AgniProject.AgniDataSet.TotalPaymentSearchResultRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.PaymentSearchResultRow">
+<member name="T:AgniProject.AgniDataSet.PaymentSearchResultRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.DesignDetailsRowChangeEvent">
+<member name="T:AgniProject.AgniDataSet.DesignDetailsRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.OutstandingBalanceRowChangeEvent">
+<member name="T:AgniProject.AgniDataSet.OutstandingBalanceRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.TotalOutstandingBalanceRowChangeEvent">
+<member name="T:AgniProject.AgniDataSet.TotalOutstandingBalanceRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.BillSearchResultRowChangeEvent">
+<member name="T:AgniProject.AgniDataSet.BillSearchResultRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.TotalBillSearchResultRowChangeEvent">
+<member name="T:AgniProject.AgniDataSet.TotalBillSearchResultRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.GSTDataRowChangeEvent">
+<member name="T:AgniProject.AgniDataSet.GSTDataRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.TotalGSTDataRowChangeEvent">
+<member name="T:AgniProject.AgniDataSet.TotalGSTDataRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.BillAndPaymentHistoryRowChangeEvent">
+<member name="T:AgniProject.AgniDataSet.BillAndPaymentHistoryRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.BillAndPaymentHistorySummaryRowChangeEvent">
+<member name="T:AgniProject.AgniDataSet.BillAndPaymentHistorySummaryRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.TotalPaymentSearchResultRowChangeEvent">
+<member name="T:AgniProject.AgniDataSet.TotalPaymentSearchResultRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
 </member>
-<member name="T:AgniProject.DataSet1.PaymentSearchResultRowChangeEvent">
+<member name="T:AgniProject.AgniDataSet.PaymentSearchResultRowChangeEvent">
 <summary>
 Row event argument class
 </summary>

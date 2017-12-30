@@ -2,17 +2,17 @@ Imports System.IO
 Imports System.Data.SqlClient
 Imports System.Threading
 
-Imports NLog
+'Imports NLog
 
 Public Class ActionConfirmation
 
     Dim dbConnection As SqlConnection
-    Dim log As Logger = LogManager.GetCurrentClassLogger()
+    'Dim log As Logger = LogManager.GetCurrentClassLogger()
     Public gIsCurrentUserAdministrator As Boolean = False
 
     Private Sub ActionConfirmation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        dbConnection = New SqlConnection("server=DESKTOP-EHEMD7K\ELASQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
+        dbConnection = New SqlConnection("server=agni\SQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
         dbConnection.Open()
 
         loadUserNameList()

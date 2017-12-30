@@ -6,7 +6,6 @@ D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.ImagePopup.
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.Login.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.Resources.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.CustomersOutstandingBalances.resources
-D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.SplashScreen1.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.vbproj.GenerateResource.Cache
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.vbprojResolveAssemblyReference.cache
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\AgniProject.exe.config
@@ -56,8 +55,6 @@ D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.vbproj.Core
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.PaymentSearchCrystalReportHolder.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.BillAndPaymentHistoryCrystalReportHolder.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\NLog.config
-D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\NLog.dll
-D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\NLog.xml
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.ChangePassword.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.ManageUsers.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.ActionConfirmation.resources
