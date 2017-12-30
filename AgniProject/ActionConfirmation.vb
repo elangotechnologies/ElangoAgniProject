@@ -4,20 +4,20 @@ Imports System.Threading
 
 Imports NLog
 
-Public Class Login
+Public Class ActionConfirmation
 
     Dim dbConnection As SqlConnection
     Dim log As Logger = LogManager.GetCurrentClassLogger()
-    Public gIsCurrentUserAdministrator As Boolean = True
+    Public gIsCurrentUserAdministrator As Boolean = False
 
-    Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub ActionConfirmation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         dbConnection = New SqlConnection("server=DESKTOP-EHEMD7K\ELASQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
         dbConnection.Open()
 
         loadUserNameList()
 
-        Me.AcceptButton = btnLoginLogin
+        Me.AcceptButton = btnActionConfirmationConfirm
     End Sub
 
     Public Sub loadUserNameList()
@@ -46,37 +46,34 @@ Public Class Login
         dummyFirstRow("username") = "Please select or type an user name..."
         userNameTable.Rows.InsertAt(dummyFirstRow, 0)
 
-        cmbLoginUserName.BindingContext = New BindingContext()
-        cmbLoginUserName.DataSource = userNameTable
+        cmbActionConfirmUserName.BindingContext = New BindingContext()
+        cmbActionConfirmUserName.DataSource = userNameTable
     End Sub
 
-    Private Sub btnLoginLogin_Click(sender As Object, e As EventArgs) Handles btnLoginLogin.Click
-        If cmbLoginUserName.SelectedValue = -1 Or cmbLoginUserName.SelectedIndex = -1 Then
+    Private Sub btnbtnActionConfirmationConfirm_Click(sender As Object, e As EventArgs) Handles btnActionConfirmationConfirm.Click
+        If cmbActionConfirmUserName.SelectedValue = -1 Or cmbActionConfirmUserName.SelectedIndex = -1 Then
             MsgBox("Plesae enter an user name")
-            cmbLoginUserName.Focus()
+            cmbActionConfirmUserName.Focus()
             Return
-        ElseIf txtLoginPassword.Text.Trim Is String.Empty Then
+        ElseIf txtActionConfirmPassword.Text.Trim Is String.Empty Then
             MsgBox("Plesae enter the password")
-            txtLoginPassword.Focus()
+            txtActionConfirmPassword.Focus()
             Return
         End If
 
-        Dim userName As String = cmbLoginUserName.Text.Trim
-        Dim password As String = txtLoginPassword.Text.Trim
+        Dim userName As String = cmbActionConfirmUserName.Text.Trim
+        Dim password As String = txtActionConfirmPassword.Text.Trim
 
         Dim isLoginSuccess As Boolean = verifyCredential(userName, password)
         If isLoginSuccess = True Then
-            Me.Hide()
-            AgniMainForm.Show()
+            'Already this dialog is closed in verifyCredential by setting the DialogResult
         Else
             MsgBox("Invalid login credentails. Please check the user name and password.")
-            Return
         End If
 
     End Sub
 
     Private Function verifyCredential(userName As String, password As String) As Boolean
-        'log.Debug("login query: " + "select id from users where username='" + userName + "' and password='" + password + "'")
 
         Dim userNameQuery = New SqlCommand("select * from users where username='" + userName + "' and password='" + password + "'", dbConnection)
         Dim userNameAdapter = New SqlDataAdapter()
@@ -85,57 +82,25 @@ Public Class Login
         userNameAdapter.Fill(userNameDataSet, "users")
         Dim userNameTable As DataTable = userNameDataSet.Tables(0)
 
-        'log.Debug("login found count: " + userNameTable.Rows.Count.ToString)
-
         If userNameTable.Rows.Count > 0 Then
 
             Dim dataRow = userNameTable.Rows(0)
             Dim userType As Integer = dataRow.Item("typeId")
 
             If USER_TYPE_ADMINISTRATOR = userType Then
-                gIsCurrentUserAdministrator = True
+                DialogResult = Windows.Forms.DialogResult.Yes
+                Return True
             Else
-                gIsCurrentUserAdministrator = False
+                DialogResult = Windows.Forms.DialogResult.No
+                Return True
             End If
-
-            Return True
         End If
 
         Return False
     End Function
 
-    Private Sub btnLoginCancel_Click(sender As Object, e As EventArgs) Handles btnLoginCancel.Click
-        Me.Close()
+    Private Sub btnActionConfirmationCancel_Click(sender As Object, e As EventArgs) Handles btnActionConfirmationCancel.Click
+        DialogResult = Windows.Forms.DialogResult.Cancel
     End Sub
 
-    Private Sub btnLoginChangePassword_Click(sender As Object, e As EventArgs) Handles btnLoginChangePassword.Click
-        Me.Hide()
-        ChangePassword.Show()
-    End Sub
-
-    Private Sub btnLoginManageUsers_Click(sender As Object, e As EventArgs) Handles btnLoginManageUsers.Click
-
-        If cmbLoginUserName.SelectedValue = -1 Or cmbLoginUserName.SelectedIndex = -1 Then
-            MsgBox("Plesae enter an user name")
-            cmbLoginUserName.Focus()
-            Return
-        ElseIf txtLoginPassword.Text.Trim Is String.Empty Then
-            MsgBox("Plesae enter the password")
-            txtLoginPassword.Focus()
-            Return
-        End If
-
-        Dim userName As String = cmbLoginUserName.Text.Trim
-        Dim password As String = txtLoginPassword.Text.Trim
-
-        Dim isLoginSuccess As Boolean = verifyCredential(userName, password)
-        If isLoginSuccess = True Then
-            Me.Hide()
-            ManageUsers.Show()
-        Else
-            MsgBox("Invalid user credentails. Please check the user name and password.")
-            Return
-        End If
-
-    End Sub
 End Class

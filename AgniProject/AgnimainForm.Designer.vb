@@ -156,16 +156,6 @@ Partial Class AgniMainForm
         Me.Label65 = New System.Windows.Forms.Label()
         Me.Label64 = New System.Windows.Forms.Label()
         Me.Label62 = New System.Windows.Forms.Label()
-        Me.Label43 = New System.Windows.Forms.Label()
-        Me.Label42 = New System.Windows.Forms.Label()
-        Me.Label41 = New System.Windows.Forms.Label()
-        Me.Label40 = New System.Windows.Forms.Label()
-        Me.Label39 = New System.Windows.Forms.Label()
-        Me.Label38 = New System.Windows.Forms.Label()
-        Me.Label37 = New System.Windows.Forms.Label()
-        Me.Label36 = New System.Windows.Forms.Label()
-        Me.Label35 = New System.Windows.Forms.Label()
-        Me.Label34 = New System.Windows.Forms.Label()
         Me.tabReports = New System.Windows.Forms.TabPage()
         Me.panelReportButtons = New System.Windows.Forms.Panel()
         Me.btnReportSearchReset = New System.Windows.Forms.Button()
@@ -516,7 +506,7 @@ Partial Class AgniMainForm
         Me.Label70 = New System.Windows.Forms.Label()
         Me.cmbPaymentCustomerList = New System.Windows.Forms.ComboBox()
         Me.Label71 = New System.Windows.Forms.Label()
-        Me.Settings = New System.Windows.Forms.TabPage()
+        Me.tabSettings = New System.Windows.Forms.TabPage()
         Me.btnSettingsResetBilNo = New System.Windows.Forms.Button()
         Me.btnSettingsBackupDatabase = New System.Windows.Forms.Button()
         Me.Label114 = New System.Windows.Forms.Label()
@@ -595,6 +585,10 @@ Partial Class AgniMainForm
         Me.Label150 = New System.Windows.Forms.Label()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
+        Me.Label34 = New System.Windows.Forms.Label()
+        Me.Label35 = New System.Windows.Forms.Label()
+        Me.Label36 = New System.Windows.Forms.Label()
+        Me.Label37 = New System.Windows.Forms.Label()
         Me.tabHelp.SuspendLayout()
         Me.tabReports.SuspendLayout()
         Me.panelReportButtons.SuspendLayout()
@@ -637,7 +631,7 @@ Partial Class AgniMainForm
         Me.GroupBox19.SuspendLayout()
         CType(Me.dgPaymentDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbBankDetails.SuspendLayout()
-        Me.Settings.SuspendLayout()
+        Me.tabSettings.SuspendLayout()
         CType(Me.DataGrid6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGrid7, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox9.SuspendLayout()
@@ -654,6 +648,10 @@ Partial Class AgniMainForm
         '
         Me.tabHelp.BackColor = System.Drawing.SystemColors.Window
         Me.tabHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.tabHelp.Controls.Add(Me.Label37)
+        Me.tabHelp.Controls.Add(Me.Label36)
+        Me.tabHelp.Controls.Add(Me.Label35)
+        Me.tabHelp.Controls.Add(Me.Label34)
         Me.tabHelp.Controls.Add(Me.Label25)
         Me.tabHelp.Controls.Add(Me.Label68)
         Me.tabHelp.Controls.Add(Me.Label67)
@@ -661,16 +659,6 @@ Partial Class AgniMainForm
         Me.tabHelp.Controls.Add(Me.Label65)
         Me.tabHelp.Controls.Add(Me.Label64)
         Me.tabHelp.Controls.Add(Me.Label62)
-        Me.tabHelp.Controls.Add(Me.Label43)
-        Me.tabHelp.Controls.Add(Me.Label42)
-        Me.tabHelp.Controls.Add(Me.Label41)
-        Me.tabHelp.Controls.Add(Me.Label40)
-        Me.tabHelp.Controls.Add(Me.Label39)
-        Me.tabHelp.Controls.Add(Me.Label38)
-        Me.tabHelp.Controls.Add(Me.Label37)
-        Me.tabHelp.Controls.Add(Me.Label36)
-        Me.tabHelp.Controls.Add(Me.Label35)
-        Me.tabHelp.Controls.Add(Me.Label34)
         Me.tabHelp.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.tabHelp.Font = New System.Drawing.Font("Book Antiqua", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tabHelp.ImageKey = "help1.JPG"
@@ -686,7 +674,7 @@ Partial Class AgniMainForm
         'Label25
         '
         Me.Label25.AutoSize = True
-        Me.Label25.Location = New System.Drawing.Point(12, 437)
+        Me.Label25.Location = New System.Drawing.Point(20, 232)
         Me.Label25.Name = "Label25"
         Me.Label25.Size = New System.Drawing.Size(220, 26)
         Me.Label25.TabIndex = 23
@@ -695,7 +683,7 @@ Partial Class AgniMainForm
         'Label68
         '
         Me.Label68.AutoSize = True
-        Me.Label68.Location = New System.Drawing.Point(12, 475)
+        Me.Label68.Location = New System.Drawing.Point(20, 270)
         Me.Label68.Name = "Label68"
         Me.Label68.Size = New System.Drawing.Size(194, 26)
         Me.Label68.TabIndex = 22
@@ -704,7 +692,7 @@ Partial Class AgniMainForm
         'Label67
         '
         Me.Label67.AutoSize = True
-        Me.Label67.Location = New System.Drawing.Point(12, 394)
+        Me.Label67.Location = New System.Drawing.Point(20, 189)
         Me.Label67.Name = "Label67"
         Me.Label67.Size = New System.Drawing.Size(231, 26)
         Me.Label67.TabIndex = 21
@@ -713,7 +701,7 @@ Partial Class AgniMainForm
         'Label66
         '
         Me.Label66.AutoSize = True
-        Me.Label66.Location = New System.Drawing.Point(9, 317)
+        Me.Label66.Location = New System.Drawing.Point(20, 112)
         Me.Label66.Name = "Label66"
         Me.Label66.Size = New System.Drawing.Size(215, 26)
         Me.Label66.TabIndex = 20
@@ -722,7 +710,7 @@ Partial Class AgniMainForm
         'Label65
         '
         Me.Label65.AutoSize = True
-        Me.Label65.Location = New System.Drawing.Point(9, 355)
+        Me.Label65.Location = New System.Drawing.Point(20, 150)
         Me.Label65.Name = "Label65"
         Me.Label65.Size = New System.Drawing.Size(212, 26)
         Me.Label65.TabIndex = 19
@@ -733,115 +721,20 @@ Partial Class AgniMainForm
         Me.Label64.AutoSize = True
         Me.Label64.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label64.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Label64.Location = New System.Drawing.Point(9, 237)
+        Me.Label64.Location = New System.Drawing.Point(20, 26)
         Me.Label64.Name = "Label64"
-        Me.Label64.Size = New System.Drawing.Size(331, 25)
+        Me.Label64.Size = New System.Drawing.Size(159, 25)
         Me.Label64.TabIndex = 18
-        Me.Label64.Text = "Shortcut Key For Easy Access"
+        Me.Label64.Text = "Shortcut Keys"
         '
         'Label62
         '
         Me.Label62.AutoSize = True
-        Me.Label62.Location = New System.Drawing.Point(9, 277)
+        Me.Label62.Location = New System.Drawing.Point(20, 67)
         Me.Label62.Name = "Label62"
-        Me.Label62.Size = New System.Drawing.Size(240, 26)
+        Me.Label62.Size = New System.Drawing.Size(224, 26)
         Me.Label62.TabIndex = 17
-        Me.Label62.Text = "Alt + c        -     Customer"
-        '
-        'Label43
-        '
-        Me.Label43.AutoSize = True
-        Me.Label43.Location = New System.Drawing.Point(598, 123)
-        Me.Label43.Name = "Label43"
-        Me.Label43.Size = New System.Drawing.Size(386, 78)
-        Me.Label43.TabIndex = 9
-        Me.Label43.Text = "The Record is refering by other tables. " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "To delete this record ,first delete tho" &
-    "se" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " refering records"
-        '
-        'Label42
-        '
-        Me.Label42.AutoSize = True
-        Me.Label42.Location = New System.Drawing.Point(9, 123)
-        Me.Label42.Name = "Label42"
-        Me.Label42.Size = New System.Drawing.Size(568, 26)
-        Me.Label42.TabIndex = 8
-        Me.Label42.Text = "The DELETE statement conflicted with the REFERENCE.."
-        '
-        'Label41
-        '
-        Me.Label41.AutoSize = True
-        Me.Label41.Location = New System.Drawing.Point(598, 97)
-        Me.Label41.Name = "Label41"
-        Me.Label41.Size = New System.Drawing.Size(411, 26)
-        Me.Label41.TabIndex = 7
-        Me.Label41.Text = "The Record is already exist in same name"
-        '
-        'Label40
-        '
-        Me.Label40.AutoSize = True
-        Me.Label40.Location = New System.Drawing.Point(9, 97)
-        Me.Label40.Name = "Label40"
-        Me.Label40.Size = New System.Drawing.Size(319, 26)
-        Me.Label40.TabIndex = 6
-        Me.Label40.Text = "Violation of PRIMARY KEY ......"
-        '
-        'Label39
-        '
-        Me.Label39.AutoSize = True
-        Me.Label39.Location = New System.Drawing.Point(598, 71)
-        Me.Label39.Name = "Label39"
-        Me.Label39.Size = New System.Drawing.Size(233, 26)
-        Me.Label39.TabIndex = 5
-        Me.Label39.Text = "No records is available"
-        '
-        'Label38
-        '
-        Me.Label38.AutoSize = True
-        Me.Label38.Location = New System.Drawing.Point(9, 71)
-        Me.Label38.Name = "Label38"
-        Me.Label38.Size = New System.Drawing.Size(294, 26)
-        Me.Label38.TabIndex = 4
-        Me.Label38.Text = "There is no row at position -1"
-        '
-        'Label37
-        '
-        Me.Label37.AutoSize = True
-        Me.Label37.Location = New System.Drawing.Point(598, 45)
-        Me.Label37.Name = "Label37"
-        Me.Label37.Size = New System.Drawing.Size(233, 26)
-        Me.Label37.TabIndex = 3
-        Me.Label37.Text = "No records is available"
-        '
-        'Label36
-        '
-        Me.Label36.AutoSize = True
-        Me.Label36.Location = New System.Drawing.Point(9, 45)
-        Me.Label36.Name = "Label36"
-        Me.Label36.Size = New System.Drawing.Size(287, 26)
-        Me.Label36.TabIndex = 2
-        Me.Label36.Text = "There is no row at position 0"
-        '
-        'Label35
-        '
-        Me.Label35.AutoSize = True
-        Me.Label35.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label35.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Label35.Location = New System.Drawing.Point(598, 20)
-        Me.Label35.Name = "Label35"
-        Me.Label35.Size = New System.Drawing.Size(114, 25)
-        Me.Label35.TabIndex = 1
-        Me.Label35.Text = "Meanings"
-        '
-        'Label34
-        '
-        Me.Label34.AutoSize = True
-        Me.Label34.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label34.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Label34.Location = New System.Drawing.Point(9, 20)
-        Me.Label34.Name = "Label34"
-        Me.Label34.Size = New System.Drawing.Size(119, 25)
-        Me.Label34.TabIndex = 0
-        Me.Label34.Text = "Messages"
+        Me.Label62.Text = "Customer Tab - Alt+C"
         '
         'tabReports
         '
@@ -878,7 +771,7 @@ Partial Class AgniMainForm
         Me.tabReports.Size = New System.Drawing.Size(1908, 997)
         Me.tabReports.TabIndex = 4
         Me.tabReports.Tag = "tagReportsTab"
-        Me.tabReports.Text = " "
+        Me.tabReports.Text = "Reports"
         Me.tabReports.ToolTipText = "Search Records"
         '
         'panelReportButtons
@@ -3844,7 +3737,7 @@ Partial Class AgniMainForm
         Me.tabAllTabsHolder.Controls.Add(Me.tabDesign)
         Me.tabAllTabsHolder.Controls.Add(Me.tabBilling)
         Me.tabAllTabsHolder.Controls.Add(Me.tabPayment)
-        Me.tabAllTabsHolder.Controls.Add(Me.Settings)
+        Me.tabAllTabsHolder.Controls.Add(Me.tabSettings)
         Me.tabAllTabsHolder.Controls.Add(Me.tabHelp)
         Me.tabAllTabsHolder.Cursor = System.Windows.Forms.Cursors.Hand
         Me.tabAllTabsHolder.Dock = System.Windows.Forms.DockStyle.Fill
@@ -5222,20 +5115,20 @@ Partial Class AgniMainForm
         Me.Label71.TabIndex = 109
         Me.Label71.Text = "Customer Name"
         '
-        'Settings
+        'tabSettings
         '
-        Me.Settings.Controls.Add(Me.btnSettingsResetBilNo)
-        Me.Settings.Controls.Add(Me.btnSettingsBackupDatabase)
-        Me.Settings.Cursor = System.Windows.Forms.Cursors.Arrow
-        Me.Settings.Location = New System.Drawing.Point(4, 52)
-        Me.Settings.Margin = New System.Windows.Forms.Padding(2)
-        Me.Settings.Name = "Settings"
-        Me.Settings.Padding = New System.Windows.Forms.Padding(2)
-        Me.Settings.Size = New System.Drawing.Size(1908, 997)
-        Me.Settings.TabIndex = 7
-        Me.Settings.Tag = "tagSettingsTab"
-        Me.Settings.Text = "Settings"
-        Me.Settings.UseVisualStyleBackColor = True
+        Me.tabSettings.Controls.Add(Me.btnSettingsResetBilNo)
+        Me.tabSettings.Controls.Add(Me.btnSettingsBackupDatabase)
+        Me.tabSettings.Cursor = System.Windows.Forms.Cursors.Arrow
+        Me.tabSettings.Location = New System.Drawing.Point(4, 52)
+        Me.tabSettings.Margin = New System.Windows.Forms.Padding(2)
+        Me.tabSettings.Name = "tabSettings"
+        Me.tabSettings.Padding = New System.Windows.Forms.Padding(2)
+        Me.tabSettings.Size = New System.Drawing.Size(1908, 997)
+        Me.tabSettings.TabIndex = 7
+        Me.tabSettings.Tag = "tagSettingsTab"
+        Me.tabSettings.Text = "Settings"
+        Me.tabSettings.UseVisualStyleBackColor = True
         '
         'btnSettingsResetBilNo
         '
@@ -6187,6 +6080,42 @@ Partial Class AgniMainForm
         Me.PictureBox5.TabIndex = 28
         Me.PictureBox5.TabStop = False
         '
+        'Label34
+        '
+        Me.Label34.AutoSize = True
+        Me.Label34.Location = New System.Drawing.Point(1499, 868)
+        Me.Label34.Name = "Label34"
+        Me.Label34.Size = New System.Drawing.Size(225, 26)
+        Me.Label34.TabIndex = 24
+        Me.Label34.Text = "Elangovan Manickam"
+        '
+        'Label35
+        '
+        Me.Label35.AutoSize = True
+        Me.Label35.Location = New System.Drawing.Point(1418, 830)
+        Me.Label35.Name = "Label35"
+        Me.Label35.Size = New System.Drawing.Size(249, 26)
+        Me.Label35.TabIndex = 25
+        Me.Label35.Text = "Contact  - Tech Support :"
+        '
+        'Label36
+        '
+        Me.Label36.AutoSize = True
+        Me.Label36.Location = New System.Drawing.Point(1499, 906)
+        Me.Label36.Name = "Label36"
+        Me.Label36.Size = New System.Drawing.Size(203, 26)
+        Me.Label36.TabIndex = 26
+        Me.Label36.Text = "Mobile: 9035001599"
+        '
+        'Label37
+        '
+        Me.Label37.AutoSize = True
+        Me.Label37.Location = New System.Drawing.Point(1499, 944)
+        Me.Label37.Name = "Label37"
+        Me.Label37.Size = New System.Drawing.Size(351, 26)
+        Me.Label37.TabIndex = 27
+        Me.Label37.Text = "Email: elangovan4ever@gmail.com"
+        '
         'AgniMainForm
         '
         Me.AcceptButton = Me.btnReportSearch
@@ -6197,6 +6126,7 @@ Partial Class AgniMainForm
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1916, 1053)
         Me.Controls.Add(Me.tabAllTabsHolder)
+        Me.KeyPreview = True
         Me.Name = "AgniMainForm"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show
         Me.Text = "Agni Designs - Billing Management"
@@ -6268,7 +6198,7 @@ Partial Class AgniMainForm
         CType(Me.dgPaymentDetails, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbBankDetails.ResumeLayout(False)
         Me.gbBankDetails.PerformLayout()
-        Me.Settings.ResumeLayout(False)
+        Me.tabSettings.ResumeLayout(False)
         CType(Me.DataGrid6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGrid7, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox9.ResumeLayout(False)
@@ -6287,16 +6217,6 @@ Partial Class AgniMainForm
 
     End Sub
     Friend WithEvents tabHelp As System.Windows.Forms.TabPage
-    Friend WithEvents Label43 As System.Windows.Forms.Label
-    Friend WithEvents Label42 As System.Windows.Forms.Label
-    Friend WithEvents Label41 As System.Windows.Forms.Label
-    Friend WithEvents Label40 As System.Windows.Forms.Label
-    Friend WithEvents Label39 As System.Windows.Forms.Label
-    Friend WithEvents Label38 As System.Windows.Forms.Label
-    Friend WithEvents Label37 As System.Windows.Forms.Label
-    Friend WithEvents Label36 As System.Windows.Forms.Label
-    Friend WithEvents Label35 As System.Windows.Forms.Label
-    Friend WithEvents Label34 As System.Windows.Forms.Label
     Friend WithEvents tabReports As System.Windows.Forms.TabPage
     Friend WithEvents pbReportDesignImage As System.Windows.Forms.PictureBox
     Friend WithEvents btnReportSearch As System.Windows.Forms.Button
@@ -6525,7 +6445,7 @@ Partial Class AgniMainForm
     Friend WithEvents btnPaymentConfirmCreatePayment As Button
     Friend WithEvents btnPaymentCreatePayment As Button
     Friend WithEvents cmbPaymentPaymentNoList As ComboBox
-    Friend WithEvents Settings As TabPage
+    Friend WithEvents tabSettings As TabPage
     Friend WithEvents Label11 As Label
     Friend WithEvents Label10 As Label
     Friend WithEvents txtBillingIGSTPercent As TextBox
@@ -6740,4 +6660,8 @@ Partial Class AgniMainForm
     Friend WithEvents ReportDesignImage As DataGridViewImageColumn
     Friend WithEvents ReportCustNo As DataGridViewTextBoxColumn
     Friend WithEvents btnBillingDeleteBill As Button
+    Friend WithEvents Label37 As Label
+    Friend WithEvents Label36 As Label
+    Friend WithEvents Label35 As Label
+    Friend WithEvents Label34 As Label
 End Class

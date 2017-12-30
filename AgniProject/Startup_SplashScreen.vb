@@ -1,10 +1,10 @@
-Public NotInheritable Class SplashScreen1
+﻿Public NotInheritable Class Startup_SplashScreen
 
     'TODO: This form can easily be set as the splash screen for the application by going to the "Application" tab
     '  of the Project Designer ("Properties" under the "Project" menu).
 
 
-    Private Sub SplashScreen1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Private Sub Startup_SplashScreen_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         'Set up the dialog text at runtime according to the application's assembly information.  
 
         'TODO: Customize the application's assembly information in the "Application" pane of the project 
@@ -12,10 +12,10 @@ Public NotInheritable Class SplashScreen1
 
         'Application title
         If My.Application.Info.Title <> "" Then
-            'ApplicationTitle.Text = My.Application.Info.Title
+            ApplicationTitle.Text = My.Application.Info.Title
         Else
             'If the application title is missing, use the application name, without the extension
-            'ApplicationTitle.Text = System.IO.Path.GetFileNameWithoutExtension(My.Application.Info.AssemblyName)
+            ApplicationTitle.Text = System.IO.Path.GetFileNameWithoutExtension(My.Application.Info.AssemblyName)
         End If
 
         'Format the version information using the text set into the Version control at design time as the
@@ -26,13 +26,9 @@ Public NotInheritable Class SplashScreen1
         '
         '    Version.Text = System.String.Format(Version.Text, My.Application.Info.Version.Major, My.Application.Info.Version.Minor, My.Application.Info.Version.Build, My.Application.Info.Version.Revision)
 
-        ' Version.Text = System.String.Format(Version.Text, My.Application.Info.Version.Major, My.Application.Info.Version.Minor)
+        Version.Text = System.String.Format(Version.Text, My.Application.Info.Version.Major, My.Application.Info.Version.Minor)
 
         'Copyright info
-        ' Copyright.Text = My.Application.Info.Copyright
-    End Sub
-
-    Private Sub MainLayoutPanel_Paint(sender As Object, e As PaintEventArgs) Handles MainLayoutPanel.Paint
-
+        'Copyright.Text = My.Application.Info.Copyright
     End Sub
 End Class

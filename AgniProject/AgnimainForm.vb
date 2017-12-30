@@ -871,10 +871,10 @@ Public Class AgniMainForm
                 loadCustomerList()
                 loadCustomerGrid()
             End If
-        Catch sqlEx As SqlException When sqlEx.Number = 2627
+        Catch sqlEx As SqlException
             MsgBox("Duplicate customer entry. Please check if any other customer exists with same customer name")
         Catch ex As Exception
-            MessageBox.Show("Message to Agni User:   " & ex.Message & " (Or) This Customer Record may already exist")
+            MessageBox.Show("Message to Agni User:   " & ex.Message)
         End Try
     End Sub
 
@@ -885,10 +885,18 @@ Public Class AgniMainForm
             Return
         End If
 
-        If MessageBox.Show("All Designs, Bills and Payments will be deleted belongs to this customer." + vbNewLine + vbNewLine + "  Do you want to delete this Customer - " & cmbCustCustomerList.Text & " ?", "WARNING", System.Windows.Forms.MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
-            DeleteConfirmation.Button1.Text = "Delete "
-            DeleteConfirmation.Button1.Text += cmbCustCustomerList.Text
-            DeleteConfirmation.Show()
+        If MessageBox.Show("Are you sure you want to delete this Customer? Please note that this action cannot be undone.", "WARNING", System.Windows.Forms.MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
+            Dim actionResult As DialogResult = ActionConfirmation.ShowDialog()
+            ActionConfirmation.Dispose()
+
+            If actionResult = System.Windows.Forms.DialogResult.Cancel Then
+                'No need to anything as this result you get is when the user is canceled the Action Dialog
+            ElseIf actionResult = System.Windows.Forms.DialogResult.Yes Then
+                deleteSeletectedCustomer()
+            ElseIf actionResult = System.Windows.Forms.DialogResult.No Then
+                MsgBox("You do not have permission for this operation. Please try with Administrator user when prompted for confirmation")
+            End If
+
         End If
     End Sub
     Public Sub deleteSeletectedCustomer()
@@ -967,39 +975,46 @@ Public Class AgniMainForm
             MessageBox.Show("Enter Mobile Number")
             txtMobile.Focus()
         Else
-            Dim custNo As Integer = gSelectedCustNo
-            Dim query As String = String.Empty
-            query &= "UPDATE customer SET CompName=@CompName, GSTIN=@GSTIN, OwnerName=@OwnerName, Address=@Address,"
-            query &= "Mobile=@Mobile, Landline=@Landline, Email=@Email, Website=@Website, CGST=@CGST, SGST=@SGST, "
-            query &= "IGST=@IGST, WorkingPrintSqrInch=@WorkingPrintSqrInch, WorkingColor=@WorkingColor, PrintColor=@PrintColor where CustNo=@CustNo"
+            Try
+                Dim custNo As Integer = gSelectedCustNo
+                Dim query As String = String.Empty
+                query &= "UPDATE customer SET CompName=@CompName, GSTIN=@GSTIN, OwnerName=@OwnerName, Address=@Address,"
+                query &= "Mobile=@Mobile, Landline=@Landline, Email=@Email, Website=@Website, CGST=@CGST, SGST=@SGST, "
+                query &= "IGST=@IGST, WorkingPrintSqrInch=@WorkingPrintSqrInch, WorkingColor=@WorkingColor, PrintColor=@PrintColor where CustNo=@CustNo"
 
-            Using comm As New SqlCommand()
-                With comm
-                    .Connection = dbConnection
-                    .CommandType = CommandType.Text
-                    .CommandText = query
-                    .Parameters.AddWithValue("@CustNo", custNo)
-                    .Parameters.AddWithValue("@CompName", cmbCustCustomerList.Text)
-                    .Parameters.AddWithValue("@GSTIN", txtGstIn.Text)
-                    .Parameters.AddWithValue("@OwnerName", txtOwnerName.Text)
-                    .Parameters.AddWithValue("@Address", txtAddress.Text)
-                    .Parameters.AddWithValue("@Mobile", txtMobile.Text)
-                    .Parameters.AddWithValue("@Landline", txtLandline.Text)
-                    .Parameters.AddWithValue("@Email", txtEmail.Text)
-                    .Parameters.AddWithValue("@Website", txtWebsite.Text)
-                    .Parameters.AddWithValue("@CGST", If(String.IsNullOrEmpty(txtCustCGST.Text), DBNull.Value, txtCustCGST.Text))
-                    .Parameters.AddWithValue("@SGST", If(String.IsNullOrEmpty(txtCustSGST.Text), DBNull.Value, txtCustSGST.Text))
-                    .Parameters.AddWithValue("@IGST", If(String.IsNullOrEmpty(txtCustIGST.Text), DBNull.Value, txtCustIGST.Text))
-                    .Parameters.AddWithValue("@WorkingPrintSqrInch", If(String.IsNullOrEmpty(txtCustWPCharge.Text), DBNull.Value, txtCustWPCharge.Text))
-                    .Parameters.AddWithValue("@WorkingColor", If(String.IsNullOrEmpty(txtCustWorkingCharge.Text), DBNull.Value, txtCustWorkingCharge.Text))
-                    .Parameters.AddWithValue("@PrintColor", If(String.IsNullOrEmpty(txtCustPrintCharge.Text), DBNull.Value, txtCustPrintCharge.Text))
-                End With
-                comm.ExecuteNonQuery()
-            End Using
-            MessageBox.Show("Company successfully updated")
-            resetCustomerScreen()
-            loadCustomerList()
-            loadCustomerGrid()
+                Using comm As New SqlCommand()
+                    With comm
+                        .Connection = dbConnection
+                        .CommandType = CommandType.Text
+                        .CommandText = query
+                        .Parameters.AddWithValue("@CustNo", custNo)
+                        .Parameters.AddWithValue("@CompName", cmbCustCustomerList.Text)
+                        .Parameters.AddWithValue("@GSTIN", txtGstIn.Text)
+                        .Parameters.AddWithValue("@OwnerName", txtOwnerName.Text)
+                        .Parameters.AddWithValue("@Address", txtAddress.Text)
+                        .Parameters.AddWithValue("@Mobile", txtMobile.Text)
+                        .Parameters.AddWithValue("@Landline", txtLandline.Text)
+                        .Parameters.AddWithValue("@Email", txtEmail.Text)
+                        .Parameters.AddWithValue("@Website", txtWebsite.Text)
+                        .Parameters.AddWithValue("@CGST", If(String.IsNullOrEmpty(txtCustCGST.Text), DBNull.Value, txtCustCGST.Text))
+                        .Parameters.AddWithValue("@SGST", If(String.IsNullOrEmpty(txtCustSGST.Text), DBNull.Value, txtCustSGST.Text))
+                        .Parameters.AddWithValue("@IGST", If(String.IsNullOrEmpty(txtCustIGST.Text), DBNull.Value, txtCustIGST.Text))
+                        .Parameters.AddWithValue("@WorkingPrintSqrInch", If(String.IsNullOrEmpty(txtCustWPCharge.Text), DBNull.Value, txtCustWPCharge.Text))
+                        .Parameters.AddWithValue("@WorkingColor", If(String.IsNullOrEmpty(txtCustWorkingCharge.Text), DBNull.Value, txtCustWorkingCharge.Text))
+                        .Parameters.AddWithValue("@PrintColor", If(String.IsNullOrEmpty(txtCustPrintCharge.Text), DBNull.Value, txtCustPrintCharge.Text))
+                    End With
+                    comm.ExecuteNonQuery()
+                End Using
+                MessageBox.Show("Company successfully updated")
+                resetCustomerScreen()
+                loadCustomerList()
+                loadCustomerGrid()
+
+            Catch sqlEx As SqlException
+                MsgBox("Duplicate customer entry. Please check if any other customer exists with same customer name")
+            Catch ex As Exception
+                MessageBox.Show("Message to Agni User:   " & ex.Message)
+            End Try
         End If
     End Sub
 
@@ -1027,72 +1042,79 @@ Public Class AgniMainForm
             MessageBox.Show("Enter Valid Total cost")
             txtDesCalculatedPrice.Focus()
         Else
-            Dim memoryStream As New MemoryStream()
-            Dim imageBuffer() As Byte
-            If pbDesDesignImage.Image Is Nothing Then
-                imageBuffer = Nothing
-            Else
-                'PictureBox2.Image.Save(ms, PictureBox2.Image.RawFormat)
-                pbDesDesignImage.Image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg)
-                imageBuffer = memoryStream.GetBuffer
-            End If
-            memoryStream.Close()
+            Try
+                Dim memoryStream As New MemoryStream()
+                Dim imageBuffer() As Byte
+                If pbDesDesignImage.Image Is Nothing Then
+                    imageBuffer = Nothing
+                Else
+                    'PictureBox2.Image.Save(ms, PictureBox2.Image.RawFormat)
+                    pbDesDesignImage.Image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg)
+                    imageBuffer = memoryStream.GetBuffer
+                End If
+                memoryStream.Close()
 
-            Dim designType As String
-            If radioDesWP.Checked Then
-                designType = "WP/Inch"
-            ElseIf radioDesWorking.Checked Then
-                designType = "Working/Color"
-            Else
-                designType = "Print/Color"
-            End If
+                Dim designType As String
+                If radioDesWP.Checked Then
+                    designType = "WP/Inch"
+                ElseIf radioDesWorking.Checked Then
+                    designType = "Working/Color"
+                Else
+                    designType = "Print/Color"
+                End If
 
-            Dim designWidth As Decimal
-            If Val(txtDesWidth.Text) = 0 Then
-                designWidth = 0
-            Else
-                designWidth = Decimal.Parse(txtDesWidth.Text.Trim)
-            End If
+                Dim designWidth As Decimal
+                If Val(txtDesWidth.Text) = 0 Then
+                    designWidth = 0
+                Else
+                    designWidth = Decimal.Parse(txtDesWidth.Text.Trim)
+                End If
 
-            Dim designHeight As Decimal
-            If Val(txtDesHeight.Text) = 0 Then
-                designHeight = 0
-            Else
-                designHeight = Decimal.Parse(txtDesHeight.Text.Trim)
-            End If
+                Dim designHeight As Decimal
+                If Val(txtDesHeight.Text) = 0 Then
+                    designHeight = 0
+                Else
+                    designHeight = Decimal.Parse(txtDesHeight.Text.Trim)
+                End If
 
-            Dim custNo As Integer = cmbDesCustomerList.SelectedValue
+                Dim custNo As Integer = cmbDesCustomerList.SelectedValue
 
-            Dim query As String = String.Empty
-            query &= "INSERT INTO design (CustNo, DesignName, Height, Width, Colors, UnitCost,"
-            query &= "Type, Image, Price, DesignDate, Billed) "
-            query &= "VALUES (@CustNo, @DesignName, @Height, @Width, @Colors, @UnitCost,"
-            query &= "@Type, @Image, @Price, @DesignDate, @Billed )"
+                Dim query As String = String.Empty
+                query &= "INSERT INTO design (CustNo, DesignName, Height, Width, Colors, UnitCost,"
+                query &= "Type, Image, Price, DesignDate, Billed) "
+                query &= "VALUES (@CustNo, @DesignName, @Height, @Width, @Colors, @UnitCost,"
+                query &= "@Type, @Image, @Price, @DesignDate, @Billed )"
 
-            Using comm As New SqlCommand()
-                With comm
-                    .Connection = dbConnection
-                    .CommandType = CommandType.Text
-                    .CommandText = query
-                    .Parameters.AddWithValue("@CustNo", custNo)
-                    .Parameters.AddWithValue("@DesignName", cmbDesDesignList.Text)
-                    .Parameters.AddWithValue("@Height", designHeight)
-                    .Parameters.AddWithValue("@Width", designWidth)
-                    .Parameters.AddWithValue("@Colors", Integer.Parse(txtDesNoOfColors.Text.Trim))
-                    .Parameters.AddWithValue("@UnitCost", Decimal.Parse(txtDesCostPerUnit.Text.Trim))
-                    .Parameters.AddWithValue("@Type", designType)
-                    .Parameters.AddWithValue("@Price", Decimal.Parse(txtDesCalculatedPrice.Text.Trim))
-                    .Parameters.AddWithValue("@DesignDate", dpDesDesignDate.Value)
-                    .Parameters.AddWithValue("@Billed", 0)
-                End With
-                Dim designImage As New SqlParameter("@Image", SqlDbType.Image)
-                designImage.Value = If(imageBuffer Is Nothing, DBNull.Value, imageBuffer)
-                comm.Parameters.Add(designImage)
-                comm.ExecuteNonQuery()
-            End Using
-            MessageBox.Show("Design successfully added")
-            loadDesignList(custNo)
-            loadDesignGrid(custNo)
+                Using comm As New SqlCommand()
+                    With comm
+                        .Connection = dbConnection
+                        .CommandType = CommandType.Text
+                        .CommandText = query
+                        .Parameters.AddWithValue("@CustNo", custNo)
+                        .Parameters.AddWithValue("@DesignName", cmbDesDesignList.Text)
+                        .Parameters.AddWithValue("@Height", designHeight)
+                        .Parameters.AddWithValue("@Width", designWidth)
+                        .Parameters.AddWithValue("@Colors", Integer.Parse(txtDesNoOfColors.Text.Trim))
+                        .Parameters.AddWithValue("@UnitCost", Decimal.Parse(txtDesCostPerUnit.Text.Trim))
+                        .Parameters.AddWithValue("@Type", designType)
+                        .Parameters.AddWithValue("@Price", Decimal.Parse(txtDesCalculatedPrice.Text.Trim))
+                        .Parameters.AddWithValue("@DesignDate", dpDesDesignDate.Value)
+                        .Parameters.AddWithValue("@Billed", 0)
+                    End With
+                    Dim designImage As New SqlParameter("@Image", SqlDbType.Image)
+                    designImage.Value = If(imageBuffer Is Nothing, DBNull.Value, imageBuffer)
+                    comm.Parameters.Add(designImage)
+                    comm.ExecuteNonQuery()
+                End Using
+                MessageBox.Show("Design successfully added")
+                loadDesignList(custNo)
+                loadDesignGrid(custNo)
+
+            Catch sqlEx As SqlException
+                MsgBox("Operation failed. DB error. Please try again or contact the software support if problem persists")
+            Catch ex As Exception
+                MessageBox.Show("Message to Agni User:   " & ex.Message)
+            End Try
         End If
     End Sub
 
@@ -1244,36 +1266,42 @@ Public Class AgniMainForm
                 End If
             End If
 
-            Dim custNo As Integer = cmbDesCustomerList.SelectedValue
+            Try
+                Dim custNo As Integer = cmbDesCustomerList.SelectedValue
 
-            Dim query As String = String.Empty
-            query &= "update design set DesignName=@DesignName, Height=@Height, Width=@Width, Colors=@Colors, UnitCost=@UnitCost,"
-            query &= "Type=@Type, Image=@Image, Price=@Price, DesignDate=@DesignDate "
-            query &= "where DesignNo=@DesignNo"
+                Dim query As String = String.Empty
+                query &= "update design set DesignName=@DesignName, Height=@Height, Width=@Width, Colors=@Colors, UnitCost=@UnitCost,"
+                query &= "Type=@Type, Image=@Image, Price=@Price, DesignDate=@DesignDate "
+                query &= "where DesignNo=@DesignNo"
 
-            Using comm As New SqlCommand()
-                With comm
-                    .Connection = dbConnection
-                    .CommandType = CommandType.Text
-                    .CommandText = query
-                    .Parameters.AddWithValue("@DesignNo", gSelectedDesignNo)
-                    .Parameters.AddWithValue("@DesignName", cmbDesDesignList.Text)
-                    .Parameters.AddWithValue("@Height", designHeight)
-                    .Parameters.AddWithValue("@Width", designWidth)
-                    .Parameters.AddWithValue("@Colors", colors)
-                    .Parameters.AddWithValue("@UnitCost", unitCost)
-                    .Parameters.AddWithValue("@Type", designType)
-                    .Parameters.AddWithValue("@Price", calculatedPrice)
-                    .Parameters.AddWithValue("@DesignDate", dpDesDesignDate.Value)
-                End With
-                Dim designImage As New SqlParameter("@Image", SqlDbType.Image)
-                designImage.Value = If(imageBuffer Is Nothing, DBNull.Value, imageBuffer)
-                comm.Parameters.Add(designImage)
-                comm.ExecuteNonQuery()
-            End Using
-            MessageBox.Show("Design successfully updated")
-            loadDesignList(custNo)
-            loadDesignGrid(custNo)
+                Using comm As New SqlCommand()
+                    With comm
+                        .Connection = dbConnection
+                        .CommandType = CommandType.Text
+                        .CommandText = query
+                        .Parameters.AddWithValue("@DesignNo", gSelectedDesignNo)
+                        .Parameters.AddWithValue("@DesignName", cmbDesDesignList.Text)
+                        .Parameters.AddWithValue("@Height", designHeight)
+                        .Parameters.AddWithValue("@Width", designWidth)
+                        .Parameters.AddWithValue("@Colors", colors)
+                        .Parameters.AddWithValue("@UnitCost", unitCost)
+                        .Parameters.AddWithValue("@Type", designType)
+                        .Parameters.AddWithValue("@Price", calculatedPrice)
+                        .Parameters.AddWithValue("@DesignDate", dpDesDesignDate.Value)
+                    End With
+                    Dim designImage As New SqlParameter("@Image", SqlDbType.Image)
+                    designImage.Value = If(imageBuffer Is Nothing, DBNull.Value, imageBuffer)
+                    comm.Parameters.Add(designImage)
+                    comm.ExecuteNonQuery()
+                End Using
+                MessageBox.Show("Design successfully updated")
+                loadDesignList(custNo)
+                loadDesignGrid(custNo)
+            Catch sqlEx As SqlException
+                MsgBox("Operation failed. DB error. Please try again or contact the software support if problem persists")
+            Catch ex As Exception
+                MessageBox.Show("Message to Agni User:   " & ex.Message)
+            End Try
         End If
     End Sub
 
@@ -1282,23 +1310,28 @@ Public Class AgniMainForm
         If (BillNo = -1) Then
             Return
         End If
+        Try
+            Dim query As String = String.Empty
+            query &= "update design set Billed=@Billed, BillNo=@BillNo where CustNo=@CustNo and BillNo IS NULL"
 
-        Dim query As String = String.Empty
-        query &= "update design set Billed=@Billed, BillNo=@BillNo where CustNo=@CustNo and BillNo IS NULL"
-
-        Using comm As New SqlCommand()
-            With comm
-                .Connection = dbConnection
-                .CommandType = CommandType.Text
-                .CommandText = query
-                .Parameters.AddWithValue("@CustNo", custNo.ToString)
-                .Parameters.AddWithValue("@Billed", True)
-                .Parameters.AddWithValue("@BillNo", BillNo)
-            End With
-            comm.ExecuteNonQuery()
-        End Using
-        loadDesignList(custNo)
-        loadDesignGrid(custNo)
+            Using comm As New SqlCommand()
+                With comm
+                    .Connection = dbConnection
+                    .CommandType = CommandType.Text
+                    .CommandText = query
+                    .Parameters.AddWithValue("@CustNo", custNo.ToString)
+                    .Parameters.AddWithValue("@Billed", True)
+                    .Parameters.AddWithValue("@BillNo", BillNo)
+                End With
+                comm.ExecuteNonQuery()
+            End Using
+            loadDesignList(custNo)
+            loadDesignGrid(custNo)
+        Catch sqlEx As SqlException
+            MsgBox("Operation failed. DB error. Please try again or contact the software support if problem persists")
+        Catch ex As Exception
+            MessageBox.Show("Message to Agni User:   " & ex.Message)
+        End Try
     End Sub
 
     Sub updateDesignsAsUnBilled(BillNo As Integer)
@@ -1307,22 +1340,28 @@ Public Class AgniMainForm
             Return
         End If
 
-        Dim custNo As Integer = cmbDesCustomerList.SelectedValue
+        Try
+            Dim custNo As Integer = cmbDesCustomerList.SelectedValue
 
-        Dim query As String = String.Empty
-        query &= "update design set Billed=0, BillNo=null where BillNo=@BillNo"
+            Dim query As String = String.Empty
+            query &= "update design set Billed=0, BillNo=null where BillNo=@BillNo"
 
-        Using comm As New SqlCommand()
-            With comm
-                .Connection = dbConnection
-                .CommandType = CommandType.Text
-                .CommandText = query
-                .Parameters.AddWithValue("@BillNo", BillNo)
-            End With
-            comm.ExecuteNonQuery()
-        End Using
-        loadDesignList(custNo)
-        loadDesignGrid(custNo)
+            Using comm As New SqlCommand()
+                With comm
+                    .Connection = dbConnection
+                    .CommandType = CommandType.Text
+                    .CommandText = query
+                    .Parameters.AddWithValue("@BillNo", BillNo)
+                End With
+                comm.ExecuteNonQuery()
+            End Using
+            loadDesignList(custNo)
+            loadDesignGrid(custNo)
+        Catch sqlEx As SqlException
+            MsgBox("Operation failed. DB error. Please try again or contact the software support if problem persists")
+        Catch ex As Exception
+            MessageBox.Show("Message to Agni User:   " & ex.Message)
+        End Try
     End Sub
 
     Sub addPaidAmountInBill(BillNo As Integer, paidAmount As Decimal)
@@ -1331,23 +1370,29 @@ Public Class AgniMainForm
             Return
         End If
 
-        Dim custNo As Integer = cmbDesCustomerList.SelectedValue
+        Try
+            Dim custNo As Integer = cmbDesCustomerList.SelectedValue
 
-        Dim query As String = String.Empty
-        query &= "update bill set PaidAmount=PaidAmount+@paidAmount where BillNo=@BillNo"
+            Dim query As String = String.Empty
+            query &= "update bill set PaidAmount=PaidAmount+@paidAmount where BillNo=@BillNo"
 
-        Using comm As New SqlCommand()
-            With comm
-                .Connection = dbConnection
-                .CommandType = CommandType.Text
-                .CommandText = query
-                .Parameters.AddWithValue("@BillNo", BillNo)
-                .Parameters.AddWithValue("@paidAmount", paidAmount)
-            End With
-            comm.ExecuteNonQuery()
-        End Using
-        loadDesignList(custNo)
-        loadDesignGrid(custNo)
+            Using comm As New SqlCommand()
+                With comm
+                    .Connection = dbConnection
+                    .CommandType = CommandType.Text
+                    .CommandText = query
+                    .Parameters.AddWithValue("@BillNo", BillNo)
+                    .Parameters.AddWithValue("@paidAmount", paidAmount)
+                End With
+                comm.ExecuteNonQuery()
+            End Using
+            loadDesignList(custNo)
+            loadDesignGrid(custNo)
+        Catch sqlEx As SqlException
+            MsgBox("Operation failed. DB error. Please try again or contact the software support if problem persists")
+        Catch ex As Exception
+            MessageBox.Show("Message to Agni User:   " & ex.Message)
+        End Try
     End Sub
 
     Private Sub btnDesDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDesDelete.Click
@@ -1713,48 +1758,53 @@ Public Class AgniMainForm
             MessageBox.Show("Enter Remaining Balance Amount")
             txtBillingRemainingBalance.Focus()
         Else
+            Try
+                Dim newBillNo As Integer = -1
 
-            Dim newBillNo As Integer = -1
+                Dim query As String = String.Empty
+                query &= "INSERT INTO bill (DisplayBillNo, CustNo, BillDate, DesignCost, CGST, SGST, IGST, UnPaidAmountTillNow, PaidAmount, Cancelled) "
+                query &= "VALUES (@DisplayBillNo, @CustNo, @BillDate, @DesignCost, @CGST, @SGST, @IGST, @UnPaidAmountTillNow, @PaidAmount, @Cancelled); Select SCOPE_IDENTITY()"
 
-            Dim query As String = String.Empty
-            query &= "INSERT INTO bill (DisplayBillNo, CustNo, BillDate, DesignCost, CGST, SGST, IGST, UnPaidAmountTillNow, PaidAmount, Cancelled) "
-            query &= "VALUES (@DisplayBillNo, @CustNo, @BillDate, @DesignCost, @CGST, @SGST, @IGST, @UnPaidAmountTillNow, @PaidAmount, @Cancelled); Select SCOPE_IDENTITY()"
-
-            Dim displayBillNoStr As String = getAttribute(ATTRIBUTE_LAST_BILL_NO)
-            Dim displayBillNo As Integer = 0
-            If displayBillNoStr IsNot Nothing Then
-                displayBillNo = Integer.Parse(displayBillNoStr)
-            End If
-            displayBillNo = displayBillNo + 1
+                Dim displayBillNoStr As String = getAttribute(ATTRIBUTE_LAST_BILL_NO)
+                Dim displayBillNo As Integer = 0
+                If displayBillNoStr IsNot Nothing Then
+                    displayBillNo = Integer.Parse(displayBillNoStr)
+                End If
+                displayBillNo = displayBillNo + 1
 
 
-            Using comm As New SqlCommand()
-                With comm
-                    .Connection = dbConnection
-                    .CommandType = CommandType.Text
-                    .CommandText = query
-                    .Parameters.AddWithValue("@DisplayBillNo", displayBillNo)
-                    .Parameters.AddWithValue("@CustNo", cmbBillingCustomerList.SelectedValue)
-                    .Parameters.AddWithValue("@BillDate", dpBillingBillDate.Value)
-                    .Parameters.AddWithValue("@DesignCost", Decimal.Parse(txtBillingDesignAmoutBeforeGST.Text))
-                    .Parameters.AddWithValue("@CGST", Decimal.Parse(txtBillingCGSTPercent.Text))
-                    .Parameters.AddWithValue("@SGST", Decimal.Parse(txtBillingSGSTPercent.Text))
-                    .Parameters.AddWithValue("@IGST", Decimal.Parse(txtBillingIGSTPercent.Text))
-                    .Parameters.AddWithValue("@UnPaidAmountTillNow", Decimal.Parse(txtBillingPrevBalance.Text))
-                    .Parameters.AddWithValue("@PaidAmount", Decimal.Parse(txtBillingPaidAmount.Text))
-                    .Parameters.AddWithValue("@Cancelled", 0)
-                End With
-                newBillNo = CInt(comm.ExecuteScalar())
-            End Using
+                Using comm As New SqlCommand()
+                    With comm
+                        .Connection = dbConnection
+                        .CommandType = CommandType.Text
+                        .CommandText = query
+                        .Parameters.AddWithValue("@DisplayBillNo", displayBillNo)
+                        .Parameters.AddWithValue("@CustNo", cmbBillingCustomerList.SelectedValue)
+                        .Parameters.AddWithValue("@BillDate", dpBillingBillDate.Value)
+                        .Parameters.AddWithValue("@DesignCost", Decimal.Parse(txtBillingDesignAmoutBeforeGST.Text))
+                        .Parameters.AddWithValue("@CGST", Decimal.Parse(txtBillingCGSTPercent.Text))
+                        .Parameters.AddWithValue("@SGST", Decimal.Parse(txtBillingSGSTPercent.Text))
+                        .Parameters.AddWithValue("@IGST", Decimal.Parse(txtBillingIGSTPercent.Text))
+                        .Parameters.AddWithValue("@UnPaidAmountTillNow", Decimal.Parse(txtBillingPrevBalance.Text))
+                        .Parameters.AddWithValue("@PaidAmount", Decimal.Parse(txtBillingPaidAmount.Text))
+                        .Parameters.AddWithValue("@Cancelled", 0)
+                    End With
+                    newBillNo = CInt(comm.ExecuteScalar())
+                End Using
 
-            updateRecentDesignsAsBilled(cmbBillingCustomerList.SelectedValue, newBillNo)
-            insertOrReplaceAttribute(ATTRIBUTE_LAST_BILL_NO, displayBillNo.ToString)
-            MessageBox.Show("Bill successfully added")
+                updateRecentDesignsAsBilled(cmbBillingCustomerList.SelectedValue, newBillNo)
+                insertOrReplaceAttribute(ATTRIBUTE_LAST_BILL_NO, displayBillNo.ToString)
+                MessageBox.Show("Bill successfully added")
 
-            Dim custNo As Integer = cmbBillingCustomerList.SelectedValue
+                Dim custNo As Integer = cmbBillingCustomerList.SelectedValue
 
-            loadBillList(custNo)
-            loadBillGrid(custNo)
+                loadBillList(custNo)
+                loadBillGrid(custNo)
+            Catch sqlEx As SqlException
+                MsgBox("Duplicate customer entry. Please check if any other customer exists with same customer name")
+            Catch ex As Exception
+                MessageBox.Show("Message to Agni User:   " & ex.Message)
+            End Try
         End If
     End Sub
 
@@ -1776,27 +1826,35 @@ Public Class AgniMainForm
             Return
         End If
 
-        Dim billNo As Integer = cmbBillingBillNoList.SelectedValue
-        Dim custNo As Integer = cmbBillingCustomerList.SelectedValue
+        Try
 
-        Dim updateQuery As String = String.Empty
-        updateQuery &= "update bill Set Cancelled=@Cancelled where BillNo=@BillNo"
+            Dim billNo As Integer = cmbBillingBillNoList.SelectedValue
+            Dim custNo As Integer = cmbBillingCustomerList.SelectedValue
 
-        Using comm As New SqlCommand()
-            With comm
-                .Connection = dbConnection
-                .CommandType = CommandType.Text
-                .CommandText = updateQuery
-                .Parameters.AddWithValue("@Cancelled", True)
-                .Parameters.AddWithValue("@BillNo", billNo)
-            End With
-            comm.ExecuteNonQuery()
-        End Using
+            Dim updateQuery As String = String.Empty
+            updateQuery &= "update bill Set Cancelled=@Cancelled where BillNo=@BillNo"
 
-        MessageBox.Show("Bill " + billNo.ToString + " Is marked As cancelled bill. You need To create a New bill For the designs which were billed In this bill")
+            Using comm As New SqlCommand()
+                With comm
+                    .Connection = dbConnection
+                    .CommandType = CommandType.Text
+                    .CommandText = updateQuery
+                    .Parameters.AddWithValue("@Cancelled", True)
+                    .Parameters.AddWithValue("@BillNo", billNo)
+                End With
+                comm.ExecuteNonQuery()
+            End Using
 
-        loadBillList(custNo)
-        loadBillGrid(custNo)
+            MessageBox.Show("Bill " + billNo.ToString + " Is marked As cancelled bill. You need To create a New bill For the designs which were billed In this bill")
+
+            loadBillList(custNo)
+            loadBillGrid(custNo)
+
+        Catch sqlEx As SqlException
+            MsgBox("Duplicate customer entry. Please check if any other customer exists with same customer name")
+        Catch ex As Exception
+            MessageBox.Show("Message to Agni User:   " & ex.Message)
+        End Try
 
     End Sub
 
@@ -1863,75 +1921,83 @@ Public Class AgniMainForm
             dpPaymentChequeDate.Focus()
         Else
 
-            Dim actualPaidAmount As Decimal = 0
-            Dim discountAmount As Decimal = 0
-            Dim unPaidBillAmount As Decimal = 0
+            Try
 
-            Decimal.TryParse(txtPaymentActualPaidAmount.Text, actualPaidAmount)
-            Decimal.TryParse(txtPaymentDiscountAmount.Text, discountAmount)
-            Decimal.TryParse(txtPaymentUnPaidBilledAmount.Text, unPaidBillAmount)
+                Dim actualPaidAmount As Decimal = 0
+                Dim discountAmount As Decimal = 0
+                Dim unPaidBillAmount As Decimal = 0
 
-            Dim finalPaidAmount As Decimal = actualPaidAmount + discountAmount
+                Decimal.TryParse(txtPaymentActualPaidAmount.Text, actualPaidAmount)
+                Decimal.TryParse(txtPaymentDiscountAmount.Text, discountAmount)
+                Decimal.TryParse(txtPaymentUnPaidBilledAmount.Text, unPaidBillAmount)
 
-            If (unPaidBillAmount < (actualPaidAmount + discountAmount)) Then
-                MessageBox.Show("You cannot pay more amount than the the unpaid bill amount")
-                Return
-            End If
+                Dim finalPaidAmount As Decimal = actualPaidAmount + discountAmount
 
-            Dim newPaymentNo As Integer = -1
-
-            Dim paymentType As String = "Cash"
-            If radioPaymentByCheque.Checked Then
-                paymentType = "Cheque"
-            End If
-
-            Dim paymentChequeNo = txtPaymentChequeNo.Text
-            Dim paymentBankName = txtPaymentBankName.Text
-            Dim paymentChequeDate = dpPaymentChequeDate.Text
-
-            Dim query As String = String.Empty
-            query &= "INSERT INTO payment (CustNo, BillNo, UnPaidBilledAmount, PaymentDate, PaymentMode, ActualPaidAmount, "
-            query &= "Discount, ChequeNo, BankName, ChequeDate, Remarks, FinalPaidAmount) "
-            query &= "VALUES (@CustNo, @BillNo, @UnPaidBilledAmount, @PaymentDate, @PaymentMode, @ActualPaidAmount, "
-            query &= "@Discount, @ChequeNo, @BankName, @ChequeDate, @Remarks, @FinalPaidAmount); SELECT SCOPE_IDENTITY()"
-
-            Using comm As New SqlCommand()
-                With comm
-                    .Connection = dbConnection
-                    .CommandType = CommandType.Text
-                    .CommandText = query
-                    .Parameters.AddWithValue("@CustNo", cmbPaymentCustomerList.SelectedValue)
-                    .Parameters.AddWithValue("@BillNo", txtPaymentBillNo.Text)
-                    .Parameters.AddWithValue("@UnPaidBilledAmount", txtPaymentUnPaidBilledAmount.Text)
-                    .Parameters.AddWithValue("@PaymentDate", dpPaymentDate.Value)
-                    .Parameters.AddWithValue("@PaymentMode", paymentType)
-                    .Parameters.AddWithValue("@ActualPaidAmount", actualPaidAmount)
-                    .Parameters.AddWithValue("@Discount", discountAmount)
-                    .Parameters.AddWithValue("@Remarks", txtPaymentRemarks.Text)
-                    .Parameters.AddWithValue("@FinalPaidAmount", txtPaymentFinalPaidAmount.Text)
-                End With
-
-                If radioPaymentByCheque.Checked Then
-                    comm.Parameters.AddWithValue("@ChequeNo", txtPaymentChequeNo.Text)
-                    comm.Parameters.AddWithValue("@BankName", txtPaymentBankName.Text)
-                    comm.Parameters.AddWithValue("@ChequeDate", dpPaymentChequeDate.Value)
-                Else
-                    comm.Parameters.AddWithValue("@ChequeNo", DBNull.Value)
-                    comm.Parameters.AddWithValue("@BankName", DBNull.Value)
-                    comm.Parameters.AddWithValue("@ChequeDate", DBNull.Value)
+                If (unPaidBillAmount < (actualPaidAmount + discountAmount)) Then
+                    MessageBox.Show("You cannot pay more amount than the the unpaid bill amount")
+                    Return
                 End If
 
-                newPaymentNo = CInt(comm.ExecuteScalar())
-            End Using
+                Dim newPaymentNo As Integer = -1
 
-            cmbPaymentPaymentNoList.Text = newPaymentNo
+                Dim paymentType As String = "Cash"
+                If radioPaymentByCheque.Checked Then
+                    paymentType = "Cheque"
+                End If
 
-            addPaidAmountInBill(txtPaymentBillNo.Text, txtPaymentFinalPaidAmount.Text)
+                Dim paymentChequeNo = txtPaymentChequeNo.Text
+                Dim paymentBankName = txtPaymentBankName.Text
+                Dim paymentChequeDate = dpPaymentChequeDate.Text
 
-            MessageBox.Show("Payment successfully added")
-            Dim custNo As Integer = cmbPaymentCustomerList.SelectedValue
-            loadPaymentList(custNo)
-            loadPaymentGrid(custNo)
+                Dim query As String = String.Empty
+                query &= "INSERT INTO payment (CustNo, BillNo, UnPaidBilledAmount, PaymentDate, PaymentMode, ActualPaidAmount, "
+                query &= "Discount, ChequeNo, BankName, ChequeDate, Remarks, FinalPaidAmount) "
+                query &= "VALUES (@CustNo, @BillNo, @UnPaidBilledAmount, @PaymentDate, @PaymentMode, @ActualPaidAmount, "
+                query &= "@Discount, @ChequeNo, @BankName, @ChequeDate, @Remarks, @FinalPaidAmount); SELECT SCOPE_IDENTITY()"
+
+                Using comm As New SqlCommand()
+                    With comm
+                        .Connection = dbConnection
+                        .CommandType = CommandType.Text
+                        .CommandText = query
+                        .Parameters.AddWithValue("@CustNo", cmbPaymentCustomerList.SelectedValue)
+                        .Parameters.AddWithValue("@BillNo", txtPaymentBillNo.Text)
+                        .Parameters.AddWithValue("@UnPaidBilledAmount", txtPaymentUnPaidBilledAmount.Text)
+                        .Parameters.AddWithValue("@PaymentDate", dpPaymentDate.Value)
+                        .Parameters.AddWithValue("@PaymentMode", paymentType)
+                        .Parameters.AddWithValue("@ActualPaidAmount", actualPaidAmount)
+                        .Parameters.AddWithValue("@Discount", discountAmount)
+                        .Parameters.AddWithValue("@Remarks", txtPaymentRemarks.Text)
+                        .Parameters.AddWithValue("@FinalPaidAmount", txtPaymentFinalPaidAmount.Text)
+                    End With
+
+                    If radioPaymentByCheque.Checked Then
+                        comm.Parameters.AddWithValue("@ChequeNo", txtPaymentChequeNo.Text)
+                        comm.Parameters.AddWithValue("@BankName", txtPaymentBankName.Text)
+                        comm.Parameters.AddWithValue("@ChequeDate", dpPaymentChequeDate.Value)
+                    Else
+                        comm.Parameters.AddWithValue("@ChequeNo", DBNull.Value)
+                        comm.Parameters.AddWithValue("@BankName", DBNull.Value)
+                        comm.Parameters.AddWithValue("@ChequeDate", DBNull.Value)
+                    End If
+
+                    newPaymentNo = CInt(comm.ExecuteScalar())
+                End Using
+
+                cmbPaymentPaymentNoList.Text = newPaymentNo
+
+                addPaidAmountInBill(txtPaymentBillNo.Text, txtPaymentFinalPaidAmount.Text)
+
+                MessageBox.Show("Payment successfully added")
+                Dim custNo As Integer = cmbPaymentCustomerList.SelectedValue
+                loadPaymentList(custNo)
+                loadPaymentGrid(custNo)
+
+            Catch sqlEx As SqlException
+                MsgBox("Operation failed. DB error. Please try again or contact the software support if problem persists")
+            Catch ex As Exception
+                MessageBox.Show("Message to Agni User:   " & ex.Message)
+            End Try
         End If
     End Sub
 
@@ -2040,19 +2106,26 @@ Public Class AgniMainForm
 
     Sub reduceBillPaidAmount(billNo As Decimal, amountToBeDeducted As Decimal)
 
-        Dim updateQuery As String = String.Empty
-        updateQuery &= "update bill set PaidAmount = PaidAmount - @amountToBeDeducted where BillNo=@BillNo"
+        Try
+            Dim updateQuery As String = String.Empty
+            updateQuery &= "update bill set PaidAmount = PaidAmount - @amountToBeDeducted where BillNo=@BillNo"
 
-        Using comm As New SqlCommand()
-            With comm
-                .Connection = dbConnection
-                .CommandType = CommandType.Text
-                .CommandText = updateQuery
-                .Parameters.AddWithValue("@amountToBeDeducted", amountToBeDeducted)
-                .Parameters.AddWithValue("@BillNo", billNo)
-            End With
-            comm.ExecuteNonQuery()
-        End Using
+            Using comm As New SqlCommand()
+                With comm
+                    .Connection = dbConnection
+                    .CommandType = CommandType.Text
+                    .CommandText = updateQuery
+                    .Parameters.AddWithValue("@amountToBeDeducted", amountToBeDeducted)
+                    .Parameters.AddWithValue("@BillNo", billNo)
+                End With
+                comm.ExecuteNonQuery()
+            End Using
+
+        Catch sqlEx As SqlException
+            MsgBox("Operation failed. DB error. Please try again or contact the software support if problem persists")
+        Catch ex As Exception
+            MessageBox.Show("Message to Agni User:   " & ex.Message)
+        End Try
 
     End Sub
 
@@ -2071,21 +2144,31 @@ Public Class AgniMainForm
                 Return
             End If
 
-            If MessageBox.Show("Do you want to delete this payment transaction ", "Confirmation", System.Windows.Forms.MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
+            If MessageBox.Show("Are you sure you want to delete this Payment? Please note that this action cannot be undone.", "WARNING", System.Windows.Forms.MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
+                Dim actionResult As DialogResult = ActionConfirmation.ShowDialog()
+                ActionConfirmation.Dispose()
 
-                Dim billNoForPayment As Integer = txtPaymentBillNo.Text
-                Dim amountPaidForPayment As Decimal = txtPaymentFinalPaidAmount.Text
+                If actionResult = System.Windows.Forms.DialogResult.Cancel Then
+                    'No need to do anything as this result you get is when the user is canceled the Action Dialog
+                ElseIf actionResult = System.Windows.Forms.DialogResult.Yes Then
+                    Dim billNoForPayment As Integer = txtPaymentBillNo.Text
+                    Dim amountPaidForPayment As Decimal = txtPaymentFinalPaidAmount.Text
 
-                If deleteSelectedPayment() = True Then
-                    reduceBillPaidAmount(billNoForPayment, amountPaidForPayment)
-                    MessageBox.Show("payment " + selectedPaymentNo.ToString + " is deleted successfully")
+                    If deleteSelectedPayment() = True Then
+                        reduceBillPaidAmount(billNoForPayment, amountPaidForPayment)
+                        MessageBox.Show("payment " + selectedPaymentNo.ToString + " is deleted successfully")
 
-                    loadPaymentList(custNo)
-                    loadPaymentGrid(custNo)
-                    loadBillGrid(custNo)
-                    loadBillList(custNo)
+                        loadPaymentList(custNo)
+                        loadPaymentGrid(custNo)
+                        loadBillGrid(custNo)
+                        loadBillList(custNo)
+                    End If
+                ElseIf actionResult = System.Windows.Forms.DialogResult.No Then
+                    MsgBox("You do not have permission for this operation. Please try with Administrator user when prompted for confirmation")
                 End If
+
             End If
+
         End If
     End Sub
 
@@ -2137,7 +2220,7 @@ Public Class AgniMainForm
                 billingTable.Rows.Clear()
             End If
         ElseIf selectedTabTag.Equals("tagPaymentTab") Then
-                If btnPaymentCreatePayment.Visible = True Then
+            If btnPaymentCreatePayment.Visible = True Then
                 Me.AcceptButton = btnPaymentCreatePayment
             Else
                 Me.AcceptButton = btnPaymentConfirmCreatePayment
@@ -3207,54 +3290,94 @@ Public Class AgniMainForm
         Dim dataRow As DataRow = billTable.Rows.Find(gSelectedBillNo)
         Dim paidAmount As Decimal = dataRow.Item("PaidAmount")
         If (paidAmount > 0) Then
-            MessageBox.Show("Sorry, This bill is having payments, so it cannot be deleted. You can delete only the last bill and also that last bill 
-                should not have any payments towards it. First try to delete the respective payments and try this operation.")
+            MessageBox.Show("Sorry, This bill is having payments, so it cannot be deleted. You can delete only the last bill and also that last bill" +
+                " should not have any payments towards it. First try to delete the respective payments and try this operation.")
             cmbBillingBillNoList.Focus()
             Return
         End If
 
-        If MessageBox.Show("Do you want to delete the bill " & gSelectedDisplayBillNo, "Confirmation", System.Windows.Forms.MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
-            Dim custNo As Integer = cmbBillingCustomerList.SelectedValue
+        If MessageBox.Show("Are you sure you want to delete this Bill? Please note that this action cannot be undone.", "WARNING", System.Windows.Forms.MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
+            Dim actionResult As DialogResult = ActionConfirmation.ShowDialog()
+            ActionConfirmation.Dispose()
 
-            Dim query As String = "DELETE FROM Bill where BillNo=@billNo"
+            If actionResult = System.Windows.Forms.DialogResult.Cancel Then
+                'No need to do anything as this result you get is when the user is canceled the Action Dialog
+            ElseIf actionResult = System.Windows.Forms.DialogResult.Yes Then
+                Dim custNo As Integer = cmbBillingCustomerList.SelectedValue
 
-            Using comm As New SqlCommand()
-                With comm
-                    .Connection = dbConnection
-                    .CommandType = CommandType.Text
-                    .CommandText = query
-                    .Parameters.AddWithValue("@billNo", gSelectedBillNo)
-                End With
-                comm.ExecuteNonQuery()
-            End Using
+                Dim query As String = "DELETE FROM Bill where BillNo=@billNo"
 
-            'log.Debug("btnBillingDeleteBill_Click: custNo.ToString : " + custNo.ToString + " gSelectedBillNo.ToString: " + gSelectedBillNo.ToString)
+                Using comm As New SqlCommand()
+                    With comm
+                        .Connection = dbConnection
+                        .CommandType = CommandType.Text
+                        .CommandText = query
+                        .Parameters.AddWithValue("@billNo", gSelectedBillNo)
+                    End With
+                    comm.ExecuteNonQuery()
+                End Using
 
-            Dim designQuery As String = "update design set Billed=@Billed, BillNo=@BillNo where CustNo=@CustNo and BillNo=@deletedBillNo"
+                'log.Debug("btnBillingDeleteBill_Click: custNo.ToString : " + custNo.ToString + " gSelectedBillNo.ToString: " + gSelectedBillNo.ToString)
+                Try
+                    Dim designQuery As String = "update design set Billed=@Billed, BillNo=@BillNo where CustNo=@CustNo and BillNo=@deletedBillNo"
 
-            Using comm As New SqlCommand()
-                With comm
-                    .Connection = dbConnection
-                    .CommandType = CommandType.Text
-                    .CommandText = designQuery
-                    .Parameters.AddWithValue("@CustNo", custNo.ToString)
-                    .Parameters.AddWithValue("@deletedBillNo", gSelectedBillNo)
-                    .Parameters.AddWithValue("@Billed", False)
-                    .Parameters.AddWithValue("@BillNo", DBNull.Value)
-                End With
-                comm.ExecuteNonQuery()
-            End Using
+                    Using comm As New SqlCommand()
+                        With comm
+                            .Connection = dbConnection
+                            .CommandType = CommandType.Text
+                            .CommandText = designQuery
+                            .Parameters.AddWithValue("@CustNo", custNo.ToString)
+                            .Parameters.AddWithValue("@deletedBillNo", gSelectedBillNo)
+                            .Parameters.AddWithValue("@Billed", False)
+                            .Parameters.AddWithValue("@BillNo", DBNull.Value)
+                        End With
+                        comm.ExecuteNonQuery()
+                    End Using
+                Catch sqlEx As SqlException
+                    MsgBox("Operation failed. DB error. Please try again or contact the software support if problem persists")
+                Catch ex As Exception
+                    MessageBox.Show("Message to Agni User:   " & ex.Message)
+                End Try
 
-            gSelectedBillNo = -1
-            gSelectedDisplayBillNo = String.Empty
+                gSelectedBillNo = -1
+                gSelectedDisplayBillNo = String.Empty
 
-            loadBillList(custNo)
-            loadBillGrid(custNo)
+                loadBillList(custNo)
+                loadBillGrid(custNo)
 
-            loadDesignList(custNo)
-            loadDesignGrid(custNo)
+                loadDesignList(custNo)
+                loadDesignGrid(custNo)
 
-            MessageBox.Show("Bill successfully deleted")
+                MessageBox.Show("Bill successfully deleted")
+            ElseIf actionResult = System.Windows.Forms.DialogResult.No Then
+                MsgBox("You do not have permission for this operation. Please try with Administrator user when prompted for confirmation")
+            End If
+
         End If
     End Sub
+
+    Private Sub AgniMainForm_KeyUp(sender As Object, e As KeyEventArgs) Handles MyBase.KeyUp
+        If (e.Alt) Then
+            Select Case (e.KeyCode)
+                Case Keys.C
+                    tabAllTabsHolder.SelectedTab = tabCustomer
+                Case Keys.D
+                    tabAllTabsHolder.SelectedTab = tabDesign
+                Case Keys.B
+                    tabAllTabsHolder.SelectedTab = tabBilling
+                Case Keys.P
+                    tabAllTabsHolder.SelectedTab = tabPayment
+                Case Keys.S
+                    tabAllTabsHolder.SelectedTab = tabSettings
+                Case Keys.H
+                    tabAllTabsHolder.SelectedTab = tabHelp
+                Case Keys.R
+                    tabAllTabsHolder.SelectedTab = tabReports
+            End Select
+        End If
+    End Sub
+
+    Private Sub AgniMainForm_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+    End Sub
+
 End Class
