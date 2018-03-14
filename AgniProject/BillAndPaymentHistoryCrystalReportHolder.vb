@@ -4,10 +4,10 @@ Imports System.Data.SqlClient
 
 Public Class BillAndPaymentHistoryCrystalReportHolder
 
-    Dim dbConnection As SqlConnection
-    Dim billAndPaymentHistoryCrystalReport As New BillAndPaymentHistoryCrystalReport
+    Dim billAndPaymentHistoryCrystalReport As BillAndPaymentHistoryCrystalReport
 
     Private Sub BillAndPaymentHistoryReportViewer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        billAndPaymentHistoryCrystalReport = New BillAndPaymentHistoryCrystalReport
         setBillAndPaymentHistoryDataInReport(AgniMainForm.gReportSearchFilterText)
     End Sub
 
@@ -28,9 +28,22 @@ Public Class BillAndPaymentHistoryCrystalReportHolder
 
         Dim totalAmount As Decimal = 0
         If billAndPaymentHistoryDataSet.Tables(1) IsNot Nothing AndAlso billAndPaymentHistoryDataSet.Tables(1).Rows.Count > 0 Then
-            totalAmount = billAndPaymentHistoryDataSet.Tables(1).Rows(0).Item("TotalPaidAmount").ToString
+            totalAmount = billAndPaymentHistoryDataSet.Tables(1).Rows(0).Item("TotalNetBalance").ToString
         End If
-        billAndPaymentHistoryCrystalReport.SetParameterValue("TotalFinalPaidAmountInWords", getAmountInWords(totalAmount.ToString))
+
+        Dim addressLine1 As String = getAttribute(ATTRIBUTE_ADDRESS_LINE_1)
+        Dim addressLine2 As String = getAttribute(ATTRIBUTE_ADDRESS_LINE_2)
+        Dim addressLine3 As String = getAttribute(ATTRIBUTE_ADDRESS_LINE_3)
+        Dim addressLine4 As String = getAttribute(ATTRIBUTE_ADDRESS_LINE_4)
+        Dim addressLine5 As String = getAttribute(ATTRIBUTE_ADDRESS_LINE_5)
+
+        billAndPaymentHistoryCrystalReport.SetParameterValue("AddressLine1", addressLine1)
+        billAndPaymentHistoryCrystalReport.SetParameterValue("AddressLine2", addressLine2)
+        billAndPaymentHistoryCrystalReport.SetParameterValue("AddressLine3", addressLine3)
+        billAndPaymentHistoryCrystalReport.SetParameterValue("AddressLine4", addressLine4)
+        billAndPaymentHistoryCrystalReport.SetParameterValue("AddressLine5", addressLine5)
+
+        billAndPaymentHistoryCrystalReport.SetParameterValue("TotalBalanceAmountInWords", getAmountInWords(totalAmount.ToString))
 
     End Sub
 

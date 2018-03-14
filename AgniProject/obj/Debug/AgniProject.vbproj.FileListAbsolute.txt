@@ -59,3 +59,4 @@ D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.ChangePassw
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.ManageUsers.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.ActionConfirmation.resources
 D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.Startup_SplashScreen.resources
+D:\GitRepository\ElangoAgniProject\AgniProject\obj\Debug\AgniProject.ChangeAddress.resources

@@ -8,15 +8,16 @@ Public Class BillReportForm
     'Dim log = LogManager.GetCurrentClassLogger()
 
     Dim dbConnection As SqlConnection
-    Dim billCrystalReport As New BillCrystalReport
+    Dim billCrystalReport As BillCrystalReport
     Dim billPDFDestPath As String = "E:"
 
     Private ATTRIBUTE_BILL_PDF_PATH As String = "bill_pdf_dest_path"
 
 
     Private Sub BillReportForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        dbConnection = New SqlConnection("server=agni\SQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
-        dbConnection.Open()
+        billCrystalReport = New BillCrystalReport
+
+        dbConnection = getDBConnection()
 
         Dim selectedBillNo As Integer = AgniMainForm.gSelectedBillNo
         Dim selectedCustNo As Integer = AgniMainForm.gSelectedCustNo
@@ -84,7 +85,7 @@ Public Class BillReportForm
     Sub fetchAndSetCustomerDetails(custNo As Integer)
 
         Dim customerQuery As SqlCommand
-        customerQuery = New SqlCommand("select CompName, GSTIN, Address from customer where custNo=" + custNo.ToString, dbConnection)
+        customerQuery = New SqlCommand("select CompName, GSTIN, AddressLine1, AddressLine2, AddressLine3, AddressLine4, AddressLine5 from customer where custNo=" + custNo.ToString, dbConnection)
         Dim customerAdapter = New SqlDataAdapter()
         customerAdapter.SelectCommand = customerQuery
         Dim customerDataSet = New DataSet
@@ -97,18 +98,27 @@ Public Class BillReportForm
 
         Dim companyName = customerTable.Rows(0).Item("CompName").ToString
         Dim compGSTIN = customerTable.Rows(0).Item("GSTIN").ToString
-        Dim compAddress = customerTable.Rows(0).Item("Address").ToString
+        Dim addressLine1 = customerTable.Rows(0).Item("AddressLine1").ToString
+        Dim addressLine2 = customerTable.Rows(0).Item("AddressLine2").ToString
+        Dim addressLine3 = customerTable.Rows(0).Item("AddressLine3").ToString
+        Dim addressLine4 = customerTable.Rows(0).Item("AddressLine4").ToString
+        Dim addressLine5 = customerTable.Rows(0).Item("AddressLine5").ToString
+        ''MsgBox(compAddress)
 
         Dim setCustDetailsInReportInvoker As New setCustDetailsInReportDelegate(AddressOf Me.setCustDetailsInReport)
-        Me.BeginInvoke(setCustDetailsInReportInvoker, companyName, compGSTIN, compAddress)
+        Me.BeginInvoke(setCustDetailsInReportInvoker, companyName, compGSTIN, addressLine1, addressLine2, addressLine3, addressLine4, addressLine5)
     End Sub
 
-    Delegate Sub setCustDetailsInReportDelegate(companyName As String, compGSTIN As String, compAddress As String)
+    Delegate Sub setCustDetailsInReportDelegate(companyName As String, compGSTIN As String, addressLine1 As String, addressLine2 As String, addressLine3 As String, addressLine4 As String, addressLine5 As String)
 
-    Sub setCustDetailsInReport(companyName As String, compGSTIN As String, compAddress As String)
+    Sub setCustDetailsInReport(companyName As String, compGSTIN As String, addressLine1 As String, addressLine2 As String, addressLine3 As String, addressLine4 As String, addressLine5 As String)
         billCrystalReport.SetParameterValue("CompName", companyName)
         billCrystalReport.SetParameterValue("CompGSTIN", compGSTIN)
-        billCrystalReport.SetParameterValue("CompAddress", compAddress)
+        billCrystalReport.SetParameterValue("CustomerAddressLine1", addressLine1)
+        billCrystalReport.SetParameterValue("CustomerAddressLine2", addressLine2)
+        billCrystalReport.SetParameterValue("CustomerAddressLine3", addressLine3)
+        billCrystalReport.SetParameterValue("CustomerAddressLine4", addressLine4)
+        billCrystalReport.SetParameterValue("CustomerAddressLine5", addressLine5)
     End Sub
 
     Sub fetchAndSetBillDetails(billNo As Integer, custNo As Integer)
@@ -154,6 +164,18 @@ Public Class BillReportForm
         Dim paidAmountForThisBill As Decimal = AgniMainForm.txtBillingPaidAmount.Text
         Dim netBalance As Decimal = AgniMainForm.txtBillingRemainingBalance.Text
         Dim cancelledBill As String = If(billTable.Rows(0).Item("Cancelled") = 1, "This is a cancelled bill", "")
+
+        Dim addressLine1 As String = getAttribute(ATTRIBUTE_ADDRESS_LINE_1)
+        Dim addressLine2 As String = getAttribute(ATTRIBUTE_ADDRESS_LINE_2)
+        Dim addressLine3 As String = getAttribute(ATTRIBUTE_ADDRESS_LINE_3)
+        Dim addressLine4 As String = getAttribute(ATTRIBUTE_ADDRESS_LINE_4)
+        Dim addressLine5 As String = getAttribute(ATTRIBUTE_ADDRESS_LINE_5)
+
+        billCrystalReport.SetParameterValue("AddressLine1", addressLine1)
+        billCrystalReport.SetParameterValue("AddressLine2", addressLine2)
+        billCrystalReport.SetParameterValue("AddressLine3", addressLine3)
+        billCrystalReport.SetParameterValue("AddressLine4", addressLine4)
+        billCrystalReport.SetParameterValue("AddressLine5", addressLine5)
 
         billCrystalReport.SetParameterValue("DesignsAmountBeforeTax", Format(Math.Round(designAmount), "0.00"))
         billCrystalReport.SetParameterValue("CGST", CGST.ToString)
@@ -254,6 +276,6 @@ Public Class BillReportForm
 
 
     Private Sub Agnireport_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
-        billCrystalReport.Dispose()
+        ''billCrystalReport.Dispose()
     End Sub
 End Class

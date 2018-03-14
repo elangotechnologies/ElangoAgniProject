@@ -20,7 +20,7 @@ Option Explicit On
  Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
  Global.System.ComponentModel.ToolboxItem(true),  _
  Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema"),  _
- Global.System.Xml.Serialization.XmlRootAttribute("DataSet1"),  _
+ Global.System.Xml.Serialization.XmlRootAttribute("AgniDataSet"),  _
  Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")>  _
 Partial Public Class AgniDataSet
     Inherits Global.System.Data.DataSet
@@ -439,7 +439,7 @@ Partial Public Class AgniDataSet
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Private Sub InitClass()
-        Me.DataSetName = "DataSet1"
+        Me.DataSetName = "AgniDataSet"
         Me.Prefix = ""
         Me.Namespace = "http://tempuri.org/DataSet1.xsd"
         Me.EnforceConstraints = true

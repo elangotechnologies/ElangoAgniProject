@@ -9,12 +9,13 @@ Imports System.Threading
 Public Class OutstandingCrystalReportHolder
 
     Dim dbConnection As SqlConnection
-    Dim outstandingBalanceCrystalReport As New OutstandingBalanceCrystalReport
+    Dim outstandingBalanceCrystalReport As OutstandingBalanceCrystalReport
 
 
     Private Sub OutstandingBalanceReportForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        dbConnection = New SqlConnection("server=agni\SQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
-        dbConnection.Open()
+        outstandingBalanceCrystalReport = New OutstandingBalanceCrystalReport
+
+        dbConnection = getDBConnection()
 
         loadOutstandingBalance()
     End Sub
@@ -67,6 +68,19 @@ Public Class OutstandingCrystalReportHolder
     Sub setOutstandingBalanceInReport(outstandingBalanceDataSet As DataSet)
         outstandingBalanceCrystalReport.SetDataSource(outstandingBalanceDataSet)
         reportOutstandingBalanceReportViewer.ReportSource = outstandingBalanceCrystalReport
+
+        Dim addressLine1 As String = getAttribute(ATTRIBUTE_ADDRESS_LINE_1)
+        Dim addressLine2 As String = getAttribute(ATTRIBUTE_ADDRESS_LINE_2)
+        Dim addressLine3 As String = getAttribute(ATTRIBUTE_ADDRESS_LINE_3)
+        Dim addressLine4 As String = getAttribute(ATTRIBUTE_ADDRESS_LINE_4)
+        Dim addressLine5 As String = getAttribute(ATTRIBUTE_ADDRESS_LINE_5)
+
+        outstandingBalanceCrystalReport.SetParameterValue("AddressLine1", addressLine1)
+        outstandingBalanceCrystalReport.SetParameterValue("AddressLine2", addressLine2)
+        outstandingBalanceCrystalReport.SetParameterValue("AddressLine3", addressLine3)
+        outstandingBalanceCrystalReport.SetParameterValue("AddressLine4", addressLine4)
+        outstandingBalanceCrystalReport.SetParameterValue("AddressLine5", addressLine5)
+
     End Sub
 
     Private Sub OutstandingCrystalReportHolder_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing

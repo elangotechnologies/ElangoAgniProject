@@ -129,8 +129,6 @@ Partial Class Login
         '
         'DataSet11
         '
-        Me.DataSet11.DataSetName = "DataSet1"
-        Me.DataSet11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Login
         '

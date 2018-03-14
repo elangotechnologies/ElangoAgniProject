@@ -1,13 +1,81 @@
-﻿Imports VB = Microsoft.VisualBasic
+﻿Imports System.Data.SqlClient
+Imports VB = Microsoft.VisualBasic
 
 Module CommonModule
+
+    Private dbConnection As SqlConnection = Nothing
+    Private dbOpenSyncLock As New Object
 
     Public USER_TYPE_ADMINISTRATOR As Integer = 1
     Public USER_TYPE_GUEST As Integer = 2
 
+    Public ATTRIBUTE_ADDRESS_LINE_1 As String = "company_address_line_1"
+    Public ATTRIBUTE_ADDRESS_LINE_2 As String = "company_address_line_2"
+    Public ATTRIBUTE_ADDRESS_LINE_3 As String = "company_address_line_3"
+    Public ATTRIBUTE_ADDRESS_LINE_4 As String = "company_address_line_4"
+    Public ATTRIBUTE_ADDRESS_LINE_5 As String = "company_address_line_5"
+
     Private valueToConvert As String
     Private n, intpart, realpart, numchar, intword, realword, spltval, spltword As String
     Private flag As Boolean
+
+    Public Function getDBConnection() As SqlConnection
+        SyncLock dbOpenSyncLock
+            If (dbConnection Is Nothing OrElse dbConnection.State <> ConnectionState.Open) Then
+                dbConnection = New SqlConnection("server=AGNI\SQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
+                dbConnection.Open()
+            End If
+            Return dbConnection
+        End SyncLock
+    End Function
+
+    Public Sub closeDBConnection()
+        SyncLock dbOpenSyncLock
+            If dbConnection IsNot Nothing Then
+                dbConnection.Close()
+                dbConnection = Nothing
+            End If
+        End SyncLock
+    End Sub
+
+    Function getAttribute(attributeName As String) As String
+        Dim attributeQuery = New SqlCommand("select * from attributes where AttributeName='" + attributeName + "'", getDBConnection())
+        Dim attributeAdapter = New SqlDataAdapter()
+        attributeAdapter.SelectCommand = attributeQuery
+        Dim attributeDataSet = New DataSet
+        attributeAdapter.Fill(attributeDataSet, "attributes")
+        Dim attributeTable As DataTable = attributeDataSet.Tables(0)
+
+        If attributeTable.Rows.Count > 0 Then
+            Return attributeTable.Rows(0).Item("AttributeValue")
+        End If
+        Return Nothing
+    End Function
+
+    Public Sub insertOrReplaceAttribute(attributeName As String, attributeValue As String)
+
+        Dim query As String = String.Empty
+        query &= "begin tran
+           update attributes with (serializable) set AttributeValue =  @attributeValue
+           where AttributeName = @attributeName
+           if @@rowcount = 0
+           begin
+              insert into attributes (AttributeName, AttributeValue) values (@attributeName, @attributeValue)
+           end
+        commit tran"
+
+        Using comm As New SqlCommand()
+            With comm
+                .Connection = getDBConnection()
+                .CommandType = CommandType.Text
+                .CommandText = query
+                .Parameters.AddWithValue("@attributeName", attributeName)
+                .Parameters.AddWithValue("@attributeValue", attributeValue)
+            End With
+            comm.ExecuteNonQuery()
+        End Using
+    End Sub
+
 
     Public Function getAmountInWords(valueToConvert As String) As String
         n = ""
@@ -25,6 +93,10 @@ Module CommonModule
 
         If valueToConvert = "." Then
             valueToConvert = "0.00"
+        End If
+
+        If Not valueToConvert.Contains(".") Then
+            valueToConvert = valueToConvert + ".00"
         End If
 
         intpart = Format(Int(valueToConvert), "000000000")
@@ -52,6 +124,10 @@ Module CommonModule
         If intword <> "" And realword <> "" Then amountInWords = intword + "and " + realword + " Paise Only"
         If intword <> "" And realword = "" Then amountInWords = intword + "Only"
         If intword = "" And realword <> "" Then amountInWords = "Paise: " + realword + "Only"
+
+        If amountInWords Is String.Empty Then
+            amountInWords = "Zero Only"
+        End If
 
         Return amountInWords
     End Function
@@ -107,4 +183,6 @@ Module CommonModule
         If n = 8 Then numchar = "Eighteen "
         If n = 9 Then numchar = "Nineten "
     End Sub
+
 End Module
+

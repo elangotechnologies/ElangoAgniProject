@@ -6,8 +6,7 @@ Public Class CustomersOutstandingBalances
 
     Private Sub OutBalance_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        dbConnection = New SqlConnection("server=agni\SQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
-        dbConnection.Open()
+        dbConnection = getDBConnection()
 
         bwtCustomerSummaryLoadThread.RunWorkerAsync()
         bwtTotalBillSummaryLoadThread.RunWorkerAsync()
@@ -84,7 +83,6 @@ Public Class CustomersOutstandingBalances
     End Sub
 
     Private Sub CustomerBillSummary_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
-        dbConnection.Close()
     End Sub
 
     Private Sub bwtTotalBillSummaryLoadThread_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bwtTotalBillSummaryLoadThread.DoWork

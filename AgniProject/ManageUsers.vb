@@ -9,8 +9,7 @@ Public Class ManageUsers
 
     Private Sub manageuser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        dbConnection = New SqlConnection("server=agni\SQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
-        dbConnection.Open()
+        dbConnection = getDBConnection()
 
         loadUserNameListAndGrid()
 

@@ -12,8 +12,7 @@ Public Class Login
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        dbConnection = New SqlConnection("server=agni\SQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
-        dbConnection.Open()
+        dbConnection = getDBConnection()
 
         loadUserNameList()
 
@@ -67,7 +66,10 @@ Public Class Login
         Dim isLoginSuccess As Boolean = verifyCredential(userName, password)
         If isLoginSuccess = True Then
             Me.Hide()
+            AgniMainForm.btnLogOff.Text = "Log Off " + userName
+            AgniMainForm.tabAllTabsHolder.SelectedIndex = 0
             AgniMainForm.Show()
+
         Else
             MsgBox("Invalid login credentails. Please check the user name and password.")
             Return

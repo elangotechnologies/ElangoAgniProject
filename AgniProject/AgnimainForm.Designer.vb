@@ -116,21 +116,6 @@ Partial Class AgniMainForm
         Dim DataGridViewCellStyle222 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle238 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle239 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle223 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle224 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle225 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle226 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle227 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle228 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle229 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle230 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle231 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle232 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle233 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle234 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle235 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle236 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle237 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle240 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle241 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle255 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -148,7 +133,26 @@ Partial Class AgniMainForm
         Dim DataGridViewCellStyle252 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle253 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle254 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle223 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle224 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle225 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle226 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle227 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle228 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle229 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle230 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle231 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle232 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle233 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle234 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle235 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle236 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle237 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.tabHelp = New System.Windows.Forms.TabPage()
+        Me.Label37 = New System.Windows.Forms.Label()
+        Me.Label36 = New System.Windows.Forms.Label()
+        Me.Label35 = New System.Windows.Forms.Label()
+        Me.Label34 = New System.Windows.Forms.Label()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.Label68 = New System.Windows.Forms.Label()
         Me.Label67 = New System.Windows.Forms.Label()
@@ -191,9 +195,9 @@ Partial Class AgniMainForm
         Me.lblReportTotDesignAmount = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.cbReportSearchByDateRange = New System.Windows.Forms.CheckBox()
-        Me.cbReportSearchByDesignName = New System.Windows.Forms.CheckBox()
-        Me.cbReportSearchByBillNo = New System.Windows.Forms.CheckBox()
         Me.cbReportSearchByDesignNo = New System.Windows.Forms.CheckBox()
+        Me.cbReportSearchByBillNo = New System.Windows.Forms.CheckBox()
+        Me.cbReportSearchByDesignSelection = New System.Windows.Forms.CheckBox()
         Me.cbReportSearchByCustomer = New System.Windows.Forms.CheckBox()
         Me.reportPlaceHolder4 = New System.Windows.Forms.GroupBox()
         Me.reportPlaceHolder2 = New System.Windows.Forms.GroupBox()
@@ -202,8 +206,7 @@ Partial Class AgniMainForm
         Me.reportPlaceHolder1 = New System.Windows.Forms.GroupBox()
         Me.groupReportDesignName = New System.Windows.Forms.GroupBox()
         Me.Label84 = New System.Windows.Forms.Label()
-        Me.txtReportDesignName = New System.Windows.Forms.TextBox()
-        Me.lblReportDesignNameHint = New System.Windows.Forms.Label()
+        Me.txtReportDesignNumber = New System.Windows.Forms.TextBox()
         Me.groupReportDesignList = New System.Windows.Forms.GroupBox()
         Me.cmbReportDesignNoList = New System.Windows.Forms.ComboBox()
         Me.Label83 = New System.Windows.Forms.Label()
@@ -396,23 +399,28 @@ Partial Class AgniMainForm
         Me.pbDesDesignImage = New System.Windows.Forms.PictureBox()
         Me.tabAllTabsHolder = New System.Windows.Forms.TabControl()
         Me.tabCustomer = New System.Windows.Forms.TabPage()
+        Me.GroupBox23 = New System.Windows.Forms.GroupBox()
+        Me.lblMobile = New System.Windows.Forms.Label()
+        Me.txtMobile = New System.Windows.Forms.TextBox()
+        Me.txtEmail = New System.Windows.Forms.TextBox()
+        Me.txtLandline = New System.Windows.Forms.TextBox()
+        Me.lblLandline = New System.Windows.Forms.Label()
+        Me.txtWebsite = New System.Windows.Forms.TextBox()
+        Me.lblWebsite = New System.Windows.Forms.Label()
+        Me.lblEmail = New System.Windows.Forms.Label()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.txtAddressLine5 = New System.Windows.Forms.TextBox()
+        Me.Label41 = New System.Windows.Forms.Label()
+        Me.txtAddressLine4 = New System.Windows.Forms.TextBox()
+        Me.Label40 = New System.Windows.Forms.Label()
+        Me.txtAddressLine3 = New System.Windows.Forms.TextBox()
+        Me.Label39 = New System.Windows.Forms.Label()
+        Me.txtAddressLine2 = New System.Windows.Forms.TextBox()
+        Me.Label38 = New System.Windows.Forms.Label()
+        Me.txtAddressLine1 = New System.Windows.Forms.TextBox()
+        Me.lblAddress = New System.Windows.Forms.Label()
         Me.GroupBox22 = New System.Windows.Forms.GroupBox()
         Me.dgCustCustomerDetails = New System.Windows.Forms.DataGridView()
-        Me.CompName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CustomerCustNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CustomerGSTIN = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.OwnerName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CustomerCGST = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CustomerSGST = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CustomerIGST = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.WPSqrInch = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.WColor = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PrintColor = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Mobile = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Address = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Landline = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Email = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Website = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.lblPrintCharge = New System.Windows.Forms.Label()
         Me.lblWorkingCharge = New System.Windows.Forms.Label()
@@ -420,7 +428,6 @@ Partial Class AgniMainForm
         Me.txtCustPrintCharge = New System.Windows.Forms.TextBox()
         Me.txtCustWorkingCharge = New System.Windows.Forms.TextBox()
         Me.txtCustWPCharge = New System.Windows.Forms.TextBox()
-        Me.lblLandline = New System.Windows.Forms.Label()
         Me.GroupBox16 = New System.Windows.Forms.GroupBox()
         Me.Label87 = New System.Windows.Forms.Label()
         Me.Label60 = New System.Windows.Forms.Label()
@@ -431,13 +438,6 @@ Partial Class AgniMainForm
         Me.txtCustIGST = New System.Windows.Forms.TextBox()
         Me.txtCustSGST = New System.Windows.Forms.TextBox()
         Me.txtCustCGST = New System.Windows.Forms.TextBox()
-        Me.lblEmail = New System.Windows.Forms.Label()
-        Me.lblWebsite = New System.Windows.Forms.Label()
-        Me.txtWebsite = New System.Windows.Forms.TextBox()
-        Me.lblMobile = New System.Windows.Forms.Label()
-        Me.txtLandline = New System.Windows.Forms.TextBox()
-        Me.txtEmail = New System.Windows.Forms.TextBox()
-        Me.txtMobile = New System.Windows.Forms.TextBox()
         Me.btnCustClear = New System.Windows.Forms.Button()
         Me.lblGSTIN = New System.Windows.Forms.Label()
         Me.txtGstIn = New System.Windows.Forms.TextBox()
@@ -445,10 +445,8 @@ Partial Class AgniMainForm
         Me.btnCustDelete = New System.Windows.Forms.Button()
         Me.btnCustAdd = New System.Windows.Forms.Button()
         Me.lblProprietor = New System.Windows.Forms.Label()
-        Me.lblAddress = New System.Windows.Forms.Label()
         Me.lblCustomerName = New System.Windows.Forms.Label()
         Me.cmbCustCustomerList = New System.Windows.Forms.ComboBox()
-        Me.txtAddress = New System.Windows.Forms.TextBox()
         Me.txtOwnerName = New System.Windows.Forms.TextBox()
         Me.tabPayment = New System.Windows.Forms.TabPage()
         Me.Panel2 = New System.Windows.Forms.Panel()
@@ -507,6 +505,8 @@ Partial Class AgniMainForm
         Me.cmbPaymentCustomerList = New System.Windows.Forms.ComboBox()
         Me.Label71 = New System.Windows.Forms.Label()
         Me.tabSettings = New System.Windows.Forms.TabPage()
+        Me.btnLogOff = New System.Windows.Forms.Button()
+        Me.btnChangeAddress = New System.Windows.Forms.Button()
         Me.btnSettingsResetBilNo = New System.Windows.Forms.Button()
         Me.btnSettingsBackupDatabase = New System.Windows.Forms.Button()
         Me.Label114 = New System.Windows.Forms.Label()
@@ -585,10 +585,25 @@ Partial Class AgniMainForm
         Me.Label150 = New System.Windows.Forms.Label()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
-        Me.Label34 = New System.Windows.Forms.Label()
-        Me.Label35 = New System.Windows.Forms.Label()
-        Me.Label36 = New System.Windows.Forms.Label()
-        Me.Label37 = New System.Windows.Forms.Label()
+        Me.CompName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CustomerCustNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CustomerGSTIN = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OwnerName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CustomerCGST = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CustomerSGST = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CustomerIGST = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.WPSqrInch = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.WColor = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PrintColor = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Mobile = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AddressLIne1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AddressLine2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AddressLine3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AddressLine4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AddressLine5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Landline = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Email = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Website = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tabHelp.SuspendLayout()
         Me.tabReports.SuspendLayout()
         Me.panelReportButtons.SuspendLayout()
@@ -621,6 +636,8 @@ Partial Class AgniMainForm
         CType(Me.pbDesDesignImage, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabAllTabsHolder.SuspendLayout()
         Me.tabCustomer.SuspendLayout()
+        Me.GroupBox23.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         Me.GroupBox22.SuspendLayout()
         CType(Me.dgCustCustomerDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -670,6 +687,42 @@ Partial Class AgniMainForm
         Me.tabHelp.Tag = "tagHelpTab"
         Me.tabHelp.Text = "Help"
         Me.tabHelp.ToolTipText = "Just Informations"
+        '
+        'Label37
+        '
+        Me.Label37.AutoSize = True
+        Me.Label37.Location = New System.Drawing.Point(1499, 944)
+        Me.Label37.Name = "Label37"
+        Me.Label37.Size = New System.Drawing.Size(351, 26)
+        Me.Label37.TabIndex = 27
+        Me.Label37.Text = "Email: elangovan4ever@gmail.com"
+        '
+        'Label36
+        '
+        Me.Label36.AutoSize = True
+        Me.Label36.Location = New System.Drawing.Point(1499, 906)
+        Me.Label36.Name = "Label36"
+        Me.Label36.Size = New System.Drawing.Size(203, 26)
+        Me.Label36.TabIndex = 26
+        Me.Label36.Text = "Mobile: 9035001599"
+        '
+        'Label35
+        '
+        Me.Label35.AutoSize = True
+        Me.Label35.Location = New System.Drawing.Point(1418, 830)
+        Me.Label35.Name = "Label35"
+        Me.Label35.Size = New System.Drawing.Size(249, 26)
+        Me.Label35.TabIndex = 25
+        Me.Label35.Text = "Contact  - Tech Support :"
+        '
+        'Label34
+        '
+        Me.Label34.AutoSize = True
+        Me.Label34.Location = New System.Drawing.Point(1499, 868)
+        Me.Label34.Name = "Label34"
+        Me.Label34.Size = New System.Drawing.Size(225, 26)
+        Me.Label34.TabIndex = 24
+        Me.Label34.Text = "Elangovan Manickam"
         '
         'Label25
         '
@@ -1205,9 +1258,9 @@ Partial Class AgniMainForm
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.cbReportSearchByDateRange)
-        Me.GroupBox3.Controls.Add(Me.cbReportSearchByDesignName)
-        Me.GroupBox3.Controls.Add(Me.cbReportSearchByBillNo)
         Me.GroupBox3.Controls.Add(Me.cbReportSearchByDesignNo)
+        Me.GroupBox3.Controls.Add(Me.cbReportSearchByBillNo)
+        Me.GroupBox3.Controls.Add(Me.cbReportSearchByDesignSelection)
         Me.GroupBox3.Controls.Add(Me.cbReportSearchByCustomer)
         Me.GroupBox3.Location = New System.Drawing.Point(179, 4)
         Me.GroupBox3.Margin = New System.Windows.Forms.Padding(0)
@@ -1234,23 +1287,22 @@ Partial Class AgniMainForm
         Me.cbReportSearchByDateRange.Text = "Date Range"
         Me.cbReportSearchByDateRange.UseVisualStyleBackColor = True
         '
-        'cbReportSearchByDesignName
+        'cbReportSearchByDesignNo
         '
-        Me.cbReportSearchByDesignName.AutoSize = True
-        Me.cbReportSearchByDesignName.FlatAppearance.BorderColor = System.Drawing.Color.Green
-        Me.cbReportSearchByDesignName.FlatAppearance.BorderSize = 3
-        Me.cbReportSearchByDesignName.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red
-        Me.cbReportSearchByDesignName.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.cbReportSearchByDesignName.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green
-        Me.cbReportSearchByDesignName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.cbReportSearchByDesignName.ForeColor = System.Drawing.Color.Black
-        Me.cbReportSearchByDesignName.Location = New System.Drawing.Point(749, 14)
-        Me.cbReportSearchByDesignName.Name = "cbReportSearchByDesignName"
-        Me.cbReportSearchByDesignName.Size = New System.Drawing.Size(167, 24)
-        Me.cbReportSearchByDesignName.TabIndex = 9
-        Me.cbReportSearchByDesignName.Text = "Enter Design Name"
-        Me.cbReportSearchByDesignName.UseVisualStyleBackColor = True
-        Me.cbReportSearchByDesignName.Visible = False
+        Me.cbReportSearchByDesignNo.AutoSize = True
+        Me.cbReportSearchByDesignNo.FlatAppearance.BorderColor = System.Drawing.Color.Green
+        Me.cbReportSearchByDesignNo.FlatAppearance.BorderSize = 3
+        Me.cbReportSearchByDesignNo.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red
+        Me.cbReportSearchByDesignNo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.cbReportSearchByDesignNo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green
+        Me.cbReportSearchByDesignNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.cbReportSearchByDesignNo.ForeColor = System.Drawing.Color.Black
+        Me.cbReportSearchByDesignNo.Location = New System.Drawing.Point(218, 14)
+        Me.cbReportSearchByDesignNo.Name = "cbReportSearchByDesignNo"
+        Me.cbReportSearchByDesignNo.Size = New System.Drawing.Size(138, 24)
+        Me.cbReportSearchByDesignNo.TabIndex = 9
+        Me.cbReportSearchByDesignNo.Text = "Design Number"
+        Me.cbReportSearchByDesignNo.UseVisualStyleBackColor = True
         '
         'cbReportSearchByBillNo
         '
@@ -1270,22 +1322,23 @@ Partial Class AgniMainForm
         Me.cbReportSearchByBillNo.UseVisualStyleBackColor = True
         Me.cbReportSearchByBillNo.Visible = False
         '
-        'cbReportSearchByDesignNo
+        'cbReportSearchByDesignSelection
         '
-        Me.cbReportSearchByDesignNo.AutoSize = True
-        Me.cbReportSearchByDesignNo.FlatAppearance.BorderColor = System.Drawing.Color.Green
-        Me.cbReportSearchByDesignNo.FlatAppearance.BorderSize = 3
-        Me.cbReportSearchByDesignNo.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red
-        Me.cbReportSearchByDesignNo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.cbReportSearchByDesignNo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green
-        Me.cbReportSearchByDesignNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.cbReportSearchByDesignNo.ForeColor = System.Drawing.Color.Black
-        Me.cbReportSearchByDesignNo.Location = New System.Drawing.Point(218, 14)
-        Me.cbReportSearchByDesignNo.Name = "cbReportSearchByDesignNo"
-        Me.cbReportSearchByDesignNo.Size = New System.Drawing.Size(127, 24)
-        Me.cbReportSearchByDesignNo.TabIndex = 8
-        Me.cbReportSearchByDesignNo.Text = "Select Design"
-        Me.cbReportSearchByDesignNo.UseVisualStyleBackColor = True
+        Me.cbReportSearchByDesignSelection.AutoSize = True
+        Me.cbReportSearchByDesignSelection.FlatAppearance.BorderColor = System.Drawing.Color.Green
+        Me.cbReportSearchByDesignSelection.FlatAppearance.BorderSize = 3
+        Me.cbReportSearchByDesignSelection.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red
+        Me.cbReportSearchByDesignSelection.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.cbReportSearchByDesignSelection.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green
+        Me.cbReportSearchByDesignSelection.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.cbReportSearchByDesignSelection.ForeColor = System.Drawing.Color.Black
+        Me.cbReportSearchByDesignSelection.Location = New System.Drawing.Point(776, 14)
+        Me.cbReportSearchByDesignSelection.Name = "cbReportSearchByDesignSelection"
+        Me.cbReportSearchByDesignSelection.Size = New System.Drawing.Size(127, 24)
+        Me.cbReportSearchByDesignSelection.TabIndex = 8
+        Me.cbReportSearchByDesignSelection.Text = "Select Design"
+        Me.cbReportSearchByDesignSelection.UseVisualStyleBackColor = True
+        Me.cbReportSearchByDesignSelection.Visible = False
         '
         'cbReportSearchByCustomer
         '
@@ -1354,8 +1407,7 @@ Partial Class AgniMainForm
         'groupReportDesignName
         '
         Me.groupReportDesignName.Controls.Add(Me.Label84)
-        Me.groupReportDesignName.Controls.Add(Me.txtReportDesignName)
-        Me.groupReportDesignName.Controls.Add(Me.lblReportDesignNameHint)
+        Me.groupReportDesignName.Controls.Add(Me.txtReportDesignNumber)
         Me.groupReportDesignName.Location = New System.Drawing.Point(599, 110)
         Me.groupReportDesignName.Name = "groupReportDesignName"
         Me.groupReportDesignName.Size = New System.Drawing.Size(356, 65)
@@ -1369,28 +1421,17 @@ Partial Class AgniMainForm
         Me.Label84.ForeColor = System.Drawing.Color.Black
         Me.Label84.Location = New System.Drawing.Point(6, 12)
         Me.Label84.Name = "Label84"
-        Me.Label84.Size = New System.Drawing.Size(137, 18)
+        Me.Label84.Size = New System.Drawing.Size(150, 18)
         Me.Label84.TabIndex = 72
-        Me.Label84.Text = "Enter Design Name"
+        Me.Label84.Text = "Enter Design Number"
         '
-        'txtReportDesignName
+        'txtReportDesignNumber
         '
-        Me.txtReportDesignName.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!)
-        Me.txtReportDesignName.Location = New System.Drawing.Point(9, 33)
-        Me.txtReportDesignName.Name = "txtReportDesignName"
-        Me.txtReportDesignName.Size = New System.Drawing.Size(338, 24)
-        Me.txtReportDesignName.TabIndex = 0
-        '
-        'lblReportDesignNameHint
-        '
-        Me.lblReportDesignNameHint.AutoSize = True
-        Me.lblReportDesignNameHint.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblReportDesignNameHint.ForeColor = System.Drawing.Color.Black
-        Me.lblReportDesignNameHint.Location = New System.Drawing.Point(164, 16)
-        Me.lblReportDesignNameHint.Name = "lblReportDesignNameHint"
-        Me.lblReportDesignNameHint.Size = New System.Drawing.Size(186, 13)
-        Me.lblReportDesignNameHint.TabIndex = 78
-        Me.lblReportDesignNameHint.Text = "Please enter part of any Design Name"
+        Me.txtReportDesignNumber.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!)
+        Me.txtReportDesignNumber.Location = New System.Drawing.Point(9, 33)
+        Me.txtReportDesignNumber.Name = "txtReportDesignNumber"
+        Me.txtReportDesignNumber.Size = New System.Drawing.Size(338, 24)
+        Me.txtReportDesignNumber.TabIndex = 0
         '
         'groupReportDesignList
         '
@@ -3760,17 +3801,11 @@ Partial Class AgniMainForm
         Me.tabCustomer.BackColor = System.Drawing.SystemColors.Window
         Me.tabCustomer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.tabCustomer.CausesValidation = False
+        Me.tabCustomer.Controls.Add(Me.GroupBox23)
+        Me.tabCustomer.Controls.Add(Me.GroupBox2)
         Me.tabCustomer.Controls.Add(Me.GroupBox22)
         Me.tabCustomer.Controls.Add(Me.GroupBox1)
-        Me.tabCustomer.Controls.Add(Me.lblLandline)
         Me.tabCustomer.Controls.Add(Me.GroupBox16)
-        Me.tabCustomer.Controls.Add(Me.lblEmail)
-        Me.tabCustomer.Controls.Add(Me.lblWebsite)
-        Me.tabCustomer.Controls.Add(Me.txtWebsite)
-        Me.tabCustomer.Controls.Add(Me.lblMobile)
-        Me.tabCustomer.Controls.Add(Me.txtLandline)
-        Me.tabCustomer.Controls.Add(Me.txtEmail)
-        Me.tabCustomer.Controls.Add(Me.txtMobile)
         Me.tabCustomer.Controls.Add(Me.btnCustClear)
         Me.tabCustomer.Controls.Add(Me.lblGSTIN)
         Me.tabCustomer.Controls.Add(Me.txtGstIn)
@@ -3778,10 +3813,8 @@ Partial Class AgniMainForm
         Me.tabCustomer.Controls.Add(Me.btnCustDelete)
         Me.tabCustomer.Controls.Add(Me.btnCustAdd)
         Me.tabCustomer.Controls.Add(Me.lblProprietor)
-        Me.tabCustomer.Controls.Add(Me.lblAddress)
         Me.tabCustomer.Controls.Add(Me.lblCustomerName)
         Me.tabCustomer.Controls.Add(Me.cmbCustCustomerList)
-        Me.tabCustomer.Controls.Add(Me.txtAddress)
         Me.tabCustomer.Controls.Add(Me.txtOwnerName)
         Me.tabCustomer.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.tabCustomer.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold)
@@ -3795,14 +3828,231 @@ Partial Class AgniMainForm
         Me.tabCustomer.Text = "Customer"
         Me.tabCustomer.ToolTipText = "Customers information"
         '
+        'GroupBox23
+        '
+        Me.GroupBox23.Controls.Add(Me.lblMobile)
+        Me.GroupBox23.Controls.Add(Me.txtMobile)
+        Me.GroupBox23.Controls.Add(Me.txtEmail)
+        Me.GroupBox23.Controls.Add(Me.txtLandline)
+        Me.GroupBox23.Controls.Add(Me.lblLandline)
+        Me.GroupBox23.Controls.Add(Me.txtWebsite)
+        Me.GroupBox23.Controls.Add(Me.lblWebsite)
+        Me.GroupBox23.Controls.Add(Me.lblEmail)
+        Me.GroupBox23.Location = New System.Drawing.Point(602, 273)
+        Me.GroupBox23.Name = "GroupBox23"
+        Me.GroupBox23.Size = New System.Drawing.Size(658, 206)
+        Me.GroupBox23.TabIndex = 6
+        Me.GroupBox23.TabStop = False
+        Me.GroupBox23.Text = "Contact Details"
+        '
+        'lblMobile
+        '
+        Me.lblMobile.AutoSize = True
+        Me.lblMobile.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMobile.ForeColor = System.Drawing.Color.Black
+        Me.lblMobile.Location = New System.Drawing.Point(19, 30)
+        Me.lblMobile.Name = "lblMobile"
+        Me.lblMobile.Size = New System.Drawing.Size(82, 25)
+        Me.lblMobile.TabIndex = 12
+        Me.lblMobile.Text = "Mobile"
+        '
+        'txtMobile
+        '
+        Me.txtMobile.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtMobile.Location = New System.Drawing.Point(207, 29)
+        Me.txtMobile.Name = "txtMobile"
+        Me.txtMobile.Size = New System.Drawing.Size(338, 31)
+        Me.txtMobile.TabIndex = 0
+        '
+        'txtEmail
+        '
+        Me.txtEmail.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEmail.Location = New System.Drawing.Point(207, 74)
+        Me.txtEmail.Name = "txtEmail"
+        Me.txtEmail.Size = New System.Drawing.Size(338, 31)
+        Me.txtEmail.TabIndex = 1
+        '
+        'txtLandline
+        '
+        Me.txtLandline.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtLandline.Location = New System.Drawing.Point(207, 119)
+        Me.txtLandline.Name = "txtLandline"
+        Me.txtLandline.Size = New System.Drawing.Size(338, 31)
+        Me.txtLandline.TabIndex = 2
+        '
+        'lblLandline
+        '
+        Me.lblLandline.AutoSize = True
+        Me.lblLandline.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblLandline.ForeColor = System.Drawing.Color.Black
+        Me.lblLandline.Location = New System.Drawing.Point(19, 120)
+        Me.lblLandline.Name = "lblLandline"
+        Me.lblLandline.Size = New System.Drawing.Size(102, 25)
+        Me.lblLandline.TabIndex = 18
+        Me.lblLandline.Text = "Landline"
+        '
+        'txtWebsite
+        '
+        Me.txtWebsite.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtWebsite.Location = New System.Drawing.Point(207, 164)
+        Me.txtWebsite.Name = "txtWebsite"
+        Me.txtWebsite.Size = New System.Drawing.Size(338, 31)
+        Me.txtWebsite.TabIndex = 3
+        '
+        'lblWebsite
+        '
+        Me.lblWebsite.AutoSize = True
+        Me.lblWebsite.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblWebsite.ForeColor = System.Drawing.Color.Black
+        Me.lblWebsite.Location = New System.Drawing.Point(19, 165)
+        Me.lblWebsite.Name = "lblWebsite"
+        Me.lblWebsite.Size = New System.Drawing.Size(97, 25)
+        Me.lblWebsite.TabIndex = 13
+        Me.lblWebsite.Text = "Website"
+        '
+        'lblEmail
+        '
+        Me.lblEmail.AutoSize = True
+        Me.lblEmail.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblEmail.ForeColor = System.Drawing.Color.Black
+        Me.lblEmail.Location = New System.Drawing.Point(19, 75)
+        Me.lblEmail.Name = "lblEmail"
+        Me.lblEmail.Size = New System.Drawing.Size(99, 25)
+        Me.lblEmail.TabIndex = 16
+        Me.lblEmail.Text = "Email ID"
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.txtAddressLine5)
+        Me.GroupBox2.Controls.Add(Me.Label41)
+        Me.GroupBox2.Controls.Add(Me.txtAddressLine4)
+        Me.GroupBox2.Controls.Add(Me.Label40)
+        Me.GroupBox2.Controls.Add(Me.txtAddressLine3)
+        Me.GroupBox2.Controls.Add(Me.Label39)
+        Me.GroupBox2.Controls.Add(Me.txtAddressLine2)
+        Me.GroupBox2.Controls.Add(Me.Label38)
+        Me.GroupBox2.Controls.Add(Me.txtAddressLine1)
+        Me.GroupBox2.Controls.Add(Me.lblAddress)
+        Me.GroupBox2.Location = New System.Drawing.Point(602, 13)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(658, 243)
+        Me.GroupBox2.TabIndex = 5
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Address"
+        '
+        'txtAddressLine5
+        '
+        Me.txtAddressLine5.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAddressLine5.Location = New System.Drawing.Point(207, 193)
+        Me.txtAddressLine5.Multiline = True
+        Me.txtAddressLine5.Name = "txtAddressLine5"
+        Me.txtAddressLine5.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtAddressLine5.Size = New System.Drawing.Size(432, 31)
+        Me.txtAddressLine5.TabIndex = 4
+        '
+        'Label41
+        '
+        Me.Label41.AutoSize = True
+        Me.Label41.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label41.ForeColor = System.Drawing.Color.Black
+        Me.Label41.Location = New System.Drawing.Point(19, 193)
+        Me.Label41.Name = "Label41"
+        Me.Label41.Size = New System.Drawing.Size(163, 25)
+        Me.Label41.TabIndex = 28
+        Me.Label41.Text = "Address Line5"
+        '
+        'txtAddressLine4
+        '
+        Me.txtAddressLine4.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAddressLine4.Location = New System.Drawing.Point(207, 152)
+        Me.txtAddressLine4.Multiline = True
+        Me.txtAddressLine4.Name = "txtAddressLine4"
+        Me.txtAddressLine4.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtAddressLine4.Size = New System.Drawing.Size(432, 31)
+        Me.txtAddressLine4.TabIndex = 3
+        '
+        'Label40
+        '
+        Me.Label40.AutoSize = True
+        Me.Label40.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label40.ForeColor = System.Drawing.Color.Black
+        Me.Label40.Location = New System.Drawing.Point(20, 154)
+        Me.Label40.Name = "Label40"
+        Me.Label40.Size = New System.Drawing.Size(163, 25)
+        Me.Label40.TabIndex = 26
+        Me.Label40.Text = "Address Line4"
+        '
+        'txtAddressLine3
+        '
+        Me.txtAddressLine3.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAddressLine3.Location = New System.Drawing.Point(207, 111)
+        Me.txtAddressLine3.Multiline = True
+        Me.txtAddressLine3.Name = "txtAddressLine3"
+        Me.txtAddressLine3.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtAddressLine3.Size = New System.Drawing.Size(432, 31)
+        Me.txtAddressLine3.TabIndex = 2
+        '
+        'Label39
+        '
+        Me.Label39.AutoSize = True
+        Me.Label39.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label39.ForeColor = System.Drawing.Color.Black
+        Me.Label39.Location = New System.Drawing.Point(20, 115)
+        Me.Label39.Name = "Label39"
+        Me.Label39.Size = New System.Drawing.Size(163, 25)
+        Me.Label39.TabIndex = 24
+        Me.Label39.Text = "Address Line3"
+        '
+        'txtAddressLine2
+        '
+        Me.txtAddressLine2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAddressLine2.Location = New System.Drawing.Point(207, 70)
+        Me.txtAddressLine2.Multiline = True
+        Me.txtAddressLine2.Name = "txtAddressLine2"
+        Me.txtAddressLine2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtAddressLine2.Size = New System.Drawing.Size(432, 31)
+        Me.txtAddressLine2.TabIndex = 1
+        '
+        'Label38
+        '
+        Me.Label38.AutoSize = True
+        Me.Label38.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label38.ForeColor = System.Drawing.Color.Black
+        Me.Label38.Location = New System.Drawing.Point(20, 76)
+        Me.Label38.Name = "Label38"
+        Me.Label38.Size = New System.Drawing.Size(163, 25)
+        Me.Label38.TabIndex = 22
+        Me.Label38.Text = "Address Line2"
+        '
+        'txtAddressLine1
+        '
+        Me.txtAddressLine1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAddressLine1.Location = New System.Drawing.Point(207, 29)
+        Me.txtAddressLine1.Multiline = True
+        Me.txtAddressLine1.Name = "txtAddressLine1"
+        Me.txtAddressLine1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtAddressLine1.Size = New System.Drawing.Size(432, 31)
+        Me.txtAddressLine1.TabIndex = 0
+        '
+        'lblAddress
+        '
+        Me.lblAddress.AutoSize = True
+        Me.lblAddress.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAddress.ForeColor = System.Drawing.Color.Black
+        Me.lblAddress.Location = New System.Drawing.Point(20, 37)
+        Me.lblAddress.Name = "lblAddress"
+        Me.lblAddress.Size = New System.Drawing.Size(163, 25)
+        Me.lblAddress.TabIndex = 20
+        Me.lblAddress.Text = "Address Line1"
+        '
         'GroupBox22
         '
         Me.GroupBox22.Controls.Add(Me.dgCustCustomerDetails)
         Me.GroupBox22.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox22.Location = New System.Drawing.Point(8, 541)
+        Me.GroupBox22.Location = New System.Drawing.Point(8, 565)
         Me.GroupBox22.Name = "GroupBox22"
-        Me.GroupBox22.Size = New System.Drawing.Size(1892, 418)
-        Me.GroupBox22.TabIndex = 100
+        Me.GroupBox22.Size = New System.Drawing.Size(1892, 394)
+        Me.GroupBox22.TabIndex = 11
         Me.GroupBox22.TabStop = False
         Me.GroupBox22.Text = "Customers Details"
         '
@@ -3825,7 +4075,7 @@ Partial Class AgniMainForm
         DataGridViewCellStyle222.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgCustCustomerDetails.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle222
         Me.dgCustCustomerDetails.ColumnHeadersHeight = 35
-        Me.dgCustCustomerDetails.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CompName, Me.CustomerCustNo, Me.CustomerGSTIN, Me.OwnerName, Me.CustomerCGST, Me.CustomerSGST, Me.CustomerIGST, Me.WPSqrInch, Me.WColor, Me.PrintColor, Me.Mobile, Me.Address, Me.Landline, Me.Email, Me.Website})
+        Me.dgCustCustomerDetails.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CompName, Me.CustomerCustNo, Me.CustomerGSTIN, Me.OwnerName, Me.CustomerCGST, Me.CustomerSGST, Me.CustomerIGST, Me.WPSqrInch, Me.WColor, Me.PrintColor, Me.Mobile, Me.AddressLIne1, Me.AddressLine2, Me.AddressLine3, Me.AddressLine4, Me.AddressLine5, Me.Landline, Me.Email, Me.Website})
         DataGridViewCellStyle238.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle238.BackColor = System.Drawing.Color.LightSteelBlue
         DataGridViewCellStyle238.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -3851,160 +4101,8 @@ Partial Class AgniMainForm
         Me.dgCustCustomerDetails.RowTemplate.ReadOnly = True
         Me.dgCustCustomerDetails.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgCustCustomerDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgCustCustomerDetails.Size = New System.Drawing.Size(1886, 393)
+        Me.dgCustCustomerDetails.Size = New System.Drawing.Size(1886, 369)
         Me.dgCustCustomerDetails.TabIndex = 0
-        '
-        'CompName
-        '
-        Me.CompName.DataPropertyName = "CompName"
-        DataGridViewCellStyle223.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.CompName.DefaultCellStyle = DataGridViewCellStyle223
-        Me.CompName.HeaderText = "Customer Name"
-        Me.CompName.Name = "CompName"
-        Me.CompName.ReadOnly = True
-        Me.CompName.Width = 350
-        '
-        'CustomerCustNo
-        '
-        Me.CustomerCustNo.DataPropertyName = "CustNo"
-        DataGridViewCellStyle224.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.CustomerCustNo.DefaultCellStyle = DataGridViewCellStyle224
-        Me.CustomerCustNo.HeaderText = "Cust No"
-        Me.CustomerCustNo.Name = "CustomerCustNo"
-        Me.CustomerCustNo.ReadOnly = True
-        Me.CustomerCustNo.Visible = False
-        '
-        'CustomerGSTIN
-        '
-        Me.CustomerGSTIN.DataPropertyName = "GSTIN"
-        DataGridViewCellStyle225.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.CustomerGSTIN.DefaultCellStyle = DataGridViewCellStyle225
-        Me.CustomerGSTIN.HeaderText = "GSTIN"
-        Me.CustomerGSTIN.Name = "CustomerGSTIN"
-        Me.CustomerGSTIN.ReadOnly = True
-        Me.CustomerGSTIN.Width = 150
-        '
-        'OwnerName
-        '
-        Me.OwnerName.DataPropertyName = "OwnerName"
-        DataGridViewCellStyle226.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.OwnerName.DefaultCellStyle = DataGridViewCellStyle226
-        Me.OwnerName.HeaderText = "Owner"
-        Me.OwnerName.Name = "OwnerName"
-        Me.OwnerName.ReadOnly = True
-        Me.OwnerName.Width = 200
-        '
-        'CustomerCGST
-        '
-        Me.CustomerCGST.DataPropertyName = "CGST"
-        DataGridViewCellStyle227.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle227.Format = "0.00"
-        Me.CustomerCGST.DefaultCellStyle = DataGridViewCellStyle227
-        Me.CustomerCGST.HeaderText = "CGST"
-        Me.CustomerCGST.Name = "CustomerCGST"
-        Me.CustomerCGST.ReadOnly = True
-        Me.CustomerCGST.Width = 160
-        '
-        'CustomerSGST
-        '
-        Me.CustomerSGST.DataPropertyName = "SGST"
-        DataGridViewCellStyle228.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle228.Format = "0.00"
-        Me.CustomerSGST.DefaultCellStyle = DataGridViewCellStyle228
-        Me.CustomerSGST.HeaderText = "SGST"
-        Me.CustomerSGST.Name = "CustomerSGST"
-        Me.CustomerSGST.ReadOnly = True
-        '
-        'CustomerIGST
-        '
-        Me.CustomerIGST.DataPropertyName = "IGST"
-        DataGridViewCellStyle229.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle229.Format = "0.00"
-        Me.CustomerIGST.DefaultCellStyle = DataGridViewCellStyle229
-        Me.CustomerIGST.HeaderText = "IGST"
-        Me.CustomerIGST.Name = "CustomerIGST"
-        Me.CustomerIGST.ReadOnly = True
-        '
-        'WPSqrInch
-        '
-        Me.WPSqrInch.DataPropertyName = "WorkingPrintSqrInch"
-        DataGridViewCellStyle230.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle230.Format = "0.00"
-        Me.WPSqrInch.DefaultCellStyle = DataGridViewCellStyle230
-        Me.WPSqrInch.HeaderText = "WP SqrInch"
-        Me.WPSqrInch.Name = "WPSqrInch"
-        Me.WPSqrInch.ReadOnly = True
-        Me.WPSqrInch.Width = 130
-        '
-        'WColor
-        '
-        Me.WColor.DataPropertyName = "WorkingColor"
-        DataGridViewCellStyle231.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle231.Format = "0.00"
-        Me.WColor.DefaultCellStyle = DataGridViewCellStyle231
-        Me.WColor.HeaderText = "W Color"
-        Me.WColor.Name = "WColor"
-        Me.WColor.ReadOnly = True
-        '
-        'PrintColor
-        '
-        Me.PrintColor.DataPropertyName = "PrintColor"
-        DataGridViewCellStyle232.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle232.Format = "0.00"
-        Me.PrintColor.DefaultCellStyle = DataGridViewCellStyle232
-        Me.PrintColor.HeaderText = "P Color"
-        Me.PrintColor.Name = "PrintColor"
-        Me.PrintColor.ReadOnly = True
-        '
-        'Mobile
-        '
-        Me.Mobile.DataPropertyName = "Mobile"
-        DataGridViewCellStyle233.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.Mobile.DefaultCellStyle = DataGridViewCellStyle233
-        Me.Mobile.HeaderText = "Mobile"
-        Me.Mobile.Name = "Mobile"
-        Me.Mobile.ReadOnly = True
-        Me.Mobile.Width = 150
-        '
-        'Address
-        '
-        Me.Address.DataPropertyName = "Address"
-        DataGridViewCellStyle234.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.Address.DefaultCellStyle = DataGridViewCellStyle234
-        Me.Address.HeaderText = "Address"
-        Me.Address.Name = "Address"
-        Me.Address.ReadOnly = True
-        Me.Address.Width = 200
-        '
-        'Landline
-        '
-        Me.Landline.DataPropertyName = "Landline"
-        DataGridViewCellStyle235.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.Landline.DefaultCellStyle = DataGridViewCellStyle235
-        Me.Landline.HeaderText = "Landline"
-        Me.Landline.Name = "Landline"
-        Me.Landline.ReadOnly = True
-        Me.Landline.Width = 150
-        '
-        'Email
-        '
-        Me.Email.DataPropertyName = "Email"
-        DataGridViewCellStyle236.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.Email.DefaultCellStyle = DataGridViewCellStyle236
-        Me.Email.HeaderText = "Email"
-        Me.Email.Name = "Email"
-        Me.Email.ReadOnly = True
-        Me.Email.Width = 180
-        '
-        'Website
-        '
-        Me.Website.DataPropertyName = "Website"
-        DataGridViewCellStyle237.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.Website.DefaultCellStyle = DataGridViewCellStyle237
-        Me.Website.HeaderText = "Website"
-        Me.Website.Name = "Website"
-        Me.Website.ReadOnly = True
-        Me.Website.Width = 150
         '
         'GroupBox1
         '
@@ -4014,10 +4112,10 @@ Partial Class AgniMainForm
         Me.GroupBox1.Controls.Add(Me.txtCustPrintCharge)
         Me.GroupBox1.Controls.Add(Me.txtCustWorkingCharge)
         Me.GroupBox1.Controls.Add(Me.txtCustWPCharge)
-        Me.GroupBox1.Location = New System.Drawing.Point(602, 256)
+        Me.GroupBox1.Location = New System.Drawing.Point(36, 333)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(327, 175)
-        Me.GroupBox1.TabIndex = 12
+        Me.GroupBox1.Size = New System.Drawing.Size(533, 158)
+        Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Design Cost Per Unit"
         '
@@ -4026,7 +4124,7 @@ Partial Class AgniMainForm
         Me.lblPrintCharge.AutoSize = True
         Me.lblPrintCharge.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblPrintCharge.ForeColor = System.Drawing.Color.Black
-        Me.lblPrintCharge.Location = New System.Drawing.Point(14, 123)
+        Me.lblPrintCharge.Location = New System.Drawing.Point(14, 110)
         Me.lblPrintCharge.Name = "lblPrintCharge"
         Me.lblPrintCharge.Size = New System.Drawing.Size(124, 25)
         Me.lblPrintCharge.TabIndex = 18
@@ -4037,7 +4135,7 @@ Partial Class AgniMainForm
         Me.lblWorkingCharge.AutoSize = True
         Me.lblWorkingCharge.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblWorkingCharge.ForeColor = System.Drawing.Color.Black
-        Me.lblWorkingCharge.Location = New System.Drawing.Point(14, 85)
+        Me.lblWorkingCharge.Location = New System.Drawing.Point(14, 71)
         Me.lblWorkingCharge.Name = "lblWorkingCharge"
         Me.lblWorkingCharge.Size = New System.Drawing.Size(161, 25)
         Me.lblWorkingCharge.TabIndex = 16
@@ -4048,7 +4146,7 @@ Partial Class AgniMainForm
         Me.lblWPChargeDetails.AutoSize = True
         Me.lblWPChargeDetails.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblWPChargeDetails.ForeColor = System.Drawing.Color.Black
-        Me.lblWPChargeDetails.Location = New System.Drawing.Point(14, 44)
+        Me.lblWPChargeDetails.Location = New System.Drawing.Point(14, 31)
         Me.lblWPChargeDetails.Name = "lblWPChargeDetails"
         Me.lblWPChargeDetails.Size = New System.Drawing.Size(145, 25)
         Me.lblWPChargeDetails.TabIndex = 12
@@ -4057,37 +4155,26 @@ Partial Class AgniMainForm
         'txtCustPrintCharge
         '
         Me.txtCustPrintCharge.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCustPrintCharge.Location = New System.Drawing.Point(187, 120)
+        Me.txtCustPrintCharge.Location = New System.Drawing.Point(195, 106)
         Me.txtCustPrintCharge.Name = "txtCustPrintCharge"
-        Me.txtCustPrintCharge.Size = New System.Drawing.Size(91, 31)
-        Me.txtCustPrintCharge.TabIndex = 15
+        Me.txtCustPrintCharge.Size = New System.Drawing.Size(137, 31)
+        Me.txtCustPrintCharge.TabIndex = 2
         '
         'txtCustWorkingCharge
         '
         Me.txtCustWorkingCharge.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCustWorkingCharge.Location = New System.Drawing.Point(187, 80)
+        Me.txtCustWorkingCharge.Location = New System.Drawing.Point(195, 66)
         Me.txtCustWorkingCharge.Name = "txtCustWorkingCharge"
-        Me.txtCustWorkingCharge.Size = New System.Drawing.Size(91, 31)
-        Me.txtCustWorkingCharge.TabIndex = 14
+        Me.txtCustWorkingCharge.Size = New System.Drawing.Size(137, 31)
+        Me.txtCustWorkingCharge.TabIndex = 1
         '
         'txtCustWPCharge
         '
         Me.txtCustWPCharge.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCustWPCharge.Location = New System.Drawing.Point(187, 41)
+        Me.txtCustWPCharge.Location = New System.Drawing.Point(195, 26)
         Me.txtCustWPCharge.Name = "txtCustWPCharge"
-        Me.txtCustWPCharge.Size = New System.Drawing.Size(91, 31)
-        Me.txtCustWPCharge.TabIndex = 13
-        '
-        'lblLandline
-        '
-        Me.lblLandline.AutoSize = True
-        Me.lblLandline.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLandline.ForeColor = System.Drawing.Color.Black
-        Me.lblLandline.Location = New System.Drawing.Point(31, 353)
-        Me.lblLandline.Name = "lblLandline"
-        Me.lblLandline.Size = New System.Drawing.Size(102, 25)
-        Me.lblLandline.TabIndex = 18
-        Me.lblLandline.Text = "Landline"
+        Me.txtCustWPCharge.Size = New System.Drawing.Size(137, 31)
+        Me.txtCustWPCharge.TabIndex = 0
         '
         'GroupBox16
         '
@@ -4100,10 +4187,10 @@ Partial Class AgniMainForm
         Me.GroupBox16.Controls.Add(Me.txtCustIGST)
         Me.GroupBox16.Controls.Add(Me.txtCustSGST)
         Me.GroupBox16.Controls.Add(Me.txtCustCGST)
-        Me.GroupBox16.Location = New System.Drawing.Point(602, 76)
+        Me.GroupBox16.Location = New System.Drawing.Point(36, 165)
         Me.GroupBox16.Name = "GroupBox16"
-        Me.GroupBox16.Size = New System.Drawing.Size(327, 158)
-        Me.GroupBox16.TabIndex = 8
+        Me.GroupBox16.Size = New System.Drawing.Size(533, 158)
+        Me.GroupBox16.TabIndex = 3
         Me.GroupBox16.TabStop = False
         Me.GroupBox16.Text = "GST Details"
         '
@@ -4112,7 +4199,7 @@ Partial Class AgniMainForm
         Me.Label87.AutoSize = True
         Me.Label87.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label87.ForeColor = System.Drawing.Color.Black
-        Me.Label87.Location = New System.Drawing.Point(283, 66)
+        Me.Label87.Location = New System.Drawing.Point(338, 67)
         Me.Label87.Name = "Label87"
         Me.Label87.Size = New System.Drawing.Size(32, 25)
         Me.Label87.TabIndex = 21
@@ -4123,7 +4210,7 @@ Partial Class AgniMainForm
         Me.Label60.AutoSize = True
         Me.Label60.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label60.ForeColor = System.Drawing.Color.Black
-        Me.Label60.Location = New System.Drawing.Point(283, 108)
+        Me.Label60.Location = New System.Drawing.Point(338, 109)
         Me.Label60.Name = "Label60"
         Me.Label60.Size = New System.Drawing.Size(32, 25)
         Me.Label60.TabIndex = 20
@@ -4134,7 +4221,7 @@ Partial Class AgniMainForm
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.Black
-        Me.Label7.Location = New System.Drawing.Point(283, 26)
+        Me.Label7.Location = New System.Drawing.Point(338, 27)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(32, 25)
         Me.Label7.TabIndex = 19
@@ -4176,91 +4263,26 @@ Partial Class AgniMainForm
         'txtCustIGST
         '
         Me.txtCustIGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCustIGST.Location = New System.Drawing.Point(187, 106)
+        Me.txtCustIGST.Location = New System.Drawing.Point(195, 108)
         Me.txtCustIGST.Name = "txtCustIGST"
-        Me.txtCustIGST.Size = New System.Drawing.Size(91, 31)
-        Me.txtCustIGST.TabIndex = 11
+        Me.txtCustIGST.Size = New System.Drawing.Size(137, 31)
+        Me.txtCustIGST.TabIndex = 2
         '
         'txtCustSGST
         '
         Me.txtCustSGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCustSGST.Location = New System.Drawing.Point(187, 66)
+        Me.txtCustSGST.Location = New System.Drawing.Point(195, 68)
         Me.txtCustSGST.Name = "txtCustSGST"
-        Me.txtCustSGST.Size = New System.Drawing.Size(91, 31)
-        Me.txtCustSGST.TabIndex = 10
+        Me.txtCustSGST.Size = New System.Drawing.Size(137, 31)
+        Me.txtCustSGST.TabIndex = 1
         '
         'txtCustCGST
         '
         Me.txtCustCGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCustCGST.Location = New System.Drawing.Point(187, 26)
+        Me.txtCustCGST.Location = New System.Drawing.Point(195, 28)
         Me.txtCustCGST.Name = "txtCustCGST"
-        Me.txtCustCGST.Size = New System.Drawing.Size(91, 31)
-        Me.txtCustCGST.TabIndex = 9
-        '
-        'lblEmail
-        '
-        Me.lblEmail.AutoSize = True
-        Me.lblEmail.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblEmail.ForeColor = System.Drawing.Color.Black
-        Me.lblEmail.Location = New System.Drawing.Point(31, 306)
-        Me.lblEmail.Name = "lblEmail"
-        Me.lblEmail.Size = New System.Drawing.Size(99, 25)
-        Me.lblEmail.TabIndex = 16
-        Me.lblEmail.Text = "Email ID"
-        '
-        'lblWebsite
-        '
-        Me.lblWebsite.AutoSize = True
-        Me.lblWebsite.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblWebsite.ForeColor = System.Drawing.Color.Black
-        Me.lblWebsite.Location = New System.Drawing.Point(31, 400)
-        Me.lblWebsite.Name = "lblWebsite"
-        Me.lblWebsite.Size = New System.Drawing.Size(97, 25)
-        Me.lblWebsite.TabIndex = 13
-        Me.lblWebsite.Text = "Website"
-        '
-        'txtWebsite
-        '
-        Me.txtWebsite.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtWebsite.Location = New System.Drawing.Point(231, 400)
-        Me.txtWebsite.Name = "txtWebsite"
-        Me.txtWebsite.Size = New System.Drawing.Size(338, 31)
-        Me.txtWebsite.TabIndex = 7
-        '
-        'lblMobile
-        '
-        Me.lblMobile.AutoSize = True
-        Me.lblMobile.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMobile.ForeColor = System.Drawing.Color.Black
-        Me.lblMobile.Location = New System.Drawing.Point(31, 258)
-        Me.lblMobile.Name = "lblMobile"
-        Me.lblMobile.Size = New System.Drawing.Size(82, 25)
-        Me.lblMobile.TabIndex = 12
-        Me.lblMobile.Text = "Mobile"
-        '
-        'txtLandline
-        '
-        Me.txtLandline.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtLandline.Location = New System.Drawing.Point(231, 352)
-        Me.txtLandline.Name = "txtLandline"
-        Me.txtLandline.Size = New System.Drawing.Size(338, 31)
-        Me.txtLandline.TabIndex = 6
-        '
-        'txtEmail
-        '
-        Me.txtEmail.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtEmail.Location = New System.Drawing.Point(231, 304)
-        Me.txtEmail.Name = "txtEmail"
-        Me.txtEmail.Size = New System.Drawing.Size(338, 31)
-        Me.txtEmail.TabIndex = 5
-        '
-        'txtMobile
-        '
-        Me.txtMobile.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMobile.Location = New System.Drawing.Point(231, 256)
-        Me.txtMobile.Name = "txtMobile"
-        Me.txtMobile.Size = New System.Drawing.Size(338, 31)
-        Me.txtMobile.TabIndex = 4
+        Me.txtCustCGST.Size = New System.Drawing.Size(137, 31)
+        Me.txtCustCGST.TabIndex = 0
         '
         'btnCustClear
         '
@@ -4269,11 +4291,11 @@ Partial Class AgniMainForm
         Me.btnCustClear.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
         Me.btnCustClear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnCustClear.ImageKey = "erase.JPG"
-        Me.btnCustClear.Location = New System.Drawing.Point(740, 483)
+        Me.btnCustClear.Location = New System.Drawing.Point(746, 514)
         Me.btnCustClear.Name = "btnCustClear"
         Me.btnCustClear.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.btnCustClear.Size = New System.Drawing.Size(118, 32)
-        Me.btnCustClear.TabIndex = 19
+        Me.btnCustClear.TabIndex = 10
         Me.btnCustClear.Text = "Clear"
         Me.btnCustClear.UseVisualStyleBackColor = False
         '
@@ -4282,7 +4304,7 @@ Partial Class AgniMainForm
         Me.lblGSTIN.AutoSize = True
         Me.lblGSTIN.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblGSTIN.ForeColor = System.Drawing.Color.Black
-        Me.lblGSTIN.Location = New System.Drawing.Point(31, 72)
+        Me.lblGSTIN.Location = New System.Drawing.Point(31, 68)
         Me.lblGSTIN.Name = "lblGSTIN"
         Me.lblGSTIN.Size = New System.Drawing.Size(80, 25)
         Me.lblGSTIN.TabIndex = 99
@@ -4291,7 +4313,7 @@ Partial Class AgniMainForm
         'txtGstIn
         '
         Me.txtGstIn.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtGstIn.Location = New System.Drawing.Point(231, 70)
+        Me.txtGstIn.Location = New System.Drawing.Point(231, 66)
         Me.txtGstIn.Name = "txtGstIn"
         Me.txtGstIn.Size = New System.Drawing.Size(338, 31)
         Me.txtGstIn.TabIndex = 1
@@ -4303,11 +4325,11 @@ Partial Class AgniMainForm
         Me.btnCustUpdate.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
         Me.btnCustUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnCustUpdate.ImageKey = "update.jpg"
-        Me.btnCustUpdate.Location = New System.Drawing.Point(447, 483)
+        Me.btnCustUpdate.Location = New System.Drawing.Point(453, 514)
         Me.btnCustUpdate.Name = "btnCustUpdate"
         Me.btnCustUpdate.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
         Me.btnCustUpdate.Size = New System.Drawing.Size(134, 32)
-        Me.btnCustUpdate.TabIndex = 18
+        Me.btnCustUpdate.TabIndex = 8
         Me.btnCustUpdate.Text = "Update"
         Me.btnCustUpdate.UseVisualStyleBackColor = False
         '
@@ -4318,11 +4340,11 @@ Partial Class AgniMainForm
         Me.btnCustDelete.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
         Me.btnCustDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnCustDelete.ImageKey = "delete.JPG"
-        Me.btnCustDelete.Location = New System.Drawing.Point(596, 483)
+        Me.btnCustDelete.Location = New System.Drawing.Point(602, 514)
         Me.btnCustDelete.Name = "btnCustDelete"
         Me.btnCustDelete.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.btnCustDelete.Size = New System.Drawing.Size(129, 32)
-        Me.btnCustDelete.TabIndex = 17
+        Me.btnCustDelete.TabIndex = 9
         Me.btnCustDelete.Text = "Delete"
         Me.btnCustDelete.UseVisualStyleBackColor = False
         '
@@ -4333,11 +4355,11 @@ Partial Class AgniMainForm
         Me.btnCustAdd.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
         Me.btnCustAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnCustAdd.ImageKey = "add.JPG"
-        Me.btnCustAdd.Location = New System.Drawing.Point(312, 483)
+        Me.btnCustAdd.Location = New System.Drawing.Point(318, 514)
         Me.btnCustAdd.Name = "btnCustAdd"
         Me.btnCustAdd.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.btnCustAdd.Size = New System.Drawing.Size(120, 32)
-        Me.btnCustAdd.TabIndex = 16
+        Me.btnCustAdd.TabIndex = 7
         Me.btnCustAdd.Text = "Add"
         Me.btnCustAdd.UseVisualStyleBackColor = False
         '
@@ -4346,22 +4368,11 @@ Partial Class AgniMainForm
         Me.lblProprietor.AutoSize = True
         Me.lblProprietor.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblProprietor.ForeColor = System.Drawing.Color.Black
-        Me.lblProprietor.Location = New System.Drawing.Point(31, 120)
+        Me.lblProprietor.Location = New System.Drawing.Point(31, 112)
         Me.lblProprietor.Name = "lblProprietor"
         Me.lblProprietor.Size = New System.Drawing.Size(190, 25)
         Me.lblProprietor.TabIndex = 21
         Me.lblProprietor.Text = "Proprietor  Name"
-        '
-        'lblAddress
-        '
-        Me.lblAddress.AutoSize = True
-        Me.lblAddress.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAddress.ForeColor = System.Drawing.Color.Black
-        Me.lblAddress.Location = New System.Drawing.Point(31, 168)
-        Me.lblAddress.Name = "lblAddress"
-        Me.lblAddress.Size = New System.Drawing.Size(112, 25)
-        Me.lblAddress.TabIndex = 20
-        Me.lblAddress.Text = "Address  "
         '
         'lblCustomerName
         '
@@ -4389,20 +4400,10 @@ Partial Class AgniMainForm
         Me.cmbCustCustomerList.TabIndex = 0
         Me.cmbCustCustomerList.ValueMember = "CustNo"
         '
-        'txtAddress
-        '
-        Me.txtAddress.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtAddress.Location = New System.Drawing.Point(231, 166)
-        Me.txtAddress.Multiline = True
-        Me.txtAddress.Name = "txtAddress"
-        Me.txtAddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtAddress.Size = New System.Drawing.Size(338, 73)
-        Me.txtAddress.TabIndex = 3
-        '
         'txtOwnerName
         '
         Me.txtOwnerName.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtOwnerName.Location = New System.Drawing.Point(231, 118)
+        Me.txtOwnerName.Location = New System.Drawing.Point(231, 110)
         Me.txtOwnerName.Name = "txtOwnerName"
         Me.txtOwnerName.Size = New System.Drawing.Size(338, 31)
         Me.txtOwnerName.TabIndex = 2
@@ -5117,6 +5118,8 @@ Partial Class AgniMainForm
         '
         'tabSettings
         '
+        Me.tabSettings.Controls.Add(Me.btnLogOff)
+        Me.tabSettings.Controls.Add(Me.btnChangeAddress)
         Me.tabSettings.Controls.Add(Me.btnSettingsResetBilNo)
         Me.tabSettings.Controls.Add(Me.btnSettingsBackupDatabase)
         Me.tabSettings.Cursor = System.Windows.Forms.Cursors.Arrow
@@ -5130,10 +5133,30 @@ Partial Class AgniMainForm
         Me.tabSettings.Text = "Settings"
         Me.tabSettings.UseVisualStyleBackColor = True
         '
+        'btnLogOff
+        '
+        Me.btnLogOff.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnLogOff.Location = New System.Drawing.Point(1608, 18)
+        Me.btnLogOff.Name = "btnLogOff"
+        Me.btnLogOff.Size = New System.Drawing.Size(281, 110)
+        Me.btnLogOff.TabIndex = 3
+        Me.btnLogOff.Text = "Log Off"
+        Me.btnLogOff.UseVisualStyleBackColor = True
+        '
+        'btnChangeAddress
+        '
+        Me.btnChangeAddress.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnChangeAddress.Location = New System.Drawing.Point(224, 172)
+        Me.btnChangeAddress.Name = "btnChangeAddress"
+        Me.btnChangeAddress.Size = New System.Drawing.Size(261, 42)
+        Me.btnChangeAddress.TabIndex = 2
+        Me.btnChangeAddress.Text = "Change My Address"
+        Me.btnChangeAddress.UseVisualStyleBackColor = True
+        '
         'btnSettingsResetBilNo
         '
         Me.btnSettingsResetBilNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSettingsResetBilNo.Location = New System.Drawing.Point(391, 190)
+        Me.btnSettingsResetBilNo.Location = New System.Drawing.Point(224, 108)
         Me.btnSettingsResetBilNo.Name = "btnSettingsResetBilNo"
         Me.btnSettingsResetBilNo.Size = New System.Drawing.Size(261, 42)
         Me.btnSettingsResetBilNo.TabIndex = 1
@@ -5143,7 +5166,7 @@ Partial Class AgniMainForm
         'btnSettingsBackupDatabase
         '
         Me.btnSettingsBackupDatabase.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSettingsBackupDatabase.Location = New System.Drawing.Point(391, 116)
+        Me.btnSettingsBackupDatabase.Location = New System.Drawing.Point(224, 44)
         Me.btnSettingsBackupDatabase.Name = "btnSettingsBackupDatabase"
         Me.btnSettingsBackupDatabase.Size = New System.Drawing.Size(261, 42)
         Me.btnSettingsBackupDatabase.TabIndex = 0
@@ -6080,41 +6103,189 @@ Partial Class AgniMainForm
         Me.PictureBox5.TabIndex = 28
         Me.PictureBox5.TabStop = False
         '
-        'Label34
+        'CompName
         '
-        Me.Label34.AutoSize = True
-        Me.Label34.Location = New System.Drawing.Point(1499, 868)
-        Me.Label34.Name = "Label34"
-        Me.Label34.Size = New System.Drawing.Size(225, 26)
-        Me.Label34.TabIndex = 24
-        Me.Label34.Text = "Elangovan Manickam"
+        Me.CompName.DataPropertyName = "CompName"
+        DataGridViewCellStyle223.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.CompName.DefaultCellStyle = DataGridViewCellStyle223
+        Me.CompName.HeaderText = "Customer Name"
+        Me.CompName.Name = "CompName"
+        Me.CompName.ReadOnly = True
+        Me.CompName.Width = 350
         '
-        'Label35
+        'CustomerCustNo
         '
-        Me.Label35.AutoSize = True
-        Me.Label35.Location = New System.Drawing.Point(1418, 830)
-        Me.Label35.Name = "Label35"
-        Me.Label35.Size = New System.Drawing.Size(249, 26)
-        Me.Label35.TabIndex = 25
-        Me.Label35.Text = "Contact  - Tech Support :"
+        Me.CustomerCustNo.DataPropertyName = "CustNo"
+        DataGridViewCellStyle224.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.CustomerCustNo.DefaultCellStyle = DataGridViewCellStyle224
+        Me.CustomerCustNo.HeaderText = "Cust No"
+        Me.CustomerCustNo.Name = "CustomerCustNo"
+        Me.CustomerCustNo.ReadOnly = True
+        Me.CustomerCustNo.Visible = False
         '
-        'Label36
+        'CustomerGSTIN
         '
-        Me.Label36.AutoSize = True
-        Me.Label36.Location = New System.Drawing.Point(1499, 906)
-        Me.Label36.Name = "Label36"
-        Me.Label36.Size = New System.Drawing.Size(203, 26)
-        Me.Label36.TabIndex = 26
-        Me.Label36.Text = "Mobile: 9035001599"
+        Me.CustomerGSTIN.DataPropertyName = "GSTIN"
+        DataGridViewCellStyle225.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.CustomerGSTIN.DefaultCellStyle = DataGridViewCellStyle225
+        Me.CustomerGSTIN.HeaderText = "GSTIN"
+        Me.CustomerGSTIN.Name = "CustomerGSTIN"
+        Me.CustomerGSTIN.ReadOnly = True
+        Me.CustomerGSTIN.Width = 150
         '
-        'Label37
+        'OwnerName
         '
-        Me.Label37.AutoSize = True
-        Me.Label37.Location = New System.Drawing.Point(1499, 944)
-        Me.Label37.Name = "Label37"
-        Me.Label37.Size = New System.Drawing.Size(351, 26)
-        Me.Label37.TabIndex = 27
-        Me.Label37.Text = "Email: elangovan4ever@gmail.com"
+        Me.OwnerName.DataPropertyName = "OwnerName"
+        DataGridViewCellStyle226.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.OwnerName.DefaultCellStyle = DataGridViewCellStyle226
+        Me.OwnerName.HeaderText = "Owner"
+        Me.OwnerName.Name = "OwnerName"
+        Me.OwnerName.ReadOnly = True
+        Me.OwnerName.Width = 200
+        '
+        'CustomerCGST
+        '
+        Me.CustomerCGST.DataPropertyName = "CGST"
+        DataGridViewCellStyle227.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle227.Format = "0.00"
+        Me.CustomerCGST.DefaultCellStyle = DataGridViewCellStyle227
+        Me.CustomerCGST.HeaderText = "CGST"
+        Me.CustomerCGST.Name = "CustomerCGST"
+        Me.CustomerCGST.ReadOnly = True
+        Me.CustomerCGST.Width = 160
+        '
+        'CustomerSGST
+        '
+        Me.CustomerSGST.DataPropertyName = "SGST"
+        DataGridViewCellStyle228.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle228.Format = "0.00"
+        Me.CustomerSGST.DefaultCellStyle = DataGridViewCellStyle228
+        Me.CustomerSGST.HeaderText = "SGST"
+        Me.CustomerSGST.Name = "CustomerSGST"
+        Me.CustomerSGST.ReadOnly = True
+        '
+        'CustomerIGST
+        '
+        Me.CustomerIGST.DataPropertyName = "IGST"
+        DataGridViewCellStyle229.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle229.Format = "0.00"
+        Me.CustomerIGST.DefaultCellStyle = DataGridViewCellStyle229
+        Me.CustomerIGST.HeaderText = "IGST"
+        Me.CustomerIGST.Name = "CustomerIGST"
+        Me.CustomerIGST.ReadOnly = True
+        '
+        'WPSqrInch
+        '
+        Me.WPSqrInch.DataPropertyName = "WorkingPrintSqrInch"
+        DataGridViewCellStyle230.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle230.Format = "0.00"
+        Me.WPSqrInch.DefaultCellStyle = DataGridViewCellStyle230
+        Me.WPSqrInch.HeaderText = "WP SqrInch"
+        Me.WPSqrInch.Name = "WPSqrInch"
+        Me.WPSqrInch.ReadOnly = True
+        Me.WPSqrInch.Width = 130
+        '
+        'WColor
+        '
+        Me.WColor.DataPropertyName = "WorkingColor"
+        DataGridViewCellStyle231.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle231.Format = "0.00"
+        Me.WColor.DefaultCellStyle = DataGridViewCellStyle231
+        Me.WColor.HeaderText = "W Color"
+        Me.WColor.Name = "WColor"
+        Me.WColor.ReadOnly = True
+        '
+        'PrintColor
+        '
+        Me.PrintColor.DataPropertyName = "PrintColor"
+        DataGridViewCellStyle232.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle232.Format = "0.00"
+        Me.PrintColor.DefaultCellStyle = DataGridViewCellStyle232
+        Me.PrintColor.HeaderText = "P Color"
+        Me.PrintColor.Name = "PrintColor"
+        Me.PrintColor.ReadOnly = True
+        '
+        'Mobile
+        '
+        Me.Mobile.DataPropertyName = "Mobile"
+        DataGridViewCellStyle233.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.Mobile.DefaultCellStyle = DataGridViewCellStyle233
+        Me.Mobile.HeaderText = "Mobile"
+        Me.Mobile.Name = "Mobile"
+        Me.Mobile.ReadOnly = True
+        Me.Mobile.Width = 150
+        '
+        'AddressLIne1
+        '
+        Me.AddressLIne1.DataPropertyName = "AddressLine1"
+        DataGridViewCellStyle234.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.AddressLIne1.DefaultCellStyle = DataGridViewCellStyle234
+        Me.AddressLIne1.HeaderText = "AddressLine1"
+        Me.AddressLIne1.Name = "AddressLIne1"
+        Me.AddressLIne1.ReadOnly = True
+        Me.AddressLIne1.Width = 200
+        '
+        'AddressLine2
+        '
+        Me.AddressLine2.DataPropertyName = "AddressLine2"
+        Me.AddressLine2.HeaderText = "AddressLine2"
+        Me.AddressLine2.Name = "AddressLine2"
+        Me.AddressLine2.ReadOnly = True
+        Me.AddressLine2.Width = 200
+        '
+        'AddressLine3
+        '
+        Me.AddressLine3.DataPropertyName = "AddressLine3"
+        Me.AddressLine3.HeaderText = "AddressLine3"
+        Me.AddressLine3.Name = "AddressLine3"
+        Me.AddressLine3.ReadOnly = True
+        Me.AddressLine3.Width = 200
+        '
+        'AddressLine4
+        '
+        Me.AddressLine4.DataPropertyName = "AddressLine4"
+        Me.AddressLine4.HeaderText = "AddressLine4"
+        Me.AddressLine4.Name = "AddressLine4"
+        Me.AddressLine4.ReadOnly = True
+        Me.AddressLine4.Width = 200
+        '
+        'AddressLine5
+        '
+        Me.AddressLine5.DataPropertyName = "AddressLine5"
+        Me.AddressLine5.HeaderText = "AddressLine5"
+        Me.AddressLine5.Name = "AddressLine5"
+        Me.AddressLine5.ReadOnly = True
+        Me.AddressLine5.Width = 200
+        '
+        'Landline
+        '
+        Me.Landline.DataPropertyName = "Landline"
+        DataGridViewCellStyle235.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.Landline.DefaultCellStyle = DataGridViewCellStyle235
+        Me.Landline.HeaderText = "Landline"
+        Me.Landline.Name = "Landline"
+        Me.Landline.ReadOnly = True
+        Me.Landline.Width = 150
+        '
+        'Email
+        '
+        Me.Email.DataPropertyName = "Email"
+        DataGridViewCellStyle236.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.Email.DefaultCellStyle = DataGridViewCellStyle236
+        Me.Email.HeaderText = "Email"
+        Me.Email.Name = "Email"
+        Me.Email.ReadOnly = True
+        Me.Email.Width = 180
+        '
+        'Website
+        '
+        Me.Website.DataPropertyName = "Website"
+        DataGridViewCellStyle237.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.Website.DefaultCellStyle = DataGridViewCellStyle237
+        Me.Website.HeaderText = "Website"
+        Me.Website.Name = "Website"
+        Me.Website.ReadOnly = True
+        Me.Website.Width = 150
         '
         'AgniMainForm
         '
@@ -6182,6 +6353,10 @@ Partial Class AgniMainForm
         Me.tabAllTabsHolder.ResumeLayout(False)
         Me.tabCustomer.ResumeLayout(False)
         Me.tabCustomer.PerformLayout()
+        Me.GroupBox23.ResumeLayout(False)
+        Me.GroupBox23.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.GroupBox22.ResumeLayout(False)
         CType(Me.dgCustCustomerDetails, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
@@ -6279,7 +6454,7 @@ Partial Class AgniMainForm
     Friend WithEvents lblAddress As System.Windows.Forms.Label
     Friend WithEvents lblCustomerName As System.Windows.Forms.Label
     Friend WithEvents cmbCustCustomerList As System.Windows.Forms.ComboBox
-    Friend WithEvents txtAddress As System.Windows.Forms.TextBox
+    Friend WithEvents txtAddressLine1 As System.Windows.Forms.TextBox
     Friend WithEvents txtOwnerName As System.Windows.Forms.TextBox
     Friend WithEvents Label64 As System.Windows.Forms.Label
     Friend WithEvents Label62 As System.Windows.Forms.Label
@@ -6471,8 +6646,7 @@ Partial Class AgniMainForm
     Friend WithEvents lblReportFromDate As Label
     Friend WithEvents dpReportToDate As DateTimePicker
     Friend WithEvents dpReportFromDate As DateTimePicker
-    Friend WithEvents txtReportDesignName As TextBox
-    Friend WithEvents lblReportDesignNameHint As Label
+    Friend WithEvents txtReportDesignNumber As TextBox
     Friend WithEvents lblReportTotDesignAmount As Label
     Friend WithEvents Label50 As Label
     Friend WithEvents lblReportUnBilledDesignAmount As Label
@@ -6525,8 +6699,8 @@ Partial Class AgniMainForm
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents cbReportSearchByDateRange As CheckBox
     Friend WithEvents cbReportSearchByBillNo As CheckBox
-    Friend WithEvents cbReportSearchByDesignName As CheckBox
     Friend WithEvents cbReportSearchByDesignNo As CheckBox
+    Friend WithEvents cbReportSearchByDesignSelection As CheckBox
     Friend WithEvents cbReportSearchByCustomer As CheckBox
     Friend WithEvents GroupBox6 As GroupBox
     Friend WithEvents GroupBox8 As GroupBox
@@ -6548,21 +6722,6 @@ Partial Class AgniMainForm
     Friend WithEvents btnSettingsResetBilNo As Button
     Friend WithEvents panelReportButtons As Panel
     Friend WithEvents btnReportSearchReset As Button
-    Friend WithEvents CompName As DataGridViewTextBoxColumn
-    Friend WithEvents CustomerCustNo As DataGridViewTextBoxColumn
-    Friend WithEvents CustomerGSTIN As DataGridViewTextBoxColumn
-    Friend WithEvents OwnerName As DataGridViewTextBoxColumn
-    Friend WithEvents CustomerCGST As DataGridViewTextBoxColumn
-    Friend WithEvents CustomerSGST As DataGridViewTextBoxColumn
-    Friend WithEvents CustomerIGST As DataGridViewTextBoxColumn
-    Friend WithEvents WPSqrInch As DataGridViewTextBoxColumn
-    Friend WithEvents WColor As DataGridViewTextBoxColumn
-    Friend WithEvents PrintColor As DataGridViewTextBoxColumn
-    Friend WithEvents Mobile As DataGridViewTextBoxColumn
-    Friend WithEvents Address As DataGridViewTextBoxColumn
-    Friend WithEvents Landline As DataGridViewTextBoxColumn
-    Friend WithEvents Email As DataGridViewTextBoxColumn
-    Friend WithEvents Website As DataGridViewTextBoxColumn
     Friend WithEvents ReportBillDisplayBillNO As DataGridViewTextBoxColumn
     Friend WithEvents ReportBillCustName As DataGridViewTextBoxColumn
     Friend WithEvents ReportBillBillNo As DataGridViewTextBoxColumn
@@ -6664,4 +6823,35 @@ Partial Class AgniMainForm
     Friend WithEvents Label36 As Label
     Friend WithEvents Label35 As Label
     Friend WithEvents Label34 As Label
+    Friend WithEvents btnChangeAddress As Button
+    Friend WithEvents btnLogOff As Button
+    Friend WithEvents GroupBox23 As GroupBox
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents txtAddressLine5 As TextBox
+    Friend WithEvents Label41 As Label
+    Friend WithEvents txtAddressLine4 As TextBox
+    Friend WithEvents Label40 As Label
+    Friend WithEvents txtAddressLine3 As TextBox
+    Friend WithEvents Label39 As Label
+    Friend WithEvents txtAddressLine2 As TextBox
+    Friend WithEvents Label38 As Label
+    Friend WithEvents CompName As DataGridViewTextBoxColumn
+    Friend WithEvents CustomerCustNo As DataGridViewTextBoxColumn
+    Friend WithEvents CustomerGSTIN As DataGridViewTextBoxColumn
+    Friend WithEvents OwnerName As DataGridViewTextBoxColumn
+    Friend WithEvents CustomerCGST As DataGridViewTextBoxColumn
+    Friend WithEvents CustomerSGST As DataGridViewTextBoxColumn
+    Friend WithEvents CustomerIGST As DataGridViewTextBoxColumn
+    Friend WithEvents WPSqrInch As DataGridViewTextBoxColumn
+    Friend WithEvents WColor As DataGridViewTextBoxColumn
+    Friend WithEvents PrintColor As DataGridViewTextBoxColumn
+    Friend WithEvents Mobile As DataGridViewTextBoxColumn
+    Friend WithEvents AddressLIne1 As DataGridViewTextBoxColumn
+    Friend WithEvents AddressLine2 As DataGridViewTextBoxColumn
+    Friend WithEvents AddressLine3 As DataGridViewTextBoxColumn
+    Friend WithEvents AddressLine4 As DataGridViewTextBoxColumn
+    Friend WithEvents AddressLine5 As DataGridViewTextBoxColumn
+    Friend WithEvents Landline As DataGridViewTextBoxColumn
+    Friend WithEvents Email As DataGridViewTextBoxColumn
+    Friend WithEvents Website As DataGridViewTextBoxColumn
 End Class

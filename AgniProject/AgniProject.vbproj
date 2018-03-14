@@ -152,6 +152,12 @@
     <Compile Include="BillSearchCrystalReportHolder.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ChangeAddress.Designer.vb">
+      <DependentUpon>ChangeAddress.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeAddress.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CommonModule.vb" />
     <Compile Include="AgniDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -280,6 +286,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BillCrystalReport.rpt">
       <LastGenOutput>BillCrystalReport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeAddress.resx">
+      <DependentUpon>ChangeAddress.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChangePassword.resx">
       <SubType>Designer</SubType>

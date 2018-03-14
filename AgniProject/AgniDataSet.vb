@@ -1,22 +1,6 @@
 ﻿Partial Class AgniDataSet
 
-    Partial Public Class BillAndPaymentHistorySummaryDataTable
-    End Class
+End Class
 
-    Partial Public Class TotalBillSearchResultDataTable
-
-    End Class
-
-    Partial Public Class BillSearchResultDataTable
-
-    End Class
-
-    Partial Public Class TotalOutstandingBalanceDataTable
-    End Class
-
-    Partial Public Class DesignDetailsDataTable
-
-
-    End Class
-
+Partial Class AgniDataSet
 End Class

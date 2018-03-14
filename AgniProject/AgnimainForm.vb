@@ -20,8 +20,8 @@ Public Class AgniMainForm
 
     Private SEARCH_BY_CUSTOMER As Integer = 1
     Private SEARCH_BY_BILL_NO As Integer = 2
-    Private SEARCH_BY_DESIGN_NO As Integer = 4
-    Private SEARCH_BY_DESIGN_NAME As Integer = 8
+    Private SEARCH_BY_DESIGN_SELECTION As Integer = 4
+    Private SEARCH_BY_DESIGN_NO As Integer = 8
     Private SEARCH_BY_DATE_RANGE As Integer = 16
 
     Private gDBConnInitialized As Boolean = False
@@ -41,14 +41,13 @@ Public Class AgniMainForm
             e.Cancel = True
         Else
             Login.Close()
-            dbConnection.Close()
+            closeDBConnection()
         End If
     End Sub
 
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        dbConnection = New SqlConnection("server=agni\SQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
-        dbConnection.Open()
+        dbConnection = getDBConnection()
 
         gDBConnInitialized = True
 
@@ -672,7 +671,13 @@ Public Class AgniMainForm
             Dim dataRow = customerTable.Rows(0)
             txtGstIn.Text = dataRow.Item("GSTIN")
             txtOwnerName.Text = dataRow.Item("OwnerName")
-            txtAddress.Text = dataRow.Item("Address")
+
+            txtAddressLine1.Text = If(dataRow.Item("AddressLine1") Is DBNull.Value, String.Empty, dataRow.Item("AddressLine1"))
+            txtAddressLine2.Text = If(dataRow.Item("AddressLine2") Is DBNull.Value, String.Empty, dataRow.Item("AddressLine2"))
+            txtAddressLine3.Text = If(dataRow.Item("AddressLine3") Is DBNull.Value, String.Empty, dataRow.Item("AddressLine3"))
+            txtAddressLine4.Text = If(dataRow.Item("AddressLine4") Is DBNull.Value, String.Empty, dataRow.Item("AddressLine4"))
+            txtAddressLine5.Text = If(dataRow.Item("AddressLine5") Is DBNull.Value, String.Empty, dataRow.Item("AddressLine5"))
+
             txtMobile.Text = dataRow.Item("Mobile")
             txtLandline.Text = dataRow.Item("Landline")
             txtEmail.Text = dataRow.Item("Email")
@@ -699,7 +704,11 @@ Public Class AgniMainForm
     Sub resetCustomerScreen()
         txtGstIn.Text = ""
         txtOwnerName.Text = ""
-        txtAddress.Text = ""
+        txtAddressLine1.Text = ""
+        txtAddressLine2.Text = ""
+        txtAddressLine3.Text = ""
+        txtAddressLine4.Text = ""
+        txtAddressLine5.Text = ""
         txtMobile.Text = ""
         txtEmail.Text = ""
         txtLandline.Text = ""
@@ -832,17 +841,17 @@ Public Class AgniMainForm
             ElseIf txtOwnerName.Text.Trim.Equals("") Then
                 MessageBox.Show("Enter Proprietor Name")
                 txtOwnerName.Focus()
-            ElseIf txtAddress.Text.Trim.Equals("") Then
-                MessageBox.Show("Enter Valid Address")
-                txtAddress.Focus()
+            ElseIf txtAddressLine1.Text.Trim.Equals("") Then
+                MessageBox.Show("Enter at least one line address in Address Line1")
+                txtAddressLine1.Focus()
             ElseIf txtMobile.Text.Trim.Equals("") Then
                 MessageBox.Show("Enter Mobile Number")
                 txtMobile.Focus()
             Else
                 Dim query As String = String.Empty
-                query &= "INSERT INTO customer (CompName, GSTIN, OwnerName, Address, Mobile, Landline, Email, Website, "
+                query &= "INSERT INTO customer (CompName, GSTIN, OwnerName, AddressLine1, AddressLine2, AddressLine3, AddressLine4, AddressLine5, Mobile, Landline, Email, Website, "
                 query &= "CGST, SGST, IGST, WorkingPrintSqrInch, WorkingColor, PrintColor) "
-                query &= "VALUES ( @CompName, @GSTIN, @OwnerName, @Address, @Mobile, @Landline, @Email, "
+                query &= "VALUES ( @CompName, @GSTIN, @OwnerName, @AddressLine1, @AddressLine2, @AddressLine3, @AddressLine4, @AddressLine5, @Mobile, @Landline, @Email, "
                 query &= "@Website, @CGST, @SGST, @IGST, @WorkingPrintSqrInch, @WorkingColor, @PrintColor)"
 
                 Using comm As New SqlCommand()
@@ -853,7 +862,11 @@ Public Class AgniMainForm
                         .Parameters.AddWithValue("@CompName", cmbCustCustomerList.Text)
                         .Parameters.AddWithValue("@GSTIN", txtGstIn.Text)
                         .Parameters.AddWithValue("@OwnerName", txtOwnerName.Text)
-                        .Parameters.AddWithValue("@Address", txtAddress.Text)
+                        .Parameters.AddWithValue("@AddressLine1", txtAddressLine1.Text)
+                        .Parameters.AddWithValue("@AddressLine2", txtAddressLine2.Text)
+                        .Parameters.AddWithValue("@AddressLine3", txtAddressLine3.Text)
+                        .Parameters.AddWithValue("@AddressLine4", txtAddressLine4.Text)
+                        .Parameters.AddWithValue("@AddressLine5", txtAddressLine5.Text)
                         .Parameters.AddWithValue("@Mobile", txtMobile.Text)
                         .Parameters.AddWithValue("@Landline", txtLandline.Text)
                         .Parameters.AddWithValue("@Email", txtEmail.Text)
@@ -968,9 +981,9 @@ Public Class AgniMainForm
         ElseIf txtOwnerName.Text.Trim.Equals("") Then
             MessageBox.Show("Enter Proprietor Name")
             txtOwnerName.Focus()
-        ElseIf txtAddress.Text.Trim.Equals("") Then
-            MessageBox.Show("Enter Valid Address")
-            txtAddress.Focus()
+        ElseIf txtAddressLine1.Text.Trim.Equals("") Then
+            MessageBox.Show("Enter at least one line address in Address Line1")
+            txtAddressLine1.Focus()
         ElseIf txtMobile.Text.Trim.Equals("") Then
             MessageBox.Show("Enter Mobile Number")
             txtMobile.Focus()
@@ -978,7 +991,7 @@ Public Class AgniMainForm
             Try
                 Dim custNo As Integer = gSelectedCustNo
                 Dim query As String = String.Empty
-                query &= "UPDATE customer SET CompName=@CompName, GSTIN=@GSTIN, OwnerName=@OwnerName, Address=@Address,"
+                query &= "UPDATE customer SET CompName=@CompName, GSTIN=@GSTIN, OwnerName=@OwnerName, AddressLine1=@AddressLine1, AddressLine2=@AddressLine2, AddressLine3=@AddressLine3, AddressLine4=@AddressLine4, AddressLine5=@AddressLine5,"
                 query &= "Mobile=@Mobile, Landline=@Landline, Email=@Email, Website=@Website, CGST=@CGST, SGST=@SGST, "
                 query &= "IGST=@IGST, WorkingPrintSqrInch=@WorkingPrintSqrInch, WorkingColor=@WorkingColor, PrintColor=@PrintColor where CustNo=@CustNo"
 
@@ -991,7 +1004,11 @@ Public Class AgniMainForm
                         .Parameters.AddWithValue("@CompName", cmbCustCustomerList.Text)
                         .Parameters.AddWithValue("@GSTIN", txtGstIn.Text)
                         .Parameters.AddWithValue("@OwnerName", txtOwnerName.Text)
-                        .Parameters.AddWithValue("@Address", txtAddress.Text)
+                        .Parameters.AddWithValue("@AddressLine1", txtAddressLine1.Text)
+                        .Parameters.AddWithValue("@AddressLine2", txtAddressLine2.Text)
+                        .Parameters.AddWithValue("@AddressLine3", txtAddressLine3.Text)
+                        .Parameters.AddWithValue("@AddressLine4", txtAddressLine4.Text)
+                        .Parameters.AddWithValue("@AddressLine5", txtAddressLine5.Text)
                         .Parameters.AddWithValue("@Mobile", txtMobile.Text)
                         .Parameters.AddWithValue("@Landline", txtLandline.Text)
                         .Parameters.AddWithValue("@Email", txtEmail.Text)
@@ -1503,7 +1520,7 @@ Public Class AgniMainForm
             Return
         End If
 
-        BillReportForm.Show()
+        BillReportForm.ShowDialog()
     End Sub
 
     Private Sub cmbDesCompanyList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbDesCustomerList.SelectedIndexChanged
@@ -1546,23 +1563,6 @@ Public Class AgniMainForm
 
     Private Sub btnBillingClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBillingClear.Click
         resetIndexOfComboBox(cmbBillingBillNoList)
-    End Sub
-
-    Private Sub Button38_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If MessageBox.Show("Are you sure want to log off?", "Log off", System.Windows.Forms.MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-            Me.Hide()
-            Login.cmbLoginUserName.Text = ""
-            Login.txtLoginPassword.Text = ""
-            Login.Show()
-
-            BillReportForm.Close()
-            CustomersOutstandingBalances.Close()
-            Login.cmbLoginUserName.Focus()
-        End If
-    End Sub
-
-    Private Sub Button37_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Me.Close()
     End Sub
 
 
@@ -2251,8 +2251,8 @@ Public Class AgniMainForm
 
 
     Private Sub cbReportSearchByFilterChanged(sender As Object, e As EventArgs) Handles cbReportSearchByCustomer.CheckedChanged,
+                                                    cbReportSearchByDesignSelection.CheckedChanged,
                                                     cbReportSearchByDesignNo.CheckedChanged,
-                                                    cbReportSearchByDesignName.CheckedChanged,
                                                     cbReportSearchByBillNo.CheckedChanged,
                                                     cbReportSearchByDateRange.CheckedChanged
 
@@ -2260,10 +2260,10 @@ Public Class AgniMainForm
             Return
         End If
 
-        If sender Is cbReportSearchByDesignNo And cbReportSearchByDesignNo.Checked = True Then
-            cbReportSearchByDesignName.Checked = False
-        ElseIf sender Is cbReportSearchByDesignName And cbReportSearchByDesignName.Checked = True Then
+        If sender Is cbReportSearchByDesignSelection And cbReportSearchByDesignSelection.Checked = True Then
             cbReportSearchByDesignNo.Checked = False
+        ElseIf sender Is cbReportSearchByDesignNo And cbReportSearchByDesignNo.Checked = True Then
+            cbReportSearchByDesignSelection.Checked = False
         End If
 
         groupReportCustomerName.Visible = False
@@ -2302,7 +2302,7 @@ Public Class AgniMainForm
 
         If (gLastSearchByCustomerCheckedValue <> cbReportSearchByCustomer.Checked) OrElse
                                     (gLastSearchByBillNoCheckedValue <> cbReportSearchByBillNo.Checked) OrElse
-                                    ((searchFilter Or SEARCH_BY_DESIGN_NO) = SEARCH_BY_DESIGN_NO) Then
+                                    ((searchFilter Or SEARCH_BY_DESIGN_SELECTION) = SEARCH_BY_DESIGN_SELECTION) Then
             loadDesignList(custNo, cmbReportDesignNoList, billNo)
         End If
 
@@ -2320,13 +2320,13 @@ Public Class AgniMainForm
             placeHolderIndex += 1
         End If
 
-        If (searchFilter And SEARCH_BY_DESIGN_NO) <> 0 Then
+        If (searchFilter And SEARCH_BY_DESIGN_SELECTION) <> 0 Then
             groupReportDesignList.Visible = True
             groupReportDesignList.Location = reportControlsPlaceHolders(placeHolderIndex).Location
             placeHolderIndex += 1
         End If
 
-        If (searchFilter And SEARCH_BY_DESIGN_NAME) <> 0 Then
+        If (searchFilter And SEARCH_BY_DESIGN_NO) <> 0 Then
             groupReportDesignName.Visible = True
             groupReportDesignName.Location = reportControlsPlaceHolders(placeHolderIndex).Location
             placeHolderIndex += 1
@@ -2366,12 +2366,12 @@ Public Class AgniMainForm
             searchFilter = searchFilter Or SEARCH_BY_BILL_NO
         End If
 
-        If cbReportSearchByDesignNo.Checked = True Then
-            searchFilter = searchFilter Or SEARCH_BY_DESIGN_NO
+        If cbReportSearchByDesignSelection.Checked = True Then
+            searchFilter = searchFilter Or SEARCH_BY_DESIGN_SELECTION
         End If
 
-        If cbReportSearchByDesignName.Checked = True Then
-            searchFilter = searchFilter Or SEARCH_BY_DESIGN_NAME
+        If cbReportSearchByDesignNo.Checked = True Then
+            searchFilter = searchFilter Or SEARCH_BY_DESIGN_NO
         End If
 
         If cbReportSearchByDateRange.Checked = True Then
@@ -2404,9 +2404,9 @@ Public Class AgniMainForm
             End If
         End If
         If groupReportDesignName.Visible = True Then
-            If txtReportDesignName.Text.Trim = String.Empty Then
+            If txtReportDesignNumber.Text.Trim = String.Empty Then
                 MsgBox("Please enter the design name or Remove the enter design name filter")
-                txtReportDesignName.Focus()
+                txtReportDesignNumber.Focus()
                 Return False
             End If
         End If
@@ -2667,7 +2667,7 @@ Public Class AgniMainForm
             gReportSearchFilterText += "Bill Number          : " + cmbReportBillNoList.Text.ToString
         End If
 
-        If (searchFilter And SEARCH_BY_DESIGN_NO) <> 0 Then
+        If (searchFilter And SEARCH_BY_DESIGN_SELECTION) <> 0 Then
             searchData.designNo = cmbReportDesignNoList.SelectedValue
             If gReportSearchFilterText IsNot String.Empty Then
                 gReportSearchFilterText += Chr(10) + Chr(13)
@@ -2675,12 +2675,12 @@ Public Class AgniMainForm
             gReportSearchFilterText += "Design Name      : " + cmbReportDesignNoList.Text.ToString
         End If
 
-        If (searchFilter And SEARCH_BY_DESIGN_NAME) <> 0 Then
-            searchData.designName = txtReportDesignName.Text
+        If (searchFilter And SEARCH_BY_DESIGN_NO) <> 0 Then
+            searchData.designNo = txtReportDesignNumber.Text
             If gReportSearchFilterText IsNot String.Empty Then
                 gReportSearchFilterText += Chr(10) + Chr(13)
             End If
-            gReportSearchFilterText += "Design Name       : " + searchData.designName
+            gReportSearchFilterText += "Design Number       : " + searchData.designNo.ToString
         End If
 
         If (searchFilter And SEARCH_BY_DATE_RANGE) <> 0 Then
@@ -3145,7 +3145,7 @@ Public Class AgniMainForm
             Return
         End If
 
-        BillSearchCrystalReportHolder.Show()
+        BillSearchCrystalReportHolder.ShowDialog()
     End Sub
 
     Private Sub btnPrintGSTDetails_Click(sender As Object, e As EventArgs) Handles btnPrintGSTDetails.Click
@@ -3154,7 +3154,7 @@ Public Class AgniMainForm
             Return
         End If
 
-        GSTCrystalReportHolder.Show()
+        GSTCrystalReportHolder.ShowDialog()
     End Sub
 
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles btnSettingsBackupDatabase.Click
@@ -3191,49 +3191,13 @@ Public Class AgniMainForm
         End If
     End Sub
 
-    Public Sub insertOrReplaceAttribute(attributeName As String, attributeValue As String)
 
-        Dim query As String = String.Empty
-        query &= "begin tran
-           update attributes with (serializable) set AttributeValue =  @attributeValue
-           where AttributeName = @attributeName
-           if @@rowcount = 0
-           begin
-              insert into attributes (AttributeName, AttributeValue) values (@attributeName, @attributeValue)
-           end
-        commit tran"
-
-        Using comm As New SqlCommand()
-            With comm
-                .Connection = dbConnection
-                .CommandType = CommandType.Text
-                .CommandText = query
-                .Parameters.AddWithValue("@attributeName", attributeName)
-                .Parameters.AddWithValue("@attributeValue", attributeValue)
-            End With
-            comm.ExecuteNonQuery()
-        End Using
-    End Sub
-
-    Function getAttribute(attributeName As String) As String
-        Dim attributeQuery = New SqlCommand("select * from attributes where AttributeName='" + attributeName + "'", dbConnection)
-        Dim attributeAdapter = New SqlDataAdapter()
-        attributeAdapter.SelectCommand = attributeQuery
-        Dim attributeDataSet = New DataSet
-        attributeAdapter.Fill(attributeDataSet, "attributes")
-        Dim attributeTable As DataTable = attributeDataSet.Tables(0)
-
-        If attributeTable.Rows.Count > 0 Then
-            Return attributeTable.Rows(0).Item("AttributeValue")
-        End If
-        Return Nothing
-    End Function
 
     Private Sub btnReportSearchReset_Click(sender As Object, e As EventArgs) Handles btnReportSearchReset.Click
         resetIndexOfComboBox(cmbReportCustomerList)
         resetIndexOfComboBox(cmbReportBillNoList)
         resetIndexOfComboBox(cmbReportDesignNoList)
-        txtReportDesignName.Text = ""
+        txtReportDesignNumber.Text = ""
         dpReportFromDate.Text = DateTime.Today
         dpReportToDate.Text = DateTime.Today
         Call CType(dgReportDesignGrid.DataSource, DataTable).Rows.Clear()
@@ -3258,7 +3222,7 @@ Public Class AgniMainForm
             Return
         End If
 
-        PaymentSearchCrystalReportHolder.Show()
+        PaymentSearchCrystalReportHolder.ShowDialog()
     End Sub
 
     Private Sub Button1_Click_2(sender As Object, e As EventArgs) Handles Button1.Click
@@ -3267,7 +3231,7 @@ Public Class AgniMainForm
             Return
         End If
 
-        BillAndPaymentHistoryCrystalReportHolder.Show()
+        BillAndPaymentHistoryCrystalReportHolder.ShowDialog()
     End Sub
 
     Private Sub btnBillingDeleteBill_Click(sender As Object, e As EventArgs) Handles btnBillingDeleteBill.Click
@@ -3385,7 +3349,18 @@ Public Class AgniMainForm
         End If
     End Sub
 
-    Private Sub AgniMainForm_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+    Private Sub btnChangeAddress_Click(sender As Object, e As EventArgs) Handles btnChangeAddress.Click
+        ChangeAddress.ShowDialog()
     End Sub
 
+    Private Sub btnLogOff_Click(sender As Object, e As EventArgs) Handles btnLogOff.Click
+        If MessageBox.Show("Are you sure want to log off?", "Log off", System.Windows.Forms.MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+            Me.Hide()
+            Login.Show()
+        End If
+    End Sub
+
+    Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs)
+
+    End Sub
 End Class
