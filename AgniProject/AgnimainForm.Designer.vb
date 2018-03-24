@@ -19,135 +19,136 @@ Partial Class AgniMainForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle129 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle130 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle149 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle150 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle131 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle132 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle133 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle134 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle135 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle136 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle137 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle138 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle139 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle140 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle141 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle142 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle143 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle144 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle145 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle146 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle147 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle148 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle151 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle152 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle170 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle171 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle153 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle154 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle155 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle156 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle157 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle158 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle159 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle160 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle161 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle162 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle163 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle164 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle165 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle166 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle167 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle168 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle169 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle172 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle173 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle185 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle186 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle174 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle175 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle176 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle177 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle178 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle179 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle180 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle181 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle182 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle183 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle184 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle187 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle188 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle205 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle206 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle189 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle190 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle191 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle192 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle193 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle194 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle195 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle196 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle197 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle198 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle199 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle200 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle201 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle202 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle203 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle204 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle207 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle208 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle219 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle220 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle209 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle210 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle211 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle212 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle213 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle214 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle215 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle216 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle217 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle218 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle641 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle642 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle661 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle662 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle643 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle644 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle645 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle646 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle647 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle648 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle649 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle650 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle651 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle652 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle653 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle654 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle655 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle656 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle657 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle658 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle659 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle660 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle663 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle664 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle682 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle683 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle665 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle666 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle667 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle668 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle669 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle670 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle671 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle672 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle673 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle674 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle675 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle676 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle677 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle678 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle679 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle680 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle681 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle684 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle685 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle697 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle698 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle686 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle687 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle688 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle689 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle690 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle691 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle692 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle693 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle694 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle695 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle696 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle699 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle700 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle717 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle718 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle701 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle702 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle703 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle704 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle705 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle706 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle707 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle708 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle709 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle710 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle711 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle712 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle713 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle714 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle715 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle716 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle719 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle720 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle731 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle732 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle721 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle722 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle723 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle724 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle725 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle726 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle727 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle728 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle729 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle730 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AgniMainForm))
-        Dim DataGridViewCellStyle221 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle222 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle238 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle239 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle240 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle241 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle255 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle256 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle242 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle243 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle244 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle245 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle246 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle247 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle248 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle249 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle250 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle251 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle252 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle253 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle254 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle223 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle224 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle225 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle226 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle227 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle228 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle229 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle230 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle231 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle232 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle233 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle234 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle235 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle236 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle237 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle733 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle734 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle750 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle751 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle735 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle736 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle737 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle738 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle739 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle740 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle741 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle742 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle743 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle744 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle745 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle746 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle747 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle748 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle749 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle752 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle753 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle767 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle768 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle754 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle755 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle756 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle757 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle758 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle759 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle760 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle761 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle762 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle763 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle764 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle765 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle766 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.tabHelp = New System.Windows.Forms.TabPage()
         Me.Label37 = New System.Windows.Forms.Label()
         Me.Label36 = New System.Windows.Forms.Label()
@@ -421,6 +422,25 @@ Partial Class AgniMainForm
         Me.lblAddress = New System.Windows.Forms.Label()
         Me.GroupBox22 = New System.Windows.Forms.GroupBox()
         Me.dgCustCustomerDetails = New System.Windows.Forms.DataGridView()
+        Me.CompName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CustomerCustNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CustomerGSTIN = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OwnerName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CustomerCGST = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CustomerSGST = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CustomerIGST = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.WPSqrInch = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.WColor = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PrintColor = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Mobile = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AddressLIne1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AddressLine2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AddressLine3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AddressLine4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AddressLine5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Landline = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Email = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Website = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.lblPrintCharge = New System.Windows.Forms.Label()
         Me.lblWorkingCharge = New System.Windows.Forms.Label()
@@ -509,6 +529,7 @@ Partial Class AgniMainForm
         Me.btnChangeAddress = New System.Windows.Forms.Button()
         Me.btnSettingsResetBilNo = New System.Windows.Forms.Button()
         Me.btnSettingsBackupDatabase = New System.Windows.Forms.Button()
+        Me.TabIcons = New System.Windows.Forms.ImageList(Me.components)
         Me.Label114 = New System.Windows.Forms.Label()
         Me.Label115 = New System.Windows.Forms.Label()
         Me.Label116 = New System.Windows.Forms.Label()
@@ -585,25 +606,6 @@ Partial Class AgniMainForm
         Me.Label150 = New System.Windows.Forms.Label()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
-        Me.CompName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CustomerCustNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CustomerGSTIN = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.OwnerName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CustomerCGST = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CustomerSGST = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CustomerIGST = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.WPSqrInch = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.WColor = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PrintColor = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Mobile = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AddressLIne1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AddressLine2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AddressLine3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AddressLine4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AddressLine5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Landline = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Email = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Website = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tabHelp.SuspendLayout()
         Me.tabReports.SuspendLayout()
         Me.panelReportButtons.SuspendLayout()
@@ -678,11 +680,11 @@ Partial Class AgniMainForm
         Me.tabHelp.Controls.Add(Me.Label62)
         Me.tabHelp.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.tabHelp.Font = New System.Drawing.Font("Book Antiqua", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tabHelp.ImageKey = "help1.JPG"
-        Me.tabHelp.Location = New System.Drawing.Point(4, 52)
+        Me.tabHelp.ImageKey = "help.png"
+        Me.tabHelp.Location = New System.Drawing.Point(4, 64)
         Me.tabHelp.Name = "tabHelp"
         Me.tabHelp.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabHelp.Size = New System.Drawing.Size(1908, 997)
+        Me.tabHelp.Size = New System.Drawing.Size(1908, 985)
         Me.tabHelp.TabIndex = 5
         Me.tabHelp.Tag = "tagHelpTab"
         Me.tabHelp.Text = "Help"
@@ -817,11 +819,11 @@ Partial Class AgniMainForm
         Me.tabReports.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.tabReports.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tabReports.ForeColor = System.Drawing.Color.White
-        Me.tabReports.ImageKey = "search.jpg"
-        Me.tabReports.Location = New System.Drawing.Point(4, 52)
+        Me.tabReports.ImageKey = "report.png"
+        Me.tabReports.Location = New System.Drawing.Point(4, 64)
         Me.tabReports.Margin = New System.Windows.Forms.Padding(0)
         Me.tabReports.Name = "tabReports"
-        Me.tabReports.Size = New System.Drawing.Size(1908, 997)
+        Me.tabReports.Size = New System.Drawing.Size(1908, 985)
         Me.tabReports.TabIndex = 4
         Me.tabReports.Tag = "tagReportsTab"
         Me.tabReports.Text = "Reports"
@@ -1604,30 +1606,30 @@ Partial Class AgniMainForm
         Me.dgReportPaymentGrid.AllowUserToAddRows = False
         Me.dgReportPaymentGrid.AllowUserToDeleteRows = False
         Me.dgReportPaymentGrid.AllowUserToOrderColumns = True
-        DataGridViewCellStyle129.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.dgReportPaymentGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle129
+        DataGridViewCellStyle641.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.dgReportPaymentGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle641
         Me.dgReportPaymentGrid.BackgroundColor = System.Drawing.Color.Lavender
         Me.dgReportPaymentGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgReportPaymentGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical
         Me.dgReportPaymentGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
-        DataGridViewCellStyle130.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle130.BackColor = System.Drawing.Color.RoyalBlue
-        DataGridViewCellStyle130.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle130.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle130.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle130.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle130.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgReportPaymentGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle130
+        DataGridViewCellStyle642.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle642.BackColor = System.Drawing.Color.RoyalBlue
+        DataGridViewCellStyle642.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle642.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle642.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle642.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle642.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgReportPaymentGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle642
         Me.dgReportPaymentGrid.ColumnHeadersHeight = 50
         Me.dgReportPaymentGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ReportPaymentCustName, Me.ReportPaymentDisplayBillNo, Me.ReportPaymentBillDate, Me.ReportPaymentBilledAmount, Me.ReportPaymentNetBalanceBeforePayment, Me.ReportPaymentFinalPaidAmount, Me.ReportPaymentNetBalanceAfterPayment, Me.ReportPaymentPaymentDate, Me.reportPaymentActualPaidAmount, Me.ReportPaymentDiscount, Me.ReportPaymentPaymentMode, Me.ReportPaymentBankName, Me.ReportPaymentChequeNo, Me.ReportPaymentChequeDate, Me.ReportPaymentRemarks, Me.ReportPaymentPaymentNo, Me.ReportPaymentBillNo, Me.ReportPaymentUnPaidBilledAmount})
-        DataGridViewCellStyle149.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle149.BackColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle149.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle149.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle149.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle149.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle149.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgReportPaymentGrid.DefaultCellStyle = DataGridViewCellStyle149
+        DataGridViewCellStyle661.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle661.BackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle661.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle661.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle661.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle661.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle661.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgReportPaymentGrid.DefaultCellStyle = DataGridViewCellStyle661
         Me.dgReportPaymentGrid.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgReportPaymentGrid.EnableHeadersVisualStyles = False
         Me.dgReportPaymentGrid.GridColor = System.Drawing.Color.Maroon
@@ -1636,11 +1638,11 @@ Partial Class AgniMainForm
         Me.dgReportPaymentGrid.Name = "dgReportPaymentGrid"
         Me.dgReportPaymentGrid.ReadOnly = True
         Me.dgReportPaymentGrid.RowHeadersVisible = False
-        DataGridViewCellStyle150.BackColor = System.Drawing.Color.Lavender
-        DataGridViewCellStyle150.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle150.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle150.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgReportPaymentGrid.RowsDefaultCellStyle = DataGridViewCellStyle150
+        DataGridViewCellStyle662.BackColor = System.Drawing.Color.Lavender
+        DataGridViewCellStyle662.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle662.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle662.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgReportPaymentGrid.RowsDefaultCellStyle = DataGridViewCellStyle662
         Me.dgReportPaymentGrid.RowTemplate.Height = 25
         Me.dgReportPaymentGrid.RowTemplate.ReadOnly = True
         Me.dgReportPaymentGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
@@ -1651,8 +1653,8 @@ Partial Class AgniMainForm
         'ReportPaymentCustName
         '
         Me.ReportPaymentCustName.DataPropertyName = "CustomerName"
-        DataGridViewCellStyle131.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.ReportPaymentCustName.DefaultCellStyle = DataGridViewCellStyle131
+        DataGridViewCellStyle643.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.ReportPaymentCustName.DefaultCellStyle = DataGridViewCellStyle643
         Me.ReportPaymentCustName.Frozen = True
         Me.ReportPaymentCustName.HeaderText = "Customer Name"
         Me.ReportPaymentCustName.Name = "ReportPaymentCustName"
@@ -1662,9 +1664,9 @@ Partial Class AgniMainForm
         'ReportPaymentDisplayBillNo
         '
         Me.ReportPaymentDisplayBillNo.DataPropertyName = "DisplayBillNo"
-        DataGridViewCellStyle132.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle132.Format = "0.00"
-        Me.ReportPaymentDisplayBillNo.DefaultCellStyle = DataGridViewCellStyle132
+        DataGridViewCellStyle644.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle644.Format = "0.00"
+        Me.ReportPaymentDisplayBillNo.DefaultCellStyle = DataGridViewCellStyle644
         Me.ReportPaymentDisplayBillNo.Frozen = True
         Me.ReportPaymentDisplayBillNo.HeaderText = "Bill No"
         Me.ReportPaymentDisplayBillNo.Name = "ReportPaymentDisplayBillNo"
@@ -1674,9 +1676,9 @@ Partial Class AgniMainForm
         'ReportPaymentBillDate
         '
         Me.ReportPaymentBillDate.DataPropertyName = "BillDate"
-        DataGridViewCellStyle133.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle133.Format = "dd\/MM\/yyyy"
-        Me.ReportPaymentBillDate.DefaultCellStyle = DataGridViewCellStyle133
+        DataGridViewCellStyle645.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle645.Format = "dd\/MM\/yyyy"
+        Me.ReportPaymentBillDate.DefaultCellStyle = DataGridViewCellStyle645
         Me.ReportPaymentBillDate.HeaderText = "Bill Date"
         Me.ReportPaymentBillDate.Name = "ReportPaymentBillDate"
         Me.ReportPaymentBillDate.ReadOnly = True
@@ -1684,9 +1686,9 @@ Partial Class AgniMainForm
         'ReportPaymentBilledAmount
         '
         Me.ReportPaymentBilledAmount.DataPropertyName = "BillAmount"
-        DataGridViewCellStyle134.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle134.Format = "0.00"
-        Me.ReportPaymentBilledAmount.DefaultCellStyle = DataGridViewCellStyle134
+        DataGridViewCellStyle646.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle646.Format = "0.00"
+        Me.ReportPaymentBilledAmount.DefaultCellStyle = DataGridViewCellStyle646
         Me.ReportPaymentBilledAmount.HeaderText = "Bill Amount"
         Me.ReportPaymentBilledAmount.Name = "ReportPaymentBilledAmount"
         Me.ReportPaymentBilledAmount.ReadOnly = True
@@ -1694,9 +1696,9 @@ Partial Class AgniMainForm
         'ReportPaymentNetBalanceBeforePayment
         '
         Me.ReportPaymentNetBalanceBeforePayment.DataPropertyName = "NetBalanceBeforePayment"
-        DataGridViewCellStyle135.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle135.Format = "0.00"
-        Me.ReportPaymentNetBalanceBeforePayment.DefaultCellStyle = DataGridViewCellStyle135
+        DataGridViewCellStyle647.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle647.Format = "0.00"
+        Me.ReportPaymentNetBalanceBeforePayment.DefaultCellStyle = DataGridViewCellStyle647
         Me.ReportPaymentNetBalanceBeforePayment.HeaderText = "Net Balance Before Payment"
         Me.ReportPaymentNetBalanceBeforePayment.Name = "ReportPaymentNetBalanceBeforePayment"
         Me.ReportPaymentNetBalanceBeforePayment.ReadOnly = True
@@ -1705,9 +1707,9 @@ Partial Class AgniMainForm
         'ReportPaymentFinalPaidAmount
         '
         Me.ReportPaymentFinalPaidAmount.DataPropertyName = "FinalPaidAmount"
-        DataGridViewCellStyle136.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle136.Format = "0.00"
-        Me.ReportPaymentFinalPaidAmount.DefaultCellStyle = DataGridViewCellStyle136
+        DataGridViewCellStyle648.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle648.Format = "0.00"
+        Me.ReportPaymentFinalPaidAmount.DefaultCellStyle = DataGridViewCellStyle648
         Me.ReportPaymentFinalPaidAmount.HeaderText = "Paid Amount"
         Me.ReportPaymentFinalPaidAmount.Name = "ReportPaymentFinalPaidAmount"
         Me.ReportPaymentFinalPaidAmount.ReadOnly = True
@@ -1716,9 +1718,9 @@ Partial Class AgniMainForm
         'ReportPaymentNetBalanceAfterPayment
         '
         Me.ReportPaymentNetBalanceAfterPayment.DataPropertyName = "NetBalanceAfterPayment"
-        DataGridViewCellStyle137.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle137.Format = "0.00"
-        Me.ReportPaymentNetBalanceAfterPayment.DefaultCellStyle = DataGridViewCellStyle137
+        DataGridViewCellStyle649.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle649.Format = "0.00"
+        Me.ReportPaymentNetBalanceAfterPayment.DefaultCellStyle = DataGridViewCellStyle649
         Me.ReportPaymentNetBalanceAfterPayment.HeaderText = "Net Balance After Payment"
         Me.ReportPaymentNetBalanceAfterPayment.Name = "ReportPaymentNetBalanceAfterPayment"
         Me.ReportPaymentNetBalanceAfterPayment.ReadOnly = True
@@ -1727,9 +1729,9 @@ Partial Class AgniMainForm
         'ReportPaymentPaymentDate
         '
         Me.ReportPaymentPaymentDate.DataPropertyName = "PaymentDate"
-        DataGridViewCellStyle138.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle138.Format = "dd\/MM\/yyyy"
-        Me.ReportPaymentPaymentDate.DefaultCellStyle = DataGridViewCellStyle138
+        DataGridViewCellStyle650.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle650.Format = "dd\/MM\/yyyy"
+        Me.ReportPaymentPaymentDate.DefaultCellStyle = DataGridViewCellStyle650
         Me.ReportPaymentPaymentDate.HeaderText = "Payment Date"
         Me.ReportPaymentPaymentDate.Name = "ReportPaymentPaymentDate"
         Me.ReportPaymentPaymentDate.ReadOnly = True
@@ -1738,9 +1740,9 @@ Partial Class AgniMainForm
         'reportPaymentActualPaidAmount
         '
         Me.reportPaymentActualPaidAmount.DataPropertyName = "ActualPaidAmount"
-        DataGridViewCellStyle139.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle139.Format = "0.00"
-        Me.reportPaymentActualPaidAmount.DefaultCellStyle = DataGridViewCellStyle139
+        DataGridViewCellStyle651.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle651.Format = "0.00"
+        Me.reportPaymentActualPaidAmount.DefaultCellStyle = DataGridViewCellStyle651
         Me.reportPaymentActualPaidAmount.HeaderText = "Actual Paid"
         Me.reportPaymentActualPaidAmount.Name = "reportPaymentActualPaidAmount"
         Me.reportPaymentActualPaidAmount.ReadOnly = True
@@ -1749,9 +1751,9 @@ Partial Class AgniMainForm
         'ReportPaymentDiscount
         '
         Me.ReportPaymentDiscount.DataPropertyName = "Discount"
-        DataGridViewCellStyle140.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle140.Format = "0.00"
-        Me.ReportPaymentDiscount.DefaultCellStyle = DataGridViewCellStyle140
+        DataGridViewCellStyle652.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle652.Format = "0.00"
+        Me.ReportPaymentDiscount.DefaultCellStyle = DataGridViewCellStyle652
         Me.ReportPaymentDiscount.HeaderText = "Discount"
         Me.ReportPaymentDiscount.Name = "ReportPaymentDiscount"
         Me.ReportPaymentDiscount.ReadOnly = True
@@ -1759,9 +1761,9 @@ Partial Class AgniMainForm
         'ReportPaymentPaymentMode
         '
         Me.ReportPaymentPaymentMode.DataPropertyName = "PaymentMode"
-        DataGridViewCellStyle141.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle141.Format = "0.00"
-        Me.ReportPaymentPaymentMode.DefaultCellStyle = DataGridViewCellStyle141
+        DataGridViewCellStyle653.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle653.Format = "0.00"
+        Me.ReportPaymentPaymentMode.DefaultCellStyle = DataGridViewCellStyle653
         Me.ReportPaymentPaymentMode.HeaderText = "Mode"
         Me.ReportPaymentPaymentMode.Name = "ReportPaymentPaymentMode"
         Me.ReportPaymentPaymentMode.ReadOnly = True
@@ -1769,9 +1771,9 @@ Partial Class AgniMainForm
         'ReportPaymentBankName
         '
         Me.ReportPaymentBankName.DataPropertyName = "BankName"
-        DataGridViewCellStyle142.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle142.Format = "0.00"
-        Me.ReportPaymentBankName.DefaultCellStyle = DataGridViewCellStyle142
+        DataGridViewCellStyle654.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle654.Format = "0.00"
+        Me.ReportPaymentBankName.DefaultCellStyle = DataGridViewCellStyle654
         Me.ReportPaymentBankName.HeaderText = "Bank Name"
         Me.ReportPaymentBankName.Name = "ReportPaymentBankName"
         Me.ReportPaymentBankName.ReadOnly = True
@@ -1780,9 +1782,9 @@ Partial Class AgniMainForm
         'ReportPaymentChequeNo
         '
         Me.ReportPaymentChequeNo.DataPropertyName = "ChequeNo"
-        DataGridViewCellStyle143.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle143.Format = "0.00"
-        Me.ReportPaymentChequeNo.DefaultCellStyle = DataGridViewCellStyle143
+        DataGridViewCellStyle655.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle655.Format = "0.00"
+        Me.ReportPaymentChequeNo.DefaultCellStyle = DataGridViewCellStyle655
         Me.ReportPaymentChequeNo.HeaderText = "Cheque No"
         Me.ReportPaymentChequeNo.Name = "ReportPaymentChequeNo"
         Me.ReportPaymentChequeNo.ReadOnly = True
@@ -1791,9 +1793,9 @@ Partial Class AgniMainForm
         'ReportPaymentChequeDate
         '
         Me.ReportPaymentChequeDate.DataPropertyName = "ChequeDate"
-        DataGridViewCellStyle144.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle144.Format = "dd\/MM\/yyyy"
-        Me.ReportPaymentChequeDate.DefaultCellStyle = DataGridViewCellStyle144
+        DataGridViewCellStyle656.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle656.Format = "dd\/MM\/yyyy"
+        Me.ReportPaymentChequeDate.DefaultCellStyle = DataGridViewCellStyle656
         Me.ReportPaymentChequeDate.HeaderText = "Cheque Date"
         Me.ReportPaymentChequeDate.Name = "ReportPaymentChequeDate"
         Me.ReportPaymentChequeDate.ReadOnly = True
@@ -1802,9 +1804,9 @@ Partial Class AgniMainForm
         'ReportPaymentRemarks
         '
         Me.ReportPaymentRemarks.DataPropertyName = "Remarks"
-        DataGridViewCellStyle145.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle145.Format = "0.00"
-        Me.ReportPaymentRemarks.DefaultCellStyle = DataGridViewCellStyle145
+        DataGridViewCellStyle657.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle657.Format = "0.00"
+        Me.ReportPaymentRemarks.DefaultCellStyle = DataGridViewCellStyle657
         Me.ReportPaymentRemarks.HeaderText = "Remarks"
         Me.ReportPaymentRemarks.Name = "ReportPaymentRemarks"
         Me.ReportPaymentRemarks.ReadOnly = True
@@ -1813,8 +1815,8 @@ Partial Class AgniMainForm
         'ReportPaymentPaymentNo
         '
         Me.ReportPaymentPaymentNo.DataPropertyName = "PaymentNo"
-        DataGridViewCellStyle146.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.ReportPaymentPaymentNo.DefaultCellStyle = DataGridViewCellStyle146
+        DataGridViewCellStyle658.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.ReportPaymentPaymentNo.DefaultCellStyle = DataGridViewCellStyle658
         Me.ReportPaymentPaymentNo.HeaderText = "PaymentNo"
         Me.ReportPaymentPaymentNo.Name = "ReportPaymentPaymentNo"
         Me.ReportPaymentPaymentNo.ReadOnly = True
@@ -1824,8 +1826,8 @@ Partial Class AgniMainForm
         '
         Me.ReportPaymentBillNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.ReportPaymentBillNo.DataPropertyName = "BillNO"
-        DataGridViewCellStyle147.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.ReportPaymentBillNo.DefaultCellStyle = DataGridViewCellStyle147
+        DataGridViewCellStyle659.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.ReportPaymentBillNo.DefaultCellStyle = DataGridViewCellStyle659
         Me.ReportPaymentBillNo.HeaderText = "Internal Bill No"
         Me.ReportPaymentBillNo.Name = "ReportPaymentBillNo"
         Me.ReportPaymentBillNo.ReadOnly = True
@@ -1835,9 +1837,9 @@ Partial Class AgniMainForm
         'ReportPaymentUnPaidBilledAmount
         '
         Me.ReportPaymentUnPaidBilledAmount.DataPropertyName = "UnPaidBilledAmount"
-        DataGridViewCellStyle148.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle148.Format = "0.00"
-        Me.ReportPaymentUnPaidBilledAmount.DefaultCellStyle = DataGridViewCellStyle148
+        DataGridViewCellStyle660.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle660.Format = "0.00"
+        Me.ReportPaymentUnPaidBilledAmount.DefaultCellStyle = DataGridViewCellStyle660
         Me.ReportPaymentUnPaidBilledAmount.HeaderText = "UnPaidBilledAmount"
         Me.ReportPaymentUnPaidBilledAmount.Name = "ReportPaymentUnPaidBilledAmount"
         Me.ReportPaymentUnPaidBilledAmount.ReadOnly = True
@@ -1858,30 +1860,30 @@ Partial Class AgniMainForm
         '
         Me.dgReportBillGrid.AllowUserToAddRows = False
         Me.dgReportBillGrid.AllowUserToDeleteRows = False
-        DataGridViewCellStyle151.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.dgReportBillGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle151
+        DataGridViewCellStyle663.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.dgReportBillGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle663
         Me.dgReportBillGrid.BackgroundColor = System.Drawing.Color.Lavender
         Me.dgReportBillGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgReportBillGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical
         Me.dgReportBillGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
-        DataGridViewCellStyle152.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle152.BackColor = System.Drawing.Color.RoyalBlue
-        DataGridViewCellStyle152.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle152.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle152.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle152.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle152.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgReportBillGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle152
+        DataGridViewCellStyle664.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle664.BackColor = System.Drawing.Color.RoyalBlue
+        DataGridViewCellStyle664.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle664.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle664.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle664.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle664.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgReportBillGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle664
         Me.dgReportBillGrid.ColumnHeadersHeight = 50
         Me.dgReportBillGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ReportBillDisplayBillNO, Me.ReportBillCustName, Me.ReportBillBillNo, Me.ReportBillBillDate, Me.ReportBillUnPaidAmountTillNow, Me.ReportBillDesignCost, Me.ReportBillCGST, Me.ReportBillSGST, Me.ReportBillIGST, Me.ReportBillCGSTAmount, Me.ReportBillSGSTAmount, Me.ReportBillIGSTAmount, Me.ReportBillGSTAmount, Me.ReportBillDesignAmountGST, Me.ReportBillTotalAmount, Me.ReportBillPaidAmount, Me.ReportBillRemainingBalance, Me.ReportBillCancelled})
-        DataGridViewCellStyle170.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle170.BackColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle170.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle170.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle170.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle170.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle170.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgReportBillGrid.DefaultCellStyle = DataGridViewCellStyle170
+        DataGridViewCellStyle682.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle682.BackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle682.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle682.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle682.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle682.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle682.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgReportBillGrid.DefaultCellStyle = DataGridViewCellStyle682
         Me.dgReportBillGrid.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgReportBillGrid.EnableHeadersVisualStyles = False
         Me.dgReportBillGrid.GridColor = System.Drawing.Color.Maroon
@@ -1890,11 +1892,11 @@ Partial Class AgniMainForm
         Me.dgReportBillGrid.Name = "dgReportBillGrid"
         Me.dgReportBillGrid.ReadOnly = True
         Me.dgReportBillGrid.RowHeadersVisible = False
-        DataGridViewCellStyle171.BackColor = System.Drawing.Color.Lavender
-        DataGridViewCellStyle171.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle171.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle171.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgReportBillGrid.RowsDefaultCellStyle = DataGridViewCellStyle171
+        DataGridViewCellStyle683.BackColor = System.Drawing.Color.Lavender
+        DataGridViewCellStyle683.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle683.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle683.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgReportBillGrid.RowsDefaultCellStyle = DataGridViewCellStyle683
         Me.dgReportBillGrid.RowTemplate.Height = 25
         Me.dgReportBillGrid.RowTemplate.ReadOnly = True
         Me.dgReportBillGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
@@ -1906,8 +1908,8 @@ Partial Class AgniMainForm
         '
         Me.ReportBillDisplayBillNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
         Me.ReportBillDisplayBillNO.DataPropertyName = "DisplayBillNO"
-        DataGridViewCellStyle153.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.ReportBillDisplayBillNO.DefaultCellStyle = DataGridViewCellStyle153
+        DataGridViewCellStyle665.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.ReportBillDisplayBillNO.DefaultCellStyle = DataGridViewCellStyle665
         Me.ReportBillDisplayBillNO.Frozen = True
         Me.ReportBillDisplayBillNO.HeaderText = "Bill No"
         Me.ReportBillDisplayBillNO.Name = "ReportBillDisplayBillNO"
@@ -1916,8 +1918,8 @@ Partial Class AgniMainForm
         'ReportBillCustName
         '
         Me.ReportBillCustName.DataPropertyName = "CustomerName"
-        DataGridViewCellStyle154.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.ReportBillCustName.DefaultCellStyle = DataGridViewCellStyle154
+        DataGridViewCellStyle666.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.ReportBillCustName.DefaultCellStyle = DataGridViewCellStyle666
         Me.ReportBillCustName.Frozen = True
         Me.ReportBillCustName.HeaderText = "Customer Name"
         Me.ReportBillCustName.Name = "ReportBillCustName"
@@ -1927,8 +1929,8 @@ Partial Class AgniMainForm
         'ReportBillBillNo
         '
         Me.ReportBillBillNo.DataPropertyName = "BillNo"
-        DataGridViewCellStyle155.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.ReportBillBillNo.DefaultCellStyle = DataGridViewCellStyle155
+        DataGridViewCellStyle667.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.ReportBillBillNo.DefaultCellStyle = DataGridViewCellStyle667
         Me.ReportBillBillNo.HeaderText = "Internal No"
         Me.ReportBillBillNo.Name = "ReportBillBillNo"
         Me.ReportBillBillNo.ReadOnly = True
@@ -1937,9 +1939,9 @@ Partial Class AgniMainForm
         'ReportBillBillDate
         '
         Me.ReportBillBillDate.DataPropertyName = "BillDate"
-        DataGridViewCellStyle156.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle156.Format = "dd\/MM\/yyyy"
-        Me.ReportBillBillDate.DefaultCellStyle = DataGridViewCellStyle156
+        DataGridViewCellStyle668.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle668.Format = "dd\/MM\/yyyy"
+        Me.ReportBillBillDate.DefaultCellStyle = DataGridViewCellStyle668
         Me.ReportBillBillDate.HeaderText = "Bill Date"
         Me.ReportBillBillDate.Name = "ReportBillBillDate"
         Me.ReportBillBillDate.ReadOnly = True
@@ -1948,9 +1950,9 @@ Partial Class AgniMainForm
         'ReportBillUnPaidAmountTillNow
         '
         Me.ReportBillUnPaidAmountTillNow.DataPropertyName = "UnPaidAmountTillNow"
-        DataGridViewCellStyle157.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle157.Format = "0.00"
-        Me.ReportBillUnPaidAmountTillNow.DefaultCellStyle = DataGridViewCellStyle157
+        DataGridViewCellStyle669.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle669.Format = "0.00"
+        Me.ReportBillUnPaidAmountTillNow.DefaultCellStyle = DataGridViewCellStyle669
         Me.ReportBillUnPaidAmountTillNow.HeaderText = "Prev Balance"
         Me.ReportBillUnPaidAmountTillNow.Name = "ReportBillUnPaidAmountTillNow"
         Me.ReportBillUnPaidAmountTillNow.ReadOnly = True
@@ -1959,9 +1961,9 @@ Partial Class AgniMainForm
         'ReportBillDesignCost
         '
         Me.ReportBillDesignCost.DataPropertyName = "DesignCost"
-        DataGridViewCellStyle158.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle158.Format = "0.00"
-        Me.ReportBillDesignCost.DefaultCellStyle = DataGridViewCellStyle158
+        DataGridViewCellStyle670.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle670.Format = "0.00"
+        Me.ReportBillDesignCost.DefaultCellStyle = DataGridViewCellStyle670
         Me.ReportBillDesignCost.HeaderText = "Design Amount"
         Me.ReportBillDesignCost.Name = "ReportBillDesignCost"
         Me.ReportBillDesignCost.ReadOnly = True
@@ -1970,9 +1972,9 @@ Partial Class AgniMainForm
         'ReportBillCGST
         '
         Me.ReportBillCGST.DataPropertyName = "CGST"
-        DataGridViewCellStyle159.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle159.Format = "0.00"
-        Me.ReportBillCGST.DefaultCellStyle = DataGridViewCellStyle159
+        DataGridViewCellStyle671.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle671.Format = "0.00"
+        Me.ReportBillCGST.DefaultCellStyle = DataGridViewCellStyle671
         Me.ReportBillCGST.HeaderText = "CGST%"
         Me.ReportBillCGST.Name = "ReportBillCGST"
         Me.ReportBillCGST.ReadOnly = True
@@ -1981,9 +1983,9 @@ Partial Class AgniMainForm
         'ReportBillSGST
         '
         Me.ReportBillSGST.DataPropertyName = "SGST"
-        DataGridViewCellStyle160.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle160.Format = "0.00"
-        Me.ReportBillSGST.DefaultCellStyle = DataGridViewCellStyle160
+        DataGridViewCellStyle672.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle672.Format = "0.00"
+        Me.ReportBillSGST.DefaultCellStyle = DataGridViewCellStyle672
         Me.ReportBillSGST.HeaderText = "SGST%"
         Me.ReportBillSGST.Name = "ReportBillSGST"
         Me.ReportBillSGST.ReadOnly = True
@@ -1992,9 +1994,9 @@ Partial Class AgniMainForm
         'ReportBillIGST
         '
         Me.ReportBillIGST.DataPropertyName = "IGST"
-        DataGridViewCellStyle161.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle161.Format = "0.00"
-        Me.ReportBillIGST.DefaultCellStyle = DataGridViewCellStyle161
+        DataGridViewCellStyle673.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle673.Format = "0.00"
+        Me.ReportBillIGST.DefaultCellStyle = DataGridViewCellStyle673
         Me.ReportBillIGST.HeaderText = "IGST%"
         Me.ReportBillIGST.Name = "ReportBillIGST"
         Me.ReportBillIGST.ReadOnly = True
@@ -2003,9 +2005,9 @@ Partial Class AgniMainForm
         'ReportBillCGSTAmount
         '
         Me.ReportBillCGSTAmount.DataPropertyName = "CGSTAmount"
-        DataGridViewCellStyle162.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle162.Format = "0.00"
-        Me.ReportBillCGSTAmount.DefaultCellStyle = DataGridViewCellStyle162
+        DataGridViewCellStyle674.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle674.Format = "0.00"
+        Me.ReportBillCGSTAmount.DefaultCellStyle = DataGridViewCellStyle674
         Me.ReportBillCGSTAmount.HeaderText = "CGSTAmount"
         Me.ReportBillCGSTAmount.Name = "ReportBillCGSTAmount"
         Me.ReportBillCGSTAmount.ReadOnly = True
@@ -2014,9 +2016,9 @@ Partial Class AgniMainForm
         'ReportBillSGSTAmount
         '
         Me.ReportBillSGSTAmount.DataPropertyName = "SGSTAmount"
-        DataGridViewCellStyle163.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle163.Format = "0.00"
-        Me.ReportBillSGSTAmount.DefaultCellStyle = DataGridViewCellStyle163
+        DataGridViewCellStyle675.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle675.Format = "0.00"
+        Me.ReportBillSGSTAmount.DefaultCellStyle = DataGridViewCellStyle675
         Me.ReportBillSGSTAmount.HeaderText = "SGST Amount"
         Me.ReportBillSGSTAmount.Name = "ReportBillSGSTAmount"
         Me.ReportBillSGSTAmount.ReadOnly = True
@@ -2025,9 +2027,9 @@ Partial Class AgniMainForm
         'ReportBillIGSTAmount
         '
         Me.ReportBillIGSTAmount.DataPropertyName = "IGSTAmount"
-        DataGridViewCellStyle164.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle164.Format = "0.00"
-        Me.ReportBillIGSTAmount.DefaultCellStyle = DataGridViewCellStyle164
+        DataGridViewCellStyle676.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle676.Format = "0.00"
+        Me.ReportBillIGSTAmount.DefaultCellStyle = DataGridViewCellStyle676
         Me.ReportBillIGSTAmount.HeaderText = "IGSTAmount"
         Me.ReportBillIGSTAmount.Name = "ReportBillIGSTAmount"
         Me.ReportBillIGSTAmount.ReadOnly = True
@@ -2036,9 +2038,9 @@ Partial Class AgniMainForm
         'ReportBillGSTAmount
         '
         Me.ReportBillGSTAmount.DataPropertyName = "GSTAmount"
-        DataGridViewCellStyle165.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle165.Format = "0.00"
-        Me.ReportBillGSTAmount.DefaultCellStyle = DataGridViewCellStyle165
+        DataGridViewCellStyle677.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle677.Format = "0.00"
+        Me.ReportBillGSTAmount.DefaultCellStyle = DataGridViewCellStyle677
         Me.ReportBillGSTAmount.HeaderText = "Total GST Amount"
         Me.ReportBillGSTAmount.Name = "ReportBillGSTAmount"
         Me.ReportBillGSTAmount.ReadOnly = True
@@ -2047,9 +2049,9 @@ Partial Class AgniMainForm
         'ReportBillDesignAmountGST
         '
         Me.ReportBillDesignAmountGST.DataPropertyName = "BillAmount"
-        DataGridViewCellStyle166.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle166.Format = "0.00"
-        Me.ReportBillDesignAmountGST.DefaultCellStyle = DataGridViewCellStyle166
+        DataGridViewCellStyle678.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle678.Format = "0.00"
+        Me.ReportBillDesignAmountGST.DefaultCellStyle = DataGridViewCellStyle678
         Me.ReportBillDesignAmountGST.HeaderText = "Bill Amount"
         Me.ReportBillDesignAmountGST.Name = "ReportBillDesignAmountGST"
         Me.ReportBillDesignAmountGST.ReadOnly = True
@@ -2058,9 +2060,9 @@ Partial Class AgniMainForm
         'ReportBillTotalAmount
         '
         Me.ReportBillTotalAmount.DataPropertyName = "TotalAmount"
-        DataGridViewCellStyle167.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle167.Format = "0.00"
-        Me.ReportBillTotalAmount.DefaultCellStyle = DataGridViewCellStyle167
+        DataGridViewCellStyle679.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle679.Format = "0.00"
+        Me.ReportBillTotalAmount.DefaultCellStyle = DataGridViewCellStyle679
         Me.ReportBillTotalAmount.HeaderText = "Total Amount"
         Me.ReportBillTotalAmount.Name = "ReportBillTotalAmount"
         Me.ReportBillTotalAmount.ReadOnly = True
@@ -2070,9 +2072,9 @@ Partial Class AgniMainForm
         'ReportBillPaidAmount
         '
         Me.ReportBillPaidAmount.DataPropertyName = "PaidAmount"
-        DataGridViewCellStyle168.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle168.Format = "0.00"
-        Me.ReportBillPaidAmount.DefaultCellStyle = DataGridViewCellStyle168
+        DataGridViewCellStyle680.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle680.Format = "0.00"
+        Me.ReportBillPaidAmount.DefaultCellStyle = DataGridViewCellStyle680
         Me.ReportBillPaidAmount.HeaderText = "Paid Amount"
         Me.ReportBillPaidAmount.Name = "ReportBillPaidAmount"
         Me.ReportBillPaidAmount.ReadOnly = True
@@ -2081,9 +2083,9 @@ Partial Class AgniMainForm
         'ReportBillRemainingBalance
         '
         Me.ReportBillRemainingBalance.DataPropertyName = "RemainingBalance"
-        DataGridViewCellStyle169.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle169.Format = "0.00"
-        Me.ReportBillRemainingBalance.DefaultCellStyle = DataGridViewCellStyle169
+        DataGridViewCellStyle681.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle681.Format = "0.00"
+        Me.ReportBillRemainingBalance.DefaultCellStyle = DataGridViewCellStyle681
         Me.ReportBillRemainingBalance.HeaderText = "Remaining Balance"
         Me.ReportBillRemainingBalance.Name = "ReportBillRemainingBalance"
         Me.ReportBillRemainingBalance.ReadOnly = True
@@ -2111,30 +2113,30 @@ Partial Class AgniMainForm
         '
         Me.dgReportDesignGrid.AllowUserToAddRows = False
         Me.dgReportDesignGrid.AllowUserToDeleteRows = False
-        DataGridViewCellStyle172.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.dgReportDesignGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle172
+        DataGridViewCellStyle684.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.dgReportDesignGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle684
         Me.dgReportDesignGrid.BackgroundColor = System.Drawing.Color.Lavender
         Me.dgReportDesignGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgReportDesignGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical
         Me.dgReportDesignGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
-        DataGridViewCellStyle173.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle173.BackColor = System.Drawing.Color.RoyalBlue
-        DataGridViewCellStyle173.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle173.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle173.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle173.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle173.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgReportDesignGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle173
+        DataGridViewCellStyle685.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle685.BackColor = System.Drawing.Color.RoyalBlue
+        DataGridViewCellStyle685.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle685.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle685.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle685.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle685.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgReportDesignGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle685
         Me.dgReportDesignGrid.ColumnHeadersHeight = 35
         Me.dgReportDesignGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ReportDesignNo, Me.custName, Me.ReportDesignDate, Me.ReportDesignName, Me.ReportUnitType, Me.ReportWidth, Me.ReportHeight, Me.ReportColors, Me.ReportUnitCost, Me.ReportPrice, Me.ReportBilled, Me.ReportBillNo, Me.ReportDesignImage, Me.ReportCustNo})
-        DataGridViewCellStyle185.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle185.BackColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle185.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle185.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle185.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle185.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle185.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgReportDesignGrid.DefaultCellStyle = DataGridViewCellStyle185
+        DataGridViewCellStyle697.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle697.BackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle697.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle697.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle697.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle697.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle697.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgReportDesignGrid.DefaultCellStyle = DataGridViewCellStyle697
         Me.dgReportDesignGrid.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgReportDesignGrid.EnableHeadersVisualStyles = False
         Me.dgReportDesignGrid.GridColor = System.Drawing.Color.Maroon
@@ -2143,11 +2145,11 @@ Partial Class AgniMainForm
         Me.dgReportDesignGrid.Name = "dgReportDesignGrid"
         Me.dgReportDesignGrid.ReadOnly = True
         Me.dgReportDesignGrid.RowHeadersVisible = False
-        DataGridViewCellStyle186.BackColor = System.Drawing.Color.Lavender
-        DataGridViewCellStyle186.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle186.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle186.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgReportDesignGrid.RowsDefaultCellStyle = DataGridViewCellStyle186
+        DataGridViewCellStyle698.BackColor = System.Drawing.Color.Lavender
+        DataGridViewCellStyle698.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle698.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle698.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgReportDesignGrid.RowsDefaultCellStyle = DataGridViewCellStyle698
         Me.dgReportDesignGrid.RowTemplate.Height = 25
         Me.dgReportDesignGrid.RowTemplate.ReadOnly = True
         Me.dgReportDesignGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
@@ -2159,8 +2161,8 @@ Partial Class AgniMainForm
         '
         Me.ReportDesignNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.ReportDesignNo.DataPropertyName = "DesignNo"
-        DataGridViewCellStyle174.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.ReportDesignNo.DefaultCellStyle = DataGridViewCellStyle174
+        DataGridViewCellStyle686.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.ReportDesignNo.DefaultCellStyle = DataGridViewCellStyle686
         Me.ReportDesignNo.Frozen = True
         Me.ReportDesignNo.HeaderText = "Design No"
         Me.ReportDesignNo.Name = "ReportDesignNo"
@@ -2170,8 +2172,8 @@ Partial Class AgniMainForm
         'custName
         '
         Me.custName.DataPropertyName = "CompName"
-        DataGridViewCellStyle175.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.custName.DefaultCellStyle = DataGridViewCellStyle175
+        DataGridViewCellStyle687.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.custName.DefaultCellStyle = DataGridViewCellStyle687
         Me.custName.HeaderText = "Customer Name"
         Me.custName.Name = "custName"
         Me.custName.ReadOnly = True
@@ -2180,9 +2182,9 @@ Partial Class AgniMainForm
         'ReportDesignDate
         '
         Me.ReportDesignDate.DataPropertyName = "DesignDate"
-        DataGridViewCellStyle176.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle176.Format = "dd\/MM\/yyyy"
-        Me.ReportDesignDate.DefaultCellStyle = DataGridViewCellStyle176
+        DataGridViewCellStyle688.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle688.Format = "dd\/MM\/yyyy"
+        Me.ReportDesignDate.DefaultCellStyle = DataGridViewCellStyle688
         Me.ReportDesignDate.HeaderText = "Date"
         Me.ReportDesignDate.Name = "ReportDesignDate"
         Me.ReportDesignDate.ReadOnly = True
@@ -2191,8 +2193,8 @@ Partial Class AgniMainForm
         'ReportDesignName
         '
         Me.ReportDesignName.DataPropertyName = "DesignName"
-        DataGridViewCellStyle177.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.ReportDesignName.DefaultCellStyle = DataGridViewCellStyle177
+        DataGridViewCellStyle689.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.ReportDesignName.DefaultCellStyle = DataGridViewCellStyle689
         Me.ReportDesignName.HeaderText = "Design Name"
         Me.ReportDesignName.Name = "ReportDesignName"
         Me.ReportDesignName.ReadOnly = True
@@ -2201,8 +2203,8 @@ Partial Class AgniMainForm
         'ReportUnitType
         '
         Me.ReportUnitType.DataPropertyName = "Type"
-        DataGridViewCellStyle178.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.ReportUnitType.DefaultCellStyle = DataGridViewCellStyle178
+        DataGridViewCellStyle690.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.ReportUnitType.DefaultCellStyle = DataGridViewCellStyle690
         Me.ReportUnitType.HeaderText = "Unit Type"
         Me.ReportUnitType.Name = "ReportUnitType"
         Me.ReportUnitType.ReadOnly = True
@@ -2210,8 +2212,8 @@ Partial Class AgniMainForm
         'ReportWidth
         '
         Me.ReportWidth.DataPropertyName = "Width"
-        DataGridViewCellStyle179.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.ReportWidth.DefaultCellStyle = DataGridViewCellStyle179
+        DataGridViewCellStyle691.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.ReportWidth.DefaultCellStyle = DataGridViewCellStyle691
         Me.ReportWidth.HeaderText = "Width"
         Me.ReportWidth.Name = "ReportWidth"
         Me.ReportWidth.ReadOnly = True
@@ -2220,8 +2222,8 @@ Partial Class AgniMainForm
         'ReportHeight
         '
         Me.ReportHeight.DataPropertyName = "Height"
-        DataGridViewCellStyle180.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.ReportHeight.DefaultCellStyle = DataGridViewCellStyle180
+        DataGridViewCellStyle692.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.ReportHeight.DefaultCellStyle = DataGridViewCellStyle692
         Me.ReportHeight.HeaderText = "Height"
         Me.ReportHeight.Name = "ReportHeight"
         Me.ReportHeight.ReadOnly = True
@@ -2230,8 +2232,8 @@ Partial Class AgniMainForm
         'ReportColors
         '
         Me.ReportColors.DataPropertyName = "Colors"
-        DataGridViewCellStyle181.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.ReportColors.DefaultCellStyle = DataGridViewCellStyle181
+        DataGridViewCellStyle693.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.ReportColors.DefaultCellStyle = DataGridViewCellStyle693
         Me.ReportColors.HeaderText = "Colors"
         Me.ReportColors.Name = "ReportColors"
         Me.ReportColors.ReadOnly = True
@@ -2239,8 +2241,8 @@ Partial Class AgniMainForm
         'ReportUnitCost
         '
         Me.ReportUnitCost.DataPropertyName = "UnitCost"
-        DataGridViewCellStyle182.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.ReportUnitCost.DefaultCellStyle = DataGridViewCellStyle182
+        DataGridViewCellStyle694.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.ReportUnitCost.DefaultCellStyle = DataGridViewCellStyle694
         Me.ReportUnitCost.HeaderText = "Cost/Unit"
         Me.ReportUnitCost.Name = "ReportUnitCost"
         Me.ReportUnitCost.ReadOnly = True
@@ -2248,8 +2250,8 @@ Partial Class AgniMainForm
         'ReportPrice
         '
         Me.ReportPrice.DataPropertyName = "Price"
-        DataGridViewCellStyle183.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.ReportPrice.DefaultCellStyle = DataGridViewCellStyle183
+        DataGridViewCellStyle695.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.ReportPrice.DefaultCellStyle = DataGridViewCellStyle695
         Me.ReportPrice.HeaderText = "Price"
         Me.ReportPrice.Name = "ReportPrice"
         Me.ReportPrice.ReadOnly = True
@@ -2266,9 +2268,9 @@ Partial Class AgniMainForm
         'ReportBillNo
         '
         Me.ReportBillNo.DataPropertyName = "BillNo"
-        DataGridViewCellStyle184.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle184.NullValue = "Yet to bill"
-        Me.ReportBillNo.DefaultCellStyle = DataGridViewCellStyle184
+        DataGridViewCellStyle696.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle696.NullValue = "Yet to bill"
+        Me.ReportBillNo.DefaultCellStyle = DataGridViewCellStyle696
         Me.ReportBillNo.HeaderText = "Bill No"
         Me.ReportBillNo.Name = "ReportBillNo"
         Me.ReportBillNo.ReadOnly = True
@@ -2355,11 +2357,11 @@ Partial Class AgniMainForm
         Me.tabBilling.Controls.Add(Me.panelLastBillNo)
         Me.tabBilling.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.tabBilling.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tabBilling.ImageKey = "bill2.jpg"
-        Me.tabBilling.Location = New System.Drawing.Point(4, 52)
+        Me.tabBilling.ImageKey = "bills.png"
+        Me.tabBilling.Location = New System.Drawing.Point(4, 64)
         Me.tabBilling.Name = "tabBilling"
         Me.tabBilling.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabBilling.Size = New System.Drawing.Size(1908, 997)
+        Me.tabBilling.Size = New System.Drawing.Size(1908, 985)
         Me.tabBilling.TabIndex = 2
         Me.tabBilling.Tag = "tagBillingTab"
         Me.tabBilling.Text = "Billing"
@@ -2540,30 +2542,30 @@ Partial Class AgniMainForm
         Me.dgBIllingBillDetails.AllowUserToAddRows = False
         Me.dgBIllingBillDetails.AllowUserToDeleteRows = False
         Me.dgBIllingBillDetails.AllowUserToOrderColumns = True
-        DataGridViewCellStyle187.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.dgBIllingBillDetails.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle187
+        DataGridViewCellStyle699.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.dgBIllingBillDetails.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle699
         Me.dgBIllingBillDetails.BackgroundColor = System.Drawing.Color.Lavender
         Me.dgBIllingBillDetails.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgBIllingBillDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical
         Me.dgBIllingBillDetails.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
-        DataGridViewCellStyle188.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle188.BackColor = System.Drawing.Color.RoyalBlue
-        DataGridViewCellStyle188.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle188.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle188.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle188.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle188.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgBIllingBillDetails.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle188
+        DataGridViewCellStyle700.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle700.BackColor = System.Drawing.Color.RoyalBlue
+        DataGridViewCellStyle700.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle700.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle700.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle700.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle700.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgBIllingBillDetails.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle700
         Me.dgBIllingBillDetails.ColumnHeadersHeight = 50
         Me.dgBIllingBillDetails.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DisplayBillNO, Me.InternalBillNo, Me.BillDate, Me.UnPaidAmountTillNow, Me.DesignCost, Me.CGST, Me.SGST, Me.IGST, Me.CGSTAmount, Me.SGSTAmount, Me.IGSTAmount, Me.GSTAmount, Me.BillAmount, Me.TotalAmount, Me.PaidAmount, Me.RemainingBalance, Me.Cancelled})
-        DataGridViewCellStyle205.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle205.BackColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle205.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle205.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle205.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle205.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle205.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgBIllingBillDetails.DefaultCellStyle = DataGridViewCellStyle205
+        DataGridViewCellStyle717.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle717.BackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle717.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle717.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle717.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle717.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle717.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgBIllingBillDetails.DefaultCellStyle = DataGridViewCellStyle717
         Me.dgBIllingBillDetails.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgBIllingBillDetails.EnableHeadersVisualStyles = False
         Me.dgBIllingBillDetails.GridColor = System.Drawing.Color.Maroon
@@ -2572,10 +2574,10 @@ Partial Class AgniMainForm
         Me.dgBIllingBillDetails.Name = "dgBIllingBillDetails"
         Me.dgBIllingBillDetails.ReadOnly = True
         Me.dgBIllingBillDetails.RowHeadersVisible = False
-        DataGridViewCellStyle206.BackColor = System.Drawing.Color.Lavender
-        DataGridViewCellStyle206.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle206.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgBIllingBillDetails.RowsDefaultCellStyle = DataGridViewCellStyle206
+        DataGridViewCellStyle718.BackColor = System.Drawing.Color.Lavender
+        DataGridViewCellStyle718.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle718.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgBIllingBillDetails.RowsDefaultCellStyle = DataGridViewCellStyle718
         Me.dgBIllingBillDetails.RowTemplate.Height = 25
         Me.dgBIllingBillDetails.RowTemplate.ReadOnly = True
         Me.dgBIllingBillDetails.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
@@ -2587,8 +2589,8 @@ Partial Class AgniMainForm
         '
         Me.DisplayBillNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
         Me.DisplayBillNO.DataPropertyName = "DisplayBillNO"
-        DataGridViewCellStyle189.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.DisplayBillNO.DefaultCellStyle = DataGridViewCellStyle189
+        DataGridViewCellStyle701.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.DisplayBillNO.DefaultCellStyle = DataGridViewCellStyle701
         Me.DisplayBillNO.Frozen = True
         Me.DisplayBillNO.HeaderText = "Bill No"
         Me.DisplayBillNO.Name = "DisplayBillNO"
@@ -2597,8 +2599,8 @@ Partial Class AgniMainForm
         'InternalBillNo
         '
         Me.InternalBillNo.DataPropertyName = "BillNo"
-        DataGridViewCellStyle190.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.InternalBillNo.DefaultCellStyle = DataGridViewCellStyle190
+        DataGridViewCellStyle702.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.InternalBillNo.DefaultCellStyle = DataGridViewCellStyle702
         Me.InternalBillNo.HeaderText = "Internal No"
         Me.InternalBillNo.Name = "InternalBillNo"
         Me.InternalBillNo.ReadOnly = True
@@ -2607,9 +2609,9 @@ Partial Class AgniMainForm
         'BillDate
         '
         Me.BillDate.DataPropertyName = "BillDate"
-        DataGridViewCellStyle191.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle191.Format = "dd\/MM\/yyyy"
-        Me.BillDate.DefaultCellStyle = DataGridViewCellStyle191
+        DataGridViewCellStyle703.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle703.Format = "dd\/MM\/yyyy"
+        Me.BillDate.DefaultCellStyle = DataGridViewCellStyle703
         Me.BillDate.HeaderText = "Bill Date"
         Me.BillDate.Name = "BillDate"
         Me.BillDate.ReadOnly = True
@@ -2618,9 +2620,9 @@ Partial Class AgniMainForm
         'UnPaidAmountTillNow
         '
         Me.UnPaidAmountTillNow.DataPropertyName = "UnPaidAmountTillNow"
-        DataGridViewCellStyle192.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle192.Format = "0.00"
-        Me.UnPaidAmountTillNow.DefaultCellStyle = DataGridViewCellStyle192
+        DataGridViewCellStyle704.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle704.Format = "0.00"
+        Me.UnPaidAmountTillNow.DefaultCellStyle = DataGridViewCellStyle704
         Me.UnPaidAmountTillNow.HeaderText = "Prev Balance"
         Me.UnPaidAmountTillNow.Name = "UnPaidAmountTillNow"
         Me.UnPaidAmountTillNow.ReadOnly = True
@@ -2629,9 +2631,9 @@ Partial Class AgniMainForm
         'DesignCost
         '
         Me.DesignCost.DataPropertyName = "DesignCost"
-        DataGridViewCellStyle193.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle193.Format = "0.00"
-        Me.DesignCost.DefaultCellStyle = DataGridViewCellStyle193
+        DataGridViewCellStyle705.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle705.Format = "0.00"
+        Me.DesignCost.DefaultCellStyle = DataGridViewCellStyle705
         Me.DesignCost.HeaderText = "Design Amount"
         Me.DesignCost.Name = "DesignCost"
         Me.DesignCost.ReadOnly = True
@@ -2640,9 +2642,9 @@ Partial Class AgniMainForm
         'CGST
         '
         Me.CGST.DataPropertyName = "CGST"
-        DataGridViewCellStyle194.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle194.Format = "0.00"
-        Me.CGST.DefaultCellStyle = DataGridViewCellStyle194
+        DataGridViewCellStyle706.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle706.Format = "0.00"
+        Me.CGST.DefaultCellStyle = DataGridViewCellStyle706
         Me.CGST.HeaderText = "CGST%"
         Me.CGST.Name = "CGST"
         Me.CGST.ReadOnly = True
@@ -2651,9 +2653,9 @@ Partial Class AgniMainForm
         'SGST
         '
         Me.SGST.DataPropertyName = "SGST"
-        DataGridViewCellStyle195.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle195.Format = "0.00"
-        Me.SGST.DefaultCellStyle = DataGridViewCellStyle195
+        DataGridViewCellStyle707.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle707.Format = "0.00"
+        Me.SGST.DefaultCellStyle = DataGridViewCellStyle707
         Me.SGST.HeaderText = "SGST%"
         Me.SGST.Name = "SGST"
         Me.SGST.ReadOnly = True
@@ -2662,9 +2664,9 @@ Partial Class AgniMainForm
         'IGST
         '
         Me.IGST.DataPropertyName = "IGST"
-        DataGridViewCellStyle196.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle196.Format = "0.00"
-        Me.IGST.DefaultCellStyle = DataGridViewCellStyle196
+        DataGridViewCellStyle708.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle708.Format = "0.00"
+        Me.IGST.DefaultCellStyle = DataGridViewCellStyle708
         Me.IGST.HeaderText = "IGST%"
         Me.IGST.Name = "IGST"
         Me.IGST.ReadOnly = True
@@ -2673,9 +2675,9 @@ Partial Class AgniMainForm
         'CGSTAmount
         '
         Me.CGSTAmount.DataPropertyName = "CGSTAmount"
-        DataGridViewCellStyle197.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle197.Format = "0.00"
-        Me.CGSTAmount.DefaultCellStyle = DataGridViewCellStyle197
+        DataGridViewCellStyle709.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle709.Format = "0.00"
+        Me.CGSTAmount.DefaultCellStyle = DataGridViewCellStyle709
         Me.CGSTAmount.HeaderText = "CGSTAmount"
         Me.CGSTAmount.Name = "CGSTAmount"
         Me.CGSTAmount.ReadOnly = True
@@ -2684,9 +2686,9 @@ Partial Class AgniMainForm
         'SGSTAmount
         '
         Me.SGSTAmount.DataPropertyName = "SGSTAmount"
-        DataGridViewCellStyle198.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle198.Format = "0.00"
-        Me.SGSTAmount.DefaultCellStyle = DataGridViewCellStyle198
+        DataGridViewCellStyle710.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle710.Format = "0.00"
+        Me.SGSTAmount.DefaultCellStyle = DataGridViewCellStyle710
         Me.SGSTAmount.HeaderText = "SGST Amount"
         Me.SGSTAmount.Name = "SGSTAmount"
         Me.SGSTAmount.ReadOnly = True
@@ -2695,9 +2697,9 @@ Partial Class AgniMainForm
         'IGSTAmount
         '
         Me.IGSTAmount.DataPropertyName = "IGSTAmount"
-        DataGridViewCellStyle199.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle199.Format = "0.00"
-        Me.IGSTAmount.DefaultCellStyle = DataGridViewCellStyle199
+        DataGridViewCellStyle711.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle711.Format = "0.00"
+        Me.IGSTAmount.DefaultCellStyle = DataGridViewCellStyle711
         Me.IGSTAmount.HeaderText = "IGSTAmount"
         Me.IGSTAmount.Name = "IGSTAmount"
         Me.IGSTAmount.ReadOnly = True
@@ -2706,9 +2708,9 @@ Partial Class AgniMainForm
         'GSTAmount
         '
         Me.GSTAmount.DataPropertyName = "GSTAmount"
-        DataGridViewCellStyle200.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle200.Format = "0.00"
-        Me.GSTAmount.DefaultCellStyle = DataGridViewCellStyle200
+        DataGridViewCellStyle712.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle712.Format = "0.00"
+        Me.GSTAmount.DefaultCellStyle = DataGridViewCellStyle712
         Me.GSTAmount.HeaderText = "Total GST Amount"
         Me.GSTAmount.Name = "GSTAmount"
         Me.GSTAmount.ReadOnly = True
@@ -2717,9 +2719,9 @@ Partial Class AgniMainForm
         'BillAmount
         '
         Me.BillAmount.DataPropertyName = "BillAmount"
-        DataGridViewCellStyle201.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle201.Format = "0.00"
-        Me.BillAmount.DefaultCellStyle = DataGridViewCellStyle201
+        DataGridViewCellStyle713.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle713.Format = "0.00"
+        Me.BillAmount.DefaultCellStyle = DataGridViewCellStyle713
         Me.BillAmount.HeaderText = "Bill Amount"
         Me.BillAmount.Name = "BillAmount"
         Me.BillAmount.ReadOnly = True
@@ -2728,9 +2730,9 @@ Partial Class AgniMainForm
         'TotalAmount
         '
         Me.TotalAmount.DataPropertyName = "TotalAmount"
-        DataGridViewCellStyle202.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle202.Format = "0.00"
-        Me.TotalAmount.DefaultCellStyle = DataGridViewCellStyle202
+        DataGridViewCellStyle714.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle714.Format = "0.00"
+        Me.TotalAmount.DefaultCellStyle = DataGridViewCellStyle714
         Me.TotalAmount.HeaderText = "Total Amount"
         Me.TotalAmount.Name = "TotalAmount"
         Me.TotalAmount.ReadOnly = True
@@ -2740,9 +2742,9 @@ Partial Class AgniMainForm
         'PaidAmount
         '
         Me.PaidAmount.DataPropertyName = "PaidAmount"
-        DataGridViewCellStyle203.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle203.Format = "0.00"
-        Me.PaidAmount.DefaultCellStyle = DataGridViewCellStyle203
+        DataGridViewCellStyle715.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle715.Format = "0.00"
+        Me.PaidAmount.DefaultCellStyle = DataGridViewCellStyle715
         Me.PaidAmount.HeaderText = "Paid Amount"
         Me.PaidAmount.Name = "PaidAmount"
         Me.PaidAmount.ReadOnly = True
@@ -2751,9 +2753,9 @@ Partial Class AgniMainForm
         'RemainingBalance
         '
         Me.RemainingBalance.DataPropertyName = "RemainingBalance"
-        DataGridViewCellStyle204.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle204.Format = "0.00"
-        Me.RemainingBalance.DefaultCellStyle = DataGridViewCellStyle204
+        DataGridViewCellStyle716.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle716.Format = "0.00"
+        Me.RemainingBalance.DefaultCellStyle = DataGridViewCellStyle716
         Me.RemainingBalance.HeaderText = "Remaining Balance"
         Me.RemainingBalance.Name = "RemainingBalance"
         Me.RemainingBalance.ReadOnly = True
@@ -3223,11 +3225,11 @@ Partial Class AgniMainForm
         Me.tabDesign.Controls.Add(Me.pbDesDesignImage)
         Me.tabDesign.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.tabDesign.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.tabDesign.ImageKey = "design icon.jpg"
-        Me.tabDesign.Location = New System.Drawing.Point(4, 52)
+        Me.tabDesign.ImageKey = "design.png"
+        Me.tabDesign.Location = New System.Drawing.Point(4, 64)
         Me.tabDesign.Name = "tabDesign"
         Me.tabDesign.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabDesign.Size = New System.Drawing.Size(1908, 997)
+        Me.tabDesign.Size = New System.Drawing.Size(1908, 985)
         Me.tabDesign.TabIndex = 1
         Me.tabDesign.Tag = "tagDesignTab"
         Me.tabDesign.Text = "Designs"
@@ -3310,29 +3312,29 @@ Partial Class AgniMainForm
         '
         Me.dgDesDesignDetails.AllowUserToAddRows = False
         Me.dgDesDesignDetails.AllowUserToDeleteRows = False
-        DataGridViewCellStyle207.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.dgDesDesignDetails.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle207
+        DataGridViewCellStyle719.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.dgDesDesignDetails.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle719
         Me.dgDesDesignDetails.BackgroundColor = System.Drawing.Color.Lavender
         Me.dgDesDesignDetails.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgDesDesignDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical
-        DataGridViewCellStyle208.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle208.BackColor = System.Drawing.Color.RoyalBlue
-        DataGridViewCellStyle208.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle208.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle208.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle208.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle208.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgDesDesignDetails.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle208
+        DataGridViewCellStyle720.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle720.BackColor = System.Drawing.Color.RoyalBlue
+        DataGridViewCellStyle720.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle720.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle720.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle720.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle720.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgDesDesignDetails.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle720
         Me.dgDesDesignDetails.ColumnHeadersHeight = 35
         Me.dgDesDesignDetails.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DesignNo, Me.DesignDate, Me.DesignName, Me.Type, Me.Width, Me.Height, Me.Colors, Me.UnitCost, Me.Price, Me.Billed, Me.BillNo, Me.Image, Me.CustNo})
-        DataGridViewCellStyle219.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle219.BackColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle219.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle219.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle219.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle219.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle219.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgDesDesignDetails.DefaultCellStyle = DataGridViewCellStyle219
+        DataGridViewCellStyle731.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle731.BackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle731.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle731.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle731.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle731.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle731.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgDesDesignDetails.DefaultCellStyle = DataGridViewCellStyle731
         Me.dgDesDesignDetails.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgDesDesignDetails.EnableHeadersVisualStyles = False
         Me.dgDesDesignDetails.GridColor = System.Drawing.Color.Maroon
@@ -3342,10 +3344,10 @@ Partial Class AgniMainForm
         Me.dgDesDesignDetails.ReadOnly = True
         Me.dgDesDesignDetails.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
         Me.dgDesDesignDetails.RowHeadersVisible = False
-        DataGridViewCellStyle220.BackColor = System.Drawing.Color.Lavender
-        DataGridViewCellStyle220.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle220.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgDesDesignDetails.RowsDefaultCellStyle = DataGridViewCellStyle220
+        DataGridViewCellStyle732.BackColor = System.Drawing.Color.Lavender
+        DataGridViewCellStyle732.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle732.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgDesDesignDetails.RowsDefaultCellStyle = DataGridViewCellStyle732
         Me.dgDesDesignDetails.RowTemplate.Height = 25
         Me.dgDesDesignDetails.RowTemplate.ReadOnly = True
         Me.dgDesDesignDetails.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
@@ -3357,8 +3359,8 @@ Partial Class AgniMainForm
         '
         Me.DesignNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.DesignNo.DataPropertyName = "DesignNo"
-        DataGridViewCellStyle209.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.DesignNo.DefaultCellStyle = DataGridViewCellStyle209
+        DataGridViewCellStyle721.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.DesignNo.DefaultCellStyle = DataGridViewCellStyle721
         Me.DesignNo.Frozen = True
         Me.DesignNo.HeaderText = "Design No"
         Me.DesignNo.Name = "DesignNo"
@@ -3368,9 +3370,9 @@ Partial Class AgniMainForm
         'DesignDate
         '
         Me.DesignDate.DataPropertyName = "DesignDate"
-        DataGridViewCellStyle210.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle210.Format = "dd\/MM\/yyyy"
-        Me.DesignDate.DefaultCellStyle = DataGridViewCellStyle210
+        DataGridViewCellStyle722.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle722.Format = "dd\/MM\/yyyy"
+        Me.DesignDate.DefaultCellStyle = DataGridViewCellStyle722
         Me.DesignDate.HeaderText = "Date"
         Me.DesignDate.Name = "DesignDate"
         Me.DesignDate.ReadOnly = True
@@ -3379,8 +3381,8 @@ Partial Class AgniMainForm
         'DesignName
         '
         Me.DesignName.DataPropertyName = "DesignName"
-        DataGridViewCellStyle211.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.DesignName.DefaultCellStyle = DataGridViewCellStyle211
+        DataGridViewCellStyle723.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.DesignName.DefaultCellStyle = DataGridViewCellStyle723
         Me.DesignName.HeaderText = "Design Name"
         Me.DesignName.Name = "DesignName"
         Me.DesignName.ReadOnly = True
@@ -3389,8 +3391,8 @@ Partial Class AgniMainForm
         'Type
         '
         Me.Type.DataPropertyName = "Type"
-        DataGridViewCellStyle212.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.Type.DefaultCellStyle = DataGridViewCellStyle212
+        DataGridViewCellStyle724.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.Type.DefaultCellStyle = DataGridViewCellStyle724
         Me.Type.HeaderText = "Unit Type"
         Me.Type.Name = "Type"
         Me.Type.ReadOnly = True
@@ -3399,8 +3401,8 @@ Partial Class AgniMainForm
         'Width
         '
         Me.Width.DataPropertyName = "Width"
-        DataGridViewCellStyle213.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.Width.DefaultCellStyle = DataGridViewCellStyle213
+        DataGridViewCellStyle725.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.Width.DefaultCellStyle = DataGridViewCellStyle725
         Me.Width.HeaderText = "Width"
         Me.Width.Name = "Width"
         Me.Width.ReadOnly = True
@@ -3409,8 +3411,8 @@ Partial Class AgniMainForm
         'Height
         '
         Me.Height.DataPropertyName = "Height"
-        DataGridViewCellStyle214.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.Height.DefaultCellStyle = DataGridViewCellStyle214
+        DataGridViewCellStyle726.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.Height.DefaultCellStyle = DataGridViewCellStyle726
         Me.Height.HeaderText = "Height"
         Me.Height.Name = "Height"
         Me.Height.ReadOnly = True
@@ -3419,8 +3421,8 @@ Partial Class AgniMainForm
         'Colors
         '
         Me.Colors.DataPropertyName = "Colors"
-        DataGridViewCellStyle215.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.Colors.DefaultCellStyle = DataGridViewCellStyle215
+        DataGridViewCellStyle727.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.Colors.DefaultCellStyle = DataGridViewCellStyle727
         Me.Colors.HeaderText = "Colors"
         Me.Colors.Name = "Colors"
         Me.Colors.ReadOnly = True
@@ -3429,8 +3431,8 @@ Partial Class AgniMainForm
         'UnitCost
         '
         Me.UnitCost.DataPropertyName = "UnitCost"
-        DataGridViewCellStyle216.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.UnitCost.DefaultCellStyle = DataGridViewCellStyle216
+        DataGridViewCellStyle728.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.UnitCost.DefaultCellStyle = DataGridViewCellStyle728
         Me.UnitCost.HeaderText = "Cost/Unit"
         Me.UnitCost.Name = "UnitCost"
         Me.UnitCost.ReadOnly = True
@@ -3439,8 +3441,8 @@ Partial Class AgniMainForm
         'Price
         '
         Me.Price.DataPropertyName = "Price"
-        DataGridViewCellStyle217.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Price.DefaultCellStyle = DataGridViewCellStyle217
+        DataGridViewCellStyle729.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Price.DefaultCellStyle = DataGridViewCellStyle729
         Me.Price.HeaderText = "Price"
         Me.Price.Name = "Price"
         Me.Price.ReadOnly = True
@@ -3457,9 +3459,9 @@ Partial Class AgniMainForm
         'BillNo
         '
         Me.BillNo.DataPropertyName = "BillNo"
-        DataGridViewCellStyle218.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle218.NullValue = "Yet to bill"
-        Me.BillNo.DefaultCellStyle = DataGridViewCellStyle218
+        DataGridViewCellStyle730.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle730.NullValue = "Yet to bill"
+        Me.BillNo.DefaultCellStyle = DataGridViewCellStyle730
         Me.BillNo.HeaderText = "Internal Bill No"
         Me.BillNo.Name = "BillNo"
         Me.BillNo.ReadOnly = True
@@ -3783,12 +3785,15 @@ Partial Class AgniMainForm
         Me.tabAllTabsHolder.Cursor = System.Windows.Forms.Cursors.Hand
         Me.tabAllTabsHolder.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tabAllTabsHolder.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tabAllTabsHolder.HotTrack = True
+        Me.tabAllTabsHolder.ImageList = Me.TabIcons
         Me.tabAllTabsHolder.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.tabAllTabsHolder.ItemSize = New System.Drawing.Size(202, 48)
+        Me.tabAllTabsHolder.ItemSize = New System.Drawing.Size(20, 60)
         Me.tabAllTabsHolder.Location = New System.Drawing.Point(0, 0)
+        Me.tabAllTabsHolder.Margin = New System.Windows.Forms.Padding(2)
         Me.tabAllTabsHolder.Multiline = True
         Me.tabAllTabsHolder.Name = "tabAllTabsHolder"
-        Me.tabAllTabsHolder.Padding = New System.Drawing.Point(20, 3)
+        Me.tabAllTabsHolder.Padding = New System.Drawing.Point(20, 0)
         Me.tabAllTabsHolder.SelectedIndex = 0
         Me.tabAllTabsHolder.ShowToolTips = True
         Me.tabAllTabsHolder.Size = New System.Drawing.Size(1916, 1053)
@@ -3818,11 +3823,11 @@ Partial Class AgniMainForm
         Me.tabCustomer.Controls.Add(Me.txtOwnerName)
         Me.tabCustomer.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.tabCustomer.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.tabCustomer.ImageKey = "cust.jpg"
-        Me.tabCustomer.Location = New System.Drawing.Point(4, 52)
+        Me.tabCustomer.ImageKey = "customer.png"
+        Me.tabCustomer.Location = New System.Drawing.Point(4, 64)
         Me.tabCustomer.Name = "tabCustomer"
         Me.tabCustomer.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabCustomer.Size = New System.Drawing.Size(1908, 997)
+        Me.tabCustomer.Size = New System.Drawing.Size(1908, 985)
         Me.tabCustomer.TabIndex = 0
         Me.tabCustomer.Tag = "tagCustomerTab"
         Me.tabCustomer.Text = "Customer"
@@ -4061,29 +4066,29 @@ Partial Class AgniMainForm
         Me.dgCustCustomerDetails.AllowUserToAddRows = False
         Me.dgCustCustomerDetails.AllowUserToDeleteRows = False
         Me.dgCustCustomerDetails.AllowUserToOrderColumns = True
-        DataGridViewCellStyle221.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.dgCustCustomerDetails.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle221
+        DataGridViewCellStyle733.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.dgCustCustomerDetails.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle733
         Me.dgCustCustomerDetails.BackgroundColor = System.Drawing.Color.Lavender
         Me.dgCustCustomerDetails.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgCustCustomerDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical
-        DataGridViewCellStyle222.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle222.BackColor = System.Drawing.Color.RoyalBlue
-        DataGridViewCellStyle222.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle222.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle222.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle222.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle222.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgCustCustomerDetails.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle222
+        DataGridViewCellStyle734.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle734.BackColor = System.Drawing.Color.RoyalBlue
+        DataGridViewCellStyle734.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle734.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle734.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle734.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle734.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgCustCustomerDetails.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle734
         Me.dgCustCustomerDetails.ColumnHeadersHeight = 35
         Me.dgCustCustomerDetails.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CompName, Me.CustomerCustNo, Me.CustomerGSTIN, Me.OwnerName, Me.CustomerCGST, Me.CustomerSGST, Me.CustomerIGST, Me.WPSqrInch, Me.WColor, Me.PrintColor, Me.Mobile, Me.AddressLIne1, Me.AddressLine2, Me.AddressLine3, Me.AddressLine4, Me.AddressLine5, Me.Landline, Me.Email, Me.Website})
-        DataGridViewCellStyle238.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle238.BackColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle238.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle238.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle238.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle238.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle238.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgCustCustomerDetails.DefaultCellStyle = DataGridViewCellStyle238
+        DataGridViewCellStyle750.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle750.BackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle750.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle750.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle750.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle750.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle750.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgCustCustomerDetails.DefaultCellStyle = DataGridViewCellStyle750
         Me.dgCustCustomerDetails.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgCustCustomerDetails.EnableHeadersVisualStyles = False
         Me.dgCustCustomerDetails.GridColor = System.Drawing.Color.Maroon
@@ -4093,16 +4098,200 @@ Partial Class AgniMainForm
         Me.dgCustCustomerDetails.ReadOnly = True
         Me.dgCustCustomerDetails.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
         Me.dgCustCustomerDetails.RowHeadersVisible = False
-        DataGridViewCellStyle239.BackColor = System.Drawing.Color.Lavender
-        DataGridViewCellStyle239.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle239.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgCustCustomerDetails.RowsDefaultCellStyle = DataGridViewCellStyle239
+        DataGridViewCellStyle751.BackColor = System.Drawing.Color.Lavender
+        DataGridViewCellStyle751.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle751.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgCustCustomerDetails.RowsDefaultCellStyle = DataGridViewCellStyle751
         Me.dgCustCustomerDetails.RowTemplate.Height = 25
         Me.dgCustCustomerDetails.RowTemplate.ReadOnly = True
         Me.dgCustCustomerDetails.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgCustCustomerDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgCustCustomerDetails.Size = New System.Drawing.Size(1886, 369)
         Me.dgCustCustomerDetails.TabIndex = 0
+        '
+        'CompName
+        '
+        Me.CompName.DataPropertyName = "CompName"
+        DataGridViewCellStyle735.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.CompName.DefaultCellStyle = DataGridViewCellStyle735
+        Me.CompName.HeaderText = "Customer Name"
+        Me.CompName.Name = "CompName"
+        Me.CompName.ReadOnly = True
+        Me.CompName.Width = 350
+        '
+        'CustomerCustNo
+        '
+        Me.CustomerCustNo.DataPropertyName = "CustNo"
+        DataGridViewCellStyle736.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.CustomerCustNo.DefaultCellStyle = DataGridViewCellStyle736
+        Me.CustomerCustNo.HeaderText = "Cust No"
+        Me.CustomerCustNo.Name = "CustomerCustNo"
+        Me.CustomerCustNo.ReadOnly = True
+        Me.CustomerCustNo.Visible = False
+        '
+        'CustomerGSTIN
+        '
+        Me.CustomerGSTIN.DataPropertyName = "GSTIN"
+        DataGridViewCellStyle737.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.CustomerGSTIN.DefaultCellStyle = DataGridViewCellStyle737
+        Me.CustomerGSTIN.HeaderText = "GSTIN"
+        Me.CustomerGSTIN.Name = "CustomerGSTIN"
+        Me.CustomerGSTIN.ReadOnly = True
+        Me.CustomerGSTIN.Width = 150
+        '
+        'OwnerName
+        '
+        Me.OwnerName.DataPropertyName = "OwnerName"
+        DataGridViewCellStyle738.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.OwnerName.DefaultCellStyle = DataGridViewCellStyle738
+        Me.OwnerName.HeaderText = "Owner"
+        Me.OwnerName.Name = "OwnerName"
+        Me.OwnerName.ReadOnly = True
+        Me.OwnerName.Width = 200
+        '
+        'CustomerCGST
+        '
+        Me.CustomerCGST.DataPropertyName = "CGST"
+        DataGridViewCellStyle739.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle739.Format = "0.00"
+        Me.CustomerCGST.DefaultCellStyle = DataGridViewCellStyle739
+        Me.CustomerCGST.HeaderText = "CGST"
+        Me.CustomerCGST.Name = "CustomerCGST"
+        Me.CustomerCGST.ReadOnly = True
+        Me.CustomerCGST.Width = 160
+        '
+        'CustomerSGST
+        '
+        Me.CustomerSGST.DataPropertyName = "SGST"
+        DataGridViewCellStyle740.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle740.Format = "0.00"
+        Me.CustomerSGST.DefaultCellStyle = DataGridViewCellStyle740
+        Me.CustomerSGST.HeaderText = "SGST"
+        Me.CustomerSGST.Name = "CustomerSGST"
+        Me.CustomerSGST.ReadOnly = True
+        '
+        'CustomerIGST
+        '
+        Me.CustomerIGST.DataPropertyName = "IGST"
+        DataGridViewCellStyle741.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle741.Format = "0.00"
+        Me.CustomerIGST.DefaultCellStyle = DataGridViewCellStyle741
+        Me.CustomerIGST.HeaderText = "IGST"
+        Me.CustomerIGST.Name = "CustomerIGST"
+        Me.CustomerIGST.ReadOnly = True
+        '
+        'WPSqrInch
+        '
+        Me.WPSqrInch.DataPropertyName = "WorkingPrintSqrInch"
+        DataGridViewCellStyle742.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle742.Format = "0.00"
+        Me.WPSqrInch.DefaultCellStyle = DataGridViewCellStyle742
+        Me.WPSqrInch.HeaderText = "WP SqrInch"
+        Me.WPSqrInch.Name = "WPSqrInch"
+        Me.WPSqrInch.ReadOnly = True
+        Me.WPSqrInch.Width = 130
+        '
+        'WColor
+        '
+        Me.WColor.DataPropertyName = "WorkingColor"
+        DataGridViewCellStyle743.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle743.Format = "0.00"
+        Me.WColor.DefaultCellStyle = DataGridViewCellStyle743
+        Me.WColor.HeaderText = "W Color"
+        Me.WColor.Name = "WColor"
+        Me.WColor.ReadOnly = True
+        '
+        'PrintColor
+        '
+        Me.PrintColor.DataPropertyName = "PrintColor"
+        DataGridViewCellStyle744.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle744.Format = "0.00"
+        Me.PrintColor.DefaultCellStyle = DataGridViewCellStyle744
+        Me.PrintColor.HeaderText = "P Color"
+        Me.PrintColor.Name = "PrintColor"
+        Me.PrintColor.ReadOnly = True
+        '
+        'Mobile
+        '
+        Me.Mobile.DataPropertyName = "Mobile"
+        DataGridViewCellStyle745.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.Mobile.DefaultCellStyle = DataGridViewCellStyle745
+        Me.Mobile.HeaderText = "Mobile"
+        Me.Mobile.Name = "Mobile"
+        Me.Mobile.ReadOnly = True
+        Me.Mobile.Width = 150
+        '
+        'AddressLIne1
+        '
+        Me.AddressLIne1.DataPropertyName = "AddressLine1"
+        DataGridViewCellStyle746.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.AddressLIne1.DefaultCellStyle = DataGridViewCellStyle746
+        Me.AddressLIne1.HeaderText = "AddressLine1"
+        Me.AddressLIne1.Name = "AddressLIne1"
+        Me.AddressLIne1.ReadOnly = True
+        Me.AddressLIne1.Width = 200
+        '
+        'AddressLine2
+        '
+        Me.AddressLine2.DataPropertyName = "AddressLine2"
+        Me.AddressLine2.HeaderText = "AddressLine2"
+        Me.AddressLine2.Name = "AddressLine2"
+        Me.AddressLine2.ReadOnly = True
+        Me.AddressLine2.Width = 200
+        '
+        'AddressLine3
+        '
+        Me.AddressLine3.DataPropertyName = "AddressLine3"
+        Me.AddressLine3.HeaderText = "AddressLine3"
+        Me.AddressLine3.Name = "AddressLine3"
+        Me.AddressLine3.ReadOnly = True
+        Me.AddressLine3.Width = 200
+        '
+        'AddressLine4
+        '
+        Me.AddressLine4.DataPropertyName = "AddressLine4"
+        Me.AddressLine4.HeaderText = "AddressLine4"
+        Me.AddressLine4.Name = "AddressLine4"
+        Me.AddressLine4.ReadOnly = True
+        Me.AddressLine4.Width = 200
+        '
+        'AddressLine5
+        '
+        Me.AddressLine5.DataPropertyName = "AddressLine5"
+        Me.AddressLine5.HeaderText = "AddressLine5"
+        Me.AddressLine5.Name = "AddressLine5"
+        Me.AddressLine5.ReadOnly = True
+        Me.AddressLine5.Width = 200
+        '
+        'Landline
+        '
+        Me.Landline.DataPropertyName = "Landline"
+        DataGridViewCellStyle747.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.Landline.DefaultCellStyle = DataGridViewCellStyle747
+        Me.Landline.HeaderText = "Landline"
+        Me.Landline.Name = "Landline"
+        Me.Landline.ReadOnly = True
+        Me.Landline.Width = 150
+        '
+        'Email
+        '
+        Me.Email.DataPropertyName = "Email"
+        DataGridViewCellStyle748.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.Email.DefaultCellStyle = DataGridViewCellStyle748
+        Me.Email.HeaderText = "Email"
+        Me.Email.Name = "Email"
+        Me.Email.ReadOnly = True
+        Me.Email.Width = 180
+        '
+        'Website
+        '
+        Me.Website.DataPropertyName = "Website"
+        DataGridViewCellStyle749.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.Website.DefaultCellStyle = DataGridViewCellStyle749
+        Me.Website.HeaderText = "Website"
+        Me.Website.Name = "Website"
+        Me.Website.ReadOnly = True
+        Me.Website.Width = 150
         '
         'GroupBox1
         '
@@ -4441,11 +4630,11 @@ Partial Class AgniMainForm
         Me.tabPayment.Controls.Add(Me.cmbPaymentCustomerList)
         Me.tabPayment.Controls.Add(Me.Label71)
         Me.tabPayment.Cursor = System.Windows.Forms.Cursors.Arrow
-        Me.tabPayment.ImageKey = "payment.jpg"
-        Me.tabPayment.Location = New System.Drawing.Point(4, 52)
+        Me.tabPayment.ImageKey = "payment.png"
+        Me.tabPayment.Location = New System.Drawing.Point(4, 64)
         Me.tabPayment.Name = "tabPayment"
         Me.tabPayment.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabPayment.Size = New System.Drawing.Size(1908, 997)
+        Me.tabPayment.Size = New System.Drawing.Size(1908, 985)
         Me.tabPayment.TabIndex = 6
         Me.tabPayment.Tag = "tagPaymentTab"
         Me.tabPayment.Text = "Payment"
@@ -4543,30 +4732,30 @@ Partial Class AgniMainForm
         Me.dgPaymentDetails.AllowUserToAddRows = False
         Me.dgPaymentDetails.AllowUserToDeleteRows = False
         Me.dgPaymentDetails.AllowUserToOrderColumns = True
-        DataGridViewCellStyle240.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.dgPaymentDetails.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle240
+        DataGridViewCellStyle752.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.dgPaymentDetails.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle752
         Me.dgPaymentDetails.BackgroundColor = System.Drawing.Color.Lavender
         Me.dgPaymentDetails.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgPaymentDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical
         Me.dgPaymentDetails.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
-        DataGridViewCellStyle241.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle241.BackColor = System.Drawing.Color.RoyalBlue
-        DataGridViewCellStyle241.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle241.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle241.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle241.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle241.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgPaymentDetails.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle241
+        DataGridViewCellStyle753.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle753.BackColor = System.Drawing.Color.RoyalBlue
+        DataGridViewCellStyle753.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle753.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle753.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle753.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle753.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgPaymentDetails.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle753
         Me.dgPaymentDetails.ColumnHeadersHeight = 35
         Me.dgPaymentDetails.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PaymentNo, Me.internalPaymentBillNo, Me.PaymentBillNo, Me.PaymentDate, Me.PaymentMode, Me.UnPaidBilledAmount, Me.ActualPaidAmount, Me.Discount, Me.FinalPaidAmount, Me.NetBalance, Me.ChequeNo, Me.BankName, Me.ChequeDate, Me.Remarks})
-        DataGridViewCellStyle255.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle255.BackColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle255.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle255.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle255.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle255.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle255.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgPaymentDetails.DefaultCellStyle = DataGridViewCellStyle255
+        DataGridViewCellStyle767.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle767.BackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle767.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle767.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle767.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle767.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle767.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgPaymentDetails.DefaultCellStyle = DataGridViewCellStyle767
         Me.dgPaymentDetails.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgPaymentDetails.EnableHeadersVisualStyles = False
         Me.dgPaymentDetails.GridColor = System.Drawing.Color.Maroon
@@ -4575,10 +4764,10 @@ Partial Class AgniMainForm
         Me.dgPaymentDetails.Name = "dgPaymentDetails"
         Me.dgPaymentDetails.ReadOnly = True
         Me.dgPaymentDetails.RowHeadersVisible = False
-        DataGridViewCellStyle256.BackColor = System.Drawing.Color.Lavender
-        DataGridViewCellStyle256.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle256.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgPaymentDetails.RowsDefaultCellStyle = DataGridViewCellStyle256
+        DataGridViewCellStyle768.BackColor = System.Drawing.Color.Lavender
+        DataGridViewCellStyle768.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle768.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgPaymentDetails.RowsDefaultCellStyle = DataGridViewCellStyle768
         Me.dgPaymentDetails.RowTemplate.Height = 25
         Me.dgPaymentDetails.RowTemplate.ReadOnly = True
         Me.dgPaymentDetails.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
@@ -4598,9 +4787,9 @@ Partial Class AgniMainForm
         'internalPaymentBillNo
         '
         Me.internalPaymentBillNo.DataPropertyName = "DisplayBillNo"
-        DataGridViewCellStyle242.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle242.Format = "0.00"
-        Me.internalPaymentBillNo.DefaultCellStyle = DataGridViewCellStyle242
+        DataGridViewCellStyle754.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle754.Format = "0.00"
+        Me.internalPaymentBillNo.DefaultCellStyle = DataGridViewCellStyle754
         Me.internalPaymentBillNo.Frozen = True
         Me.internalPaymentBillNo.HeaderText = "Bill No"
         Me.internalPaymentBillNo.Name = "internalPaymentBillNo"
@@ -4610,8 +4799,8 @@ Partial Class AgniMainForm
         '
         Me.PaymentBillNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.PaymentBillNo.DataPropertyName = "BillNo"
-        DataGridViewCellStyle243.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.PaymentBillNo.DefaultCellStyle = DataGridViewCellStyle243
+        DataGridViewCellStyle755.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.PaymentBillNo.DefaultCellStyle = DataGridViewCellStyle755
         Me.PaymentBillNo.HeaderText = "Internal Bill No"
         Me.PaymentBillNo.Name = "PaymentBillNo"
         Me.PaymentBillNo.ReadOnly = True
@@ -4620,9 +4809,9 @@ Partial Class AgniMainForm
         'PaymentDate
         '
         Me.PaymentDate.DataPropertyName = "PaymentDate"
-        DataGridViewCellStyle244.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle244.Format = "dd\/MM\/yyyy"
-        Me.PaymentDate.DefaultCellStyle = DataGridViewCellStyle244
+        DataGridViewCellStyle756.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle756.Format = "dd\/MM\/yyyy"
+        Me.PaymentDate.DefaultCellStyle = DataGridViewCellStyle756
         Me.PaymentDate.HeaderText = "Date"
         Me.PaymentDate.Name = "PaymentDate"
         Me.PaymentDate.ReadOnly = True
@@ -4631,8 +4820,8 @@ Partial Class AgniMainForm
         'PaymentMode
         '
         Me.PaymentMode.DataPropertyName = "PaymentMode"
-        DataGridViewCellStyle245.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.PaymentMode.DefaultCellStyle = DataGridViewCellStyle245
+        DataGridViewCellStyle757.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.PaymentMode.DefaultCellStyle = DataGridViewCellStyle757
         Me.PaymentMode.HeaderText = "Mode"
         Me.PaymentMode.Name = "PaymentMode"
         Me.PaymentMode.ReadOnly = True
@@ -4641,8 +4830,8 @@ Partial Class AgniMainForm
         'UnPaidBilledAmount
         '
         Me.UnPaidBilledAmount.DataPropertyName = "UnPaidBilledAmount"
-        DataGridViewCellStyle246.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.UnPaidBilledAmount.DefaultCellStyle = DataGridViewCellStyle246
+        DataGridViewCellStyle758.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.UnPaidBilledAmount.DefaultCellStyle = DataGridViewCellStyle758
         Me.UnPaidBilledAmount.HeaderText = "Balance Bill Amount"
         Me.UnPaidBilledAmount.Name = "UnPaidBilledAmount"
         Me.UnPaidBilledAmount.ReadOnly = True
@@ -4651,9 +4840,9 @@ Partial Class AgniMainForm
         'ActualPaidAmount
         '
         Me.ActualPaidAmount.DataPropertyName = "ActualPaidAmount"
-        DataGridViewCellStyle247.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle247.Format = "0.00"
-        Me.ActualPaidAmount.DefaultCellStyle = DataGridViewCellStyle247
+        DataGridViewCellStyle759.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle759.Format = "0.00"
+        Me.ActualPaidAmount.DefaultCellStyle = DataGridViewCellStyle759
         Me.ActualPaidAmount.HeaderText = "Actual Paid"
         Me.ActualPaidAmount.Name = "ActualPaidAmount"
         Me.ActualPaidAmount.ReadOnly = True
@@ -4662,9 +4851,9 @@ Partial Class AgniMainForm
         'Discount
         '
         Me.Discount.DataPropertyName = "Discount"
-        DataGridViewCellStyle248.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle248.Format = "0.00"
-        Me.Discount.DefaultCellStyle = DataGridViewCellStyle248
+        DataGridViewCellStyle760.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle760.Format = "0.00"
+        Me.Discount.DefaultCellStyle = DataGridViewCellStyle760
         Me.Discount.HeaderText = "Discount"
         Me.Discount.Name = "Discount"
         Me.Discount.ReadOnly = True
@@ -4673,9 +4862,9 @@ Partial Class AgniMainForm
         'FinalPaidAmount
         '
         Me.FinalPaidAmount.DataPropertyName = "FinalPaidAmount"
-        DataGridViewCellStyle249.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle249.Format = "0.00"
-        Me.FinalPaidAmount.DefaultCellStyle = DataGridViewCellStyle249
+        DataGridViewCellStyle761.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle761.Format = "0.00"
+        Me.FinalPaidAmount.DefaultCellStyle = DataGridViewCellStyle761
         Me.FinalPaidAmount.HeaderText = "Final Paid"
         Me.FinalPaidAmount.Name = "FinalPaidAmount"
         Me.FinalPaidAmount.ReadOnly = True
@@ -4684,9 +4873,9 @@ Partial Class AgniMainForm
         'NetBalance
         '
         Me.NetBalance.DataPropertyName = "NetBalance"
-        DataGridViewCellStyle250.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle250.Format = "0.00"
-        Me.NetBalance.DefaultCellStyle = DataGridViewCellStyle250
+        DataGridViewCellStyle762.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle762.Format = "0.00"
+        Me.NetBalance.DefaultCellStyle = DataGridViewCellStyle762
         Me.NetBalance.HeaderText = "Net Balance"
         Me.NetBalance.Name = "NetBalance"
         Me.NetBalance.ReadOnly = True
@@ -4695,9 +4884,9 @@ Partial Class AgniMainForm
         'ChequeNo
         '
         Me.ChequeNo.DataPropertyName = "ChequeNo"
-        DataGridViewCellStyle251.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle251.Format = "0.00"
-        Me.ChequeNo.DefaultCellStyle = DataGridViewCellStyle251
+        DataGridViewCellStyle763.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle763.Format = "0.00"
+        Me.ChequeNo.DefaultCellStyle = DataGridViewCellStyle763
         Me.ChequeNo.HeaderText = "Cheque No"
         Me.ChequeNo.Name = "ChequeNo"
         Me.ChequeNo.ReadOnly = True
@@ -4706,9 +4895,9 @@ Partial Class AgniMainForm
         'BankName
         '
         Me.BankName.DataPropertyName = "BankName"
-        DataGridViewCellStyle252.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle252.Format = "0.00"
-        Me.BankName.DefaultCellStyle = DataGridViewCellStyle252
+        DataGridViewCellStyle764.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle764.Format = "0.00"
+        Me.BankName.DefaultCellStyle = DataGridViewCellStyle764
         Me.BankName.HeaderText = "Bank Name"
         Me.BankName.Name = "BankName"
         Me.BankName.ReadOnly = True
@@ -4717,9 +4906,9 @@ Partial Class AgniMainForm
         'ChequeDate
         '
         Me.ChequeDate.DataPropertyName = "ChequeDate"
-        DataGridViewCellStyle253.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle253.Format = "dd\/MM\/yyyy"
-        Me.ChequeDate.DefaultCellStyle = DataGridViewCellStyle253
+        DataGridViewCellStyle765.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle765.Format = "dd\/MM\/yyyy"
+        Me.ChequeDate.DefaultCellStyle = DataGridViewCellStyle765
         Me.ChequeDate.HeaderText = "Cheque Date"
         Me.ChequeDate.Name = "ChequeDate"
         Me.ChequeDate.ReadOnly = True
@@ -4728,9 +4917,9 @@ Partial Class AgniMainForm
         'Remarks
         '
         Me.Remarks.DataPropertyName = "Remarks"
-        DataGridViewCellStyle254.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle254.Format = "0.00"
-        Me.Remarks.DefaultCellStyle = DataGridViewCellStyle254
+        DataGridViewCellStyle766.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle766.Format = "0.00"
+        Me.Remarks.DefaultCellStyle = DataGridViewCellStyle766
         Me.Remarks.HeaderText = "Remarks"
         Me.Remarks.Name = "Remarks"
         Me.Remarks.ReadOnly = True
@@ -5123,11 +5312,12 @@ Partial Class AgniMainForm
         Me.tabSettings.Controls.Add(Me.btnSettingsResetBilNo)
         Me.tabSettings.Controls.Add(Me.btnSettingsBackupDatabase)
         Me.tabSettings.Cursor = System.Windows.Forms.Cursors.Arrow
-        Me.tabSettings.Location = New System.Drawing.Point(4, 52)
+        Me.tabSettings.ImageKey = "settings.png"
+        Me.tabSettings.Location = New System.Drawing.Point(4, 64)
         Me.tabSettings.Margin = New System.Windows.Forms.Padding(2)
         Me.tabSettings.Name = "tabSettings"
         Me.tabSettings.Padding = New System.Windows.Forms.Padding(2)
-        Me.tabSettings.Size = New System.Drawing.Size(1908, 997)
+        Me.tabSettings.Size = New System.Drawing.Size(1908, 985)
         Me.tabSettings.TabIndex = 7
         Me.tabSettings.Tag = "tagSettingsTab"
         Me.tabSettings.Text = "Settings"
@@ -5172,6 +5362,18 @@ Partial Class AgniMainForm
         Me.btnSettingsBackupDatabase.TabIndex = 0
         Me.btnSettingsBackupDatabase.Text = "Backup DataBase"
         Me.btnSettingsBackupDatabase.UseVisualStyleBackColor = True
+        '
+        'TabIcons
+        '
+        Me.TabIcons.ImageStream = CType(resources.GetObject("TabIcons.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.TabIcons.TransparentColor = System.Drawing.Color.Transparent
+        Me.TabIcons.Images.SetKeyName(0, "bills.png")
+        Me.TabIcons.Images.SetKeyName(1, "customer.png")
+        Me.TabIcons.Images.SetKeyName(2, "design.png")
+        Me.TabIcons.Images.SetKeyName(3, "help.png")
+        Me.TabIcons.Images.SetKeyName(4, "payment.png")
+        Me.TabIcons.Images.SetKeyName(5, "report.png")
+        Me.TabIcons.Images.SetKeyName(6, "settings.png")
         '
         'Label114
         '
@@ -6103,190 +6305,6 @@ Partial Class AgniMainForm
         Me.PictureBox5.TabIndex = 28
         Me.PictureBox5.TabStop = False
         '
-        'CompName
-        '
-        Me.CompName.DataPropertyName = "CompName"
-        DataGridViewCellStyle223.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.CompName.DefaultCellStyle = DataGridViewCellStyle223
-        Me.CompName.HeaderText = "Customer Name"
-        Me.CompName.Name = "CompName"
-        Me.CompName.ReadOnly = True
-        Me.CompName.Width = 350
-        '
-        'CustomerCustNo
-        '
-        Me.CustomerCustNo.DataPropertyName = "CustNo"
-        DataGridViewCellStyle224.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.CustomerCustNo.DefaultCellStyle = DataGridViewCellStyle224
-        Me.CustomerCustNo.HeaderText = "Cust No"
-        Me.CustomerCustNo.Name = "CustomerCustNo"
-        Me.CustomerCustNo.ReadOnly = True
-        Me.CustomerCustNo.Visible = False
-        '
-        'CustomerGSTIN
-        '
-        Me.CustomerGSTIN.DataPropertyName = "GSTIN"
-        DataGridViewCellStyle225.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.CustomerGSTIN.DefaultCellStyle = DataGridViewCellStyle225
-        Me.CustomerGSTIN.HeaderText = "GSTIN"
-        Me.CustomerGSTIN.Name = "CustomerGSTIN"
-        Me.CustomerGSTIN.ReadOnly = True
-        Me.CustomerGSTIN.Width = 150
-        '
-        'OwnerName
-        '
-        Me.OwnerName.DataPropertyName = "OwnerName"
-        DataGridViewCellStyle226.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.OwnerName.DefaultCellStyle = DataGridViewCellStyle226
-        Me.OwnerName.HeaderText = "Owner"
-        Me.OwnerName.Name = "OwnerName"
-        Me.OwnerName.ReadOnly = True
-        Me.OwnerName.Width = 200
-        '
-        'CustomerCGST
-        '
-        Me.CustomerCGST.DataPropertyName = "CGST"
-        DataGridViewCellStyle227.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle227.Format = "0.00"
-        Me.CustomerCGST.DefaultCellStyle = DataGridViewCellStyle227
-        Me.CustomerCGST.HeaderText = "CGST"
-        Me.CustomerCGST.Name = "CustomerCGST"
-        Me.CustomerCGST.ReadOnly = True
-        Me.CustomerCGST.Width = 160
-        '
-        'CustomerSGST
-        '
-        Me.CustomerSGST.DataPropertyName = "SGST"
-        DataGridViewCellStyle228.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle228.Format = "0.00"
-        Me.CustomerSGST.DefaultCellStyle = DataGridViewCellStyle228
-        Me.CustomerSGST.HeaderText = "SGST"
-        Me.CustomerSGST.Name = "CustomerSGST"
-        Me.CustomerSGST.ReadOnly = True
-        '
-        'CustomerIGST
-        '
-        Me.CustomerIGST.DataPropertyName = "IGST"
-        DataGridViewCellStyle229.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle229.Format = "0.00"
-        Me.CustomerIGST.DefaultCellStyle = DataGridViewCellStyle229
-        Me.CustomerIGST.HeaderText = "IGST"
-        Me.CustomerIGST.Name = "CustomerIGST"
-        Me.CustomerIGST.ReadOnly = True
-        '
-        'WPSqrInch
-        '
-        Me.WPSqrInch.DataPropertyName = "WorkingPrintSqrInch"
-        DataGridViewCellStyle230.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle230.Format = "0.00"
-        Me.WPSqrInch.DefaultCellStyle = DataGridViewCellStyle230
-        Me.WPSqrInch.HeaderText = "WP SqrInch"
-        Me.WPSqrInch.Name = "WPSqrInch"
-        Me.WPSqrInch.ReadOnly = True
-        Me.WPSqrInch.Width = 130
-        '
-        'WColor
-        '
-        Me.WColor.DataPropertyName = "WorkingColor"
-        DataGridViewCellStyle231.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle231.Format = "0.00"
-        Me.WColor.DefaultCellStyle = DataGridViewCellStyle231
-        Me.WColor.HeaderText = "W Color"
-        Me.WColor.Name = "WColor"
-        Me.WColor.ReadOnly = True
-        '
-        'PrintColor
-        '
-        Me.PrintColor.DataPropertyName = "PrintColor"
-        DataGridViewCellStyle232.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle232.Format = "0.00"
-        Me.PrintColor.DefaultCellStyle = DataGridViewCellStyle232
-        Me.PrintColor.HeaderText = "P Color"
-        Me.PrintColor.Name = "PrintColor"
-        Me.PrintColor.ReadOnly = True
-        '
-        'Mobile
-        '
-        Me.Mobile.DataPropertyName = "Mobile"
-        DataGridViewCellStyle233.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.Mobile.DefaultCellStyle = DataGridViewCellStyle233
-        Me.Mobile.HeaderText = "Mobile"
-        Me.Mobile.Name = "Mobile"
-        Me.Mobile.ReadOnly = True
-        Me.Mobile.Width = 150
-        '
-        'AddressLIne1
-        '
-        Me.AddressLIne1.DataPropertyName = "AddressLine1"
-        DataGridViewCellStyle234.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.AddressLIne1.DefaultCellStyle = DataGridViewCellStyle234
-        Me.AddressLIne1.HeaderText = "AddressLine1"
-        Me.AddressLIne1.Name = "AddressLIne1"
-        Me.AddressLIne1.ReadOnly = True
-        Me.AddressLIne1.Width = 200
-        '
-        'AddressLine2
-        '
-        Me.AddressLine2.DataPropertyName = "AddressLine2"
-        Me.AddressLine2.HeaderText = "AddressLine2"
-        Me.AddressLine2.Name = "AddressLine2"
-        Me.AddressLine2.ReadOnly = True
-        Me.AddressLine2.Width = 200
-        '
-        'AddressLine3
-        '
-        Me.AddressLine3.DataPropertyName = "AddressLine3"
-        Me.AddressLine3.HeaderText = "AddressLine3"
-        Me.AddressLine3.Name = "AddressLine3"
-        Me.AddressLine3.ReadOnly = True
-        Me.AddressLine3.Width = 200
-        '
-        'AddressLine4
-        '
-        Me.AddressLine4.DataPropertyName = "AddressLine4"
-        Me.AddressLine4.HeaderText = "AddressLine4"
-        Me.AddressLine4.Name = "AddressLine4"
-        Me.AddressLine4.ReadOnly = True
-        Me.AddressLine4.Width = 200
-        '
-        'AddressLine5
-        '
-        Me.AddressLine5.DataPropertyName = "AddressLine5"
-        Me.AddressLine5.HeaderText = "AddressLine5"
-        Me.AddressLine5.Name = "AddressLine5"
-        Me.AddressLine5.ReadOnly = True
-        Me.AddressLine5.Width = 200
-        '
-        'Landline
-        '
-        Me.Landline.DataPropertyName = "Landline"
-        DataGridViewCellStyle235.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.Landline.DefaultCellStyle = DataGridViewCellStyle235
-        Me.Landline.HeaderText = "Landline"
-        Me.Landline.Name = "Landline"
-        Me.Landline.ReadOnly = True
-        Me.Landline.Width = 150
-        '
-        'Email
-        '
-        Me.Email.DataPropertyName = "Email"
-        DataGridViewCellStyle236.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.Email.DefaultCellStyle = DataGridViewCellStyle236
-        Me.Email.HeaderText = "Email"
-        Me.Email.Name = "Email"
-        Me.Email.ReadOnly = True
-        Me.Email.Width = 180
-        '
-        'Website
-        '
-        Me.Website.DataPropertyName = "Website"
-        DataGridViewCellStyle237.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.Website.DefaultCellStyle = DataGridViewCellStyle237
-        Me.Website.HeaderText = "Website"
-        Me.Website.Name = "Website"
-        Me.Website.ReadOnly = True
-        Me.Website.Width = 150
-        '
         'AgniMainForm
         '
         Me.AcceptButton = Me.btnReportSearch
@@ -6854,4 +6872,5 @@ Partial Class AgniMainForm
     Friend WithEvents Landline As DataGridViewTextBoxColumn
     Friend WithEvents Email As DataGridViewTextBoxColumn
     Friend WithEvents Website As DataGridViewTextBoxColumn
+    Friend WithEvents TabIcons As ImageList
 End Class
