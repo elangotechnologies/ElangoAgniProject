@@ -23,9 +23,9 @@ Partial Class ManageUsers
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.txtManageUsersRetypePassword = New System.Windows.Forms.TextBox()
+        Me.txtManageUsersRetypePassword = New ElaCustomTextBoxControl.ElaCustomTextBox()
         Me.lblManageUsersPassword = New System.Windows.Forms.Label()
-        Me.txtManageUsersPassword = New System.Windows.Forms.TextBox()
+        Me.txtManageUsersPassword = New ElaCustomTextBoxControl.ElaCustomTextBox()
         Me.btnManageUsersCancel = New CButtonLib.CButton()
         Me.lblManageUsersRetypePassword = New System.Windows.Forms.Label()
         Me.btnManageUsersCreateUser = New CButtonLib.CButton()
@@ -46,7 +46,7 @@ Partial Class ManageUsers
         Me.UserGridTypeId = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnManageUsersCreateUserConfirm = New CButtonLib.CButton()
         Me.btnManageUsersCreateUserCancel = New CButtonLib.CButton()
-        Me.cmbManageUsersUserName = New System.Windows.Forms.ComboBox()
+        Me.cmbManageUsersUserName = New ElaCustomComboBoxControl.ElaCustomComboBox()
         Me.gbManageUsersUserType.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbUsersList.SuspendLayout()
@@ -371,9 +371,9 @@ Partial Class ManageUsers
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents txtManageUsersRetypePassword As System.Windows.Forms.TextBox
+    Friend WithEvents txtManageUsersRetypePassword As ElaCustomTextBoxControl.ElaCustomTextBox
     Friend WithEvents lblManageUsersPassword As System.Windows.Forms.Label
-    Friend WithEvents txtManageUsersPassword As System.Windows.Forms.TextBox
+    Friend WithEvents txtManageUsersPassword As ElaCustomTextBoxControl.ElaCustomTextBox
     Friend WithEvents btnManageUsersCancel As CButtonLib.CButton
     Friend WithEvents lblManageUsersRetypePassword As System.Windows.Forms.Label
     Friend WithEvents btnManageUsersCreateUser As CButtonLib.CButton
@@ -388,7 +388,7 @@ Partial Class ManageUsers
     Friend WithEvents dgManageUsersUsersGrid As DataGridView
     Friend WithEvents btnManageUsersCreateUserConfirm As CButtonLib.CButton
     Friend WithEvents btnManageUsersCreateUserCancel As CButtonLib.CButton
-    Friend WithEvents cmbManageUsersUserName As ComboBox
+    Friend WithEvents cmbManageUsersUserName As ElaCustomComboBoxControl.ElaCustomComboBox
     Friend WithEvents UserGridUserId As DataGridViewTextBoxColumn
     Friend WithEvents UserGridUserName As DataGridViewTextBoxColumn
     Friend WithEvents UserGridPassword As DataGridViewTextBoxColumn

@@ -19,15 +19,15 @@ Partial Class ChangePassword
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.txtChangePwdNewPassword = New System.Windows.Forms.TextBox()
+        Me.txtChangePwdNewPassword = New ElaCustomTextBoxControl.ElaCustomTextBox()
         Me.btnChangePwdCancel = New CButtonLib.CButton()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnChangePwdConfim = New CButtonLib.CButton()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.txtChangePwdRetypeNewPassword = New System.Windows.Forms.TextBox()
+        Me.txtChangePwdRetypeNewPassword = New ElaCustomTextBoxControl.ElaCustomTextBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.cmbChangePwdUserName = New System.Windows.Forms.ComboBox()
-        Me.txtChangePwdOldPassword = New System.Windows.Forms.TextBox()
+        Me.cmbChangePwdUserName = New ElaCustomComboBoxControl.ElaCustomComboBox()
+        Me.txtChangePwdOldPassword = New ElaCustomTextBoxControl.ElaCustomTextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -173,15 +173,15 @@ Partial Class ChangePassword
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents txtChangePwdNewPassword As System.Windows.Forms.TextBox
+    Friend WithEvents txtChangePwdNewPassword As ElaCustomTextBoxControl.ElaCustomTextBox
     Friend WithEvents btnChangePwdCancel As CButtonLib.CButton
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents btnChangePwdConfim As CButtonLib.CButton
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents txtChangePwdRetypeNewPassword As System.Windows.Forms.TextBox
+    Friend WithEvents txtChangePwdRetypeNewPassword As ElaCustomTextBoxControl.ElaCustomTextBox
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
-    Friend WithEvents cmbChangePwdUserName As ComboBox
-    Friend WithEvents txtChangePwdOldPassword As TextBox
+    Friend WithEvents cmbChangePwdUserName As ElaCustomComboBoxControl.ElaCustomComboBox
+    Friend WithEvents txtChangePwdOldPassword As ElaCustomTextBoxControl.ElaCustomTextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
 End Class

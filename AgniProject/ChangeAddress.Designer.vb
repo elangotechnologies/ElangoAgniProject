@@ -25,16 +25,16 @@ Partial Class ChangeAddress
         Me.lblChangeAddressLine3 = New System.Windows.Forms.Label()
         Me.lblChangeAddressLine2 = New System.Windows.Forms.Label()
         Me.lblChangeAddressLine4 = New System.Windows.Forms.Label()
-        Me.txtChangeAddressLine4 = New System.Windows.Forms.TextBox()
+        Me.txtChangeAddressLine4 = New ElaCustomTextBoxControl.ElaCustomTextBox()
         Me.lblChangeAddressLine1 = New System.Windows.Forms.Label()
-        Me.txtChangeAddressLine3 = New System.Windows.Forms.TextBox()
-        Me.txtChangeAddressLine2 = New System.Windows.Forms.TextBox()
-        Me.txtChangeAddressLine1 = New System.Windows.Forms.TextBox()
+        Me.txtChangeAddressLine3 = New ElaCustomTextBoxControl.ElaCustomTextBox()
+        Me.txtChangeAddressLine2 = New ElaCustomTextBoxControl.ElaCustomTextBox()
+        Me.txtChangeAddressLine1 = New ElaCustomTextBoxControl.ElaCustomTextBox()
         Me.btnChangeAddressCancel = New CButtonLib.CButton()
         Me.btnChangeAddressConfirm = New CButtonLib.CButton()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.lblChangeAddressLine5 = New System.Windows.Forms.Label()
-        Me.txtChangeAddressLine5 = New System.Windows.Forms.TextBox()
+        Me.txtChangeAddressLine5 = New ElaCustomTextBoxControl.ElaCustomTextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -217,15 +217,15 @@ Partial Class ChangeAddress
     Friend WithEvents lblChangeAddressLine3 As Label
     Friend WithEvents lblChangeAddressLine2 As Label
     Friend WithEvents lblChangeAddressLine4 As Label
-    Friend WithEvents txtChangeAddressLine4 As TextBox
+    Friend WithEvents txtChangeAddressLine4 As ElaCustomTextBoxControl.ElaCustomTextBox
     Friend WithEvents lblChangeAddressLine1 As Label
-    Friend WithEvents txtChangeAddressLine3 As TextBox
-    Friend WithEvents txtChangeAddressLine2 As TextBox
-    Friend WithEvents txtChangeAddressLine1 As TextBox
+    Friend WithEvents txtChangeAddressLine3 As ElaCustomTextBoxControl.ElaCustomTextBox
+    Friend WithEvents txtChangeAddressLine2 As ElaCustomTextBoxControl.ElaCustomTextBox
+    Friend WithEvents txtChangeAddressLine1 As ElaCustomTextBoxControl.ElaCustomTextBox
     Friend WithEvents btnChangeAddressCancel As CButtonLib.CButton
     Friend WithEvents btnChangeAddressConfirm As CButtonLib.CButton
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents lblChangeAddressLine5 As Label
-    Friend WithEvents txtChangeAddressLine5 As TextBox
+    Friend WithEvents txtChangeAddressLine5 As ElaCustomTextBoxControl.ElaCustomTextBox
     Friend WithEvents GroupBox1 As GroupBox
 End Class

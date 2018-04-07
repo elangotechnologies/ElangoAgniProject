@@ -128,9 +128,9 @@ Public Class AgniMainForm
         Me.BeginInvoke(setCustomerListInvoker, customerTable, Nothing)
     End Sub
 
-    Delegate Sub setCustomerListDelegate(customerTable As DataTable, cmbCompanyList As ComboBox)
+    Delegate Sub setCustomerListDelegate(customerTable As DataTable, cmbCompanyList As ElaCustomComboBoxControl.ElaCustomComboBox)
 
-    Sub setCustomerList(customerTable As DataTable, Optional cmbCompanyList As ComboBox = Nothing)
+    Sub setCustomerList(customerTable As DataTable, Optional cmbCompanyList As ElaCustomComboBoxControl.ElaCustomComboBox = Nothing)
         Dim dummyFirstRow As DataRow = customerTable.NewRow()
         dummyFirstRow("CustNo") = -1
         dummyFirstRow("CompName") = "Please select a customer..."
@@ -153,7 +153,7 @@ Public Class AgniMainForm
         End If
     End Sub
 
-    Sub loadDesignList(Optional custNo As Integer = Nothing, Optional cmbDesignListControl As ComboBox = Nothing, Optional billNo As Integer = Nothing)
+    Sub loadDesignList(Optional custNo As Integer = Nothing, Optional cmbDesignListControl As ElaCustomComboBoxControl.ElaCustomComboBox = Nothing, Optional billNo As Integer = Nothing)
         Dim thread As Thread = New Thread(AddressOf getDesignListTable)
         thread.IsBackground = True
 
@@ -194,9 +194,9 @@ Public Class AgniMainForm
         Me.BeginInvoke(setDesignListInvoker, designTable, searchData.comboBoxControl)
     End Sub
 
-    Delegate Sub setDesignListDelegate(designTable As DataTable, cmbDesignListControl As ComboBox)
+    Delegate Sub setDesignListDelegate(designTable As DataTable, cmbDesignListControl As ElaCustomComboBoxControl.ElaCustomComboBox)
 
-    Sub setDesignList(designTable As DataTable, Optional cmbDesignListControl As ComboBox = Nothing)
+    Sub setDesignList(designTable As DataTable, Optional cmbDesignListControl As ElaCustomComboBoxControl.ElaCustomComboBox = Nothing)
         Dim dummyFirstRow As DataRow = designTable.NewRow()
         dummyFirstRow("DesignNo") = -1
         dummyFirstRow("DesignName") = "Please select a design..."
@@ -331,7 +331,7 @@ Public Class AgniMainForm
         End If
     End Sub
 
-    Sub loadBillList(Optional custNo As Integer = Nothing, Optional cmbBillListControl As ComboBox = Nothing)
+    Sub loadBillList(Optional custNo As Integer = Nothing, Optional cmbBillListControl As ElaCustomComboBoxControl.ElaCustomComboBox = Nothing)
         Dim thread As Thread = New Thread(AddressOf getBillListTable)
         thread.IsBackground = True
 
@@ -365,9 +365,9 @@ Public Class AgniMainForm
 
     End Sub
 
-    Delegate Sub setBillingListDelegate(billTable As DataTable, cmbBillListControl As ComboBox)
+    Delegate Sub setBillingListDelegate(billTable As DataTable, cmbBillListControl As ElaCustomComboBoxControl.ElaCustomComboBox)
 
-    Sub setBillingList(billTable As DataTable, Optional cmbBillListControl As ComboBox = Nothing)
+    Sub setBillingList(billTable As DataTable, Optional cmbBillListControl As ElaCustomComboBoxControl.ElaCustomComboBox = Nothing)
 
         Dim dummyFirstRow As DataRow = billTable.NewRow()
         dummyFirstRow("BillNo") = -1
@@ -498,9 +498,9 @@ Public Class AgniMainForm
 
     End Sub
 
-    Delegate Sub setPaymentListDelegate(paymentTable As DataTable, cmbPaymentList As ComboBox)
+    Delegate Sub setPaymentListDelegate(paymentTable As DataTable, cmbPaymentList As ElaCustomComboBoxControl.ElaCustomComboBox)
 
-    Sub setPaymentList(paymentTable As DataTable, Optional cmbPaymentList As ComboBox = Nothing)
+    Sub setPaymentList(paymentTable As DataTable, Optional cmbPaymentList As ElaCustomComboBoxControl.ElaCustomComboBox = Nothing)
 
         Dim dummyFirstRow As DataRow = paymentTable.NewRow()
         dummyFirstRow("PaymentNo") = -1
@@ -2230,7 +2230,7 @@ Public Class AgniMainForm
         End If
     End Sub
 
-    Sub resetIndexOfComboBox(comboBox As ComboBox)
+    Sub resetIndexOfComboBox(comboBox As ElaCustomComboBoxControl.ElaCustomComboBox)
         If (comboBox.Items.Count > 0) Then
             comboBox.SelectedValue = -1
         Else
@@ -2720,7 +2720,7 @@ Public Class AgniMainForm
         Public designName As String
         Public fromDate As Date
         Public toDate As Date
-        Public comboBoxControl As ComboBox
+        Public comboBoxControl As ElaCustomComboBoxControl.ElaCustomComboBox
         Public searchFilter As Integer
         Public designQuery As String
         Public designSummaryQuery As String

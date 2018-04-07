@@ -23,11 +23,11 @@ Partial Class Login
         Me.btnLoginLogin = New CButtonLib.CButton()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnLoginCancel = New CButtonLib.CButton()
-        Me.txtLoginPassword = New System.Windows.Forms.TextBox()
+        Me.txtLoginPassword = New ElaCustomTextBoxControl.ElaCustomTextBox()
         Me.btnLoginChangePassword = New CButtonLib.CButton()
         Me.btnLoginManageUsers = New CButtonLib.CButton()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.cmbLoginUserName = New System.Windows.Forms.ComboBox()
+        Me.cmbLoginUserName = New ElaCustomComboBoxControl.ElaCustomComboBox()
         Me.DataSet11 = New AgniProject.AgniDataSet()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataSet11, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -158,10 +158,10 @@ Partial Class Login
     Friend WithEvents btnLoginLogin As CButtonLib.CButton
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents btnLoginCancel As CButtonLib.CButton
-    Friend WithEvents txtLoginPassword As System.Windows.Forms.TextBox
+    Friend WithEvents txtLoginPassword As ElaCustomTextBoxControl.ElaCustomTextBox
     Friend WithEvents btnLoginChangePassword As CButtonLib.CButton
     Friend WithEvents btnLoginManageUsers As CButtonLib.CButton
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
-    Friend WithEvents cmbLoginUserName As System.Windows.Forms.ComboBox
+    Friend WithEvents cmbLoginUserName As ElaCustomComboBoxControl.ElaCustomComboBox
     Friend WithEvents DataSet11 As AgniDataSet
 End Class

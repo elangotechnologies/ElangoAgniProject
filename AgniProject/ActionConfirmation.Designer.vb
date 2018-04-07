@@ -19,13 +19,13 @@ Partial Class ActionConfirmation
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.txtActionConfirmPassword = New System.Windows.Forms.TextBox()
+        Me.txtActionConfirmPassword = New ElaCustomTextBoxControl.ElaCustomTextBox()
         Me.btnActionConfirmationCancel = New CButtonLib.CButton()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnActionConfirmationConfirm = New CButtonLib.CButton()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.cmbActionConfirmUserName = New System.Windows.Forms.ComboBox()
+        Me.cmbActionConfirmUserName = New ElaCustomComboBoxControl.ElaCustomComboBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -128,10 +128,10 @@ Partial Class ActionConfirmation
 
     End Sub
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
-    Friend WithEvents txtActionConfirmPassword As System.Windows.Forms.TextBox
+    Friend WithEvents txtActionConfirmPassword As ElaCustomTextBoxControl.ElaCustomTextBox
     Friend WithEvents btnActionConfirmationCancel As CButtonLib.CButton
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents btnActionConfirmationConfirm As CButtonLib.CButton
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents cmbActionConfirmUserName As ComboBox
+    Friend WithEvents cmbActionConfirmUserName As ElaCustomComboBoxControl.ElaCustomComboBox
 End Class
