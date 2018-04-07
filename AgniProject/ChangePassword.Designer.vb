@@ -20,9 +20,9 @@ Partial Class ChangePassword
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.txtChangePwdNewPassword = New System.Windows.Forms.TextBox()
-        Me.btnChangePwdCancel = New System.Windows.Forms.Button()
+        Me.btnChangePwdCancel = New CButtonLib.CButton()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.btnChangePwdConfim = New System.Windows.Forms.Button()
+        Me.btnChangePwdConfim = New CButtonLib.CButton()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtChangePwdRetypeNewPassword = New System.Windows.Forms.TextBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
@@ -174,9 +174,9 @@ Partial Class ChangePassword
 
     End Sub
     Friend WithEvents txtChangePwdNewPassword As System.Windows.Forms.TextBox
-    Friend WithEvents btnChangePwdCancel As System.Windows.Forms.Button
+    Friend WithEvents btnChangePwdCancel As CButtonLib.CButton
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents btnChangePwdConfim As System.Windows.Forms.Button
+    Friend WithEvents btnChangePwdConfim As CButtonLib.CButton
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents txtChangePwdRetypeNewPassword As System.Windows.Forms.TextBox
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox

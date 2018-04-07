@@ -20,8 +20,8 @@ Partial Class BillReportForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.reportViewerBillReport = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
-        Me.btnBillReportExportPdf = New System.Windows.Forms.Button()
-        Me.btnBillReportPDFPath = New System.Windows.Forms.Button()
+        Me.btnBillReportExportPdf = New CButtonLib.CButton()
+        Me.btnBillReportPDFPath = New CButtonLib.CButton()
         Me.CachedBillReport1 = New AgniProject.CachedBillReport()
         Me.CachedBillReport2 = New AgniProject.CachedBillReport()
         Me.SuspendLayout()
@@ -79,8 +79,8 @@ Partial Class BillReportForm
 
     End Sub
     Friend WithEvents reportViewerBillReport As CrystalDecisions.Windows.Forms.CrystalReportViewer
-    Friend WithEvents btnBillReportExportPdf As System.Windows.Forms.Button
-    Friend WithEvents btnBillReportPDFPath As System.Windows.Forms.Button
+    Friend WithEvents btnBillReportExportPdf As CButtonLib.CButton
+    Friend WithEvents btnBillReportPDFPath As CButtonLib.CButton
     Friend WithEvents CachedBillReport1 As CachedBillReport
     Friend WithEvents CachedBillReport2 As CachedBillReport
 End Class

@@ -72,7 +72,7 @@ Partial Class CustomersOutstandingBalances
         Me.lblActualPaidAmount = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.btnPrintOutstandingReport = New System.Windows.Forms.Button()
+        Me.btnPrintOutstandingReport = New CButtonLib.CButton()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox5.SuspendLayout()
         CType(Me.dgCustomerBillSummary, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -626,7 +626,7 @@ Partial Class CustomersOutstandingBalances
     Friend WithEvents lblActualPaidAmount As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents btnPrintOutstandingReport As Button
+    Friend WithEvents btnPrintOutstandingReport As CButtonLib.CButton
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Label1 As Label
     Friend WithEvents lblOutstandingBalance As Label

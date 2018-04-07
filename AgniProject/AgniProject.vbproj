@@ -415,6 +415,20 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Library Projects\CButton\CButton\CButtonLib.vbproj">
+      <Project>{24116fe6-8501-45f0-add0-67fffb037baf}</Project>
+      <Name>CButtonLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library Projects\ElaCustomComboBoxControl\ElaCustomComboBoxControl.vbproj">
+      <Project>{91fc3cdb-3e9e-427c-ab25-dd63e1fe38d8}</Project>
+      <Name>ElaCustomComboBoxControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library Projects\ElaCustomTextBoxControl\ElaCustomTextBoxControl.vbproj">
+      <Project>{58b5c64d-f476-4674-9f23-ac7747757613}</Project>
+      <Name>ElaCustomTextBoxControl</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

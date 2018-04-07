@@ -20,12 +20,12 @@ Partial Class Login
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.btnLoginLogin = New System.Windows.Forms.Button()
+        Me.btnLoginLogin = New CButtonLib.CButton()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.btnLoginCancel = New System.Windows.Forms.Button()
+        Me.btnLoginCancel = New CButtonLib.CButton()
         Me.txtLoginPassword = New System.Windows.Forms.TextBox()
-        Me.btnLoginChangePassword = New System.Windows.Forms.Button()
-        Me.btnLoginManageUsers = New System.Windows.Forms.Button()
+        Me.btnLoginChangePassword = New CButtonLib.CButton()
+        Me.btnLoginManageUsers = New CButtonLib.CButton()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.cmbLoginUserName = New System.Windows.Forms.ComboBox()
         Me.DataSet11 = New AgniProject.AgniDataSet()
@@ -155,12 +155,12 @@ Partial Class Login
 
     End Sub
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents btnLoginLogin As System.Windows.Forms.Button
+    Friend WithEvents btnLoginLogin As CButtonLib.CButton
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents btnLoginCancel As System.Windows.Forms.Button
+    Friend WithEvents btnLoginCancel As CButtonLib.CButton
     Friend WithEvents txtLoginPassword As System.Windows.Forms.TextBox
-    Friend WithEvents btnLoginChangePassword As System.Windows.Forms.Button
-    Friend WithEvents btnLoginManageUsers As System.Windows.Forms.Button
+    Friend WithEvents btnLoginChangePassword As CButtonLib.CButton
+    Friend WithEvents btnLoginManageUsers As CButtonLib.CButton
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents cmbLoginUserName As System.Windows.Forms.ComboBox
     Friend WithEvents DataSet11 As AgniDataSet

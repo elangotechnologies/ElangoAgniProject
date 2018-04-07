@@ -26,14 +26,14 @@ Partial Class ManageUsers
         Me.txtManageUsersRetypePassword = New System.Windows.Forms.TextBox()
         Me.lblManageUsersPassword = New System.Windows.Forms.Label()
         Me.txtManageUsersPassword = New System.Windows.Forms.TextBox()
-        Me.btnManageUsersCancel = New System.Windows.Forms.Button()
+        Me.btnManageUsersCancel = New CButtonLib.CButton()
         Me.lblManageUsersRetypePassword = New System.Windows.Forms.Label()
-        Me.btnManageUsersCreateUser = New System.Windows.Forms.Button()
+        Me.btnManageUsersCreateUser = New CButtonLib.CButton()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.rbManageUsersAdmin = New System.Windows.Forms.RadioButton()
         Me.rbManageUsersGuest = New System.Windows.Forms.RadioButton()
         Me.gbManageUsersUserType = New System.Windows.Forms.GroupBox()
-        Me.btnManageUsersDeleteUser = New System.Windows.Forms.Button()
+        Me.btnManageUsersDeleteUser = New CButtonLib.CButton()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.gbUsersList = New System.Windows.Forms.GroupBox()
@@ -44,8 +44,8 @@ Partial Class ManageUsers
         Me.UserGridType = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.UserGridPasswordOrig = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.UserGridTypeId = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.btnManageUsersCreateUserConfirm = New System.Windows.Forms.Button()
-        Me.btnManageUsersCreateUserCancel = New System.Windows.Forms.Button()
+        Me.btnManageUsersCreateUserConfirm = New CButtonLib.CButton()
+        Me.btnManageUsersCreateUserCancel = New CButtonLib.CButton()
         Me.cmbManageUsersUserName = New System.Windows.Forms.ComboBox()
         Me.gbManageUsersUserType.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -374,20 +374,20 @@ Partial Class ManageUsers
     Friend WithEvents txtManageUsersRetypePassword As System.Windows.Forms.TextBox
     Friend WithEvents lblManageUsersPassword As System.Windows.Forms.Label
     Friend WithEvents txtManageUsersPassword As System.Windows.Forms.TextBox
-    Friend WithEvents btnManageUsersCancel As System.Windows.Forms.Button
+    Friend WithEvents btnManageUsersCancel As CButtonLib.CButton
     Friend WithEvents lblManageUsersRetypePassword As System.Windows.Forms.Label
-    Friend WithEvents btnManageUsersCreateUser As System.Windows.Forms.Button
+    Friend WithEvents btnManageUsersCreateUser As CButtonLib.CButton
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents rbManageUsersAdmin As System.Windows.Forms.RadioButton
     Friend WithEvents rbManageUsersGuest As System.Windows.Forms.RadioButton
     Friend WithEvents gbManageUsersUserType As System.Windows.Forms.GroupBox
-    Friend WithEvents btnManageUsersDeleteUser As System.Windows.Forms.Button
+    Friend WithEvents btnManageUsersDeleteUser As CButtonLib.CButton
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents Label4 As Label
     Friend WithEvents gbUsersList As GroupBox
     Friend WithEvents dgManageUsersUsersGrid As DataGridView
-    Friend WithEvents btnManageUsersCreateUserConfirm As Button
-    Friend WithEvents btnManageUsersCreateUserCancel As Button
+    Friend WithEvents btnManageUsersCreateUserConfirm As CButtonLib.CButton
+    Friend WithEvents btnManageUsersCreateUserCancel As CButtonLib.CButton
     Friend WithEvents cmbManageUsersUserName As ComboBox
     Friend WithEvents UserGridUserId As DataGridViewTextBoxColumn
     Friend WithEvents UserGridUserName As DataGridViewTextBoxColumn

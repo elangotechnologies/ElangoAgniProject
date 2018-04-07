@@ -830,7 +830,7 @@ Public Class AgniMainForm
         'log.Debug("resetPaymentScreen is called and done")
     End Sub
 
-    Public Sub btnCustAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCustAdd.Click
+    Public Sub btnCustAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCustAdd.ClickButtonArea
         Try
             If cmbCustCustomerList.Text.Trim.Equals("") Or cmbCustCustomerList.Text.Trim.Equals("Please select a customer...") Then
                 MessageBox.Show("Enter Valid company Name")
@@ -891,7 +891,7 @@ Public Class AgniMainForm
         End Try
     End Sub
 
-    Private Sub btnCustDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCustDelete.Click
+    Private Sub btnCustDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCustDelete.ClickButtonArea
         If (cmbCustCustomerList.SelectedIndex = -1 Or cmbCustCustomerList.SelectedValue = -1) Then
             MessageBox.Show("Please select a customer")
             cmbCustCustomerList.Focus()
@@ -964,7 +964,7 @@ Public Class AgniMainForm
         Return True
     End Function
 
-    Private Sub btnCustUpdate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCustUpdate.Click
+    Private Sub btnCustUpdate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCustUpdate.ClickButtonArea
 
         If (gSelectedCustNo = -1) Then
             MessageBox.Show("Please select a customer")
@@ -1036,7 +1036,7 @@ Public Class AgniMainForm
     End Sub
 
 
-    Private Sub btnDesAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDesAdd.Click
+    Private Sub btnDesAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDesAdd.ClickButtonArea
         If (cmbDesCustomerList.SelectedIndex = -1 Or cmbDesCustomerList.SelectedValue = -1) Then
             MessageBox.Show("Please select a customer")
             cmbDesCustomerList.Focus()
@@ -1177,7 +1177,7 @@ Public Class AgniMainForm
             AddHandler cmbDesDesignList.SelectedIndexChanged, AddressOf cmbDesDesignList_SelectedIndexChanged
         End If
     End Sub
-    Private Sub btnDesUpdate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDesUpdate.Click
+    Private Sub btnDesUpdate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDesUpdate.ClickButtonArea
         If gSelectedDesignNo = -1 Then
             MessageBox.Show("Please select a design")
             cmbDesDesignList.Focus()
@@ -1412,7 +1412,7 @@ Public Class AgniMainForm
         End Try
     End Sub
 
-    Private Sub btnDesDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDesDelete.Click
+    Private Sub btnDesDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDesDelete.ClickButtonArea
         If gSelectedDesignNo = -1 Then
             MessageBox.Show("Please select a design")
             cmbDesDesignList.Focus()
@@ -1513,7 +1513,7 @@ Public Class AgniMainForm
         loadLastBill(custNo)
     End Sub
 
-    Private Sub btnBillingPrintBill_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBillingPrintBill.Click
+    Private Sub btnBillingPrintBill_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBillingPrintBill.ClickButtonArea
         If cmbBillingBillNoList.SelectedIndex = -1 Or cmbBillingBillNoList.SelectedValue = -1 Then
             MsgBox("Please select a bill to print")
             cmbBillingBillNoList.Focus()
@@ -1536,16 +1536,16 @@ Public Class AgniMainForm
 
     End Sub
 
-    Private Sub btnCustClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCustClear.Click
+    Private Sub btnCustClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCustClear.ClickButtonArea
         resetIndexOfComboBox(cmbCustCustomerList)
     End Sub
 
-    Private Sub btnDesEditPrice_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDesEditPrice.Click
+    Private Sub btnDesEditPrice_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDesEditPrice.ClickButtonArea
         txtDesCalculatedPrice.ReadOnly = Not txtDesCalculatedPrice.ReadOnly
         txtDesCalculatedPrice.Focus()
     End Sub
 
-    Private Sub btnDesClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDesClear.Click
+    Private Sub btnDesClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDesClear.ClickButtonArea
         If (cmbDesDesignList.SelectedIndex = -1 Or cmbDesDesignList.SelectedValue = -1) Then
             resetDesignScreen()
             cmbDesDesignList.Text = ""
@@ -1561,16 +1561,12 @@ Public Class AgniMainForm
         loadDesignChargePerUnit(cmbDesCustomerList.SelectedValue)
     End Sub
 
-    Private Sub btnBillingClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBillingClear.Click
+    Private Sub btnBillingClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBillingClear.ClickButtonArea
         resetIndexOfComboBox(cmbBillingBillNoList)
     End Sub
 
 
-    Private Sub TabPage1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tabCustomer.Click
-        cmbCustCustomerList.Focus()
-    End Sub
-
-    Private Sub btnBilingOutstandingBalance_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBilingOutstandingBalance.Click
+    Private Sub btnBilingOutstandingBalance_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBillingOutstandingBalance.ClickButtonArea
         CustomersOutstandingBalances.Show()
     End Sub
 
@@ -1616,7 +1612,7 @@ Public Class AgniMainForm
         txtPaymentNetBalance.Text = Format(Math.Round((unPaidBillAmount - finalPaidAmount)), "0.00")
 
     End Sub
-    Private Sub btnBillingCreateBill_Click(sender As Object, e As EventArgs) Handles btnBillingCreateBill.Click
+    Private Sub btnBillingCreateBill_Click(sender As Object, e As EventArgs) Handles btnBillingCreateBill.ClickButtonArea
 
         If (cmbBillingCustomerList.SelectedIndex = -1 Or cmbBillingCustomerList.SelectedValue = -1) Then
             MessageBox.Show("Please select a customer")
@@ -1735,7 +1731,7 @@ Public Class AgniMainForm
 
     End Function
 
-    Private Sub btnBillingConfirmCreateBill_Click(sender As Object, e As EventArgs) Handles btnBillingConfirmCreateBill.Click
+    Private Sub btnBillingConfirmCreateBill_Click(sender As Object, e As EventArgs) Handles btnBillingConfirmCreateBill.ClickButtonArea
         If cmbBillingCustomerList.Text.Trim.Equals("") Then
             MessageBox.Show("Enter Valid Company Name")
             cmbDesCustomerList.Focus()
@@ -1808,7 +1804,7 @@ Public Class AgniMainForm
         End If
     End Sub
 
-    Private Sub btnBillingCancelCreateBill_Click(sender As Object, e As EventArgs) Handles btnBillingCancelCreateBill.Click
+    Private Sub btnBillingCancelCreateBill_Click(sender As Object, e As EventArgs) Handles btnBillingCancelCreateBill.ClickButtonArea
         If (cmbBillingBillNoList.SelectedIndex = -1 Or cmbBillingBillNoList.SelectedValue = -1) Then
             resetBillingScreen()
             cmbBillingBillNoList.Text = ""
@@ -1818,7 +1814,7 @@ Public Class AgniMainForm
 
     End Sub
 
-    Private Sub btnBillingCancelBill_Click(sender As Object, e As EventArgs) Handles btnBillingCancelBill.Click
+    Private Sub btnBillingCancelBill_Click(sender As Object, e As EventArgs) Handles btnBillingCancelBill.ClickButtonArea
 
         If (cmbBillingBillNoList.SelectedIndex = -1 Or cmbBillingBillNoList.SelectedValue = -1) Then
             MessageBox.Show("Please Select a bill")
@@ -1858,7 +1854,7 @@ Public Class AgniMainForm
 
     End Sub
 
-    Private Sub btnPaymentCreatePayment_Click(sender As Object, e As EventArgs) Handles btnPaymentCreatePayment.Click
+    Private Sub btnPaymentCreatePayment_Click(sender As Object, e As EventArgs) Handles btnPaymentCreatePayment.ClickButtonArea
         If (cmbPaymentCustomerList.SelectedIndex = -1 Or cmbPaymentCustomerList.SelectedValue = -1) Then
             MessageBox.Show("Please Select a customer")
             cmbPaymentCustomerList.Focus()
@@ -1893,7 +1889,7 @@ Public Class AgniMainForm
         txtPaymentActualPaidAmount.Focus()
     End Sub
 
-    Private Sub btnPaymentConfirmCreatePayment_Click(sender As Object, e As EventArgs) Handles btnPaymentConfirmCreatePayment.Click
+    Private Sub btnPaymentConfirmCreatePayment_Click(sender As Object, e As EventArgs) Handles btnPaymentConfirmCreatePayment.ClickButtonArea
 
         If cmbPaymentCustomerList.Text.Trim.Equals("") Then
             MessageBox.Show("Choose a company from company list")
@@ -2001,7 +1997,7 @@ Public Class AgniMainForm
         End If
     End Sub
 
-    Private Sub btnPaymentCancelCreatePayment_Click(sender As Object, e As EventArgs) Handles btnPaymentCancelCreatePayment.Click
+    Private Sub btnPaymentCancelCreatePayment_Click(sender As Object, e As EventArgs) Handles btnPaymentCancelCreatePayment.ClickButtonArea
         If (cmbPaymentPaymentNoList.SelectedIndex = -1 Or cmbPaymentPaymentNoList.SelectedValue = -1) Then
             resetPaymentScreen()
             cmbPaymentPaymentNoList.Text = ""
@@ -2129,7 +2125,7 @@ Public Class AgniMainForm
 
     End Sub
 
-    Private Sub btnPaymentDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPaymentDelete.Click
+    Private Sub btnPaymentDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPaymentDelete.ClickButtonArea
         If cmbPaymentPaymentNoList.SelectedIndex = -1 Or cmbPaymentPaymentNoList.SelectedValue = -1 Then
             MessageBox.Show("select the payment which you want to delete")
             cmbPaymentPaymentNoList.Focus()
@@ -2242,7 +2238,7 @@ Public Class AgniMainForm
         End If
     End Sub
 
-    Private Sub btnPaymentClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPaymentClear.Click
+    Private Sub btnPaymentClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPaymentClear.ClickButtonArea
         resetIndexOfComboBox(cmbPaymentPaymentNoList)
     End Sub
 
@@ -2637,7 +2633,7 @@ Public Class AgniMainForm
 
     End Function
 
-    Private Sub btnReportSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnReportSearch.Click
+    Private Sub btnReportSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnReportSearch.ClickButtonArea
         pbReportDesignImage.Image = Nothing
 
         Dim searchFilter As Integer = getSearchFilter()
@@ -3139,7 +3135,7 @@ Public Class AgniMainForm
         cmbCustCustomerList.SelectedValue = CustNo
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnPrintBillSearchDetails.Click
+    Private Sub btnPrintBillSearchDetails_Click(sender As Object, e As EventArgs) Handles btnPrintBillSearchDetails.ClickButtonArea
         If dgReportBillGrid.Rows.Count = 0 Then
             MsgBox("There are no bills to show the bill report. Please refine your search criteria")
             Return
@@ -3148,7 +3144,7 @@ Public Class AgniMainForm
         BillSearchCrystalReportHolder.ShowDialog()
     End Sub
 
-    Private Sub btnPrintGSTDetails_Click(sender As Object, e As EventArgs) Handles btnPrintGSTDetails.Click
+    Private Sub btnPrintGSTDetails_Click(sender As Object, e As EventArgs) Handles btnPrintGSTDetails.ClickButtonArea
         If dgReportBillGrid.Rows.Count = 0 Then
             MsgBox("There are no bills to show the GST report. Please refine your search criteria")
             Return
@@ -3157,7 +3153,7 @@ Public Class AgniMainForm
         GSTCrystalReportHolder.ShowDialog()
     End Sub
 
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles btnSettingsBackupDatabase.Click
+    Private Sub btnSettingsBackupDatabase_Click(sender As Object, e As EventArgs) Handles btnSettingsBackupDatabase.ClickButtonArea
         Dim folderDialog As New FolderBrowserDialog
         If folderDialog.ShowDialog() = Windows.Forms.DialogResult.OK Then
 
@@ -3175,7 +3171,7 @@ Public Class AgniMainForm
 
     End Sub
 
-    Private Sub btnSettingsResetBilNo_Click(sender As Object, e As EventArgs) Handles btnSettingsResetBilNo.Click
+    Private Sub btnSettingsResetBilNo_Click(sender As Object, e As EventArgs) Handles btnSettingsResetBilNo.ClickButtonArea
         If MessageBox.Show("This operatoin will reset the bill number to 1 and you cannot reverse this operation. Do you really want to reset the bill number to 1? ", "Confirmation", System.Windows.Forms.MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
             Dim actionResult As DialogResult = ActionConfirmation.ShowDialog()
             ActionConfirmation.Dispose()
@@ -3193,16 +3189,23 @@ Public Class AgniMainForm
 
 
 
-    Private Sub btnReportSearchReset_Click(sender As Object, e As EventArgs) Handles btnReportSearchReset.Click
+    Private Sub btnReportSearchReset_Click(sender As Object, e As EventArgs) Handles btnReportSearchReset.ClickButtonArea
         resetIndexOfComboBox(cmbReportCustomerList)
         resetIndexOfComboBox(cmbReportBillNoList)
         resetIndexOfComboBox(cmbReportDesignNoList)
         txtReportDesignNumber.Text = ""
         dpReportFromDate.Text = DateTime.Today
         dpReportToDate.Text = DateTime.Today
-        Call CType(dgReportDesignGrid.DataSource, DataTable).Rows.Clear()
-        Call CType(dgReportBillGrid.DataSource, DataTable).Rows.Clear()
-        Call CType(dgReportPaymentGrid.DataSource, DataTable).Rows.Clear()
+        If dgReportDesignGrid.DataSource IsNot Nothing Then
+            Call CType(dgReportDesignGrid.DataSource, DataTable).Rows.Clear()
+        End If
+        If dgReportBillGrid.DataSource IsNot Nothing Then
+            Call CType(dgReportBillGrid.DataSource, DataTable).Rows.Clear()
+        End If
+        If dgReportPaymentGrid.DataSource IsNot Nothing Then
+            Call CType(dgReportPaymentGrid.DataSource, DataTable).Rows.Clear()
+        End If
+
         lblReportNoOfDesigns.Text = 0
         lblReportBilledDesignAmount.Text = 0
         lblReportUnBilledDesignAmount.Text = 0
@@ -3216,7 +3219,7 @@ Public Class AgniMainForm
         lblReportPaidAmountWithDeduction.Text = 0
     End Sub
 
-    Private Sub btnPrintPaymentDetails_Click(sender As Object, e As EventArgs) Handles btnPrintPaymentDetails.Click
+    Private Sub btnPrintPaymentDetails_Click(sender As Object, e As EventArgs) Handles btnPrintPaymentDetails.ClickButtonArea
         If dgReportPaymentGrid.Rows.Count = 0 Then
             MsgBox("There are no payment to show the Payment only report. Please refine your search criteria")
             Return
@@ -3225,7 +3228,7 @@ Public Class AgniMainForm
         PaymentSearchCrystalReportHolder.ShowDialog()
     End Sub
 
-    Private Sub Button1_Click_2(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub btnPrintBillAndPaymentDetails_Click(sender As Object, e As EventArgs) Handles btnPrintBillAndPaymentDetails.ClickButtonArea
         If dgReportPaymentGrid.Rows.Count = 0 Then
             MsgBox("There are no payment to show the Bill and Payment details report. Please refine your search criteria")
             Return
@@ -3234,7 +3237,7 @@ Public Class AgniMainForm
         BillAndPaymentHistoryCrystalReportHolder.ShowDialog()
     End Sub
 
-    Private Sub btnBillingDeleteBill_Click(sender As Object, e As EventArgs) Handles btnBillingDeleteBill.Click
+    Private Sub btnBillingDeleteBill_Click(sender As Object, e As EventArgs) Handles btnBillingDeleteBill.ClickButtonArea
         If gSelectedBillNo = -1 Then
             MessageBox.Show("Please select a bill")
             cmbDesDesignList.Focus()
@@ -3349,18 +3352,18 @@ Public Class AgniMainForm
         End If
     End Sub
 
-    Private Sub btnChangeAddress_Click(sender As Object, e As EventArgs) Handles btnChangeAddress.Click
+    Private Sub btnChangeAddress_Click(sender As Object, e As EventArgs) Handles btnSettingsChangeAddress.ClickButtonArea
         ChangeAddress.ShowDialog()
     End Sub
 
-    Private Sub btnLogOff_Click(sender As Object, e As EventArgs) Handles btnLogOff.Click
+    Private Sub btnLogOff_Click(sender As Object, e As EventArgs) Handles btnLogOff.ClickButtonArea
         If MessageBox.Show("Are you sure want to log off?", "Log off", System.Windows.Forms.MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
             Me.Hide()
             Login.Show()
         End If
     End Sub
 
-    Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs)
+    Private Sub tabBilling_Click(sender As Object, e As EventArgs) Handles tabBilling.Click
 
     End Sub
 End Class

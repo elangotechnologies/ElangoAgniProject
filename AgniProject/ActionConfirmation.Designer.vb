@@ -20,9 +20,9 @@ Partial Class ActionConfirmation
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.txtActionConfirmPassword = New System.Windows.Forms.TextBox()
-        Me.btnActionConfirmationCancel = New System.Windows.Forms.Button()
+        Me.btnActionConfirmationCancel = New CButtonLib.CButton()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.btnActionConfirmationConfirm = New System.Windows.Forms.Button()
+        Me.btnActionConfirmationConfirm = New CButtonLib.CButton()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.cmbActionConfirmUserName = New System.Windows.Forms.ComboBox()
@@ -129,9 +129,9 @@ Partial Class ActionConfirmation
     End Sub
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents txtActionConfirmPassword As System.Windows.Forms.TextBox
-    Friend WithEvents btnActionConfirmationCancel As System.Windows.Forms.Button
+    Friend WithEvents btnActionConfirmationCancel As CButtonLib.CButton
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents btnActionConfirmationConfirm As System.Windows.Forms.Button
+    Friend WithEvents btnActionConfirmationConfirm As CButtonLib.CButton
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents cmbActionConfirmUserName As ComboBox
 End Class

@@ -30,8 +30,8 @@ Partial Class ChangeAddress
         Me.txtChangeAddressLine3 = New System.Windows.Forms.TextBox()
         Me.txtChangeAddressLine2 = New System.Windows.Forms.TextBox()
         Me.txtChangeAddressLine1 = New System.Windows.Forms.TextBox()
-        Me.btnChangeAddressCancel = New System.Windows.Forms.Button()
-        Me.btnChangeAddressConfirm = New System.Windows.Forms.Button()
+        Me.btnChangeAddressCancel = New CButtonLib.CButton()
+        Me.btnChangeAddressConfirm = New CButtonLib.CButton()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.lblChangeAddressLine5 = New System.Windows.Forms.Label()
         Me.txtChangeAddressLine5 = New System.Windows.Forms.TextBox()
@@ -122,7 +122,6 @@ Partial Class ChangeAddress
         Me.btnChangeAddressCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnChangeAddressCancel.Font = New System.Drawing.Font("Arial", 12.0!)
         Me.btnChangeAddressCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnChangeAddressCancel.ImageKey = "erase.JPG"
         Me.btnChangeAddressCancel.Location = New System.Drawing.Point(625, 301)
         Me.btnChangeAddressCancel.Name = "btnChangeAddressCancel"
         Me.btnChangeAddressCancel.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
@@ -137,7 +136,6 @@ Partial Class ChangeAddress
         Me.btnChangeAddressConfirm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnChangeAddressConfirm.Font = New System.Drawing.Font("Arial", 12.0!)
         Me.btnChangeAddressConfirm.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnChangeAddressConfirm.ImageKey = "update.jpg"
         Me.btnChangeAddressConfirm.Location = New System.Drawing.Point(462, 301)
         Me.btnChangeAddressConfirm.Name = "btnChangeAddressConfirm"
         Me.btnChangeAddressConfirm.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
@@ -224,8 +222,8 @@ Partial Class ChangeAddress
     Friend WithEvents txtChangeAddressLine3 As TextBox
     Friend WithEvents txtChangeAddressLine2 As TextBox
     Friend WithEvents txtChangeAddressLine1 As TextBox
-    Friend WithEvents btnChangeAddressCancel As Button
-    Friend WithEvents btnChangeAddressConfirm As Button
+    Friend WithEvents btnChangeAddressCancel As CButtonLib.CButton
+    Friend WithEvents btnChangeAddressConfirm As CButtonLib.CButton
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents lblChangeAddressLine5 As Label
     Friend WithEvents txtChangeAddressLine5 As TextBox
