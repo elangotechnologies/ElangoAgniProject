@@ -31,7 +31,7 @@ Public Class AgniMainForm
     Public gPaymentSearchResultDataSet As DataSet = Nothing
     Public gBillAndPaymentHistoryDataSet As DataSet = Nothing
     Public gReportSearchFilterText As String = Nothing
-    Dim reportControlsPlaceHolders() As GroupBox
+    Dim reportControlsPlaceHolders() As ElaCustomGroupBoxControl.ElaCustomGroupBox
 
     Private ATTRIBUTE_LAST_BILL_NO As String = "last_bill_no"
 
@@ -3363,7 +3363,4 @@ Public Class AgniMainForm
         End If
     End Sub
 
-    Private Sub tabBilling_Click(sender As Object, e As EventArgs) Handles tabBilling.Click
-
-    End Sub
 End Class

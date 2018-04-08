@@ -424,6 +424,10 @@
       <Project>{91fc3cdb-3e9e-427c-ab25-dd63e1fe38d8}</Project>
       <Name>ElaCustomComboBoxControl</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Library Projects\ElaCustomGroupBoxControl\ElaCustomGroupBoxControl.vbproj">
+      <Project>{5202a278-af63-4a42-b073-73ef512483c2}</Project>
+      <Name>ElaCustomGroupBoxControl</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Library Projects\ElaCustomTextBoxControl\ElaCustomTextBoxControl.vbproj">
       <Project>{58b5c64d-f476-4674-9f23-ac7747757613}</Project>
       <Name>ElaCustomTextBoxControl</Name>

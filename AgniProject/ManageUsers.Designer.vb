@@ -32,11 +32,11 @@ Partial Class ManageUsers
         Me.Label1 = New System.Windows.Forms.Label()
         Me.rbManageUsersAdmin = New System.Windows.Forms.RadioButton()
         Me.rbManageUsersGuest = New System.Windows.Forms.RadioButton()
-        Me.gbManageUsersUserType = New System.Windows.Forms.GroupBox()
+        Me.gbManageUsersUserType = New ElaCustomGroupBoxControl.ElaCustomGroupBox()
         Me.btnManageUsersDeleteUser = New CButtonLib.CButton()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.gbUsersList = New System.Windows.Forms.GroupBox()
+        Me.gbUsersList = New ElaCustomGroupBoxControl.ElaCustomGroupBox()
         Me.dgManageUsersUsersGrid = New System.Windows.Forms.DataGridView()
         Me.UserGridUserId = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.UserGridUserName = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -380,11 +380,11 @@ Partial Class ManageUsers
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents rbManageUsersAdmin As System.Windows.Forms.RadioButton
     Friend WithEvents rbManageUsersGuest As System.Windows.Forms.RadioButton
-    Friend WithEvents gbManageUsersUserType As System.Windows.Forms.GroupBox
+    Friend WithEvents gbManageUsersUserType As ElaCustomGroupBoxControl.ElaCustomGroupBox
     Friend WithEvents btnManageUsersDeleteUser As CButtonLib.CButton
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents gbUsersList As GroupBox
+    Friend WithEvents gbUsersList As ElaCustomGroupBoxControl.ElaCustomGroupBox
     Friend WithEvents dgManageUsersUsersGrid As DataGridView
     Friend WithEvents btnManageUsersCreateUserConfirm As CButtonLib.CButton
     Friend WithEvents btnManageUsersCreateUserCancel As CButtonLib.CButton

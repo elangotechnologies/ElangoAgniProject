@@ -37,7 +37,7 @@ Partial Class CustomersOutstandingBalances
         Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.bwtCustomerSummaryLoadThread = New System.ComponentModel.BackgroundWorker()
         Me.bwtTotalBillSummaryLoadThread = New System.ComponentModel.BackgroundWorker()
-        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox5 = New ElaCustomGroupBoxControl.ElaCustomGroupBox()
         Me.dgCustomerBillSummary = New System.Windows.Forms.DataGridView()
         Me.CompName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CustNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -51,7 +51,7 @@ Partial Class CustomersOutstandingBalances
         Me.FinalPaidAmount = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.UnPaidBilledAmount = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.OutstandingBalance = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox2 = New ElaCustomGroupBoxControl.ElaCustomGroupBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblOutstandingBalance = New System.Windows.Forms.Label()
         Me.lblTotalPaidAmount = New System.Windows.Forms.Label()
@@ -73,7 +73,7 @@ Partial Class CustomersOutstandingBalances
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.btnPrintOutstandingReport = New CButtonLib.CButton()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox1 = New ElaCustomGroupBoxControl.ElaCustomGroupBox()
         Me.GroupBox5.SuspendLayout()
         CType(Me.dgCustomerBillSummary, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -605,9 +605,9 @@ Partial Class CustomersOutstandingBalances
     End Sub
     Friend WithEvents bwtCustomerSummaryLoadThread As System.ComponentModel.BackgroundWorker
     Friend WithEvents bwtTotalBillSummaryLoadThread As System.ComponentModel.BackgroundWorker
-    Friend WithEvents GroupBox5 As GroupBox
+    Friend WithEvents GroupBox5 As ElaCustomGroupBoxControl.ElaCustomGroupBox
     Friend WithEvents dgCustomerBillSummary As DataGridView
-    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents GroupBox2 As ElaCustomGroupBoxControl.ElaCustomGroupBox
     Friend WithEvents lblTotalPaidAmount As Label
     Friend WithEvents Label17 As Label
     Friend WithEvents lblUnpaidBillAmount As Label
@@ -627,7 +627,7 @@ Partial Class CustomersOutstandingBalances
     Friend WithEvents Label9 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents btnPrintOutstandingReport As CButtonLib.CButton
-    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents GroupBox1 As ElaCustomGroupBoxControl.ElaCustomGroupBox
     Friend WithEvents Label1 As Label
     Friend WithEvents lblOutstandingBalance As Label
     Friend WithEvents CompName As DataGridViewTextBoxColumn

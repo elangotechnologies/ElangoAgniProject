@@ -53,14 +53,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AgniProject.exe" size="2218496">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AgniProject.exe" size="2227712">
       <assemblyIdentity name="AgniProject" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>q+RRJ2fnrpwmR7iNJOsOtLJMmlvbKhYrwzCMChKZ8yM=</dsig:DigestValue>
+        <dsig:DigestValue>ncTCKmtmcKR91l8WFbeVGsxor4G+4FpOgWl6OwVKngY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -293,14 +293,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ElaCustomComboBoxControl.dll" size="14336">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ElaCustomComboBoxControl.dll" size="13312">
       <assemblyIdentity name="ElaCustomComboBoxControl" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>HqRwILDiwr9PnXeTLmoa3LokkjEYeMU61t56T8W2D8k=</dsig:DigestValue>
+        <dsig:DigestValue>yAc7xWkARn32jdveQxgubhiG6napaXtg4rkPhzvaufY=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ElaCustomGroupBoxControl.dll" size="12800">
+      <assemblyIdentity name="ElaCustomGroupBoxControl" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>2XIRRoKTBLPeFLFCBAGyRyWd2LfQVX7zecu3CVh9Pl8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

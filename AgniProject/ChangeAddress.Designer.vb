@@ -35,7 +35,7 @@ Partial Class ChangeAddress
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.lblChangeAddressLine5 = New System.Windows.Forms.Label()
         Me.txtChangeAddressLine5 = New ElaCustomTextBoxControl.ElaCustomTextBox()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox1 = New ElaCustomGroupBoxControl.ElaCustomGroupBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -227,5 +227,5 @@ Partial Class ChangeAddress
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents lblChangeAddressLine5 As Label
     Friend WithEvents txtChangeAddressLine5 As ElaCustomTextBoxControl.ElaCustomTextBox
-    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents GroupBox1 As ElaCustomGroupBoxControl.ElaCustomGroupBox
 End Class
