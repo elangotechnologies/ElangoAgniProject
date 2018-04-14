@@ -53,14 +53,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AgniProject.exe" size="2227712">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AgniProject.exe" size="2229760">
       <assemblyIdentity name="AgniProject" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ncTCKmtmcKR91l8WFbeVGsxor4G+4FpOgWl6OwVKngY=</dsig:DigestValue>
+        <dsig:DigestValue>iCIxeaF54uCqPom5wULN3zfxzflyV0jotOG02O1QlrM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -301,6 +301,18 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
         <dsig:DigestValue>yAc7xWkARn32jdveQxgubhiG6napaXtg4rkPhzvaufY=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ElaCustomDateTimePrickerControl.dll" size="13824">
+      <assemblyIdentity name="ElaCustomDateTimePrickerControl" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>vAN+doNPZ74+NPTjAy+iu8PLkh7bgnSBK/s+xczLQGI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

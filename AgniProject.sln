@@ -13,6 +13,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ElaCustomTextBoxControl", "
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ElaCustomGroupBoxControl", "Library Projects\ElaCustomGroupBoxControl\ElaCustomGroupBoxControl.vbproj", "{5202A278-AF63-4A42-B073-73EF512483C2}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ElaCustomDateTimePrickerControl", "Library Projects\ElaCustomDateTimePrickerControl\ElaCustomDateTimePrickerControl.vbproj", "{D6783024-221F-4EB6-A72A-AFD1D56E8FC0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{5202A278-AF63-4A42-B073-73EF512483C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5202A278-AF63-4A42-B073-73EF512483C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5202A278-AF63-4A42-B073-73EF512483C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6783024-221F-4EB6-A72A-AFD1D56E8FC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6783024-221F-4EB6-A72A-AFD1D56E8FC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6783024-221F-4EB6-A72A-AFD1D56E8FC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6783024-221F-4EB6-A72A-AFD1D56E8FC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
