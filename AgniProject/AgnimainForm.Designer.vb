@@ -831,7 +831,6 @@ Partial Class AgniMainForm
         Me.tabReports.Controls.Add(Me.pbReportDesignImage)
         Me.tabReports.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.tabReports.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tabReports.ForeColor = System.Drawing.Color.White
         Me.tabReports.ImageKey = "report.png"
         Me.tabReports.Location = New System.Drawing.Point(4, 49)
         Me.tabReports.Margin = New System.Windows.Forms.Padding(0)
@@ -847,7 +846,7 @@ Partial Class AgniMainForm
         Me.ElaCustomGroupBox1.BorderColor = System.Drawing.Color.DeepSkyBlue
         Me.ElaCustomGroupBox1.BorderColorFocus = System.Drawing.Color.Orange
         Me.ElaCustomGroupBox1.BorderColorMouseEnter = System.Drawing.Color.Green
-        Me.ElaCustomGroupBox1.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Thin
+        Me.ElaCustomGroupBox1.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Normal
         Me.ElaCustomGroupBox1.Controls.Add(Me.cbReportSearchByDateRange)
         Me.ElaCustomGroupBox1.Controls.Add(Me.cbReportSearchByCustomer)
         Me.ElaCustomGroupBox1.Controls.Add(Me.cbReportSearchByBillNo)
@@ -856,7 +855,7 @@ Partial Class AgniMainForm
         Me.ElaCustomGroupBox1.ForeColor = System.Drawing.Color.Black
         Me.ElaCustomGroupBox1.Location = New System.Drawing.Point(152, 1)
         Me.ElaCustomGroupBox1.Name = "ElaCustomGroupBox1"
-        Me.ElaCustomGroupBox1.Size = New System.Drawing.Size(992, 47)
+        Me.ElaCustomGroupBox1.Size = New System.Drawing.Size(956, 47)
         Me.ElaCustomGroupBox1.TabIndex = 169
         Me.ElaCustomGroupBox1.TabStop = False
         '
@@ -869,8 +868,8 @@ Partial Class AgniMainForm
         Me.cbReportSearchByDateRange.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.cbReportSearchByDateRange.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green
         Me.cbReportSearchByDateRange.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.cbReportSearchByDateRange.ForeColor = System.Drawing.Color.Black
-        Me.cbReportSearchByDateRange.Location = New System.Drawing.Point(418, 18)
+        Me.cbReportSearchByDateRange.ForeColor = System.Drawing.Color.SteelBlue
+        Me.cbReportSearchByDateRange.Location = New System.Drawing.Point(418, 16)
         Me.cbReportSearchByDateRange.Name = "cbReportSearchByDateRange"
         Me.cbReportSearchByDateRange.Size = New System.Drawing.Size(115, 24)
         Me.cbReportSearchByDateRange.TabIndex = 2
@@ -888,8 +887,8 @@ Partial Class AgniMainForm
         Me.cbReportSearchByCustomer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.cbReportSearchByCustomer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green
         Me.cbReportSearchByCustomer.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.cbReportSearchByCustomer.ForeColor = System.Drawing.Color.Black
-        Me.cbReportSearchByCustomer.Location = New System.Drawing.Point(11, 18)
+        Me.cbReportSearchByCustomer.ForeColor = System.Drawing.Color.SteelBlue
+        Me.cbReportSearchByCustomer.Location = New System.Drawing.Point(11, 16)
         Me.cbReportSearchByCustomer.Name = "cbReportSearchByCustomer"
         Me.cbReportSearchByCustomer.Size = New System.Drawing.Size(143, 24)
         Me.cbReportSearchByCustomer.TabIndex = 0
@@ -905,8 +904,8 @@ Partial Class AgniMainForm
         Me.cbReportSearchByBillNo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.cbReportSearchByBillNo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green
         Me.cbReportSearchByBillNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.cbReportSearchByBillNo.ForeColor = System.Drawing.Color.Black
-        Me.cbReportSearchByBillNo.Location = New System.Drawing.Point(596, 18)
+        Me.cbReportSearchByBillNo.ForeColor = System.Drawing.Color.SteelBlue
+        Me.cbReportSearchByBillNo.Location = New System.Drawing.Point(596, 16)
         Me.cbReportSearchByBillNo.Name = "cbReportSearchByBillNo"
         Me.cbReportSearchByBillNo.Size = New System.Drawing.Size(108, 24)
         Me.cbReportSearchByBillNo.TabIndex = 3
@@ -923,8 +922,8 @@ Partial Class AgniMainForm
         Me.cbReportSearchByDesignNo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.cbReportSearchByDesignNo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green
         Me.cbReportSearchByDesignNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.cbReportSearchByDesignNo.ForeColor = System.Drawing.Color.Black
-        Me.cbReportSearchByDesignNo.Location = New System.Drawing.Point(217, 18)
+        Me.cbReportSearchByDesignNo.ForeColor = System.Drawing.Color.SteelBlue
+        Me.cbReportSearchByDesignNo.Location = New System.Drawing.Point(217, 16)
         Me.cbReportSearchByDesignNo.Name = "cbReportSearchByDesignNo"
         Me.cbReportSearchByDesignNo.Size = New System.Drawing.Size(138, 24)
         Me.cbReportSearchByDesignNo.TabIndex = 1
@@ -940,8 +939,8 @@ Partial Class AgniMainForm
         Me.cbReportSearchByDesignSelection.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.cbReportSearchByDesignSelection.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green
         Me.cbReportSearchByDesignSelection.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.cbReportSearchByDesignSelection.ForeColor = System.Drawing.Color.Black
-        Me.cbReportSearchByDesignSelection.Location = New System.Drawing.Point(767, 18)
+        Me.cbReportSearchByDesignSelection.ForeColor = System.Drawing.Color.SteelBlue
+        Me.cbReportSearchByDesignSelection.Location = New System.Drawing.Point(767, 16)
         Me.cbReportSearchByDesignSelection.Name = "cbReportSearchByDesignSelection"
         Me.cbReportSearchByDesignSelection.Size = New System.Drawing.Size(127, 24)
         Me.cbReportSearchByDesignSelection.TabIndex = 4
@@ -1030,7 +1029,7 @@ Partial Class AgniMainForm
         Me.GroupBox15.BorderColor = System.Drawing.Color.DeepSkyBlue
         Me.GroupBox15.BorderColorFocus = System.Drawing.Color.Orange
         Me.GroupBox15.BorderColorMouseEnter = System.Drawing.Color.Green
-        Me.GroupBox15.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Thin
+        Me.GroupBox15.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Normal
         Me.GroupBox15.Controls.Add(Me.btnPrintPaymentDetails)
         Me.GroupBox15.Controls.Add(Me.Label55)
         Me.GroupBox15.Controls.Add(Me.lblReportNoOfPayment)
@@ -1039,8 +1038,8 @@ Partial Class AgniMainForm
         Me.GroupBox15.Controls.Add(Me.Label49)
         Me.GroupBox15.Controls.Add(Me.lblReportPaidAmountWithDeduction)
         Me.GroupBox15.Controls.Add(Me.btnPrintBillAndPaymentDetails)
-        Me.GroupBox15.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox15.ForeColor = System.Drawing.Color.Black
+        Me.GroupBox15.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox15.ForeColor = System.Drawing.Color.SteelBlue
         Me.GroupBox15.Location = New System.Drawing.Point(959, 896)
         Me.GroupBox15.Name = "GroupBox15"
         Me.GroupBox15.Size = New System.Drawing.Size(933, 76)
@@ -1055,7 +1054,7 @@ Partial Class AgniMainForm
         Me.btnPrintPaymentDetails.BackColor = System.Drawing.Color.Transparent
         Me.btnPrintPaymentDetails.BorderColor = System.Drawing.Color.Transparent
         Me.btnPrintPaymentDetails.BorderShow = False
-        CBlendItems3.iColor = New System.Drawing.Color() {System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.White}
+        CBlendItems3.iColor = New System.Drawing.Color() {System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.White}
         CBlendItems3.iPoint = New Single() {0!, 1.0!}
         Me.btnPrintPaymentDetails.ColorFillBlend = CBlendItems3
         Me.btnPrintPaymentDetails.ColorFillSolid = System.Drawing.Color.Brown
@@ -1065,16 +1064,16 @@ Partial Class AgniMainForm
         Me.btnPrintPaymentDetails.FocalPoints.FocusPtX = 0.7!
         Me.btnPrintPaymentDetails.FocalPoints.FocusPtY = 0.6!
         Me.btnPrintPaymentDetails.Font = New System.Drawing.Font("Arial", 9.0!)
-        Me.btnPrintPaymentDetails.ForeColor = System.Drawing.Color.Crimson
+        Me.btnPrintPaymentDetails.ForeColor = System.Drawing.Color.Chocolate
         Me.btnPrintPaymentDetails.ImageIndex = 0
         Me.btnPrintPaymentDetails.ImageKey = 0
-        Me.btnPrintPaymentDetails.Location = New System.Drawing.Point(603, 8)
+        Me.btnPrintPaymentDetails.Location = New System.Drawing.Point(588, 8)
         Me.btnPrintPaymentDetails.Name = "btnPrintPaymentDetails"
         Me.btnPrintPaymentDetails.Padding = New System.Windows.Forms.Padding(25, 18, 18, 5)
         Me.btnPrintPaymentDetails.SideImage = CType(resources.GetObject("btnPrintPaymentDetails.SideImage"), System.Drawing.Image)
         Me.btnPrintPaymentDetails.SideImageAlign = System.Drawing.ContentAlignment.TopRight
-        Me.btnPrintPaymentDetails.SideImageSize = New System.Drawing.Size(20, 20)
-        Me.btnPrintPaymentDetails.Size = New System.Drawing.Size(155, 65)
+        Me.btnPrintPaymentDetails.SideImageSize = New System.Drawing.Size(17, 20)
+        Me.btnPrintPaymentDetails.Size = New System.Drawing.Size(170, 65)
         Me.btnPrintPaymentDetails.TabIndex = 22
         Me.btnPrintPaymentDetails.Text = "Print Payment        Only"
         Me.btnPrintPaymentDetails.TextMargin = New System.Windows.Forms.Padding(0)
@@ -1085,7 +1084,7 @@ Partial Class AgniMainForm
         '
         Me.Label55.AutoSize = True
         Me.Label55.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label55.ForeColor = System.Drawing.Color.Black
+        Me.Label55.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label55.Location = New System.Drawing.Point(18, 20)
         Me.Label55.Name = "Label55"
         Me.Label55.Size = New System.Drawing.Size(109, 15)
@@ -1095,7 +1094,7 @@ Partial Class AgniMainForm
         'lblReportNoOfPayment
         '
         Me.lblReportNoOfPayment.AutoSize = True
-        Me.lblReportNoOfPayment.BackColor = System.Drawing.Color.Navy
+        Me.lblReportNoOfPayment.BackColor = System.Drawing.Color.DarkCyan
         Me.lblReportNoOfPayment.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold)
         Me.lblReportNoOfPayment.ForeColor = System.Drawing.Color.White
         Me.lblReportNoOfPayment.Location = New System.Drawing.Point(21, 39)
@@ -1111,7 +1110,7 @@ Partial Class AgniMainForm
         '
         Me.Label53.AutoSize = True
         Me.Label53.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label53.ForeColor = System.Drawing.Color.Black
+        Me.Label53.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label53.Location = New System.Drawing.Point(172, 20)
         Me.Label53.Name = "Label53"
         Me.Label53.Size = New System.Drawing.Size(88, 15)
@@ -1121,7 +1120,7 @@ Partial Class AgniMainForm
         'lblReportPaidAmountActual
         '
         Me.lblReportPaidAmountActual.AutoSize = True
-        Me.lblReportPaidAmountActual.BackColor = System.Drawing.Color.Navy
+        Me.lblReportPaidAmountActual.BackColor = System.Drawing.Color.DarkCyan
         Me.lblReportPaidAmountActual.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold)
         Me.lblReportPaidAmountActual.ForeColor = System.Drawing.Color.White
         Me.lblReportPaidAmountActual.Location = New System.Drawing.Point(172, 39)
@@ -1137,7 +1136,7 @@ Partial Class AgniMainForm
         '
         Me.Label49.AutoSize = True
         Me.Label49.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label49.ForeColor = System.Drawing.Color.Black
+        Me.Label49.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label49.Location = New System.Drawing.Point(395, 20)
         Me.Label49.Name = "Label49"
         Me.Label49.Size = New System.Drawing.Size(167, 15)
@@ -1147,7 +1146,7 @@ Partial Class AgniMainForm
         'lblReportPaidAmountWithDeduction
         '
         Me.lblReportPaidAmountWithDeduction.AutoSize = True
-        Me.lblReportPaidAmountWithDeduction.BackColor = System.Drawing.Color.Navy
+        Me.lblReportPaidAmountWithDeduction.BackColor = System.Drawing.Color.DarkCyan
         Me.lblReportPaidAmountWithDeduction.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold)
         Me.lblReportPaidAmountWithDeduction.ForeColor = System.Drawing.Color.White
         Me.lblReportPaidAmountWithDeduction.Location = New System.Drawing.Point(395, 39)
@@ -1166,7 +1165,7 @@ Partial Class AgniMainForm
         Me.btnPrintBillAndPaymentDetails.BackColor = System.Drawing.Color.Transparent
         Me.btnPrintBillAndPaymentDetails.BorderColor = System.Drawing.Color.Transparent
         Me.btnPrintBillAndPaymentDetails.BorderShow = False
-        CBlendItems4.iColor = New System.Drawing.Color() {System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.White}
+        CBlendItems4.iColor = New System.Drawing.Color() {System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.White}
         CBlendItems4.iPoint = New Single() {0!, 1.0!}
         Me.btnPrintBillAndPaymentDetails.ColorFillBlend = CBlendItems4
         Me.btnPrintBillAndPaymentDetails.ColorFillSolid = System.Drawing.Color.Brown
@@ -1176,16 +1175,16 @@ Partial Class AgniMainForm
         Me.btnPrintBillAndPaymentDetails.FocalPoints.FocusPtX = 0.7!
         Me.btnPrintBillAndPaymentDetails.FocalPoints.FocusPtY = 0.6!
         Me.btnPrintBillAndPaymentDetails.Font = New System.Drawing.Font("Arial", 9.0!)
-        Me.btnPrintBillAndPaymentDetails.ForeColor = System.Drawing.Color.Crimson
+        Me.btnPrintBillAndPaymentDetails.ForeColor = System.Drawing.Color.Chocolate
         Me.btnPrintBillAndPaymentDetails.ImageIndex = 0
         Me.btnPrintBillAndPaymentDetails.ImageKey = 0
-        Me.btnPrintBillAndPaymentDetails.Location = New System.Drawing.Point(752, 7)
+        Me.btnPrintBillAndPaymentDetails.Location = New System.Drawing.Point(741, 7)
         Me.btnPrintBillAndPaymentDetails.Name = "btnPrintBillAndPaymentDetails"
         Me.btnPrintBillAndPaymentDetails.Padding = New System.Windows.Forms.Padding(25, 18, 18, 5)
         Me.btnPrintBillAndPaymentDetails.SideImage = CType(resources.GetObject("btnPrintBillAndPaymentDetails.SideImage"), System.Drawing.Image)
         Me.btnPrintBillAndPaymentDetails.SideImageAlign = System.Drawing.ContentAlignment.TopRight
-        Me.btnPrintBillAndPaymentDetails.SideImageSize = New System.Drawing.Size(20, 20)
-        Me.btnPrintBillAndPaymentDetails.Size = New System.Drawing.Size(174, 65)
+        Me.btnPrintBillAndPaymentDetails.SideImageSize = New System.Drawing.Size(17, 20)
+        Me.btnPrintBillAndPaymentDetails.Size = New System.Drawing.Size(185, 65)
         Me.btnPrintBillAndPaymentDetails.TabIndex = 22
         Me.btnPrintBillAndPaymentDetails.Text = "Print Bill and          Payment Details"
         Me.btnPrintBillAndPaymentDetails.TextMargin = New System.Windows.Forms.Padding(0)
@@ -1197,7 +1196,7 @@ Partial Class AgniMainForm
         Me.GroupBox8.BorderColor = System.Drawing.Color.DeepSkyBlue
         Me.GroupBox8.BorderColorFocus = System.Drawing.Color.Orange
         Me.GroupBox8.BorderColorMouseEnter = System.Drawing.Color.Green
-        Me.GroupBox8.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Thin
+        Me.GroupBox8.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Normal
         Me.GroupBox8.Controls.Add(Me.Label54)
         Me.GroupBox8.Controls.Add(Me.lblReportBillNetBalance)
         Me.GroupBox8.Controls.Add(Me.Label45)
@@ -1208,8 +1207,8 @@ Partial Class AgniMainForm
         Me.GroupBox8.Controls.Add(Me.lblReportBillBilledAmount)
         Me.GroupBox8.Controls.Add(Me.btnPrintBillSearchDetails)
         Me.GroupBox8.Controls.Add(Me.btnPrintGSTDetails)
-        Me.GroupBox8.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox8.ForeColor = System.Drawing.Color.Black
+        Me.GroupBox8.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox8.ForeColor = System.Drawing.Color.SteelBlue
         Me.GroupBox8.Location = New System.Drawing.Point(26, 896)
         Me.GroupBox8.Name = "GroupBox8"
         Me.GroupBox8.Size = New System.Drawing.Size(920, 76)
@@ -1221,7 +1220,7 @@ Partial Class AgniMainForm
         '
         Me.Label54.AutoSize = True
         Me.Label54.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label54.ForeColor = System.Drawing.Color.Black
+        Me.Label54.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label54.Location = New System.Drawing.Point(507, 24)
         Me.Label54.Name = "Label54"
         Me.Label54.Size = New System.Drawing.Size(85, 15)
@@ -1231,7 +1230,7 @@ Partial Class AgniMainForm
         'lblReportBillNetBalance
         '
         Me.lblReportBillNetBalance.AutoSize = True
-        Me.lblReportBillNetBalance.BackColor = System.Drawing.Color.Navy
+        Me.lblReportBillNetBalance.BackColor = System.Drawing.Color.DarkCyan
         Me.lblReportBillNetBalance.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold)
         Me.lblReportBillNetBalance.ForeColor = System.Drawing.Color.White
         Me.lblReportBillNetBalance.Location = New System.Drawing.Point(509, 43)
@@ -1247,7 +1246,7 @@ Partial Class AgniMainForm
         '
         Me.Label45.AutoSize = True
         Me.Label45.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label45.ForeColor = System.Drawing.Color.Black
+        Me.Label45.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label45.Location = New System.Drawing.Point(320, 24)
         Me.Label45.Name = "Label45"
         Me.Label45.Size = New System.Drawing.Size(124, 15)
@@ -1257,7 +1256,7 @@ Partial Class AgniMainForm
         'lblReportBIllPaidAmount
         '
         Me.lblReportBIllPaidAmount.AutoSize = True
-        Me.lblReportBIllPaidAmount.BackColor = System.Drawing.Color.Navy
+        Me.lblReportBIllPaidAmount.BackColor = System.Drawing.Color.DarkCyan
         Me.lblReportBIllPaidAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold)
         Me.lblReportBIllPaidAmount.ForeColor = System.Drawing.Color.White
         Me.lblReportBIllPaidAmount.Location = New System.Drawing.Point(320, 43)
@@ -1273,7 +1272,7 @@ Partial Class AgniMainForm
         '
         Me.Label51.AutoSize = True
         Me.Label51.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label51.ForeColor = System.Drawing.Color.Black
+        Me.Label51.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label51.Location = New System.Drawing.Point(16, 24)
         Me.Label51.Name = "Label51"
         Me.Label51.Size = New System.Drawing.Size(75, 15)
@@ -1283,7 +1282,7 @@ Partial Class AgniMainForm
         'lblReportNoOfBills
         '
         Me.lblReportNoOfBills.AutoSize = True
-        Me.lblReportNoOfBills.BackColor = System.Drawing.Color.Navy
+        Me.lblReportNoOfBills.BackColor = System.Drawing.Color.DarkCyan
         Me.lblReportNoOfBills.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold)
         Me.lblReportNoOfBills.ForeColor = System.Drawing.Color.White
         Me.lblReportNoOfBills.Location = New System.Drawing.Point(17, 43)
@@ -1299,7 +1298,7 @@ Partial Class AgniMainForm
         '
         Me.Label47.AutoSize = True
         Me.Label47.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label47.ForeColor = System.Drawing.Color.Black
+        Me.Label47.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label47.Location = New System.Drawing.Point(134, 24)
         Me.Label47.Name = "Label47"
         Me.Label47.Size = New System.Drawing.Size(132, 15)
@@ -1309,7 +1308,7 @@ Partial Class AgniMainForm
         'lblReportBillBilledAmount
         '
         Me.lblReportBillBilledAmount.AutoSize = True
-        Me.lblReportBillBilledAmount.BackColor = System.Drawing.Color.Navy
+        Me.lblReportBillBilledAmount.BackColor = System.Drawing.Color.DarkCyan
         Me.lblReportBillBilledAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold)
         Me.lblReportBillBilledAmount.ForeColor = System.Drawing.Color.White
         Me.lblReportBillBilledAmount.Location = New System.Drawing.Point(134, 43)
@@ -1328,7 +1327,7 @@ Partial Class AgniMainForm
         Me.btnPrintBillSearchDetails.BackColor = System.Drawing.Color.Transparent
         Me.btnPrintBillSearchDetails.BorderColor = System.Drawing.Color.Transparent
         Me.btnPrintBillSearchDetails.BorderShow = False
-        CBlendItems5.iColor = New System.Drawing.Color() {System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))}
+        CBlendItems5.iColor = New System.Drawing.Color() {System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.White}
         CBlendItems5.iPoint = New Single() {0!, 1.0!}
         Me.btnPrintBillSearchDetails.ColorFillBlend = CBlendItems5
         Me.btnPrintBillSearchDetails.ColorFillSolid = System.Drawing.SystemColors.ButtonFace
@@ -1338,7 +1337,7 @@ Partial Class AgniMainForm
         Me.btnPrintBillSearchDetails.FocalPoints.FocusPtX = 0.7!
         Me.btnPrintBillSearchDetails.FocalPoints.FocusPtY = 0.6!
         Me.btnPrintBillSearchDetails.Font = New System.Drawing.Font("Arial", 9.0!)
-        Me.btnPrintBillSearchDetails.ForeColor = System.Drawing.Color.Crimson
+        Me.btnPrintBillSearchDetails.ForeColor = System.Drawing.Color.Chocolate
         Me.btnPrintBillSearchDetails.ImageIndex = 0
         Me.btnPrintBillSearchDetails.ImageKey = 0
         Me.btnPrintBillSearchDetails.Location = New System.Drawing.Point(632, 7)
@@ -1346,7 +1345,7 @@ Partial Class AgniMainForm
         Me.btnPrintBillSearchDetails.Padding = New System.Windows.Forms.Padding(25, 18, 18, 5)
         Me.btnPrintBillSearchDetails.SideImage = CType(resources.GetObject("btnPrintBillSearchDetails.SideImage"), System.Drawing.Image)
         Me.btnPrintBillSearchDetails.SideImageAlign = System.Drawing.ContentAlignment.TopRight
-        Me.btnPrintBillSearchDetails.SideImageSize = New System.Drawing.Size(20, 20)
+        Me.btnPrintBillSearchDetails.SideImageSize = New System.Drawing.Size(17, 20)
         Me.btnPrintBillSearchDetails.Size = New System.Drawing.Size(143, 65)
         Me.btnPrintBillSearchDetails.TabIndex = 22
         Me.btnPrintBillSearchDetails.Text = "Print Bill        Details"
@@ -1361,7 +1360,7 @@ Partial Class AgniMainForm
         Me.btnPrintGSTDetails.BackColor = System.Drawing.Color.Transparent
         Me.btnPrintGSTDetails.BorderColor = System.Drawing.Color.Transparent
         Me.btnPrintGSTDetails.BorderShow = False
-        CBlendItems6.iColor = New System.Drawing.Color() {System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.White}
+        CBlendItems6.iColor = New System.Drawing.Color() {System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.White}
         CBlendItems6.iPoint = New Single() {0!, 1.0!}
         Me.btnPrintGSTDetails.ColorFillBlend = CBlendItems6
         Me.btnPrintGSTDetails.ColorFillSolid = System.Drawing.Color.Brown
@@ -1371,7 +1370,7 @@ Partial Class AgniMainForm
         Me.btnPrintGSTDetails.FocalPoints.FocusPtX = 0.7!
         Me.btnPrintGSTDetails.FocalPoints.FocusPtY = 0.6!
         Me.btnPrintGSTDetails.Font = New System.Drawing.Font("Arial", 9.0!)
-        Me.btnPrintGSTDetails.ForeColor = System.Drawing.Color.Crimson
+        Me.btnPrintGSTDetails.ForeColor = System.Drawing.Color.Chocolate
         Me.btnPrintGSTDetails.ImageIndex = 0
         Me.btnPrintGSTDetails.ImageKey = 0
         Me.btnPrintGSTDetails.Location = New System.Drawing.Point(761, 8)
@@ -1379,10 +1378,10 @@ Partial Class AgniMainForm
         Me.btnPrintGSTDetails.Padding = New System.Windows.Forms.Padding(25, 18, 18, 5)
         Me.btnPrintGSTDetails.SideImage = CType(resources.GetObject("btnPrintGSTDetails.SideImage"), System.Drawing.Image)
         Me.btnPrintGSTDetails.SideImageAlign = System.Drawing.ContentAlignment.TopRight
-        Me.btnPrintGSTDetails.SideImageSize = New System.Drawing.Size(20, 20)
-        Me.btnPrintGSTDetails.Size = New System.Drawing.Size(143, 65)
+        Me.btnPrintGSTDetails.SideImageSize = New System.Drawing.Size(17, 20)
+        Me.btnPrintGSTDetails.Size = New System.Drawing.Size(153, 65)
         Me.btnPrintGSTDetails.TabIndex = 22
-        Me.btnPrintGSTDetails.Text = "Print GST Details"
+        Me.btnPrintGSTDetails.Text = "Print GST       Details"
         Me.btnPrintGSTDetails.TextMargin = New System.Windows.Forms.Padding(0)
         Me.btnPrintGSTDetails.TextShadow = System.Drawing.Color.Silver
         Me.btnPrintGSTDetails.UseVisualStyleBackColor = False
@@ -1392,7 +1391,7 @@ Partial Class AgniMainForm
         Me.GroupBox6.BorderColor = System.Drawing.Color.DeepSkyBlue
         Me.GroupBox6.BorderColorFocus = System.Drawing.Color.Orange
         Me.GroupBox6.BorderColorMouseEnter = System.Drawing.Color.Green
-        Me.GroupBox6.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Thin
+        Me.GroupBox6.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Normal
         Me.GroupBox6.Controls.Add(Me.lblReportUnBilledDesignAmount)
         Me.GroupBox6.Controls.Add(Me.Label33)
         Me.GroupBox6.Controls.Add(Me.lblReportNoOfDesigns)
@@ -1401,8 +1400,8 @@ Partial Class AgniMainForm
         Me.GroupBox6.Controls.Add(Me.Label48)
         Me.GroupBox6.Controls.Add(Me.Label50)
         Me.GroupBox6.Controls.Add(Me.lblReportTotDesignAmount)
-        Me.GroupBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox6.ForeColor = System.Drawing.Color.Black
+        Me.GroupBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox6.ForeColor = System.Drawing.Color.SteelBlue
         Me.GroupBox6.Location = New System.Drawing.Point(26, 541)
         Me.GroupBox6.Name = "GroupBox6"
         Me.GroupBox6.Size = New System.Drawing.Size(1100, 66)
@@ -1413,7 +1412,7 @@ Partial Class AgniMainForm
         'lblReportUnBilledDesignAmount
         '
         Me.lblReportUnBilledDesignAmount.AutoSize = True
-        Me.lblReportUnBilledDesignAmount.BackColor = System.Drawing.Color.Navy
+        Me.lblReportUnBilledDesignAmount.BackColor = System.Drawing.Color.DarkCyan
         Me.lblReportUnBilledDesignAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblReportUnBilledDesignAmount.ForeColor = System.Drawing.Color.White
         Me.lblReportUnBilledDesignAmount.Location = New System.Drawing.Point(654, 34)
@@ -1429,7 +1428,7 @@ Partial Class AgniMainForm
         '
         Me.Label33.AutoSize = True
         Me.Label33.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label33.ForeColor = System.Drawing.Color.Black
+        Me.Label33.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label33.Location = New System.Drawing.Point(177, 14)
         Me.Label33.Name = "Label33"
         Me.Label33.Size = New System.Drawing.Size(99, 15)
@@ -1439,7 +1438,7 @@ Partial Class AgniMainForm
         'lblReportNoOfDesigns
         '
         Me.lblReportNoOfDesigns.AutoSize = True
-        Me.lblReportNoOfDesigns.BackColor = System.Drawing.Color.Navy
+        Me.lblReportNoOfDesigns.BackColor = System.Drawing.Color.DarkCyan
         Me.lblReportNoOfDesigns.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblReportNoOfDesigns.ForeColor = System.Drawing.Color.White
         Me.lblReportNoOfDesigns.Location = New System.Drawing.Point(180, 34)
@@ -1455,7 +1454,7 @@ Partial Class AgniMainForm
         '
         Me.Label46.AutoSize = True
         Me.Label46.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label46.ForeColor = System.Drawing.Color.Black
+        Me.Label46.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label46.Location = New System.Drawing.Point(389, 14)
         Me.Label46.Name = "Label46"
         Me.Label46.Size = New System.Drawing.Size(145, 15)
@@ -1465,7 +1464,7 @@ Partial Class AgniMainForm
         'lblReportBilledDesignAmount
         '
         Me.lblReportBilledDesignAmount.AutoSize = True
-        Me.lblReportBilledDesignAmount.BackColor = System.Drawing.Color.Navy
+        Me.lblReportBilledDesignAmount.BackColor = System.Drawing.Color.DarkCyan
         Me.lblReportBilledDesignAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblReportBilledDesignAmount.ForeColor = System.Drawing.Color.White
         Me.lblReportBilledDesignAmount.Location = New System.Drawing.Point(394, 34)
@@ -1481,7 +1480,7 @@ Partial Class AgniMainForm
         '
         Me.Label48.AutoSize = True
         Me.Label48.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label48.ForeColor = System.Drawing.Color.Black
+        Me.Label48.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label48.Location = New System.Drawing.Point(652, 14)
         Me.Label48.Name = "Label48"
         Me.Label48.Size = New System.Drawing.Size(163, 15)
@@ -1492,7 +1491,7 @@ Partial Class AgniMainForm
         '
         Me.Label50.AutoSize = True
         Me.Label50.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label50.ForeColor = System.Drawing.Color.Black
+        Me.Label50.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label50.Location = New System.Drawing.Point(893, 14)
         Me.Label50.Name = "Label50"
         Me.Label50.Size = New System.Drawing.Size(140, 15)
@@ -1502,7 +1501,7 @@ Partial Class AgniMainForm
         'lblReportTotDesignAmount
         '
         Me.lblReportTotDesignAmount.AutoSize = True
-        Me.lblReportTotDesignAmount.BackColor = System.Drawing.Color.Navy
+        Me.lblReportTotDesignAmount.BackColor = System.Drawing.Color.DarkCyan
         Me.lblReportTotDesignAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblReportTotDesignAmount.ForeColor = System.Drawing.Color.White
         Me.lblReportTotDesignAmount.Location = New System.Drawing.Point(893, 34)
@@ -1603,8 +1602,8 @@ Partial Class AgniMainForm
         '
         Me.Label84.AutoSize = True
         Me.Label84.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label84.ForeColor = System.Drawing.Color.Black
-        Me.Label84.Location = New System.Drawing.Point(6, 12)
+        Me.Label84.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label84.Location = New System.Drawing.Point(6, 13)
         Me.Label84.Name = "Label84"
         Me.Label84.Size = New System.Drawing.Size(150, 18)
         Me.Label84.TabIndex = 72
@@ -1663,8 +1662,8 @@ Partial Class AgniMainForm
         '
         Me.Label83.AutoSize = True
         Me.Label83.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label83.ForeColor = System.Drawing.Color.Black
-        Me.Label83.Location = New System.Drawing.Point(6, 12)
+        Me.Label83.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label83.Location = New System.Drawing.Point(6, 13)
         Me.Label83.Name = "Label83"
         Me.Label83.Size = New System.Drawing.Size(143, 18)
         Me.Label83.TabIndex = 72
@@ -1689,8 +1688,8 @@ Partial Class AgniMainForm
         '
         Me.Label82.AutoSize = True
         Me.Label82.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label82.ForeColor = System.Drawing.Color.Black
-        Me.Label82.Location = New System.Drawing.Point(6, 12)
+        Me.Label82.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label82.Location = New System.Drawing.Point(6, 13)
         Me.Label82.Name = "Label82"
         Me.Label82.Size = New System.Drawing.Size(84, 18)
         Me.Label82.TabIndex = 72
@@ -1738,8 +1737,8 @@ Partial Class AgniMainForm
         '
         Me.Label81.AutoSize = True
         Me.Label81.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label81.ForeColor = System.Drawing.Color.Black
-        Me.Label81.Location = New System.Drawing.Point(6, 12)
+        Me.Label81.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label81.Location = New System.Drawing.Point(6, 13)
         Me.Label81.Name = "Label81"
         Me.Label81.Size = New System.Drawing.Size(118, 18)
         Me.Label81.TabIndex = 72
@@ -1829,8 +1828,8 @@ Partial Class AgniMainForm
         '
         Me.lblReportFromDate.AutoSize = True
         Me.lblReportFromDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblReportFromDate.ForeColor = System.Drawing.Color.Black
-        Me.lblReportFromDate.Location = New System.Drawing.Point(8, 12)
+        Me.lblReportFromDate.ForeColor = System.Drawing.Color.SteelBlue
+        Me.lblReportFromDate.Location = New System.Drawing.Point(8, 13)
         Me.lblReportFromDate.Name = "lblReportFromDate"
         Me.lblReportFromDate.Size = New System.Drawing.Size(44, 18)
         Me.lblReportFromDate.TabIndex = 69
@@ -1840,8 +1839,8 @@ Partial Class AgniMainForm
         '
         Me.lblReportToDate.AutoSize = True
         Me.lblReportToDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!)
-        Me.lblReportToDate.ForeColor = System.Drawing.Color.Black
-        Me.lblReportToDate.Location = New System.Drawing.Point(185, 13)
+        Me.lblReportToDate.ForeColor = System.Drawing.Color.SteelBlue
+        Me.lblReportToDate.Location = New System.Drawing.Point(185, 14)
         Me.lblReportToDate.Name = "lblReportToDate"
         Me.lblReportToDate.Size = New System.Drawing.Size(26, 18)
         Me.lblReportToDate.TabIndex = 71
@@ -1852,10 +1851,10 @@ Partial Class AgniMainForm
         Me.GroupBox21.BorderColor = System.Drawing.Color.DeepSkyBlue
         Me.GroupBox21.BorderColorFocus = System.Drawing.Color.Orange
         Me.GroupBox21.BorderColorMouseEnter = System.Drawing.Color.Green
-        Me.GroupBox21.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Thin
+        Me.GroupBox21.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Normal
         Me.GroupBox21.Controls.Add(Me.dgReportPaymentGrid)
         Me.GroupBox21.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox21.ForeColor = System.Drawing.Color.Black
+        Me.GroupBox21.ForeColor = System.Drawing.Color.SteelBlue
         Me.GroupBox21.Location = New System.Drawing.Point(955, 613)
         Me.GroupBox21.Name = "GroupBox21"
         Me.GroupBox21.Size = New System.Drawing.Size(939, 280)
@@ -1869,13 +1868,14 @@ Partial Class AgniMainForm
         Me.dgReportPaymentGrid.AllowUserToDeleteRows = False
         Me.dgReportPaymentGrid.AllowUserToOrderColumns = True
         DataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Teal
         Me.dgReportPaymentGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.dgReportPaymentGrid.BackgroundColor = System.Drawing.Color.Lavender
+        Me.dgReportPaymentGrid.BackgroundColor = System.Drawing.Color.White
         Me.dgReportPaymentGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgReportPaymentGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical
         Me.dgReportPaymentGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.DeepSkyBlue
         DataGridViewCellStyle2.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
         DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
@@ -1887,7 +1887,7 @@ Partial Class AgniMainForm
         DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle21.BackColor = System.Drawing.Color.LightSteelBlue
         DataGridViewCellStyle21.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle21.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle21.ForeColor = System.Drawing.Color.SteelBlue
         DataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
@@ -1901,8 +1901,9 @@ Partial Class AgniMainForm
         Me.dgReportPaymentGrid.ReadOnly = True
         Me.dgReportPaymentGrid.RowHeadersVisible = False
         DataGridViewCellStyle22.BackColor = System.Drawing.Color.Lavender
-        DataGridViewCellStyle22.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle22.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!)
         DataGridViewCellStyle22.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.Teal
         DataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgReportPaymentGrid.RowsDefaultCellStyle = DataGridViewCellStyle22
         Me.dgReportPaymentGrid.RowTemplate.Height = 25
@@ -2112,10 +2113,10 @@ Partial Class AgniMainForm
         Me.GroupBox20.BorderColor = System.Drawing.Color.DeepSkyBlue
         Me.GroupBox20.BorderColorFocus = System.Drawing.Color.Orange
         Me.GroupBox20.BorderColorMouseEnter = System.Drawing.Color.Green
-        Me.GroupBox20.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Thin
+        Me.GroupBox20.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Normal
         Me.GroupBox20.Controls.Add(Me.dgReportBillGrid)
         Me.GroupBox20.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox20.ForeColor = System.Drawing.Color.Black
+        Me.GroupBox20.ForeColor = System.Drawing.Color.SteelBlue
         Me.GroupBox20.Location = New System.Drawing.Point(26, 613)
         Me.GroupBox20.Name = "GroupBox20"
         Me.GroupBox20.Size = New System.Drawing.Size(873, 280)
@@ -2128,13 +2129,14 @@ Partial Class AgniMainForm
         Me.dgReportBillGrid.AllowUserToAddRows = False
         Me.dgReportBillGrid.AllowUserToDeleteRows = False
         DataGridViewCellStyle23.BackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.Teal
         Me.dgReportBillGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle23
-        Me.dgReportBillGrid.BackgroundColor = System.Drawing.Color.Lavender
+        Me.dgReportBillGrid.BackgroundColor = System.Drawing.Color.White
         Me.dgReportBillGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgReportBillGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical
         Me.dgReportBillGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
         DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle24.BackColor = System.Drawing.Color.RoyalBlue
+        DataGridViewCellStyle24.BackColor = System.Drawing.Color.DeepSkyBlue
         DataGridViewCellStyle24.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle24.ForeColor = System.Drawing.Color.White
         DataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight
@@ -2146,7 +2148,7 @@ Partial Class AgniMainForm
         DataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle42.BackColor = System.Drawing.Color.LightSteelBlue
         DataGridViewCellStyle42.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle42.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle42.ForeColor = System.Drawing.Color.SteelBlue
         DataGridViewCellStyle42.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle42.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
@@ -2160,8 +2162,9 @@ Partial Class AgniMainForm
         Me.dgReportBillGrid.ReadOnly = True
         Me.dgReportBillGrid.RowHeadersVisible = False
         DataGridViewCellStyle43.BackColor = System.Drawing.Color.Lavender
-        DataGridViewCellStyle43.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle43.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!)
         DataGridViewCellStyle43.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle43.SelectionBackColor = System.Drawing.Color.Teal
         DataGridViewCellStyle43.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgReportBillGrid.RowsDefaultCellStyle = DataGridViewCellStyle43
         Me.dgReportBillGrid.RowTemplate.Height = 25
@@ -2370,10 +2373,10 @@ Partial Class AgniMainForm
         Me.GroupBox4.BorderColor = System.Drawing.Color.DeepSkyBlue
         Me.GroupBox4.BorderColorFocus = System.Drawing.Color.Orange
         Me.GroupBox4.BorderColorMouseEnter = System.Drawing.Color.Green
-        Me.GroupBox4.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Thin
+        Me.GroupBox4.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Normal
         Me.GroupBox4.Controls.Add(Me.dgReportDesignGrid)
         Me.GroupBox4.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox4.ForeColor = System.Drawing.Color.Black
+        Me.GroupBox4.ForeColor = System.Drawing.Color.SteelBlue
         Me.GroupBox4.Location = New System.Drawing.Point(26, 238)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(1100, 297)
@@ -2386,13 +2389,14 @@ Partial Class AgniMainForm
         Me.dgReportDesignGrid.AllowUserToAddRows = False
         Me.dgReportDesignGrid.AllowUserToDeleteRows = False
         DataGridViewCellStyle44.BackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle44.SelectionBackColor = System.Drawing.Color.Teal
         Me.dgReportDesignGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle44
-        Me.dgReportDesignGrid.BackgroundColor = System.Drawing.Color.Lavender
+        Me.dgReportDesignGrid.BackgroundColor = System.Drawing.Color.White
         Me.dgReportDesignGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgReportDesignGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical
         Me.dgReportDesignGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
         DataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle45.BackColor = System.Drawing.Color.RoyalBlue
+        DataGridViewCellStyle45.BackColor = System.Drawing.Color.DeepSkyBlue
         DataGridViewCellStyle45.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle45.ForeColor = System.Drawing.Color.White
         DataGridViewCellStyle45.SelectionBackColor = System.Drawing.SystemColors.Highlight
@@ -2404,7 +2408,7 @@ Partial Class AgniMainForm
         DataGridViewCellStyle57.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle57.BackColor = System.Drawing.Color.LightSteelBlue
         DataGridViewCellStyle57.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle57.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle57.ForeColor = System.Drawing.Color.SteelBlue
         DataGridViewCellStyle57.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle57.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle57.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
@@ -2418,8 +2422,9 @@ Partial Class AgniMainForm
         Me.dgReportDesignGrid.ReadOnly = True
         Me.dgReportDesignGrid.RowHeadersVisible = False
         DataGridViewCellStyle58.BackColor = System.Drawing.Color.Lavender
-        DataGridViewCellStyle58.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle58.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!)
         DataGridViewCellStyle58.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle58.SelectionBackColor = System.Drawing.Color.Teal
         DataGridViewCellStyle58.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgReportDesignGrid.RowsDefaultCellStyle = DataGridViewCellStyle58
         Me.dgReportDesignGrid.RowTemplate.Height = 25
@@ -2567,8 +2572,8 @@ Partial Class AgniMainForm
         '
         Me.Label111.AutoSize = True
         Me.Label111.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label111.ForeColor = System.Drawing.Color.Black
-        Me.Label111.Location = New System.Drawing.Point(50, 20)
+        Me.Label111.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label111.Location = New System.Drawing.Point(50, 16)
         Me.Label111.Name = "Label111"
         Me.Label111.Size = New System.Drawing.Size(96, 24)
         Me.Label111.TabIndex = 40
@@ -2576,7 +2581,7 @@ Partial Class AgniMainForm
         '
         'pbReportDesignImage
         '
-        Me.pbReportDesignImage.BackColor = System.Drawing.Color.FromArgb(CType(CType(222, Byte), Integer), CType(CType(222, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.pbReportDesignImage.BackColor = System.Drawing.Color.White
         Me.pbReportDesignImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.pbReportDesignImage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.pbReportDesignImage.Location = New System.Drawing.Point(1150, 4)
@@ -2661,11 +2666,11 @@ Partial Class AgniMainForm
         Me.btnBillingDeleteBill.ImageKey = 0
         Me.btnBillingDeleteBill.Location = New System.Drawing.Point(1133, 277)
         Me.btnBillingDeleteBill.Name = "btnBillingDeleteBill"
-        Me.btnBillingDeleteBill.Padding = New System.Windows.Forms.Padding(25, 23, 22, 5)
+        Me.btnBillingDeleteBill.Padding = New System.Windows.Forms.Padding(25, 23, 24, 5)
         Me.btnBillingDeleteBill.SideImage = CType(resources.GetObject("btnBillingDeleteBill.SideImage"), System.Drawing.Image)
         Me.btnBillingDeleteBill.SideImageAlign = System.Drawing.ContentAlignment.TopRight
         Me.btnBillingDeleteBill.SideImageIsClickable = True
-        Me.btnBillingDeleteBill.SideImageSize = New System.Drawing.Size(27, 25)
+        Me.btnBillingDeleteBill.SideImageSize = New System.Drawing.Size(29, 27)
         Me.btnBillingDeleteBill.Size = New System.Drawing.Size(243, 57)
         Me.btnBillingDeleteBill.TabIndex = 9
         Me.btnBillingDeleteBill.Text = "Delete"
@@ -2678,7 +2683,7 @@ Partial Class AgniMainForm
         Me.GroupBox18.BorderColor = System.Drawing.Color.DeepSkyBlue
         Me.GroupBox18.BorderColorFocus = System.Drawing.Color.Orange
         Me.GroupBox18.BorderColorMouseEnter = System.Drawing.Color.Green
-        Me.GroupBox18.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Thin
+        Me.GroupBox18.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Normal
         Me.GroupBox18.Controls.Add(Me.txtBillingIGSTAmount)
         Me.GroupBox18.Controls.Add(Me.txtBillingCGSTAmount)
         Me.GroupBox18.Controls.Add(Me.Label2)
@@ -2704,11 +2709,11 @@ Partial Class AgniMainForm
         Me.txtBillingIGSTAmount.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtBillingIGSTAmount.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtBillingIGSTAmount.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtBillingIGSTAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBillingIGSTAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtBillingIGSTAmount.Location = New System.Drawing.Point(146, 138)
         Me.txtBillingIGSTAmount.Name = "txtBillingIGSTAmount"
         Me.txtBillingIGSTAmount.ReadOnly = True
-        Me.txtBillingIGSTAmount.Size = New System.Drawing.Size(119, 23)
+        Me.txtBillingIGSTAmount.Size = New System.Drawing.Size(119, 26)
         Me.txtBillingIGSTAmount.TabIndex = 142
         Me.txtBillingIGSTAmount.TabStop = False
         '
@@ -2718,22 +2723,22 @@ Partial Class AgniMainForm
         Me.txtBillingCGSTAmount.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtBillingCGSTAmount.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtBillingCGSTAmount.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtBillingCGSTAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBillingCGSTAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtBillingCGSTAmount.Location = New System.Drawing.Point(146, 58)
         Me.txtBillingCGSTAmount.Name = "txtBillingCGSTAmount"
         Me.txtBillingCGSTAmount.ReadOnly = True
-        Me.txtBillingCGSTAmount.Size = New System.Drawing.Size(119, 23)
+        Me.txtBillingCGSTAmount.Size = New System.Drawing.Size(119, 26)
         Me.txtBillingCGSTAmount.TabIndex = 138
         Me.txtBillingCGSTAmount.TabStop = False
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.Black
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.Label2.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label2.Location = New System.Drawing.Point(10, 60)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(57, 20)
+        Me.Label2.Size = New System.Drawing.Size(61, 24)
         Me.Label2.TabIndex = 139
         Me.Label2.Text = "CGST"
         '
@@ -2743,33 +2748,33 @@ Partial Class AgniMainForm
         Me.txtBillingSGSTAmount.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtBillingSGSTAmount.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtBillingSGSTAmount.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtBillingSGSTAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBillingSGSTAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtBillingSGSTAmount.Location = New System.Drawing.Point(146, 98)
         Me.txtBillingSGSTAmount.Name = "txtBillingSGSTAmount"
         Me.txtBillingSGSTAmount.ReadOnly = True
-        Me.txtBillingSGSTAmount.Size = New System.Drawing.Size(119, 23)
+        Me.txtBillingSGSTAmount.Size = New System.Drawing.Size(119, 26)
         Me.txtBillingSGSTAmount.TabIndex = 140
         Me.txtBillingSGSTAmount.TabStop = False
         '
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.ForeColor = System.Drawing.Color.Black
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.Label11.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label11.Location = New System.Drawing.Point(146, 34)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(71, 20)
+        Me.Label11.Size = New System.Drawing.Size(76, 24)
         Me.Label11.TabIndex = 154
         Me.Label11.Text = "Amount"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.Black
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.Label3.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label3.Location = New System.Drawing.Point(10, 102)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(57, 20)
+        Me.Label3.Size = New System.Drawing.Size(60, 24)
         Me.Label3.TabIndex = 141
         Me.Label3.Text = "SGST"
         '
@@ -2787,11 +2792,11 @@ Partial Class AgniMainForm
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.Black
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.Label4.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label4.Location = New System.Drawing.Point(17, 141)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(51, 20)
+        Me.Label4.Size = New System.Drawing.Size(52, 24)
         Me.Label4.TabIndex = 143
         Me.Label4.Text = "IGST"
         '
@@ -2801,11 +2806,11 @@ Partial Class AgniMainForm
         Me.txtBillingIGSTPercent.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtBillingIGSTPercent.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtBillingIGSTPercent.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtBillingIGSTPercent.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBillingIGSTPercent.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtBillingIGSTPercent.Location = New System.Drawing.Point(74, 138)
         Me.txtBillingIGSTPercent.Name = "txtBillingIGSTPercent"
         Me.txtBillingIGSTPercent.ReadOnly = True
-        Me.txtBillingIGSTPercent.Size = New System.Drawing.Size(58, 23)
+        Me.txtBillingIGSTPercent.Size = New System.Drawing.Size(58, 26)
         Me.txtBillingIGSTPercent.TabIndex = 152
         Me.txtBillingIGSTPercent.TabStop = False
         '
@@ -2815,11 +2820,11 @@ Partial Class AgniMainForm
         Me.txtBillingCGSTPercent.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtBillingCGSTPercent.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtBillingCGSTPercent.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtBillingCGSTPercent.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBillingCGSTPercent.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtBillingCGSTPercent.Location = New System.Drawing.Point(74, 58)
         Me.txtBillingCGSTPercent.Name = "txtBillingCGSTPercent"
         Me.txtBillingCGSTPercent.ReadOnly = True
-        Me.txtBillingCGSTPercent.Size = New System.Drawing.Size(58, 23)
+        Me.txtBillingCGSTPercent.Size = New System.Drawing.Size(58, 26)
         Me.txtBillingCGSTPercent.TabIndex = 150
         Me.txtBillingCGSTPercent.TabStop = False
         '
@@ -2829,11 +2834,11 @@ Partial Class AgniMainForm
         Me.txtBillingSGSTPercent.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtBillingSGSTPercent.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtBillingSGSTPercent.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtBillingSGSTPercent.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBillingSGSTPercent.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtBillingSGSTPercent.Location = New System.Drawing.Point(74, 98)
         Me.txtBillingSGSTPercent.Name = "txtBillingSGSTPercent"
         Me.txtBillingSGSTPercent.ReadOnly = True
-        Me.txtBillingSGSTPercent.Size = New System.Drawing.Size(58, 23)
+        Me.txtBillingSGSTPercent.Size = New System.Drawing.Size(58, 26)
         Me.txtBillingSGSTPercent.TabIndex = 151
         Me.txtBillingSGSTPercent.TabStop = False
         '
@@ -2844,7 +2849,7 @@ Partial Class AgniMainForm
         Me.btnBillingOutstandingBalance.BackColor = System.Drawing.Color.Transparent
         Me.btnBillingOutstandingBalance.BorderColor = System.Drawing.Color.Transparent
         Me.btnBillingOutstandingBalance.BorderShow = False
-        CBlendItems8.iColor = New System.Drawing.Color() {System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.White}
+        CBlendItems8.iColor = New System.Drawing.Color() {System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer)), System.Drawing.Color.White}
         CBlendItems8.iPoint = New Single() {0!, 1.0!}
         Me.btnBillingOutstandingBalance.ColorFillBlend = CBlendItems8
         Me.btnBillingOutstandingBalance.ColorFillSolid = System.Drawing.Color.DarkOrange
@@ -2854,7 +2859,7 @@ Partial Class AgniMainForm
         Me.btnBillingOutstandingBalance.FocalPoints.FocusPtX = 0.8!
         Me.btnBillingOutstandingBalance.FocalPoints.FocusPtY = 0.6!
         Me.btnBillingOutstandingBalance.Font = New System.Drawing.Font("Arial", 9.0!)
-        Me.btnBillingOutstandingBalance.ForeColor = System.Drawing.Color.Crimson
+        Me.btnBillingOutstandingBalance.ForeColor = System.Drawing.Color.DarkSlateGray
         Me.btnBillingOutstandingBalance.ImageIndex = 0
         Me.btnBillingOutstandingBalance.ImageKey = 0
         Me.btnBillingOutstandingBalance.Location = New System.Drawing.Point(708, 325)
@@ -2875,10 +2880,10 @@ Partial Class AgniMainForm
         Me.GroupBox17.BorderColor = System.Drawing.Color.DeepSkyBlue
         Me.GroupBox17.BorderColorFocus = System.Drawing.Color.Orange
         Me.GroupBox17.BorderColorMouseEnter = System.Drawing.Color.Green
-        Me.GroupBox17.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Thin
+        Me.GroupBox17.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Normal
         Me.GroupBox17.Controls.Add(Me.dgBIllingBillDetails)
         Me.GroupBox17.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox17.ForeColor = System.Drawing.Color.Black
+        Me.GroupBox17.ForeColor = System.Drawing.Color.SteelBlue
         Me.GroupBox17.Location = New System.Drawing.Point(27, 450)
         Me.GroupBox17.Name = "GroupBox17"
         Me.GroupBox17.Size = New System.Drawing.Size(1873, 497)
@@ -2893,12 +2898,12 @@ Partial Class AgniMainForm
         Me.dgBIllingBillDetails.AllowUserToOrderColumns = True
         DataGridViewCellStyle59.BackColor = System.Drawing.Color.LightSteelBlue
         Me.dgBIllingBillDetails.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle59
-        Me.dgBIllingBillDetails.BackgroundColor = System.Drawing.Color.Lavender
+        Me.dgBIllingBillDetails.BackgroundColor = System.Drawing.Color.White
         Me.dgBIllingBillDetails.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgBIllingBillDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical
         Me.dgBIllingBillDetails.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
         DataGridViewCellStyle60.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle60.BackColor = System.Drawing.Color.RoyalBlue
+        DataGridViewCellStyle60.BackColor = System.Drawing.Color.DeepSkyBlue
         DataGridViewCellStyle60.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle60.ForeColor = System.Drawing.Color.White
         DataGridViewCellStyle60.SelectionBackColor = System.Drawing.SystemColors.Highlight
@@ -2910,7 +2915,7 @@ Partial Class AgniMainForm
         DataGridViewCellStyle77.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle77.BackColor = System.Drawing.Color.LightSteelBlue
         DataGridViewCellStyle77.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle77.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle77.ForeColor = System.Drawing.Color.SteelBlue
         DataGridViewCellStyle77.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle77.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle77.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
@@ -2924,7 +2929,9 @@ Partial Class AgniMainForm
         Me.dgBIllingBillDetails.ReadOnly = True
         Me.dgBIllingBillDetails.RowHeadersVisible = False
         DataGridViewCellStyle78.BackColor = System.Drawing.Color.Lavender
-        DataGridViewCellStyle78.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle78.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!)
+        DataGridViewCellStyle78.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle78.SelectionBackColor = System.Drawing.Color.Teal
         DataGridViewCellStyle78.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgBIllingBillDetails.RowsDefaultCellStyle = DataGridViewCellStyle78
         Me.dgBIllingBillDetails.RowTemplate.Height = 25
@@ -3134,11 +3141,11 @@ Partial Class AgniMainForm
         Me.txtBillingActualBillNo.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtBillingActualBillNo.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtBillingActualBillNo.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtBillingActualBillNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBillingActualBillNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtBillingActualBillNo.Location = New System.Drawing.Point(550, 56)
         Me.txtBillingActualBillNo.Name = "txtBillingActualBillNo"
         Me.txtBillingActualBillNo.ReadOnly = True
-        Me.txtBillingActualBillNo.Size = New System.Drawing.Size(73, 29)
+        Me.txtBillingActualBillNo.Size = New System.Drawing.Size(73, 26)
         Me.txtBillingActualBillNo.TabIndex = 165
         Me.txtBillingActualBillNo.TabStop = False
         '
@@ -3146,8 +3153,8 @@ Partial Class AgniMainForm
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.ForeColor = System.Drawing.Color.Black
-        Me.Label8.Location = New System.Drawing.Point(157, 278)
+        Me.Label8.ForeColor = System.Drawing.Color.LightSeaGreen
+        Me.Label8.Location = New System.Drawing.Point(128, 273)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(111, 15)
         Me.Label8.TabIndex = 149
@@ -3156,11 +3163,11 @@ Partial Class AgniMainForm
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.ForeColor = System.Drawing.Color.Black
-        Me.Label9.Location = New System.Drawing.Point(22, 259)
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.Label9.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label9.Location = New System.Drawing.Point(27, 262)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(131, 25)
+        Me.Label9.Size = New System.Drawing.Size(105, 24)
         Me.Label9.TabIndex = 148
         Me.Label9.Text = "Bill Amount"
         '
@@ -3170,11 +3177,11 @@ Partial Class AgniMainForm
         Me.txtBillingDesignAmoutAfterGST.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtBillingDesignAmoutAfterGST.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtBillingDesignAmoutAfterGST.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtBillingDesignAmoutAfterGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBillingDesignAmoutAfterGST.Location = New System.Drawing.Point(308, 261)
+        Me.txtBillingDesignAmoutAfterGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.txtBillingDesignAmoutAfterGST.Location = New System.Drawing.Point(308, 262)
         Me.txtBillingDesignAmoutAfterGST.Name = "txtBillingDesignAmoutAfterGST"
         Me.txtBillingDesignAmoutAfterGST.ReadOnly = True
-        Me.txtBillingDesignAmoutAfterGST.Size = New System.Drawing.Size(316, 29)
+        Me.txtBillingDesignAmoutAfterGST.Size = New System.Drawing.Size(316, 26)
         Me.txtBillingDesignAmoutAfterGST.TabIndex = 303
         Me.txtBillingDesignAmoutAfterGST.TabStop = False
         '
@@ -3182,8 +3189,8 @@ Partial Class AgniMainForm
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.ForeColor = System.Drawing.Color.Black
-        Me.Label6.Location = New System.Drawing.Point(148, 200)
+        Me.Label6.ForeColor = System.Drawing.Color.LightSeaGreen
+        Me.Label6.Location = New System.Drawing.Point(164, 189)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(118, 15)
         Me.Label6.TabIndex = 146
@@ -3192,11 +3199,11 @@ Partial Class AgniMainForm
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(22, 222)
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.Label5.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label5.Location = New System.Drawing.Point(27, 220)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(118, 25)
+        Me.Label5.Size = New System.Drawing.Size(94, 24)
         Me.Label5.TabIndex = 145
         Me.Label5.Text = "Total GST"
         '
@@ -3206,11 +3213,11 @@ Partial Class AgniMainForm
         Me.txtBillingTotalGSTAmount.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtBillingTotalGSTAmount.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtBillingTotalGSTAmount.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtBillingTotalGSTAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBillingTotalGSTAmount.Location = New System.Drawing.Point(308, 219)
+        Me.txtBillingTotalGSTAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.txtBillingTotalGSTAmount.Location = New System.Drawing.Point(308, 220)
         Me.txtBillingTotalGSTAmount.Name = "txtBillingTotalGSTAmount"
         Me.txtBillingTotalGSTAmount.ReadOnly = True
-        Me.txtBillingTotalGSTAmount.Size = New System.Drawing.Size(316, 29)
+        Me.txtBillingTotalGSTAmount.Size = New System.Drawing.Size(316, 26)
         Me.txtBillingTotalGSTAmount.TabIndex = 302
         Me.txtBillingTotalGSTAmount.TabStop = False
         '
@@ -3328,11 +3335,11 @@ Partial Class AgniMainForm
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(22, 352)
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.Label1.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label1.Location = New System.Drawing.Point(27, 346)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(145, 25)
+        Me.Label1.Size = New System.Drawing.Size(118, 24)
         Me.Label1.TabIndex = 132
         Me.Label1.Text = "Paid Amount"
         '
@@ -3342,11 +3349,11 @@ Partial Class AgniMainForm
         Me.txtBillingPaidAmount.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtBillingPaidAmount.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtBillingPaidAmount.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtBillingPaidAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBillingPaidAmount.Location = New System.Drawing.Point(308, 349)
+        Me.txtBillingPaidAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.txtBillingPaidAmount.Location = New System.Drawing.Point(308, 346)
         Me.txtBillingPaidAmount.Name = "txtBillingPaidAmount"
         Me.txtBillingPaidAmount.ReadOnly = True
-        Me.txtBillingPaidAmount.Size = New System.Drawing.Size(316, 29)
+        Me.txtBillingPaidAmount.Size = New System.Drawing.Size(316, 26)
         Me.txtBillingPaidAmount.TabIndex = 8
         Me.txtBillingPaidAmount.TabStop = False
         '
@@ -3451,22 +3458,22 @@ Partial Class AgniMainForm
         'Label32
         '
         Me.Label32.AutoSize = True
-        Me.Label32.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label32.ForeColor = System.Drawing.Color.Black
-        Me.Label32.Location = New System.Drawing.Point(22, 177)
+        Me.Label32.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.Label32.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label32.Location = New System.Drawing.Point(27, 178)
         Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(171, 25)
+        Me.Label32.Size = New System.Drawing.Size(140, 24)
         Me.Label32.TabIndex = 117
         Me.Label32.Text = "Design Amount"
         '
         'Label30
         '
         Me.Label30.AutoSize = True
-        Me.Label30.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label30.ForeColor = System.Drawing.Color.Black
-        Me.Label30.Location = New System.Drawing.Point(22, 139)
+        Me.Label30.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.Label30.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label30.Location = New System.Drawing.Point(27, 138)
         Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(180, 25)
+        Me.Label30.Size = New System.Drawing.Size(144, 24)
         Me.Label30.TabIndex = 116
         Me.Label30.Text = "UnPaid Balance"
         '
@@ -3476,11 +3483,11 @@ Partial Class AgniMainForm
         Me.txtBillingDesignAmoutBeforeGST.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtBillingDesignAmoutBeforeGST.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtBillingDesignAmoutBeforeGST.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtBillingDesignAmoutBeforeGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBillingDesignAmoutBeforeGST.Location = New System.Drawing.Point(308, 180)
+        Me.txtBillingDesignAmoutBeforeGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.txtBillingDesignAmoutBeforeGST.Location = New System.Drawing.Point(308, 178)
         Me.txtBillingDesignAmoutBeforeGST.Name = "txtBillingDesignAmoutBeforeGST"
         Me.txtBillingDesignAmoutBeforeGST.ReadOnly = True
-        Me.txtBillingDesignAmoutBeforeGST.Size = New System.Drawing.Size(316, 29)
+        Me.txtBillingDesignAmoutBeforeGST.Size = New System.Drawing.Size(316, 26)
         Me.txtBillingDesignAmoutBeforeGST.TabIndex = 301
         Me.txtBillingDesignAmoutBeforeGST.TabStop = False
         '
@@ -3490,11 +3497,11 @@ Partial Class AgniMainForm
         Me.txtBillingPrevBalance.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtBillingPrevBalance.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtBillingPrevBalance.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtBillingPrevBalance.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBillingPrevBalance.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtBillingPrevBalance.Location = New System.Drawing.Point(308, 136)
         Me.txtBillingPrevBalance.Name = "txtBillingPrevBalance"
         Me.txtBillingPrevBalance.ReadOnly = True
-        Me.txtBillingPrevBalance.Size = New System.Drawing.Size(316, 29)
+        Me.txtBillingPrevBalance.Size = New System.Drawing.Size(316, 26)
         Me.txtBillingPrevBalance.TabIndex = 300
         Me.txtBillingPrevBalance.TabStop = False
         '
@@ -3519,33 +3526,33 @@ Partial Class AgniMainForm
         Me.dpBillingBillDate.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.dpBillingBillDate.Cursor = System.Windows.Forms.Cursors.Hand
         Me.dpBillingBillDate.CustomFormat = "dd/MM/yyyy"
-        Me.dpBillingBillDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dpBillingBillDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.dpBillingBillDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dpBillingBillDate.Location = New System.Drawing.Point(308, 97)
         Me.dpBillingBillDate.Name = "dpBillingBillDate"
         Me.dpBillingBillDate.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.dpBillingBillDate.Size = New System.Drawing.Size(316, 29)
+        Me.dpBillingBillDate.Size = New System.Drawing.Size(316, 26)
         Me.dpBillingBillDate.TabIndex = 2
         '
         'Label31
         '
         Me.Label31.AutoSize = True
-        Me.Label31.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label31.ForeColor = System.Drawing.Color.Black
-        Me.Label31.Location = New System.Drawing.Point(22, 98)
+        Me.Label31.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.Label31.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label31.Location = New System.Drawing.Point(27, 98)
         Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(101, 25)
+        Me.Label31.Size = New System.Drawing.Size(77, 24)
         Me.Label31.TabIndex = 107
         Me.Label31.Text = "Bill Date"
         '
         'Label27
         '
         Me.Label27.AutoSize = True
-        Me.Label27.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label27.ForeColor = System.Drawing.Color.Black
-        Me.Label27.Location = New System.Drawing.Point(22, 392)
+        Me.Label27.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.Label27.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label27.Location = New System.Drawing.Point(27, 388)
         Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(215, 25)
+        Me.Label27.Size = New System.Drawing.Size(174, 24)
         Me.Label27.TabIndex = 11
         Me.Label27.Text = "Remaining Balance"
         '
@@ -3555,11 +3562,11 @@ Partial Class AgniMainForm
         Me.txtBillingRemainingBalance.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtBillingRemainingBalance.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtBillingRemainingBalance.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtBillingRemainingBalance.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBillingRemainingBalance.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtBillingRemainingBalance.Location = New System.Drawing.Point(308, 388)
         Me.txtBillingRemainingBalance.Name = "txtBillingRemainingBalance"
         Me.txtBillingRemainingBalance.ReadOnly = True
-        Me.txtBillingRemainingBalance.Size = New System.Drawing.Size(316, 29)
+        Me.txtBillingRemainingBalance.Size = New System.Drawing.Size(316, 26)
         Me.txtBillingRemainingBalance.TabIndex = 9
         Me.txtBillingRemainingBalance.TabStop = False
         '
@@ -3569,33 +3576,33 @@ Partial Class AgniMainForm
         Me.txtBillingTotalAmount.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtBillingTotalAmount.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtBillingTotalAmount.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtBillingTotalAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBillingTotalAmount.Location = New System.Drawing.Point(308, 305)
+        Me.txtBillingTotalAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.txtBillingTotalAmount.Location = New System.Drawing.Point(308, 304)
         Me.txtBillingTotalAmount.Name = "txtBillingTotalAmount"
         Me.txtBillingTotalAmount.ReadOnly = True
-        Me.txtBillingTotalAmount.Size = New System.Drawing.Size(316, 29)
+        Me.txtBillingTotalAmount.Size = New System.Drawing.Size(316, 26)
         Me.txtBillingTotalAmount.TabIndex = 304
         Me.txtBillingTotalAmount.TabStop = False
         '
         'Label26
         '
         Me.Label26.AutoSize = True
-        Me.Label26.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label26.ForeColor = System.Drawing.Color.Black
-        Me.Label26.Location = New System.Drawing.Point(22, 302)
+        Me.Label26.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.Label26.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label26.Location = New System.Drawing.Point(27, 304)
         Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(151, 25)
+        Me.Label26.Size = New System.Drawing.Size(122, 24)
         Me.Label26.TabIndex = 6
         Me.Label26.Text = "Total Amount"
         '
         'Label24
         '
         Me.Label24.AutoSize = True
-        Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label24.ForeColor = System.Drawing.Color.Black
-        Me.Label24.Location = New System.Drawing.Point(22, 56)
+        Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.Label24.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label24.Location = New System.Drawing.Point(27, 56)
         Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(133, 25)
+        Me.Label24.Size = New System.Drawing.Size(108, 24)
         Me.Label24.TabIndex = 3
         Me.Label24.Text = "Bill Number"
         '
@@ -3614,11 +3621,11 @@ Partial Class AgniMainForm
         Me.cmbBillingBillNoList.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.cmbBillingBillNoList.BorderThickness = ElaCustomComboBoxControl.ElaCustomComboBox.BorderThicknessEnum.Thick
         Me.cmbBillingBillNoList.DisplayMember = "DisplayBillNo"
-        Me.cmbBillingBillNoList.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbBillingBillNoList.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.cmbBillingBillNoList.FormattingEnabled = True
         Me.cmbBillingBillNoList.Location = New System.Drawing.Point(308, 54)
         Me.cmbBillingBillNoList.Name = "cmbBillingBillNoList"
-        Me.cmbBillingBillNoList.Size = New System.Drawing.Size(168, 32)
+        Me.cmbBillingBillNoList.Size = New System.Drawing.Size(168, 28)
         Me.cmbBillingBillNoList.TabIndex = 1
         Me.cmbBillingBillNoList.ValueMember = "BillNo"
         '
@@ -3637,22 +3644,22 @@ Partial Class AgniMainForm
         Me.cmbBillingCustomerList.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.cmbBillingCustomerList.BorderThickness = ElaCustomComboBoxControl.ElaCustomComboBox.BorderThicknessEnum.Thick
         Me.cmbBillingCustomerList.DisplayMember = "CompName"
-        Me.cmbBillingCustomerList.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbBillingCustomerList.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.cmbBillingCustomerList.FormattingEnabled = True
         Me.cmbBillingCustomerList.Location = New System.Drawing.Point(308, 12)
         Me.cmbBillingCustomerList.Name = "cmbBillingCustomerList"
-        Me.cmbBillingCustomerList.Size = New System.Drawing.Size(316, 32)
+        Me.cmbBillingCustomerList.Size = New System.Drawing.Size(316, 28)
         Me.cmbBillingCustomerList.TabIndex = 0
         Me.cmbBillingCustomerList.ValueMember = "CustNo"
         '
         'Label23
         '
         Me.Label23.AutoSize = True
-        Me.Label23.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label23.ForeColor = System.Drawing.Color.Black
-        Me.Label23.Location = New System.Drawing.Point(22, 15)
+        Me.Label23.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.Label23.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label23.Location = New System.Drawing.Point(27, 15)
         Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(179, 25)
+        Me.Label23.Size = New System.Drawing.Size(147, 24)
         Me.Label23.TabIndex = 0
         Me.Label23.Text = "Customer Name"
         '
@@ -3660,8 +3667,8 @@ Partial Class AgniMainForm
         '
         Me.Label29.AutoSize = True
         Me.Label29.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label29.ForeColor = System.Drawing.Color.Black
-        Me.Label29.Location = New System.Drawing.Point(157, 325)
+        Me.Label29.ForeColor = System.Drawing.Color.LightSeaGreen
+        Me.Label29.Location = New System.Drawing.Point(149, 313)
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(133, 15)
         Me.Label29.TabIndex = 113
@@ -3682,11 +3689,11 @@ Partial Class AgniMainForm
         'lblLastBillAmount
         '
         Me.lblLastBillAmount.AutoSize = True
-        Me.lblLastBillAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLastBillAmount.ForeColor = System.Drawing.Color.Black
+        Me.lblLastBillAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.lblLastBillAmount.ForeColor = System.Drawing.Color.SteelBlue
         Me.lblLastBillAmount.Location = New System.Drawing.Point(306, 10)
         Me.lblLastBillAmount.Name = "lblLastBillAmount"
-        Me.lblLastBillAmount.Size = New System.Drawing.Size(140, 20)
+        Me.lblLastBillAmount.Size = New System.Drawing.Size(143, 24)
         Me.lblLastBillAmount.TabIndex = 309
         Me.lblLastBillAmount.Text = "Last Bill Amount"
         '
@@ -3696,11 +3703,11 @@ Partial Class AgniMainForm
         Me.txtBillingLastBillNo.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtBillingLastBillNo.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtBillingLastBillNo.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtBillingLastBillNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBillingLastBillNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtBillingLastBillNo.Location = New System.Drawing.Point(146, 5)
         Me.txtBillingLastBillNo.Name = "txtBillingLastBillNo"
         Me.txtBillingLastBillNo.ReadOnly = True
-        Me.txtBillingLastBillNo.Size = New System.Drawing.Size(119, 29)
+        Me.txtBillingLastBillNo.Size = New System.Drawing.Size(119, 26)
         Me.txtBillingLastBillNo.TabIndex = 308
         Me.txtBillingLastBillNo.TabStop = False
         '
@@ -3710,22 +3717,22 @@ Partial Class AgniMainForm
         Me.txtBillingLastBillAmount.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtBillingLastBillAmount.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtBillingLastBillAmount.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtBillingLastBillAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBillingLastBillAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtBillingLastBillAmount.Location = New System.Drawing.Point(465, 5)
         Me.txtBillingLastBillAmount.Name = "txtBillingLastBillAmount"
         Me.txtBillingLastBillAmount.ReadOnly = True
-        Me.txtBillingLastBillAmount.Size = New System.Drawing.Size(172, 29)
+        Me.txtBillingLastBillAmount.Size = New System.Drawing.Size(172, 26)
         Me.txtBillingLastBillAmount.TabIndex = 310
         Me.txtBillingLastBillAmount.TabStop = False
         '
         'lblLastBillNo
         '
         Me.lblLastBillNo.AutoSize = True
-        Me.lblLastBillNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLastBillNo.ForeColor = System.Drawing.Color.Black
+        Me.lblLastBillNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.lblLastBillNo.ForeColor = System.Drawing.Color.SteelBlue
         Me.lblLastBillNo.Location = New System.Drawing.Point(18, 10)
         Me.lblLastBillNo.Name = "lblLastBillNo"
-        Me.lblLastBillNo.Size = New System.Drawing.Size(105, 20)
+        Me.lblLastBillNo.Size = New System.Drawing.Size(107, 24)
         Me.lblLastBillNo.TabIndex = 307
         Me.lblLastBillNo.Text = "Last Bill No."
         '
@@ -3758,7 +3765,7 @@ Partial Class AgniMainForm
         Me.tabDesign.Controls.Add(Me.btnDesEditPrice)
         Me.tabDesign.Controls.Add(Me.pbDesDesignImage)
         Me.tabDesign.Cursor = System.Windows.Forms.Cursors.Arrow
-        Me.tabDesign.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.tabDesign.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tabDesign.ImageKey = "design.png"
         Me.tabDesign.Location = New System.Drawing.Point(4, 49)
         Me.tabDesign.Name = "tabDesign"
@@ -3774,16 +3781,16 @@ Partial Class AgniMainForm
         Me.ElaCustomGroupBox3.BorderColor = System.Drawing.Color.DeepSkyBlue
         Me.ElaCustomGroupBox3.BorderColorFocus = System.Drawing.Color.Orange
         Me.ElaCustomGroupBox3.BorderColorMouseEnter = System.Drawing.Color.Green
-        Me.ElaCustomGroupBox3.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Thin
+        Me.ElaCustomGroupBox3.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Normal
         Me.ElaCustomGroupBox3.Controls.Add(Me.txtDesWidth)
         Me.ElaCustomGroupBox3.Controls.Add(Me.txtDesHeight)
         Me.ElaCustomGroupBox3.Controls.Add(Me.Label17)
         Me.ElaCustomGroupBox3.Controls.Add(Me.Label19)
         Me.ElaCustomGroupBox3.Controls.Add(Me.Label18)
         Me.ElaCustomGroupBox3.ForeColor = System.Drawing.Color.Black
-        Me.ElaCustomGroupBox3.Location = New System.Drawing.Point(283, 203)
+        Me.ElaCustomGroupBox3.Location = New System.Drawing.Point(283, 197)
         Me.ElaCustomGroupBox3.Name = "ElaCustomGroupBox3"
-        Me.ElaCustomGroupBox3.Size = New System.Drawing.Size(423, 50)
+        Me.ElaCustomGroupBox3.Size = New System.Drawing.Size(423, 56)
         Me.ElaCustomGroupBox3.TabIndex = 112
         Me.ElaCustomGroupBox3.TabStop = False
         '
@@ -3793,10 +3800,10 @@ Partial Class AgniMainForm
         Me.txtDesWidth.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtDesWidth.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtDesWidth.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtDesWidth.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDesWidth.Location = New System.Drawing.Point(73, 13)
+        Me.txtDesWidth.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.txtDesWidth.Location = New System.Drawing.Point(73, 20)
         Me.txtDesWidth.Name = "txtDesWidth"
-        Me.txtDesWidth.Size = New System.Drawing.Size(115, 31)
+        Me.txtDesWidth.Size = New System.Drawing.Size(115, 26)
         Me.txtDesWidth.TabIndex = 4
         '
         'txtDesHeight
@@ -3805,19 +3812,20 @@ Partial Class AgniMainForm
         Me.txtDesHeight.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtDesHeight.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtDesHeight.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtDesHeight.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDesHeight.Location = New System.Drawing.Point(287, 13)
+        Me.txtDesHeight.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.txtDesHeight.Location = New System.Drawing.Point(292, 20)
         Me.txtDesHeight.Name = "txtDesHeight"
-        Me.txtDesHeight.Size = New System.Drawing.Size(124, 31)
+        Me.txtDesHeight.Size = New System.Drawing.Size(124, 26)
         Me.txtDesHeight.TabIndex = 5
         '
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Font = New System.Drawing.Font("Book Antiqua", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.Location = New System.Drawing.Point(15, 19)
+        Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label17.Location = New System.Drawing.Point(11, 21)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(52, 19)
+        Me.Label17.Size = New System.Drawing.Size(58, 24)
         Me.Label17.TabIndex = 14
         Me.Label17.Text = "Width"
         '
@@ -3825,7 +3833,8 @@ Partial Class AgniMainForm
         '
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label19.Location = New System.Drawing.Point(194, 13)
+        Me.Label19.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label19.Location = New System.Drawing.Point(194, 19)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(27, 25)
         Me.Label19.TabIndex = 16
@@ -3834,10 +3843,11 @@ Partial Class AgniMainForm
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Font = New System.Drawing.Font("Book Antiqua", 11.25!, System.Drawing.FontStyle.Bold)
-        Me.Label18.Location = New System.Drawing.Point(227, 19)
+        Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label18.Location = New System.Drawing.Point(223, 21)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(57, 19)
+        Me.Label18.Size = New System.Drawing.Size(65, 24)
         Me.Label18.TabIndex = 15
         Me.Label18.Text = "Height"
         '
@@ -3846,12 +3856,12 @@ Partial Class AgniMainForm
         Me.gbDesignType.BorderColor = System.Drawing.Color.DeepSkyBlue
         Me.gbDesignType.BorderColorFocus = System.Drawing.Color.Orange
         Me.gbDesignType.BorderColorMouseEnter = System.Drawing.Color.Green
-        Me.gbDesignType.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Thin
+        Me.gbDesignType.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Normal
         Me.gbDesignType.Controls.Add(Me.radioDesWP)
         Me.gbDesignType.Controls.Add(Me.radioDesPrint)
         Me.gbDesignType.Controls.Add(Me.radioDesWorking)
         Me.gbDesignType.ForeColor = System.Drawing.Color.Black
-        Me.gbDesignType.Location = New System.Drawing.Point(283, 147)
+        Me.gbDesignType.Location = New System.Drawing.Point(283, 144)
         Me.gbDesignType.Name = "gbDesignType"
         Me.gbDesignType.Size = New System.Drawing.Size(423, 50)
         Me.gbDesignType.TabIndex = 111
@@ -3861,9 +3871,11 @@ Partial Class AgniMainForm
         '
         Me.radioDesWP.AutoSize = True
         Me.radioDesWP.Checked = True
+        Me.radioDesWP.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.radioDesWP.ForeColor = System.Drawing.Color.SteelBlue
         Me.radioDesWP.Location = New System.Drawing.Point(30, 16)
         Me.radioDesWP.Name = "radioDesWP"
-        Me.radioDesWP.Size = New System.Drawing.Size(64, 24)
+        Me.radioDesWP.Size = New System.Drawing.Size(69, 28)
         Me.radioDesWP.TabIndex = 0
         Me.radioDesWP.TabStop = True
         Me.radioDesWP.Text = "W+P"
@@ -3872,9 +3884,11 @@ Partial Class AgniMainForm
         'radioDesPrint
         '
         Me.radioDesPrint.AutoSize = True
+        Me.radioDesPrint.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.radioDesPrint.ForeColor = System.Drawing.Color.SteelBlue
         Me.radioDesPrint.Location = New System.Drawing.Point(329, 16)
         Me.radioDesPrint.Name = "radioDesPrint"
-        Me.radioDesPrint.Size = New System.Drawing.Size(64, 24)
+        Me.radioDesPrint.Size = New System.Drawing.Size(65, 28)
         Me.radioDesPrint.TabIndex = 2
         Me.radioDesPrint.Text = "Print"
         Me.radioDesPrint.UseVisualStyleBackColor = True
@@ -3882,9 +3896,11 @@ Partial Class AgniMainForm
         'radioDesWorking
         '
         Me.radioDesWorking.AutoSize = True
+        Me.radioDesWorking.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.radioDesWorking.ForeColor = System.Drawing.Color.SteelBlue
         Me.radioDesWorking.Location = New System.Drawing.Point(161, 16)
         Me.radioDesWorking.Name = "radioDesWorking"
-        Me.radioDesWorking.Size = New System.Drawing.Size(92, 24)
+        Me.radioDesWorking.Size = New System.Drawing.Size(98, 28)
         Me.radioDesWorking.TabIndex = 1
         Me.radioDesWorking.Text = "Working"
         Me.radioDesWorking.UseVisualStyleBackColor = True
@@ -3894,10 +3910,10 @@ Partial Class AgniMainForm
         Me.GroupBox5.BorderColor = System.Drawing.Color.DeepSkyBlue
         Me.GroupBox5.BorderColorFocus = System.Drawing.Color.Orange
         Me.GroupBox5.BorderColorMouseEnter = System.Drawing.Color.Green
-        Me.GroupBox5.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Thin
+        Me.GroupBox5.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Normal
         Me.GroupBox5.Controls.Add(Me.dgDesDesignDetails)
-        Me.GroupBox5.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox5.ForeColor = System.Drawing.Color.Black
+        Me.GroupBox5.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.GroupBox5.ForeColor = System.Drawing.Color.SteelBlue
         Me.GroupBox5.Location = New System.Drawing.Point(36, 461)
         Me.GroupBox5.Name = "GroupBox5"
         Me.GroupBox5.Size = New System.Drawing.Size(1845, 482)
@@ -3911,12 +3927,12 @@ Partial Class AgniMainForm
         Me.dgDesDesignDetails.AllowUserToDeleteRows = False
         DataGridViewCellStyle79.BackColor = System.Drawing.Color.LightSteelBlue
         Me.dgDesDesignDetails.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle79
-        Me.dgDesDesignDetails.BackgroundColor = System.Drawing.Color.Lavender
+        Me.dgDesDesignDetails.BackgroundColor = System.Drawing.Color.White
         Me.dgDesDesignDetails.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgDesDesignDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical
         DataGridViewCellStyle80.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle80.BackColor = System.Drawing.Color.RoyalBlue
-        DataGridViewCellStyle80.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle80.BackColor = System.Drawing.Color.DeepSkyBlue
+        DataGridViewCellStyle80.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold)
         DataGridViewCellStyle80.ForeColor = System.Drawing.Color.White
         DataGridViewCellStyle80.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle80.SelectionForeColor = System.Drawing.SystemColors.HighlightText
@@ -3926,8 +3942,8 @@ Partial Class AgniMainForm
         Me.dgDesDesignDetails.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DesignNo, Me.DesignDate, Me.DesignName, Me.Type, Me.Width, Me.Height, Me.Colors, Me.UnitCost, Me.Price, Me.Billed, Me.BillNo, Me.Image, Me.CustNo})
         DataGridViewCellStyle91.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle91.BackColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle91.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle91.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle91.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle91.ForeColor = System.Drawing.Color.SteelBlue
         DataGridViewCellStyle91.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle91.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle91.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
@@ -3942,7 +3958,9 @@ Partial Class AgniMainForm
         Me.dgDesDesignDetails.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
         Me.dgDesDesignDetails.RowHeadersVisible = False
         DataGridViewCellStyle92.BackColor = System.Drawing.Color.Lavender
-        DataGridViewCellStyle92.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle92.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!)
+        DataGridViewCellStyle92.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle92.SelectionBackColor = System.Drawing.Color.Teal
         DataGridViewCellStyle92.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgDesDesignDetails.RowsDefaultCellStyle = DataGridViewCellStyle92
         Me.dgDesDesignDetails.RowTemplate.Height = 25
@@ -4096,11 +4114,11 @@ Partial Class AgniMainForm
         Me.cmbDesDesignList.BorderThickness = ElaCustomComboBoxControl.ElaCustomComboBox.BorderThicknessEnum.Thick
         Me.cmbDesDesignList.CausesValidation = False
         Me.cmbDesDesignList.DisplayMember = "DesignName"
-        Me.cmbDesDesignList.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbDesDesignList.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.cmbDesDesignList.FormattingEnabled = True
         Me.cmbDesDesignList.Location = New System.Drawing.Point(283, 64)
         Me.cmbDesDesignList.Name = "cmbDesDesignList"
-        Me.cmbDesDesignList.Size = New System.Drawing.Size(423, 33)
+        Me.cmbDesDesignList.Size = New System.Drawing.Size(423, 28)
         Me.cmbDesDesignList.TabIndex = 1
         Me.cmbDesDesignList.ValueMember = "DesignNo"
         '
@@ -4150,22 +4168,22 @@ Partial Class AgniMainForm
         Me.cmbDesCustomerList.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.cmbDesCustomerList.BorderThickness = ElaCustomComboBoxControl.ElaCustomComboBox.BorderThicknessEnum.Thick
         Me.cmbDesCustomerList.DisplayMember = "CompName"
-        Me.cmbDesCustomerList.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbDesCustomerList.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.cmbDesCustomerList.FormattingEnabled = True
         Me.cmbDesCustomerList.Location = New System.Drawing.Point(283, 20)
         Me.cmbDesCustomerList.Name = "cmbDesCustomerList"
-        Me.cmbDesCustomerList.Size = New System.Drawing.Size(423, 33)
+        Me.cmbDesCustomerList.Size = New System.Drawing.Size(423, 28)
         Me.cmbDesCustomerList.TabIndex = 0
         Me.cmbDesCustomerList.ValueMember = "CustNo"
         '
         'Label28
         '
         Me.Label28.AutoSize = True
-        Me.Label28.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.Label28.ForeColor = System.Drawing.Color.Black
+        Me.Label28.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label28.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label28.Location = New System.Drawing.Point(52, 119)
         Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(141, 25)
+        Me.Label28.Size = New System.Drawing.Size(112, 24)
         Me.Label28.TabIndex = 32
         Me.Label28.Text = "Design Date"
         '
@@ -4182,11 +4200,11 @@ Partial Class AgniMainForm
         Me.dpDesDesignDate.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.dpDesDesignDate.BorderThickness = ElaCustomDateTimePrickerControl.ElaCustomDateTimePicker.BorderThicknessEnum.Thick
         Me.dpDesDesignDate.CustomFormat = "dd/MM/yyyy"
-        Me.dpDesDesignDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dpDesDesignDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.dpDesDesignDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dpDesDesignDate.Location = New System.Drawing.Point(283, 110)
         Me.dpDesDesignDate.Name = "dpDesDesignDate"
-        Me.dpDesDesignDate.Size = New System.Drawing.Size(423, 31)
+        Me.dpDesDesignDate.Size = New System.Drawing.Size(423, 26)
         Me.dpDesDesignDate.TabIndex = 2
         '
         'Label22
@@ -4202,11 +4220,11 @@ Partial Class AgniMainForm
         'Label21
         '
         Me.Label21.AutoSize = True
-        Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.Label21.ForeColor = System.Drawing.Color.Black
+        Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label21.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label21.Location = New System.Drawing.Point(52, 359)
         Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(66, 25)
+        Me.Label21.Size = New System.Drawing.Size(53, 24)
         Me.Label21.TabIndex = 37
         Me.Label21.Text = "Price"
         '
@@ -4216,12 +4234,12 @@ Partial Class AgniMainForm
         Me.txtDesCalculatedPrice.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtDesCalculatedPrice.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtDesCalculatedPrice.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtDesCalculatedPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDesCalculatedPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtDesCalculatedPrice.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.txtDesCalculatedPrice.Location = New System.Drawing.Point(283, 356)
         Me.txtDesCalculatedPrice.Name = "txtDesCalculatedPrice"
         Me.txtDesCalculatedPrice.ReadOnly = True
-        Me.txtDesCalculatedPrice.Size = New System.Drawing.Size(423, 31)
+        Me.txtDesCalculatedPrice.Size = New System.Drawing.Size(423, 26)
         Me.txtDesCalculatedPrice.TabIndex = 7
         Me.txtDesCalculatedPrice.TabStop = False
         '
@@ -4324,66 +4342,66 @@ Partial Class AgniMainForm
         'Label20
         '
         Me.Label20.AutoSize = True
-        Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.Label20.ForeColor = System.Drawing.Color.Black
+        Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label20.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label20.Location = New System.Drawing.Point(52, 167)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(144, 25)
+        Me.Label20.Size = New System.Drawing.Size(117, 24)
         Me.Label20.TabIndex = 33
         Me.Label20.Text = "Design Type"
         '
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.Label16.ForeColor = System.Drawing.Color.Black
+        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label16.Location = New System.Drawing.Point(52, 215)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(125, 25)
+        Me.Label16.Size = New System.Drawing.Size(99, 24)
         Me.Label16.TabIndex = 34
         Me.Label16.Text = "Size (Inch)"
         '
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.Label15.ForeColor = System.Drawing.Color.Black
+        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label15.Location = New System.Drawing.Point(52, 71)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(152, 25)
+        Me.Label15.Size = New System.Drawing.Size(125, 24)
         Me.Label15.TabIndex = 31
         Me.Label15.Text = "Design Name"
         '
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.Label14.ForeColor = System.Drawing.Color.Black
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label14.Location = New System.Drawing.Point(52, 263)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(143, 25)
+        Me.Label14.Size = New System.Drawing.Size(114, 24)
         Me.Label14.TabIndex = 35
         Me.Label14.Text = "No of Colors"
         '
         'lblDesCostPerUnit
         '
         Me.lblDesCostPerUnit.AutoSize = True
-        Me.lblDesCostPerUnit.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.lblDesCostPerUnit.ForeColor = System.Drawing.Color.Black
+        Me.lblDesCostPerUnit.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDesCostPerUnit.ForeColor = System.Drawing.Color.SteelBlue
         Me.lblDesCostPerUnit.Location = New System.Drawing.Point(52, 311)
         Me.lblDesCostPerUnit.Name = "lblDesCostPerUnit"
-        Me.lblDesCostPerUnit.Size = New System.Drawing.Size(152, 25)
+        Me.lblDesCostPerUnit.Size = New System.Drawing.Size(121, 24)
         Me.lblDesCostPerUnit.TabIndex = 36
         Me.lblDesCostPerUnit.Text = "Cost per inch"
         '
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.Label12.ForeColor = System.Drawing.Color.Black
+        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label12.Location = New System.Drawing.Point(52, 23)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(179, 25)
+        Me.Label12.Size = New System.Drawing.Size(147, 24)
         Me.Label12.TabIndex = 30
         Me.Label12.Text = "Customer Name"
         '
@@ -4393,10 +4411,10 @@ Partial Class AgniMainForm
         Me.txtDesCostPerUnit.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtDesCostPerUnit.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtDesCostPerUnit.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtDesCostPerUnit.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDesCostPerUnit.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtDesCostPerUnit.Location = New System.Drawing.Point(283, 314)
         Me.txtDesCostPerUnit.Name = "txtDesCostPerUnit"
-        Me.txtDesCostPerUnit.Size = New System.Drawing.Size(423, 31)
+        Me.txtDesCostPerUnit.Size = New System.Drawing.Size(423, 26)
         Me.txtDesCostPerUnit.TabIndex = 6
         '
         'txtDesNoOfColors
@@ -4405,10 +4423,10 @@ Partial Class AgniMainForm
         Me.txtDesNoOfColors.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtDesNoOfColors.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtDesNoOfColors.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtDesNoOfColors.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDesNoOfColors.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtDesNoOfColors.Location = New System.Drawing.Point(283, 272)
         Me.txtDesNoOfColors.Name = "txtDesNoOfColors"
-        Me.txtDesNoOfColors.Size = New System.Drawing.Size(423, 31)
+        Me.txtDesNoOfColors.Size = New System.Drawing.Size(423, 26)
         Me.txtDesNoOfColors.TabIndex = 5
         '
         'btnDesEditPrice
@@ -4420,18 +4438,19 @@ Partial Class AgniMainForm
         Me.btnDesEditPrice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnDesEditPrice.DesignerSelected = False
         Me.btnDesEditPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDesEditPrice.ForeColor = System.Drawing.Color.Silver
         Me.btnDesEditPrice.ImageIndex = 0
         Me.btnDesEditPrice.ImageKey = 0
-        Me.btnDesEditPrice.Location = New System.Drawing.Point(751, 355)
+        Me.btnDesEditPrice.Location = New System.Drawing.Point(712, 356)
         Me.btnDesEditPrice.Name = "btnDesEditPrice"
-        Me.btnDesEditPrice.Size = New System.Drawing.Size(34, 32)
+        Me.btnDesEditPrice.Size = New System.Drawing.Size(25, 26)
         Me.btnDesEditPrice.TabIndex = 110
         Me.btnDesEditPrice.Text = ""
         Me.btnDesEditPrice.UseVisualStyleBackColor = False
         '
         'pbDesDesignImage
         '
-        Me.pbDesDesignImage.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.pbDesDesignImage.BackColor = System.Drawing.Color.Turquoise
         Me.pbDesDesignImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pbDesDesignImage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.pbDesDesignImage.Cursor = System.Windows.Forms.Cursors.Hand
@@ -4453,7 +4472,7 @@ Partial Class AgniMainForm
         Me.tabAllTabsHolder.Controls.Add(Me.tabHelp)
         Me.tabAllTabsHolder.Cursor = System.Windows.Forms.Cursors.Hand
         Me.tabAllTabsHolder.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.tabAllTabsHolder.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tabAllTabsHolder.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.tabAllTabsHolder.HotTrack = True
         Me.tabAllTabsHolder.ImageList = Me.TabIcons
         Me.tabAllTabsHolder.ImeMode = System.Windows.Forms.ImeMode.NoControl
@@ -4491,7 +4510,8 @@ Partial Class AgniMainForm
         Me.tabCustomer.Controls.Add(Me.cmbCustCustomerList)
         Me.tabCustomer.Controls.Add(Me.txtOwnerName)
         Me.tabCustomer.Cursor = System.Windows.Forms.Cursors.Arrow
-        Me.tabCustomer.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.tabCustomer.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!)
+        Me.tabCustomer.ForeColor = System.Drawing.Color.SteelBlue
         Me.tabCustomer.ImageKey = "customer.png"
         Me.tabCustomer.Location = New System.Drawing.Point(4, 49)
         Me.tabCustomer.Name = "tabCustomer"
@@ -4507,7 +4527,7 @@ Partial Class AgniMainForm
         Me.GroupBox23.BorderColor = System.Drawing.Color.DeepSkyBlue
         Me.GroupBox23.BorderColorFocus = System.Drawing.Color.Orange
         Me.GroupBox23.BorderColorMouseEnter = System.Drawing.Color.Green
-        Me.GroupBox23.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Thin
+        Me.GroupBox23.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Normal
         Me.GroupBox23.Controls.Add(Me.lblMobile)
         Me.GroupBox23.Controls.Add(Me.txtMobile)
         Me.GroupBox23.Controls.Add(Me.txtEmail)
@@ -4516,10 +4536,11 @@ Partial Class AgniMainForm
         Me.GroupBox23.Controls.Add(Me.txtWebsite)
         Me.GroupBox23.Controls.Add(Me.lblWebsite)
         Me.GroupBox23.Controls.Add(Me.lblEmail)
-        Me.GroupBox23.ForeColor = System.Drawing.Color.Black
+        Me.GroupBox23.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox23.ForeColor = System.Drawing.Color.SteelBlue
         Me.GroupBox23.Location = New System.Drawing.Point(602, 273)
         Me.GroupBox23.Name = "GroupBox23"
-        Me.GroupBox23.Size = New System.Drawing.Size(658, 206)
+        Me.GroupBox23.Size = New System.Drawing.Size(658, 216)
         Me.GroupBox23.TabIndex = 6
         Me.GroupBox23.TabStop = False
         Me.GroupBox23.Text = "Contact Details"
@@ -4527,11 +4548,11 @@ Partial Class AgniMainForm
         'lblMobile
         '
         Me.lblMobile.AutoSize = True
-        Me.lblMobile.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMobile.ForeColor = System.Drawing.Color.Black
+        Me.lblMobile.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMobile.ForeColor = System.Drawing.Color.SteelBlue
         Me.lblMobile.Location = New System.Drawing.Point(19, 30)
         Me.lblMobile.Name = "lblMobile"
-        Me.lblMobile.Size = New System.Drawing.Size(82, 25)
+        Me.lblMobile.Size = New System.Drawing.Size(67, 24)
         Me.lblMobile.TabIndex = 12
         Me.lblMobile.Text = "Mobile"
         '
@@ -4541,10 +4562,10 @@ Partial Class AgniMainForm
         Me.txtMobile.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtMobile.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtMobile.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtMobile.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtMobile.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtMobile.Location = New System.Drawing.Point(207, 29)
         Me.txtMobile.Name = "txtMobile"
-        Me.txtMobile.Size = New System.Drawing.Size(338, 31)
+        Me.txtMobile.Size = New System.Drawing.Size(432, 26)
         Me.txtMobile.TabIndex = 0
         '
         'txtEmail
@@ -4553,10 +4574,10 @@ Partial Class AgniMainForm
         Me.txtEmail.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtEmail.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtEmail.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtEmail.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEmail.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtEmail.Location = New System.Drawing.Point(207, 74)
         Me.txtEmail.Name = "txtEmail"
-        Me.txtEmail.Size = New System.Drawing.Size(338, 31)
+        Me.txtEmail.Size = New System.Drawing.Size(432, 26)
         Me.txtEmail.TabIndex = 1
         '
         'txtLandline
@@ -4565,20 +4586,20 @@ Partial Class AgniMainForm
         Me.txtLandline.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtLandline.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtLandline.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtLandline.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtLandline.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtLandline.Location = New System.Drawing.Point(207, 119)
         Me.txtLandline.Name = "txtLandline"
-        Me.txtLandline.Size = New System.Drawing.Size(338, 31)
+        Me.txtLandline.Size = New System.Drawing.Size(432, 26)
         Me.txtLandline.TabIndex = 2
         '
         'lblLandline
         '
         Me.lblLandline.AutoSize = True
-        Me.lblLandline.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLandline.ForeColor = System.Drawing.Color.Black
+        Me.lblLandline.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblLandline.ForeColor = System.Drawing.Color.SteelBlue
         Me.lblLandline.Location = New System.Drawing.Point(19, 120)
         Me.lblLandline.Name = "lblLandline"
-        Me.lblLandline.Size = New System.Drawing.Size(102, 25)
+        Me.lblLandline.Size = New System.Drawing.Size(82, 24)
         Me.lblLandline.TabIndex = 18
         Me.lblLandline.Text = "Landline"
         '
@@ -4588,31 +4609,31 @@ Partial Class AgniMainForm
         Me.txtWebsite.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtWebsite.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtWebsite.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtWebsite.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtWebsite.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtWebsite.Location = New System.Drawing.Point(207, 164)
         Me.txtWebsite.Name = "txtWebsite"
-        Me.txtWebsite.Size = New System.Drawing.Size(338, 31)
+        Me.txtWebsite.Size = New System.Drawing.Size(432, 26)
         Me.txtWebsite.TabIndex = 3
         '
         'lblWebsite
         '
         Me.lblWebsite.AutoSize = True
-        Me.lblWebsite.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblWebsite.ForeColor = System.Drawing.Color.Black
+        Me.lblWebsite.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblWebsite.ForeColor = System.Drawing.Color.SteelBlue
         Me.lblWebsite.Location = New System.Drawing.Point(19, 165)
         Me.lblWebsite.Name = "lblWebsite"
-        Me.lblWebsite.Size = New System.Drawing.Size(97, 25)
+        Me.lblWebsite.Size = New System.Drawing.Size(78, 24)
         Me.lblWebsite.TabIndex = 13
         Me.lblWebsite.Text = "Website"
         '
         'lblEmail
         '
         Me.lblEmail.AutoSize = True
-        Me.lblEmail.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblEmail.ForeColor = System.Drawing.Color.Black
+        Me.lblEmail.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblEmail.ForeColor = System.Drawing.Color.SteelBlue
         Me.lblEmail.Location = New System.Drawing.Point(19, 75)
         Me.lblEmail.Name = "lblEmail"
-        Me.lblEmail.Size = New System.Drawing.Size(99, 25)
+        Me.lblEmail.Size = New System.Drawing.Size(79, 24)
         Me.lblEmail.TabIndex = 16
         Me.lblEmail.Text = "Email ID"
         '
@@ -4621,7 +4642,7 @@ Partial Class AgniMainForm
         Me.GroupBox2.BorderColor = System.Drawing.Color.DeepSkyBlue
         Me.GroupBox2.BorderColorFocus = System.Drawing.Color.Orange
         Me.GroupBox2.BorderColorMouseEnter = System.Drawing.Color.Green
-        Me.GroupBox2.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Thin
+        Me.GroupBox2.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Normal
         Me.GroupBox2.Controls.Add(Me.txtAddressLine5)
         Me.GroupBox2.Controls.Add(Me.Label41)
         Me.GroupBox2.Controls.Add(Me.txtAddressLine4)
@@ -4632,7 +4653,8 @@ Partial Class AgniMainForm
         Me.GroupBox2.Controls.Add(Me.Label38)
         Me.GroupBox2.Controls.Add(Me.txtAddressLine1)
         Me.GroupBox2.Controls.Add(Me.lblAddress)
-        Me.GroupBox2.ForeColor = System.Drawing.Color.Black
+        Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox2.ForeColor = System.Drawing.Color.SteelBlue
         Me.GroupBox2.Location = New System.Drawing.Point(602, 13)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(658, 243)
@@ -4646,7 +4668,7 @@ Partial Class AgniMainForm
         Me.txtAddressLine5.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtAddressLine5.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtAddressLine5.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtAddressLine5.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAddressLine5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtAddressLine5.Location = New System.Drawing.Point(207, 193)
         Me.txtAddressLine5.Multiline = True
         Me.txtAddressLine5.Name = "txtAddressLine5"
@@ -4657,11 +4679,11 @@ Partial Class AgniMainForm
         'Label41
         '
         Me.Label41.AutoSize = True
-        Me.Label41.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label41.ForeColor = System.Drawing.Color.Black
+        Me.Label41.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label41.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label41.Location = New System.Drawing.Point(19, 193)
         Me.Label41.Name = "Label41"
-        Me.Label41.Size = New System.Drawing.Size(163, 25)
+        Me.Label41.Size = New System.Drawing.Size(131, 24)
         Me.Label41.TabIndex = 28
         Me.Label41.Text = "Address Line5"
         '
@@ -4671,7 +4693,7 @@ Partial Class AgniMainForm
         Me.txtAddressLine4.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtAddressLine4.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtAddressLine4.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtAddressLine4.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAddressLine4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtAddressLine4.Location = New System.Drawing.Point(207, 152)
         Me.txtAddressLine4.Multiline = True
         Me.txtAddressLine4.Name = "txtAddressLine4"
@@ -4682,11 +4704,11 @@ Partial Class AgniMainForm
         'Label40
         '
         Me.Label40.AutoSize = True
-        Me.Label40.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label40.ForeColor = System.Drawing.Color.Black
+        Me.Label40.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label40.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label40.Location = New System.Drawing.Point(20, 154)
         Me.Label40.Name = "Label40"
-        Me.Label40.Size = New System.Drawing.Size(163, 25)
+        Me.Label40.Size = New System.Drawing.Size(131, 24)
         Me.Label40.TabIndex = 26
         Me.Label40.Text = "Address Line4"
         '
@@ -4696,7 +4718,7 @@ Partial Class AgniMainForm
         Me.txtAddressLine3.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtAddressLine3.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtAddressLine3.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtAddressLine3.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAddressLine3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtAddressLine3.Location = New System.Drawing.Point(207, 111)
         Me.txtAddressLine3.Multiline = True
         Me.txtAddressLine3.Name = "txtAddressLine3"
@@ -4707,11 +4729,11 @@ Partial Class AgniMainForm
         'Label39
         '
         Me.Label39.AutoSize = True
-        Me.Label39.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label39.ForeColor = System.Drawing.Color.Black
+        Me.Label39.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label39.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label39.Location = New System.Drawing.Point(20, 115)
         Me.Label39.Name = "Label39"
-        Me.Label39.Size = New System.Drawing.Size(163, 25)
+        Me.Label39.Size = New System.Drawing.Size(131, 24)
         Me.Label39.TabIndex = 24
         Me.Label39.Text = "Address Line3"
         '
@@ -4721,7 +4743,7 @@ Partial Class AgniMainForm
         Me.txtAddressLine2.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtAddressLine2.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtAddressLine2.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtAddressLine2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAddressLine2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtAddressLine2.Location = New System.Drawing.Point(207, 70)
         Me.txtAddressLine2.Multiline = True
         Me.txtAddressLine2.Name = "txtAddressLine2"
@@ -4732,11 +4754,11 @@ Partial Class AgniMainForm
         'Label38
         '
         Me.Label38.AutoSize = True
-        Me.Label38.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label38.ForeColor = System.Drawing.Color.Black
+        Me.Label38.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label38.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label38.Location = New System.Drawing.Point(20, 76)
         Me.Label38.Name = "Label38"
-        Me.Label38.Size = New System.Drawing.Size(163, 25)
+        Me.Label38.Size = New System.Drawing.Size(131, 24)
         Me.Label38.TabIndex = 22
         Me.Label38.Text = "Address Line2"
         '
@@ -4746,7 +4768,7 @@ Partial Class AgniMainForm
         Me.txtAddressLine1.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtAddressLine1.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtAddressLine1.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtAddressLine1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAddressLine1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtAddressLine1.Location = New System.Drawing.Point(207, 29)
         Me.txtAddressLine1.Multiline = True
         Me.txtAddressLine1.Name = "txtAddressLine1"
@@ -4757,11 +4779,11 @@ Partial Class AgniMainForm
         'lblAddress
         '
         Me.lblAddress.AutoSize = True
-        Me.lblAddress.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAddress.ForeColor = System.Drawing.Color.Black
+        Me.lblAddress.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAddress.ForeColor = System.Drawing.Color.SteelBlue
         Me.lblAddress.Location = New System.Drawing.Point(20, 37)
         Me.lblAddress.Name = "lblAddress"
-        Me.lblAddress.Size = New System.Drawing.Size(163, 25)
+        Me.lblAddress.Size = New System.Drawing.Size(131, 24)
         Me.lblAddress.TabIndex = 20
         Me.lblAddress.Text = "Address Line1"
         '
@@ -4770,10 +4792,10 @@ Partial Class AgniMainForm
         Me.GroupBox22.BorderColor = System.Drawing.Color.DeepSkyBlue
         Me.GroupBox22.BorderColorFocus = System.Drawing.Color.Orange
         Me.GroupBox22.BorderColorMouseEnter = System.Drawing.Color.Green
-        Me.GroupBox22.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Thin
+        Me.GroupBox22.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Normal
         Me.GroupBox22.Controls.Add(Me.dgCustCustomerDetails)
         Me.GroupBox22.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox22.ForeColor = System.Drawing.Color.Black
+        Me.GroupBox22.ForeColor = System.Drawing.Color.SteelBlue
         Me.GroupBox22.Location = New System.Drawing.Point(8, 565)
         Me.GroupBox22.Name = "GroupBox22"
         Me.GroupBox22.Size = New System.Drawing.Size(1892, 394)
@@ -4788,11 +4810,11 @@ Partial Class AgniMainForm
         Me.dgCustCustomerDetails.AllowUserToOrderColumns = True
         DataGridViewCellStyle93.BackColor = System.Drawing.Color.LightSteelBlue
         Me.dgCustCustomerDetails.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle93
-        Me.dgCustCustomerDetails.BackgroundColor = System.Drawing.Color.Lavender
+        Me.dgCustCustomerDetails.BackgroundColor = System.Drawing.Color.White
         Me.dgCustCustomerDetails.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgCustCustomerDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical
         DataGridViewCellStyle94.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle94.BackColor = System.Drawing.Color.RoyalBlue
+        DataGridViewCellStyle94.BackColor = System.Drawing.Color.DeepSkyBlue
         DataGridViewCellStyle94.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle94.ForeColor = System.Drawing.Color.White
         DataGridViewCellStyle94.SelectionBackColor = System.Drawing.SystemColors.Highlight
@@ -4804,7 +4826,7 @@ Partial Class AgniMainForm
         DataGridViewCellStyle110.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle110.BackColor = System.Drawing.Color.LightSteelBlue
         DataGridViewCellStyle110.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle110.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle110.ForeColor = System.Drawing.Color.SteelBlue
         DataGridViewCellStyle110.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle110.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle110.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
@@ -4819,7 +4841,9 @@ Partial Class AgniMainForm
         Me.dgCustCustomerDetails.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
         Me.dgCustCustomerDetails.RowHeadersVisible = False
         DataGridViewCellStyle111.BackColor = System.Drawing.Color.Lavender
-        DataGridViewCellStyle111.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle111.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!)
+        DataGridViewCellStyle111.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle111.SelectionBackColor = System.Drawing.Color.Teal
         DataGridViewCellStyle111.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgCustCustomerDetails.RowsDefaultCellStyle = DataGridViewCellStyle111
         Me.dgCustCustomerDetails.RowTemplate.Height = 25
@@ -5018,14 +5042,15 @@ Partial Class AgniMainForm
         Me.GroupBox1.BorderColor = System.Drawing.Color.DeepSkyBlue
         Me.GroupBox1.BorderColorFocus = System.Drawing.Color.Orange
         Me.GroupBox1.BorderColorMouseEnter = System.Drawing.Color.Green
-        Me.GroupBox1.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Thin
+        Me.GroupBox1.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Normal
         Me.GroupBox1.Controls.Add(Me.lblPrintCharge)
         Me.GroupBox1.Controls.Add(Me.lblWorkingCharge)
         Me.GroupBox1.Controls.Add(Me.lblWPChargeDetails)
         Me.GroupBox1.Controls.Add(Me.txtCustPrintCharge)
         Me.GroupBox1.Controls.Add(Me.txtCustWorkingCharge)
         Me.GroupBox1.Controls.Add(Me.txtCustWPCharge)
-        Me.GroupBox1.ForeColor = System.Drawing.Color.Black
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.ForeColor = System.Drawing.Color.SteelBlue
         Me.GroupBox1.Location = New System.Drawing.Point(36, 333)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(533, 158)
@@ -5036,33 +5061,33 @@ Partial Class AgniMainForm
         'lblPrintCharge
         '
         Me.lblPrintCharge.AutoSize = True
-        Me.lblPrintCharge.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPrintCharge.ForeColor = System.Drawing.Color.Black
+        Me.lblPrintCharge.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPrintCharge.ForeColor = System.Drawing.Color.SteelBlue
         Me.lblPrintCharge.Location = New System.Drawing.Point(14, 110)
         Me.lblPrintCharge.Name = "lblPrintCharge"
-        Me.lblPrintCharge.Size = New System.Drawing.Size(124, 25)
+        Me.lblPrintCharge.Size = New System.Drawing.Size(97, 24)
         Me.lblPrintCharge.TabIndex = 18
         Me.lblPrintCharge.Text = "Print/Color"
         '
         'lblWorkingCharge
         '
         Me.lblWorkingCharge.AutoSize = True
-        Me.lblWorkingCharge.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblWorkingCharge.ForeColor = System.Drawing.Color.Black
+        Me.lblWorkingCharge.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblWorkingCharge.ForeColor = System.Drawing.Color.SteelBlue
         Me.lblWorkingCharge.Location = New System.Drawing.Point(14, 71)
         Me.lblWorkingCharge.Name = "lblWorkingCharge"
-        Me.lblWorkingCharge.Size = New System.Drawing.Size(161, 25)
+        Me.lblWorkingCharge.Size = New System.Drawing.Size(130, 24)
         Me.lblWorkingCharge.TabIndex = 16
         Me.lblWorkingCharge.Text = "Working/Color"
         '
         'lblWPChargeDetails
         '
         Me.lblWPChargeDetails.AutoSize = True
-        Me.lblWPChargeDetails.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblWPChargeDetails.ForeColor = System.Drawing.Color.Black
+        Me.lblWPChargeDetails.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblWPChargeDetails.ForeColor = System.Drawing.Color.SteelBlue
         Me.lblWPChargeDetails.Location = New System.Drawing.Point(14, 31)
         Me.lblWPChargeDetails.Name = "lblWPChargeDetails"
-        Me.lblWPChargeDetails.Size = New System.Drawing.Size(145, 25)
+        Me.lblWPChargeDetails.Size = New System.Drawing.Size(118, 24)
         Me.lblWPChargeDetails.TabIndex = 12
         Me.lblWPChargeDetails.Text = "W+P/sqrinch"
         '
@@ -5072,10 +5097,10 @@ Partial Class AgniMainForm
         Me.txtCustPrintCharge.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtCustPrintCharge.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtCustPrintCharge.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtCustPrintCharge.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCustPrintCharge.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtCustPrintCharge.Location = New System.Drawing.Point(195, 106)
         Me.txtCustPrintCharge.Name = "txtCustPrintCharge"
-        Me.txtCustPrintCharge.Size = New System.Drawing.Size(137, 31)
+        Me.txtCustPrintCharge.Size = New System.Drawing.Size(137, 26)
         Me.txtCustPrintCharge.TabIndex = 2
         '
         'txtCustWorkingCharge
@@ -5084,10 +5109,10 @@ Partial Class AgniMainForm
         Me.txtCustWorkingCharge.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtCustWorkingCharge.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtCustWorkingCharge.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtCustWorkingCharge.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCustWorkingCharge.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtCustWorkingCharge.Location = New System.Drawing.Point(195, 66)
         Me.txtCustWorkingCharge.Name = "txtCustWorkingCharge"
-        Me.txtCustWorkingCharge.Size = New System.Drawing.Size(137, 31)
+        Me.txtCustWorkingCharge.Size = New System.Drawing.Size(137, 26)
         Me.txtCustWorkingCharge.TabIndex = 1
         '
         'txtCustWPCharge
@@ -5096,10 +5121,10 @@ Partial Class AgniMainForm
         Me.txtCustWPCharge.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtCustWPCharge.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtCustWPCharge.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtCustWPCharge.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCustWPCharge.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtCustWPCharge.Location = New System.Drawing.Point(195, 26)
         Me.txtCustWPCharge.Name = "txtCustWPCharge"
-        Me.txtCustWPCharge.Size = New System.Drawing.Size(137, 31)
+        Me.txtCustWPCharge.Size = New System.Drawing.Size(137, 26)
         Me.txtCustWPCharge.TabIndex = 0
         '
         'GroupBox16
@@ -5107,7 +5132,7 @@ Partial Class AgniMainForm
         Me.GroupBox16.BorderColor = System.Drawing.Color.DeepSkyBlue
         Me.GroupBox16.BorderColorFocus = System.Drawing.Color.Orange
         Me.GroupBox16.BorderColorMouseEnter = System.Drawing.Color.Green
-        Me.GroupBox16.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Thin
+        Me.GroupBox16.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Normal
         Me.GroupBox16.Controls.Add(Me.Label87)
         Me.GroupBox16.Controls.Add(Me.Label60)
         Me.GroupBox16.Controls.Add(Me.Label7)
@@ -5117,7 +5142,8 @@ Partial Class AgniMainForm
         Me.GroupBox16.Controls.Add(Me.txtCustIGST)
         Me.GroupBox16.Controls.Add(Me.txtCustSGST)
         Me.GroupBox16.Controls.Add(Me.txtCustCGST)
-        Me.GroupBox16.ForeColor = System.Drawing.Color.Black
+        Me.GroupBox16.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox16.ForeColor = System.Drawing.Color.SteelBlue
         Me.GroupBox16.Location = New System.Drawing.Point(36, 165)
         Me.GroupBox16.Name = "GroupBox16"
         Me.GroupBox16.Size = New System.Drawing.Size(533, 158)
@@ -5129,7 +5155,7 @@ Partial Class AgniMainForm
         '
         Me.Label87.AutoSize = True
         Me.Label87.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label87.ForeColor = System.Drawing.Color.Black
+        Me.Label87.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label87.Location = New System.Drawing.Point(338, 67)
         Me.Label87.Name = "Label87"
         Me.Label87.Size = New System.Drawing.Size(32, 25)
@@ -5140,7 +5166,7 @@ Partial Class AgniMainForm
         '
         Me.Label60.AutoSize = True
         Me.Label60.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label60.ForeColor = System.Drawing.Color.Black
+        Me.Label60.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label60.Location = New System.Drawing.Point(338, 109)
         Me.Label60.Name = "Label60"
         Me.Label60.Size = New System.Drawing.Size(32, 25)
@@ -5151,7 +5177,7 @@ Partial Class AgniMainForm
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.ForeColor = System.Drawing.Color.Black
+        Me.Label7.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label7.Location = New System.Drawing.Point(338, 27)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(32, 25)
@@ -5161,33 +5187,33 @@ Partial Class AgniMainForm
         'lblIGST
         '
         Me.lblIGST.AutoSize = True
-        Me.lblIGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblIGST.ForeColor = System.Drawing.Color.Black
+        Me.lblIGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblIGST.ForeColor = System.Drawing.Color.SteelBlue
         Me.lblIGST.Location = New System.Drawing.Point(28, 110)
         Me.lblIGST.Name = "lblIGST"
-        Me.lblIGST.Size = New System.Drawing.Size(64, 25)
+        Me.lblIGST.Size = New System.Drawing.Size(52, 24)
         Me.lblIGST.TabIndex = 18
         Me.lblIGST.Text = "IGST"
         '
         'lblSGST
         '
         Me.lblSGST.AutoSize = True
-        Me.lblSGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSGST.ForeColor = System.Drawing.Color.Black
+        Me.lblSGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSGST.ForeColor = System.Drawing.Color.SteelBlue
         Me.lblSGST.Location = New System.Drawing.Point(28, 71)
         Me.lblSGST.Name = "lblSGST"
-        Me.lblSGST.Size = New System.Drawing.Size(73, 25)
+        Me.lblSGST.Size = New System.Drawing.Size(60, 24)
         Me.lblSGST.TabIndex = 16
         Me.lblSGST.Text = "SGST"
         '
         'lblCGST
         '
         Me.lblCGST.AutoSize = True
-        Me.lblCGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCGST.ForeColor = System.Drawing.Color.Black
+        Me.lblCGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCGST.ForeColor = System.Drawing.Color.SteelBlue
         Me.lblCGST.Location = New System.Drawing.Point(28, 31)
         Me.lblCGST.Name = "lblCGST"
-        Me.lblCGST.Size = New System.Drawing.Size(74, 25)
+        Me.lblCGST.Size = New System.Drawing.Size(61, 24)
         Me.lblCGST.TabIndex = 12
         Me.lblCGST.Text = "CGST"
         '
@@ -5197,10 +5223,10 @@ Partial Class AgniMainForm
         Me.txtCustIGST.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtCustIGST.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtCustIGST.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtCustIGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCustIGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtCustIGST.Location = New System.Drawing.Point(195, 108)
         Me.txtCustIGST.Name = "txtCustIGST"
-        Me.txtCustIGST.Size = New System.Drawing.Size(137, 31)
+        Me.txtCustIGST.Size = New System.Drawing.Size(137, 26)
         Me.txtCustIGST.TabIndex = 2
         '
         'txtCustSGST
@@ -5209,10 +5235,10 @@ Partial Class AgniMainForm
         Me.txtCustSGST.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtCustSGST.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtCustSGST.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtCustSGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCustSGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtCustSGST.Location = New System.Drawing.Point(195, 68)
         Me.txtCustSGST.Name = "txtCustSGST"
-        Me.txtCustSGST.Size = New System.Drawing.Size(137, 31)
+        Me.txtCustSGST.Size = New System.Drawing.Size(137, 26)
         Me.txtCustSGST.TabIndex = 1
         '
         'txtCustCGST
@@ -5221,10 +5247,10 @@ Partial Class AgniMainForm
         Me.txtCustCGST.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtCustCGST.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtCustCGST.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtCustCGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCustCGST.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtCustCGST.Location = New System.Drawing.Point(195, 28)
         Me.txtCustCGST.Name = "txtCustCGST"
-        Me.txtCustCGST.Size = New System.Drawing.Size(137, 31)
+        Me.txtCustCGST.Size = New System.Drawing.Size(137, 26)
         Me.txtCustCGST.TabIndex = 0
         '
         'btnCustClear
@@ -5261,11 +5287,11 @@ Partial Class AgniMainForm
         'lblGSTIN
         '
         Me.lblGSTIN.AutoSize = True
-        Me.lblGSTIN.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblGSTIN.ForeColor = System.Drawing.Color.Black
+        Me.lblGSTIN.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblGSTIN.ForeColor = System.Drawing.Color.SteelBlue
         Me.lblGSTIN.Location = New System.Drawing.Point(31, 68)
         Me.lblGSTIN.Name = "lblGSTIN"
-        Me.lblGSTIN.Size = New System.Drawing.Size(80, 25)
+        Me.lblGSTIN.Size = New System.Drawing.Size(66, 24)
         Me.lblGSTIN.TabIndex = 99
         Me.lblGSTIN.Text = "GSTIN"
         '
@@ -5275,10 +5301,10 @@ Partial Class AgniMainForm
         Me.txtGstIn.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtGstIn.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtGstIn.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtGstIn.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtGstIn.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtGstIn.Location = New System.Drawing.Point(231, 66)
         Me.txtGstIn.Name = "txtGstIn"
-        Me.txtGstIn.Size = New System.Drawing.Size(338, 31)
+        Me.txtGstIn.Size = New System.Drawing.Size(338, 26)
         Me.txtGstIn.TabIndex = 1
         '
         'btnCustUpdate
@@ -5378,11 +5404,11 @@ Partial Class AgniMainForm
         'lblProprietor
         '
         Me.lblProprietor.AutoSize = True
-        Me.lblProprietor.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblProprietor.ForeColor = System.Drawing.Color.Black
+        Me.lblProprietor.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblProprietor.ForeColor = System.Drawing.Color.SteelBlue
         Me.lblProprietor.Location = New System.Drawing.Point(31, 112)
         Me.lblProprietor.Name = "lblProprietor"
-        Me.lblProprietor.Size = New System.Drawing.Size(190, 25)
+        Me.lblProprietor.Size = New System.Drawing.Size(153, 24)
         Me.lblProprietor.TabIndex = 21
         Me.lblProprietor.Text = "Proprietor  Name"
         '
@@ -5390,11 +5416,11 @@ Partial Class AgniMainForm
         '
         Me.lblCustomerName.AutoSize = True
         Me.lblCustomerName.BackColor = System.Drawing.Color.Transparent
-        Me.lblCustomerName.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCustomerName.ForeColor = System.Drawing.Color.Black
+        Me.lblCustomerName.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCustomerName.ForeColor = System.Drawing.Color.SteelBlue
         Me.lblCustomerName.Location = New System.Drawing.Point(31, 24)
         Me.lblCustomerName.Name = "lblCustomerName"
-        Me.lblCustomerName.Size = New System.Drawing.Size(179, 25)
+        Me.lblCustomerName.Size = New System.Drawing.Size(147, 24)
         Me.lblCustomerName.TabIndex = 11
         Me.lblCustomerName.Text = "Customer Name"
         '
@@ -5413,12 +5439,12 @@ Partial Class AgniMainForm
         Me.cmbCustCustomerList.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.cmbCustCustomerList.BorderThickness = ElaCustomComboBoxControl.ElaCustomComboBox.BorderThicknessEnum.Thick
         Me.cmbCustCustomerList.DisplayMember = "CompName"
-        Me.cmbCustCustomerList.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCustCustomerList.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbCustCustomerList.FormattingEnabled = True
         Me.cmbCustCustomerList.Location = New System.Drawing.Point(231, 21)
         Me.cmbCustCustomerList.MaxDropDownItems = 10
         Me.cmbCustCustomerList.Name = "cmbCustCustomerList"
-        Me.cmbCustCustomerList.Size = New System.Drawing.Size(338, 33)
+        Me.cmbCustCustomerList.Size = New System.Drawing.Size(338, 28)
         Me.cmbCustCustomerList.TabIndex = 0
         Me.cmbCustCustomerList.ValueMember = "CustNo"
         '
@@ -5428,10 +5454,10 @@ Partial Class AgniMainForm
         Me.txtOwnerName.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtOwnerName.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtOwnerName.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtOwnerName.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtOwnerName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtOwnerName.Location = New System.Drawing.Point(231, 110)
         Me.txtOwnerName.Name = "txtOwnerName"
-        Me.txtOwnerName.Size = New System.Drawing.Size(338, 31)
+        Me.txtOwnerName.Size = New System.Drawing.Size(338, 26)
         Me.txtOwnerName.TabIndex = 2
         '
         'tabPayment
@@ -5482,13 +5508,13 @@ Partial Class AgniMainForm
         Me.GroupBox19.BorderColor = System.Drawing.Color.DeepSkyBlue
         Me.GroupBox19.BorderColorFocus = System.Drawing.Color.Orange
         Me.GroupBox19.BorderColorMouseEnter = System.Drawing.Color.Green
-        Me.GroupBox19.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Thin
+        Me.GroupBox19.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Normal
         Me.GroupBox19.Controls.Add(Me.dgPaymentDetails)
-        Me.GroupBox19.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox19.ForeColor = System.Drawing.Color.Black
+        Me.GroupBox19.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.GroupBox19.ForeColor = System.Drawing.Color.SteelBlue
         Me.GroupBox19.Location = New System.Drawing.Point(25, 525)
         Me.GroupBox19.Name = "GroupBox19"
-        Me.GroupBox19.Size = New System.Drawing.Size(1873, 372)
+        Me.GroupBox19.Size = New System.Drawing.Size(1873, 455)
         Me.GroupBox19.TabIndex = 306
         Me.GroupBox19.TabStop = False
         Me.GroupBox19.Text = "Payment Details"
@@ -5500,13 +5526,13 @@ Partial Class AgniMainForm
         Me.dgPaymentDetails.AllowUserToOrderColumns = True
         DataGridViewCellStyle112.BackColor = System.Drawing.Color.LightSteelBlue
         Me.dgPaymentDetails.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle112
-        Me.dgPaymentDetails.BackgroundColor = System.Drawing.Color.Lavender
+        Me.dgPaymentDetails.BackgroundColor = System.Drawing.Color.White
         Me.dgPaymentDetails.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgPaymentDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical
         Me.dgPaymentDetails.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
         DataGridViewCellStyle113.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle113.BackColor = System.Drawing.Color.RoyalBlue
-        DataGridViewCellStyle113.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle113.BackColor = System.Drawing.Color.DeepSkyBlue
+        DataGridViewCellStyle113.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold)
         DataGridViewCellStyle113.ForeColor = System.Drawing.Color.White
         DataGridViewCellStyle113.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle113.SelectionForeColor = System.Drawing.SystemColors.HighlightText
@@ -5516,8 +5542,8 @@ Partial Class AgniMainForm
         Me.dgPaymentDetails.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PaymentNo, Me.internalPaymentBillNo, Me.PaymentBillNo, Me.PaymentDate, Me.PaymentMode, Me.UnPaidBilledAmount, Me.ActualPaidAmount, Me.Discount, Me.FinalPaidAmount, Me.NetBalance, Me.ChequeNo, Me.BankName, Me.ChequeDate, Me.Remarks})
         DataGridViewCellStyle127.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle127.BackColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle127.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle127.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle127.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle127.ForeColor = System.Drawing.Color.SteelBlue
         DataGridViewCellStyle127.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle127.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle127.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
@@ -5531,14 +5557,16 @@ Partial Class AgniMainForm
         Me.dgPaymentDetails.ReadOnly = True
         Me.dgPaymentDetails.RowHeadersVisible = False
         DataGridViewCellStyle128.BackColor = System.Drawing.Color.Lavender
-        DataGridViewCellStyle128.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle128.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!)
+        DataGridViewCellStyle128.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle128.SelectionBackColor = System.Drawing.Color.Teal
         DataGridViewCellStyle128.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgPaymentDetails.RowsDefaultCellStyle = DataGridViewCellStyle128
         Me.dgPaymentDetails.RowTemplate.Height = 25
         Me.dgPaymentDetails.RowTemplate.ReadOnly = True
         Me.dgPaymentDetails.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgPaymentDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgPaymentDetails.Size = New System.Drawing.Size(1867, 347)
+        Me.dgPaymentDetails.Size = New System.Drawing.Size(1867, 430)
         Me.dgPaymentDetails.TabIndex = 2
         '
         'PaymentNo
@@ -5815,7 +5843,7 @@ Partial Class AgniMainForm
         '
         Me.Label117.AutoSize = True
         Me.Label117.Font = New System.Drawing.Font("Garamond", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label117.ForeColor = System.Drawing.Color.Black
+        Me.Label117.ForeColor = System.Drawing.Color.LightSeaGreen
         Me.Label117.Location = New System.Drawing.Point(779, 34)
         Me.Label117.Name = "Label117"
         Me.Label117.Size = New System.Drawing.Size(111, 13)
@@ -5826,11 +5854,11 @@ Partial Class AgniMainForm
         'Label86
         '
         Me.Label86.AutoSize = True
-        Me.Label86.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label86.ForeColor = System.Drawing.Color.Black
-        Me.Label86.Location = New System.Drawing.Point(28, 408)
+        Me.Label86.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.Label86.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label86.Location = New System.Drawing.Point(28, 404)
         Me.Label86.Name = "Label86"
-        Me.Label86.Size = New System.Drawing.Size(140, 25)
+        Me.Label86.Size = New System.Drawing.Size(112, 24)
         Me.Label86.TabIndex = 149
         Me.Label86.Text = "Net Balance"
         '
@@ -5840,34 +5868,34 @@ Partial Class AgniMainForm
         Me.txtPaymentNetBalance.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtPaymentNetBalance.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtPaymentNetBalance.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtPaymentNetBalance.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
-        Me.txtPaymentNetBalance.Location = New System.Drawing.Point(310, 404)
+        Me.txtPaymentNetBalance.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.txtPaymentNetBalance.Location = New System.Drawing.Point(276, 404)
         Me.txtPaymentNetBalance.Name = "txtPaymentNetBalance"
         Me.txtPaymentNetBalance.ReadOnly = True
         Me.txtPaymentNetBalance.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.txtPaymentNetBalance.Size = New System.Drawing.Size(371, 29)
+        Me.txtPaymentNetBalance.Size = New System.Drawing.Size(371, 26)
         Me.txtPaymentNetBalance.TabIndex = 148
         Me.txtPaymentNetBalance.TabStop = False
         '
         'Label85
         '
         Me.Label85.AutoSize = True
-        Me.Label85.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label85.ForeColor = System.Drawing.Color.Black
-        Me.Label85.Location = New System.Drawing.Point(28, 455)
+        Me.Label85.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.Label85.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label85.Location = New System.Drawing.Point(28, 458)
         Me.Label85.Name = "Label85"
-        Me.Label85.Size = New System.Drawing.Size(104, 25)
+        Me.Label85.Size = New System.Drawing.Size(84, 24)
         Me.Label85.TabIndex = 147
         Me.Label85.Text = "Remarks"
         '
         'Label69
         '
         Me.Label69.AutoSize = True
-        Me.Label69.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label69.ForeColor = System.Drawing.Color.Black
-        Me.Label69.Location = New System.Drawing.Point(28, 361)
+        Me.Label69.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.Label69.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label69.Location = New System.Drawing.Point(28, 359)
         Me.Label69.Name = "Label69"
-        Me.Label69.Size = New System.Drawing.Size(204, 25)
+        Me.Label69.Size = New System.Drawing.Size(164, 24)
         Me.Label69.TabIndex = 146
         Me.Label69.Text = "Final Paid Amount"
         '
@@ -5877,12 +5905,12 @@ Partial Class AgniMainForm
         Me.txtPaymentFinalPaidAmount.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtPaymentFinalPaidAmount.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtPaymentFinalPaidAmount.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtPaymentFinalPaidAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
-        Me.txtPaymentFinalPaidAmount.Location = New System.Drawing.Point(310, 359)
+        Me.txtPaymentFinalPaidAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.txtPaymentFinalPaidAmount.Location = New System.Drawing.Point(276, 359)
         Me.txtPaymentFinalPaidAmount.Name = "txtPaymentFinalPaidAmount"
         Me.txtPaymentFinalPaidAmount.ReadOnly = True
         Me.txtPaymentFinalPaidAmount.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.txtPaymentFinalPaidAmount.Size = New System.Drawing.Size(371, 29)
+        Me.txtPaymentFinalPaidAmount.Size = New System.Drawing.Size(371, 26)
         Me.txtPaymentFinalPaidAmount.TabIndex = 7
         '
         'txtPaymentUnPaidBilledAmount
@@ -5891,11 +5919,11 @@ Partial Class AgniMainForm
         Me.txtPaymentUnPaidBilledAmount.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtPaymentUnPaidBilledAmount.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtPaymentUnPaidBilledAmount.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtPaymentUnPaidBilledAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPaymentUnPaidBilledAmount.Location = New System.Drawing.Point(310, 124)
+        Me.txtPaymentUnPaidBilledAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.txtPaymentUnPaidBilledAmount.Location = New System.Drawing.Point(276, 124)
         Me.txtPaymentUnPaidBilledAmount.Name = "txtPaymentUnPaidBilledAmount"
         Me.txtPaymentUnPaidBilledAmount.ReadOnly = True
-        Me.txtPaymentUnPaidBilledAmount.Size = New System.Drawing.Size(371, 29)
+        Me.txtPaymentUnPaidBilledAmount.Size = New System.Drawing.Size(371, 26)
         Me.txtPaymentUnPaidBilledAmount.TabIndex = 144
         Me.txtPaymentUnPaidBilledAmount.TabStop = False
         '
@@ -5937,8 +5965,8 @@ Partial Class AgniMainForm
         Me.txtPaymentRemarks.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtPaymentRemarks.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtPaymentRemarks.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtPaymentRemarks.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
-        Me.txtPaymentRemarks.Location = New System.Drawing.Point(310, 449)
+        Me.txtPaymentRemarks.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.txtPaymentRemarks.Location = New System.Drawing.Point(276, 449)
         Me.txtPaymentRemarks.Multiline = True
         Me.txtPaymentRemarks.Name = "txtPaymentRemarks"
         Me.txtPaymentRemarks.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -5950,7 +5978,7 @@ Partial Class AgniMainForm
         Me.gbBankDetails.BorderColor = System.Drawing.Color.DeepSkyBlue
         Me.gbBankDetails.BorderColorFocus = System.Drawing.Color.Orange
         Me.gbBankDetails.BorderColorMouseEnter = System.Drawing.Color.Green
-        Me.gbBankDetails.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Thin
+        Me.gbBankDetails.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Normal
         Me.gbBankDetails.Controls.Add(Me.dpPaymentChequeDate)
         Me.gbBankDetails.Controls.Add(Me.txtPaymentBankName)
         Me.gbBankDetails.Controls.Add(Me.Label80)
@@ -5958,7 +5986,7 @@ Partial Class AgniMainForm
         Me.gbBankDetails.Controls.Add(Me.txtPaymentChequeNo)
         Me.gbBankDetails.Controls.Add(Me.Label78)
         Me.gbBankDetails.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.gbBankDetails.ForeColor = System.Drawing.Color.Black
+        Me.gbBankDetails.ForeColor = System.Drawing.Color.SteelBlue
         Me.gbBankDetails.Location = New System.Drawing.Point(731, 184)
         Me.gbBankDetails.Name = "gbBankDetails"
         Me.gbBankDetails.Size = New System.Drawing.Size(523, 183)
@@ -5988,11 +6016,11 @@ Partial Class AgniMainForm
         Me.dpPaymentChequeDate.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.dpPaymentChequeDate.Cursor = System.Windows.Forms.Cursors.Hand
         Me.dpPaymentChequeDate.CustomFormat = "dd/MM/yyyy"
-        Me.dpPaymentChequeDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dpPaymentChequeDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.dpPaymentChequeDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dpPaymentChequeDate.Location = New System.Drawing.Point(192, 129)
         Me.dpPaymentChequeDate.Name = "dpPaymentChequeDate"
-        Me.dpPaymentChequeDate.Size = New System.Drawing.Size(316, 29)
+        Me.dpPaymentChequeDate.Size = New System.Drawing.Size(316, 26)
         Me.dpPaymentChequeDate.TabIndex = 10
         '
         'txtPaymentBankName
@@ -6001,31 +6029,31 @@ Partial Class AgniMainForm
         Me.txtPaymentBankName.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtPaymentBankName.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtPaymentBankName.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtPaymentBankName.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPaymentBankName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtPaymentBankName.Location = New System.Drawing.Point(191, 85)
         Me.txtPaymentBankName.Name = "txtPaymentBankName"
-        Me.txtPaymentBankName.Size = New System.Drawing.Size(316, 29)
+        Me.txtPaymentBankName.Size = New System.Drawing.Size(316, 26)
         Me.txtPaymentBankName.TabIndex = 9
         '
         'Label80
         '
         Me.Label80.AutoSize = True
-        Me.Label80.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label80.ForeColor = System.Drawing.Color.Black
-        Me.Label80.Location = New System.Drawing.Point(22, 133)
+        Me.Label80.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.Label80.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label80.Location = New System.Drawing.Point(22, 131)
         Me.Label80.Name = "Label80"
-        Me.Label80.Size = New System.Drawing.Size(149, 25)
+        Me.Label80.Size = New System.Drawing.Size(121, 24)
         Me.Label80.TabIndex = 129
         Me.Label80.Text = "Cheque Date"
         '
         'Label79
         '
         Me.Label79.AutoSize = True
-        Me.Label79.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label79.ForeColor = System.Drawing.Color.Black
-        Me.Label79.Location = New System.Drawing.Point(22, 88)
+        Me.Label79.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.Label79.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label79.Location = New System.Drawing.Point(22, 85)
         Me.Label79.Name = "Label79"
-        Me.Label79.Size = New System.Drawing.Size(132, 25)
+        Me.Label79.Size = New System.Drawing.Size(108, 24)
         Me.Label79.TabIndex = 128
         Me.Label79.Text = "Bank Name"
         '
@@ -6035,20 +6063,20 @@ Partial Class AgniMainForm
         Me.txtPaymentChequeNo.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtPaymentChequeNo.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtPaymentChequeNo.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtPaymentChequeNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPaymentChequeNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.txtPaymentChequeNo.Location = New System.Drawing.Point(192, 41)
         Me.txtPaymentChequeNo.Name = "txtPaymentChequeNo"
-        Me.txtPaymentChequeNo.Size = New System.Drawing.Size(316, 29)
+        Me.txtPaymentChequeNo.Size = New System.Drawing.Size(316, 26)
         Me.txtPaymentChequeNo.TabIndex = 8
         '
         'Label78
         '
         Me.Label78.AutoSize = True
-        Me.Label78.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label78.ForeColor = System.Drawing.Color.Black
-        Me.Label78.Location = New System.Drawing.Point(22, 44)
+        Me.Label78.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.Label78.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label78.Location = New System.Drawing.Point(22, 41)
         Me.Label78.Name = "Label78"
-        Me.Label78.Size = New System.Drawing.Size(136, 25)
+        Me.Label78.Size = New System.Drawing.Size(113, 24)
         Me.Label78.TabIndex = 127
         Me.Label78.Text = "Cheque No."
         '
@@ -6074,21 +6102,21 @@ Partial Class AgniMainForm
         Me.dpPaymentDate.Cursor = System.Windows.Forms.Cursors.Hand
         Me.dpPaymentDate.CustomFormat = "dd/MM/yyyy"
         Me.dpPaymentDate.Enabled = False
-        Me.dpPaymentDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dpPaymentDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.dpPaymentDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dpPaymentDate.Location = New System.Drawing.Point(310, 169)
+        Me.dpPaymentDate.Location = New System.Drawing.Point(276, 166)
         Me.dpPaymentDate.Name = "dpPaymentDate"
-        Me.dpPaymentDate.Size = New System.Drawing.Size(371, 29)
+        Me.dpPaymentDate.Size = New System.Drawing.Size(371, 26)
         Me.dpPaymentDate.TabIndex = 1
         '
         'Label77
         '
         Me.Label77.AutoSize = True
-        Me.Label77.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label77.ForeColor = System.Drawing.Color.Black
-        Me.Label77.Location = New System.Drawing.Point(28, 170)
+        Me.Label77.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.Label77.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label77.Location = New System.Drawing.Point(28, 171)
         Me.Label77.Name = "Label77"
-        Me.Label77.Size = New System.Drawing.Size(226, 25)
+        Me.Label77.Size = New System.Drawing.Size(181, 24)
         Me.Label77.TabIndex = 126
         Me.Label77.Text = "Amount Paying Date"
         '
@@ -6098,11 +6126,11 @@ Partial Class AgniMainForm
         Me.txtPaymentDiscountAmount.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtPaymentDiscountAmount.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtPaymentDiscountAmount.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtPaymentDiscountAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPaymentDiscountAmount.Location = New System.Drawing.Point(310, 313)
+        Me.txtPaymentDiscountAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.txtPaymentDiscountAmount.Location = New System.Drawing.Point(276, 313)
         Me.txtPaymentDiscountAmount.Name = "txtPaymentDiscountAmount"
         Me.txtPaymentDiscountAmount.ReadOnly = True
-        Me.txtPaymentDiscountAmount.Size = New System.Drawing.Size(371, 29)
+        Me.txtPaymentDiscountAmount.Size = New System.Drawing.Size(371, 26)
         Me.txtPaymentDiscountAmount.TabIndex = 5
         '
         'txtPaymentActualPaidAmount
@@ -6111,65 +6139,65 @@ Partial Class AgniMainForm
         Me.txtPaymentActualPaidAmount.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtPaymentActualPaidAmount.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtPaymentActualPaidAmount.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtPaymentActualPaidAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPaymentActualPaidAmount.Location = New System.Drawing.Point(310, 268)
+        Me.txtPaymentActualPaidAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.txtPaymentActualPaidAmount.Location = New System.Drawing.Point(276, 268)
         Me.txtPaymentActualPaidAmount.Name = "txtPaymentActualPaidAmount"
         Me.txtPaymentActualPaidAmount.ReadOnly = True
-        Me.txtPaymentActualPaidAmount.Size = New System.Drawing.Size(371, 29)
+        Me.txtPaymentActualPaidAmount.Size = New System.Drawing.Size(371, 26)
         Me.txtPaymentActualPaidAmount.TabIndex = 4
         '
         'Label75
         '
         Me.Label75.AutoSize = True
-        Me.Label75.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label75.ForeColor = System.Drawing.Color.Black
-        Me.Label75.Location = New System.Drawing.Point(28, 311)
+        Me.Label75.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.Label75.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label75.Location = New System.Drawing.Point(28, 313)
         Me.Label75.Name = "Label75"
-        Me.Label75.Size = New System.Drawing.Size(104, 25)
+        Me.Label75.Size = New System.Drawing.Size(83, 24)
         Me.Label75.TabIndex = 120
         Me.Label75.Text = "Discount"
         '
         'Label74
         '
         Me.Label74.AutoSize = True
-        Me.Label74.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label74.ForeColor = System.Drawing.Color.Black
-        Me.Label74.Location = New System.Drawing.Point(28, 264)
+        Me.Label74.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.Label74.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label74.Location = New System.Drawing.Point(28, 268)
         Me.Label74.Name = "Label74"
-        Me.Label74.Size = New System.Drawing.Size(218, 25)
+        Me.Label74.Size = New System.Drawing.Size(175, 24)
         Me.Label74.TabIndex = 118
         Me.Label74.Text = "Actual Paid Amount"
         '
         'Label73
         '
         Me.Label73.AutoSize = True
-        Me.Label73.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label73.ForeColor = System.Drawing.Color.Black
-        Me.Label73.Location = New System.Drawing.Point(28, 217)
+        Me.Label73.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.Label73.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label73.Location = New System.Drawing.Point(28, 218)
         Me.Label73.Name = "Label73"
-        Me.Label73.Size = New System.Drawing.Size(168, 25)
+        Me.Label73.Size = New System.Drawing.Size(137, 24)
         Me.Label73.TabIndex = 116
         Me.Label73.Text = "Payment Mode"
         '
         'Label72
         '
         Me.Label72.AutoSize = True
-        Me.Label72.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label72.ForeColor = System.Drawing.Color.Black
-        Me.Label72.Location = New System.Drawing.Point(28, 127)
+        Me.Label72.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.Label72.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label72.Location = New System.Drawing.Point(28, 124)
         Me.Label72.Name = "Label72"
-        Me.Label72.Size = New System.Drawing.Size(214, 25)
+        Me.Label72.Size = New System.Drawing.Size(171, 24)
         Me.Label72.TabIndex = 115
         Me.Label72.Text = "UnPaid Bill Amount"
         '
         'Label70
         '
         Me.Label70.AutoSize = True
-        Me.Label70.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label70.ForeColor = System.Drawing.Color.Black
+        Me.Label70.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.Label70.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label70.Location = New System.Drawing.Point(28, 76)
         Me.Label70.Name = "Label70"
-        Me.Label70.Size = New System.Drawing.Size(133, 25)
+        Me.Label70.Size = New System.Drawing.Size(108, 24)
         Me.Label70.TabIndex = 111
         Me.Label70.Text = "Bill Number"
         '
@@ -6188,22 +6216,22 @@ Partial Class AgniMainForm
         Me.cmbPaymentCustomerList.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.cmbPaymentCustomerList.BorderThickness = ElaCustomComboBoxControl.ElaCustomComboBox.BorderThicknessEnum.Thick
         Me.cmbPaymentCustomerList.DisplayMember = "CompName"
-        Me.cmbPaymentCustomerList.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbPaymentCustomerList.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
         Me.cmbPaymentCustomerList.FormattingEnabled = True
-        Me.cmbPaymentCustomerList.Location = New System.Drawing.Point(310, 22)
+        Me.cmbPaymentCustomerList.Location = New System.Drawing.Point(276, 22)
         Me.cmbPaymentCustomerList.Name = "cmbPaymentCustomerList"
-        Me.cmbPaymentCustomerList.Size = New System.Drawing.Size(371, 32)
+        Me.cmbPaymentCustomerList.Size = New System.Drawing.Size(371, 28)
         Me.cmbPaymentCustomerList.TabIndex = 0
         Me.cmbPaymentCustomerList.ValueMember = "CustNo"
         '
         'Label71
         '
         Me.Label71.AutoSize = True
-        Me.Label71.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label71.ForeColor = System.Drawing.Color.Black
-        Me.Label71.Location = New System.Drawing.Point(28, 29)
+        Me.Label71.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.Label71.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label71.Location = New System.Drawing.Point(28, 22)
         Me.Label71.Name = "Label71"
-        Me.Label71.Size = New System.Drawing.Size(179, 25)
+        Me.Label71.Size = New System.Drawing.Size(147, 24)
         Me.Label71.TabIndex = 109
         Me.Label71.Text = "Customer Name"
         '
@@ -6243,11 +6271,11 @@ Partial Class AgniMainForm
         Me.ElaCustomGroupBox2.BorderColor = System.Drawing.Color.DeepSkyBlue
         Me.ElaCustomGroupBox2.BorderColorFocus = System.Drawing.Color.Orange
         Me.ElaCustomGroupBox2.BorderColorMouseEnter = System.Drawing.Color.Green
-        Me.ElaCustomGroupBox2.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Thin
+        Me.ElaCustomGroupBox2.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Normal
         Me.ElaCustomGroupBox2.Controls.Add(Me.radioPaymentByCheque)
         Me.ElaCustomGroupBox2.Controls.Add(Me.radioPaymentByCash)
         Me.ElaCustomGroupBox2.ForeColor = System.Drawing.Color.Black
-        Me.ElaCustomGroupBox2.Location = New System.Drawing.Point(310, 197)
+        Me.ElaCustomGroupBox2.Location = New System.Drawing.Point(276, 197)
         Me.ElaCustomGroupBox2.Name = "ElaCustomGroupBox2"
         Me.ElaCustomGroupBox2.Size = New System.Drawing.Size(371, 56)
         Me.ElaCustomGroupBox2.TabIndex = 308
@@ -6256,8 +6284,9 @@ Partial Class AgniMainForm
         'radioPaymentByCheque
         '
         Me.radioPaymentByCheque.AutoSize = True
-        Me.radioPaymentByCheque.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.radioPaymentByCheque.Location = New System.Drawing.Point(183, 22)
+        Me.radioPaymentByCheque.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.radioPaymentByCheque.ForeColor = System.Drawing.Color.SteelBlue
+        Me.radioPaymentByCheque.Location = New System.Drawing.Point(183, 19)
         Me.radioPaymentByCheque.Name = "radioPaymentByCheque"
         Me.radioPaymentByCheque.Size = New System.Drawing.Size(122, 28)
         Me.radioPaymentByCheque.TabIndex = 2
@@ -6269,7 +6298,8 @@ Partial Class AgniMainForm
         Me.radioPaymentByCash.AutoSize = True
         Me.radioPaymentByCash.Checked = True
         Me.radioPaymentByCash.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
-        Me.radioPaymentByCash.Location = New System.Drawing.Point(19, 22)
+        Me.radioPaymentByCash.ForeColor = System.Drawing.Color.SteelBlue
+        Me.radioPaymentByCash.Location = New System.Drawing.Point(19, 19)
         Me.radioPaymentByCash.Name = "radioPaymentByCash"
         Me.radioPaymentByCash.Size = New System.Drawing.Size(102, 28)
         Me.radioPaymentByCash.TabIndex = 0
@@ -6282,12 +6312,12 @@ Partial Class AgniMainForm
         Me.ElaCustomGroupBox4.BorderColor = System.Drawing.Color.DeepSkyBlue
         Me.ElaCustomGroupBox4.BorderColorFocus = System.Drawing.Color.Orange
         Me.ElaCustomGroupBox4.BorderColorMouseEnter = System.Drawing.Color.Green
-        Me.ElaCustomGroupBox4.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Thin
+        Me.ElaCustomGroupBox4.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Normal
         Me.ElaCustomGroupBox4.Controls.Add(Me.txtPaymentDisplayBillNo)
         Me.ElaCustomGroupBox4.Controls.Add(Me.txtPaymentBillNo)
         Me.ElaCustomGroupBox4.Controls.Add(Me.Label13)
         Me.ElaCustomGroupBox4.ForeColor = System.Drawing.Color.Black
-        Me.ElaCustomGroupBox4.Location = New System.Drawing.Point(310, 52)
+        Me.ElaCustomGroupBox4.Location = New System.Drawing.Point(276, 55)
         Me.ElaCustomGroupBox4.Name = "ElaCustomGroupBox4"
         Me.ElaCustomGroupBox4.Size = New System.Drawing.Size(371, 56)
         Me.ElaCustomGroupBox4.TabIndex = 309
@@ -6299,11 +6329,11 @@ Partial Class AgniMainForm
         Me.txtPaymentDisplayBillNo.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtPaymentDisplayBillNo.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtPaymentDisplayBillNo.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtPaymentDisplayBillNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPaymentDisplayBillNo.Location = New System.Drawing.Point(3, 21)
+        Me.txtPaymentDisplayBillNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.txtPaymentDisplayBillNo.Location = New System.Drawing.Point(5, 19)
         Me.txtPaymentDisplayBillNo.Name = "txtPaymentDisplayBillNo"
         Me.txtPaymentDisplayBillNo.ReadOnly = True
-        Me.txtPaymentDisplayBillNo.Size = New System.Drawing.Size(146, 29)
+        Me.txtPaymentDisplayBillNo.Size = New System.Drawing.Size(146, 26)
         Me.txtPaymentDisplayBillNo.TabIndex = 114
         Me.txtPaymentDisplayBillNo.TabStop = False
         '
@@ -6313,22 +6343,22 @@ Partial Class AgniMainForm
         Me.txtPaymentBillNo.BorderColorFocus = System.Drawing.Color.Orange
         Me.txtPaymentBillNo.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtPaymentBillNo.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
-        Me.txtPaymentBillNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPaymentBillNo.Location = New System.Drawing.Point(253, 21)
+        Me.txtPaymentBillNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.txtPaymentBillNo.Location = New System.Drawing.Point(252, 19)
         Me.txtPaymentBillNo.Name = "txtPaymentBillNo"
         Me.txtPaymentBillNo.ReadOnly = True
-        Me.txtPaymentBillNo.Size = New System.Drawing.Size(115, 29)
+        Me.txtPaymentBillNo.Size = New System.Drawing.Size(115, 26)
         Me.txtPaymentBillNo.TabIndex = 163
         Me.txtPaymentBillNo.TabStop = False
         '
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Font = New System.Drawing.Font("Garamond", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.ForeColor = System.Drawing.Color.Black
-        Me.Label13.Location = New System.Drawing.Point(167, 29)
+        Me.Label13.Font = New System.Drawing.Font("Garamond", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.ForeColor = System.Drawing.Color.LightSeaGreen
+        Me.Label13.Location = New System.Drawing.Point(159, 29)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(80, 12)
+        Me.Label13.Size = New System.Drawing.Size(93, 13)
         Me.Label13.TabIndex = 164
         Me.Label13.Text = "Internal Bill No"
         '
@@ -7621,6 +7651,8 @@ Partial Class AgniMainForm
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1916, 1053)
         Me.Controls.Add(Me.tabAllTabsHolder)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ForeColor = System.Drawing.Color.SteelBlue
         Me.KeyPreview = True
         Me.Name = "AgniMainForm"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show

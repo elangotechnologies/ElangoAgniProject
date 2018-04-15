@@ -3363,4 +3363,23 @@ Public Class AgniMainForm
         End If
     End Sub
 
+    Private Sub btnPrintPaymentDetails_Click(Sender As Object, e As MouseEventArgs) Handles btnPrintPaymentDetails.ClickButtonArea
+
+    End Sub
+
+    Private Sub btnPrintBillAndPaymentDetails_Click(Sender As Object, e As MouseEventArgs) Handles btnPrintBillAndPaymentDetails.ClickButtonArea
+
+    End Sub
+
+    Private Sub btnPrintBillSearchDetails_Click(Sender As Object, e As MouseEventArgs) Handles btnPrintBillSearchDetails.ClickButtonArea
+
+    End Sub
+
+    Private Sub btnPrintGSTDetails_Click(Sender As Object, e As MouseEventArgs) Handles btnPrintGSTDetails.ClickButtonArea
+
+    End Sub
+
+    Private Sub calculateGSTAmountInBilling(sender As Object, e As EventArgs) Handles txtBillingSGSTPercent.TextChanged, txtBillingIGSTPercent.TextChanged, txtBillingCGSTPercent.TextChanged
+
+    End Sub
 End Class

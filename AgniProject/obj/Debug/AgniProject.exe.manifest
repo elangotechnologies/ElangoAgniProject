@@ -53,14 +53,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AgniProject.exe" size="2229760">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AgniProject.exe" size="2231296">
       <assemblyIdentity name="AgniProject" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>iCIxeaF54uCqPom5wULN3zfxzflyV0jotOG02O1QlrM=</dsig:DigestValue>
+        <dsig:DigestValue>2jS85swZfpXXZ/gS5q1gp9NOczgyG+pfYiR55oJFwAo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -317,14 +317,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ElaCustomGroupBoxControl.dll" size="12800">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ElaCustomGroupBoxControl.dll" size="12288">
       <assemblyIdentity name="ElaCustomGroupBoxControl" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>2XIRRoKTBLPeFLFCBAGyRyWd2LfQVX7zecu3CVh9Pl8=</dsig:DigestValue>
+        <dsig:DigestValue>FbC5IpdmEN/sa+cJ6FHH8ZxbPg9r/X+JPYXbHjNYliQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

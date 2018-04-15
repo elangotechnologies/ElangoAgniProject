@@ -96,8 +96,8 @@ Public Class ElaCustomGroupBox
         'Add any initialization after the InitializeComponent() call
         Me.BorderColor = Color.DeepSkyBlue
         Me.BorderColorFocus = Color.Orange
-        Me.BorderColorMouseEnter = Color.Green
-        Me.BorderThickness = BorderThicknessEnum.Thin
+        Me.BorderColorMouseEnter = Color.Orange
+        Me.BorderThickness = BorderThicknessEnum.Medium
 
         mCurrentBorderColor = Me.mBorderColor
         Me.ForeColor = Color.Black
