@@ -16,3 +16,4 @@ D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomComboBoxControl\obj
 D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomComboBoxControl\obj\Debug\ElaCustomComboBoxControl.dll
 D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomComboBoxControl\obj\Debug\ElaCustomComboBoxControl.xml
 D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomComboBoxControl\obj\Debug\ElaCustomComboBoxControl.pdb
+D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomComboBoxControl\obj\Debug\ElaCustomComboBoxControl.vbprojResolveAssemblyReference.cache
