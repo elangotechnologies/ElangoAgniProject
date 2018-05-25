@@ -1,12 +1,12 @@
 Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Threading
-'Imports NLog
+Imports NLog
 
 Public Class AgniMainForm
     Dim dbConnection As SqlConnection
 
-    'Dim log As Logger = LogManager.GetCurrentClassLogger()
+    Dim log As Logger = LogManager.GetCurrentClassLogger()
 
     Dim BILL_TYPE_UNBILLED As Int16 = 0
     Dim BILL_TYPE_BILLED As Int16 = 1
@@ -18,11 +18,9 @@ Public Class AgniMainForm
     Public gSelectedCustName As String = String.Empty
     Public gSelectedDesignNo As Integer = -1
 
-    Private SEARCH_BY_CUSTOMER As Integer = 1
-    Private SEARCH_BY_BILL_NO As Integer = 2
-    Private SEARCH_BY_DESIGN_SELECTION As Integer = 4
-    Private SEARCH_BY_DESIGN_NO As Integer = 8
-    Private SEARCH_BY_DATE_RANGE As Integer = 16
+    Public gSearchFilter As Integer = -1
+    Public gSearchFromDate As Date = Nothing
+    Public gSearchToDate As Date = Nothing
 
     Private gDBConnInitialized As Boolean = False
     Private gFormLoadCompleted As Boolean = False
@@ -34,6 +32,17 @@ Public Class AgniMainForm
     Dim reportControlsPlaceHolders() As ElaCustomGroupBoxControl.ElaCustomGroupBox
 
     Private ATTRIBUTE_LAST_BILL_NO As String = "last_bill_no"
+
+    Private Sub resetGlobalVairables()
+        gSelectedBillNo = -1
+        gSelectedDisplayBillNo = String.Empty
+        gSelectedCustNo = -1
+        gSelectedCustName = String.Empty
+        gSelectedDesignNo = -1
+        gSearchFilter = -1
+        gSearchFromDate = Nothing
+        gSearchToDate = Nothing
+    End Sub
 
 
     Private Sub AgnimainForm_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
@@ -1498,14 +1507,15 @@ Public Class AgniMainForm
     End Sub
 
     Private Sub cmbBillingCustomerList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbBillingCustomerList.SelectedIndexChanged
+        If (cmbBillingCustomerList.SelectedIndex = -1 Or cmbBillingCustomerList.SelectedValue = -1) Then
+            resetIndexOfComboBox(cmbBillingBillNoList)
+            gSelectedCustNo = -1
+            Return
+        End If
+
         gSelectedCustName = cmbBillingCustomerList.Text
         gSelectedCustNo = cmbBillingCustomerList.SelectedValue
         panelLastBillNo.Visible = False
-
-        If (cmbBillingCustomerList.SelectedIndex = -1 Or cmbBillingCustomerList.SelectedValue = -1) Then
-            resetIndexOfComboBox(cmbBillingBillNoList)
-            Return
-        End If
 
         Dim custNo As Integer = cmbBillingCustomerList.SelectedValue
         loadBillList(custNo)
@@ -2169,6 +2179,7 @@ Public Class AgniMainForm
     End Sub
 
     Private Sub tabAllTabsHolder_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tabAllTabsHolder.SelectedIndexChanged
+        resetGlobalVairables()
 
         Dim selectedTab As TabPage = tabAllTabsHolder.SelectedTab
         Dim selectedTabTag As String = selectedTab.Tag
@@ -2617,15 +2628,140 @@ Public Class AgniMainForm
         Return paymentQuery
     End Function
 
-    Function getBillAndPaymentHistoryQuery(billSearchQuery As String, paymentSearchQuery As String) As String
+    Function getBillAndPaymentHistoryQuery(searchData As SearchData, billSearchQuery As String, paymentSearchQuery As String) As String
 
-        Dim billAndPaymentHistoryQuery As String = "Select BR.CustomerName, BR.DisplayBillNo, BR.BillDate, PR.PaymentDate, 
-        BR.BillAmount, isnull(PR.NetBalanceBeforePayment, Br.BillAmount + Br.UnPaidAmountTillNow) As NetBalanceBeforePayment, 
-        isnull(PR.FinalPaidAmount,0) as FinalPaidAmount, isnull(PR.NetBalanceAfterPayment, Br.BillAmount + Br.UnPaidAmountTillNow) As NetBalanceAfterPayment from
-        (" + billSearchQuery + ") As BR 
-        Left Join
-        (" + paymentSearchQuery + ") as PR 
-        On BR.BillNo = PR.BillNo"
+        Dim billAndPaymentHistoryQuery As String = ""
+
+        If (gSearchFilter And SEARCH_BY_CUSTOMER) = 0 Then
+
+            billAndPaymentHistoryQuery = "Select BR.CustomerName, BR.DisplayBillNo, BR.BillDate, PR.PaymentDate, 
+            BR.BillAmount, isnull(PR.NetBalanceBeforePayment, Br.BillAmount + Br.UnPaidAmountTillNow) As NetBalanceBeforePayment, 
+            isnull(PR.FinalPaidAmount,0) as FinalPaidAmount, isnull(PR.NetBalanceAfterPayment, Br.BillAmount + Br.UnPaidAmountTillNow) As NetBalanceAfterPayment from
+            (" + billSearchQuery + ") As BR 
+            Left Join
+            (" + paymentSearchQuery + ") as PR 
+            On BR.BillNo = PR.BillNo"
+
+        Else
+
+            Dim custNo As Integer = searchData.custNo
+            Dim billNo As Integer = searchData.billNo
+            Dim designNo As Integer = searchData.designNo
+            Dim designName As String = searchData.designName
+            Dim fromDate As Date = searchData.fromDate
+            Dim toDate As Date = searchData.toDate
+
+            Dim billQuery As String
+
+            billQuery = "select c.CompName as CustomerName, b.BillDate as Date, b.BillNo, b.DisplayBillNo, dbo.BankersRound(((b.CGST+ b.SGST+ b.IGST)*b.DesignCost/100),0)+dbo.BankersRound(b.DesignCost,0) as BillAmount,
+			NULL as FinalPaidAmount, NULL as BalanceBeforePayment, NULL as BalanceAfterPayment, b.UnPaidAmountTillNow from bill b, customer c "
+
+            Dim billQueryWhereClause As String = String.Empty
+
+            If custNo <> Nothing Then
+                billQueryWhereClause += " b.CustNo=" + custNo.ToString
+            End If
+
+            If billNo <> Nothing Then
+                If billQueryWhereClause IsNot String.Empty Then
+                    billQueryWhereClause += " and "
+                End If
+                billQueryWhereClause += " b.BillNo=" + billNo.ToString
+            End If
+
+            If designNo <> Nothing Then
+                If billQueryWhereClause IsNot String.Empty Then
+                    billQueryWhereClause += " and "
+                End If
+                billQueryWhereClause += " b.billNo in (select BillNo from Design where designNo = " + designNo.ToString + ")"
+            End If
+
+            If designName <> Nothing Then
+                If billQueryWhereClause IsNot String.Empty Then
+                    billQueryWhereClause += " and "
+                End If
+                billQueryWhereClause += " b.billNo in (select BillNo from Design where DesignName like '%" + designName + "%')"
+            End If
+
+            If fromDate <> Nothing Or toDate <> Nothing Then
+                If billQueryWhereClause IsNot String.Empty Then
+                    billQueryWhereClause += " And "
+                End If
+                Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
+                Dim toDateStr As String = toDate.ToString("yyyyMMdd")
+                billQueryWhereClause += " cast(b.BillDate as date)>='" + fromDateStr + "' and  cast(b.BillDate as date)<='" + toDateStr + "'"
+            End If
+
+            If billQueryWhereClause IsNot String.Empty Then
+                billQueryWhereClause += " And "
+            End If
+            billQueryWhereClause += " b.CustNo = c.CustNo"
+
+            If billQueryWhereClause IsNot String.Empty Then
+                billQuery += " where " + billQueryWhereClause
+            End If
+
+
+            Dim paymentQuery As String
+
+            paymentQuery = "select c.CompName as CustomerName, p.PaymentDate as Date, NULL as BillNo, NULL as DisplayBillNo, NULL as BillAmount, 
+		p.FinalPaidAmount, p.UnPaidBilledAmount as BalanceBeforePayment, p.UnPaidBilledAmount - p.FinalPaidAmount as BalanceAfterPayment, NULL as UnPaidAmountTillNow
+		from payment p, bill b, customer c "
+
+            Dim paymentQueryWhereClause As String = String.Empty
+
+            If custNo <> Nothing Then
+                paymentQueryWhereClause += " p.CustNo=" + custNo.ToString
+            End If
+
+            If billNo <> Nothing Then
+                If paymentQueryWhereClause IsNot String.Empty Then
+                    paymentQueryWhereClause += " and "
+                End If
+                paymentQueryWhereClause += " p.BillNo=" + billNo.ToString
+            End If
+
+            If designNo <> Nothing Then
+                If paymentQueryWhereClause IsNot String.Empty Then
+                    paymentQueryWhereClause += " and "
+                End If
+                paymentQueryWhereClause += " p.BillNo in (select BillNo from Design where designNo = " + designNo.ToString + ")"
+            End If
+
+            If designName <> Nothing Then
+                If paymentQueryWhereClause IsNot String.Empty Then
+                    paymentQueryWhereClause += " and "
+                End If
+                paymentQueryWhereClause += " p.BillNo in (select BillNo from Design where DesignName like '%" + designName + "%')"
+            End If
+
+            If fromDate <> Nothing Or toDate <> Nothing Then
+                If paymentQueryWhereClause IsNot String.Empty Then
+                    paymentQueryWhereClause += " And "
+                End If
+                Dim fromDateStr As String = fromDate.ToString("yyyyMMdd")
+                Dim toDateStr As String = toDate.ToString("yyyyMMdd")
+                paymentQueryWhereClause += " cast(p.PaymentDate as date)>='" + fromDateStr + "' and cast(p.PaymentDate as date)<='" + toDateStr + "'"
+            End If
+
+            If paymentQueryWhereClause IsNot String.Empty Then
+                paymentQueryWhereClause += " And "
+            End If
+            paymentQueryWhereClause += " p.CustNo = c.CustNo and b.CustNo = c.CustNo and p.BillNo = b.BillNo"
+
+            If paymentQueryWhereClause IsNot String.Empty Then
+                paymentQuery += " where " + paymentQueryWhereClause
+            End If
+
+            billAndPaymentHistoryQuery = "select CustomerName, Date, BillNo, DisplayBillNo, BillAmount, FinalPaidAmount, 
+                isnull(BalanceBeforePayment, BillAmount + UnPaidAmountTillNow) As NetBalanceBeforePayment, isnull(BalanceAfterPayment, BillAmount + UnPaidAmountTillNow) As NetBalanceAfterPayment  from
+                (
+                (Select * from
+                (" + billQuery + ") As BR )
+                union
+                (Select * from
+                (" + paymentQuery + ") as PR)) as billAndPayments"
+        End If
 
         'log.Debug("getBillAndPaymentHistoryQuery: billAndPaymentHistoryQuery: " + billAndPaymentHistoryQuery)
 
@@ -2636,7 +2772,7 @@ Public Class AgniMainForm
     Private Sub btnReportSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnReportSearch.ClickButtonArea
         pbReportDesignImage.Image = Nothing
 
-        Dim searchFilter As Integer = getSearchFilter()
+        gSearchFilter = getSearchFilter()
         Dim designQuery As String = String.Empty
         Dim designSummaryQuery As String = String.Empty
         Dim billQueryWhereClause As String = String.Empty
@@ -2650,12 +2786,12 @@ Public Class AgniMainForm
         'To use in Bill Search report
         gReportSearchFilterText = ""
 
-        If (searchFilter And SEARCH_BY_CUSTOMER) <> 0 Then
+        If (gSearchFilter And SEARCH_BY_CUSTOMER) <> 0 Then
             searchData.custNo = cmbReportCustomerList.SelectedValue
             gReportSearchFilterText += "Customer Name   : " + cmbReportCustomerList.Text.ToString
         End If
 
-        If (searchFilter And SEARCH_BY_BILL_NO) <> 0 Then
+        If (gSearchFilter And SEARCH_BY_BILL_NO) <> 0 Then
             searchData.billNo = cmbReportBillNoList.SelectedValue
             If gReportSearchFilterText IsNot String.Empty Then
                 gReportSearchFilterText += Chr(10) + Chr(13)
@@ -2663,7 +2799,7 @@ Public Class AgniMainForm
             gReportSearchFilterText += "Bill Number          : " + cmbReportBillNoList.Text.ToString
         End If
 
-        If (searchFilter And SEARCH_BY_DESIGN_SELECTION) <> 0 Then
+        If (gSearchFilter And SEARCH_BY_DESIGN_SELECTION) <> 0 Then
             searchData.designNo = cmbReportDesignNoList.SelectedValue
             If gReportSearchFilterText IsNot String.Empty Then
                 gReportSearchFilterText += Chr(10) + Chr(13)
@@ -2671,7 +2807,7 @@ Public Class AgniMainForm
             gReportSearchFilterText += "Design Name      : " + cmbReportDesignNoList.Text.ToString
         End If
 
-        If (searchFilter And SEARCH_BY_DESIGN_NO) <> 0 Then
+        If (gSearchFilter And SEARCH_BY_DESIGN_NO) <> 0 Then
             searchData.designNo = txtReportDesignNumber.Text
             If gReportSearchFilterText IsNot String.Empty Then
                 gReportSearchFilterText += Chr(10) + Chr(13)
@@ -2679,9 +2815,11 @@ Public Class AgniMainForm
             gReportSearchFilterText += "Design Number       : " + searchData.designNo.ToString
         End If
 
-        If (searchFilter And SEARCH_BY_DATE_RANGE) <> 0 Then
+        If (gSearchFilter And SEARCH_BY_DATE_RANGE) <> 0 Then
             searchData.fromDate = dpReportFromDate.Value
             searchData.toDate = dpReportToDate.Value
+            gSearchFromDate = searchData.fromDate
+            gSearchToDate = searchData.toDate
             If gReportSearchFilterText IsNot String.Empty Then
                 gReportSearchFilterText += Chr(10) + Chr(13)
             End If
@@ -2707,7 +2845,7 @@ Public Class AgniMainForm
         searchData.paymentSummaryQuery = paymentSummarySearchQuery
         searchPayment(searchData)
 
-        Dim billAndPaymentHistoryQuery As String = getBillAndPaymentHistoryQuery(billSearchQuery, paymentSearchQuery)
+        Dim billAndPaymentHistoryQuery As String = getBillAndPaymentHistoryQuery(searchData, billSearchQuery, paymentSearchQuery)
         searchBillAndPaymentHistory(billAndPaymentHistoryQuery)
 
     End Sub
@@ -2895,7 +3033,13 @@ Public Class AgniMainForm
     End Sub
 
     Sub fetchBillAndPaymentHistoryForReport(ByVal billAndPaymentHistoryQuery As String)
-        Dim billAndPaymentHistoryTable As DataTable = executeQueryAndReturnTable(billAndPaymentHistoryQuery, "BillAndPaymentHistory")
+        Dim resultTableName As String = "BillAndPaymentHistory"
+
+        If (gSearchFilter And SEARCH_BY_CUSTOMER) <> 0 Then
+            resultTableName = "BillAndPaymentHistoryPerCustomer"
+        End If
+
+        Dim billAndPaymentHistoryTable As DataTable = executeQueryAndReturnTable(billAndPaymentHistoryQuery, resultTableName)
 
         If gBillAndPaymentHistoryDataSet IsNot Nothing Then
             gBillAndPaymentHistoryDataSet.Dispose()
@@ -2905,6 +3049,7 @@ Public Class AgniMainForm
     End Sub
 
     Function executeQueryAndReturnTable(searchQuery As String, resultTableName As String) As DataTable
+        log.Debug("executeQueryAndReturnTable: resultTableName:" + resultTableName + ", searchQuery:  " + searchQuery)
         Dim sqlQueryCommand As SqlCommand = New SqlCommand(searchQuery, dbConnection)
         Dim sqlTableAdapter = New SqlDataAdapter()
         sqlTableAdapter.SelectCommand = sqlQueryCommand
@@ -3066,10 +3211,12 @@ Public Class AgniMainForm
     Private Sub cmbReportCustomerList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbReportCustomerList.SelectedIndexChanged
         If (cmbReportCustomerList.SelectedIndex = -1 Or cmbReportCustomerList.SelectedValue = -1) Then
             resetIndexOfComboBox(cmbReportDesignNoList)
+            gSelectedCustNo = -1
             Return
         End If
 
         Dim custNo As Integer = cmbReportCustomerList.SelectedValue
+        gSelectedCustNo = custNo
         loadDesignList(custNo, cmbReportDesignNoList)
 
         If (cmbReportCustomerList.SelectedIndex = -1 Or cmbReportCustomerList.SelectedValue = -1) Then
@@ -3363,23 +3510,4 @@ Public Class AgniMainForm
         End If
     End Sub
 
-    Private Sub btnPrintPaymentDetails_Click(Sender As Object, e As MouseEventArgs) Handles btnPrintPaymentDetails.ClickButtonArea
-
-    End Sub
-
-    Private Sub btnPrintBillAndPaymentDetails_Click(Sender As Object, e As MouseEventArgs) Handles btnPrintBillAndPaymentDetails.ClickButtonArea
-
-    End Sub
-
-    Private Sub btnPrintBillSearchDetails_Click(Sender As Object, e As MouseEventArgs) Handles btnPrintBillSearchDetails.ClickButtonArea
-
-    End Sub
-
-    Private Sub btnPrintGSTDetails_Click(Sender As Object, e As MouseEventArgs) Handles btnPrintGSTDetails.ClickButtonArea
-
-    End Sub
-
-    Private Sub calculateGSTAmountInBilling(sender As Object, e As EventArgs) Handles txtBillingSGSTPercent.TextChanged, txtBillingIGSTPercent.TextChanged, txtBillingCGSTPercent.TextChanged
-
-    End Sub
 End Class

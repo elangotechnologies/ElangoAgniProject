@@ -75,3 +75,5 @@ D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\ElaCustomGroupBoxContro
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\ElaCustomDateTimePrickerControl.dll
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\ElaCustomDateTimePrickerControl.pdb
 D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\ElaCustomDateTimePrickerControl.xml
+D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\NLog.dll
+D:\GitRepository\ElangoAgniProject\AgniProject\bin\Debug\NLog.xml

@@ -91,6 +91,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.Windows.Forms.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.5.4\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -120,6 +124,12 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BillAndPaymentHistoryPerCustomerCrystalReport.vb">
+      <DependentUpon>BillAndPaymentHistoryPerCustomerCrystalReport.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="BillAndPaymentHistoryCrystalReportHolder.Designer.vb">
       <DependentUpon>BillAndPaymentHistoryCrystalReportHolder.vb</DependentUpon>
     </Compile>
@@ -274,6 +284,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="BillAndPaymentHistoryPerCustomerCrystalReport.rpt">
+      <LastGenOutput>BillAndPaymentHistoryPerCustomerCrystalReport.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="BillAndPaymentHistoryCrystalReportHolder.resx">
       <DependentUpon>BillAndPaymentHistoryCrystalReportHolder.vb</DependentUpon>
     </EmbeddedResource>
@@ -382,8 +395,11 @@
   <ItemGroup>
     <Content Include="1270723726_graphic_design.ico" />
     <Content Include="NLog.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Resources\Agnoi logo.png" />
     <None Include="Resources\vasithwam.jpg" />

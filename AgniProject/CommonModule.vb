@@ -9,6 +9,12 @@ Module CommonModule
     Public USER_TYPE_ADMINISTRATOR As Integer = 1
     Public USER_TYPE_GUEST As Integer = 2
 
+    Public SEARCH_BY_CUSTOMER As Integer = 1
+    Public SEARCH_BY_BILL_NO As Integer = 2
+    Public SEARCH_BY_DESIGN_SELECTION As Integer = 4
+    Public SEARCH_BY_DESIGN_NO As Integer = 8
+    Public SEARCH_BY_DATE_RANGE As Integer = 16
+
     Public ATTRIBUTE_ADDRESS_LINE_1 As String = "company_address_line_1"
     Public ATTRIBUTE_ADDRESS_LINE_2 As String = "company_address_line_2"
     Public ATTRIBUTE_ADDRESS_LINE_3 As String = "company_address_line_3"

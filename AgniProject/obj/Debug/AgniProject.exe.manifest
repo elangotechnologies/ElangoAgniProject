@@ -53,14 +53,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AgniProject.exe" size="2230784">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AgniProject.exe" size="2279424">
       <assemblyIdentity name="AgniProject" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>akqvxA+ow4/ONYLrTEjc7/XeUs9WYSVtlduOfFKEGQQ=</dsig:DigestValue>
+        <dsig:DigestValue>CsSCWdmwXZNzrU3FUcWj5xdG4AkT2yrY0WMMVuDVaHM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -461,6 +461,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NLog.dll" size="692736">
+      <assemblyIdentity name="NLog" version="4.0.0.0" publicKeyToken="5120E14C03D0593C" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>C0x/ajkL9DHR3uKWR+8xZ4tjTW/G7CA82Mgxjv8T9qw=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ShockwaveFlashObjects.dll" size="32768">
       <assemblyIdentity name="ShockwaveFlashObjects" version="1.0.0.0" publicKeyToken="692FBEA5521E1304" language="neutral" />
       <hash>
@@ -502,13 +514,13 @@
       <dsig:DigestValue>yYWdvvHgpQc0AD3lFqbOMxwObBciTZzmGmKm9wP8hDw=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="NLog.config" size="823">
+  <file name="NLog.config" size="832">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>MlCbhiH7IlK7SKLjhTpW+NBTxdaMx6o10K169+H0y1c=</dsig:DigestValue>
+      <dsig:DigestValue>8R+YE9mQavWfACh1ddqbmxs+g9q5L/9CKkdahOaUFrg=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
