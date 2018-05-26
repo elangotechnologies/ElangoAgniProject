@@ -111,7 +111,7 @@ Public Class CustomersOutstandingBalances
 
     End Sub
 
-    Private Sub Button21_Click(sender As Object, e As EventArgs) Handles btnPrintOutstandingReport.Click
+    Private Sub Button21_Click(sender As Object, e As EventArgs) Handles btnPrintOutstandingReport.ClickButtonArea
         OutstandingCrystalReportHolder.Show()
     End Sub
 

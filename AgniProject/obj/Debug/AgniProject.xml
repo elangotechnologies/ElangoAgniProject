@@ -22,17 +22,17 @@ AgniProject
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
-<member name="P:AgniProject.My.Resources.Resources.Agnoi_logo">
+<member name="P:AgniProject.My.Resources.Resources.agni_designs_text">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
-<member name="P:AgniProject.My.Resources.Resources.login">
+<member name="P:AgniProject.My.Resources.Resources.AgniLogo">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
-<member name="P:AgniProject.My.Resources.Resources.start">
+<member name="P:AgniProject.My.Resources.Resources.StartupBg">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>

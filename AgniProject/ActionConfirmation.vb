@@ -49,7 +49,7 @@ Public Class ActionConfirmation
         cmbActionConfirmUserName.DataSource = userNameTable
     End Sub
 
-    Private Sub btnbtnActionConfirmationConfirm_Click(sender As Object, e As EventArgs) Handles btnActionConfirmationConfirm.Click
+    Private Sub btnbtnActionConfirmationConfirm_Click(sender As Object, e As EventArgs) Handles btnActionConfirmationConfirm.ClickButtonArea
         If cmbActionConfirmUserName.SelectedValue = -1 Or cmbActionConfirmUserName.SelectedIndex = -1 Then
             MsgBox("Plesae enter an user name")
             cmbActionConfirmUserName.Focus()
@@ -98,7 +98,7 @@ Public Class ActionConfirmation
         Return False
     End Function
 
-    Private Sub btnActionConfirmationCancel_Click(sender As Object, e As EventArgs) Handles btnActionConfirmationCancel.Click
+    Private Sub btnActionConfirmationCancel_Click(sender As Object, e As EventArgs) Handles btnActionConfirmationCancel.ClickButtonArea
         DialogResult = Windows.Forms.DialogResult.Cancel
     End Sub
 

@@ -231,7 +231,7 @@ Public Class BillReportForm
         End Using
     End Sub
 
-    Private Sub btnBillReportExportPdf_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBillReportExportPdf.Click
+    Private Sub btnBillReportExportPdf_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBillReportExportPdf.ClickButtonArea
 
         Dim CrExportOptions As ExportOptions
         Dim CrDiskFileDestinationOptions As New DiskFileDestinationOptions
@@ -259,7 +259,7 @@ Public Class BillReportForm
 
 
 
-    Private Sub btnBillReportPDFPath_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBillReportPDFPath.Click
+    Private Sub btnBillReportPDFPath_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBillReportPDFPath.ClickButtonArea
         Try
             Dim folderDialog As New FolderBrowserDialog
             If folderDialog.ShowDialog() = Windows.Forms.DialogResult.OK Then

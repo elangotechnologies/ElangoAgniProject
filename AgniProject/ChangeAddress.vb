@@ -40,11 +40,11 @@ Public Class ChangeAddress
         txtChangeAddressLine5.Text = addressLine5
     End Sub
 
-    Private Sub btnChangeAddressCancel_Click(sender As Object, e As EventArgs) Handles btnChangeAddressCancel.Click
+    Private Sub btnChangeAddressCancel_Click(sender As Object, e As EventArgs) Handles btnChangeAddressCancel.ClickButtonArea
         Me.Close()
     End Sub
 
-    Private Sub btnChangeAddressConfirm_Click(sender As Object, e As EventArgs) Handles btnChangeAddressConfirm.Click
+    Private Sub btnChangeAddressConfirm_Click(sender As Object, e As EventArgs) Handles btnChangeAddressConfirm.ClickButtonArea
         Dim addressLine1 As String = If(String.IsNullOrEmpty(txtChangeAddressLine1.Text), "", txtChangeAddressLine1.Text)
         Dim addressLine2 As String = If(String.IsNullOrEmpty(txtChangeAddressLine2.Text), "", txtChangeAddressLine2.Text)
         Dim addressLine3 As String = If(String.IsNullOrEmpty(txtChangeAddressLine3.Text), "", txtChangeAddressLine3.Text)

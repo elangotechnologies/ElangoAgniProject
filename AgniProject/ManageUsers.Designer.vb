@@ -19,10 +19,11 @@ Partial Class ManageUsers
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.txtManageUsersRetypePassword = New ElaCustomTextBoxControl.ElaCustomTextBox()
         Me.lblManageUsersPassword = New System.Windows.Forms.Label()
         Me.txtManageUsersPassword = New ElaCustomTextBoxControl.ElaCustomTextBox()
@@ -38,15 +39,15 @@ Partial Class ManageUsers
         Me.Label4 = New System.Windows.Forms.Label()
         Me.gbUsersList = New ElaCustomGroupBoxControl.ElaCustomGroupBox()
         Me.dgManageUsersUsersGrid = New System.Windows.Forms.DataGridView()
+        Me.btnManageUsersCreateUserConfirm = New CButtonLib.CButton()
+        Me.btnManageUsersCreateUserCancel = New CButtonLib.CButton()
+        Me.cmbManageUsersUserName = New ElaCustomComboBoxControl.ElaCustomComboBox()
         Me.UserGridUserId = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.UserGridUserName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.UserGridPassword = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.UserGridType = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.UserGridPasswordOrig = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.UserGridTypeId = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.btnManageUsersCreateUserConfirm = New CButtonLib.CButton()
-        Me.btnManageUsersCreateUserCancel = New CButtonLib.CButton()
-        Me.cmbManageUsersUserName = New ElaCustomComboBoxControl.ElaCustomComboBox()
         Me.gbManageUsersUserType.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbUsersList.SuspendLayout()
@@ -55,8 +56,12 @@ Partial Class ManageUsers
         '
         'txtManageUsersRetypePassword
         '
+        Me.txtManageUsersRetypePassword.BorderColor = System.Drawing.Color.DeepSkyBlue
+        Me.txtManageUsersRetypePassword.BorderColorFocus = System.Drawing.Color.Orange
+        Me.txtManageUsersRetypePassword.BorderColorMouseEnter = System.Drawing.Color.Green
+        Me.txtManageUsersRetypePassword.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
         Me.txtManageUsersRetypePassword.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtManageUsersRetypePassword.Location = New System.Drawing.Point(419, 157)
+        Me.txtManageUsersRetypePassword.Location = New System.Drawing.Point(431, 157)
         Me.txtManageUsersRetypePassword.Name = "txtManageUsersRetypePassword"
         Me.txtManageUsersRetypePassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtManageUsersRetypePassword.Size = New System.Drawing.Size(308, 26)
@@ -66,19 +71,23 @@ Partial Class ManageUsers
         'lblManageUsersPassword
         '
         Me.lblManageUsersPassword.AutoSize = True
-        Me.lblManageUsersPassword.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblManageUsersPassword.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblManageUsersPassword.ForeColor = System.Drawing.Color.White
-        Me.lblManageUsersPassword.Location = New System.Drawing.Point(268, 119)
+        Me.lblManageUsersPassword.Location = New System.Drawing.Point(280, 119)
         Me.lblManageUsersPassword.Name = "lblManageUsersPassword"
-        Me.lblManageUsersPassword.Size = New System.Drawing.Size(78, 18)
+        Me.lblManageUsersPassword.Size = New System.Drawing.Size(86, 19)
         Me.lblManageUsersPassword.TabIndex = 18
         Me.lblManageUsersPassword.Text = "Password"
         Me.lblManageUsersPassword.Visible = False
         '
         'txtManageUsersPassword
         '
+        Me.txtManageUsersPassword.BorderColor = System.Drawing.Color.DeepSkyBlue
+        Me.txtManageUsersPassword.BorderColorFocus = System.Drawing.Color.Orange
+        Me.txtManageUsersPassword.BorderColorMouseEnter = System.Drawing.Color.Green
+        Me.txtManageUsersPassword.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
         Me.txtManageUsersPassword.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtManageUsersPassword.Location = New System.Drawing.Point(419, 113)
+        Me.txtManageUsersPassword.Location = New System.Drawing.Point(431, 113)
         Me.txtManageUsersPassword.Name = "txtManageUsersPassword"
         Me.txtManageUsersPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtManageUsersPassword.Size = New System.Drawing.Size(308, 26)
@@ -87,44 +96,64 @@ Partial Class ManageUsers
         '
         'btnManageUsersCancel
         '
-        Me.btnManageUsersCancel.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnManageUsersCancel.AutoEllipsis = False
+        Me.btnManageUsersCancel.AutoSizeMode = False
+        Me.btnManageUsersCancel.Corners.All = 10
+        Me.btnManageUsersCancel.Corners.LowerLeft = 10
+        Me.btnManageUsersCancel.Corners.LowerRight = 10
+        Me.btnManageUsersCancel.Corners.UpperLeft = 10
+        Me.btnManageUsersCancel.Corners.UpperRight = 10
+        Me.btnManageUsersCancel.DesignerSelected = False
+        Me.btnManageUsersCancel.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnManageUsersCancel.ImageIndex = 0
+        Me.btnManageUsersCancel.ImageKey = 0
         Me.btnManageUsersCancel.Location = New System.Drawing.Point(609, 207)
         Me.btnManageUsersCancel.Name = "btnManageUsersCancel"
         Me.btnManageUsersCancel.Size = New System.Drawing.Size(118, 31)
         Me.btnManageUsersCancel.TabIndex = 6
         Me.btnManageUsersCancel.Text = "Cancel"
-        Me.btnManageUsersCancel.UseVisualStyleBackColor = True
+        Me.btnManageUsersCancel.UseVisualStyleBackColor = False
         '
         'lblManageUsersRetypePassword
         '
         Me.lblManageUsersRetypePassword.AutoSize = True
-        Me.lblManageUsersRetypePassword.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblManageUsersRetypePassword.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblManageUsersRetypePassword.ForeColor = System.Drawing.Color.White
-        Me.lblManageUsersRetypePassword.Location = New System.Drawing.Point(268, 163)
+        Me.lblManageUsersRetypePassword.Location = New System.Drawing.Point(280, 163)
         Me.lblManageUsersRetypePassword.Name = "lblManageUsersRetypePassword"
-        Me.lblManageUsersRetypePassword.Size = New System.Drawing.Size(140, 18)
+        Me.lblManageUsersRetypePassword.Size = New System.Drawing.Size(153, 19)
         Me.lblManageUsersRetypePassword.TabIndex = 17
         Me.lblManageUsersRetypePassword.Text = "Re-Type Password"
         Me.lblManageUsersRetypePassword.Visible = False
         '
         'btnManageUsersCreateUser
         '
-        Me.btnManageUsersCreateUser.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnManageUsersCreateUser.AutoEllipsis = False
+        Me.btnManageUsersCreateUser.AutoSizeMode = False
+        Me.btnManageUsersCreateUser.Corners.All = 10
+        Me.btnManageUsersCreateUser.Corners.LowerLeft = 10
+        Me.btnManageUsersCreateUser.Corners.LowerRight = 10
+        Me.btnManageUsersCreateUser.Corners.UpperLeft = 10
+        Me.btnManageUsersCreateUser.Corners.UpperRight = 10
+        Me.btnManageUsersCreateUser.DesignerSelected = False
+        Me.btnManageUsersCreateUser.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnManageUsersCreateUser.ImageIndex = 0
+        Me.btnManageUsersCreateUser.ImageKey = 0
         Me.btnManageUsersCreateUser.Location = New System.Drawing.Point(361, 207)
         Me.btnManageUsersCreateUser.Name = "btnManageUsersCreateUser"
         Me.btnManageUsersCreateUser.Size = New System.Drawing.Size(118, 31)
         Me.btnManageUsersCreateUser.TabIndex = 4
         Me.btnManageUsersCreateUser.Text = "Create User"
-        Me.btnManageUsersCreateUser.UseVisualStyleBackColor = True
+        Me.btnManageUsersCreateUser.UseVisualStyleBackColor = False
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(268, 30)
+        Me.Label1.Location = New System.Drawing.Point(280, 30)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(87, 18)
+        Me.Label1.Size = New System.Drawing.Size(93, 19)
         Me.Label1.TabIndex = 16
         Me.Label1.Text = "User Name"
         '
@@ -154,11 +183,15 @@ Partial Class ManageUsers
         '
         'gbManageUsersUserType
         '
+        Me.gbManageUsersUserType.BorderColor = System.Drawing.Color.DeepSkyBlue
+        Me.gbManageUsersUserType.BorderColorFocus = System.Drawing.Color.Orange
+        Me.gbManageUsersUserType.BorderColorMouseEnter = System.Drawing.Color.Orange
+        Me.gbManageUsersUserType.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Medium
         Me.gbManageUsersUserType.Controls.Add(Me.rbManageUsersAdmin)
         Me.gbManageUsersUserType.Controls.Add(Me.rbManageUsersGuest)
         Me.gbManageUsersUserType.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbManageUsersUserType.ForeColor = System.Drawing.Color.Black
-        Me.gbManageUsersUserType.Location = New System.Drawing.Point(419, 56)
+        Me.gbManageUsersUserType.Location = New System.Drawing.Point(431, 56)
         Me.gbManageUsersUserType.Name = "gbManageUsersUserType"
         Me.gbManageUsersUserType.Size = New System.Drawing.Size(308, 42)
         Me.gbManageUsersUserType.TabIndex = 1
@@ -166,43 +199,57 @@ Partial Class ManageUsers
         '
         'btnManageUsersDeleteUser
         '
-        Me.btnManageUsersDeleteUser.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnManageUsersDeleteUser.AutoEllipsis = False
+        Me.btnManageUsersDeleteUser.AutoSizeMode = False
+        Me.btnManageUsersDeleteUser.Corners.All = 10
+        Me.btnManageUsersDeleteUser.Corners.LowerLeft = 10
+        Me.btnManageUsersDeleteUser.Corners.LowerRight = 10
+        Me.btnManageUsersDeleteUser.Corners.UpperLeft = 10
+        Me.btnManageUsersDeleteUser.Corners.UpperRight = 10
+        Me.btnManageUsersDeleteUser.DesignerSelected = False
+        Me.btnManageUsersDeleteUser.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnManageUsersDeleteUser.ImageIndex = 0
+        Me.btnManageUsersDeleteUser.ImageKey = 0
         Me.btnManageUsersDeleteUser.Location = New System.Drawing.Point(485, 207)
         Me.btnManageUsersDeleteUser.Name = "btnManageUsersDeleteUser"
         Me.btnManageUsersDeleteUser.Size = New System.Drawing.Size(118, 31)
         Me.btnManageUsersDeleteUser.TabIndex = 5
         Me.btnManageUsersDeleteUser.Text = "Delete User"
-        Me.btnManageUsersDeleteUser.UseVisualStyleBackColor = True
+        Me.btnManageUsersDeleteUser.UseVisualStyleBackColor = False
         '
         'PictureBox1
         '
-        Me.PictureBox1.Image = Global.AgniProject.My.Resources.Resources.login
+        Me.PictureBox1.Image = Global.AgniProject.My.Resources.Resources.AgniLogo
         Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(262, 287)
+        Me.PictureBox1.Size = New System.Drawing.Size(249, 265)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 22
+        Me.PictureBox1.TabIndex = 24
         Me.PictureBox1.TabStop = False
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(268, 73)
+        Me.Label4.Location = New System.Drawing.Point(280, 73)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(78, 18)
+        Me.Label4.Size = New System.Drawing.Size(86, 19)
         Me.Label4.TabIndex = 23
         Me.Label4.Text = "User Type"
         '
         'gbUsersList
         '
+        Me.gbUsersList.BorderColor = System.Drawing.Color.DeepSkyBlue
+        Me.gbUsersList.BorderColorFocus = System.Drawing.Color.Orange
+        Me.gbUsersList.BorderColorMouseEnter = System.Drawing.Color.Orange
+        Me.gbUsersList.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Medium
         Me.gbUsersList.Controls.Add(Me.dgManageUsersUsersGrid)
         Me.gbUsersList.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbUsersList.ForeColor = System.Drawing.Color.White
         Me.gbUsersList.Location = New System.Drawing.Point(0, 293)
         Me.gbUsersList.Name = "gbUsersList"
-        Me.gbUsersList.Size = New System.Drawing.Size(742, 322)
+        Me.gbUsersList.Size = New System.Drawing.Size(785, 322)
         Me.gbUsersList.TabIndex = 9
         Me.gbUsersList.TabStop = False
         Me.gbUsersList.Text = "User List"
@@ -211,30 +258,30 @@ Partial Class ManageUsers
         '
         Me.dgManageUsersUsersGrid.AllowUserToAddRows = False
         Me.dgManageUsersUsersGrid.AllowUserToDeleteRows = False
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.dgManageUsersUsersGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.dgManageUsersUsersGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dgManageUsersUsersGrid.BackgroundColor = System.Drawing.Color.Lavender
         Me.dgManageUsersUsersGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgManageUsersUsersGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical
         Me.dgManageUsersUsersGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.RoyalBlue
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgManageUsersUsersGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgManageUsersUsersGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgManageUsersUsersGrid.ColumnHeadersHeight = 35
         Me.dgManageUsersUsersGrid.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.UserGridUserId, Me.UserGridUserName, Me.UserGridPassword, Me.UserGridType, Me.UserGridPasswordOrig, Me.UserGridTypeId})
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgManageUsersUsersGrid.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgManageUsersUsersGrid.DefaultCellStyle = DataGridViewCellStyle3
         Me.dgManageUsersUsersGrid.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgManageUsersUsersGrid.EnableHeadersVisualStyles = False
         Me.dgManageUsersUsersGrid.GridColor = System.Drawing.Color.Maroon
@@ -243,17 +290,82 @@ Partial Class ManageUsers
         Me.dgManageUsersUsersGrid.Name = "dgManageUsersUsersGrid"
         Me.dgManageUsersUsersGrid.ReadOnly = True
         Me.dgManageUsersUsersGrid.RowHeadersVisible = False
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.Lavender
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgManageUsersUsersGrid.RowsDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.Lavender
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgManageUsersUsersGrid.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.dgManageUsersUsersGrid.RowTemplate.Height = 25
         Me.dgManageUsersUsersGrid.RowTemplate.ReadOnly = True
         Me.dgManageUsersUsersGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgManageUsersUsersGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgManageUsersUsersGrid.Size = New System.Drawing.Size(736, 297)
+        Me.dgManageUsersUsersGrid.Size = New System.Drawing.Size(779, 297)
         Me.dgManageUsersUsersGrid.TabIndex = 0
+        '
+        'btnManageUsersCreateUserConfirm
+        '
+        Me.btnManageUsersCreateUserConfirm.AutoEllipsis = False
+        Me.btnManageUsersCreateUserConfirm.AutoSizeMode = False
+        Me.btnManageUsersCreateUserConfirm.Corners.All = 10
+        Me.btnManageUsersCreateUserConfirm.Corners.LowerLeft = 10
+        Me.btnManageUsersCreateUserConfirm.Corners.LowerRight = 10
+        Me.btnManageUsersCreateUserConfirm.Corners.UpperLeft = 10
+        Me.btnManageUsersCreateUserConfirm.Corners.UpperRight = 10
+        Me.btnManageUsersCreateUserConfirm.DesignerSelected = False
+        Me.btnManageUsersCreateUserConfirm.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnManageUsersCreateUserConfirm.ImageIndex = 0
+        Me.btnManageUsersCreateUserConfirm.ImageKey = 0
+        Me.btnManageUsersCreateUserConfirm.Location = New System.Drawing.Point(431, 234)
+        Me.btnManageUsersCreateUserConfirm.Name = "btnManageUsersCreateUserConfirm"
+        Me.btnManageUsersCreateUserConfirm.Size = New System.Drawing.Size(118, 31)
+        Me.btnManageUsersCreateUserConfirm.TabIndex = 7
+        Me.btnManageUsersCreateUserConfirm.Text = "Confirm"
+        Me.btnManageUsersCreateUserConfirm.UseVisualStyleBackColor = False
+        Me.btnManageUsersCreateUserConfirm.Visible = False
+        '
+        'btnManageUsersCreateUserCancel
+        '
+        Me.btnManageUsersCreateUserCancel.AutoEllipsis = False
+        Me.btnManageUsersCreateUserCancel.AutoSizeMode = False
+        Me.btnManageUsersCreateUserCancel.Corners.All = 10
+        Me.btnManageUsersCreateUserCancel.Corners.LowerLeft = 10
+        Me.btnManageUsersCreateUserCancel.Corners.LowerRight = 10
+        Me.btnManageUsersCreateUserCancel.Corners.UpperLeft = 10
+        Me.btnManageUsersCreateUserCancel.Corners.UpperRight = 10
+        Me.btnManageUsersCreateUserCancel.DesignerSelected = False
+        Me.btnManageUsersCreateUserCancel.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnManageUsersCreateUserCancel.ImageIndex = 0
+        Me.btnManageUsersCreateUserCancel.ImageKey = 0
+        Me.btnManageUsersCreateUserCancel.Location = New System.Drawing.Point(555, 234)
+        Me.btnManageUsersCreateUserCancel.Name = "btnManageUsersCreateUserCancel"
+        Me.btnManageUsersCreateUserCancel.Size = New System.Drawing.Size(118, 31)
+        Me.btnManageUsersCreateUserCancel.TabIndex = 8
+        Me.btnManageUsersCreateUserCancel.Text = "Back"
+        Me.btnManageUsersCreateUserCancel.UseVisualStyleBackColor = False
+        Me.btnManageUsersCreateUserCancel.Visible = False
+        '
+        'cmbManageUsersUserName
+        '
+        Me.cmbManageUsersUserName.ArrowSquareColor = System.Drawing.Color.DeepSkyBlue
+        Me.cmbManageUsersUserName.ArrowSquareColorFocus = System.Drawing.Color.Orange
+        Me.cmbManageUsersUserName.ArrowSquareColorMouseEnter = System.Drawing.Color.Green
+        Me.cmbManageUsersUserName.ArrowTriangleColor = System.Drawing.Color.Gray
+        Me.cmbManageUsersUserName.ArrowTriangleColorFocus = System.Drawing.Color.Gray
+        Me.cmbManageUsersUserName.ArrowTriangleColorMouseEnter = System.Drawing.Color.White
+        Me.cmbManageUsersUserName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cmbManageUsersUserName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cmbManageUsersUserName.BorderColor = System.Drawing.Color.DeepSkyBlue
+        Me.cmbManageUsersUserName.BorderColorFocus = System.Drawing.Color.Orange
+        Me.cmbManageUsersUserName.BorderColorMouseEnter = System.Drawing.Color.Green
+        Me.cmbManageUsersUserName.BorderThickness = ElaCustomComboBoxControl.ElaCustomComboBox.BorderThicknessEnum.Thick
+        Me.cmbManageUsersUserName.DisplayMember = "username"
+        Me.cmbManageUsersUserName.Font = New System.Drawing.Font("Arial", 12.0!)
+        Me.cmbManageUsersUserName.FormattingEnabled = True
+        Me.cmbManageUsersUserName.Location = New System.Drawing.Point(431, 26)
+        Me.cmbManageUsersUserName.Name = "cmbManageUsersUserName"
+        Me.cmbManageUsersUserName.Size = New System.Drawing.Size(308, 26)
+        Me.cmbManageUsersUserName.TabIndex = 0
+        Me.cmbManageUsersUserName.ValueMember = "id"
         '
         'UserGridUserId
         '
@@ -277,7 +389,7 @@ Partial Class ManageUsers
         Me.UserGridPassword.HeaderText = "Password"
         Me.UserGridPassword.Name = "UserGridPassword"
         Me.UserGridPassword.ReadOnly = True
-        Me.UserGridPassword.Width = 140
+        Me.UserGridPassword.Width = 150
         '
         'UserGridType
         '
@@ -285,7 +397,7 @@ Partial Class ManageUsers
         Me.UserGridType.HeaderText = "User Type"
         Me.UserGridType.Name = "UserGridType"
         Me.UserGridType.ReadOnly = True
-        Me.UserGridType.Width = 236
+        Me.UserGridType.Width = 250
         '
         'UserGridPasswordOrig
         '
@@ -303,47 +415,13 @@ Partial Class ManageUsers
         Me.UserGridTypeId.ReadOnly = True
         Me.UserGridTypeId.Visible = False
         '
-        'btnManageUsersCreateUserConfirm
-        '
-        Me.btnManageUsersCreateUserConfirm.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnManageUsersCreateUserConfirm.Location = New System.Drawing.Point(431, 234)
-        Me.btnManageUsersCreateUserConfirm.Name = "btnManageUsersCreateUserConfirm"
-        Me.btnManageUsersCreateUserConfirm.Size = New System.Drawing.Size(118, 31)
-        Me.btnManageUsersCreateUserConfirm.TabIndex = 7
-        Me.btnManageUsersCreateUserConfirm.Text = "Confirm"
-        Me.btnManageUsersCreateUserConfirm.UseVisualStyleBackColor = True
-        Me.btnManageUsersCreateUserConfirm.Visible = False
-        '
-        'btnManageUsersCreateUserCancel
-        '
-        Me.btnManageUsersCreateUserCancel.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnManageUsersCreateUserCancel.Location = New System.Drawing.Point(555, 234)
-        Me.btnManageUsersCreateUserCancel.Name = "btnManageUsersCreateUserCancel"
-        Me.btnManageUsersCreateUserCancel.Size = New System.Drawing.Size(118, 31)
-        Me.btnManageUsersCreateUserCancel.TabIndex = 8
-        Me.btnManageUsersCreateUserCancel.Text = "Back"
-        Me.btnManageUsersCreateUserCancel.UseVisualStyleBackColor = True
-        Me.btnManageUsersCreateUserCancel.Visible = False
-        '
-        'cmbManageUsersUserName
-        '
-        Me.cmbManageUsersUserName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.cmbManageUsersUserName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.cmbManageUsersUserName.DisplayMember = "username"
-        Me.cmbManageUsersUserName.Font = New System.Drawing.Font("Arial", 12.0!)
-        Me.cmbManageUsersUserName.FormattingEnabled = True
-        Me.cmbManageUsersUserName.Location = New System.Drawing.Point(419, 26)
-        Me.cmbManageUsersUserName.Name = "cmbManageUsersUserName"
-        Me.cmbManageUsersUserName.Size = New System.Drawing.Size(308, 26)
-        Me.cmbManageUsersUserName.TabIndex = 0
-        Me.cmbManageUsersUserName.ValueMember = "id"
-        '
         'ManageUsers
         '
+        Me.AcceptButton = Me.btnManageUsersCreateUser
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(156, Byte), Integer), CType(CType(213, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(739, 613)
+        Me.ClientSize = New System.Drawing.Size(784, 613)
         Me.Controls.Add(Me.cmbManageUsersUserName)
         Me.Controls.Add(Me.btnManageUsersCreateUserCancel)
         Me.Controls.Add(Me.btnManageUsersCreateUserConfirm)

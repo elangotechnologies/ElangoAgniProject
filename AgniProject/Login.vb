@@ -15,8 +15,8 @@ Public Class Login
         dbConnection = getDBConnection()
 
         loadUserNameList()
-
         Me.AcceptButton = btnLoginLogin
+
     End Sub
 
     Public Sub loadUserNameList()
@@ -49,34 +49,6 @@ Public Class Login
         cmbLoginUserName.DataSource = userNameTable
     End Sub
 
-    Private Sub btnLoginLogin_Click(sender As Object, e As EventArgs) Handles btnLoginLogin.Click
-        If cmbLoginUserName.SelectedValue = -1 Or cmbLoginUserName.SelectedIndex = -1 Then
-            MsgBox("Plesae enter an user name")
-            cmbLoginUserName.Focus()
-            Return
-        ElseIf txtLoginPassword.Text.Trim Is String.Empty Then
-            MsgBox("Plesae enter the password")
-            txtLoginPassword.Focus()
-            Return
-        End If
-
-        Dim userName As String = cmbLoginUserName.Text.Trim
-        Dim password As String = txtLoginPassword.Text.Trim
-
-        Dim isLoginSuccess As Boolean = verifyCredential(userName, password)
-        If isLoginSuccess = True Then
-            Me.Hide()
-            AgniMainForm.btnLogOff.Text = "Log Off " + userName
-            AgniMainForm.tabAllTabsHolder.SelectedIndex = 0
-            AgniMainForm.Show()
-
-        Else
-            MsgBox("Invalid login credentails. Please check the user name and password.")
-            Return
-        End If
-
-    End Sub
-
     Private Function verifyCredential(userName As String, password As String) As Boolean
         'log.Debug("login query: " + "select id from users where username='" + userName + "' and password='" + password + "'")
 
@@ -106,16 +78,45 @@ Public Class Login
         Return False
     End Function
 
-    Private Sub btnLoginCancel_Click(sender As Object, e As EventArgs) Handles btnLoginCancel.Click
+    Private Sub btnLoginCancel_Click(sender As Object, e As EventArgs) Handles btnLoginCancel.ClickButtonArea
         Me.Close()
     End Sub
 
-    Private Sub btnLoginChangePassword_Click(sender As Object, e As EventArgs) Handles btnLoginChangePassword.Click
+    Private Sub btnLoginChangePassword_Click(sender As Object, e As EventArgs) Handles btnLoginChangePassword.ClickButtonArea
         Me.Hide()
         ChangePassword.Show()
     End Sub
 
-    Private Sub btnLoginManageUsers_Click(sender As Object, e As EventArgs) Handles btnLoginManageUsers.Click
+    Private Sub btnLoginLogin_ClickButtonArea(Sender As Object, e As MouseEventArgs) Handles btnLoginLogin.ClickButtonArea
+
+        If cmbLoginUserName.SelectedValue = -1 Or cmbLoginUserName.SelectedIndex = -1 Then
+            MsgBox("Plesae enter an user name")
+            cmbLoginUserName.Focus()
+            Return
+        ElseIf txtLoginPassword.Text.Trim Is String.Empty Then
+            MsgBox("Plesae enter the password")
+            txtLoginPassword.Focus()
+            Return
+        End If
+
+        Dim userName As String = cmbLoginUserName.Text.Trim
+        Dim password As String = txtLoginPassword.Text.Trim
+
+        Dim isLoginSuccess As Boolean = verifyCredential(userName, password)
+        If isLoginSuccess = True Then
+            Me.Hide()
+            AgniMainForm.btnLogOff.Text = "Log Off " + userName
+            AgniMainForm.tabAllTabsHolder.SelectedIndex = 0
+            AgniMainForm.Show()
+
+        Else
+            MsgBox("Invalid login credentails. Please check the user name and password.")
+            Return
+        End If
+
+    End Sub
+
+    Private Sub btnLoginManageUsers_Click(sender As Object, e As EventArgs) Handles btnLoginManageUsers.ClickButtonArea
 
         If cmbLoginUserName.SelectedValue = -1 Or cmbLoginUserName.SelectedIndex = -1 Then
             MsgBox("Plesae enter an user name")
@@ -139,5 +140,9 @@ Public Class Login
             Return
         End If
 
+    End Sub
+
+    Private Sub Login_KeyUp(sender As Object, e As KeyEventArgs) Handles MyBase.KeyUp
+        If e.KeyCode = Keys.Escape Then Me.Close()
     End Sub
 End Class

@@ -19,6 +19,7 @@ Partial Class ChangePassword
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.txtChangePwdNewPassword = New ElaCustomTextBoxControl.ElaCustomTextBox()
         Me.btnChangePwdCancel = New CButtonLib.CButton()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -35,6 +36,10 @@ Partial Class ChangePassword
         '
         'txtChangePwdNewPassword
         '
+        Me.txtChangePwdNewPassword.BorderColor = System.Drawing.Color.DeepSkyBlue
+        Me.txtChangePwdNewPassword.BorderColorFocus = System.Drawing.Color.Orange
+        Me.txtChangePwdNewPassword.BorderColorMouseEnter = System.Drawing.Color.Green
+        Me.txtChangePwdNewPassword.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
         Me.txtChangePwdNewPassword.Font = New System.Drawing.Font("Arial", 12.0!)
         Me.txtChangePwdNewPassword.Location = New System.Drawing.Point(422, 117)
         Me.txtChangePwdNewPassword.Name = "txtChangePwdNewPassword"
@@ -44,13 +49,18 @@ Partial Class ChangePassword
         '
         'btnChangePwdCancel
         '
+        Me.btnChangePwdCancel.AutoEllipsis = False
+        Me.btnChangePwdCancel.AutoSizeMode = False
+        Me.btnChangePwdCancel.DesignerSelected = False
         Me.btnChangePwdCancel.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnChangePwdCancel.ImageIndex = 0
+        Me.btnChangePwdCancel.ImageKey = 0
         Me.btnChangePwdCancel.Location = New System.Drawing.Point(576, 224)
         Me.btnChangePwdCancel.Name = "btnChangePwdCancel"
         Me.btnChangePwdCancel.Size = New System.Drawing.Size(136, 31)
         Me.btnChangePwdCancel.TabIndex = 5
         Me.btnChangePwdCancel.Text = "Cancel"
-        Me.btnChangePwdCancel.UseVisualStyleBackColor = True
+        Me.btnChangePwdCancel.UseVisualStyleBackColor = False
         '
         'Label2
         '
@@ -65,13 +75,18 @@ Partial Class ChangePassword
         '
         'btnChangePwdConfim
         '
+        Me.btnChangePwdConfim.AutoEllipsis = False
+        Me.btnChangePwdConfim.AutoSizeMode = False
+        Me.btnChangePwdConfim.DesignerSelected = False
         Me.btnChangePwdConfim.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnChangePwdConfim.ImageIndex = 0
+        Me.btnChangePwdConfim.ImageKey = 0
         Me.btnChangePwdConfim.Location = New System.Drawing.Point(422, 224)
         Me.btnChangePwdConfim.Name = "btnChangePwdConfim"
         Me.btnChangePwdConfim.Size = New System.Drawing.Size(136, 31)
         Me.btnChangePwdConfim.TabIndex = 4
         Me.btnChangePwdConfim.Text = "Confirm"
-        Me.btnChangePwdConfim.UseVisualStyleBackColor = True
+        Me.btnChangePwdConfim.UseVisualStyleBackColor = False
         '
         'Label3
         '
@@ -86,6 +101,10 @@ Partial Class ChangePassword
         '
         'txtChangePwdRetypeNewPassword
         '
+        Me.txtChangePwdRetypeNewPassword.BorderColor = System.Drawing.Color.DeepSkyBlue
+        Me.txtChangePwdRetypeNewPassword.BorderColorFocus = System.Drawing.Color.Orange
+        Me.txtChangePwdRetypeNewPassword.BorderColorMouseEnter = System.Drawing.Color.Green
+        Me.txtChangePwdRetypeNewPassword.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
         Me.txtChangePwdRetypeNewPassword.Font = New System.Drawing.Font("Arial", 12.0!)
         Me.txtChangePwdRetypeNewPassword.Location = New System.Drawing.Point(422, 162)
         Me.txtChangePwdRetypeNewPassword.Name = "txtChangePwdRetypeNewPassword"
@@ -93,21 +112,20 @@ Partial Class ChangePassword
         Me.txtChangePwdRetypeNewPassword.Size = New System.Drawing.Size(306, 26)
         Me.txtChangePwdRetypeNewPassword.TabIndex = 3
         '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(156, Byte), Integer), CType(CType(213, Byte), Integer))
-        Me.PictureBox1.Image = Global.AgniProject.My.Resources.Resources.login
-        Me.PictureBox1.Location = New System.Drawing.Point(-2, -1)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(262, 269)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 11
-        Me.PictureBox1.TabStop = False
-        '
         'cmbChangePwdUserName
         '
+        Me.cmbChangePwdUserName.ArrowSquareColor = System.Drawing.Color.DeepSkyBlue
+        Me.cmbChangePwdUserName.ArrowSquareColorFocus = System.Drawing.Color.Orange
+        Me.cmbChangePwdUserName.ArrowSquareColorMouseEnter = System.Drawing.Color.Green
+        Me.cmbChangePwdUserName.ArrowTriangleColor = System.Drawing.Color.Gray
+        Me.cmbChangePwdUserName.ArrowTriangleColorFocus = System.Drawing.Color.Gray
+        Me.cmbChangePwdUserName.ArrowTriangleColorMouseEnter = System.Drawing.Color.White
         Me.cmbChangePwdUserName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
         Me.cmbChangePwdUserName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cmbChangePwdUserName.BorderColor = System.Drawing.Color.DeepSkyBlue
+        Me.cmbChangePwdUserName.BorderColorFocus = System.Drawing.Color.Orange
+        Me.cmbChangePwdUserName.BorderColorMouseEnter = System.Drawing.Color.Green
+        Me.cmbChangePwdUserName.BorderThickness = ElaCustomComboBoxControl.ElaCustomComboBox.BorderThicknessEnum.Thick
         Me.cmbChangePwdUserName.DisplayMember = "username"
         Me.cmbChangePwdUserName.Font = New System.Drawing.Font("Arial", 12.0!)
         Me.cmbChangePwdUserName.FormattingEnabled = True
@@ -119,6 +137,10 @@ Partial Class ChangePassword
         '
         'txtChangePwdOldPassword
         '
+        Me.txtChangePwdOldPassword.BorderColor = System.Drawing.Color.DeepSkyBlue
+        Me.txtChangePwdOldPassword.BorderColorFocus = System.Drawing.Color.Orange
+        Me.txtChangePwdOldPassword.BorderColorMouseEnter = System.Drawing.Color.Green
+        Me.txtChangePwdOldPassword.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
         Me.txtChangePwdOldPassword.Font = New System.Drawing.Font("Arial", 12.0!)
         Me.txtChangePwdOldPassword.Location = New System.Drawing.Point(422, 70)
         Me.txtChangePwdOldPassword.Name = "txtChangePwdOldPassword"
@@ -150,6 +172,7 @@ Partial Class ChangePassword
         '
         'ChangePassword
         '
+        Me.AcceptButton = Me.btnChangePwdConfim
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(156, Byte), Integer), CType(CType(213, Byte), Integer))

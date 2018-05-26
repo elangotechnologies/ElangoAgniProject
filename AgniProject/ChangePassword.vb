@@ -49,7 +49,7 @@ Public Class ChangePassword
         cmbChangePwdUserName.DataSource = userNameTable
     End Sub
 
-    Private Sub btnChangePwdConfim_Click(sender As Object, e As EventArgs) Handles btnChangePwdConfim.Click
+    Private Sub btnChangePwdConfim_Click(sender As Object, e As EventArgs) Handles btnChangePwdConfim.ClickButtonArea
         If cmbChangePwdUserName.SelectedValue = -1 Or cmbChangePwdUserName.SelectedIndex = -1 Then
             MsgBox("Please enter an user name")
             cmbChangePwdUserName.Focus()
@@ -157,7 +157,7 @@ Public Class ChangePassword
         Login.Show()
     End Sub
 
-    Private Sub btnChangePwdCancel_Click(sender As Object, e As EventArgs) Handles btnChangePwdCancel.Click
+    Private Sub btnChangePwdCancel_Click(sender As Object, e As EventArgs) Handles btnChangePwdCancel.ClickButtonArea
         Me.Close()
         Login.Show()
     End Sub

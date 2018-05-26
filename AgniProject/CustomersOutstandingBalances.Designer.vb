@@ -19,6 +19,7 @@ Partial Class CustomersOutstandingBalances
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -88,9 +89,14 @@ Partial Class CustomersOutstandingBalances
         '
         'GroupBox5
         '
+        Me.GroupBox5.BorderColor = System.Drawing.Color.DeepSkyBlue
+        Me.GroupBox5.BorderColorFocus = System.Drawing.Color.Orange
+        Me.GroupBox5.BorderColorMouseEnter = System.Drawing.Color.Orange
+        Me.GroupBox5.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Medium
         Me.GroupBox5.Controls.Add(Me.dgCustomerBillSummary)
         Me.GroupBox5.Dock = System.Windows.Forms.DockStyle.Top
         Me.GroupBox5.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox5.ForeColor = System.Drawing.Color.Black
         Me.GroupBox5.Location = New System.Drawing.Point(0, 0)
         Me.GroupBox5.Name = "GroupBox5"
         Me.GroupBox5.Size = New System.Drawing.Size(1916, 837)
@@ -121,7 +127,7 @@ Partial Class CustomersOutstandingBalances
         DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle15.BackColor = System.Drawing.Color.LightSteelBlue
         DataGridViewCellStyle15.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black
         DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
@@ -279,6 +285,10 @@ Partial Class CustomersOutstandingBalances
         '
         'GroupBox2
         '
+        Me.GroupBox2.BorderColor = System.Drawing.Color.DeepSkyBlue
+        Me.GroupBox2.BorderColorFocus = System.Drawing.Color.Orange
+        Me.GroupBox2.BorderColorMouseEnter = System.Drawing.Color.Orange
+        Me.GroupBox2.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Medium
         Me.GroupBox2.Controls.Add(Me.Label1)
         Me.GroupBox2.Controls.Add(Me.lblOutstandingBalance)
         Me.GroupBox2.Controls.Add(Me.lblTotalPaidAmount)
@@ -299,6 +309,7 @@ Partial Class CustomersOutstandingBalances
         Me.GroupBox2.Controls.Add(Me.lblActualPaidAmount)
         Me.GroupBox2.Controls.Add(Me.Label9)
         Me.GroupBox2.Controls.Add(Me.Label5)
+        Me.GroupBox2.ForeColor = System.Drawing.Color.Black
         Me.GroupBox2.Location = New System.Drawing.Point(11, 21)
         Me.GroupBox2.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupBox2.Name = "GroupBox2"
@@ -559,20 +570,35 @@ Partial Class CustomersOutstandingBalances
         '
         'btnPrintOutstandingReport
         '
+        Me.btnPrintOutstandingReport.AutoEllipsis = False
+        Me.btnPrintOutstandingReport.AutoSizeMode = False
+        Me.btnPrintOutstandingReport.Corners.All = 10
+        Me.btnPrintOutstandingReport.Corners.LowerLeft = 10
+        Me.btnPrintOutstandingReport.Corners.LowerRight = 10
+        Me.btnPrintOutstandingReport.Corners.UpperLeft = 10
+        Me.btnPrintOutstandingReport.Corners.UpperRight = 10
+        Me.btnPrintOutstandingReport.DesignerSelected = True
         Me.btnPrintOutstandingReport.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
+        Me.btnPrintOutstandingReport.ImageIndex = 0
+        Me.btnPrintOutstandingReport.ImageKey = 0
         Me.btnPrintOutstandingReport.Location = New System.Drawing.Point(1683, 112)
         Me.btnPrintOutstandingReport.Name = "btnPrintOutstandingReport"
         Me.btnPrintOutstandingReport.Size = New System.Drawing.Size(228, 49)
         Me.btnPrintOutstandingReport.TabIndex = 126
         Me.btnPrintOutstandingReport.Text = "Print This Report"
-        Me.btnPrintOutstandingReport.UseVisualStyleBackColor = True
+        Me.btnPrintOutstandingReport.UseVisualStyleBackColor = False
         '
         'GroupBox1
         '
+        Me.GroupBox1.BorderColor = System.Drawing.Color.DeepSkyBlue
+        Me.GroupBox1.BorderColorFocus = System.Drawing.Color.Orange
+        Me.GroupBox1.BorderColorMouseEnter = System.Drawing.Color.Orange
+        Me.GroupBox1.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Medium
         Me.GroupBox1.Controls.Add(Me.btnPrintOutstandingReport)
         Me.GroupBox1.Controls.Add(Me.GroupBox2)
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.ForeColor = System.Drawing.Color.Black
         Me.GroupBox1.Location = New System.Drawing.Point(0, 855)
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupBox1.Name = "GroupBox1"
@@ -584,6 +610,7 @@ Partial Class CustomersOutstandingBalances
         '
         'CustomersOutstandingBalances
         '
+        Me.AcceptButton = Me.btnPrintOutstandingReport
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White

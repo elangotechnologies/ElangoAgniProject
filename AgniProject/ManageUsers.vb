@@ -78,7 +78,7 @@ Public Class ManageUsers
 
     End Sub
 
-    Private Sub btnManageUsersCreateUser_Click(sender As Object, e As EventArgs) Handles btnManageUsersCreateUser.Click
+    Private Sub btnManageUsersCreateUser_Click(sender As Object, e As EventArgs) Handles btnManageUsersCreateUser.ClickButtonArea
         setInUserCreationMode(True)
 
         cmbManageUsersUserName.Focus()
@@ -105,7 +105,7 @@ Public Class ManageUsers
         btnManageUsersDeleteUser.Enabled = adminMode
     End Sub
 
-    Private Sub btnManageUsersCreateUserCancel_Click(sender As Object, e As EventArgs) Handles btnManageUsersCreateUserCancel.Click
+    Private Sub btnManageUsersCreateUserCancel_Click(sender As Object, e As EventArgs) Handles btnManageUsersCreateUserCancel.ClickButtonArea
         setInUserCreationMode(False)
     End Sub
 
@@ -137,7 +137,7 @@ Public Class ManageUsers
         End If
     End Sub
 
-    Private Sub btnManageUsersDeleteUser_Click(sender As Object, e As EventArgs) Handles btnManageUsersDeleteUser.Click
+    Private Sub btnManageUsersDeleteUser_Click(sender As Object, e As EventArgs) Handles btnManageUsersDeleteUser.ClickButtonArea
         Dim userId As Integer = cmbManageUsersUserName.SelectedValue
 
         Dim query As String = "delete from users where id=@userid"
@@ -158,7 +158,7 @@ Public Class ManageUsers
         Login.loadUserNameList()
     End Sub
 
-    Private Sub btnManageUsersCreateUserConfirm_Click(sender As Object, e As EventArgs) Handles btnManageUsersCreateUserConfirm.Click
+    Private Sub btnManageUsersCreateUserConfirm_Click(sender As Object, e As EventArgs) Handles btnManageUsersCreateUserConfirm.ClickButtonArea
 
         Try
 
@@ -226,7 +226,7 @@ Public Class ManageUsers
 
     End Sub
 
-    Private Sub btnManageUsersCancel_Click(sender As Object, e As EventArgs) Handles btnManageUsersCancel.Click
+    Private Sub btnManageUsersCancel_Click(sender As Object, e As EventArgs) Handles btnManageUsersCancel.ClickButtonArea
         Me.Close()
         Login.Show()
     End Sub

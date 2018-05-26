@@ -124,6 +124,12 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Agni_StartupScreen.Designer.vb">
+      <DependentUpon>Agni_StartupScreen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Agni_StartupScreen.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="BillAndPaymentHistoryPerCustomerCrystalReport.vb">
       <DependentUpon>BillAndPaymentHistoryPerCustomerCrystalReport.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -276,14 +282,11 @@
     <Compile Include="ActionConfirmation.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Startup_SplashScreen.Designer.vb">
-      <DependentUpon>Startup_SplashScreen.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Startup_SplashScreen.vb">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Agni_StartupScreen.resx">
+      <DependentUpon>Agni_StartupScreen.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BillAndPaymentHistoryPerCustomerCrystalReport.rpt">
       <LastGenOutput>BillAndPaymentHistoryPerCustomerCrystalReport.vb</LastGenOutput>
     </EmbeddedResource>
@@ -359,9 +362,6 @@
       <SubType>Designer</SubType>
       <DependentUpon>ActionConfirmation.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Startup_SplashScreen.resx">
-      <DependentUpon>Startup_SplashScreen.vb</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -397,14 +397,15 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\8481.jpg" />
+    <None Include="Resources\Walls_071.jpg" />
+    <None Include="Resources\agni designs text.png" />
+    <None Include="Resources\StartupBg.png" />
+    <None Include="Resources\AgniLogo.png" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <None Include="Resources\Agnoi logo.png" />
-    <None Include="Resources\vasithwam.jpg" />
-    <None Include="Resources\login.jpg" />
-    <None Include="Resources\start.jpg" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="BusinessObjects.CrystalReports.NET.2.0">
