@@ -53,14 +53,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AgniProject.exe" size="6686720">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AgniProject.exe" size="23981056">
       <assemblyIdentity name="AgniProject" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>zCkP3h9QTbPa3RLEZMJZSshj+oe1sOVApOfvP1LbGlQ=</dsig:DigestValue>
+        <dsig:DigestValue>AhhjkP6cn/MYk1jC7LU8+DXvY48hvj6lF6J9fIpkkzE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

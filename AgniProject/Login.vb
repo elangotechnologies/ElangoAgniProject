@@ -83,8 +83,18 @@ Public Class Login
     End Sub
 
     Private Sub btnLoginChangePassword_Click(sender As Object, e As EventArgs) Handles btnLoginChangePassword.ClickButtonArea
-        Me.Hide()
         ChangePassword.Show()
+        Me.Hide()
+    End Sub
+
+    Sub showLoadingScreen()
+        Dim thread As Thread = New Thread(AddressOf showLoadingScreenThread)
+        thread.IsBackground = True
+        thread.Start()
+    End Sub
+
+    Sub showLoadingScreenThread()
+        Loading.Show()
     End Sub
 
     Private Sub btnLoginLogin_ClickButtonArea(Sender As Object, e As MouseEventArgs) Handles btnLoginLogin.ClickButtonArea
@@ -103,12 +113,9 @@ Public Class Login
         Dim password As String = txtLoginPassword.Text.Trim
 
         Dim isLoginSuccess As Boolean = verifyCredential(userName, password)
-        If isLoginSuccess = True Then
-            Me.Hide()
-            AgniMainForm.btnLogOff.Text = "Log Off " + userName
-            AgniMainForm.tabAllTabsHolder.SelectedIndex = 0
-            AgniMainForm.Show()
 
+        If isLoginSuccess = True Then
+            Loading.Show()
         Else
             MsgBox("Invalid login credentails. Please check the user name and password.")
             Return
@@ -133,8 +140,8 @@ Public Class Login
 
         Dim isLoginSuccess As Boolean = verifyCredential(userName, password)
         If isLoginSuccess = True Then
-            Me.Hide()
             ManageUsers.Show()
+            Me.Hide()
         Else
             MsgBox("Invalid user credentails. Please check the user name and password.")
             Return

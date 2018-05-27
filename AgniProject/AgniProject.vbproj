@@ -186,6 +186,12 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Loading.Designer.vb">
+      <DependentUpon>Loading.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Loading.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PaymentSearchCrystalReport.vb">
       <DependentUpon>PaymentSearchCrystalReport.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -316,6 +322,9 @@
     <EmbeddedResource Include="BillAndPaymentHistoryCrystalReport.rpt">
       <LastGenOutput>BillAndPaymentHistoryCrystalReport.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Loading.resx">
+      <DependentUpon>Loading.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PaymentSearchCrystalReport.rpt">
       <LastGenOutput>PaymentSearchCrystalReport.vb</LastGenOutput>
     </EmbeddedResource>
@@ -397,6 +406,18 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\loading.gif" />
+    <None Include="Resources\loading7_blue.gif" />
+    <None Include="Resources\SilkySourIbis-max-1mb.gif" />
+    <None Include="Resources\loading %281%29.gif" />
+    <None Include="Resources\preloader.gif" />
+    <None Include="Resources\loading1.gif" />
+    <None Include="Resources\ajax-loader.gif" />
+    <None Include="Resources\loading %283%29.gif" />
+    <None Include="Resources\m-wait.gif" />
+    <None Include="Resources\oie_29201136k5KHYZj4_kyvoja.gif" />
+    <None Include="Resources\loading %285%29.gif" />
+    <None Include="Resources\lg.harmony-taiji-spinner.gif" />
     <None Include="Resources\8481.jpg" />
     <None Include="Resources\Walls_071.jpg" />
     <None Include="Resources\agni designs text.png" />

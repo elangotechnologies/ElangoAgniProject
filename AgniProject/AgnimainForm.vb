@@ -3495,6 +3495,20 @@ Public Class AgniMainForm
                     tabAllTabsHolder.SelectedTab = tabHelp
                 Case Keys.R
                     tabAllTabsHolder.SelectedTab = tabReports
+                Case Keys.D1
+                    tabAllTabsHolder.SelectedIndex = 0
+                Case Keys.D2
+                    tabAllTabsHolder.SelectedIndex = 1
+                Case Keys.D3
+                    tabAllTabsHolder.SelectedIndex = 2
+                Case Keys.D4
+                    tabAllTabsHolder.SelectedIndex = 3
+                Case Keys.D5
+                    tabAllTabsHolder.SelectedIndex = 4
+                Case Keys.D6
+                    tabAllTabsHolder.SelectedIndex = 5
+                Case Keys.D7
+                    tabAllTabsHolder.SelectedIndex = 6
             End Select
         End If
     End Sub

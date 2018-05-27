@@ -32,12 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.AgniProject.Login
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
-        Protected Overrides Sub OnCreateSplashScreen()
-            Me.SplashScreen = Global.AgniProject.Agni_StartupScreen
+            Me.MainForm = Global.AgniProject.AgniMainForm
         End Sub
     End Class
 End Namespace
