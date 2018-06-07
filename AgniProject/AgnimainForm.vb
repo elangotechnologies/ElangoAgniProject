@@ -3524,4 +3524,7 @@ Public Class AgniMainForm
         End If
     End Sub
 
+    Private Sub btnCustAdd_Click(Sender As Object, e As MouseEventArgs) Handles btnCustAdd.ClickButtonArea
+
+    End Sub
 End Class

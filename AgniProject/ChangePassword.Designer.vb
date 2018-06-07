@@ -51,11 +51,17 @@ Partial Class ChangePassword
         '
         Me.btnChangePwdCancel.AutoEllipsis = False
         Me.btnChangePwdCancel.AutoSizeMode = False
+        Me.btnChangePwdCancel.BackColor = System.Drawing.Color.Transparent
+        Me.btnChangePwdCancel.Corners.All = 10
+        Me.btnChangePwdCancel.Corners.LowerLeft = 10
+        Me.btnChangePwdCancel.Corners.LowerRight = 10
+        Me.btnChangePwdCancel.Corners.UpperLeft = 10
+        Me.btnChangePwdCancel.Corners.UpperRight = 10
         Me.btnChangePwdCancel.DesignerSelected = False
-        Me.btnChangePwdCancel.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnChangePwdCancel.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold)
         Me.btnChangePwdCancel.ImageIndex = 0
         Me.btnChangePwdCancel.ImageKey = 0
-        Me.btnChangePwdCancel.Location = New System.Drawing.Point(576, 224)
+        Me.btnChangePwdCancel.Location = New System.Drawing.Point(577, 211)
         Me.btnChangePwdCancel.Name = "btnChangePwdCancel"
         Me.btnChangePwdCancel.Size = New System.Drawing.Size(136, 31)
         Me.btnChangePwdCancel.TabIndex = 5
@@ -65,11 +71,12 @@ Partial Class ChangePassword
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Arial", 12.0!)
-        Me.Label2.ForeColor = System.Drawing.Color.White
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Label2.ForeColor = System.Drawing.Color.MidnightBlue
         Me.Label2.Location = New System.Drawing.Point(265, 164)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(140, 18)
+        Me.Label2.Size = New System.Drawing.Size(153, 19)
         Me.Label2.TabIndex = 8
         Me.Label2.Text = "Re-Type Password"
         '
@@ -77,11 +84,17 @@ Partial Class ChangePassword
         '
         Me.btnChangePwdConfim.AutoEllipsis = False
         Me.btnChangePwdConfim.AutoSizeMode = False
+        Me.btnChangePwdConfim.BackColor = System.Drawing.Color.Transparent
+        Me.btnChangePwdConfim.Corners.All = 10
+        Me.btnChangePwdConfim.Corners.LowerLeft = 10
+        Me.btnChangePwdConfim.Corners.LowerRight = 10
+        Me.btnChangePwdConfim.Corners.UpperLeft = 10
+        Me.btnChangePwdConfim.Corners.UpperRight = 10
         Me.btnChangePwdConfim.DesignerSelected = False
-        Me.btnChangePwdConfim.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnChangePwdConfim.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold)
         Me.btnChangePwdConfim.ImageIndex = 0
         Me.btnChangePwdConfim.ImageKey = 0
-        Me.btnChangePwdConfim.Location = New System.Drawing.Point(422, 224)
+        Me.btnChangePwdConfim.Location = New System.Drawing.Point(422, 211)
         Me.btnChangePwdConfim.Name = "btnChangePwdConfim"
         Me.btnChangePwdConfim.Size = New System.Drawing.Size(136, 31)
         Me.btnChangePwdConfim.TabIndex = 4
@@ -91,11 +104,12 @@ Partial Class ChangePassword
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Arial", 12.0!)
-        Me.Label3.ForeColor = System.Drawing.Color.White
+        Me.Label3.BackColor = System.Drawing.Color.Transparent
+        Me.Label3.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Label3.ForeColor = System.Drawing.Color.MidnightBlue
         Me.Label3.Location = New System.Drawing.Point(265, 118)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(113, 18)
+        Me.Label3.Size = New System.Drawing.Size(124, 19)
         Me.Label3.TabIndex = 10
         Me.Label3.Text = "New Password"
         '
@@ -111,6 +125,17 @@ Partial Class ChangePassword
         Me.txtChangePwdRetypeNewPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtChangePwdRetypeNewPassword.Size = New System.Drawing.Size(306, 26)
         Me.txtChangePwdRetypeNewPassword.TabIndex = 3
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox1.Image = Global.AgniProject.My.Resources.Resources.AgniLogo
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(259, 268)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 16
+        Me.PictureBox1.TabStop = False
         '
         'cmbChangePwdUserName
         '
@@ -151,22 +176,24 @@ Partial Class ChangePassword
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Arial", 12.0!)
-        Me.Label4.ForeColor = System.Drawing.Color.White
+        Me.Label4.BackColor = System.Drawing.Color.Transparent
+        Me.Label4.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Label4.ForeColor = System.Drawing.Color.MidnightBlue
         Me.Label4.Location = New System.Drawing.Point(265, 72)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(106, 18)
+        Me.Label4.Size = New System.Drawing.Size(116, 19)
         Me.Label4.TabIndex = 15
         Me.Label4.Text = "Old Password"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Arial", 12.0!)
-        Me.Label5.ForeColor = System.Drawing.Color.White
+        Me.Label5.BackColor = System.Drawing.Color.Transparent
+        Me.Label5.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Label5.ForeColor = System.Drawing.Color.MidnightBlue
         Me.Label5.Location = New System.Drawing.Point(265, 26)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(87, 18)
+        Me.Label5.Size = New System.Drawing.Size(93, 19)
         Me.Label5.TabIndex = 13
         Me.Label5.Text = "User Name"
         '
@@ -176,7 +203,9 @@ Partial Class ChangePassword
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(156, Byte), Integer), CType(CType(213, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(739, 267)
+        Me.BackgroundImage = Global.AgniProject.My.Resources.Resources.bg2
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.ClientSize = New System.Drawing.Size(764, 267)
         Me.Controls.Add(Me.cmbChangePwdUserName)
         Me.Controls.Add(Me.txtChangePwdOldPassword)
         Me.Controls.Add(Me.Label4)

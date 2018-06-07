@@ -12,7 +12,6 @@ D:\GitRepository\All-Utility-Projects\VB.Net Utility Apps\ElaCustomDateTimePrick
 D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomDateTimePrickerControl\bin\Debug\ElaCustomDateTimePrickerControl.dll
 D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomDateTimePrickerControl\bin\Debug\ElaCustomDateTimePrickerControl.pdb
 D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomDateTimePrickerControl\bin\Debug\ElaCustomDateTimePrickerControl.xml
-D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomDateTimePrickerControl\obj\Debug\ElaCustomDateTimePrickerControl.vbprojResolveAssemblyReference.cache
 D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomDateTimePrickerControl\obj\Debug\ElaCustomDateTimePrickerControl.ElaCustomDateTimePicker.resources
 D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomDateTimePrickerControl\obj\Debug\ElaCustomDateTimePrickerControl.Resources.resources
 D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomDateTimePrickerControl\obj\Debug\ElaCustomDateTimePrickerControl.vbproj.GenerateResource.Cache
@@ -20,3 +19,4 @@ D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomDateTimePrickerCont
 D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomDateTimePrickerControl\obj\Debug\ElaCustomDateTimePrickerControl.dll
 D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomDateTimePrickerControl\obj\Debug\ElaCustomDateTimePrickerControl.xml
 D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomDateTimePrickerControl\obj\Debug\ElaCustomDateTimePrickerControl.pdb
+D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomDateTimePrickerControl\obj\Debug\ElaCustomDateTimePrickerControl.vbprojResolveAssemblyReference.cache
