@@ -162,4 +162,7 @@ Public Class ChangePassword
         Login.Show()
     End Sub
 
+    Private Sub ChangePassword_KeyUp(sender As Object, e As KeyEventArgs) Handles MyBase.KeyUp
+        If e.KeyCode = Keys.Escape Then Me.Close()
+    End Sub
 End Class

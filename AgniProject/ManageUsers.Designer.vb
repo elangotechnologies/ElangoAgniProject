@@ -48,6 +48,7 @@ Partial Class ManageUsers
         Me.btnManageUsersCreateUserConfirm = New CButtonLib.CButton()
         Me.btnManageUsersCreateUserCancel = New CButtonLib.CButton()
         Me.cmbManageUsersUserName = New ElaCustomComboBoxControl.ElaCustomComboBox()
+        Me.btnManageUsersUpdateUser = New CButtonLib.CButton()
         Me.gbManageUsersUserType.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbUsersList.SuspendLayout()
@@ -64,7 +65,7 @@ Partial Class ManageUsers
         Me.txtManageUsersRetypePassword.Location = New System.Drawing.Point(431, 157)
         Me.txtManageUsersRetypePassword.Name = "txtManageUsersRetypePassword"
         Me.txtManageUsersRetypePassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtManageUsersRetypePassword.Size = New System.Drawing.Size(308, 26)
+        Me.txtManageUsersRetypePassword.Size = New System.Drawing.Size(333, 26)
         Me.txtManageUsersRetypePassword.TabIndex = 3
         Me.txtManageUsersRetypePassword.Visible = False
         '
@@ -91,7 +92,7 @@ Partial Class ManageUsers
         Me.txtManageUsersPassword.Location = New System.Drawing.Point(431, 113)
         Me.txtManageUsersPassword.Name = "txtManageUsersPassword"
         Me.txtManageUsersPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtManageUsersPassword.Size = New System.Drawing.Size(308, 26)
+        Me.txtManageUsersPassword.Size = New System.Drawing.Size(333, 26)
         Me.txtManageUsersPassword.TabIndex = 2
         Me.txtManageUsersPassword.Visible = False
         '
@@ -109,7 +110,7 @@ Partial Class ManageUsers
         Me.btnManageUsersCancel.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnManageUsersCancel.ImageIndex = 0
         Me.btnManageUsersCancel.ImageKey = 0
-        Me.btnManageUsersCancel.Location = New System.Drawing.Point(609, 207)
+        Me.btnManageUsersCancel.Location = New System.Drawing.Point(646, 212)
         Me.btnManageUsersCancel.Name = "btnManageUsersCancel"
         Me.btnManageUsersCancel.Size = New System.Drawing.Size(118, 31)
         Me.btnManageUsersCancel.TabIndex = 6
@@ -143,7 +144,7 @@ Partial Class ManageUsers
         Me.btnManageUsersCreateUser.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnManageUsersCreateUser.ImageIndex = 0
         Me.btnManageUsersCreateUser.ImageKey = 0
-        Me.btnManageUsersCreateUser.Location = New System.Drawing.Point(361, 207)
+        Me.btnManageUsersCreateUser.Location = New System.Drawing.Point(277, 212)
         Me.btnManageUsersCreateUser.Name = "btnManageUsersCreateUser"
         Me.btnManageUsersCreateUser.Size = New System.Drawing.Size(118, 31)
         Me.btnManageUsersCreateUser.TabIndex = 4
@@ -199,7 +200,7 @@ Partial Class ManageUsers
         Me.gbManageUsersUserType.ForeColor = System.Drawing.Color.Black
         Me.gbManageUsersUserType.Location = New System.Drawing.Point(431, 56)
         Me.gbManageUsersUserType.Name = "gbManageUsersUserType"
-        Me.gbManageUsersUserType.Size = New System.Drawing.Size(308, 42)
+        Me.gbManageUsersUserType.Size = New System.Drawing.Size(333, 42)
         Me.gbManageUsersUserType.TabIndex = 1
         Me.gbManageUsersUserType.TabStop = False
         '
@@ -217,7 +218,7 @@ Partial Class ManageUsers
         Me.btnManageUsersDeleteUser.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnManageUsersDeleteUser.ImageIndex = 0
         Me.btnManageUsersDeleteUser.ImageKey = 0
-        Me.btnManageUsersDeleteUser.Location = New System.Drawing.Point(485, 207)
+        Me.btnManageUsersDeleteUser.Location = New System.Drawing.Point(400, 212)
         Me.btnManageUsersDeleteUser.Name = "btnManageUsersDeleteUser"
         Me.btnManageUsersDeleteUser.Size = New System.Drawing.Size(118, 31)
         Me.btnManageUsersDeleteUser.TabIndex = 5
@@ -249,7 +250,7 @@ Partial Class ManageUsers
         '
         'gbUsersList
         '
-        Me.gbUsersList.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.gbUsersList.BackColor = System.Drawing.Color.DarkBlue
         Me.gbUsersList.BorderColor = System.Drawing.Color.DeepSkyBlue
         Me.gbUsersList.BorderColorFocus = System.Drawing.Color.Orange
         Me.gbUsersList.BorderColorMouseEnter = System.Drawing.Color.Orange
@@ -342,7 +343,7 @@ Partial Class ManageUsers
         Me.UserGridType.HeaderText = "User Type"
         Me.UserGridType.Name = "UserGridType"
         Me.UserGridType.ReadOnly = True
-        Me.UserGridType.Width = 250
+        Me.UserGridType.Width = 268
         '
         'UserGridPasswordOrig
         '
@@ -374,7 +375,7 @@ Partial Class ManageUsers
         Me.btnManageUsersCreateUserConfirm.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnManageUsersCreateUserConfirm.ImageIndex = 0
         Me.btnManageUsersCreateUserConfirm.ImageKey = 0
-        Me.btnManageUsersCreateUserConfirm.Location = New System.Drawing.Point(431, 234)
+        Me.btnManageUsersCreateUserConfirm.Location = New System.Drawing.Point(347, 239)
         Me.btnManageUsersCreateUserConfirm.Name = "btnManageUsersCreateUserConfirm"
         Me.btnManageUsersCreateUserConfirm.Size = New System.Drawing.Size(118, 31)
         Me.btnManageUsersCreateUserConfirm.TabIndex = 7
@@ -396,7 +397,7 @@ Partial Class ManageUsers
         Me.btnManageUsersCreateUserCancel.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnManageUsersCreateUserCancel.ImageIndex = 0
         Me.btnManageUsersCreateUserCancel.ImageKey = 0
-        Me.btnManageUsersCreateUserCancel.Location = New System.Drawing.Point(555, 234)
+        Me.btnManageUsersCreateUserCancel.Location = New System.Drawing.Point(471, 239)
         Me.btnManageUsersCreateUserCancel.Name = "btnManageUsersCreateUserCancel"
         Me.btnManageUsersCreateUserCancel.Size = New System.Drawing.Size(118, 31)
         Me.btnManageUsersCreateUserCancel.TabIndex = 8
@@ -423,9 +424,30 @@ Partial Class ManageUsers
         Me.cmbManageUsersUserName.FormattingEnabled = True
         Me.cmbManageUsersUserName.Location = New System.Drawing.Point(431, 26)
         Me.cmbManageUsersUserName.Name = "cmbManageUsersUserName"
-        Me.cmbManageUsersUserName.Size = New System.Drawing.Size(308, 26)
+        Me.cmbManageUsersUserName.Size = New System.Drawing.Size(333, 26)
         Me.cmbManageUsersUserName.TabIndex = 0
         Me.cmbManageUsersUserName.ValueMember = "id"
+        '
+        'btnManageUsersUpdateUser
+        '
+        Me.btnManageUsersUpdateUser.AutoEllipsis = False
+        Me.btnManageUsersUpdateUser.AutoSizeMode = False
+        Me.btnManageUsersUpdateUser.BackColor = System.Drawing.Color.Transparent
+        Me.btnManageUsersUpdateUser.Corners.All = 10
+        Me.btnManageUsersUpdateUser.Corners.LowerLeft = 10
+        Me.btnManageUsersUpdateUser.Corners.LowerRight = 10
+        Me.btnManageUsersUpdateUser.Corners.UpperLeft = 10
+        Me.btnManageUsersUpdateUser.Corners.UpperRight = 10
+        Me.btnManageUsersUpdateUser.DesignerSelected = False
+        Me.btnManageUsersUpdateUser.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnManageUsersUpdateUser.ImageIndex = 0
+        Me.btnManageUsersUpdateUser.ImageKey = 0
+        Me.btnManageUsersUpdateUser.Location = New System.Drawing.Point(523, 212)
+        Me.btnManageUsersUpdateUser.Name = "btnManageUsersUpdateUser"
+        Me.btnManageUsersUpdateUser.Size = New System.Drawing.Size(118, 31)
+        Me.btnManageUsersUpdateUser.TabIndex = 25
+        Me.btnManageUsersUpdateUser.Text = "Update User"
+        Me.btnManageUsersUpdateUser.UseVisualStyleBackColor = False
         '
         'ManageUsers
         '
@@ -435,7 +457,8 @@ Partial Class ManageUsers
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(156, Byte), Integer), CType(CType(213, Byte), Integer))
         Me.BackgroundImage = Global.AgniProject.My.Resources.Resources.bg2
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(784, 613)
+        Me.ClientSize = New System.Drawing.Size(785, 613)
+        Me.Controls.Add(Me.btnManageUsersUpdateUser)
         Me.Controls.Add(Me.cmbManageUsersUserName)
         Me.Controls.Add(Me.btnManageUsersCreateUserCancel)
         Me.Controls.Add(Me.btnManageUsersCreateUserConfirm)
@@ -451,6 +474,7 @@ Partial Class ManageUsers
         Me.Controls.Add(Me.btnManageUsersCreateUser)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.gbManageUsersUserType)
+        Me.KeyPreview = True
         Me.Name = "ManageUsers"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Agni Designs - Manage user"
@@ -481,6 +505,7 @@ Partial Class ManageUsers
     Friend WithEvents btnManageUsersCreateUserConfirm As CButtonLib.CButton
     Friend WithEvents btnManageUsersCreateUserCancel As CButtonLib.CButton
     Friend WithEvents cmbManageUsersUserName As ElaCustomComboBoxControl.ElaCustomComboBox
+    Friend WithEvents btnManageUsersUpdateUser As CButtonLib.CButton
     Friend WithEvents UserGridUserId As DataGridViewTextBoxColumn
     Friend WithEvents UserGridUserName As DataGridViewTextBoxColumn
     Friend WithEvents UserGridPassword As DataGridViewTextBoxColumn

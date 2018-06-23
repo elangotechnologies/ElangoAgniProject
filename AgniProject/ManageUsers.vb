@@ -6,6 +6,8 @@ Imports System.Threading
 Public Class ManageUsers
 
     Dim dbConnection As SqlConnection
+    Dim gUserType As Integer = -1
+    Public gSelectedUserId As Integer = -1
 
     Private Sub manageuser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -49,6 +51,8 @@ Public Class ManageUsers
 
         cmbManageUsersUserName.BindingContext = New BindingContext()
         cmbManageUsersUserName.DataSource = userNameListTable
+
+        gSelectedUserId = -1
     End Sub
 
     Delegate Sub setUserNameGridDelegate(usersTable As DataTable)
@@ -75,7 +79,6 @@ Public Class ManageUsers
 
     Private Sub ManageUsers_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Login.Show()
-
     End Sub
 
     Private Sub btnManageUsersCreateUser_Click(sender As Object, e As EventArgs) Handles btnManageUsersCreateUser.ClickButtonArea
@@ -97,12 +100,14 @@ Public Class ManageUsers
         btnManageUsersCreateUserCancel.Visible = createUserMode
         btnManageUsersCreateUser.Visible = Not createUserMode
         btnManageUsersDeleteUser.Visible = Not createUserMode
+        btnManageUsersUpdateUser.Visible = Not createUserMode
         btnManageUsersCancel.Visible = Not createUserMode
     End Sub
 
     Sub setAdministratorMode(adminMode As Boolean)
         btnManageUsersCreateUser.Enabled = adminMode
         btnManageUsersDeleteUser.Enabled = adminMode
+        btnManageUsersUpdateUser.Enabled = adminMode
     End Sub
 
     Private Sub btnManageUsersCreateUserCancel_Click(sender As Object, e As EventArgs) Handles btnManageUsersCreateUserCancel.ClickButtonArea
@@ -125,10 +130,12 @@ Public Class ManageUsers
         End If
 
         Dim userId As Integer = cmbManageUsersUserName.SelectedValue
+        gSelectedUserId = userId
 
         Dim UsersTable As DataTable = dgManageUsersUsersGrid.DataSource
         Dim dataRow As DataRow = UsersTable.Rows.Find(userId)
         Dim userType As Integer = dataRow.Item("typeId")
+        gUserType = userType
 
         If userType = USER_TYPE_ADMINISTRATOR Then
             rbManageUsersAdmin.Checked = True
@@ -137,8 +144,34 @@ Public Class ManageUsers
         End If
     End Sub
 
+    Private Function getAdministratorsCount() As Integer
+        Dim adminCountQuery = New SqlCommand("select 1 as adminCount from Users where typeId=1", dbConnection)
+        Dim adminCountAdapter = New SqlDataAdapter()
+        adminCountAdapter.SelectCommand = adminCountQuery
+        Dim adminCountDataSet = New DataSet
+        adminCountAdapter.Fill(adminCountDataSet, "users")
+        Dim adminTable As DataTable = adminCountDataSet.Tables(0)
+        Return adminTable.Rows.Count
+    End Function
+
+
     Private Sub btnManageUsersDeleteUser_Click(sender As Object, e As EventArgs) Handles btnManageUsersDeleteUser.ClickButtonArea
-        Dim userId As Integer = cmbManageUsersUserName.SelectedValue
+
+        If cmbManageUsersUserName.SelectedValue = -1 Or cmbManageUsersUserName.SelectedIndex = -1 Then
+            MsgBox("Plesae enter an user name")
+            cmbManageUsersUserName.Focus()
+            Return
+        End If
+
+        Dim userId As Integer = gSelectedUserId
+
+        Dim typeId As Integer = -1
+        If gUserType = USER_TYPE_ADMINISTRATOR Then
+            If getAdministratorsCount() <= 1 Then
+                MsgBox("Sorry, You cannot delete the last administrator user. There must be atleast one administrator user to manage the users.")
+                Return
+            End If
+        End If
 
         Dim query As String = "delete from users where id=@userid"
 
@@ -229,5 +262,66 @@ Public Class ManageUsers
     Private Sub btnManageUsersCancel_Click(sender As Object, e As EventArgs) Handles btnManageUsersCancel.ClickButtonArea
         Me.Close()
         Login.Show()
+    End Sub
+
+    Private Sub btnManageUsersUpdateUser_ClickButtonArea(Sender As Object, e As MouseEventArgs) Handles btnManageUsersUpdateUser.ClickButtonArea
+        If gSelectedUserId = -1 Then
+            MsgBox("Plesae enter an user name")
+            cmbManageUsersUserName.Focus()
+            Return
+        End If
+
+        Dim userName As String = cmbManageUsersUserName.Text.Trim
+        Dim userId As Integer = gSelectedUserId
+        Dim typeId As Integer = -1
+        If rbManageUsersAdmin.Checked Then
+            typeId = USER_TYPE_ADMINISTRATOR
+        ElseIf rbManageUsersGuest.Checked Then
+            typeId = USER_TYPE_GUEST
+        End If
+
+        If gUserType = USER_TYPE_ADMINISTRATOR And typeId = USER_TYPE_GUEST Then
+            If getAdministratorsCount() <= 1 Then
+                MsgBox("Sorry, You cannot convert the last administrator user into a Guest user. There must be atleast one administrator user to manage the users.")
+                Return
+            End If
+        End If
+
+        Dim isUpdateSuccess As Boolean = updateUserDetails(userId, userName, typeId)
+
+        If (isUpdateSuccess = False) Then
+            MsgBox("Update user details operation failed. Please try again")
+        Else
+            MsgBox("User details updated successfully")
+            loadUserNameListAndGrid()
+            Login.loadUserNameList()
+        End If
+    End Sub
+
+    Private Function updateUserDetails(userId As Integer, username As String, typeId As String) As Boolean
+
+        Try
+            Dim updateQuery As String = "update users set username=@newUsername, typeId=@newTypeId where id=@userId"
+
+            Using comm As New SqlCommand()
+                With comm
+                    .Connection = dbConnection
+                    .CommandType = CommandType.Text
+                    .CommandText = updateQuery
+                    .Parameters.AddWithValue("@newUsername", username)
+                    .Parameters.AddWithValue("@newTypeId", typeId)
+                    .Parameters.AddWithValue("@userId", userId)
+                End With
+                comm.ExecuteNonQuery()
+            End Using
+        Catch ex As Exception
+            Return False
+        End Try
+
+        Return True
+    End Function
+
+    Private Sub ManageUsers_KeyUp(sender As Object, e As KeyEventArgs) Handles MyBase.KeyUp
+        If e.KeyCode = Keys.Escape Then Me.Close()
     End Sub
 End Class

@@ -217,6 +217,7 @@ Partial Class ChangePassword
         Me.Controls.Add(Me.btnChangePwdCancel)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.btnChangePwdConfim)
+        Me.KeyPreview = True
         Me.Name = "ChangePassword"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Agni Designs -Change Password"
