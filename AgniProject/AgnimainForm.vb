@@ -2039,7 +2039,7 @@ Public Class AgniMainForm
         txtBillingIGSTAmount.Text = Format(IGSTAmount, "0.00")
         txtBillingTotalGSTAmount.Text = Format(totalGSTAmount, "0.00")
 
-        txtBillingDesignAmoutAfterGST.Text = Format(Math.Round(unBilledDesignAmount + totalGSTAmount, MidpointRounding.AwayFromZero), "0.00")
+        txtBillingDesignAmoutAfterGST.Text = Format(Math.Round(unBilledDesignAmount + totalGSTAmount), "0.00")
 
     End Sub
 
@@ -2103,6 +2103,10 @@ Public Class AgniMainForm
         Else
             MessageBox.Show("No data found for payment: " + paymentNo.ToString)
         End If
+    End Sub
+
+    Private Sub DateTimePicker6_CloseUp(ByVal sender As Object, ByVal e As System.EventArgs) Handles dpPaymentDate.CloseUp
+
     End Sub
 
 
