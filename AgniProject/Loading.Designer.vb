@@ -38,7 +38,7 @@ Partial Class Loading
         Me.pbLoadingImage.Image = CType(resources.GetObject("pbLoadingImage.Image"), System.Drawing.Image)
         Me.pbLoadingImage.Location = New System.Drawing.Point(12, 12)
         Me.pbLoadingImage.Name = "pbLoadingImage"
-        Me.pbLoadingImage.Size = New System.Drawing.Size(271, 247)
+        Me.pbLoadingImage.Size = New System.Drawing.Size(178, 164)
         Me.pbLoadingImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pbLoadingImage.TabIndex = 4
         Me.pbLoadingImage.TabStop = False
@@ -48,7 +48,7 @@ Partial Class Loading
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightBlue
-        Me.ClientSize = New System.Drawing.Size(303, 277)
+        Me.ClientSize = New System.Drawing.Size(199, 183)
         Me.Controls.Add(Me.pbLoadingImage)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Loading"

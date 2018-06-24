@@ -1618,8 +1618,8 @@ Public Class AgniMainForm
             Return
         End If
 
-        txtPaymentFinalPaidAmount.Text = Format(Math.Round(finalPaidAmount), "0.00")
-        txtPaymentNetBalance.Text = Format(Math.Round((unPaidBillAmount - finalPaidAmount)), "0.00")
+        txtPaymentFinalPaidAmount.Text = Format(Math.Round(finalPaidAmount, MidpointRounding.AwayFromZero), "0.00")
+        txtPaymentNetBalance.Text = Format(Math.Round(unPaidBillAmount - finalPaidAmount, MidpointRounding.AwayFromZero), "0.00")
 
     End Sub
     Private Sub btnBillingCreateBill_Click(sender As Object, e As EventArgs) Handles btnBillingCreateBill.ClickButtonArea
@@ -1651,9 +1651,9 @@ Public Class AgniMainForm
         calculateGSTAmountInBilling()
         Dim totalAmountToPay As Decimal = Format(unPaidBalance + Decimal.Parse(txtBillingDesignAmoutAfterGST.Text), "0.00")
 
-        txtBillingTotalAmount.Text = Format(Math.Round(totalAmountToPay), "0.00")
+        txtBillingTotalAmount.Text = Format(Math.Round(totalAmountToPay, MidpointRounding.AwayFromZero), "0.00")
         txtBillingPaidAmount.Text = "0.00"
-        txtBillingRemainingBalance.Text = Format(Math.Round(totalAmountToPay), "0.00")
+        txtBillingRemainingBalance.Text = Format(Math.Round(totalAmountToPay, MidpointRounding.AwayFromZero), "0.00")
 
         setBillingControlsVisibilitiesForCreateBill()
 
@@ -1891,7 +1891,7 @@ Public Class AgniMainForm
 
         txtPaymentDisplayBillNo.Text = lastBillRow.Item("DisplayBillNo")
         txtPaymentBillNo.Text = lastBillRow.Item("BillNo")
-        txtPaymentUnPaidBilledAmount.Text = Format(Math.Round(unPaidBalance), "0.00")
+        txtPaymentUnPaidBilledAmount.Text = Format(Math.Round(unPaidBalance, MidpointRounding.AwayFromZero), "0.00")
 
         'log.Debug("btnPaymentCreatePayment_Click: before calling setPaymentControlsVisibilitiesForCreatePayment")
         setPaymentControlsVisibilitiesForCreatePayment()
@@ -2016,8 +2016,11 @@ Public Class AgniMainForm
         resetIndexOfComboBox(cmbPaymentPaymentNoList)
 
     End Sub
+    Sub calculateGSTAmountInBilling(sender As Object, e As EventArgs) Handles txtBillingCGSTPercent.TextChanged, txtBillingSGSTPercent.TextChanged, txtBillingIGSTPercent.TextChanged
+        calculateGSTAmountInBilling()
+    End Sub
 
-    Sub calculateGSTAmountInBilling() Handles txtBillingCGSTPercent.TextChanged, txtBillingSGSTPercent.TextChanged, txtBillingIGSTPercent.TextChanged
+    Sub calculateGSTAmountInBilling()
 
         Dim CGSTPercent As Decimal = 0
         Dim SGSTPercent As Decimal = 0
@@ -2039,7 +2042,10 @@ Public Class AgniMainForm
         txtBillingIGSTAmount.Text = Format(IGSTAmount, "0.00")
         txtBillingTotalGSTAmount.Text = Format(totalGSTAmount, "0.00")
 
-        txtBillingDesignAmoutAfterGST.Text = Format(Math.Round(unBilledDesignAmount + totalGSTAmount), "0.00")
+        Dim BillAmount As Long = Math.Round(unBilledDesignAmount + totalGSTAmount, MidpointRounding.AwayFromZero)
+        ''Dim BillAmount = Math.Round(unBilledDesignAmount + totalGSTAmount)
+
+        txtBillingDesignAmoutAfterGST.Text = Format(BillAmount, "0.00")
 
     End Sub
 
@@ -2059,7 +2065,7 @@ Public Class AgniMainForm
         Dim designCost = If(designWidth = 0, 1, designWidth) * If(designHeight = 0, 1, designHeight) *
                           If(designNoOfColors = 0, 1, designNoOfColors) * If(designCostPerUnit = 0, 1, designCostPerUnit)
 
-        txtDesCalculatedPrice.Text = Math.Round(designCost)
+        txtDesCalculatedPrice.Text = Math.Round(designCost, MidpointRounding.AwayFromZero)
     End Sub
 
 
@@ -2098,7 +2104,7 @@ Public Class AgniMainForm
             txtPaymentChequeNo.Text = If(dataRow.Item("ChequeNo") Is DBNull.Value, String.Empty, dataRow.Item("ChequeNo"))
             txtPaymentBankName.Text = If(dataRow.Item("BankName") Is DBNull.Value, String.Empty, dataRow.Item("BankName"))
             dpPaymentChequeDate.Text = If(dataRow.Item("ChequeDate") Is DBNull.Value, String.Empty, dataRow.Item("ChequeDate"))
-            txtPaymentNetBalance.Text = Math.Round(dataRow.Item("UnPaidBilledAmount") - (dataRow.Item("ActualPaidAmount") + dataRow.Item("Discount")))
+            txtPaymentNetBalance.Text = Math.Round(dataRow.Item("UnPaidBilledAmount") - (dataRow.Item("ActualPaidAmount") + dataRow.Item("Discount")), MidpointRounding.AwayFromZero)
             txtPaymentRemarks.Text = dataRow.Item("Remarks")
         Else
             MessageBox.Show("No data found for payment: " + paymentNo.ToString)
@@ -3527,4 +3533,5 @@ Public Class AgniMainForm
     Private Sub btnCustAdd_Click(Sender As Object, e As MouseEventArgs) Handles btnCustAdd.ClickButtonArea
 
     End Sub
+
 End Class

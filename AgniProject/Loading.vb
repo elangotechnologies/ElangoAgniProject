@@ -5,7 +5,7 @@
         Dim resourceName As String = "loader" + Convert.ToString(random.Next(1, 12))
         pbLoadingImage.Image = My.Resources.ResourceManager.GetObject(resourceName)
 
-        Timer1.Interval = 3000
+        Timer1.Interval = 1000
         Timer1.Start()
     End Sub
 
