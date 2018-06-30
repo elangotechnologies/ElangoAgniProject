@@ -33,6 +33,8 @@ Public Class AgniMainForm
 
     Private ATTRIBUTE_LAST_BILL_NO As String = "last_bill_no"
 
+    Private pExitingByLogout As Boolean = False
+
     Private Sub resetGlobalVairables()
         gSelectedBillNo = -1
         gSelectedDisplayBillNo = String.Empty
@@ -46,11 +48,13 @@ Public Class AgniMainForm
 
 
     Private Sub AgnimainForm_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
-        If MessageBox.Show("This will close the program." + vbNewLine + "Are you really want to close?", "Application Closing", System.Windows.Forms.MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.No Then
-            e.Cancel = True
-        Else
-            Login.Close()
-            closeDBConnection()
+        If pExitingByLogout = False Then
+            If MessageBox.Show("This will close the program." + vbNewLine + "Are you really want to close?", "Application Closing", System.Windows.Forms.MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.No Then
+                e.Cancel = True
+            Else
+                Login.Close()
+                closeDBConnection()
+            End If
         End If
     End Sub
 
@@ -540,9 +544,9 @@ Public Class AgniMainForm
 
         Dim paymentQuery As SqlCommand
         If (custNo <> Nothing) Then
-            paymentQuery = New SqlCommand("select p.PaymentNo, p.BillNo, p.PaymentDate, p.PaymentMode, round(p.UnPaidBilledAmount, 0) as UnPaidBilledAmount, round(p.ActualPaidAmount, 0) as ActualPaidAmount, round(p.Discount,0) as Discount, round(p.FinalPaidAmount,0) as FinalPaidAmount, round(p.UnPaidBilledAmount - p.FinalPaidAmount, 0) as NetBalance, p.ChequeNo, p.BankName, p.ChequeDate, p.Remarks, b.DisplayBillNo from payment p, bill b where p.BillNo = b.BillNo and p.custNo=" + custNo.ToString, dbConnection)
+            paymentQuery = New SqlCommand("select p.PaymentNo, p.BillNo, p.PaymentDate, p.PaymentMode, round(p.UnPaidBilledAmount, 0) as UnPaidBilledAmount, round(p.ActualPaidAmount, 0) as ActualPaidAmount, round(p.Discount,0) as Discount, round(p.TDS,0) as TDS, round(p.FinalPaidAmount,0) as FinalPaidAmount, round(p.UnPaidBilledAmount - p.FinalPaidAmount, 0) as NetBalance, p.ChequeNo, p.BankName, p.ChequeDate, p.Remarks, b.DisplayBillNo from payment p, bill b where p.BillNo = b.BillNo and p.custNo=" + custNo.ToString, dbConnection)
         Else
-            paymentQuery = New SqlCommand("select p.PaymentNo, p.BillNo, p.PaymentDate, p.PaymentMode, round(p.UnPaidBilledAmount, 0) as UnPaidBilledAmount, round(p.ActualPaidAmount, 0) as ActualPaidAmount, round(p.Discount,0) as Discount, round(p.FinalPaidAmount,0) as FinalPaidAmount, round(p.UnPaidBilledAmount - p.FinalPaidAmount, 0) as NetBalance, p.ChequeNo, p.BankName, p.ChequeDate, p.Remarks, b.DisplayBillNo from payment p, bill b where p.BillNo = b.BillNo", dbConnection)
+            paymentQuery = New SqlCommand("select p.PaymentNo, p.BillNo, p.PaymentDate, p.PaymentMode, round(p.UnPaidBilledAmount, 0) as UnPaidBilledAmount, round(p.ActualPaidAmount, 0) as ActualPaidAmount, round(p.Discount,0) as Discount, round(p.TDS,0) as TDS, round(p.FinalPaidAmount,0) as FinalPaidAmount, round(p.UnPaidBilledAmount - p.FinalPaidAmount, 0) as NetBalance, p.ChequeNo, p.BankName, p.ChequeDate, p.Remarks, b.DisplayBillNo from payment p, bill b where p.BillNo = b.BillNo", dbConnection)
         End If
 
         Dim paymentAdapter = New SqlDataAdapter()
@@ -801,6 +805,7 @@ Public Class AgniMainForm
         cmbPaymentPaymentNoList.Enabled = True
         txtPaymentActualPaidAmount.ReadOnly = True
         txtPaymentDiscountAmount.ReadOnly = True
+        txtPaymentTDSAmount.ReadOnly = True
         dpPaymentDate.Enabled = False
         btnPaymentDelete.Visible = True
         btnPaymentClear.Visible = True
@@ -814,6 +819,7 @@ Public Class AgniMainForm
         btnPaymentCancelCreatePayment.Visible = True
         txtPaymentActualPaidAmount.ReadOnly = False
         txtPaymentDiscountAmount.ReadOnly = False
+        txtPaymentTDSAmount.ReadOnly = False
         dpPaymentDate.Enabled = True
         btnPaymentDelete.Visible = False
         btnPaymentClear.Visible = False
@@ -829,6 +835,7 @@ Public Class AgniMainForm
         radioPaymentByCash.Checked = True
         txtPaymentActualPaidAmount.Text = ""
         txtPaymentDiscountAmount.Text = ""
+        txtPaymentTDSAmount.Text = ""
         txtPaymentFinalPaidAmount.Text = ""
         txtPaymentChequeNo.Text = ""
         txtPaymentBankName.Text = ""
@@ -1601,17 +1608,19 @@ Public Class AgniMainForm
 
     End Sub
 
-    Sub calculatePaymentFinalPaidAmount() Handles txtPaymentActualPaidAmount.TextChanged, txtPaymentDiscountAmount.TextChanged
+    Sub calculatePaymentFinalPaidAmount(sender As Object, e As EventArgs) Handles txtPaymentActualPaidAmount.TextChanged, txtPaymentDiscountAmount.TextChanged, txtPaymentTDSAmount.TextChanged
 
         Dim actualPaidAmount As Decimal = 0
         Dim discountAmount As Decimal = 0
+        Dim TDSAmount As Decimal = 0
         Dim unPaidBillAmount As Decimal = 0
 
         Decimal.TryParse(txtPaymentActualPaidAmount.Text, actualPaidAmount)
         Decimal.TryParse(txtPaymentDiscountAmount.Text, discountAmount)
+        Decimal.TryParse(txtPaymentTDSAmount.Text, TDSAmount)
         Decimal.TryParse(txtPaymentUnPaidBilledAmount.Text, unPaidBillAmount)
 
-        Dim finalPaidAmount As Decimal = actualPaidAmount + discountAmount
+        Dim finalPaidAmount As Decimal = actualPaidAmount + discountAmount + TDSAmount
 
         If unPaidBillAmount < finalPaidAmount Then
             MsgBox("The payment amount cannot be greater than the unpaid billed amount. Please correct the payment amount")
@@ -1910,8 +1919,8 @@ Public Class AgniMainForm
         ElseIf Val(txtPaymentUnPaidBilledAmount.Text) = 0 Then
             MessageBox.Show("There is no balance anmount to pay")
             txtPaymentUnPaidBilledAmount.Focus()
-        ElseIf txtPaymentActualPaidAmount.Text.Trim.Equals("") And txtPaymentDiscountAmount.Text.Trim.Equals("") Then
-            MessageBox.Show("Enter Payment Amount or Discount")
+        ElseIf txtPaymentActualPaidAmount.Text.Trim.Equals("") And txtPaymentDiscountAmount.Text.Trim.Equals("") And txtPaymentTDSAmount.Text.Trim.Equals("") Then
+            MessageBox.Show("Enter Payment Amount or Discount Amount or TDS Amount")
             txtPaymentActualPaidAmount.Focus()
         ElseIf txtPaymentFinalPaidAmount.Text.Trim.Equals("") Then
             MessageBox.Show("Enter amount to be credited")
@@ -1931,15 +1940,17 @@ Public Class AgniMainForm
 
                 Dim actualPaidAmount As Decimal = 0
                 Dim discountAmount As Decimal = 0
+                Dim TDSAmount As Decimal = 0
                 Dim unPaidBillAmount As Decimal = 0
 
                 Decimal.TryParse(txtPaymentActualPaidAmount.Text, actualPaidAmount)
                 Decimal.TryParse(txtPaymentDiscountAmount.Text, discountAmount)
+                Decimal.TryParse(txtPaymentTDSAmount.Text, TDSAmount)
                 Decimal.TryParse(txtPaymentUnPaidBilledAmount.Text, unPaidBillAmount)
 
-                Dim finalPaidAmount As Decimal = actualPaidAmount + discountAmount
+                Dim finalPaidAmount As Decimal = actualPaidAmount + discountAmount + TDSAmount
 
-                If (unPaidBillAmount < (actualPaidAmount + discountAmount)) Then
+                If (unPaidBillAmount < finalPaidAmount) Then
                     MessageBox.Show("You cannot pay more amount than the the unpaid bill amount")
                     Return
                 End If
@@ -1957,9 +1968,9 @@ Public Class AgniMainForm
 
                 Dim query As String = String.Empty
                 query &= "INSERT INTO payment (CustNo, BillNo, UnPaidBilledAmount, PaymentDate, PaymentMode, ActualPaidAmount, "
-                query &= "Discount, ChequeNo, BankName, ChequeDate, Remarks, FinalPaidAmount) "
+                query &= "Discount, TDS, ChequeNo, BankName, ChequeDate, Remarks, FinalPaidAmount) "
                 query &= "VALUES (@CustNo, @BillNo, @UnPaidBilledAmount, @PaymentDate, @PaymentMode, @ActualPaidAmount, "
-                query &= "@Discount, @ChequeNo, @BankName, @ChequeDate, @Remarks, @FinalPaidAmount); SELECT SCOPE_IDENTITY()"
+                query &= "@Discount, @TDS, @ChequeNo, @BankName, @ChequeDate, @Remarks, @FinalPaidAmount); SELECT SCOPE_IDENTITY()"
 
                 Using comm As New SqlCommand()
                     With comm
@@ -1973,6 +1984,7 @@ Public Class AgniMainForm
                         .Parameters.AddWithValue("@PaymentMode", paymentType)
                         .Parameters.AddWithValue("@ActualPaidAmount", actualPaidAmount)
                         .Parameters.AddWithValue("@Discount", discountAmount)
+                        .Parameters.AddWithValue("@TDS", TDSAmount)
                         .Parameters.AddWithValue("@Remarks", txtPaymentRemarks.Text)
                         .Parameters.AddWithValue("@FinalPaidAmount", txtPaymentFinalPaidAmount.Text)
                     End With
@@ -2100,11 +2112,12 @@ Public Class AgniMainForm
 
             txtPaymentActualPaidAmount.Text = dataRow.Item("ActualPaidAmount")
             txtPaymentDiscountAmount.Text = dataRow.Item("Discount")
+            txtPaymentTDSAmount.Text = dataRow.Item("TDS")
             txtPaymentFinalPaidAmount.Text = dataRow.Item("FinalPaidAmount")
             txtPaymentChequeNo.Text = If(dataRow.Item("ChequeNo") Is DBNull.Value, String.Empty, dataRow.Item("ChequeNo"))
             txtPaymentBankName.Text = If(dataRow.Item("BankName") Is DBNull.Value, String.Empty, dataRow.Item("BankName"))
             dpPaymentChequeDate.Text = If(dataRow.Item("ChequeDate") Is DBNull.Value, String.Empty, dataRow.Item("ChequeDate"))
-            txtPaymentNetBalance.Text = Math.Round(dataRow.Item("UnPaidBilledAmount") - (dataRow.Item("ActualPaidAmount") + dataRow.Item("Discount")), MidpointRounding.AwayFromZero)
+            txtPaymentNetBalance.Text = Math.Round(dataRow.Item("UnPaidBilledAmount") - (dataRow.Item("ActualPaidAmount") + dataRow.Item("Discount") + dataRow.Item("TDS")), MidpointRounding.AwayFromZero)
             txtPaymentRemarks.Text = dataRow.Item("Remarks")
         Else
             MessageBox.Show("No data found for payment: " + paymentNo.ToString)
@@ -3525,13 +3538,10 @@ Public Class AgniMainForm
 
     Private Sub btnLogOff_Click(sender As Object, e As EventArgs) Handles btnLogOff.ClickButtonArea
         If MessageBox.Show("Are you sure want to log off?", "Log off", System.Windows.Forms.MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-            Me.Hide()
+            pExitingByLogout = True
+            Me.Close()
             Login.Show()
         End If
-    End Sub
-
-    Private Sub btnCustAdd_Click(Sender As Object, e As MouseEventArgs) Handles btnCustAdd.ClickButtonArea
-
     End Sub
 
 End Class

@@ -485,6 +485,8 @@ Partial Class AgniMainForm
         Me.btnCustDelete = New CButtonLib.CButton()
         Me.btnCustAdd = New CButtonLib.CButton()
         Me.tabPayment = New System.Windows.Forms.TabPage()
+        Me.txtPaymentTDSAmount = New ElaCustomTextBoxControl.ElaCustomTextBox()
+        Me.Label52 = New System.Windows.Forms.Label()
         Me.GroupBox19 = New ElaCustomGroupBoxControl.ElaCustomGroupBox()
         Me.dgPaymentDetails = New System.Windows.Forms.DataGridView()
         Me.PaymentNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -3122,9 +3124,9 @@ Partial Class AgniMainForm
         Me.Label44.ForeColor = System.Drawing.Color.Black
         Me.Label44.Location = New System.Drawing.Point(485, 64)
         Me.Label44.Name = "Label44"
-        Me.Label44.Size = New System.Drawing.Size(60, 12)
+        Me.Label44.Size = New System.Drawing.Size(63, 12)
         Me.Label44.TabIndex = 166
-        Me.Label44.Text = "Internal No"
+        Me.Label44.Text = "Internal No."
         '
         'txtBillingActualBillNo
         '
@@ -5486,6 +5488,8 @@ Partial Class AgniMainForm
         'tabPayment
         '
         Me.tabPayment.BackColor = System.Drawing.SystemColors.Window
+        Me.tabPayment.Controls.Add(Me.txtPaymentTDSAmount)
+        Me.tabPayment.Controls.Add(Me.Label52)
         Me.tabPayment.Controls.Add(Me.GroupBox19)
         Me.tabPayment.Controls.Add(Me.cmbPaymentPaymentNoList)
         Me.tabPayment.Controls.Add(Me.Label117)
@@ -5526,6 +5530,30 @@ Partial Class AgniMainForm
         Me.tabPayment.Text = "Payments"
         Me.tabPayment.ToolTipText = "Payment Details"
         '
+        'txtPaymentTDSAmount
+        '
+        Me.txtPaymentTDSAmount.BorderColor = System.Drawing.Color.DeepSkyBlue
+        Me.txtPaymentTDSAmount.BorderColorFocus = System.Drawing.Color.Orange
+        Me.txtPaymentTDSAmount.BorderColorMouseEnter = System.Drawing.Color.Green
+        Me.txtPaymentTDSAmount.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
+        Me.txtPaymentTDSAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.txtPaymentTDSAmount.Location = New System.Drawing.Point(276, 357)
+        Me.txtPaymentTDSAmount.Name = "txtPaymentTDSAmount"
+        Me.txtPaymentTDSAmount.ReadOnly = True
+        Me.txtPaymentTDSAmount.Size = New System.Drawing.Size(371, 26)
+        Me.txtPaymentTDSAmount.TabIndex = 7
+        '
+        'Label52
+        '
+        Me.Label52.AutoSize = True
+        Me.Label52.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
+        Me.Label52.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label52.Location = New System.Drawing.Point(28, 357)
+        Me.Label52.Name = "Label52"
+        Me.Label52.Size = New System.Drawing.Size(47, 24)
+        Me.Label52.TabIndex = 164
+        Me.Label52.Text = "TDS"
+        '
         'GroupBox19
         '
         Me.GroupBox19.BorderColor = System.Drawing.Color.DeepSkyBlue
@@ -5535,9 +5563,9 @@ Partial Class AgniMainForm
         Me.GroupBox19.Controls.Add(Me.dgPaymentDetails)
         Me.GroupBox19.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold)
         Me.GroupBox19.ForeColor = System.Drawing.Color.SteelBlue
-        Me.GroupBox19.Location = New System.Drawing.Point(25, 525)
+        Me.GroupBox19.Location = New System.Drawing.Point(25, 576)
         Me.GroupBox19.Name = "GroupBox19"
-        Me.GroupBox19.Size = New System.Drawing.Size(1873, 455)
+        Me.GroupBox19.Size = New System.Drawing.Size(1873, 404)
         Me.GroupBox19.TabIndex = 16
         Me.GroupBox19.TabStop = False
         Me.GroupBox19.Text = "Payment Details"
@@ -5589,7 +5617,7 @@ Partial Class AgniMainForm
         Me.dgPaymentDetails.RowTemplate.ReadOnly = True
         Me.dgPaymentDetails.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgPaymentDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgPaymentDetails.Size = New System.Drawing.Size(1867, 430)
+        Me.dgPaymentDetails.Size = New System.Drawing.Size(1867, 379)
         Me.dgPaymentDetails.TabIndex = 0
         '
         'PaymentNo
@@ -5784,7 +5812,7 @@ Partial Class AgniMainForm
         Me.Label86.AutoSize = True
         Me.Label86.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
         Me.Label86.ForeColor = System.Drawing.Color.SteelBlue
-        Me.Label86.Location = New System.Drawing.Point(28, 404)
+        Me.Label86.Location = New System.Drawing.Point(28, 446)
         Me.Label86.Name = "Label86"
         Me.Label86.Size = New System.Drawing.Size(112, 24)
         Me.Label86.TabIndex = 149
@@ -5797,12 +5825,12 @@ Partial Class AgniMainForm
         Me.txtPaymentNetBalance.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtPaymentNetBalance.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
         Me.txtPaymentNetBalance.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.txtPaymentNetBalance.Location = New System.Drawing.Point(276, 404)
+        Me.txtPaymentNetBalance.Location = New System.Drawing.Point(276, 446)
         Me.txtPaymentNetBalance.Name = "txtPaymentNetBalance"
         Me.txtPaymentNetBalance.ReadOnly = True
         Me.txtPaymentNetBalance.ScrollBars = System.Windows.Forms.ScrollBars.Both
         Me.txtPaymentNetBalance.Size = New System.Drawing.Size(371, 26)
-        Me.txtPaymentNetBalance.TabIndex = 8
+        Me.txtPaymentNetBalance.TabIndex = 9
         Me.txtPaymentNetBalance.TabStop = False
         '
         'Label85
@@ -5810,7 +5838,7 @@ Partial Class AgniMainForm
         Me.Label85.AutoSize = True
         Me.Label85.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
         Me.Label85.ForeColor = System.Drawing.Color.SteelBlue
-        Me.Label85.Location = New System.Drawing.Point(28, 458)
+        Me.Label85.Location = New System.Drawing.Point(28, 500)
         Me.Label85.Name = "Label85"
         Me.Label85.Size = New System.Drawing.Size(84, 24)
         Me.Label85.TabIndex = 147
@@ -5821,7 +5849,7 @@ Partial Class AgniMainForm
         Me.Label69.AutoSize = True
         Me.Label69.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
         Me.Label69.ForeColor = System.Drawing.Color.SteelBlue
-        Me.Label69.Location = New System.Drawing.Point(28, 359)
+        Me.Label69.Location = New System.Drawing.Point(28, 401)
         Me.Label69.Name = "Label69"
         Me.Label69.Size = New System.Drawing.Size(164, 24)
         Me.Label69.TabIndex = 146
@@ -5834,12 +5862,12 @@ Partial Class AgniMainForm
         Me.txtPaymentFinalPaidAmount.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtPaymentFinalPaidAmount.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
         Me.txtPaymentFinalPaidAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.txtPaymentFinalPaidAmount.Location = New System.Drawing.Point(276, 359)
+        Me.txtPaymentFinalPaidAmount.Location = New System.Drawing.Point(276, 401)
         Me.txtPaymentFinalPaidAmount.Name = "txtPaymentFinalPaidAmount"
         Me.txtPaymentFinalPaidAmount.ReadOnly = True
         Me.txtPaymentFinalPaidAmount.ScrollBars = System.Windows.Forms.ScrollBars.Both
         Me.txtPaymentFinalPaidAmount.Size = New System.Drawing.Size(371, 26)
-        Me.txtPaymentFinalPaidAmount.TabIndex = 7
+        Me.txtPaymentFinalPaidAmount.TabIndex = 8
         '
         'txtPaymentUnPaidBilledAmount
         '
@@ -5862,12 +5890,12 @@ Partial Class AgniMainForm
         Me.txtPaymentRemarks.BorderColorMouseEnter = System.Drawing.Color.Green
         Me.txtPaymentRemarks.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
         Me.txtPaymentRemarks.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.txtPaymentRemarks.Location = New System.Drawing.Point(276, 449)
+        Me.txtPaymentRemarks.Location = New System.Drawing.Point(276, 491)
         Me.txtPaymentRemarks.Multiline = True
         Me.txtPaymentRemarks.Name = "txtPaymentRemarks"
         Me.txtPaymentRemarks.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtPaymentRemarks.Size = New System.Drawing.Size(371, 59)
-        Me.txtPaymentRemarks.TabIndex = 9
+        Me.txtPaymentRemarks.TabIndex = 10
         '
         'gbBankDetails
         '
@@ -5886,7 +5914,7 @@ Partial Class AgniMainForm
         Me.gbBankDetails.Location = New System.Drawing.Point(731, 184)
         Me.gbBankDetails.Name = "gbBankDetails"
         Me.gbBankDetails.Size = New System.Drawing.Size(523, 183)
-        Me.gbBankDetails.TabIndex = 10
+        Me.gbBankDetails.TabIndex = 11
         Me.gbBankDetails.TabStop = False
         Me.gbBankDetails.Text = "Bank Details"
         Me.gbBankDetails.Visible = False
@@ -6252,7 +6280,7 @@ Partial Class AgniMainForm
         Me.btnPaymentCancelCreatePayment.SideImageAlign = System.Drawing.ContentAlignment.TopRight
         Me.btnPaymentCancelCreatePayment.SideImageSize = New System.Drawing.Size(26, 22)
         Me.btnPaymentCancelCreatePayment.Size = New System.Drawing.Size(160, 57)
-        Me.btnPaymentCancelCreatePayment.TabIndex = 12
+        Me.btnPaymentCancelCreatePayment.TabIndex = 13
         Me.btnPaymentCancelCreatePayment.Text = "Back"
         Me.btnPaymentCancelCreatePayment.TextMargin = New System.Windows.Forms.Padding(0)
         Me.btnPaymentCancelCreatePayment.TextShadow = System.Drawing.Color.Silver
@@ -6284,7 +6312,7 @@ Partial Class AgniMainForm
         Me.btnPaymentConfirmCreatePayment.SideImageAlign = System.Drawing.ContentAlignment.TopRight
         Me.btnPaymentConfirmCreatePayment.SideImageSize = New System.Drawing.Size(24, 24)
         Me.btnPaymentConfirmCreatePayment.Size = New System.Drawing.Size(160, 55)
-        Me.btnPaymentConfirmCreatePayment.TabIndex = 11
+        Me.btnPaymentConfirmCreatePayment.TabIndex = 12
         Me.btnPaymentConfirmCreatePayment.Text = "Confirm"
         Me.btnPaymentConfirmCreatePayment.TextMargin = New System.Windows.Forms.Padding(0)
         Me.btnPaymentConfirmCreatePayment.TextShadow = System.Drawing.Color.Silver
@@ -6410,7 +6438,7 @@ Partial Class AgniMainForm
         Me.btnLogOff.BackColor = System.Drawing.Color.Transparent
         Me.btnLogOff.BorderColor = System.Drawing.Color.Transparent
         Me.btnLogOff.BorderShow = False
-        CBlendItems14.iColor = New System.Drawing.Color() {System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))}
+        CBlendItems14.iColor = New System.Drawing.Color() {System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))}
         CBlendItems14.iPoint = New Single() {0!, 1.0!}
         Me.btnLogOff.ColorFillBlend = CBlendItems14
         Me.btnLogOff.ColorFillSolid = System.Drawing.Color.Brown
@@ -8235,4 +8263,6 @@ Partial Class AgniMainForm
     Friend WithEvents dpReportFromDate As ElaCustomDateTimePrickerControl.ElaCustomDateTimePicker
     Friend WithEvents Label42 As Label
     Friend WithEvents Label43 As Label
+    Friend WithEvents txtPaymentTDSAmount As ElaCustomTextBoxControl.ElaCustomTextBox
+    Friend WithEvents Label52 As Label
 End Class
