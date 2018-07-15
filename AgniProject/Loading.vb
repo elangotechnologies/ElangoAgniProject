@@ -1,12 +1,18 @@
 ﻿Public Class Loading
+
+    Public gImplicitHandling As Boolean = True
+
     Private Sub Loading_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim random As New Random()
+        If gImplicitHandling Then
+            Dim random As New Random()
 
-        Dim resourceName As String = "loader" + Convert.ToString(random.Next(1, 12))
-        pbLoadingImage.Image = My.Resources.ResourceManager.GetObject(resourceName)
+            Dim resourceName As String = "loader" + Convert.ToString(random.Next(1, 12))
+            pbLoadingImage.Image = My.Resources.ResourceManager.GetObject(resourceName)
 
-        Timer1.Interval = 1000
-        Timer1.Start()
+            Timer1.Interval = 1000
+            Timer1.Start()
+        End If
+
     End Sub
 
     Private Sub Loading_KeyUp(sender As Object, e As KeyEventArgs) Handles MyBase.KeyUp

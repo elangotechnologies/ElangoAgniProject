@@ -94,6 +94,7 @@ Public Class Login
     End Sub
 
     Sub showLoadingScreenThread()
+        Loading.gImplicitHandling = True
         Loading.Show()
     End Sub
 
@@ -151,5 +152,9 @@ Public Class Login
 
     Private Sub Login_KeyUp(sender As Object, e As KeyEventArgs) Handles MyBase.KeyUp
         If e.KeyCode = Keys.Escape Then Me.Close()
+    End Sub
+
+    Private Sub Login_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        closeDBConnection()
     End Sub
 End Class

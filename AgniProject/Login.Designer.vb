@@ -54,7 +54,7 @@ Partial Class Login
         Me.btnLoginLogin.Corners.LowerRight = 10
         Me.btnLoginLogin.Corners.UpperLeft = 10
         Me.btnLoginLogin.Corners.UpperRight = 10
-        Me.btnLoginLogin.DesignerSelected = True
+        Me.btnLoginLogin.DesignerSelected = False
         Me.btnLoginLogin.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnLoginLogin.ImageIndex = 0
         Me.btnLoginLogin.ImageKey = 0

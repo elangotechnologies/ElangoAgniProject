@@ -485,6 +485,14 @@ Partial Class AgniMainForm
         Me.btnCustDelete = New CButtonLib.CButton()
         Me.btnCustAdd = New CButtonLib.CButton()
         Me.tabPayment = New System.Windows.Forms.TabPage()
+        Me.paymentPlaceHolder1 = New ElaCustomGroupBoxControl.ElaCustomGroupBox()
+        Me.paymentPlaceHolder2 = New ElaCustomGroupBoxControl.ElaCustomGroupBox()
+        Me.panelPaymentButtons = New System.Windows.Forms.Panel()
+        Me.btnPaymentConfirmCreatePayment = New CButtonLib.CButton()
+        Me.btnPaymentClear = New CButtonLib.CButton()
+        Me.btnPaymentDelete = New CButtonLib.CButton()
+        Me.btnPaymentCreatePayment = New CButtonLib.CButton()
+        Me.btnPaymentCancelCreatePayment = New CButtonLib.CButton()
         Me.txtPaymentTDSAmount = New ElaCustomTextBoxControl.ElaCustomTextBox()
         Me.Label52 = New System.Windows.Forms.Label()
         Me.GroupBox19 = New ElaCustomGroupBoxControl.ElaCustomGroupBox()
@@ -537,11 +545,6 @@ Partial Class AgniMainForm
         Me.txtPaymentDisplayBillNo = New ElaCustomTextBoxControl.ElaCustomTextBox()
         Me.txtPaymentBillNo = New ElaCustomTextBoxControl.ElaCustomTextBox()
         Me.Label13 = New System.Windows.Forms.Label()
-        Me.btnPaymentCancelCreatePayment = New CButtonLib.CButton()
-        Me.btnPaymentConfirmCreatePayment = New CButtonLib.CButton()
-        Me.btnPaymentCreatePayment = New CButtonLib.CButton()
-        Me.btnPaymentDelete = New CButtonLib.CButton()
-        Me.btnPaymentClear = New CButtonLib.CButton()
         Me.tabSettings = New System.Windows.Forms.TabPage()
         Me.btnLogOff = New CButtonLib.CButton()
         Me.btnSettingsChangeAddress = New CButtonLib.CButton()
@@ -663,6 +666,7 @@ Partial Class AgniMainForm
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox16.SuspendLayout()
         Me.tabPayment.SuspendLayout()
+        Me.panelPaymentButtons.SuspendLayout()
         Me.GroupBox19.SuspendLayout()
         CType(Me.dgPaymentDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbBankDetails.SuspendLayout()
@@ -732,7 +736,7 @@ Partial Class AgniMainForm
         'Label37
         '
         Me.Label37.AutoSize = True
-        Me.Label37.Location = New System.Drawing.Point(1499, 944)
+        Me.Label37.Location = New System.Drawing.Point(1499, 922)
         Me.Label37.Name = "Label37"
         Me.Label37.Size = New System.Drawing.Size(351, 26)
         Me.Label37.TabIndex = 27
@@ -741,7 +745,7 @@ Partial Class AgniMainForm
         'Label36
         '
         Me.Label36.AutoSize = True
-        Me.Label36.Location = New System.Drawing.Point(1499, 906)
+        Me.Label36.Location = New System.Drawing.Point(1499, 884)
         Me.Label36.Name = "Label36"
         Me.Label36.Size = New System.Drawing.Size(203, 26)
         Me.Label36.TabIndex = 26
@@ -750,7 +754,7 @@ Partial Class AgniMainForm
         'Label35
         '
         Me.Label35.AutoSize = True
-        Me.Label35.Location = New System.Drawing.Point(1418, 830)
+        Me.Label35.Location = New System.Drawing.Point(1418, 808)
         Me.Label35.Name = "Label35"
         Me.Label35.Size = New System.Drawing.Size(249, 26)
         Me.Label35.TabIndex = 25
@@ -759,7 +763,7 @@ Partial Class AgniMainForm
         'Label34
         '
         Me.Label34.AutoSize = True
-        Me.Label34.Location = New System.Drawing.Point(1499, 868)
+        Me.Label34.Location = New System.Drawing.Point(1499, 846)
         Me.Label34.Name = "Label34"
         Me.Label34.Size = New System.Drawing.Size(225, 26)
         Me.Label34.TabIndex = 24
@@ -2690,7 +2694,7 @@ Partial Class AgniMainForm
         Me.btnBillingDeleteBill.ForeColor = System.Drawing.Color.Red
         Me.btnBillingDeleteBill.ImageIndex = 0
         Me.btnBillingDeleteBill.ImageKey = 0
-        Me.btnBillingDeleteBill.Location = New System.Drawing.Point(1133, 277)
+        Me.btnBillingDeleteBill.Location = New System.Drawing.Point(1133, 304)
         Me.btnBillingDeleteBill.Name = "btnBillingDeleteBill"
         Me.btnBillingDeleteBill.Padding = New System.Windows.Forms.Padding(25, 23, 24, 5)
         Me.btnBillingDeleteBill.SideImage = CType(resources.GetObject("btnBillingDeleteBill.SideImage"), System.Drawing.Image)
@@ -3116,6 +3120,7 @@ Partial Class AgniMainForm
         Me.Cancelled.HeaderText = "Cancelled"
         Me.Cancelled.Name = "Cancelled"
         Me.Cancelled.ReadOnly = True
+        Me.Cancelled.Visible = False
         '
         'Label44
         '
@@ -3269,9 +3274,9 @@ Partial Class AgniMainForm
         Me.Label30.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label30.Location = New System.Drawing.Point(27, 138)
         Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(144, 24)
+        Me.Label30.Size = New System.Drawing.Size(156, 24)
         Me.Label30.TabIndex = 116
-        Me.Label30.Text = "UnPaid Balance"
+        Me.Label30.Text = "Previous Balance"
         '
         'txtBillingDesignAmoutBeforeGST
         '
@@ -3585,7 +3590,7 @@ Partial Class AgniMainForm
         Me.btnBillingCancelCreateBill.ForeColor = System.Drawing.Color.Brown
         Me.btnBillingCancelCreateBill.ImageIndex = 0
         Me.btnBillingCancelCreateBill.ImageKey = 0
-        Me.btnBillingCancelCreateBill.Location = New System.Drawing.Point(1302, 71)
+        Me.btnBillingCancelCreateBill.Location = New System.Drawing.Point(1302, 98)
         Me.btnBillingCancelCreateBill.Name = "btnBillingCancelCreateBill"
         Me.btnBillingCancelCreateBill.Padding = New System.Windows.Forms.Padding(25, 20, 18, 5)
         Me.btnBillingCancelCreateBill.SideImage = CType(resources.GetObject("btnBillingCancelCreateBill.SideImage"), System.Drawing.Image)
@@ -3619,7 +3624,7 @@ Partial Class AgniMainForm
         Me.btnBillingConfirmCreateBill.ForeColor = System.Drawing.Color.Green
         Me.btnBillingConfirmCreateBill.ImageIndex = 0
         Me.btnBillingConfirmCreateBill.ImageKey = 0
-        Me.btnBillingConfirmCreateBill.Location = New System.Drawing.Point(1136, 71)
+        Me.btnBillingConfirmCreateBill.Location = New System.Drawing.Point(1136, 98)
         Me.btnBillingConfirmCreateBill.Name = "btnBillingConfirmCreateBill"
         Me.btnBillingConfirmCreateBill.Padding = New System.Windows.Forms.Padding(25, 20, 20, 5)
         Me.btnBillingConfirmCreateBill.SideImage = CType(resources.GetObject("btnBillingConfirmCreateBill.SideImage"), System.Drawing.Image)
@@ -3651,7 +3656,7 @@ Partial Class AgniMainForm
         Me.btnBillingCreateBill.ForeColor = System.Drawing.Color.Green
         Me.btnBillingCreateBill.ImageIndex = 0
         Me.btnBillingCreateBill.ImageKey = 0
-        Me.btnBillingCreateBill.Location = New System.Drawing.Point(1136, 71)
+        Me.btnBillingCreateBill.Location = New System.Drawing.Point(1136, 98)
         Me.btnBillingCreateBill.Name = "btnBillingCreateBill"
         Me.btnBillingCreateBill.Padding = New System.Windows.Forms.Padding(25, 20, 21, 5)
         Me.btnBillingCreateBill.SideImage = CType(resources.GetObject("btnBillingCreateBill.SideImage"), System.Drawing.Image)
@@ -3682,7 +3687,7 @@ Partial Class AgniMainForm
         Me.btnBillingCancelBill.ForeColor = System.Drawing.Color.Red
         Me.btnBillingCancelBill.ImageIndex = 0
         Me.btnBillingCancelBill.ImageKey = 0
-        Me.btnBillingCancelBill.Location = New System.Drawing.Point(1136, 352)
+        Me.btnBillingCancelBill.Location = New System.Drawing.Point(1488, 355)
         Me.btnBillingCancelBill.Name = "btnBillingCancelBill"
         Me.btnBillingCancelBill.Padding = New System.Windows.Forms.Padding(25, 22, 21, 5)
         Me.btnBillingCancelBill.SideImage = CType(resources.GetObject("btnBillingCancelBill.SideImage"), System.Drawing.Image)
@@ -3695,6 +3700,7 @@ Partial Class AgniMainForm
         Me.btnBillingCancelBill.TextMargin = New System.Windows.Forms.Padding(0)
         Me.btnBillingCancelBill.TextShadow = System.Drawing.Color.Silver
         Me.btnBillingCancelBill.UseVisualStyleBackColor = False
+        Me.btnBillingCancelBill.Visible = False
         '
         'btnBillingClear
         '
@@ -3716,7 +3722,7 @@ Partial Class AgniMainForm
         Me.btnBillingClear.ForeColor = System.Drawing.Color.DarkCyan
         Me.btnBillingClear.ImageIndex = 0
         Me.btnBillingClear.ImageKey = 0
-        Me.btnBillingClear.Location = New System.Drawing.Point(1133, 212)
+        Me.btnBillingClear.Location = New System.Drawing.Point(1133, 239)
         Me.btnBillingClear.Name = "btnBillingClear"
         Me.btnBillingClear.Padding = New System.Windows.Forms.Padding(25, 22, 19, 5)
         Me.btnBillingClear.SideImage = CType(resources.GetObject("btnBillingClear.SideImage"), System.Drawing.Image)
@@ -3749,7 +3755,7 @@ Partial Class AgniMainForm
         Me.btnBillingPrintBill.ForeColor = System.Drawing.Color.Chocolate
         Me.btnBillingPrintBill.ImageIndex = 0
         Me.btnBillingPrintBill.ImageKey = 0
-        Me.btnBillingPrintBill.Location = New System.Drawing.Point(1133, 136)
+        Me.btnBillingPrintBill.Location = New System.Drawing.Point(1133, 163)
         Me.btnBillingPrintBill.Name = "btnBillingPrintBill"
         Me.btnBillingPrintBill.Padding = New System.Windows.Forms.Padding(25, 26, 22, 5)
         Me.btnBillingPrintBill.SideImage = CType(resources.GetObject("btnBillingPrintBill.SideImage"), System.Drawing.Image)
@@ -3940,9 +3946,9 @@ Partial Class AgniMainForm
         Me.GroupBox5.Controls.Add(Me.dgDesDesignDetails)
         Me.GroupBox5.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold)
         Me.GroupBox5.ForeColor = System.Drawing.Color.SteelBlue
-        Me.GroupBox5.Location = New System.Drawing.Point(36, 461)
+        Me.GroupBox5.Location = New System.Drawing.Point(36, 404)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(1845, 482)
+        Me.GroupBox5.Size = New System.Drawing.Size(1845, 539)
         Me.GroupBox5.TabIndex = 14
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Design Details"
@@ -3993,7 +3999,7 @@ Partial Class AgniMainForm
         Me.dgDesDesignDetails.RowTemplate.ReadOnly = True
         Me.dgDesDesignDetails.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgDesDesignDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgDesDesignDetails.Size = New System.Drawing.Size(1839, 457)
+        Me.dgDesDesignDetails.Size = New System.Drawing.Size(1839, 514)
         Me.dgDesDesignDetails.TabIndex = 0
         '
         'DesignNo
@@ -4206,7 +4212,7 @@ Partial Class AgniMainForm
         '
         Me.Label22.AutoSize = True
         Me.Label22.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label22.Location = New System.Drawing.Point(1182, 15)
+        Me.Label22.Location = New System.Drawing.Point(843, 10)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(300, 18)
         Me.Label22.TabIndex = 9
@@ -4346,13 +4352,13 @@ Partial Class AgniMainForm
         Me.btnDesClear.ForeColor = System.Drawing.Color.DarkCyan
         Me.btnDesClear.ImageIndex = 0
         Me.btnDesClear.ImageKey = 0
-        Me.btnDesClear.Location = New System.Drawing.Point(751, 393)
+        Me.btnDesClear.Location = New System.Drawing.Point(1269, 300)
         Me.btnDesClear.Name = "btnDesClear"
         Me.btnDesClear.Padding = New System.Windows.Forms.Padding(25, 22, 19, 5)
         Me.btnDesClear.SideImage = CType(resources.GetObject("btnDesClear.SideImage"), System.Drawing.Image)
         Me.btnDesClear.SideImageAlign = System.Drawing.ContentAlignment.TopRight
         Me.btnDesClear.SideImageSize = New System.Drawing.Size(22, 22)
-        Me.btnDesClear.Size = New System.Drawing.Size(160, 57)
+        Me.btnDesClear.Size = New System.Drawing.Size(221, 57)
         Me.btnDesClear.TabIndex = 13
         Me.btnDesClear.Text = "Clear"
         Me.btnDesClear.TextMargin = New System.Windows.Forms.Padding(0)
@@ -4379,13 +4385,13 @@ Partial Class AgniMainForm
         Me.btnDesUpdate.ForeColor = System.Drawing.Color.DarkViolet
         Me.btnDesUpdate.ImageIndex = 0
         Me.btnDesUpdate.ImageKey = 0
-        Me.btnDesUpdate.Location = New System.Drawing.Point(416, 394)
+        Me.btnDesUpdate.Location = New System.Drawing.Point(1269, 144)
         Me.btnDesUpdate.Name = "btnDesUpdate"
         Me.btnDesUpdate.Padding = New System.Windows.Forms.Padding(25, 20, 18, 5)
         Me.btnDesUpdate.SideImage = CType(resources.GetObject("btnDesUpdate.SideImage"), System.Drawing.Image)
         Me.btnDesUpdate.SideImageAlign = System.Drawing.ContentAlignment.TopRight
         Me.btnDesUpdate.SideImageSize = New System.Drawing.Size(22, 22)
-        Me.btnDesUpdate.Size = New System.Drawing.Size(160, 55)
+        Me.btnDesUpdate.Size = New System.Drawing.Size(221, 55)
         Me.btnDesUpdate.TabIndex = 11
         Me.btnDesUpdate.Text = "Update"
         Me.btnDesUpdate.TextMargin = New System.Windows.Forms.Padding(0)
@@ -4410,14 +4416,14 @@ Partial Class AgniMainForm
         Me.btnDesDelete.ForeColor = System.Drawing.Color.Red
         Me.btnDesDelete.ImageIndex = 0
         Me.btnDesDelete.ImageKey = 0
-        Me.btnDesDelete.Location = New System.Drawing.Point(582, 393)
+        Me.btnDesDelete.Location = New System.Drawing.Point(1269, 221)
         Me.btnDesDelete.Name = "btnDesDelete"
         Me.btnDesDelete.Padding = New System.Windows.Forms.Padding(25, 23, 22, 5)
         Me.btnDesDelete.SideImage = CType(resources.GetObject("btnDesDelete.SideImage"), System.Drawing.Image)
         Me.btnDesDelete.SideImageAlign = System.Drawing.ContentAlignment.TopRight
         Me.btnDesDelete.SideImageIsClickable = True
         Me.btnDesDelete.SideImageSize = New System.Drawing.Size(27, 25)
-        Me.btnDesDelete.Size = New System.Drawing.Size(164, 57)
+        Me.btnDesDelete.Size = New System.Drawing.Size(221, 57)
         Me.btnDesDelete.TabIndex = 12
         Me.btnDesDelete.Text = "Delete"
         Me.btnDesDelete.TextMargin = New System.Windows.Forms.Padding(0)
@@ -4442,13 +4448,13 @@ Partial Class AgniMainForm
         Me.btnDesAdd.ForeColor = System.Drawing.Color.Green
         Me.btnDesAdd.ImageIndex = 0
         Me.btnDesAdd.ImageKey = 0
-        Me.btnDesAdd.Location = New System.Drawing.Point(250, 394)
+        Me.btnDesAdd.Location = New System.Drawing.Point(1269, 67)
         Me.btnDesAdd.Name = "btnDesAdd"
         Me.btnDesAdd.Padding = New System.Windows.Forms.Padding(25, 20, 21, 5)
         Me.btnDesAdd.SideImage = CType(resources.GetObject("btnDesAdd.SideImage"), System.Drawing.Image)
         Me.btnDesAdd.SideImageAlign = System.Drawing.ContentAlignment.TopRight
         Me.btnDesAdd.SideImageSize = New System.Drawing.Size(22, 22)
-        Me.btnDesAdd.Size = New System.Drawing.Size(160, 55)
+        Me.btnDesAdd.Size = New System.Drawing.Size(221, 55)
         Me.btnDesAdd.TabIndex = 10
         Me.btnDesAdd.Text = "Add"
         Me.btnDesAdd.TextMargin = New System.Windows.Forms.Padding(0)
@@ -4480,9 +4486,9 @@ Partial Class AgniMainForm
         Me.pbDesDesignImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pbDesDesignImage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.pbDesDesignImage.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.pbDesDesignImage.Location = New System.Drawing.Point(1153, 51)
+        Me.pbDesDesignImage.Location = New System.Drawing.Point(814, 31)
         Me.pbDesDesignImage.Name = "pbDesDesignImage"
-        Me.pbDesDesignImage.Size = New System.Drawing.Size(381, 389)
+        Me.pbDesDesignImage.Size = New System.Drawing.Size(350, 350)
         Me.pbDesDesignImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pbDesDesignImage.TabIndex = 21
         Me.pbDesDesignImage.TabStop = False
@@ -4822,9 +4828,9 @@ Partial Class AgniMainForm
         Me.GroupBox22.Controls.Add(Me.dgCustCustomerDetails)
         Me.GroupBox22.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox22.ForeColor = System.Drawing.Color.SteelBlue
-        Me.GroupBox22.Location = New System.Drawing.Point(8, 565)
+        Me.GroupBox22.Location = New System.Drawing.Point(8, 510)
         Me.GroupBox22.Name = "GroupBox22"
-        Me.GroupBox22.Size = New System.Drawing.Size(1892, 394)
+        Me.GroupBox22.Size = New System.Drawing.Size(1892, 449)
         Me.GroupBox22.TabIndex = 12
         Me.GroupBox22.TabStop = False
         Me.GroupBox22.Text = "Customers Details"
@@ -4876,7 +4882,7 @@ Partial Class AgniMainForm
         Me.dgCustCustomerDetails.RowTemplate.ReadOnly = True
         Me.dgCustCustomerDetails.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgCustCustomerDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgCustCustomerDetails.Size = New System.Drawing.Size(1886, 369)
+        Me.dgCustCustomerDetails.Size = New System.Drawing.Size(1886, 424)
         Me.dgCustCustomerDetails.TabIndex = 0
         '
         'CompName
@@ -5378,13 +5384,13 @@ Partial Class AgniMainForm
         Me.btnCustClear.ForeColor = System.Drawing.Color.DarkCyan
         Me.btnCustClear.ImageIndex = 0
         Me.btnCustClear.ImageKey = 0
-        Me.btnCustClear.Location = New System.Drawing.Point(764, 495)
+        Me.btnCustClear.Location = New System.Drawing.Point(1355, 303)
         Me.btnCustClear.Name = "btnCustClear"
         Me.btnCustClear.Padding = New System.Windows.Forms.Padding(25, 22, 19, 5)
         Me.btnCustClear.SideImage = CType(resources.GetObject("btnCustClear.SideImage"), System.Drawing.Image)
         Me.btnCustClear.SideImageAlign = System.Drawing.ContentAlignment.TopRight
         Me.btnCustClear.SideImageSize = New System.Drawing.Size(22, 22)
-        Me.btnCustClear.Size = New System.Drawing.Size(160, 57)
+        Me.btnCustClear.Size = New System.Drawing.Size(213, 57)
         Me.btnCustClear.TabIndex = 11
         Me.btnCustClear.Text = "Clear"
         Me.btnCustClear.TextMargin = New System.Windows.Forms.Padding(0)
@@ -5409,13 +5415,13 @@ Partial Class AgniMainForm
         Me.btnCustUpdate.ForeColor = System.Drawing.Color.DarkViolet
         Me.btnCustUpdate.ImageIndex = 0
         Me.btnCustUpdate.ImageKey = 0
-        Me.btnCustUpdate.Location = New System.Drawing.Point(432, 497)
+        Me.btnCustUpdate.Location = New System.Drawing.Point(1355, 141)
         Me.btnCustUpdate.Name = "btnCustUpdate"
         Me.btnCustUpdate.Padding = New System.Windows.Forms.Padding(25, 20, 18, 5)
         Me.btnCustUpdate.SideImage = CType(resources.GetObject("btnCustUpdate.SideImage"), System.Drawing.Image)
         Me.btnCustUpdate.SideImageAlign = System.Drawing.ContentAlignment.TopRight
         Me.btnCustUpdate.SideImageSize = New System.Drawing.Size(22, 22)
-        Me.btnCustUpdate.Size = New System.Drawing.Size(160, 55)
+        Me.btnCustUpdate.Size = New System.Drawing.Size(213, 55)
         Me.btnCustUpdate.TabIndex = 9
         Me.btnCustUpdate.Text = "Update"
         Me.btnCustUpdate.TextMargin = New System.Windows.Forms.Padding(0)
@@ -5440,14 +5446,14 @@ Partial Class AgniMainForm
         Me.btnCustDelete.ForeColor = System.Drawing.Color.Red
         Me.btnCustDelete.ImageIndex = 0
         Me.btnCustDelete.ImageKey = 0
-        Me.btnCustDelete.Location = New System.Drawing.Point(596, 495)
+        Me.btnCustDelete.Location = New System.Drawing.Point(1355, 221)
         Me.btnCustDelete.Name = "btnCustDelete"
         Me.btnCustDelete.Padding = New System.Windows.Forms.Padding(25, 23, 22, 5)
         Me.btnCustDelete.SideImage = CType(resources.GetObject("btnCustDelete.SideImage"), System.Drawing.Image)
         Me.btnCustDelete.SideImageAlign = System.Drawing.ContentAlignment.TopRight
         Me.btnCustDelete.SideImageIsClickable = True
         Me.btnCustDelete.SideImageSize = New System.Drawing.Size(27, 25)
-        Me.btnCustDelete.Size = New System.Drawing.Size(164, 57)
+        Me.btnCustDelete.Size = New System.Drawing.Size(213, 57)
         Me.btnCustDelete.TabIndex = 10
         Me.btnCustDelete.Text = "Delete"
         Me.btnCustDelete.TextMargin = New System.Windows.Forms.Padding(0)
@@ -5472,13 +5478,13 @@ Partial Class AgniMainForm
         Me.btnCustAdd.ForeColor = System.Drawing.Color.Green
         Me.btnCustAdd.ImageIndex = 0
         Me.btnCustAdd.ImageKey = 0
-        Me.btnCustAdd.Location = New System.Drawing.Point(268, 497)
+        Me.btnCustAdd.Location = New System.Drawing.Point(1355, 61)
         Me.btnCustAdd.Name = "btnCustAdd"
         Me.btnCustAdd.Padding = New System.Windows.Forms.Padding(25, 20, 21, 5)
         Me.btnCustAdd.SideImage = CType(resources.GetObject("btnCustAdd.SideImage"), System.Drawing.Image)
         Me.btnCustAdd.SideImageAlign = System.Drawing.ContentAlignment.TopRight
         Me.btnCustAdd.SideImageSize = New System.Drawing.Size(22, 22)
-        Me.btnCustAdd.Size = New System.Drawing.Size(160, 55)
+        Me.btnCustAdd.Size = New System.Drawing.Size(213, 55)
         Me.btnCustAdd.TabIndex = 8
         Me.btnCustAdd.Text = "Add"
         Me.btnCustAdd.TextMargin = New System.Windows.Forms.Padding(0)
@@ -5488,6 +5494,9 @@ Partial Class AgniMainForm
         'tabPayment
         '
         Me.tabPayment.BackColor = System.Drawing.SystemColors.Window
+        Me.tabPayment.Controls.Add(Me.paymentPlaceHolder1)
+        Me.tabPayment.Controls.Add(Me.paymentPlaceHolder2)
+        Me.tabPayment.Controls.Add(Me.panelPaymentButtons)
         Me.tabPayment.Controls.Add(Me.txtPaymentTDSAmount)
         Me.tabPayment.Controls.Add(Me.Label52)
         Me.tabPayment.Controls.Add(Me.GroupBox19)
@@ -5514,11 +5523,6 @@ Partial Class AgniMainForm
         Me.tabPayment.Controls.Add(Me.Label71)
         Me.tabPayment.Controls.Add(Me.ElaCustomGroupBox2)
         Me.tabPayment.Controls.Add(Me.ElaCustomGroupBox4)
-        Me.tabPayment.Controls.Add(Me.btnPaymentCancelCreatePayment)
-        Me.tabPayment.Controls.Add(Me.btnPaymentConfirmCreatePayment)
-        Me.tabPayment.Controls.Add(Me.btnPaymentCreatePayment)
-        Me.tabPayment.Controls.Add(Me.btnPaymentDelete)
-        Me.tabPayment.Controls.Add(Me.btnPaymentClear)
         Me.tabPayment.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.tabPayment.ImageKey = "PaymentsTab.png"
         Me.tabPayment.Location = New System.Drawing.Point(4, 49)
@@ -5529,6 +5533,204 @@ Partial Class AgniMainForm
         Me.tabPayment.Tag = "tagPaymentTab"
         Me.tabPayment.Text = "Payments"
         Me.tabPayment.ToolTipText = "Payment Details"
+        '
+        'paymentPlaceHolder1
+        '
+        Me.paymentPlaceHolder1.BorderColor = System.Drawing.Color.DeepSkyBlue
+        Me.paymentPlaceHolder1.BorderColorFocus = System.Drawing.Color.Orange
+        Me.paymentPlaceHolder1.BorderColorMouseEnter = System.Drawing.Color.Green
+        Me.paymentPlaceHolder1.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Thin
+        Me.paymentPlaceHolder1.ForeColor = System.Drawing.Color.Black
+        Me.paymentPlaceHolder1.Location = New System.Drawing.Point(750, 124)
+        Me.paymentPlaceHolder1.Name = "paymentPlaceHolder1"
+        Me.paymentPlaceHolder1.Size = New System.Drawing.Size(23, 42)
+        Me.paymentPlaceHolder1.TabIndex = 165
+        Me.paymentPlaceHolder1.TabStop = False
+        Me.paymentPlaceHolder1.Visible = False
+        '
+        'paymentPlaceHolder2
+        '
+        Me.paymentPlaceHolder2.BorderColor = System.Drawing.Color.DeepSkyBlue
+        Me.paymentPlaceHolder2.BorderColorFocus = System.Drawing.Color.Orange
+        Me.paymentPlaceHolder2.BorderColorMouseEnter = System.Drawing.Color.Green
+        Me.paymentPlaceHolder2.BorderThickness = ElaCustomGroupBoxControl.ElaCustomGroupBox.BorderThicknessEnum.Thin
+        Me.paymentPlaceHolder2.ForeColor = System.Drawing.Color.Black
+        Me.paymentPlaceHolder2.Location = New System.Drawing.Point(1245, 124)
+        Me.paymentPlaceHolder2.Name = "paymentPlaceHolder2"
+        Me.paymentPlaceHolder2.Size = New System.Drawing.Size(23, 42)
+        Me.paymentPlaceHolder2.TabIndex = 166
+        Me.paymentPlaceHolder2.TabStop = False
+        Me.paymentPlaceHolder2.Visible = False
+        '
+        'panelPaymentButtons
+        '
+        Me.panelPaymentButtons.Controls.Add(Me.btnPaymentConfirmCreatePayment)
+        Me.panelPaymentButtons.Controls.Add(Me.btnPaymentClear)
+        Me.panelPaymentButtons.Controls.Add(Me.btnPaymentDelete)
+        Me.panelPaymentButtons.Controls.Add(Me.btnPaymentCreatePayment)
+        Me.panelPaymentButtons.Controls.Add(Me.btnPaymentCancelCreatePayment)
+        Me.panelPaymentButtons.Location = New System.Drawing.Point(1290, 124)
+        Me.panelPaymentButtons.Name = "panelPaymentButtons"
+        Me.panelPaymentButtons.Size = New System.Drawing.Size(345, 270)
+        Me.panelPaymentButtons.TabIndex = 14
+        '
+        'btnPaymentConfirmCreatePayment
+        '
+        Me.btnPaymentConfirmCreatePayment.AutoEllipsis = False
+        Me.btnPaymentConfirmCreatePayment.AutoSizeMode = False
+        Me.btnPaymentConfirmCreatePayment.BackColor = System.Drawing.Color.Transparent
+        Me.btnPaymentConfirmCreatePayment.BorderColor = System.Drawing.Color.Transparent
+        Me.btnPaymentConfirmCreatePayment.BorderShow = False
+        Me.btnPaymentConfirmCreatePayment.ColorFillBlend = CBlendItems10
+        Me.btnPaymentConfirmCreatePayment.ColorFillSolid = System.Drawing.Color.Brown
+        Me.btnPaymentConfirmCreatePayment.DesignerSelected = False
+        Me.btnPaymentConfirmCreatePayment.FillType = CButtonLib.CButton.eFillType.GradientPath
+        Me.btnPaymentConfirmCreatePayment.FillTypeLinear = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
+        Me.btnPaymentConfirmCreatePayment.FocalPoints.FocusPtX = 0.65!
+        Me.btnPaymentConfirmCreatePayment.FocalPoints.FocusPtY = 0.6!
+        Me.btnPaymentConfirmCreatePayment.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPaymentConfirmCreatePayment.ForeColor = System.Drawing.Color.Green
+        Me.btnPaymentConfirmCreatePayment.ImageIndex = 0
+        Me.btnPaymentConfirmCreatePayment.ImageKey = 0
+        Me.btnPaymentConfirmCreatePayment.Location = New System.Drawing.Point(3, 11)
+        Me.btnPaymentConfirmCreatePayment.Name = "btnPaymentConfirmCreatePayment"
+        Me.btnPaymentConfirmCreatePayment.Padding = New System.Windows.Forms.Padding(25, 20, 20, 5)
+        Me.btnPaymentConfirmCreatePayment.SideImage = CType(resources.GetObject("btnPaymentConfirmCreatePayment.SideImage"), System.Drawing.Image)
+        Me.btnPaymentConfirmCreatePayment.SideImageAlign = System.Drawing.ContentAlignment.TopRight
+        Me.btnPaymentConfirmCreatePayment.SideImageSize = New System.Drawing.Size(24, 24)
+        Me.btnPaymentConfirmCreatePayment.Size = New System.Drawing.Size(160, 55)
+        Me.btnPaymentConfirmCreatePayment.TabIndex = 2
+        Me.btnPaymentConfirmCreatePayment.Text = "Confirm"
+        Me.btnPaymentConfirmCreatePayment.TextMargin = New System.Windows.Forms.Padding(0)
+        Me.btnPaymentConfirmCreatePayment.TextShadow = System.Drawing.Color.Silver
+        Me.btnPaymentConfirmCreatePayment.UseVisualStyleBackColor = False
+        Me.btnPaymentConfirmCreatePayment.Visible = False
+        '
+        'btnPaymentClear
+        '
+        Me.btnPaymentClear.AutoEllipsis = False
+        Me.btnPaymentClear.AutoSizeMode = False
+        Me.btnPaymentClear.BackColor = System.Drawing.Color.Transparent
+        Me.btnPaymentClear.BorderColor = System.Drawing.Color.Transparent
+        Me.btnPaymentClear.BorderShow = False
+        Me.btnPaymentClear.ColorFillBlend = CBlendItems11
+        Me.btnPaymentClear.ColorFillSolid = System.Drawing.Color.Brown
+        Me.btnPaymentClear.DesignerSelected = False
+        Me.btnPaymentClear.FillType = CButtonLib.CButton.eFillType.GradientPath
+        Me.btnPaymentClear.FillTypeLinear = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
+        Me.btnPaymentClear.FocalPoints.FocusPtX = 0.65!
+        Me.btnPaymentClear.FocalPoints.FocusPtY = 0.6!
+        Me.btnPaymentClear.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPaymentClear.ForeColor = System.Drawing.Color.DarkCyan
+        Me.btnPaymentClear.ImageIndex = 0
+        Me.btnPaymentClear.ImageKey = 0
+        Me.btnPaymentClear.Location = New System.Drawing.Point(3, 177)
+        Me.btnPaymentClear.Name = "btnPaymentClear"
+        Me.btnPaymentClear.Padding = New System.Windows.Forms.Padding(25, 22, 19, 5)
+        Me.btnPaymentClear.SideImage = CType(resources.GetObject("btnPaymentClear.SideImage"), System.Drawing.Image)
+        Me.btnPaymentClear.SideImageAlign = System.Drawing.ContentAlignment.TopRight
+        Me.btnPaymentClear.SideImageSize = New System.Drawing.Size(22, 22)
+        Me.btnPaymentClear.Size = New System.Drawing.Size(273, 57)
+        Me.btnPaymentClear.TabIndex = 0
+        Me.btnPaymentClear.Text = "Clear"
+        Me.btnPaymentClear.TextMargin = New System.Windows.Forms.Padding(0)
+        Me.btnPaymentClear.TextShadow = System.Drawing.Color.Silver
+        Me.btnPaymentClear.UseVisualStyleBackColor = False
+        '
+        'btnPaymentDelete
+        '
+        Me.btnPaymentDelete.AutoEllipsis = False
+        Me.btnPaymentDelete.AutoSizeMode = False
+        Me.btnPaymentDelete.BackColor = System.Drawing.Color.Transparent
+        Me.btnPaymentDelete.BorderColor = System.Drawing.Color.Transparent
+        Me.btnPaymentDelete.BorderShow = False
+        Me.btnPaymentDelete.ColorFillBlend = CBlendItems7
+        Me.btnPaymentDelete.ColorFillSolid = System.Drawing.Color.Black
+        Me.btnPaymentDelete.DesignerSelected = False
+        Me.btnPaymentDelete.FillType = CButtonLib.CButton.eFillType.GradientPath
+        Me.btnPaymentDelete.FillTypeLinear = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
+        Me.btnPaymentDelete.FocalPoints.FocusPtX = 0.65!
+        Me.btnPaymentDelete.FocalPoints.FocusPtY = 0.6!
+        Me.btnPaymentDelete.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPaymentDelete.ForeColor = System.Drawing.Color.Red
+        Me.btnPaymentDelete.ImageIndex = 0
+        Me.btnPaymentDelete.ImageKey = 0
+        Me.btnPaymentDelete.Location = New System.Drawing.Point(3, 93)
+        Me.btnPaymentDelete.Name = "btnPaymentDelete"
+        Me.btnPaymentDelete.Padding = New System.Windows.Forms.Padding(25, 23, 22, 5)
+        Me.btnPaymentDelete.SideImage = CType(resources.GetObject("btnPaymentDelete.SideImage"), System.Drawing.Image)
+        Me.btnPaymentDelete.SideImageAlign = System.Drawing.ContentAlignment.TopRight
+        Me.btnPaymentDelete.SideImageIsClickable = True
+        Me.btnPaymentDelete.SideImageSize = New System.Drawing.Size(27, 25)
+        Me.btnPaymentDelete.Size = New System.Drawing.Size(273, 57)
+        Me.btnPaymentDelete.TabIndex = 4
+        Me.btnPaymentDelete.Text = "Delete"
+        Me.btnPaymentDelete.TextMargin = New System.Windows.Forms.Padding(0)
+        Me.btnPaymentDelete.TextShadow = System.Drawing.Color.Silver
+        Me.btnPaymentDelete.UseVisualStyleBackColor = False
+        '
+        'btnPaymentCreatePayment
+        '
+        Me.btnPaymentCreatePayment.AutoEllipsis = False
+        Me.btnPaymentCreatePayment.AutoSizeMode = False
+        Me.btnPaymentCreatePayment.BackColor = System.Drawing.Color.Transparent
+        Me.btnPaymentCreatePayment.BorderColor = System.Drawing.Color.Transparent
+        Me.btnPaymentCreatePayment.BorderShow = False
+        Me.btnPaymentCreatePayment.ColorFillBlend = CBlendItems10
+        Me.btnPaymentCreatePayment.ColorFillSolid = System.Drawing.Color.Brown
+        Me.btnPaymentCreatePayment.DesignerSelected = False
+        Me.btnPaymentCreatePayment.FillType = CButtonLib.CButton.eFillType.GradientPath
+        Me.btnPaymentCreatePayment.FillTypeLinear = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
+        Me.btnPaymentCreatePayment.FocalPoints.FocusPtX = 0.65!
+        Me.btnPaymentCreatePayment.FocalPoints.FocusPtY = 0.6!
+        Me.btnPaymentCreatePayment.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPaymentCreatePayment.ForeColor = System.Drawing.Color.Green
+        Me.btnPaymentCreatePayment.ImageIndex = 0
+        Me.btnPaymentCreatePayment.ImageKey = 0
+        Me.btnPaymentCreatePayment.Location = New System.Drawing.Point(3, 11)
+        Me.btnPaymentCreatePayment.Name = "btnPaymentCreatePayment"
+        Me.btnPaymentCreatePayment.Padding = New System.Windows.Forms.Padding(25, 20, 21, 5)
+        Me.btnPaymentCreatePayment.SideImage = CType(resources.GetObject("btnPaymentCreatePayment.SideImage"), System.Drawing.Image)
+        Me.btnPaymentCreatePayment.SideImageAlign = System.Drawing.ContentAlignment.TopRight
+        Me.btnPaymentCreatePayment.SideImageSize = New System.Drawing.Size(22, 22)
+        Me.btnPaymentCreatePayment.Size = New System.Drawing.Size(273, 55)
+        Me.btnPaymentCreatePayment.TabIndex = 1
+        Me.btnPaymentCreatePayment.Text = "Create New Payment "
+        Me.btnPaymentCreatePayment.TextMargin = New System.Windows.Forms.Padding(0)
+        Me.btnPaymentCreatePayment.TextShadow = System.Drawing.Color.Silver
+        Me.btnPaymentCreatePayment.UseVisualStyleBackColor = False
+        '
+        'btnPaymentCancelCreatePayment
+        '
+        Me.btnPaymentCancelCreatePayment.AutoEllipsis = False
+        Me.btnPaymentCancelCreatePayment.AutoSizeMode = False
+        Me.btnPaymentCancelCreatePayment.BackColor = System.Drawing.Color.Transparent
+        Me.btnPaymentCancelCreatePayment.BorderColor = System.Drawing.Color.Transparent
+        Me.btnPaymentCancelCreatePayment.BorderShow = False
+        Me.btnPaymentCancelCreatePayment.ColorFillBlend = CBlendItems9
+        Me.btnPaymentCancelCreatePayment.ColorFillSolid = System.Drawing.Color.Brown
+        Me.btnPaymentCancelCreatePayment.DesignerSelected = False
+        Me.btnPaymentCancelCreatePayment.FillType = CButtonLib.CButton.eFillType.GradientPath
+        Me.btnPaymentCancelCreatePayment.FillTypeLinear = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
+        Me.btnPaymentCancelCreatePayment.FocalPoints.FocusPtX = 0.65!
+        Me.btnPaymentCancelCreatePayment.FocalPoints.FocusPtY = 0.6!
+        Me.btnPaymentCancelCreatePayment.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPaymentCancelCreatePayment.ForeColor = System.Drawing.Color.Brown
+        Me.btnPaymentCancelCreatePayment.ImageIndex = 0
+        Me.btnPaymentCancelCreatePayment.ImageKey = 0
+        Me.btnPaymentCancelCreatePayment.Location = New System.Drawing.Point(181, 11)
+        Me.btnPaymentCancelCreatePayment.Name = "btnPaymentCancelCreatePayment"
+        Me.btnPaymentCancelCreatePayment.Padding = New System.Windows.Forms.Padding(25, 20, 18, 5)
+        Me.btnPaymentCancelCreatePayment.SideImage = CType(resources.GetObject("btnPaymentCancelCreatePayment.SideImage"), System.Drawing.Image)
+        Me.btnPaymentCancelCreatePayment.SideImageAlign = System.Drawing.ContentAlignment.TopRight
+        Me.btnPaymentCancelCreatePayment.SideImageSize = New System.Drawing.Size(26, 22)
+        Me.btnPaymentCancelCreatePayment.Size = New System.Drawing.Size(160, 57)
+        Me.btnPaymentCancelCreatePayment.TabIndex = 3
+        Me.btnPaymentCancelCreatePayment.Text = "Back"
+        Me.btnPaymentCancelCreatePayment.TextMargin = New System.Windows.Forms.Padding(0)
+        Me.btnPaymentCancelCreatePayment.TextShadow = System.Drawing.Color.Silver
+        Me.btnPaymentCancelCreatePayment.UseVisualStyleBackColor = False
+        Me.btnPaymentCancelCreatePayment.Visible = False
         '
         'txtPaymentTDSAmount
         '
@@ -5541,7 +5743,7 @@ Partial Class AgniMainForm
         Me.txtPaymentTDSAmount.Name = "txtPaymentTDSAmount"
         Me.txtPaymentTDSAmount.ReadOnly = True
         Me.txtPaymentTDSAmount.Size = New System.Drawing.Size(371, 26)
-        Me.txtPaymentTDSAmount.TabIndex = 7
+        Me.txtPaymentTDSAmount.TabIndex = 10
         '
         'Label52
         '
@@ -5566,7 +5768,7 @@ Partial Class AgniMainForm
         Me.GroupBox19.Location = New System.Drawing.Point(25, 576)
         Me.GroupBox19.Name = "GroupBox19"
         Me.GroupBox19.Size = New System.Drawing.Size(1873, 404)
-        Me.GroupBox19.TabIndex = 16
+        Me.GroupBox19.TabIndex = 15
         Me.GroupBox19.TabStop = False
         Me.GroupBox19.Text = "Payment Details"
         '
@@ -5787,24 +5989,23 @@ Partial Class AgniMainForm
         Me.cmbPaymentPaymentNoList.DisplayMember = "DisplayPaymentNo"
         Me.cmbPaymentPaymentNoList.Font = New System.Drawing.Font("Garamond", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbPaymentPaymentNoList.FormattingEnabled = True
-        Me.cmbPaymentPaymentNoList.Location = New System.Drawing.Point(888, 32)
+        Me.cmbPaymentPaymentNoList.Location = New System.Drawing.Point(779, 28)
         Me.cmbPaymentPaymentNoList.Name = "cmbPaymentPaymentNoList"
         Me.cmbPaymentPaymentNoList.Size = New System.Drawing.Size(90, 21)
-        Me.cmbPaymentPaymentNoList.TabIndex = 162
+        Me.cmbPaymentPaymentNoList.TabIndex = 1
         Me.cmbPaymentPaymentNoList.TabStop = False
         Me.cmbPaymentPaymentNoList.ValueMember = "PaymentNo"
-        Me.cmbPaymentPaymentNoList.Visible = False
         '
         'Label117
         '
         Me.Label117.AutoSize = True
         Me.Label117.Font = New System.Drawing.Font("Garamond", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label117.ForeColor = System.Drawing.Color.LightSeaGreen
-        Me.Label117.Location = New System.Drawing.Point(779, 34)
+        Me.Label117.Location = New System.Drawing.Point(664, 31)
         Me.Label117.Name = "Label117"
-        Me.Label117.Size = New System.Drawing.Size(111, 13)
+        Me.Label117.Size = New System.Drawing.Size(109, 13)
         Me.Label117.TabIndex = 157
-        Me.Label117.Text = "Payment No - Hidden"
+        Me.Label117.Text = "Internal Payment No."
         Me.Label117.Visible = False
         '
         'Label86
@@ -5830,7 +6031,7 @@ Partial Class AgniMainForm
         Me.txtPaymentNetBalance.ReadOnly = True
         Me.txtPaymentNetBalance.ScrollBars = System.Windows.Forms.ScrollBars.Both
         Me.txtPaymentNetBalance.Size = New System.Drawing.Size(371, 26)
-        Me.txtPaymentNetBalance.TabIndex = 9
+        Me.txtPaymentNetBalance.TabIndex = 12
         Me.txtPaymentNetBalance.TabStop = False
         '
         'Label85
@@ -5867,7 +6068,7 @@ Partial Class AgniMainForm
         Me.txtPaymentFinalPaidAmount.ReadOnly = True
         Me.txtPaymentFinalPaidAmount.ScrollBars = System.Windows.Forms.ScrollBars.Both
         Me.txtPaymentFinalPaidAmount.Size = New System.Drawing.Size(371, 26)
-        Me.txtPaymentFinalPaidAmount.TabIndex = 8
+        Me.txtPaymentFinalPaidAmount.TabIndex = 11
         '
         'txtPaymentUnPaidBilledAmount
         '
@@ -5880,7 +6081,7 @@ Partial Class AgniMainForm
         Me.txtPaymentUnPaidBilledAmount.Name = "txtPaymentUnPaidBilledAmount"
         Me.txtPaymentUnPaidBilledAmount.ReadOnly = True
         Me.txtPaymentUnPaidBilledAmount.Size = New System.Drawing.Size(371, 26)
-        Me.txtPaymentUnPaidBilledAmount.TabIndex = 2
+        Me.txtPaymentUnPaidBilledAmount.TabIndex = 3
         Me.txtPaymentUnPaidBilledAmount.TabStop = False
         '
         'txtPaymentRemarks
@@ -5895,7 +6096,7 @@ Partial Class AgniMainForm
         Me.txtPaymentRemarks.Name = "txtPaymentRemarks"
         Me.txtPaymentRemarks.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtPaymentRemarks.Size = New System.Drawing.Size(371, 59)
-        Me.txtPaymentRemarks.TabIndex = 10
+        Me.txtPaymentRemarks.TabIndex = 13
         '
         'gbBankDetails
         '
@@ -5911,10 +6112,10 @@ Partial Class AgniMainForm
         Me.gbBankDetails.Controls.Add(Me.Label78)
         Me.gbBankDetails.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold)
         Me.gbBankDetails.ForeColor = System.Drawing.Color.SteelBlue
-        Me.gbBankDetails.Location = New System.Drawing.Point(731, 184)
+        Me.gbBankDetails.Location = New System.Drawing.Point(673, 191)
         Me.gbBankDetails.Name = "gbBankDetails"
         Me.gbBankDetails.Size = New System.Drawing.Size(523, 183)
-        Me.gbBankDetails.TabIndex = 11
+        Me.gbBankDetails.TabIndex = 7
         Me.gbBankDetails.TabStop = False
         Me.gbBankDetails.Text = "Bank Details"
         Me.gbBankDetails.Visible = False
@@ -5966,9 +6167,9 @@ Partial Class AgniMainForm
         Me.Label80.ForeColor = System.Drawing.Color.SteelBlue
         Me.Label80.Location = New System.Drawing.Point(22, 131)
         Me.Label80.Name = "Label80"
-        Me.Label80.Size = New System.Drawing.Size(121, 24)
+        Me.Label80.Size = New System.Drawing.Size(128, 24)
         Me.Label80.TabIndex = 129
-        Me.Label80.Text = "Cheque Date"
+        Me.Label80.Text = "Cheque Date*"
         '
         'Label79
         '
@@ -6031,7 +6232,7 @@ Partial Class AgniMainForm
         Me.dpPaymentDate.Location = New System.Drawing.Point(276, 166)
         Me.dpPaymentDate.Name = "dpPaymentDate"
         Me.dpPaymentDate.Size = New System.Drawing.Size(371, 26)
-        Me.dpPaymentDate.TabIndex = 3
+        Me.dpPaymentDate.TabIndex = 4
         '
         'Label77
         '
@@ -6055,7 +6256,7 @@ Partial Class AgniMainForm
         Me.txtPaymentDiscountAmount.Name = "txtPaymentDiscountAmount"
         Me.txtPaymentDiscountAmount.ReadOnly = True
         Me.txtPaymentDiscountAmount.Size = New System.Drawing.Size(371, 26)
-        Me.txtPaymentDiscountAmount.TabIndex = 6
+        Me.txtPaymentDiscountAmount.TabIndex = 9
         '
         'txtPaymentActualPaidAmount
         '
@@ -6068,7 +6269,7 @@ Partial Class AgniMainForm
         Me.txtPaymentActualPaidAmount.Name = "txtPaymentActualPaidAmount"
         Me.txtPaymentActualPaidAmount.ReadOnly = True
         Me.txtPaymentActualPaidAmount.Size = New System.Drawing.Size(371, 26)
-        Me.txtPaymentActualPaidAmount.TabIndex = 5
+        Me.txtPaymentActualPaidAmount.TabIndex = 8
         '
         'Label75
         '
@@ -6108,11 +6309,11 @@ Partial Class AgniMainForm
         Me.Label72.AutoSize = True
         Me.Label72.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!)
         Me.Label72.ForeColor = System.Drawing.Color.SteelBlue
-        Me.Label72.Location = New System.Drawing.Point(28, 124)
+        Me.Label72.Location = New System.Drawing.Point(28, 126)
         Me.Label72.Name = "Label72"
-        Me.Label72.Size = New System.Drawing.Size(171, 24)
+        Me.Label72.Size = New System.Drawing.Size(170, 24)
         Me.Label72.TabIndex = 115
-        Me.Label72.Text = "UnPaid Bill Amount"
+        Me.Label72.Text = "Unpaid Bill Amount"
         '
         'Label70
         '
@@ -6171,7 +6372,7 @@ Partial Class AgniMainForm
         Me.ElaCustomGroupBox2.Location = New System.Drawing.Point(276, 197)
         Me.ElaCustomGroupBox2.Name = "ElaCustomGroupBox2"
         Me.ElaCustomGroupBox2.Size = New System.Drawing.Size(371, 56)
-        Me.ElaCustomGroupBox2.TabIndex = 4
+        Me.ElaCustomGroupBox2.TabIndex = 5
         Me.ElaCustomGroupBox2.TabStop = False
         '
         'radioPaymentByCheque
@@ -6213,7 +6414,7 @@ Partial Class AgniMainForm
         Me.ElaCustomGroupBox4.Location = New System.Drawing.Point(276, 55)
         Me.ElaCustomGroupBox4.Name = "ElaCustomGroupBox4"
         Me.ElaCustomGroupBox4.Size = New System.Drawing.Size(371, 56)
-        Me.ElaCustomGroupBox4.TabIndex = 1
+        Me.ElaCustomGroupBox4.TabIndex = 2
         Me.ElaCustomGroupBox4.TabStop = False
         '
         'txtPaymentDisplayBillNo
@@ -6254,164 +6455,6 @@ Partial Class AgniMainForm
         Me.Label13.Size = New System.Drawing.Size(93, 13)
         Me.Label13.TabIndex = 164
         Me.Label13.Text = "Internal Bill No"
-        '
-        'btnPaymentCancelCreatePayment
-        '
-        Me.btnPaymentCancelCreatePayment.AutoEllipsis = False
-        Me.btnPaymentCancelCreatePayment.AutoSizeMode = False
-        Me.btnPaymentCancelCreatePayment.BackColor = System.Drawing.Color.Transparent
-        Me.btnPaymentCancelCreatePayment.BorderColor = System.Drawing.Color.Transparent
-        Me.btnPaymentCancelCreatePayment.BorderShow = False
-        Me.btnPaymentCancelCreatePayment.ColorFillBlend = CBlendItems9
-        Me.btnPaymentCancelCreatePayment.ColorFillSolid = System.Drawing.Color.Brown
-        Me.btnPaymentCancelCreatePayment.DesignerSelected = False
-        Me.btnPaymentCancelCreatePayment.FillType = CButtonLib.CButton.eFillType.GradientPath
-        Me.btnPaymentCancelCreatePayment.FillTypeLinear = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
-        Me.btnPaymentCancelCreatePayment.FocalPoints.FocusPtX = 0.65!
-        Me.btnPaymentCancelCreatePayment.FocalPoints.FocusPtY = 0.6!
-        Me.btnPaymentCancelCreatePayment.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPaymentCancelCreatePayment.ForeColor = System.Drawing.Color.Brown
-        Me.btnPaymentCancelCreatePayment.ImageIndex = 0
-        Me.btnPaymentCancelCreatePayment.ImageKey = 0
-        Me.btnPaymentCancelCreatePayment.Location = New System.Drawing.Point(919, 425)
-        Me.btnPaymentCancelCreatePayment.Name = "btnPaymentCancelCreatePayment"
-        Me.btnPaymentCancelCreatePayment.Padding = New System.Windows.Forms.Padding(25, 20, 18, 5)
-        Me.btnPaymentCancelCreatePayment.SideImage = CType(resources.GetObject("btnPaymentCancelCreatePayment.SideImage"), System.Drawing.Image)
-        Me.btnPaymentCancelCreatePayment.SideImageAlign = System.Drawing.ContentAlignment.TopRight
-        Me.btnPaymentCancelCreatePayment.SideImageSize = New System.Drawing.Size(26, 22)
-        Me.btnPaymentCancelCreatePayment.Size = New System.Drawing.Size(160, 57)
-        Me.btnPaymentCancelCreatePayment.TabIndex = 13
-        Me.btnPaymentCancelCreatePayment.Text = "Back"
-        Me.btnPaymentCancelCreatePayment.TextMargin = New System.Windows.Forms.Padding(0)
-        Me.btnPaymentCancelCreatePayment.TextShadow = System.Drawing.Color.Silver
-        Me.btnPaymentCancelCreatePayment.UseVisualStyleBackColor = False
-        Me.btnPaymentCancelCreatePayment.Visible = False
-        '
-        'btnPaymentConfirmCreatePayment
-        '
-        Me.btnPaymentConfirmCreatePayment.AutoEllipsis = False
-        Me.btnPaymentConfirmCreatePayment.AutoSizeMode = False
-        Me.btnPaymentConfirmCreatePayment.BackColor = System.Drawing.Color.Transparent
-        Me.btnPaymentConfirmCreatePayment.BorderColor = System.Drawing.Color.Transparent
-        Me.btnPaymentConfirmCreatePayment.BorderShow = False
-        Me.btnPaymentConfirmCreatePayment.ColorFillBlend = CBlendItems10
-        Me.btnPaymentConfirmCreatePayment.ColorFillSolid = System.Drawing.Color.Brown
-        Me.btnPaymentConfirmCreatePayment.DesignerSelected = False
-        Me.btnPaymentConfirmCreatePayment.FillType = CButtonLib.CButton.eFillType.GradientPath
-        Me.btnPaymentConfirmCreatePayment.FillTypeLinear = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
-        Me.btnPaymentConfirmCreatePayment.FocalPoints.FocusPtX = 0.65!
-        Me.btnPaymentConfirmCreatePayment.FocalPoints.FocusPtY = 0.6!
-        Me.btnPaymentConfirmCreatePayment.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPaymentConfirmCreatePayment.ForeColor = System.Drawing.Color.Green
-        Me.btnPaymentConfirmCreatePayment.ImageIndex = 0
-        Me.btnPaymentConfirmCreatePayment.ImageKey = 0
-        Me.btnPaymentConfirmCreatePayment.Location = New System.Drawing.Point(753, 425)
-        Me.btnPaymentConfirmCreatePayment.Name = "btnPaymentConfirmCreatePayment"
-        Me.btnPaymentConfirmCreatePayment.Padding = New System.Windows.Forms.Padding(25, 20, 20, 5)
-        Me.btnPaymentConfirmCreatePayment.SideImage = CType(resources.GetObject("btnPaymentConfirmCreatePayment.SideImage"), System.Drawing.Image)
-        Me.btnPaymentConfirmCreatePayment.SideImageAlign = System.Drawing.ContentAlignment.TopRight
-        Me.btnPaymentConfirmCreatePayment.SideImageSize = New System.Drawing.Size(24, 24)
-        Me.btnPaymentConfirmCreatePayment.Size = New System.Drawing.Size(160, 55)
-        Me.btnPaymentConfirmCreatePayment.TabIndex = 12
-        Me.btnPaymentConfirmCreatePayment.Text = "Confirm"
-        Me.btnPaymentConfirmCreatePayment.TextMargin = New System.Windows.Forms.Padding(0)
-        Me.btnPaymentConfirmCreatePayment.TextShadow = System.Drawing.Color.Silver
-        Me.btnPaymentConfirmCreatePayment.UseVisualStyleBackColor = False
-        Me.btnPaymentConfirmCreatePayment.Visible = False
-        '
-        'btnPaymentCreatePayment
-        '
-        Me.btnPaymentCreatePayment.AutoEllipsis = False
-        Me.btnPaymentCreatePayment.AutoSizeMode = False
-        Me.btnPaymentCreatePayment.BackColor = System.Drawing.Color.Transparent
-        Me.btnPaymentCreatePayment.BorderColor = System.Drawing.Color.Transparent
-        Me.btnPaymentCreatePayment.BorderShow = False
-        Me.btnPaymentCreatePayment.ColorFillBlend = CBlendItems10
-        Me.btnPaymentCreatePayment.ColorFillSolid = System.Drawing.Color.Brown
-        Me.btnPaymentCreatePayment.DesignerSelected = False
-        Me.btnPaymentCreatePayment.FillType = CButtonLib.CButton.eFillType.GradientPath
-        Me.btnPaymentCreatePayment.FillTypeLinear = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
-        Me.btnPaymentCreatePayment.FocalPoints.FocusPtX = 0.65!
-        Me.btnPaymentCreatePayment.FocalPoints.FocusPtY = 0.6!
-        Me.btnPaymentCreatePayment.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPaymentCreatePayment.ForeColor = System.Drawing.Color.Green
-        Me.btnPaymentCreatePayment.ImageIndex = 0
-        Me.btnPaymentCreatePayment.ImageKey = 0
-        Me.btnPaymentCreatePayment.Location = New System.Drawing.Point(753, 425)
-        Me.btnPaymentCreatePayment.Name = "btnPaymentCreatePayment"
-        Me.btnPaymentCreatePayment.Padding = New System.Windows.Forms.Padding(25, 20, 21, 5)
-        Me.btnPaymentCreatePayment.SideImage = CType(resources.GetObject("btnPaymentCreatePayment.SideImage"), System.Drawing.Image)
-        Me.btnPaymentCreatePayment.SideImageAlign = System.Drawing.ContentAlignment.TopRight
-        Me.btnPaymentCreatePayment.SideImageSize = New System.Drawing.Size(22, 22)
-        Me.btnPaymentCreatePayment.Size = New System.Drawing.Size(273, 55)
-        Me.btnPaymentCreatePayment.TabIndex = 13
-        Me.btnPaymentCreatePayment.Text = "Create New Payment "
-        Me.btnPaymentCreatePayment.TextMargin = New System.Windows.Forms.Padding(0)
-        Me.btnPaymentCreatePayment.TextShadow = System.Drawing.Color.Silver
-        Me.btnPaymentCreatePayment.UseVisualStyleBackColor = False
-        '
-        'btnPaymentDelete
-        '
-        Me.btnPaymentDelete.AutoEllipsis = False
-        Me.btnPaymentDelete.AutoSizeMode = False
-        Me.btnPaymentDelete.BackColor = System.Drawing.Color.Transparent
-        Me.btnPaymentDelete.BorderColor = System.Drawing.Color.Transparent
-        Me.btnPaymentDelete.BorderShow = False
-        Me.btnPaymentDelete.ColorFillBlend = CBlendItems7
-        Me.btnPaymentDelete.ColorFillSolid = System.Drawing.Color.Black
-        Me.btnPaymentDelete.DesignerSelected = False
-        Me.btnPaymentDelete.FillType = CButtonLib.CButton.eFillType.GradientPath
-        Me.btnPaymentDelete.FillTypeLinear = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
-        Me.btnPaymentDelete.FocalPoints.FocusPtX = 0.65!
-        Me.btnPaymentDelete.FocalPoints.FocusPtY = 0.6!
-        Me.btnPaymentDelete.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPaymentDelete.ForeColor = System.Drawing.Color.Red
-        Me.btnPaymentDelete.ImageIndex = 0
-        Me.btnPaymentDelete.ImageKey = 0
-        Me.btnPaymentDelete.Location = New System.Drawing.Point(1032, 425)
-        Me.btnPaymentDelete.Name = "btnPaymentDelete"
-        Me.btnPaymentDelete.Padding = New System.Windows.Forms.Padding(25, 23, 22, 5)
-        Me.btnPaymentDelete.SideImage = CType(resources.GetObject("btnPaymentDelete.SideImage"), System.Drawing.Image)
-        Me.btnPaymentDelete.SideImageAlign = System.Drawing.ContentAlignment.TopRight
-        Me.btnPaymentDelete.SideImageIsClickable = True
-        Me.btnPaymentDelete.SideImageSize = New System.Drawing.Size(27, 25)
-        Me.btnPaymentDelete.Size = New System.Drawing.Size(164, 57)
-        Me.btnPaymentDelete.TabIndex = 14
-        Me.btnPaymentDelete.Text = "Delete"
-        Me.btnPaymentDelete.TextMargin = New System.Windows.Forms.Padding(0)
-        Me.btnPaymentDelete.TextShadow = System.Drawing.Color.Silver
-        Me.btnPaymentDelete.UseVisualStyleBackColor = False
-        '
-        'btnPaymentClear
-        '
-        Me.btnPaymentClear.AutoEllipsis = False
-        Me.btnPaymentClear.AutoSizeMode = False
-        Me.btnPaymentClear.BackColor = System.Drawing.Color.Transparent
-        Me.btnPaymentClear.BorderColor = System.Drawing.Color.Transparent
-        Me.btnPaymentClear.BorderShow = False
-        Me.btnPaymentClear.ColorFillBlend = CBlendItems11
-        Me.btnPaymentClear.ColorFillSolid = System.Drawing.Color.Brown
-        Me.btnPaymentClear.DesignerSelected = False
-        Me.btnPaymentClear.FillType = CButtonLib.CButton.eFillType.GradientPath
-        Me.btnPaymentClear.FillTypeLinear = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
-        Me.btnPaymentClear.FocalPoints.FocusPtX = 0.65!
-        Me.btnPaymentClear.FocalPoints.FocusPtY = 0.6!
-        Me.btnPaymentClear.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPaymentClear.ForeColor = System.Drawing.Color.DarkCyan
-        Me.btnPaymentClear.ImageIndex = 0
-        Me.btnPaymentClear.ImageKey = 0
-        Me.btnPaymentClear.Location = New System.Drawing.Point(1202, 425)
-        Me.btnPaymentClear.Name = "btnPaymentClear"
-        Me.btnPaymentClear.Padding = New System.Windows.Forms.Padding(25, 22, 19, 5)
-        Me.btnPaymentClear.SideImage = CType(resources.GetObject("btnPaymentClear.SideImage"), System.Drawing.Image)
-        Me.btnPaymentClear.SideImageAlign = System.Drawing.ContentAlignment.TopRight
-        Me.btnPaymentClear.SideImageSize = New System.Drawing.Size(22, 22)
-        Me.btnPaymentClear.Size = New System.Drawing.Size(160, 57)
-        Me.btnPaymentClear.TabIndex = 15
-        Me.btnPaymentClear.Text = "Clear"
-        Me.btnPaymentClear.TextMargin = New System.Windows.Forms.Padding(0)
-        Me.btnPaymentClear.TextShadow = System.Drawing.Color.Silver
-        Me.btnPaymentClear.UseVisualStyleBackColor = False
         '
         'tabSettings
         '
@@ -7771,6 +7814,7 @@ Partial Class AgniMainForm
         Me.GroupBox16.PerformLayout()
         Me.tabPayment.ResumeLayout(False)
         Me.tabPayment.PerformLayout()
+        Me.panelPaymentButtons.ResumeLayout(False)
         Me.GroupBox19.ResumeLayout(False)
         CType(Me.dgPaymentDetails, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbBankDetails.ResumeLayout(False)
@@ -8145,23 +8189,6 @@ Partial Class AgniMainForm
     Friend WithEvents BankName As DataGridViewTextBoxColumn
     Friend WithEvents ChequeDate As DataGridViewTextBoxColumn
     Friend WithEvents Remarks As DataGridViewTextBoxColumn
-    Friend WithEvents DisplayBillNO As DataGridViewTextBoxColumn
-    Friend WithEvents InternalBillNo As DataGridViewTextBoxColumn
-    Friend WithEvents BillDate As DataGridViewTextBoxColumn
-    Friend WithEvents UnPaidAmountTillNow As DataGridViewTextBoxColumn
-    Friend WithEvents DesignCost As DataGridViewTextBoxColumn
-    Friend WithEvents CGST As DataGridViewTextBoxColumn
-    Friend WithEvents SGST As DataGridViewTextBoxColumn
-    Friend WithEvents IGST As DataGridViewTextBoxColumn
-    Friend WithEvents CGSTAmount As DataGridViewTextBoxColumn
-    Friend WithEvents SGSTAmount As DataGridViewTextBoxColumn
-    Friend WithEvents IGSTAmount As DataGridViewTextBoxColumn
-    Friend WithEvents GSTAmount As DataGridViewTextBoxColumn
-    Friend WithEvents BillAmount As DataGridViewTextBoxColumn
-    Friend WithEvents TotalAmount As DataGridViewTextBoxColumn
-    Friend WithEvents PaidAmount As DataGridViewTextBoxColumn
-    Friend WithEvents RemainingBalance As DataGridViewTextBoxColumn
-    Friend WithEvents Cancelled As DataGridViewCheckBoxColumn
     Friend WithEvents btnPrintPaymentDetails As CButtonLib.CButton
     Friend WithEvents btnPrintBillAndPaymentDetails As CButtonLib.CButton
     Friend WithEvents ReportPaymentCustName As DataGridViewTextBoxColumn
@@ -8265,4 +8292,24 @@ Partial Class AgniMainForm
     Friend WithEvents Label43 As Label
     Friend WithEvents txtPaymentTDSAmount As ElaCustomTextBoxControl.ElaCustomTextBox
     Friend WithEvents Label52 As Label
+    Friend WithEvents panelPaymentButtons As Panel
+    Friend WithEvents paymentPlaceHolder1 As ElaCustomGroupBoxControl.ElaCustomGroupBox
+    Friend WithEvents paymentPlaceHolder2 As ElaCustomGroupBoxControl.ElaCustomGroupBox
+    Friend WithEvents DisplayBillNO As DataGridViewTextBoxColumn
+    Friend WithEvents InternalBillNo As DataGridViewTextBoxColumn
+    Friend WithEvents BillDate As DataGridViewTextBoxColumn
+    Friend WithEvents UnPaidAmountTillNow As DataGridViewTextBoxColumn
+    Friend WithEvents DesignCost As DataGridViewTextBoxColumn
+    Friend WithEvents CGST As DataGridViewTextBoxColumn
+    Friend WithEvents SGST As DataGridViewTextBoxColumn
+    Friend WithEvents IGST As DataGridViewTextBoxColumn
+    Friend WithEvents CGSTAmount As DataGridViewTextBoxColumn
+    Friend WithEvents SGSTAmount As DataGridViewTextBoxColumn
+    Friend WithEvents IGSTAmount As DataGridViewTextBoxColumn
+    Friend WithEvents GSTAmount As DataGridViewTextBoxColumn
+    Friend WithEvents BillAmount As DataGridViewTextBoxColumn
+    Friend WithEvents TotalAmount As DataGridViewTextBoxColumn
+    Friend WithEvents PaidAmount As DataGridViewTextBoxColumn
+    Friend WithEvents RemainingBalance As DataGridViewTextBoxColumn
+    Friend WithEvents Cancelled As DataGridViewCheckBoxColumn
 End Class
