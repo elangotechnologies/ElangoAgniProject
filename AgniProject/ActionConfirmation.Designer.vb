@@ -1,0 +1,171 @@
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+Partial Class ActionConfirmation
+    Inherits System.Windows.Forms.Form
+
+    'Form overrides dispose to clean up the component list.
+    <System.Diagnostics.DebuggerNonUserCode()> _
+    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+        If disposing AndAlso components IsNot Nothing Then
+            components.Dispose()
+        End If
+        MyBase.Dispose(disposing)
+    End Sub
+
+    'Required by the Windows Form Designer
+    Private components As System.ComponentModel.IContainer
+
+    'NOTE: The following procedure is required by the Windows Form Designer
+    'It can be modified using the Windows Form Designer.  
+    'Do not modify it using the code editor.
+    <System.Diagnostics.DebuggerStepThrough()> _
+    Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
+        Me.txtActionConfirmPassword = New ElaCustomTextBoxControl.ElaCustomTextBox()
+        Me.btnActionConfirmationCancel = New CButtonLib.CButton()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.btnActionConfirmationConfirm = New CButtonLib.CButton()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.cmbActionConfirmUserName = New ElaCustomComboBoxControl.ElaCustomComboBox()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SuspendLayout()
+        '
+        'txtActionConfirmPassword
+        '
+        Me.txtActionConfirmPassword.BorderColor = System.Drawing.Color.DeepSkyBlue
+        Me.txtActionConfirmPassword.BorderColorFocus = System.Drawing.Color.Orange
+        Me.txtActionConfirmPassword.BorderColorMouseEnter = System.Drawing.Color.Green
+        Me.txtActionConfirmPassword.BorderThickness = ElaCustomTextBoxControl.ElaCustomTextBox.BorderThicknessEnum.Thick
+        Me.txtActionConfirmPassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtActionConfirmPassword.Location = New System.Drawing.Point(374, 75)
+        Me.txtActionConfirmPassword.Name = "txtActionConfirmPassword"
+        Me.txtActionConfirmPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txtActionConfirmPassword.Size = New System.Drawing.Size(336, 24)
+        Me.txtActionConfirmPassword.TabIndex = 1
+        '
+        'btnActionConfirmationCancel
+        '
+        Me.btnActionConfirmationCancel.AutoEllipsis = False
+        Me.btnActionConfirmationCancel.AutoSizeMode = False
+        Me.btnActionConfirmationCancel.Corners.All = 10
+        Me.btnActionConfirmationCancel.Corners.LowerLeft = 10
+        Me.btnActionConfirmationCancel.Corners.LowerRight = 10
+        Me.btnActionConfirmationCancel.Corners.UpperLeft = 10
+        Me.btnActionConfirmationCancel.Corners.UpperRight = 10
+        Me.btnActionConfirmationCancel.DesignerSelected = False
+        Me.btnActionConfirmationCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnActionConfirmationCancel.ImageIndex = 0
+        Me.btnActionConfirmationCancel.ImageKey = 0
+        Me.btnActionConfirmationCancel.Location = New System.Drawing.Point(558, 119)
+        Me.btnActionConfirmationCancel.Name = "btnActionConfirmationCancel"
+        Me.btnActionConfirmationCancel.Size = New System.Drawing.Size(101, 31)
+        Me.btnActionConfirmationCancel.TabIndex = 3
+        Me.btnActionConfirmationCancel.Text = "Cancel"
+        Me.btnActionConfirmationCancel.UseVisualStyleBackColor = False
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.White
+        Me.Label2.Location = New System.Drawing.Point(260, 78)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(86, 19)
+        Me.Label2.TabIndex = 13
+        Me.Label2.Text = "Password"
+        '
+        'btnActionConfirmationConfirm
+        '
+        Me.btnActionConfirmationConfirm.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnActionConfirmationConfirm.AutoEllipsis = False
+        Me.btnActionConfirmationConfirm.AutoSizeMode = False
+        Me.btnActionConfirmationConfirm.Corners.All = 10
+        Me.btnActionConfirmationConfirm.Corners.LowerLeft = 10
+        Me.btnActionConfirmationConfirm.Corners.LowerRight = 10
+        Me.btnActionConfirmationConfirm.Corners.UpperLeft = 10
+        Me.btnActionConfirmationConfirm.Corners.UpperRight = 10
+        Me.btnActionConfirmationConfirm.DesignerSelected = False
+        Me.btnActionConfirmationConfirm.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnActionConfirmationConfirm.ImageIndex = 0
+        Me.btnActionConfirmationConfirm.ImageKey = 0
+        Me.btnActionConfirmationConfirm.Location = New System.Drawing.Point(427, 119)
+        Me.btnActionConfirmationConfirm.Name = "btnActionConfirmationConfirm"
+        Me.btnActionConfirmationConfirm.Size = New System.Drawing.Size(101, 31)
+        Me.btnActionConfirmationConfirm.TabIndex = 2
+        Me.btnActionConfirmationConfirm.Text = "Confirm"
+        Me.btnActionConfirmationConfirm.UseVisualStyleBackColor = False
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.Location = New System.Drawing.Point(260, 36)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(93, 19)
+        Me.Label1.TabIndex = 9
+        Me.Label1.Text = "User Name"
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.AgniProject.My.Resources.Resources.AgniLogo
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(246, 169)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 3
+        Me.PictureBox1.TabStop = False
+        '
+        'cmbActionConfirmUserName
+        '
+        Me.cmbActionConfirmUserName.ArrowSquareColor = System.Drawing.Color.DeepSkyBlue
+        Me.cmbActionConfirmUserName.ArrowSquareColorFocus = System.Drawing.Color.Orange
+        Me.cmbActionConfirmUserName.ArrowSquareColorMouseEnter = System.Drawing.Color.Green
+        Me.cmbActionConfirmUserName.ArrowTriangleColor = System.Drawing.Color.Gray
+        Me.cmbActionConfirmUserName.ArrowTriangleColorFocus = System.Drawing.Color.Gray
+        Me.cmbActionConfirmUserName.ArrowTriangleColorMouseEnter = System.Drawing.Color.White
+        Me.cmbActionConfirmUserName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cmbActionConfirmUserName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cmbActionConfirmUserName.BorderColor = System.Drawing.Color.DeepSkyBlue
+        Me.cmbActionConfirmUserName.BorderColorFocus = System.Drawing.Color.Orange
+        Me.cmbActionConfirmUserName.BorderColorMouseEnter = System.Drawing.Color.Green
+        Me.cmbActionConfirmUserName.BorderThickness = ElaCustomComboBoxControl.ElaCustomComboBox.BorderThicknessEnum.Thick
+        Me.cmbActionConfirmUserName.DisplayMember = "username"
+        Me.cmbActionConfirmUserName.Font = New System.Drawing.Font("Arial", 12.0!)
+        Me.cmbActionConfirmUserName.FormattingEnabled = True
+        Me.cmbActionConfirmUserName.Location = New System.Drawing.Point(374, 33)
+        Me.cmbActionConfirmUserName.Name = "cmbActionConfirmUserName"
+        Me.cmbActionConfirmUserName.Size = New System.Drawing.Size(336, 26)
+        Me.cmbActionConfirmUserName.TabIndex = 0
+        Me.cmbActionConfirmUserName.ValueMember = "id"
+        '
+        'ActionConfirmation
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(57, Byte), Integer), CType(CType(156, Byte), Integer), CType(CType(213, Byte), Integer))
+        Me.ClientSize = New System.Drawing.Size(730, 172)
+        Me.Controls.Add(Me.cmbActionConfirmUserName)
+        Me.Controls.Add(Me.btnActionConfirmationConfirm)
+        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.txtActionConfirmPassword)
+        Me.Controls.Add(Me.btnActionConfirmationCancel)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Name = "ActionConfirmation"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "VerifyingDelete"
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ResumeLayout(False)
+        Me.PerformLayout()
+
+    End Sub
+    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents txtActionConfirmPassword As ElaCustomTextBoxControl.ElaCustomTextBox
+    Friend WithEvents btnActionConfirmationCancel As CButtonLib.CButton
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents btnActionConfirmationConfirm As CButtonLib.CButton
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents cmbActionConfirmUserName As ElaCustomComboBoxControl.ElaCustomComboBox
+End Class

@@ -16,17 +16,30 @@ How to add logs
       xsi:schemaLocation="http://www.nlog-project.org/schemas/NLog.xsd NLog.xsd"
       autoReload="true"
       throwExceptions="true"
-      internalLogLevel="Trace" internalLogFile="D:\\temp\\nlog-internal.log" internalLogToConsole="true">
+      internalLogLevel="Trace" internalLogFile="D:\\AgniProject.nlog-internal.log" internalLogToConsole="true">
   
   <targets>
-    <target name="file" xsi:type="File" fileName="D:\\temp\\AgniProject.log" layout="${date}: ${message}"/>
+    <target name="file" xsi:type="File" fileName="D:\\AgniProject.log" layout="${date}: ${message}"/>
     <target name="eventlog" xsi:type="EventLog" source="My App" log="Application" layout="${date}: ${message} ${stacktrace}"/>
   </targets>
   <rules>
     <logger name="*" minlevel="Trace" writeTo="file" />
     <logger name="*" minlevel="Fatal" writeTo="eventlog" />
   </rules>
-</nlog>
+</nlog>	
 4) Imports NLog
 5) Dim log As Logger = LogManager.GetCurrentClassLogger()
 6) log.debug("getCustomerListTable: entry")
+
+
+
+7) This function must be created in sql server to run our project. This is to do the rounding based on Banker's rounding. 
+Create Function dbo.BankersRound(@Val Decimal(32,16), @Digits Int)
+Returns Decimal(32,16)
+AS
+Begin
+    Return Case When Abs(@Val - Round(@Val, @Digits, 1)) * Power(10, @Digits+1) = 5 
+                Then Round(@Val, @Digits, Case When Convert(int, Round(abs(@Val) * power(10,@Digits), 0, 1)) % 2 = 1 Then 0 Else 1 End)
+                Else Round(@Val, @Digits)
+                End
+End

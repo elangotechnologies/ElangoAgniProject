@@ -19,9 +19,10 @@ Partial Class BillReportForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.reportViewerBillReport = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
-        Me.btnBillReportExportPdf = New System.Windows.Forms.Button()
-        Me.btnBillReportPDFPath = New System.Windows.Forms.Button()
+        Me.btnBillReportExportPdf = New CButtonLib.CButton()
+        Me.btnBillReportPDFPath = New CButtonLib.CButton()
         Me.CachedBillReport1 = New AgniProject.CachedBillReport()
         Me.CachedBillReport2 = New AgniProject.CachedBillReport()
         Me.SuspendLayout()
@@ -42,24 +43,34 @@ Partial Class BillReportForm
         '
         'btnBillReportExportPdf
         '
+        Me.btnBillReportExportPdf.AutoEllipsis = False
+        Me.btnBillReportExportPdf.AutoSizeMode = False
         Me.btnBillReportExportPdf.BackColor = System.Drawing.Color.Transparent
-        Me.btnBillReportExportPdf.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBillReportExportPdf.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.btnBillReportExportPdf.DesignerSelected = False
+        Me.btnBillReportExportPdf.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.btnBillReportExportPdf.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.btnBillReportExportPdf.ImageIndex = 0
+        Me.btnBillReportExportPdf.ImageKey = 0
         Me.btnBillReportExportPdf.Location = New System.Drawing.Point(529, 5)
         Me.btnBillReportExportPdf.Name = "btnBillReportExportPdf"
-        Me.btnBillReportExportPdf.Size = New System.Drawing.Size(116, 23)
+        Me.btnBillReportExportPdf.Size = New System.Drawing.Size(120, 23)
         Me.btnBillReportExportPdf.TabIndex = 1
         Me.btnBillReportExportPdf.Text = "Export to PDF"
         Me.btnBillReportExportPdf.UseVisualStyleBackColor = False
         '
         'btnBillReportPDFPath
         '
+        Me.btnBillReportPDFPath.AutoEllipsis = False
+        Me.btnBillReportPDFPath.AutoSizeMode = False
         Me.btnBillReportPDFPath.BackColor = System.Drawing.Color.Transparent
-        Me.btnBillReportPDFPath.Font = New System.Drawing.Font("Arial", 9.0!)
-        Me.btnBillReportPDFPath.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.btnBillReportPDFPath.DesignerSelected = True
+        Me.btnBillReportPDFPath.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.btnBillReportPDFPath.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.btnBillReportPDFPath.ImageIndex = 0
+        Me.btnBillReportPDFPath.ImageKey = 0
         Me.btnBillReportPDFPath.Location = New System.Drawing.Point(693, 5)
         Me.btnBillReportPDFPath.Name = "btnBillReportPDFPath"
-        Me.btnBillReportPDFPath.Size = New System.Drawing.Size(116, 23)
+        Me.btnBillReportPDFPath.Size = New System.Drawing.Size(133, 23)
         Me.btnBillReportPDFPath.TabIndex = 2
         Me.btnBillReportPDFPath.Text = "Set PDF Directory"
         Me.btnBillReportPDFPath.UseVisualStyleBackColor = False
@@ -79,8 +90,8 @@ Partial Class BillReportForm
 
     End Sub
     Friend WithEvents reportViewerBillReport As CrystalDecisions.Windows.Forms.CrystalReportViewer
-    Friend WithEvents btnBillReportExportPdf As System.Windows.Forms.Button
-    Friend WithEvents btnBillReportPDFPath As System.Windows.Forms.Button
+    Friend WithEvents btnBillReportExportPdf As CButtonLib.CButton
+    Friend WithEvents btnBillReportPDFPath As CButtonLib.CButton
     Friend WithEvents CachedBillReport1 As CachedBillReport
     Friend WithEvents CachedBillReport2 As CachedBillReport
 End Class
