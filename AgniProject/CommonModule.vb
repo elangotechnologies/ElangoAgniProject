@@ -28,8 +28,8 @@ Module CommonModule
     Public Function getDBConnection() As SqlConnection
         SyncLock dbOpenSyncLock
             If (dbConnection Is Nothing OrElse dbConnection.State <> ConnectionState.Open) Then
-                'dbConnection = New SqlConnection("server=DESKTOP-EHEMD7K\ELASQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
-                dbConnection = New SqlConnection("server=AGNI\SQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
+                dbConnection = New SqlConnection("server=ELANGO\SQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
+                'dbConnection = New SqlConnection("server=AGNI\SQLEXPRESS;Database=agnidatabase;Integrated Security=true; MultipleActiveResultSets=True;")
                 dbConnection.Open()
             End If
             Return dbConnection
