@@ -3415,8 +3415,6 @@ Partial Class AgniMainForm
         Me.cmbBillingBillNoList.ArrowTriangleColor = System.Drawing.Color.Gray
         Me.cmbBillingBillNoList.ArrowTriangleColorFocus = System.Drawing.Color.Gray
         Me.cmbBillingBillNoList.ArrowTriangleColorMouseEnter = System.Drawing.Color.White
-        Me.cmbBillingBillNoList.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.cmbBillingBillNoList.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cmbBillingBillNoList.BorderColor = System.Drawing.Color.DeepSkyBlue
         Me.cmbBillingBillNoList.BorderColorFocus = System.Drawing.Color.Orange
         Me.cmbBillingBillNoList.BorderColorMouseEnter = System.Drawing.Color.Green

@@ -13,7 +13,7 @@ D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomGroupBoxControl\bin
 D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomGroupBoxControl\bin\Debug\ElaCustomGroupBoxControl.xml
 D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomGroupBoxControl\obj\Debug\ElaCustomGroupBoxControl.Resources.resources
 D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomGroupBoxControl\obj\Debug\ElaCustomGroupBoxControl.vbproj.GenerateResource.Cache
-D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomGroupBoxControl\obj\Debug\ElaCustomGroupBoxControl.vbproj.CoreCompileInputs.cache
 D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomGroupBoxControl\obj\Debug\ElaCustomGroupBoxControl.dll
 D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomGroupBoxControl\obj\Debug\ElaCustomGroupBoxControl.xml
 D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomGroupBoxControl\obj\Debug\ElaCustomGroupBoxControl.pdb
+D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomGroupBoxControl\obj\Debug\ElaCustomGroupBoxControl.vbprojResolveAssemblyReference.cache

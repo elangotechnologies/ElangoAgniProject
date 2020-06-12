@@ -16,7 +16,7 @@ D:\GitRepository\ElangoAgniProject\Library Projects\CButton\CButton\obj\Debug\CB
 D:\GitRepository\ElangoAgniProject\Library Projects\CButton\CButton\obj\Debug\CButtonLib.Resources.resources
 D:\GitRepository\ElangoAgniProject\Library Projects\CButton\CButton\obj\Debug\CButtonLib.CButton.resources
 D:\GitRepository\ElangoAgniProject\Library Projects\CButton\CButton\obj\Debug\CButtonLib.vbproj.GenerateResource.Cache
-D:\GitRepository\ElangoAgniProject\Library Projects\CButton\CButton\obj\Debug\CButtonLib.vbproj.CoreCompileInputs.cache
 D:\GitRepository\ElangoAgniProject\Library Projects\CButton\CButton\obj\Debug\CButtonLib.dll
 D:\GitRepository\ElangoAgniProject\Library Projects\CButton\CButton\obj\Debug\CButtonLib.xml
 D:\GitRepository\ElangoAgniProject\Library Projects\CButton\CButton\obj\Debug\CButtonLib.pdb
+D:\GitRepository\ElangoAgniProject\Library Projects\CButton\CButton\obj\Debug\CButtonLib.vbprojResolveAssemblyReference.cache

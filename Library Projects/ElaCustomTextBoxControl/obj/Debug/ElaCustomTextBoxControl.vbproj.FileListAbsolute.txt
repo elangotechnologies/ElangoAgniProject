@@ -12,7 +12,7 @@ D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomTextBoxControl\bin\
 D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomTextBoxControl\bin\Debug\ElaCustomTextBoxControl.xml
 D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomTextBoxControl\obj\Debug\ElaCustomTextBoxControl.Resources.resources
 D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomTextBoxControl\obj\Debug\ElaCustomTextBoxControl.vbproj.GenerateResource.Cache
-D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomTextBoxControl\obj\Debug\ElaCustomTextBoxControl.vbproj.CoreCompileInputs.cache
 D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomTextBoxControl\obj\Debug\ElaCustomTextBoxControl.dll
 D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomTextBoxControl\obj\Debug\ElaCustomTextBoxControl.xml
 D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomTextBoxControl\obj\Debug\ElaCustomTextBoxControl.pdb
+D:\GitRepository\ElangoAgniProject\Library Projects\ElaCustomTextBoxControl\obj\Debug\ElaCustomTextBoxControl.vbprojResolveAssemblyReference.cache
